@@ -8,7 +8,6 @@
 
 import Foundation
 import Alamofire
-import Mantle
 
 class SSHttpRequest {
     var requestUrl : String?
