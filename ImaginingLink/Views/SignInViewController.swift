@@ -42,6 +42,7 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
     }
     
     func SignInPressed() {
+         ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: "Message", MessageToDisplay: "Please wait")
         let username = UserNameTextField.text
         let passWord = PasswordTextField.text
         
@@ -49,7 +50,9 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
             CoreAPI.sharedManaged.signIn(userName: username!, password: passWord!, successResponse: {(response) in
                 let dictResponse = response as! [String:Any]
                 let status = dictResponse["status"] as! String
+                
                 if status == "Success" {
+                   ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: "Message", MessageToDisplay: "Successfully Registered" )
                     let data = dictResponse["data"] as! [String:Any]
                     UserDefaults.standard.set(data["token"] as! String, forKey: kToken)
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -57,6 +60,8 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
                     TwoFactorAuthenticationViewcontroller
                     self.navigationController?.pushViewController(vc, animated: true)
                     
+                } else {
+                    ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: dictResponse["data"] as! String, MessageToDisplay: status)
                 }
             }, faliure: {(error) in
                 

@@ -38,11 +38,19 @@ class DashBoardViewController: UIViewController, UICollectionViewDelegate, UICol
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if indexPath.row == Presentation {
+            
+            
             let storyboard: UIStoryboard = UIStoryboard(name: "DashBoard", bundle: nil)
-            let vc = storyboard.instantiateViewController(withIdentifier: "PresentationViewController") as! PresentationViewController
+            let vc = storyboard.instantiateViewController(withIdentifier: "ILTabViewController") as! ILTabViewController
             self.navigationController?.pushViewController(vc, animated: true)
             CoreAPI.sharedManaged.getPublicUserPresentation(successResponse: {(response) in
-                
+
+            
+//            let storyboard: UIStoryboard = UIStoryboard(name: "DashBoard", bundle: nil)
+//            let vc = storyboard.instantiateViewController(withIdentifier: "PresentationViewController") as! PresentationViewController
+//            self.navigationController?.pushViewController(vc, animated: true)
+//            CoreAPI.sharedManaged.getPublicUserPresentation(successResponse: {(response) in
+            
             }, faliure: {(error) in
                 
             })

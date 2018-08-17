@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MBProgressHUD
 
 class ILUtility : NSObject {
     
@@ -26,12 +27,12 @@ class ILUtility : NSObject {
         backButton.addTarget(controller, action: #selector(self.backAction(_:)), for: .touchUpInside)
         controller.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backButton)
         
-        let btnShowCart = UIButton(type: UIButtonType.system)
-        btnShowCart.setImage(#imageLiteral(resourceName: "MenuIcon"), for: UIControlState())
-        btnShowCart.frame = CGRect(x: 0, y: 0, width: 60, height: 60)
+        let btnShowCart = UIButton(type: UIButtonType.custom)
+        btnShowCart.setImage(#imageLiteral(resourceName: "MenuIcon"), for: UIControlState.normal)
+        btnShowCart.frame = CGRect(x: 0, y: 0, width: 45, height: 45)
         btnShowCart.contentEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        //        btnShowCart.addTarget(self, action: #selector(BaseViewController.cartButtonPressed(_:)), for: UIControlEvents.touchUpInside)
-        btnShowCart.sizeToFit()
+        btnShowCart.contentMode = .scaleAspectFit
+        btnShowCart.addTarget(self, action: #selector(addMenuViewcontroller), for: UIControlEvents.touchUpInside)
         let customRightBarItem = UIBarButtonItem(customView: btnShowCart)
         controller.navigationItem.rightBarButtonItem = customRightBarItem;
 
@@ -79,4 +80,20 @@ class ILUtility : NSObject {
         
         
     }
+    
+    @objc class func addMenuViewcontroller() {
+        
+    }
+    
+    class func showToastMessage(toViewcontroller : UIViewController, statusToDisplay: String, MessageToDisplay : String) -> Void {
+        let spinnerActivity = MBProgressHUD.showAdded(to: toViewcontroller.view, animated: true);
+        spinnerActivity.hide(animated: true, afterDelay: 1)
+        spinnerActivity.label.text = MessageToDisplay;
+        
+        spinnerActivity.detailsLabel.text = statusToDisplay;
+        
+        spinnerActivity.isUserInteractionEnabled = false;
+    }
+    
+
 }
