@@ -42,7 +42,9 @@ class DashBoardViewController: UIViewController, UICollectionViewDelegate, UICol
             
             let storyboard: UIStoryboard = UIStoryboard(name: "DashBoard", bundle: nil)
             let vc = storyboard.instantiateViewController(withIdentifier: "ILTabViewController") as! ILTabViewController
-            self.navigationController?.pushViewController(vc, animated: true)
+            var navController = UINavigationController(rootViewController: vc)
+            self.navigationController?.present(navController, animated: true, completion: nil) 
+//            self.navigationController?.pushViewController(vc, animated: true)
             CoreAPI.sharedManaged.getPublicUserPresentation(successResponse: {(response) in
 
             

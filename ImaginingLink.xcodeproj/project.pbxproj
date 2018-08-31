@@ -39,6 +39,7 @@
 		AC7E37652111EDA300A0263D /* ResetPasswordViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7E37642111EDA300A0263D /* ResetPasswordViewContoller.swift */; };
 		AC9159FA210613D30018CB94 /* MobileOTPVirecontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9159F9210613D30018CB94 /* MobileOTPVirecontroller.swift */; };
 		AC9159FC21061D1C0018CB94 /* DashBoard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC9159FB21061D1C0018CB94 /* DashBoard.storyboard */; };
+		ACB08028212ACAEB0061B5D2 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB08027212ACAEB0061B5D2 /* BaseViewController.swift */; };
 		ACC94BDA210B4AE9009D6B2F /* PresentationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC94BD9210B4AE9009D6B2F /* PresentationViewController.swift */; };
 		ACC94BDC210B4DAD009D6B2F /* PresentationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC94BDB210B4DAD009D6B2F /* PresentationTableViewCell.swift */; };
 		ACC98D11211B37F00098B53A /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC98D10211B37F00098B53A /* MenuViewController.swift */; };
@@ -115,6 +116,7 @@
 		AC7E37642111EDA300A0263D /* ResetPasswordViewContoller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewContoller.swift; sourceTree = "<group>"; };
 		AC9159F9210613D30018CB94 /* MobileOTPVirecontroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileOTPVirecontroller.swift; sourceTree = "<group>"; };
 		AC9159FB21061D1C0018CB94 /* DashBoard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DashBoard.storyboard; sourceTree = "<group>"; };
+		ACB08027212ACAEB0061B5D2 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		ACC94BD9210B4AE9009D6B2F /* PresentationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationViewController.swift; sourceTree = "<group>"; };
 		ACC94BDB210B4DAD009D6B2F /* PresentationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationTableViewCell.swift; sourceTree = "<group>"; };
 		ACC98D10211B37F00098B53A /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
@@ -314,6 +316,7 @@
 		AC323B3920FF82550015ECB4 /* VerificationView */ = {
 			isa = PBXGroup;
 			children = (
+				ACB08027212ACAEB0061B5D2 /* BaseViewController.swift */,
 				ACCA1D142107697600383104 /* DashBoardViewController.swift */,
 				ACC94BDB210B4DAD009D6B2F /* PresentationTableViewCell.swift */,
 				AC323B3A20FF826C0015ECB4 /* MobileVerificationsViewcontroller.swift */,
@@ -594,6 +597,7 @@
 				BCFFFBB320BAEE5A003A0652 /* SignInViewController.swift in Sources */,
 				4897CCE520038E6500360EB7 /* SSHttpRequest.swift in Sources */,
 				AC0AD38E20D13C4100FCB371 /* ListViewController.swift in Sources */,
+				ACB08028212ACAEB0061B5D2 /* BaseViewController.swift in Sources */,
 				BCFFFBB720BAEEB0003A0652 /* OTPViewcontroller.swift in Sources */,
 				4897CCE720038E7200360EB7 /* SSHttpResponse.swift in Sources */,
 				ACCA1D1721076D1B00383104 /* DashBoardCollectionViewCell.swift in Sources */,
