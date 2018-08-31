@@ -25,7 +25,7 @@ class ILUtility : NSObject {
         backButton.setTitleColor(UIColor(red: 80.0/255.0, green: 88.0/255.0, blue: 93.0/255.0, alpha: 1), for: .normal)
         backButton.titleLabel?.font = UIFont(name: "SFProDisplay-Bold", size: 17)
         backButton.addTarget(controller, action: #selector(self.backAction(_:)), for: .touchUpInside)
-        controller.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backButton)
+//        controller.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backButton)
         
         let btnShowCart = UIButton(type: UIButtonType.custom)
         btnShowCart.setImage(#imageLiteral(resourceName: "MenuIcon"), for: UIControlState.normal)
