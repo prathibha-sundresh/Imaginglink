@@ -73,5 +73,62 @@ import Alamofire
             faliure("error")
         }
     }
+    
+    func GETRequest(requestParameter:String,methodName:String,  header:HTTPHeaders?, success:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessageCode:String) -> Void)   {
         
-}
+        var requestHeader = header
+            requestHeader = ["Authorization": "Bearer \(UserDefaults.standard.value(forKey: kToken))"]
+        
+        var requestURL:String?
+        
+       
+            requestURL = requestParameter
+        
+        WebServiceHandler.manager.request(requestURL!, method: .get, parameters: nil, encoding: URLEncoding.default, headers: requestHeader)
+            .responseString { response in
+                print(response.request as Any)  // original URL request
+                print(response.response as Any) // URL response
+                print(response.result.value as Any)   // result of response serialization
+                let dictResponse = response as! [String:Any]
+                if  response.response?.statusCode == 200{
+                    
+                    //print(response.result.value!)   // result of response serialization
+                    
+                    
+                   
+                        success( response.result.value! as AnyObject)
+                        return
+                    }
+                    /*****
+                     *** PARSE RESPONSE OF GET LOYALTY POINTS API
+                     ******/
+                    
+                
+                    
+                    guard let responeString : String = response.result.value else {
+                        faliure("error")
+                        return
+                    }
+                    
+                    
+                
+                    
+                    success( dictResponse as AnyObject)
+                }else{
+                    
+                    
+                    if let responseMessage = dictResponse["code"]{
+                        print(responseMessage)
+                        faliure(responseMessage as! String)
+                    }else{
+                        faliure("error")
+                    }
+                    
+                    
+                }
+                
+        }
+        
+    }
+        
+

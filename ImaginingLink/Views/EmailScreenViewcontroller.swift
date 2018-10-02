@@ -8,14 +8,21 @@
 
 import UIKit
 
-class EmailScreenViewcontroller: UIViewController {
+class EmailScreenViewcontroller: UIViewController, TapOnLabelDelegate {
     
-    @IBOutlet weak var RequestInviteLabel: UILabel!
+    @IBOutlet weak var RequestInviteLabel: SignInLabel!
     @IBOutlet weak var NextButtonPressed: UIButton!
     @IBOutlet weak var EmailTextField: UITextField!
+   
     override func viewDidLoad() {
         super.viewDidLoad()
+        RequestInviteLabel.tapDelegate = self
+    
     }
+    func tapForSignIn() {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super .viewWillAppear(animated)
@@ -29,6 +36,7 @@ class EmailScreenViewcontroller: UIViewController {
         if EmailTextField?.text?.count != 0 {
             CoreAPI.sharedManaged.RegisterEmail(Email: EmailTextField.text!, successResponse: {(response) in
                 let dictResponse = response as! [String:Any]
+                ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: "", MessageToDisplay: "" )
                     let status = dictResponse["status"] as! String
                         if status == "Success" {
                             let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
@@ -36,7 +44,9 @@ class EmailScreenViewcontroller: UIViewController {
                             vc.EmailId = (self.EmailTextField.text)!
                             vc.screenId = kEmailOTP
                             self.navigationController?.pushViewController(vc, animated: true)
-                        }
+                        } else {
+                            ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: "Message", MessageToDisplay: dictResponse["data"] as! String )
+                }
                 }, faliure: {(error) in
                     
             })

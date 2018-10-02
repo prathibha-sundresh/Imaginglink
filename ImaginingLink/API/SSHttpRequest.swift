@@ -57,4 +57,15 @@ class SSHttpRequest {
         faliure(Error)
        })
     }
+    
+    func getMethod(dictParameter:[String:Any], url : String, successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void)  {
+        let webServiceHandler:WebServiceHandler = WebServiceHandler()
+        let header : HTTPHeaders = ["Authorization" : "Bearer 4JosxlXfnoUyhGgBjAtyutO8FxIvRIADN0lp1TI2"]
+        
+        webServiceHandler.POSTRequest(dictParameter: dictParameter, header: header, requestURL: (SSHttpRequest.baseURL?.appending(url))!, success: {(response) in
+            successResponse(response)
+        }, faliure: {(Error) in
+            faliure(Error)
+        })
+    }
 }

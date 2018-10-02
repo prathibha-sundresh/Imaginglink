@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bxs-oE-SEj">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bxs-oE-SEj">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -70,7 +70,7 @@
                                     <action selector="OTPPressed:" destination="ogH-Zc-LoJ" eventType="touchUpInside" id="u1g-lT-cLk"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ALREADY A MEMBER SIGN IN" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z2z-BI-97B" userLabel="Rectangle3">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ALREADY A MEMBER SIGN IN" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z2z-BI-97B" userLabel="SignInLabel" customClass="SignInLabel" customModule="ImaginingLink" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -111,6 +111,7 @@
                     </view>
                     <connections>
                         <outlet property="OTPTextField" destination="Ow2-Oe-AjV" id="aIz-Kp-p9U"/>
+                        <outlet property="SignInLabel" destination="z2z-BI-97B" id="1tZ-5E-cq0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u5z-tg-RWO" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -708,7 +709,7 @@ Registration successful</string>
                                         </constraints>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NvL-Bh-9iE">
-                                        <rect key="frame" x="23" y="448" width="131" height="20"/>
+                                        <rect key="frame" x="23" y="448" width="139" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="mET-Rg-3TU"/>
                                         </constraints>
@@ -717,7 +718,7 @@ Registration successful</string>
                                                 <fragment content="FORGOT PASSWORD">
                                                     <attributes>
                                                         <color key="NSColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <font key="NSFont" size="14" name="SFProDisplay-Regular"/>
+                                                        <font key="NSFont" metaFont="system" size="14"/>
                                                         <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                     </attributes>
                                                 </fragment>
@@ -1097,15 +1098,6 @@ Registration successful</string>
                                     <constraint firstAttribute="height" constant="120" id="vZi-Zi-86k"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Enable Later" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MNp-h7-AQf">
-                                <rect key="frame" x="26" y="439" width="90" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="IF7-Mh-5Lc"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
-                                <color key="textColor" red="0.12941176469999999" green="0.58823529409999997" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="     Two-factor Authentication" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cgc-jh-eS0">
                                 <rect key="frame" x="0.0" y="297" width="375" height="70"/>
                                 <color key="backgroundColor" red="0.12941176469999999" green="0.58823529409999997" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -1116,76 +1108,49 @@ Registration successful</string>
                                 <color key="textColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="highlightedColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
                             </label>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="I1T-h4-gw6" userLabel="EnableNowSwitch">
-                                <rect key="frame" x="310" y="377" width="51" height="40"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zuq-E0-XrI" userLabel="EnableNowButton">
+                                <rect key="frame" x="19" y="404" width="337" height="46"/>
+                                <color key="backgroundColor" red="1" green="0.59607843137254901" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="46" id="Yr7-8E-3m6"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="18"/>
+                                <state key="normal" title="ENABLE NOW">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
-                                    <action selector="EnableNowSelected:" destination="izc-8D-Zaw" eventType="valueChanged" id="30v-Ot-aCv"/>
+                                    <action selector="EnableNowSelected:" destination="izc-8D-Zaw" eventType="touchUpInside" id="bHB-dJ-PfH"/>
                                 </connections>
-                            </switch>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Enable now" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kk1-hA-p8E">
-                                <rect key="frame" x="26" y="377" width="83.5" height="40"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M7K-OX-EvK" userLabel="SkipButton">
+                                <rect key="frame" x="19" y="475" width="346" height="46"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="Z5l-4L-i3j"/>
+                                    <constraint firstAttribute="height" constant="46" id="Oyh-FX-cyF"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
-                                <color key="textColor" red="0.12941176469999999" green="0.58823529409999997" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tw8-ha-wMN" userLabel="EnableNowLine">
-                                <rect key="frame" x="0.0" y="427" width="375" height="2"/>
-                                <color key="backgroundColor" red="0.91372549020000005" green="0.91372549020000005" blue="0.91372549020000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="1.5" id="ifr-Vj-EGi"/>
-                                </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IyD-0x-Txc" userLabel="EnableLaterLine">
-                                <rect key="frame" x="16" y="489" width="343" height="2"/>
-                                <color key="backgroundColor" red="0.91372549020000005" green="0.91372549020000005" blue="0.91372549020000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="1.5" id="4Qz-0Q-DWx"/>
-                                </constraints>
-                            </view>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xg3-Rn-L9O" userLabel="EnableLaterSwitch">
-                                <rect key="frame" x="310" y="439" width="51" height="40"/>
+                                <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="18"/>
+                                <state key="normal" title="Skip &gt;&gt;"/>
                                 <connections>
-                                    <action selector="EnableLaterSelected:" destination="izc-8D-Zaw" eventType="valueChanged" id="Opw-ZS-0vS"/>
+                                    <action selector="EnableLaterSelected:" destination="izc-8D-Zaw" eventType="touchUpInside" id="gip-jT-bB0"/>
                                 </connections>
-                            </switch>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="MNp-h7-AQf" secondAttribute="trailing" constant="20" symbolic="YES" id="45g-AO-MzH"/>
-                            <constraint firstItem="Xg3-Rn-L9O" firstAttribute="top" secondItem="Tw8-ha-wMN" secondAttribute="bottom" constant="10" id="7Mg-Bh-1kb"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="IyD-0x-Txc" secondAttribute="trailing" id="ADN-Yg-w2n"/>
-                            <constraint firstItem="IyD-0x-Txc" firstAttribute="top" secondItem="Xg3-Rn-L9O" secondAttribute="bottom" constant="10" id="ATR-uh-kND"/>
-                            <constraint firstItem="MNp-h7-AQf" firstAttribute="centerY" secondItem="Xg3-Rn-L9O" secondAttribute="centerY" id="Cp2-XX-P70"/>
-                            <constraint firstItem="Kk1-hA-p8E" firstAttribute="centerY" secondItem="I1T-h4-gw6" secondAttribute="centerY" id="JA3-jZ-Nhm"/>
-                            <constraint firstItem="SF0-CU-y0D" firstAttribute="trailing" secondItem="I1T-h4-gw6" secondAttribute="trailing" constant="16" id="Juq-KR-RKP"/>
+                            <constraint firstItem="Zuq-E0-XrI" firstAttribute="top" secondItem="Cgc-jh-eS0" secondAttribute="bottom" constant="37" id="B7W-hi-HLb"/>
+                            <constraint firstItem="M7K-OX-EvK" firstAttribute="top" secondItem="Zuq-E0-XrI" secondAttribute="bottom" constant="25" id="D5c-l4-u8f"/>
                             <constraint firstItem="SF0-CU-y0D" firstAttribute="trailing" secondItem="hLE-fC-rdP" secondAttribute="trailing" constant="118" id="LWk-Q8-Ip2"/>
-                            <constraint firstItem="Tw8-ha-wMN" firstAttribute="top" secondItem="Kk1-hA-p8E" secondAttribute="bottom" constant="10" id="Qof-c6-811"/>
+                            <constraint firstItem="SF0-CU-y0D" firstAttribute="trailing" secondItem="M7K-OX-EvK" secondAttribute="trailing" constant="10" id="MZb-6Z-B0L"/>
+                            <constraint firstItem="Zuq-E0-XrI" firstAttribute="leading" secondItem="SF0-CU-y0D" secondAttribute="leading" constant="19" id="ObT-zm-e0c"/>
+                            <constraint firstItem="M7K-OX-EvK" firstAttribute="leading" secondItem="SF0-CU-y0D" secondAttribute="leading" constant="19" id="SWy-xN-FgA"/>
                             <constraint firstItem="Cgc-jh-eS0" firstAttribute="top" secondItem="hLE-fC-rdP" secondAttribute="bottom" constant="92" id="TrA-CC-n1D"/>
-                            <constraint firstItem="IyD-0x-Txc" firstAttribute="top" secondItem="MNp-h7-AQf" secondAttribute="bottom" constant="10" id="Ze1-On-fzc"/>
-                            <constraint firstItem="SF0-CU-y0D" firstAttribute="leading" secondItem="Tw8-ha-wMN" secondAttribute="leading" id="cSZ-zS-QtZ"/>
                             <constraint firstItem="Cgc-jh-eS0" firstAttribute="leading" secondItem="SF0-CU-y0D" secondAttribute="leading" id="d68-FM-efi"/>
-                            <constraint firstItem="Kk1-hA-p8E" firstAttribute="top" secondItem="Cgc-jh-eS0" secondAttribute="bottom" constant="10" id="dxt-O9-xLg"/>
-                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Kk1-hA-p8E" secondAttribute="trailing" constant="20" symbolic="YES" id="fA6-xN-K4v"/>
-                            <constraint firstItem="MNp-h7-AQf" firstAttribute="leading" secondItem="Kk1-hA-p8E" secondAttribute="leading" id="fVb-Su-gIP"/>
                             <constraint firstItem="hLE-fC-rdP" firstAttribute="top" secondItem="SF0-CU-y0D" secondAttribute="top" constant="65" id="gOz-ii-hhx"/>
-                            <constraint firstItem="Xg3-Rn-L9O" firstAttribute="leading" secondItem="I1T-h4-gw6" secondAttribute="leading" id="gyU-cb-lZi"/>
-                            <constraint firstItem="I1T-h4-gw6" firstAttribute="top" secondItem="Cgc-jh-eS0" secondAttribute="bottom" constant="10" id="hVw-F1-ESX"/>
-                            <constraint firstItem="SF0-CU-y0D" firstAttribute="trailing" secondItem="Tw8-ha-wMN" secondAttribute="trailing" id="hxu-yV-98w"/>
-                            <constraint firstItem="MNp-h7-AQf" firstAttribute="top" secondItem="Tw8-ha-wMN" secondAttribute="bottom" constant="10" id="joj-m6-wuH"/>
-                            <constraint firstItem="IyD-0x-Txc" firstAttribute="leading" secondItem="hgL-Fs-Dcx" secondAttribute="leadingMargin" id="kpX-xj-KTh"/>
                             <constraint firstItem="SF0-CU-y0D" firstAttribute="trailing" secondItem="Cgc-jh-eS0" secondAttribute="trailing" id="lXW-DI-tHE"/>
-                            <constraint firstItem="Kk1-hA-p8E" firstAttribute="leading" secondItem="SF0-CU-y0D" secondAttribute="leading" constant="26" id="ovq-7r-LDn"/>
+                            <constraint firstItem="SF0-CU-y0D" firstAttribute="trailing" secondItem="Zuq-E0-XrI" secondAttribute="trailing" constant="19" id="pcj-Na-blC"/>
                             <constraint firstItem="hLE-fC-rdP" firstAttribute="leading" secondItem="SF0-CU-y0D" secondAttribute="leading" constant="137" id="u6R-nw-aPb"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="SF0-CU-y0D"/>
                     </view>
-                    <connections>
-                        <outlet property="EnableLater" destination="Xg3-Rn-L9O" id="N9A-om-UEk"/>
-                        <outlet property="EnableNow" destination="I1T-h4-gw6" id="tFD-NF-gsE"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3OI-2c-n53" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1229,7 +1194,7 @@ Registration successful</string>
                                     <action selector="RequestOTP:" destination="12t-kj-7P3" eventType="touchUpInside" id="yVV-TB-QUm"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ALREADY A MEMBER SIGN IN" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mP9-MY-Er4" userLabel="Rectangle3">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mP9-MY-Er4" userLabel="AlreadySignInLabel" customClass="SignInLabel" customModule="ImaginingLink" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -1271,7 +1236,7 @@ Registration successful</string>
                     <connections>
                         <outlet property="EmailTextField" destination="nJb-tW-LJy" id="G8f-vd-PO2"/>
                         <outlet property="NextButtonPressed" destination="TQx-EO-HVC" id="ZW6-Rg-9iq"/>
-                        <outlet property="RequestInviteLabel" destination="mP9-MY-Er4" id="l2h-sY-X97"/>
+                        <outlet property="RequestInviteLabel" destination="mP9-MY-Er4" id="ozb-5k-6kD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U4w-Ff-xKd" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -12,7 +12,7 @@ class EmailSuccessViewController: UIViewController {
     var timer : Timer?
     override func viewDidLoad() {
         super.viewDidLoad()
-        timer = Timer.scheduledTimer(timeInterval: 5.0, target: self,  selector: #selector(callSignUp), userInfo:nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 2.0, target: self,  selector: #selector(callSignUp), userInfo:nil, repeats: true)
     }
 
     @objc func callSignUp() {

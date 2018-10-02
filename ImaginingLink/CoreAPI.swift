@@ -73,6 +73,17 @@ class CoreAPI {
         
     }
     
+    func getCountryList(successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void) {
+//
+    let request =  SSHttpRequest(withuUrl: "http://52.39.123.104/api/countries")
+    let OTPRequestValues = ["token" : UserDefaults.standard.value(forKey: kToken) as! String, "mobile" :  phoneNumber, "country_code": countryCode] as [String:Any]
+    request.postMethod(dictParameter: OTPRequestValues, url: "api/authy/send-registration-code", successResponse: {(response) in
+    successResponse(response)
+    }, faliure: {(error) in
+    faliure(error)
+    })
+    }
+    
     func getallUserPresentation(successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void) {
         let request =  SSHttpRequest(withuUrl: "api/presentation/getAllUserPresentations")
         let OTPRequestValues = ["token" : UserDefaults.standard.value(forKey: kToken) as! String] as [String:Any]

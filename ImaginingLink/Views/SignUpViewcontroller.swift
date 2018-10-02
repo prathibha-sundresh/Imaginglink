@@ -31,6 +31,7 @@ class SignUpViewcontroller: UIViewController,  UITextFieldDelegate, UserTypeDele
         submit()
     }
     @IBAction func IAgreeAction(_ sender: Any) {
+        
     }
     @IBOutlet weak var UserTypeTextField: UITextField!
     @IBOutlet weak var ConfirmPasswordTextfield: UITextField!
