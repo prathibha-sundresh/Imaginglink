@@ -9,13 +9,16 @@
 import UIKit
 
 class MobileVerificationsViewcontroller: UIViewController {
-    @IBOutlet weak var PasswordTextFields: UITextField!
-    @IBOutlet weak var MobileNumberTextFiels: UITextField!
+
+    @IBOutlet weak var mobileNumberTF: UITextField!
+    @IBOutlet weak var countryCodeTF: UITextField!
     @IBAction func VerifyMobileNumberAction(_ sender: Any) {
         
  
         
-        CoreAPI.sharedManaged.VerifyPhonenumber(phoneNumber: MobileNumberTextFiels.text!, countryCode: PasswordTextFields.text!, successResponse: {(response) in
+        CoreAPI.sharedManaged.VerifyPhonenumber(phoneNumber: "9902019295", countryCode: "91", successResponse: {(response) in
+            
+             UserDefaults.standard.set(true, forKey: kTwoFactorAuthentication)
 
         }, faliure: {(error) in
 

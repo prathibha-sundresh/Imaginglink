@@ -9,31 +9,25 @@
 import UIKit
 
 class TwoFactorAuthenticationViewcontroller: UIViewController {
-    @IBOutlet weak var EnableNow: UISwitch!
     
-    @IBAction func EnableNowSelected(_ sender: UISwitch) {
-        EnableLater.isOn = !EnableNow.isOn
-        CoreAPI.sharedManaged.getPublicUserPresentation(successResponse: {(response) in
-            
-        }, faliure: {(error) in
-            
-        })
+    @IBAction func EnableNowSelected(_ sender: Any) {
         let storyboard: UIStoryboard = UIStoryboard(name: "Verification", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "MobileVerification") as! MobileVerificationsViewcontroller
-        //        vc.EmailId = (self.EmailTextField.text)!
         self.navigationController?.pushViewController(vc, animated: true)
        
     }
-    @IBAction func EnableLaterSelected(_ sender: UISwitch) {
-        EnableNow.isOn = !EnableLater.isOn
-        
+
+    @IBAction func EnableLaterSelected(_ sender: Any) {
+        UserDefaults.standard.set(false, forKey: kTwoFactorAuthentication)
+        let storyboard = UIStoryboard.init(name: "DashBoard", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "DashBoard") as! DashBoardViewController
+            self.navigationController?.pushViewController(vc, animated: true)
         
     }
     @IBOutlet weak var EnableLater: UISwitch!
     override func viewDidLoad() {
         super.viewDidLoad()
-        EnableLater.isOn = false
-        EnableNow.isOn = false
+
     }
     
     override func viewWillAppear(_ animated: Bool) {

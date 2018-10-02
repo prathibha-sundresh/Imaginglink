@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="owO-gl-9hd">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="owO-gl-9hd">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -58,7 +58,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lwe-FJ-JoQ" userLabel="MobileNumberTextField">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lwe-FJ-JoQ" userLabel="CountrycodeTextField">
                                                 <rect key="frame" x="23" y="423" width="274" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -85,7 +85,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="85g-Y6-b06" userLabel="PasswordTextfield">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="85g-Y6-b06" userLabel="MobilenumberTextfield">
                                                 <rect key="frame" x="23" y="530.5" width="329" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="JA3-HJ-c5S"/>
@@ -168,8 +168,8 @@
                     </view>
                     <size key="freeformSize" width="375" height="750"/>
                     <connections>
-                        <outlet property="MobileNumberTextFiels" destination="lwe-FJ-JoQ" id="EKY-iC-4TK"/>
-                        <outlet property="PasswordTextFields" destination="85g-Y6-b06" id="hlm-le-1eZ"/>
+                        <outlet property="countryCodeTF" destination="lwe-FJ-JoQ" id="rfU-Qi-zi3"/>
+                        <outlet property="mobileNumberTF" destination="85g-Y6-b06" id="v3c-qu-jdp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IrY-Z7-sEb" userLabel="First Responder" sceneMemberID="firstResponder"/>

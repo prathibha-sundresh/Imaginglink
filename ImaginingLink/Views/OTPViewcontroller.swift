@@ -8,8 +8,9 @@
 
 import UIKit
 
-class OTPViewcontroller : UIViewController{
+class OTPViewcontroller : UIViewController, TapOnLabelDelegate{
     
+    @IBOutlet weak var SignInLabel: SignInLabel!
     var EmailId = ""
      var screenId = ""
     @IBAction func OTPPressed(_ sender: Any) {
@@ -50,6 +51,7 @@ class OTPViewcontroller : UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        SignInLabel.tapDelegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -58,6 +60,12 @@ class OTPViewcontroller : UIViewController{
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+    }
+    
+    func tapForSignIn() {
+        let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "SignInViewController") as! SignInViewController
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     
