@@ -61,9 +61,11 @@ import Alamofire
                         print(response.request as Any)  // original URL request
                         print(response.result.value as Any)   // result of response serialization
                         if response.response?.statusCode == 200{
-                            success((response.result.value)! as AnyObject)
+                            success((response.result.value) as AnyObject)
                         }else if (response.response?.statusCode == 400){
                             faliure("server Issue")
+                        } else if (response.response?.statusCode == 422) {
+                            faliure("The mobile has already been taken")
                         }
                         
                 }
@@ -76,20 +78,17 @@ import Alamofire
     
     func GETRequest(requestParameter:String,methodName:String,  header:HTTPHeaders?, success:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessageCode:String) -> Void)   {
         
-        var requestHeader = header
-            requestHeader = ["Authorization": "Bearer \(UserDefaults.standard.value(forKey: kToken))"]
+        let requestHeader = ["Authorization": "Bearer \(UserDefaults.standard.value(forKey: kToken) as! String)"]
         
-        var requestURL:String?
+        let requestURL:String? = requestParameter
         
-       
-            requestURL = requestParameter
         
-        WebServiceHandler.manager.request(requestURL!, method: .get, parameters: nil, encoding: URLEncoding.default, headers: requestHeader)
+        WebServiceHandler.manager.request(requestURL!, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: header!)
             .responseString { response in
                 print(response.request as Any)  // original URL request
                 print(response.response as Any) // URL response
                 print(response.result.value as Any)   // result of response serialization
-                let dictResponse = response as! [String:Any]
+                let dictResponse = response
                 if  response.response?.statusCode == 200{
                     
                     //print(response.result.value!)   // result of response serialization
@@ -114,20 +113,48 @@ import Alamofire
                 
                     
                     success( dictResponse as AnyObject)
-                }else{
-                    
-                    
-                    if let responseMessage = dictResponse["code"]{
-                        print(responseMessage)
-                        faliure(responseMessage as! String)
-                    }else{
-                        faliure("error")
-                    }
-                    
-                    
                 }
-                
+//        else{
+//
+//
+//                    if let responseMessage = dictResponse["code"]{
+//                        print(responseMessage)
+//                        faliure(responseMessage as! String)
+//                    }else{
+//                        faliure("error")
+//                    }
+//
+//
+//                }
+        
         }
+    
+    func GETRequestWithOutHeader(requestParameter:String,methodName:String,  header:HTTPHeaders?, success:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessageCode:String) -> Void)   {
+        
+//        let requestHeader = ["Authorization": "Bearer \(UserDefaults.standard.value(forKey: kToken) as! String)"]
+        
+        let requestURL:String? = requestParameter
+        
+        
+        WebServiceHandler.manager.request(requestURL!, method: .get, parameters: nil, encoding: JSONEncoding.prettyPrinted, headers: nil)
+            .responseString { response in
+                print(response.request as Any)  // original URL request
+                print(response.response as Any) // URL response
+                print(response.result.value as Any)   // result of response serialization
+                if  response.response?.statusCode == 200{
+                    success( response.result.value! as AnyObject)
+                    return
+                }
+               
+                guard let responeString = response.result.value else {
+                    faliure("error")
+                    return
+                }
+                success( responeString as AnyObject)
+        }
+    
+        
+    }
         
     }
         

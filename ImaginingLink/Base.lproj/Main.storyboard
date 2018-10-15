@@ -484,13 +484,13 @@ Registration successful</string>
                                                     <action selector="UserTypeClickButton:" destination="sca-AY-poQ" eventType="touchUpInside" id="fwC-5W-0LW"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pal-NJ-jUP">
+                                            <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pal-NJ-jUP">
                                                 <rect key="frame" x="22" y="786" width="30" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="AZh-an-vEQ"/>
                                                     <constraint firstAttribute="width" constant="30" id="k9Y-5c-1Fu"/>
                                                 </constraints>
-                                                <state key="normal" image="EmailVerifiedLogo"/>
+                                                <state key="normal" image="unCheckedBox"/>
                                                 <connections>
                                                     <action selector="IAgreeAction:" destination="sca-AY-poQ" eventType="touchUpInside" id="x0J-UF-1Kz"/>
                                                 </connections>
@@ -512,7 +512,7 @@ Registration successful</string>
                                                     <action selector="SignUpAction:" destination="sca-AY-poQ" eventType="touchUpInside" id="Z4C-oJ-Thu"/>
                                                 </connections>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WHAT IS IMAGINGLINK? REQUEST AN INVITE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eM7-vM-QGJ" userLabel="Rectangle3">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eM7-vM-QGJ" userLabel="Rectangle3" customClass="SignInLabel" customModule="ImaginingLink" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="938" width="375" height="44"/>
                                                 <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
@@ -629,12 +629,14 @@ Registration successful</string>
                     </view>
                     <size key="freeformSize" width="375" height="1026"/>
                     <connections>
+                        <outlet property="CheckoutBoxClicked" destination="Pal-NJ-jUP" id="QX4-bJ-acV"/>
                         <outlet property="ConfirmPasswordTextfield" destination="VFb-tb-S2D" id="fUD-x6-7fv"/>
                         <outlet property="ContentView" destination="FV2-yi-Cnv" id="Qvy-Sn-g3H"/>
                         <outlet property="EmailTextField" destination="HET-ZO-vxY" id="znH-Rt-g9i"/>
                         <outlet property="LastNameTextfield" destination="afO-Ia-fVh" id="coa-F4-edR"/>
                         <outlet property="PasswordTextField" destination="xGf-2R-Csh" id="Rlx-lG-gCQ"/>
                         <outlet property="ScrollView" destination="M3m-qv-YBK" id="q8f-UF-NUY"/>
+                        <outlet property="SignInLabel" destination="eM7-vM-QGJ" id="SJD-as-nPF"/>
                         <outlet property="UserTypeTextField" destination="Lez-6X-zMz" id="JvC-pJ-8hp"/>
                         <outlet property="firstnameTextField" destination="Dun-M3-f9O" id="vZr-61-fga"/>
                     </connections>
@@ -735,7 +737,7 @@ Registration successful</string>
                                         <color key="textColor" red="0.28235294117647058" green="0.28235294117647058" blue="0.28235294117647058" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter PAssword" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zpS-LA-A6q" userLabel="PasswordText">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zpS-LA-A6q" userLabel="PasswordText">
                                         <rect key="frame" x="23" y="384.5" width="323.5" height="24"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
@@ -830,7 +832,7 @@ Registration successful</string>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fnk-cg-Gtg" userLabel="ContentView">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="667"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ImagingLinkLogoWithText" translatesAutoresizingMaskIntoConstraints="NO" id="LgB-G0-0uD">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ImagingLinkLogoWithText" translatesAutoresizingMaskIntoConstraints="NO" id="LgB-G0-0uD">
                                                 <rect key="frame" x="127" y="64" width="120" height="120"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="120" id="nxn-l0-r1e"/>
@@ -848,36 +850,48 @@ Registration successful</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please enter your registered email address below and we'll send you an email with instruction to create a new password" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nBa-vc-MQj">
-                                                <rect key="frame" x="22" y="337" width="331" height="63"/>
+                                                <rect key="frame" x="22" y="337" width="331" height="57.5"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="57.5" id="9sr-3O-Hri"/>
+                                                </constraints>
                                                 <fontDescription key="fontDescription" name="SFProDisplay-Light" family="SF Pro Display" pointSize="16"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nvc-A7-Drm" userLabel="LineView">
-                                                <rect key="frame" x="0.0" y="416" width="374" height="3"/>
+                                                <rect key="frame" x="0.0" y="410.5" width="374" height="1.5"/>
                                                 <color key="backgroundColor" red="0.84705882352941175" green="0.84705882352941175" blue="0.84705882352941175" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="3" id="kiQ-RD-NjK"/>
+                                                    <constraint firstAttribute="height" constant="1.5" id="uS1-Nz-jAE"/>
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="E-mail address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ptA-eo-U1C">
-                                                <rect key="frame" x="22" y="449" width="330" height="17"/>
+                                                <rect key="frame" x="22" y="427" width="330" height="17"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="17" id="4h9-4P-eia"/>
+                                                </constraints>
                                                 <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="14"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ASz-e1-q04">
-                                                <rect key="frame" x="22" y="476" width="330" height="30"/>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ASz-e1-q04">
+                                                <rect key="frame" x="22" y="454.5" width="330" height="52"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="52" id="NMN-N9-y7y"/>
+                                                </constraints>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hm5-bf-fGz">
-                                                <rect key="frame" x="19" y="527" width="336" height="1.5"/>
+                                                <rect key="frame" x="19" y="527.5" width="336" height="1.5"/>
                                                 <color key="backgroundColor" red="0.59215686274509804" green="0.59215686274509804" blue="0.59215686274509804" alpha="1" colorSpace="calibratedRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="1.5" id="H1X-OV-efU"/>
+                                                </constraints>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QnP-vI-Qo6">
-                                                <rect key="frame" x="19" y="559.5" width="336" height="46"/>
+                                                <rect key="frame" x="19" y="560" width="336" height="46"/>
                                                 <color key="backgroundColor" red="0.97647058823529409" green="0.58039215686274503" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="46" id="nV2-Nt-qe2"/>
@@ -894,12 +908,11 @@ Registration successful</string>
                                         <constraints>
                                             <constraint firstItem="Hm5-bf-fGz" firstAttribute="top" secondItem="ASz-e1-q04" secondAttribute="bottom" constant="21" id="130-JP-DdZ"/>
                                             <constraint firstItem="QnP-vI-Qo6" firstAttribute="leading" secondItem="fnk-cg-Gtg" secondAttribute="leading" constant="19" id="2Bb-hI-mX1"/>
-                                            <constraint firstItem="ptA-eo-U1C" firstAttribute="top" secondItem="nvc-A7-Drm" secondAttribute="bottom" constant="30" id="6IO-77-zDm"/>
+                                            <constraint firstItem="ptA-eo-U1C" firstAttribute="top" secondItem="nvc-A7-Drm" secondAttribute="bottom" constant="15" id="6IO-77-zDm"/>
                                             <constraint firstItem="Hm5-bf-fGz" firstAttribute="leading" secondItem="fnk-cg-Gtg" secondAttribute="leading" constant="19" id="9Ps-HP-vzm"/>
                                             <constraint firstItem="nvc-A7-Drm" firstAttribute="top" secondItem="nBa-vc-MQj" secondAttribute="bottom" constant="16" id="DgC-z6-xcG"/>
                                             <constraint firstItem="ptA-eo-U1C" firstAttribute="leading" secondItem="fnk-cg-Gtg" secondAttribute="leading" constant="22" id="EZg-MT-9HR"/>
                                             <constraint firstItem="nvc-A7-Drm" firstAttribute="leading" secondItem="fnk-cg-Gtg" secondAttribute="leading" id="Esf-o4-Lpg"/>
-                                            <constraint firstAttribute="bottom" secondItem="nvc-A7-Drm" secondAttribute="bottom" constant="248" id="FF0-KV-t8Q"/>
                                             <constraint firstItem="LgB-G0-0uD" firstAttribute="top" secondItem="fnk-cg-Gtg" secondAttribute="top" constant="64" id="Kd7-Bo-hSB"/>
                                             <constraint firstItem="ASz-e1-q04" firstAttribute="leading" secondItem="fnk-cg-Gtg" secondAttribute="leading" constant="22" id="Kvp-pQ-X0H"/>
                                             <constraint firstAttribute="trailing" secondItem="ASz-e1-q04" secondAttribute="trailing" constant="22" id="MQl-Cj-WFI"/>
@@ -907,7 +920,6 @@ Registration successful</string>
                                             <constraint firstAttribute="trailing" secondItem="MZ6-Er-tOl" secondAttribute="trailing" id="S68-wg-sGL"/>
                                             <constraint firstItem="nBa-vc-MQj" firstAttribute="leading" secondItem="fnk-cg-Gtg" secondAttribute="leading" constant="22" id="UGo-h0-ba6"/>
                                             <constraint firstItem="QnP-vI-Qo6" firstAttribute="top" secondItem="Hm5-bf-fGz" secondAttribute="bottom" constant="31" id="VP9-au-6Uz"/>
-                                            <constraint firstItem="nvc-A7-Drm" firstAttribute="top" secondItem="fnk-cg-Gtg" secondAttribute="top" constant="416" id="W9P-dt-tvI"/>
                                             <constraint firstAttribute="trailing" secondItem="QnP-vI-Qo6" secondAttribute="trailing" constant="19" id="Y8o-oN-JOD"/>
                                             <constraint firstItem="MZ6-Er-tOl" firstAttribute="leading" secondItem="fnk-cg-Gtg" secondAttribute="leading" id="crC-RS-Xa4"/>
                                             <constraint firstItem="MZ6-Er-tOl" firstAttribute="top" secondItem="LgB-G0-0uD" secondAttribute="bottom" constant="63" id="d0E-Ge-qal"/>
@@ -941,6 +953,7 @@ Registration successful</string>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ZRx-uI-QGG"/>
                     </view>
+                    <size key="freeformSize" width="375" height="667"/>
                     <connections>
                         <outlet property="ForgotPasswordTextField" destination="ASz-e1-q04" id="Bhs-Gu-QbV"/>
                     </connections>
@@ -6608,6 +6621,7 @@ MwAE3zgABN9FAATfSAAE31UABN9aAATfYgAE32UABN9qAATfcgAE33UABN+HAATfigAE348AAAAAAAAE
 AQAAAAAAAABZAAAAAAAAAAAAAAAAAATfkQ
 </mutableData>
         </image>
+        <image name="unCheckedBox" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Th4-p4-mqz"/>

@@ -22,10 +22,10 @@ class ResetPasswordViewContoller: UIViewController {
     }
     @IBAction func SavePressed(_ sender: Any) {
         if ConfirmPasswordTF.text == NewPasswordTextFiels.text {
-            let requestValues = ["requested_email" : UserDefaults.standard.value(forKey: kAuthenticatedEmailId)!,"otp_code" : otpValue, "new_password" : NewPasswordTextFiels.text!, "confirm_password" : ConfirmPasswordTF.text!] as [String:Any]
+            let requestValues = ["email" : UserDefaults.standard.value(forKey: kAuthenticatedEmailId)!,"otp_code" : otpValue, "new_password" : NewPasswordTextFiels.text!, "confirm_new_password" : ConfirmPasswordTF.text!] as [String:Any]
             CoreAPI.sharedManaged.requestResetPassword(params: requestValues, successResponse: {(response) in
                 let dictValue = response as! [String:Any]
-                if dictValue["status"] as! String == "Success" {
+                if dictValue["status"] as! String == "success" {
                     let alertContoller = UIAlertController(title: "Alert", message: dictValue["data"] as? String, preferredStyle: UIAlertControllerStyle.alert)
                     let alertAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {(action) in
                     self.performSegue(withIdentifier: "SignInVC", sender: self)

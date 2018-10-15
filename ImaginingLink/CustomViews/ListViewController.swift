@@ -9,17 +9,17 @@
 import UIKit
 
 protocol UserTypeDelegate {
-    func selectedUserType(userType: String)
+    func selectedUserType(userType: String, indexRow: Int)
 }
 
 class ListViewController: UITableViewController {
 
     var delegate:UserTypeDelegate?
     var listValue : [String] = []
+    var MobilevVerification : [String] = []
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.register(ListViewTableViewCell.self, forCellReuseIdentifier: "ListId")
-        listValue = kUserTypes
         
     }
     
@@ -33,7 +33,7 @@ class ListViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //
-        delegate?.selectedUserType(userType: listValue[indexPath.row])
+        delegate?.selectedUserType(userType: listValue[indexPath.row],indexRow: indexPath.row)
         self.dismiss(animated: true, completion: nil)
     }
     

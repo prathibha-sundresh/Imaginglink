@@ -10,6 +10,7 @@ target 'ImaginingLink' do
  pod 'Alamofire', '~> 4.2.0'
 # pod 'SaltsideAPI', :path => 'ImaginingLink/API/'
 pod 'MBProgressHUD', '~> 1.1.0'
+pod 'IQKeyboardManagerSwift'
 
   target 'ImaginingLinkTests' do
     inherit! :search_paths

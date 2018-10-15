@@ -37,15 +37,14 @@ class EmailScreenViewcontroller: UIViewController, TapOnLabelDelegate {
             CoreAPI.sharedManaged.RegisterEmail(Email: EmailTextField.text!, successResponse: {(response) in
                 let dictResponse = response as! [String:Any]
                 ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: "", MessageToDisplay: "" )
-                    let status = dictResponse["status"] as! String
-                        if status == "Success" {
+                if dictResponse["message"] != nil {
                             let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                             let vc = storyboard.instantiateViewController(withIdentifier: "OTPViewcontroller") as! OTPViewcontroller
                             vc.EmailId = (self.EmailTextField.text)!
                             vc.screenId = kEmailOTP
                             self.navigationController?.pushViewController(vc, animated: true)
                         } else {
-                            ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: "Message", MessageToDisplay: dictResponse["data"] as! String )
+                            ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: "Message", MessageToDisplay: dictResponse["message"] as! String )
                 }
                 }, faliure: {(error) in
                     
