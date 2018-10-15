@@ -19,12 +19,12 @@ class SignInLabel: UILabel {
         
         
         let attributedString = NSMutableAttributedString(string: "Already A Member  SIGN IN", attributes: [
-            .font: UIFont.systemFont(ofSize: 14.0, weight: .light),
+            .font: UIFont.systemFont(ofSize: 14.0),
             .foregroundColor: UIColor(white: 0.0, alpha: 1.0),
             .kern: 0.5
             ])
         attributedString.addAttributes([
-            .font: UIFont.systemFont(ofSize: 14.0, weight: .medium),
+            .font: UIFont.systemFont(ofSize: 14.0),
             .foregroundColor: UIColor(red: 33.0 / 255.0, green: 150.0 / 255.0, blue: 243.0 / 255.0, alpha: 1.0)
             ], range: NSRange(location: 18, length: 7))
         self.attributedText = attributedString

@@ -20,7 +20,7 @@ class OTPViewcontroller : UIViewController, TapOnLabelDelegate{
                     UserDefaults.standard.setValue(self.EmailId, forKey: kAuthenticatedEmailId)
                     let dictResponse = response as! [String:Any]
                     let status = dictResponse["status"] as! String
-                    if status == "Success" {
+                    if status == "success" {
                         UserDefaults.standard.set(self.OTPTextField.text, forKey: OTP_Value)
                         let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                         let vc = storyboard.instantiateViewController(withIdentifier: "EmailSuccessViewController") as! EmailSuccessViewController
@@ -33,7 +33,7 @@ class OTPViewcontroller : UIViewController, TapOnLabelDelegate{
                 CoreAPI.sharedManaged.requestOTPForResetPassword(Email: UserDefaults.standard.value(forKey: kAuthenticatedEmailId) as! String, OTP: OTPTextField!.text!, successResponse: {(response) in
                     let dictResponse = response as! [String:Any]
                     let status = dictResponse["status"] as! String
-                    if status == "Success" {
+                    if status == "success" {
                         UserDefaults.standard.set(self.OTPTextField.text, forKey: OTP_Value)
                         let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                         let vc = storyboard.instantiateViewController(withIdentifier: "ResetPasswordViewContoller") as! ResetPasswordViewContoller

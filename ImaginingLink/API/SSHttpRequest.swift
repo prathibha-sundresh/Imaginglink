@@ -47,10 +47,11 @@ class SSHttpRequest {
         }
     }
     
-    func postMethod(dictParameter:[String:Any], url : String, successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void)  {
+    func postMethodWithHeaderasToken(dictParameter:[String:Any], url : String,header:HTTPHeaders, successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void)  {
         let webServiceHandler:WebServiceHandler = WebServiceHandler()
-        let header : HTTPHeaders = ["Content-Type" : "application/json"]
+
         
+
         webServiceHandler.POSTRequest(dictParameter: dictParameter, header: header, requestURL: (SSHttpRequest.baseURL?.appending(url))!, success: {(response) in
         successResponse(response)
        }, faliure: {(Error) in
@@ -58,14 +59,44 @@ class SSHttpRequest {
        })
     }
     
-    func getMethod(dictParameter:[String:Any], url : String, successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void)  {
+    func postMethod(dictParameter:[String:Any], url : String, successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void)  {
         let webServiceHandler:WebServiceHandler = WebServiceHandler()
-        let header : HTTPHeaders = ["Authorization" : "Bearer 4JosxlXfnoUyhGgBjAtyutO8FxIvRIADN0lp1TI2"]
+        
+        let header : HTTPHeaders = ["Accept" : "application/json"]
         
         webServiceHandler.POSTRequest(dictParameter: dictParameter, header: header, requestURL: (SSHttpRequest.baseURL?.appending(url))!, success: {(response) in
             successResponse(response)
         }, faliure: {(Error) in
             faliure(Error)
         })
+    }
+
+    func getMethodWithOutHeader(url : String, successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void)  {
+        let webServiceHandler:WebServiceHandler = WebServiceHandler()
+        
+        webServiceHandler.GETRequestWithOutHeader(requestParameter: (SSHttpRequest.baseURL?.appending(url))!, methodName: "GET", header: nil, success: {(response) in
+            successResponse(response)
+        }, faliure: {(error) in
+            
+        })
+    }
+        
+    
+    func getMethod(dictParameter:[String:Any], url : String, successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void)  {
+        let webServiceHandler:WebServiceHandler = WebServiceHandler()
+        let header : HTTPHeaders = ["Authorization" : "Bearer \(UserDefaults.standard.value(forKey: kToken) as! String)"]
+        
+        webServiceHandler.GETRequest(requestParameter: (SSHttpRequest.baseURL?.appending(url))!, methodName: "GET", header: header, success: {(response) in
+            successResponse(response)
+        }, faliure: {(error) in
+            
+        })
+        
+        
+//        webServiceHandler.POSTRequest(dictParameter: dictParameter, header: header, requestURL: (SSHttpRequest.baseURL?.appending(url))!, success: {(response) in
+//            successResponse(response)
+//        }, faliure: {(Error) in
+//            faliure(Error)
+//        })
     }
 }

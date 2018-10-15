@@ -221,11 +221,9 @@
 				AC323B3920FF82550015ECB4 /* VerificationView */,
 				AC323B3620FF81FC0015ECB4 /* StoryBoards */,
 				AC0AD38C20D13C2500FCB371 /* CustomViews */,
-				ACFA511A20C0DFE20013EE0F /* HelperClass */,
 				AC01CA5120C05DDF00034C90 /* Fonts */,
 				BCFFFBB120BAEE34003A0652 /* Views */,
 				4897CCE820039B6100360EB7 /* Extensions */,
-				4897CC8D20035E9400360EB7 /* RequestResponse */,
 				483D01481FFB9F4500C04430 /* API */,
 				484279301FF39B9E0056A089 /* AppDelegate.swift */,
 				484279321FF39B9E0056A089 /* ViewController.swift */,
@@ -254,13 +252,6 @@
 				484279521FF39B9E0056A089 /* Info.plist */,
 			);
 			path = ImaginingLinkUITests;
-			sourceTree = "<group>";
-		};
-		4897CC8D20035E9400360EB7 /* RequestResponse */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = RequestResponse;
 			sourceTree = "<group>";
 		};
 		4897CCE820039B6100360EB7 /* Extensions */ = {
@@ -346,13 +337,6 @@
 				ACE9CA8E21188FFD00AAC035 /* ILUtility.swift */,
 			);
 			path = Utility;
-			sourceTree = "<group>";
-		};
-		ACFA511A20C0DFE20013EE0F /* HelperClass */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = HelperClass;
 			sourceTree = "<group>";
 		};
 		BCFFFBB120BAEE34003A0652 /* Views */ = {
@@ -576,11 +560,13 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-ImaginingLink/Pods-ImaginingLink-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -797,12 +783,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = W8U434C9C6;
 				INFOPLIST_FILE = ImaginingLink/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.imaginglink.ImaginingLink;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -812,12 +800,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = W8U434C9C6;
 				INFOPLIST_FILE = ImaginingLink/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.imaginglink.ImaginingLink;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

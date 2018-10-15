@@ -8,31 +8,43 @@
 
 import UIKit
 
-class SignUpViewcontroller: UIViewController,  UITextFieldDelegate, UserTypeDelegate {
-    func selectedUserType(userType: String) {
+class SignUpViewcontroller: UIViewController,  UITextFieldDelegate, UserTypeDelegate, TapOnLabelDelegate {
+    func selectedUserType(userType: String, indexRow: Int) {
         UserTypeTextField.text = userType
+        let dic = userTypeResponse![indexRow]
+        userTypeId = dic["id"] as! String
     }
     
     @IBAction func UserTypeClickButton(_ sender: Any) {
         let storyboard = UIStoryboard(name: "ListView", bundle: nil)
         let VC = storyboard.instantiateViewController(withIdentifier: "ListViewId") as! ListViewController
         VC.delegate = self
-        VC.listValue = kUserTypes
+        VC.listValue = self.userTypeArray
         self.present(VC, animated: true, completion: nil)
     }
     
+    @IBOutlet weak var SignInLabel: SignInLabel!
     @IBOutlet weak var DisaplyUserTypeLabel: UILabel!
     
     @IBOutlet weak var LastNameTextfield: UITextField!
     
     @IBAction func UserTypeSelectionPressed(_ sender: Any) {
+        
     }
     @IBAction func SignUpAction(_ sender: Any) {
         submit()
     }
-    @IBAction func IAgreeAction(_ sender: Any) {
+    @IBAction func IAgreeAction(_ sender: UIButton) {
+         sender.isSelected = !sender.isSelected
+        if sender.isSelected {
+            CheckoutBoxClicked.setBackgroundImage(#imageLiteral(resourceName: "unCheckedBox"), for: UIControlState.normal)
+        } else {
+            CheckoutBoxClicked.setBackgroundImage(#imageLiteral(resourceName: "ClickedCheckBox"), for: UIControlState.normal)
+        }
+        
         
     }
+    @IBOutlet weak var CheckoutBoxClicked: UIButton!
     @IBOutlet weak var UserTypeTextField: UITextField!
     @IBOutlet weak var ConfirmPasswordTextfield: UITextField!
     @IBOutlet weak var PasswordTextField: UITextField!
@@ -42,11 +54,14 @@ class SignUpViewcontroller: UIViewController,  UITextFieldDelegate, UserTypeDele
     @IBOutlet weak var ScrollView: UIScrollView!
     
     var userTypeArray : [String] = [""]
+    var userTypeId : String = ""
+    var userTypeResponse : [[String:Any]]?
     override func viewDidLoad() {
         super.viewDidLoad()
 
-         userTypeArray = kUserTypes
-        UserTypeTextField.text = kUserTypes[0]
+        fetchUserType()
+        SignInLabel.tapDelegate = self
+       
         
     }
 
@@ -54,33 +69,56 @@ class SignUpViewcontroller: UIViewController,  UITextFieldDelegate, UserTypeDele
         super.viewWillAppear(animated)
     }
     
-    func submit() -> Void {
-        if ConfirmPasswordTextfield.text == PasswordTextField.text && EmailTextField.text?.count != 0 && UserTypeTextField.text?.count != 0 {
-            CoreAPI.sharedManaged.signUpWithEmailId(firstName: firstnameTextField.text!, lastNAme: LastNameTextfield.text!, email: EmailTextField.text!, password: ConfirmPasswordTextfield.text!, userType: UserTypeTextField.text!, successResponse: {(response) in
-                let dictResponse = response as! [String:Any]
-                let status = dictResponse["status"] as! String
-                if status == "Success" {
-                    UserDefaults.standard.setValue(self.EmailTextField.text, forKey: kAuthenticatedEmailId)
-//                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//                    let vc = storyboard.instantiateViewController(withIdentifier: "TwoFactorAuthenticationViewcontroller") as!
-//                    TwoFactorAuthenticationViewcontroller
-//                    self.navigationController?.pushViewController(vc, animated: true)
-                    let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                    let vc = storyboard.instantiateViewController(withIdentifier: "SignInViewController") as! SignInViewController
-                    //        vc.EmailId = (self.EmailTextField.text)!
-                    self.navigationController?.pushViewController(vc, animated: true)
-                }
-            }, faliure: {(error) in
-                
-            })
-        }
+    func tapForSignIn() {
+        self.navigationController?.popViewController(animated: true)
     }
     
-    
-    //MARK: UserType list call
-    func UserTypeList() {
+    func fetchUserType() {
+        CoreAPI.sharedManaged.requestUserType(successResponse: {(response) in
+           
+            let responseData = (response as! String).convertToDictionary()
+            if let data : [[String:Any]] = responseData!["data"] as? [[String:Any]] {
+                self.userTypeResponse = data
+                for value in data {
+                    self.userTypeArray.append(value["profession"] as! String)
+                    self.UserTypeTextField.text = self.userTypeArray[0]
+                }
+            }
+        }, faliure: {(failure) in
+            
+        })
         
     }
     
+    func submit() -> Void {
+        if ConfirmPasswordTextfield.text == PasswordTextField.text && EmailTextField.text?.count != 0 && UserTypeTextField.text?.count != 0 {
+             ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: "Message", MessageToDisplay: "SigningUp...." )
+            CoreAPI.sharedManaged.signUpWithEmailId(firstName: firstnameTextField.text!, lastNAme: LastNameTextfield.text!, email: EmailTextField.text!, password: ConfirmPasswordTextfield.text!, userType: userTypeId, successResponse: {(response) in
+                let dictResponse = response as! [String:Any]
+                let status = dictResponse["status"] as! String
+                if status == "success" {
+                    UserDefaults.standard.setValue(self.EmailTextField.text, forKey: kAuthenticatedEmailId)
 
+                    let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                    let vc = storyboard.instantiateViewController(withIdentifier: "SignInViewController") as! SignInViewController
+                    self.navigationController?.pushViewController(vc, animated: true)
+                }
+            }, faliure: {(error) in
+                ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: "Message", MessageToDisplay: "Some Error While Signing Up...." )
+            })
+        }
+    }
+
+}
+extension String {
+    func convertToDictionary() -> [String: Any]? {
+        if let data = self.data(using: .utf8) {
+            do {
+                return try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
+        return nil
+    }
 }

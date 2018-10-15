@@ -38,6 +38,27 @@ class ILUtility : NSObject {
 
     }
     
+    class func addNavigationBarBackButtonWithOuttitle(controller:UIViewController) {
+        let backButton = UIButton(type: .custom)
+        backButton.frame = CGRect(x: 0, y: 0, width: 150, height: 100)
+        backButton.setImage(UIImage(named: "BackButtonIcon"), for: .normal)
+        backButton.contentHorizontalAlignment = .left
+        backButton.titleEdgeInsets = UIEdgeInsetsMake(0.0, 10.0, 0.0, 0.0)
+       
+        backButton.addTarget(controller, action: #selector(self.backAction(_:)), for: .touchUpInside)
+        //        controller.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backButton)
+        
+        let btnShowCart = UIButton(type: UIButtonType.custom)
+        btnShowCart.setImage(#imageLiteral(resourceName: "MenuIcon"), for: UIControlState.normal)
+        btnShowCart.frame = CGRect(x: 0, y: 0, width: 45, height: 45)
+        btnShowCart.contentEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        btnShowCart.contentMode = .scaleAspectFit
+        btnShowCart.addTarget(self, action: #selector(addMenuViewcontroller), for: UIControlEvents.touchUpInside)
+        let customRightBarItem = UIBarButtonItem(customView: btnShowCart)
+        controller.navigationItem.rightBarButtonItem = customRightBarItem;
+        
+    }
+    
     class func addNavigationBarBackToCartButton(controller:UIViewController) {
         let backButton = UIButton(type: .custom)
         backButton.frame = CGRect(x: 0, y: 0, width: 90, height: 35)

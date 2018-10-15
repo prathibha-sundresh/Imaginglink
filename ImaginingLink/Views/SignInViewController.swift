@@ -19,9 +19,12 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func SignUpPresses(_ sender: Any) {
+        
         let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "EmailViewcontroller") as! EmailScreenViewcontroller
         self.navigationController?.pushViewController(vc, animated: true)
+        
+
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,28 +51,34 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
         
         if username?.count != 0 && passWord?.count != 0 {
             CoreAPI.sharedManaged.signIn(userName: username!, password: passWord!, successResponse: {(response) in
-                let dictResponse = response as! [String:Any]
-                let status = dictResponse["status"] as! String
+                let isEnableTwoFactorAuthentication = UserDefaults.standard.bool(forKey: kTwoFactorAuthentication) as Bool
+                if (isEnableTwoFactorAuthentication) {
+                    let storyboard = UIStoryboard.init(name: "DashBoard", bundle: nil)
+                    let vc = storyboard.instantiateViewController(withIdentifier: "DashBoard") as! DashBoardViewController
+                    self.navigationController?.pushViewController(vc, animated: true)
+                } else {
                 
-                if status == "Success" {
+                let dictResponse = response as! [String:Any]
+                if let data : [String:Any] = dictResponse["data"] as? [String : Any]  {
+                
                     ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: "Message", MessageToDisplay: "Successfully Registered" )
-                    let data = dictResponse["data"] as! [String:Any]
+//                    let data = dictResponse["data"] as! [String:Any]
                     UserDefaults.standard.set(data["token"] as! String, forKey: kToken)
+                    UserDefaults.standard.set(data["email"] as! String, forKey: kAuthenticatedEmailId)
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
                     let vc = storyboard.instantiateViewController(withIdentifier: "TwoFactorAuthenticationViewcontroller") as!
                     TwoFactorAuthenticationViewcontroller
                     self.navigationController?.pushViewController(vc, animated: true)
-                    
-                } else {
-                    ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: dictResponse["data"] as! String, MessageToDisplay: status)
                 }
+            }
+                    
             }, faliure: {(error) in
-                
+                ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: "Error", MessageToDisplay: "Something went wrong while signIn")
             })
+        
         }
         
-        
-        
+    
     }
     
     

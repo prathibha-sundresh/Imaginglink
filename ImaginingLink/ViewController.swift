@@ -27,7 +27,6 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        userTypeData = kUserTypes
         userTypePicker.dataSource = self
         userTypePicker.delegate = self
         self.scrollView.contentSize = CGSize(width: self.view.bounds.width, height: 60)

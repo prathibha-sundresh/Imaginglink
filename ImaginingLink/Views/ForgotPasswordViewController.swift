@@ -22,7 +22,7 @@ class ForgotPasswordViewController: UIViewController {
             CoreAPI.sharedManaged.requesrForgotPassword(emailId: ForgotPasswordTextField.text!, successResponse: {(response) in
                 let dictResponse = response as! [String:Any]
                 let status = dictResponse["status"] as! String
-                if status == "Success" {
+                if status == "success" {
                     let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                     let vc = storyboard.instantiateViewController(withIdentifier: "OTPViewcontroller") as! OTPViewcontroller
                     UserDefaults.standard.setValue(self.ForgotPasswordTextField.text!, forKey: kAuthenticatedEmailId)
