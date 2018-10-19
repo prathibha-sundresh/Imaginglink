@@ -8,10 +8,13 @@
 
 import UIKit
 
-class MobileVerificationsViewcontroller: UIViewController, UserTypeDelegate {
+class MobileVerificationsViewcontroller: UIViewController, UserTypeDelegate, UITextFieldDelegate {
     func selectedUserType(userType: String, indexRow: Int) {
         selectedCountryCode = CountryCodeForPhoneNumber[indexRow] as String
-        countryCodeTF.text = selectedCountryCode
+        let selectedCountryName = countryName[indexRow] as String
+        
+        countryCodeTF.text = "\(selectedCountryName)(\(selectedCountryCode))"
+        
     }
     
 
@@ -22,22 +25,31 @@ class MobileVerificationsViewcontroller: UIViewController, UserTypeDelegate {
         VC.listValue = countryName
         self.present(VC, animated: true, completion: nil)
     }
-    @IBOutlet weak var mobileNumberTF: UITextField!
-    @IBOutlet weak var countryCodeTF: UITextField!
+    
+    @IBOutlet weak var countryCodeTF: FloatingLabel!
+    @IBOutlet weak var mobileNumberTF: FloatingLabel!
     var selectedCountryCode = ""
     @IBAction func VerifyMobileNumberAction(_ sender: Any) {
-
+        ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: "Verifying..")
         CoreAPI.sharedManaged.VerifyPhonenumber(phoneNumber: mobileNumberTF.text!, countryCode: selectedCountryCode, successResponse: {(response) in
-            
+            ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: "success..")
              
             let storyBoard = UIStoryboard(name: "Verification", bundle: nil)
             let vc = storyBoard.instantiateViewController(withIdentifier: "MobileOTPViewController") as! MobileOTPVirecontroller
             self.navigationController?.pushViewController(vc, animated: true)
         }, faliure: {(error) in
-            if (error == "The mobile has already been taken") {
-            let storyBoard = UIStoryboard(name: "Verification", bundle: nil)
-            let vc = storyBoard.instantiateViewController(withIdentifier: "MobileOTPViewController") as! MobileOTPVirecontroller
-            self.navigationController?.pushViewController(vc, animated: true)
+           
+            let string : String = error
+             ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: error)
+            if (string.contains("The mobile has already been taken")) {
+                CoreAPI.sharedManaged.reSendMobileOTP(successResponse: {(response) in
+                    let storyBoard = UIStoryboard(name: "Verification", bundle: nil)
+                    let vc = storyBoard.instantiateViewController(withIdentifier: "MobileOTPViewController") as! MobileOTPVirecontroller
+                    self.navigationController?.pushViewController(vc, animated: true)
+                }, faliure: {(error) in
+                    ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: error)
+                })
+            
             }
 
         })
@@ -49,7 +61,7 @@ class MobileVerificationsViewcontroller: UIViewController, UserTypeDelegate {
     var listOfData = [[String:Any]]()
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setUpTextField()
         CoreAPI.sharedManaged.getCountryList(successResponse: {(response) in
             let responseData = (response as! String).convertToDictionary()
             if let data : [[String:Any]] = responseData!["data"] as? [[String:Any]] {
@@ -64,6 +76,14 @@ class MobileVerificationsViewcontroller: UIViewController, UserTypeDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+    }
+    
+    func setUpTextField() {
+        mobileNumberTF.setUpLabel(WithText: "Mobile")
+        mobileNumberTF.delegate = self
+        
+        countryCodeTF.setUpLabel(WithText: "select country code")
+        countryCodeTF.delegate = self
     }
     
     func parseDataToFetchPhoneNumber(data: [[String:Any]]) {

@@ -65,9 +65,40 @@ import Alamofire
                         }else if (response.response?.statusCode == 400){
                             faliure("server Issue")
                         } else if (response.response?.statusCode == 422) {
-                            faliure("The mobile has already been taken")
+                            let error = (response.result.value!) as! [String : Any]
+                            if let value = (error["errors"]) as? [String:Any] {
+                                if let emaiValue : [String] = value["email"] as? [String] {
+                                    faliure(emaiValue.first!)
+                                }
+                                
+                                if let emaiValue : [String] = value["mobile"] as? [String] {
+                                    faliure(emaiValue.first!)
+                                }
+                                
+                                if let emaiValue : [String] = value["new_password"] as? [String] {
+                                    faliure(emaiValue.first!)
+                                }                                
+                            }
+                            if let value = (error["message"]) {
+                                faliure(value as! String)
+                            }
+                           // faliure("Email already Registered")
+                        } else {
+                            if (response.result.value != nil) {
+                                let error = (response.result.value!) as! [String : Any]
+                                if let value = (error["error"]) {
+                                    faliure(value as! String)
+                                }
+                                if let value = (error["message"]) {
+                                    faliure(value as! String)
+                                }
+                            } else {
+                                faliure("Unknow Error Found")
+                            }
+                            
+                            
+                            
                         }
-                        
                 }
             }
         } catch {

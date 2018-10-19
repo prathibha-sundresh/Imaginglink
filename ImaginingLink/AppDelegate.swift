@@ -42,6 +42,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
+    
+    func openPresentationScreen() {
+
+        let storyboard: UIStoryboard = UIStoryboard(name: "DashBoard", bundle: nil)
+        let tabBarController : UITabBarController = storyboard.instantiateViewController(withIdentifier: "ILTabViewController") as! ILTabViewController
+        let tabbar : [UITabBarItem] = tabBarController.tabBar.items!
+        for tabbarItems in tabbar {
+            let items : UITabBarItem = tabbarItems
+            items.title = ""
+            items.imageInsets = UIEdgeInsetsMake(6,0,-6,0)
+        }
+        self.window!.rootViewController = tabBarController
+
+    }
+    
+    func openRegularSignIn() {
+        let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let navigationVC : UINavigationController = storyboard.instantiateViewController(withIdentifier: "SignInBaseNavigationController") as! UINavigationController
+        self.window!.rootViewController = navigationVC
+        self.window?.makeKeyAndVisible()
+    }
 
 
 }

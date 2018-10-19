@@ -18,10 +18,16 @@ class TwoFactorAuthenticationViewcontroller: UIViewController {
     }
 
     @IBAction func EnableLaterSelected(_ sender: Any) {
-        UserDefaults.standard.set(false, forKey: kTwoFactorAuthentication)
-        let storyboard = UIStoryboard.init(name: "DashBoard", bundle: nil)
-            let vc = storyboard.instantiateViewController(withIdentifier: "DashBoard") as! DashBoardViewController
-            self.navigationController?.pushViewController(vc, animated: true)
+        ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: "Disabling..")
+        CoreAPI.sharedManaged.DisableTwoFactorAuthentication(successResponse: {(response) in
+            let storyboard: UIStoryboard = UIStoryboard(name: "DashBoard", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "ILTabViewController") as! ILTabViewController
+            vc.selectedIndex = 2
+            self.navigationController?.present(vc, animated: true, completion: nil)
+        }, faliure: {(error) in
+            ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: error)
+        })
+       
         
     }
     @IBOutlet weak var EnableLater: UISwitch!
