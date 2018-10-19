@@ -128,9 +128,9 @@ class CoreAPI {
     }
 
     func getPublicUserPresentation(successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void) {
-        let request =  SSHttpRequest(withuUrl: "api/presentation/getPublicPresentations")
-        let OTPRequestValues = ["token" : UserDefaults.standard.value(forKey: kToken) as! String] as [String:Any]
-        request.postMethod(dictParameter: OTPRequestValues, url: "api/presentation/getPublicPresentations", successResponse: {(response) in
+        let request =  SSHttpRequest(withuUrl: kpublicPresentaion)
+        
+        request.getMethod(dictParameter: [:], url: kpublicPresentaion, successResponse: {(response) in
             successResponse(response)
         }, faliure: {(error) in
             faliure(error)

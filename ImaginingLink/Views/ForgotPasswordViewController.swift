@@ -23,12 +23,13 @@ class ForgotPasswordViewController: UIViewController {
                 let dictResponse = response as! [String:Any]
                 let status = dictResponse["status"] as! String
                 if status == "success" {
+                      UserDefaults.standard.setValue(self.ForgotPasswordTextField.text!, forKey: kAuthenticatedEmailId)
                     let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                    let vc = storyboard.instantiateViewController(withIdentifier: "OTPViewcontroller") as! OTPViewcontroller
-                    UserDefaults.standard.setValue(self.ForgotPasswordTextField.text!, forKey: kAuthenticatedEmailId)
-                    vc.EmailId = self.ForgotPasswordTextField.text!
-                    vc.screenId = kResetPasswordOTP
+                    let vc = storyboard.instantiateViewController(withIdentifier: "EmailSuccessViewController") as! EmailSuccessViewController
+                    vc.ScreenName = kForgetPasswordScreen
+                    vc.emailId = self.ForgotPasswordTextField.text!
                     self.navigationController?.pushViewController(vc, animated: true)
+                    
                 } else if status == "Failure" {
                     let alertContoller = UIAlertController(title: "Alert", message: "User not found", preferredStyle: UIAlertControllerStyle.alert)
                     let alertAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil)

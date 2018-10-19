@@ -65,9 +65,8 @@ import Alamofire
                         }else if (response.response?.statusCode == 400){
                             faliure("server Issue")
                         } else if (response.response?.statusCode == 422) {
-                            faliure("The mobile has already been taken")
+                            faliure("Email already Registered")
                         }
-                        
                 }
             }
         } catch {

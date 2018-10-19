@@ -15,6 +15,7 @@ let kBaseUrl:String = "http://52.39.123.104/"
 let kTwoFactorAuthentication = "two_factor_authentication"
 let kToken = "token"
 let kAuthenticatedEmailId = "EmailID"
+let kUserName = "userName"
 
 let kEmailOTP = "EmailOTPScreen"
 let kResetPasswordOTP = "ResetPasswordOTPScreen"
@@ -34,4 +35,11 @@ let kTwoFactorAuthenticationMobileVerificationAPI = "api/authy/send-registration
 let kUserTypeAPI = "api/user-types"
 let kTwoFactorAuthenticationMobileOTPAPI = "api/authy/code-verification"
 let kTwoFactorAuthenticationResendOTPAPI = "api/authy/code-resend"
+let kpublicPresentaion = "api/presentations/public"
+
+//Screen Name
+let kEmailVerifiedScreen = "EmailScreen"
+let kSignUpScreen = "SignUp"
+let kForgetPasswordScreen = "ForgetPasswordScreen"
+
 

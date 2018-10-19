@@ -34,7 +34,7 @@ class PresentationViewController: BaseViewController, UITableViewDelegate, UITab
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         ILUtility.addNavigationBarBackToCartButton(controller: self)
-        ILUtility.addNavigationBarBackButton(controller: self, userName: "prathibha", userType: "Radiologist")
+        ILUtility.addNavigationBarBackButton(controller: self, userName: UserDefaults.standard.value(forKey: kUserName) as! String, userType: "Radiologist")
     }
     
     

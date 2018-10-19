@@ -29,6 +29,7 @@
 		AC0AD39020D13C5800FCB371 /* ListView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC0AD38F20D13C5800FCB371 /* ListView.storyboard */; };
 		AC0AD39220D13CDE00FCB371 /* ListViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0AD39120D13CDE00FCB371 /* ListViewTableViewCell.swift */; };
 		AC0E194F215AA49A00ADAFB1 /* SignInLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0E194E215AA49A00ADAFB1 /* SignInLabel.swift */; };
+		AC12A32F217A27B900858A47 /* AlreadyHaveOTPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC12A32E217A27B800858A47 /* AlreadyHaveOTPViewController.swift */; };
 		AC1F1D272126DFDA00A57DD4 /* MenuViewcontrollerTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1F1D262126DFDA00A57DD4 /* MenuViewcontrollerTableCell.swift */; };
 		AC323B3320FF750F0015ECB4 /* SF-Pro-Display-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC323B3220FF750E0015ECB4 /* SF-Pro-Display-Regular.ttf */; };
 		AC323B3520FF76BD0015ECB4 /* SF-Pro-Display-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC323B3420FF76BC0015ECB4 /* SF-Pro-Display-Semibold.ttf */; };
@@ -107,6 +108,7 @@
 		AC0AD38F20D13C5800FCB371 /* ListView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ListView.storyboard; sourceTree = "<group>"; };
 		AC0AD39120D13CDE00FCB371 /* ListViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewTableViewCell.swift; sourceTree = "<group>"; };
 		AC0E194E215AA49A00ADAFB1 /* SignInLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInLabel.swift; sourceTree = "<group>"; };
+		AC12A32E217A27B800858A47 /* AlreadyHaveOTPViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlreadyHaveOTPViewController.swift; sourceTree = "<group>"; };
 		AC1F1D262126DFDA00A57DD4 /* MenuViewcontrollerTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewcontrollerTableCell.swift; sourceTree = "<group>"; };
 		AC323B3220FF750E0015ECB4 /* SF-Pro-Display-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Regular.ttf"; sourceTree = "<group>"; };
 		AC323B3420FF76BC0015ECB4 /* SF-Pro-Display-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Semibold.ttf"; sourceTree = "<group>"; };
@@ -350,6 +352,7 @@
 				BCFFFBB620BAEEB0003A0652 /* OTPViewcontroller.swift */,
 				ACD18C7320C551D50059DE7B /* TwoFactorAuthenticationViewcontroller.swift */,
 				AC7E37642111EDA300A0263D /* ResetPasswordViewContoller.swift */,
+				AC12A32E217A27B800858A47 /* AlreadyHaveOTPViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -590,6 +593,7 @@
 				BCFFFBB720BAEEB0003A0652 /* OTPViewcontroller.swift in Sources */,
 				4897CCE720038E7200360EB7 /* SSHttpResponse.swift in Sources */,
 				ACCA1D1721076D1B00383104 /* DashBoardCollectionViewCell.swift in Sources */,
+				AC12A32F217A27B900858A47 /* AlreadyHaveOTPViewController.swift in Sources */,
 				48F4F41C2004CE55005CD239 /* CoreAPI.swift in Sources */,
 				ACC94BDA210B4AE9009D6B2F /* PresentationViewController.swift in Sources */,
 				AC323B3B20FF826C0015ECB4 /* MobileVerificationsViewcontroller.swift in Sources */,

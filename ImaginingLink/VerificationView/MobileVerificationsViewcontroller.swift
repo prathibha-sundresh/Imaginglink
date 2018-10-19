@@ -11,7 +11,10 @@ import UIKit
 class MobileVerificationsViewcontroller: UIViewController, UserTypeDelegate {
     func selectedUserType(userType: String, indexRow: Int) {
         selectedCountryCode = CountryCodeForPhoneNumber[indexRow] as String
-        countryCodeTF.text = selectedCountryCode
+        let selectedCountryName = countryName[indexRow] as String
+        
+        countryCodeTF.text = "\(selectedCountryName)(\(selectedCountryCode))"
+        
     }
     
 

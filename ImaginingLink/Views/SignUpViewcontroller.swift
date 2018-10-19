@@ -37,9 +37,9 @@ class SignUpViewcontroller: UIViewController,  UITextFieldDelegate, UserTypeDele
     @IBAction func IAgreeAction(_ sender: UIButton) {
          sender.isSelected = !sender.isSelected
         if sender.isSelected {
-            CheckoutBoxClicked.setBackgroundImage(#imageLiteral(resourceName: "unCheckedBox"), for: UIControlState.normal)
+            CheckoutBoxClicked.setImage(#imageLiteral(resourceName: "ClickedCheckBox"), for: UIControlState.normal)
         } else {
-            CheckoutBoxClicked.setBackgroundImage(#imageLiteral(resourceName: "ClickedCheckBox"), for: UIControlState.normal)
+            CheckoutBoxClicked.setImage(#imageLiteral(resourceName: "unCheckedBox"), for: UIControlState.normal)
         }
         
         
@@ -70,7 +70,9 @@ class SignUpViewcontroller: UIViewController,  UITextFieldDelegate, UserTypeDele
     }
     
     func tapForSignIn() {
-        self.navigationController?.popViewController(animated: true)
+        let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "SignInViewController") as! SignInViewController
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     func fetchUserType() {
@@ -92,19 +94,21 @@ class SignUpViewcontroller: UIViewController,  UITextFieldDelegate, UserTypeDele
     
     func submit() -> Void {
         if ConfirmPasswordTextfield.text == PasswordTextField.text && EmailTextField.text?.count != 0 && UserTypeTextField.text?.count != 0 {
-             ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: "Message", MessageToDisplay: "SigningUp...." )
+             ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: "SigningUp....")
             CoreAPI.sharedManaged.signUpWithEmailId(firstName: firstnameTextField.text!, lastNAme: LastNameTextfield.text!, email: EmailTextField.text!, password: ConfirmPasswordTextfield.text!, userType: userTypeId, successResponse: {(response) in
                 let dictResponse = response as! [String:Any]
                 let status = dictResponse["status"] as! String
                 if status == "success" {
+                    UserDefaults.standard.set(false, forKey: kTwoFactorAuthentication)
                     UserDefaults.standard.setValue(self.EmailTextField.text, forKey: kAuthenticatedEmailId)
 
                     let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                    let vc = storyboard.instantiateViewController(withIdentifier: "SignInViewController") as! SignInViewController
+                    let vc = storyboard.instantiateViewController(withIdentifier: "EmailSuccessViewController") as! EmailSuccessViewController
+                    vc.ScreenName = kSignUpScreen
                     self.navigationController?.pushViewController(vc, animated: true)
                 }
             }, faliure: {(error) in
-                ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: "Message", MessageToDisplay: "Some Error While Signing Up...." )
+                ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: "Some Error While Signing Up....")
             })
         }
     }

@@ -42,10 +42,13 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyBoard.instantiateViewController(withIdentifier: "SignUpViewcontroller") as! SignUpViewcontroller
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     func SignInPressed() {
-         ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: "Message", MessageToDisplay: "Please wait")
+         ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: "Sign In...")
         let username = UserNameTextField.text
         let passWord = PasswordTextField.text
         
@@ -61,10 +64,10 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
                 let dictResponse = response as! [String:Any]
                 if let data : [String:Any] = dictResponse["data"] as? [String : Any]  {
                 
-                    ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: "Message", MessageToDisplay: "Successfully Registered" )
-//                    let data = dictResponse["data"] as! [String:Any]
+                    ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: "Successfully Login.")
                     UserDefaults.standard.set(data["token"] as! String, forKey: kToken)
                     UserDefaults.standard.set(data["email"] as! String, forKey: kAuthenticatedEmailId)
+                    UserDefaults.standard.set(data["first_name"], forKey: kUserName)
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
                     let vc = storyboard.instantiateViewController(withIdentifier: "TwoFactorAuthenticationViewcontroller") as!
                     TwoFactorAuthenticationViewcontroller
@@ -73,7 +76,7 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
             }
                     
             }, faliure: {(error) in
-                ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: "Error", MessageToDisplay: "Something went wrong while signIn")
+                ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: "Something went wrong while signIn")
             })
         
         }

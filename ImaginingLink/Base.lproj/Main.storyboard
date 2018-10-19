@@ -70,7 +70,7 @@
                                     <action selector="OTPPressed:" destination="ogH-Zc-LoJ" eventType="touchUpInside" id="u1g-lT-cLk"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ALREADY A MEMBER SIGN IN" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z2z-BI-97B" userLabel="SignInLabel" customClass="SignInLabel" customModule="ImaginingLink" customModuleProvider="target">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z2z-BI-97B" userLabel="SignInLabel" customClass="SignInLabel" customModule="ImaginingLink" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -304,6 +304,9 @@ Registration successful</string>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="f5H-de-fy5"/>
                     </view>
+                    <connections>
+                        <outlet property="TextToDisplayMessageLabel" destination="t2D-X5-HdN" id="nju-gN-f0M"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4HZ-pP-x9o" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -421,7 +424,7 @@ Registration successful</string>
                                                 </constraints>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
-                                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                                <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NRQ-Pu-xIZ" userLabel="CreatePasswordLine">
                                                 <rect key="frame" x="19" y="576" width="337" height="2"/>
@@ -484,7 +487,7 @@ Registration successful</string>
                                                     <action selector="UserTypeClickButton:" destination="sca-AY-poQ" eventType="touchUpInside" id="fwC-5W-0LW"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pal-NJ-jUP">
+                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pal-NJ-jUP">
                                                 <rect key="frame" x="22" y="786" width="30" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="AZh-an-vEQ"/>
@@ -1223,19 +1226,39 @@ Registration successful</string>
                                     <constraint firstAttribute="height" constant="1.5" id="GzA-Ls-qmh"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This e-mail id is already registered" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iL3-hg-cll">
+                                <rect key="frame" x="20" y="342" width="335" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.81568627450980391" green="0.0078431372549019607" blue="0.10588235294117647" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BwR-3q-JRb">
+                                <rect key="frame" x="20" y="443.5" width="335" height="29"/>
+                                <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="14"/>
+                                <state key="normal" title="Already have an OTP? Click Here">
+                                    <color key="titleColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="AlreadyHaveOTPPressed:" destination="12t-kj-7P3" eventType="touchUpInside" id="aT2-c5-jcs"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="ROs-1H-dSk" firstAttribute="trailing" secondItem="mP9-MY-Er4" secondAttribute="trailing" id="AYA-Ke-IJ7"/>
                             <constraint firstItem="mP9-MY-Er4" firstAttribute="leading" secondItem="ROs-1H-dSk" secondAttribute="leading" id="Cbb-Qy-VR7"/>
+                            <constraint firstItem="iL3-hg-cll" firstAttribute="leading" secondItem="ROs-1H-dSk" secondAttribute="leading" constant="20" id="FGB-HG-sbH"/>
                             <constraint firstItem="ROs-1H-dSk" firstAttribute="trailing" secondItem="TQx-EO-HVC" secondAttribute="trailing" constant="20" id="Fg6-yd-IgL"/>
                             <constraint firstItem="ROs-1H-dSk" firstAttribute="trailing" secondItem="6pS-05-A1B" secondAttribute="trailing" constant="20" id="GYU-ED-oI4"/>
                             <constraint firstItem="ROs-1H-dSk" firstAttribute="bottom" secondItem="mP9-MY-Er4" secondAttribute="bottom" id="GjS-9c-lt4"/>
                             <constraint firstItem="fAb-ZD-etd" firstAttribute="top" secondItem="fMu-qh-mDU" secondAttribute="bottom" constant="69" id="LvI-Ac-e9e"/>
-                            <constraint firstItem="TQx-EO-HVC" firstAttribute="top" secondItem="6pS-05-A1B" secondAttribute="bottom" constant="53" id="MJw-yA-wdG"/>
+                            <constraint firstItem="TQx-EO-HVC" firstAttribute="top" secondItem="iL3-hg-cll" secondAttribute="bottom" constant="24.5" id="MJw-yA-wdG"/>
                             <constraint firstItem="fAb-ZD-etd" firstAttribute="leading" secondItem="ROs-1H-dSk" secondAttribute="leading" constant="20" id="Rqx-sX-HVR"/>
                             <constraint firstItem="ROs-1H-dSk" firstAttribute="trailing" secondItem="nJb-tW-LJy" secondAttribute="trailing" constant="20" id="TSy-vl-sJD"/>
+                            <constraint firstItem="BwR-3q-JRb" firstAttribute="leading" secondItem="ROs-1H-dSk" secondAttribute="leading" constant="20" id="WRT-XK-cVK"/>
                             <constraint firstItem="fMu-qh-mDU" firstAttribute="top" secondItem="ROs-1H-dSk" secondAttribute="top" constant="67" id="YtU-fq-0aq"/>
+                            <constraint firstItem="BwR-3q-JRb" firstAttribute="top" secondItem="TQx-EO-HVC" secondAttribute="bottom" constant="18" id="cRi-K3-wEr"/>
+                            <constraint firstItem="ROs-1H-dSk" firstAttribute="trailing" secondItem="BwR-3q-JRb" secondAttribute="trailing" constant="20" id="cik-1V-lA6"/>
                             <constraint firstItem="nJb-tW-LJy" firstAttribute="leading" secondItem="ROs-1H-dSk" secondAttribute="leading" constant="20" id="d8B-kh-IGB"/>
                             <constraint firstItem="fMu-qh-mDU" firstAttribute="centerX" secondItem="ROs-1H-dSk" secondAttribute="centerX" id="gPG-Jp-lr7"/>
                             <constraint firstItem="TQx-EO-HVC" firstAttribute="leading" secondItem="ROs-1H-dSk" secondAttribute="leading" constant="20" id="gei-y1-xu5"/>
@@ -1243,10 +1266,14 @@ Registration successful</string>
                             <constraint firstItem="ROs-1H-dSk" firstAttribute="trailing" secondItem="fAb-ZD-etd" secondAttribute="trailing" constant="20" id="jSj-BF-V7a"/>
                             <constraint firstItem="6pS-05-A1B" firstAttribute="top" secondItem="nJb-tW-LJy" secondAttribute="bottom" constant="9" id="jdl-mK-U8G"/>
                             <constraint firstItem="6pS-05-A1B" firstAttribute="leading" secondItem="ROs-1H-dSk" secondAttribute="leading" constant="20" id="lSl-oW-aiG"/>
+                            <constraint firstItem="iL3-hg-cll" firstAttribute="top" secondItem="6pS-05-A1B" secondAttribute="bottom" constant="7.5" id="rfe-20-jdF"/>
+                            <constraint firstItem="ROs-1H-dSk" firstAttribute="trailing" secondItem="iL3-hg-cll" secondAttribute="trailing" constant="20" id="uJo-R1-Qon"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ROs-1H-dSk"/>
                     </view>
                     <connections>
+                        <outlet property="AlreadyHaveEmailLabel" destination="iL3-hg-cll" id="Thp-Jc-q84"/>
+                        <outlet property="AlreadyHaveOTPPressed" destination="BwR-3q-JRb" id="BS0-7B-Jpj"/>
                         <outlet property="EmailTextField" destination="nJb-tW-LJy" id="G8f-vd-PO2"/>
                         <outlet property="NextButtonPressed" destination="TQx-EO-HVC" id="ZW6-Rg-9iq"/>
                         <outlet property="RequestInviteLabel" destination="mP9-MY-Er4" id="ozb-5k-6kD"/>
@@ -1255,6 +1282,122 @@ Registration successful</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U4w-Ff-xKd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2860" y="152.47376311844079"/>
+        </scene>
+        <!--Already HaveOTP View Controller-->
+        <scene sceneID="eWs-LN-88w">
+            <objects>
+                <viewController storyboardIdentifier="AlreadyHaveOTPViewController" id="JnX-iX-0F1" customClass="AlreadyHaveOTPViewController" customModule="ImaginingLink" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="qoV-gJ-0zL">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ImagingLinkLogoWithText" translatesAutoresizingMaskIntoConstraints="NO" id="S8I-vM-zkD">
+                                <rect key="frame" x="127.5" y="101" width="120" height="120"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="BU5-DL-Kjo"/>
+                                    <constraint firstAttribute="width" constant="120" id="jrJ-UT-6Hk"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter your email address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2CU-u1-la1">
+                                <rect key="frame" x="23" y="308" width="329" height="17"/>
+                                <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="14"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email " minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Biz-BQ-LD4">
+                                <rect key="frame" x="23" y="335" width="329" height="22"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="18"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C4O-qW-bnK" userLabel="EmailIdLine">
+                                <rect key="frame" x="19" y="378" width="337" height="2"/>
+                                <color key="backgroundColor" red="0.59215686270000001" green="0.59215686270000001" blue="0.59215686270000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1.5" id="i7o-0Y-Clo"/>
+                                </constraints>
+                            </view>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="OTP" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aQT-KT-PGh">
+                                <rect key="frame" x="23" y="431" width="329" height="22"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="18"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter the OTP" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VqY-ag-pVT">
+                                <rect key="frame" x="23" y="404" width="329" height="17"/>
+                                <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="14"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tOr-FJ-w89">
+                                <rect key="frame" x="19" y="520" width="337" height="34"/>
+                                <color key="backgroundColor" red="0.12941176470588234" green="0.58823529411764708" blue="0.95294117647058818" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="18"/>
+                                <state key="normal" title="VERIFY">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="VerifyOTPPressed:" destination="JnX-iX-0F1" eventType="touchUpInside" id="NiJ-Wz-gAb"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Clp-R2-Pr3" customClass="SignInLabel" customModule="ImaginingLink" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="625" width="375" height="42"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="42" id="1ti-gA-6g5"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QKg-QD-A4T" userLabel="EmailIdLine">
+                                <rect key="frame" x="19" y="474" width="337" height="2"/>
+                                <color key="backgroundColor" red="0.59215686270000001" green="0.59215686270000001" blue="0.59215686270000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1.5" id="zXu-VG-TUH"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="2FB-PF-PFG" firstAttribute="trailing" secondItem="QKg-QD-A4T" secondAttribute="trailing" constant="19" id="4jW-fg-Hsy"/>
+                            <constraint firstItem="2FB-PF-PFG" firstAttribute="trailing" secondItem="VqY-ag-pVT" secondAttribute="trailing" constant="23" id="ADi-3x-Y9x"/>
+                            <constraint firstItem="VqY-ag-pVT" firstAttribute="top" secondItem="C4O-qW-bnK" secondAttribute="bottom" constant="24" id="COP-Nz-ZgA"/>
+                            <constraint firstItem="tOr-FJ-w89" firstAttribute="top" secondItem="QKg-QD-A4T" secondAttribute="bottom" constant="44" id="FWY-SA-ur5"/>
+                            <constraint firstItem="Clp-R2-Pr3" firstAttribute="leading" secondItem="2FB-PF-PFG" secondAttribute="leading" id="FxO-cj-sIf"/>
+                            <constraint firstItem="Biz-BQ-LD4" firstAttribute="top" secondItem="2CU-u1-la1" secondAttribute="bottom" constant="10" id="GC0-tq-WMh"/>
+                            <constraint firstItem="2FB-PF-PFG" firstAttribute="trailing" secondItem="aQT-KT-PGh" secondAttribute="trailing" constant="23" id="KP2-Kz-G2n"/>
+                            <constraint firstItem="QKg-QD-A4T" firstAttribute="top" secondItem="aQT-KT-PGh" secondAttribute="bottom" constant="21" id="Kzg-xT-EGz"/>
+                            <constraint firstItem="aQT-KT-PGh" firstAttribute="leading" secondItem="2FB-PF-PFG" secondAttribute="leading" constant="23" id="Luv-Eo-l6R"/>
+                            <constraint firstItem="C4O-qW-bnK" firstAttribute="top" secondItem="Biz-BQ-LD4" secondAttribute="bottom" constant="21" id="O1x-TR-a2o"/>
+                            <constraint firstItem="QKg-QD-A4T" firstAttribute="leading" secondItem="2FB-PF-PFG" secondAttribute="leading" constant="19" id="P6C-uG-ncm"/>
+                            <constraint firstItem="2FB-PF-PFG" firstAttribute="bottom" secondItem="Clp-R2-Pr3" secondAttribute="bottom" id="QwU-2q-4cp"/>
+                            <constraint firstItem="tOr-FJ-w89" firstAttribute="leading" secondItem="2FB-PF-PFG" secondAttribute="leading" constant="19" id="Ugs-RH-RZL"/>
+                            <constraint firstItem="S8I-vM-zkD" firstAttribute="centerX" secondItem="2FB-PF-PFG" secondAttribute="centerX" id="XUc-dy-WGb"/>
+                            <constraint firstItem="2FB-PF-PFG" firstAttribute="trailing" secondItem="Clp-R2-Pr3" secondAttribute="trailing" id="Yfs-uZ-6Fc"/>
+                            <constraint firstItem="C4O-qW-bnK" firstAttribute="leading" secondItem="2FB-PF-PFG" secondAttribute="leading" constant="19" id="clV-PJ-jdq"/>
+                            <constraint firstItem="2CU-u1-la1" firstAttribute="top" secondItem="S8I-vM-zkD" secondAttribute="bottom" constant="87" id="eFE-VH-vml"/>
+                            <constraint firstItem="2FB-PF-PFG" firstAttribute="trailing" secondItem="C4O-qW-bnK" secondAttribute="trailing" constant="19" id="g7V-ol-Nbw"/>
+                            <constraint firstItem="2CU-u1-la1" firstAttribute="leading" secondItem="2FB-PF-PFG" secondAttribute="leading" constant="23" id="gpu-sL-Unq"/>
+                            <constraint firstItem="aQT-KT-PGh" firstAttribute="top" secondItem="VqY-ag-pVT" secondAttribute="bottom" constant="10" id="ko2-jL-Qxl"/>
+                            <constraint firstItem="2FB-PF-PFG" firstAttribute="trailing" secondItem="Biz-BQ-LD4" secondAttribute="trailing" constant="23" id="nxP-Eu-0JR"/>
+                            <constraint firstItem="S8I-vM-zkD" firstAttribute="top" secondItem="2FB-PF-PFG" secondAttribute="top" constant="81" id="oY0-UF-5dW"/>
+                            <constraint firstItem="Biz-BQ-LD4" firstAttribute="leading" secondItem="2FB-PF-PFG" secondAttribute="leading" constant="23" id="pow-nw-Hil"/>
+                            <constraint firstItem="2FB-PF-PFG" firstAttribute="trailing" secondItem="tOr-FJ-w89" secondAttribute="trailing" constant="19" id="r6x-dL-Irl"/>
+                            <constraint firstItem="2FB-PF-PFG" firstAttribute="trailing" secondItem="2CU-u1-la1" secondAttribute="trailing" constant="23" id="ujG-C0-8Uv"/>
+                            <constraint firstItem="VqY-ag-pVT" firstAttribute="leading" secondItem="2FB-PF-PFG" secondAttribute="leading" constant="23" id="xof-3t-YRY"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="2FB-PF-PFG"/>
+                    </view>
+                    <connections>
+                        <outlet property="EmailTextField" destination="Biz-BQ-LD4" id="wzK-Ss-m9P"/>
+                        <outlet property="OTPTextField" destination="aQT-KT-PGh" id="l8w-vb-lV4"/>
+                        <outlet property="VerifyOTPPressed" destination="tOr-FJ-w89" id="6ZS-ZG-cQ3"/>
+                        <outlet property="alreadySignInLabel" destination="Clp-R2-Pr3" id="fqp-D6-DbT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Evg-ri-mE8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2884" y="679.61019490254876"/>
         </scene>
         <!--ListView-->
         <scene sceneID="9Gw-xO-jJg">
@@ -6621,7 +6764,7 @@ MwAE3zgABN9FAATfSAAE31UABN9aAATfYgAE32UABN9qAATfcgAE33UABN+HAATfigAE348AAAAAAAAE
 AQAAAAAAAABZAAAAAAAAAAAAAAAAAATfkQ
 </mutableData>
         </image>
-        <image name="unCheckedBox" width="24" height="24"/>
+        <image name="unCheckedBox" width="15" height="15"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Th4-p4-mqz"/>

@@ -106,13 +106,10 @@ class ILUtility : NSObject {
         
     }
     
-    class func showToastMessage(toViewcontroller : UIViewController, statusToDisplay: String, MessageToDisplay : String) -> Void {
+    class func showToastMessage(toViewcontroller : UIViewController, statusToDisplay: String) -> Void {
         let spinnerActivity = MBProgressHUD.showAdded(to: toViewcontroller.view, animated: true);
         spinnerActivity.hide(animated: true, afterDelay: 1)
-        spinnerActivity.label.text = MessageToDisplay;
-        
         spinnerActivity.detailsLabel.text = statusToDisplay;
-        
         spinnerActivity.isUserInteractionEnabled = false;
     }
     
