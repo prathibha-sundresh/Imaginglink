@@ -333,7 +333,7 @@ Registration successful</string>
                                                     <constraint firstAttribute="height" constant="120" id="x64-In-j9Y"/>
                                                 </constraints>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FirstName" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0kK-NZ-nNa">
+                                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FirstName *" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0kK-NZ-nNa">
                                                 <rect key="frame" x="23" y="239" width="329" height="23"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="23" id="uOA-fq-ziQ"/>
@@ -351,7 +351,7 @@ Registration successful</string>
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LastName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tma-au-NEi">
+                                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LastName *" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tma-au-NEi">
                                                 <rect key="frame" x="23" y="331" width="329" height="23"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="23" id="Sfi-i2-mxG"/>
@@ -383,7 +383,7 @@ Registration successful</string>
                                                     <constraint firstAttribute="height" constant="1.5" id="Hwc-1c-QsL"/>
                                                 </constraints>
                                             </view>
-                                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B1L-w1-wZN" userLabel="EmailLabel">
+                                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email *" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B1L-w1-wZN" userLabel="EmailLabel">
                                                 <rect key="frame" x="23" y="423" width="329" height="23"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="23" id="sFT-3n-IV8"/>
@@ -408,7 +408,7 @@ Registration successful</string>
                                                     <constraint firstAttribute="height" constant="1.5" id="XV8-cI-9Jx"/>
                                                 </constraints>
                                             </view>
-                                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CreatePassword" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="faq-dg-DjS">
+                                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CreatePassword *" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="faq-dg-DjS">
                                                 <rect key="frame" x="23" y="514" width="329" height="23"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="23" id="V9X-CN-qdn"/>
@@ -433,7 +433,7 @@ Registration successful</string>
                                                     <constraint firstAttribute="height" constant="1.5" id="BhH-JZ-5rS"/>
                                                 </constraints>
                                             </view>
-                                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ConfirmPassword" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BzG-HM-KY6">
+                                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ConfirmPassword *" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BzG-HM-KY6">
                                                 <rect key="frame" x="23" y="593" width="329" height="23"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="23" id="MNY-Kw-mp9"/>
@@ -449,7 +449,7 @@ Registration successful</string>
                                                 </constraints>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
-                                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                                <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ILk-wO-orY" userLabel="ConfirmPasswordLine">
                                                 <rect key="frame" x="19" y="661" width="337" height="2"/>
@@ -458,7 +458,7 @@ Registration successful</string>
                                                     <constraint firstAttribute="height" constant="1.5" id="QmR-2f-jmM"/>
                                                 </constraints>
                                             </view>
-                                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select User Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iJv-He-eEr">
+                                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select User Type *" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iJv-He-eEr">
                                                 <rect key="frame" x="23" y="679" width="329" height="23"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="23" id="OUI-o2-xEH"/>
@@ -467,7 +467,7 @@ Registration successful</string>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Lez-6X-zMz">
+                                            <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Lez-6X-zMz">
                                                 <rect key="frame" x="23" y="712" width="268" height="24"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="24" id="ba1-W9-zTb"/>
@@ -499,13 +499,13 @@ Registration successful</string>
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="I have accepted terms and condition" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5uH-V4-Ddk">
-                                                <rect key="frame" x="67" y="786" width="285" height="24"/>
+                                                <rect key="frame" x="67" y="786" width="285" height="21"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DE1-eA-R58">
-                                                <rect key="frame" x="19" y="840" width="337" height="38"/>
+                                                <rect key="frame" x="19" y="837" width="337" height="35"/>
                                                 <color key="backgroundColor" red="0.12941176469999999" green="0.58823529409999997" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="19"/>
                                                 <state key="normal" title="SIGNUP">
@@ -516,7 +516,7 @@ Registration successful</string>
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eM7-vM-QGJ" userLabel="Rectangle3" customClass="SignInLabel" customModule="ImaginingLink" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="938" width="375" height="44"/>
+                                                <rect key="frame" x="0.0" y="932" width="375" height="44"/>
                                                 <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="44" id="KcL-1L-Aqx"/>

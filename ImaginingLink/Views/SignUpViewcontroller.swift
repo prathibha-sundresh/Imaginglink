@@ -93,7 +93,7 @@ class SignUpViewcontroller: UIViewController,  UITextFieldDelegate, UserTypeDele
     }
     
     func submit() -> Void {
-        if ConfirmPasswordTextfield.text == PasswordTextField.text && EmailTextField.text?.count != 0 && UserTypeTextField.text?.count != 0 {
+        if ConfirmPasswordTextfield.text == PasswordTextField.text && EmailTextField.text?.count != 0 && UserTypeTextField.text?.count != 0 && firstnameTextField.text?.count != 0 && LastNameTextfield.text?.count != 0 && CheckoutBoxClicked.isSelected {
              ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: "SigningUp....")
             CoreAPI.sharedManaged.signUpWithEmailId(firstName: firstnameTextField.text!, lastNAme: LastNameTextfield.text!, email: EmailTextField.text!, password: ConfirmPasswordTextfield.text!, userType: userTypeId, successResponse: {(response) in
                 let dictResponse = response as! [String:Any]
@@ -110,6 +110,20 @@ class SignUpViewcontroller: UIViewController,  UITextFieldDelegate, UserTypeDele
             }, faliure: {(error) in
                 ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: "Some Error While Signing Up....")
             })
+        } else if firstnameTextField.text?.count == 0 {
+            ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: "please enter FirstName")
+        } else if LastNameTextfield.text?.count == 0 {
+            ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: "please enter LastName")
+        } else if ConfirmPasswordTextfield.text?.count == 0 {
+            ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: "please enter confirmPassword")
+        } else if PasswordTextField.text?.count == 0 {
+            ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: "please enter Password")
+        } else if UserTypeTextField.text?.count == 0 {
+            ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: "please select usertype")
+        } else if !CheckoutBoxClicked.isSelected {
+            ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: "please click terms and condition")
+        } else if !((EmailTextField.text?.isValidEmail())!) {
+            ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: "please enter valid email")
         }
     }
 
