@@ -380,6 +380,7 @@
 				4842792A1FF39B9E0056A089 /* Frameworks */,
 				4842792B1FF39B9E0056A089 /* Resources */,
 				F4DDDA8485735A0BA8B81A08 /* [CP] Embed Pods Frameworks */,
+				9E436B49227195165093C67A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -398,6 +399,8 @@
 				4842793D1FF39B9E0056A089 /* Sources */,
 				4842793E1FF39B9E0056A089 /* Frameworks */,
 				4842793F1FF39B9E0056A089 /* Resources */,
+				4E3AF853B4B8D55830809A7E /* [CP] Embed Pods Frameworks */,
+				19D175B3C97A371E74F215AF /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -417,6 +420,8 @@
 				484279481FF39B9E0056A089 /* Sources */,
 				484279491FF39B9E0056A089 /* Frameworks */,
 				4842794A1FF39B9E0056A089 /* Resources */,
+				4697B17383086C168DB58291 /* [CP] Embed Pods Frameworks */,
+				D487AF7CE4CF0ADF58165C66 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -514,6 +519,51 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		19D175B3C97A371E74F215AF /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ImaginingLinkTests/Pods-ImaginingLinkTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4697B17383086C168DB58291 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ImaginingLinkUITests/Pods-ImaginingLinkUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4E3AF853B4B8D55830809A7E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ImaginingLinkTests/Pods-ImaginingLinkTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		8271856352C2AE0EF1642B5A /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -532,6 +582,21 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		9E436B49227195165093C67A /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ImaginingLink/Pods-ImaginingLink-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		BF7E960A2C109B1B5B2EECDD /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -548,6 +613,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D487AF7CE4CF0ADF58165C66 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ImaginingLinkUITests/Pods-ImaginingLinkUITests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		DE838A5572DE264BB5DDE9A0 /* [CP] Check Pods Manifest.lock */ = {
