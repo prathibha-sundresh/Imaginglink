@@ -16,6 +16,11 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
         SignInPressed()
     }
     @IBAction func ForgotPasswordPressed(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "DashBoard", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "TwoFactorAuthenticationViewcontroller") as!
+        TwoFactorAuthenticationViewcontroller
+        self.navigationController?.pushViewController(vc, animated: true)
+        
     }
     
     @IBAction func SignUpPresses(_ sender: Any) {
@@ -29,9 +34,9 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//    let storyboard = UIStoryboard.init(name: "DashBoard", bundle: nil)
-//        let vc = storyboard.instantiateViewController(withIdentifier: "DashBoard") as! DashBoardViewController
-//        self.navigationController?.pushViewController(vc, animated: true)
+    let storyboard = UIStoryboard.init(name: "DashBoard", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "InviteFriendsViewController") as! InviteFriendsViewController
+        self.navigationController?.pushViewController(vc, animated: true)
         
         
     }

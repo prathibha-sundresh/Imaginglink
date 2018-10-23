@@ -219,6 +219,72 @@
             </objects>
             <point key="canvasLocation" x="-223" y="85"/>
         </scene>
+        <!--Two factor Authentication View Controller-->
+        <scene sceneID="OOD-4l-Cvq">
+            <objects>
+                <viewController storyboardIdentifier="TwofactorAuthenticationViewController" id="6di-tT-jof" userLabel="Two factor Authentication View Controller" customClass="TwofactorAuthenticationViewController" customModule="ImaginingLink" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cch-A7-MEk">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6ba-dj-dTh" userLabel="Twofactor Authentication Main Line">
+                                <rect key="frame" x="0.0" y="85" width="375" height="2"/>
+                                <color key="backgroundColor" red="0.59215686270000001" green="0.59215686270000001" blue="0.59215686270000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="2" id="I2J-FJ-yiu"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Two-factor Authentication" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4V6-fY-NFm">
+                                <rect key="frame" x="26" y="112" width="227" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="EIj-q3-dDX"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VgW-Mz-Bdw">
+                                <rect key="frame" x="155" y="236" width="65" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="ise-hv-dBI"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="18"/>
+                                <state key="normal" title="Skip &gt;&gt;"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gDg-0M-Kz0">
+                                <rect key="frame" x="19" y="170" width="337" height="46"/>
+                                <color key="backgroundColor" red="0.97647058819999999" green="0.58039215690000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="46" id="tGa-ES-XVO"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="18"/>
+                                <state key="normal" title="ENABLE NOW">
+                                    <color key="titleColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="gDg-0M-Kz0" firstAttribute="top" secondItem="4V6-fY-NFm" secondAttribute="bottom" constant="37" id="1GT-bC-THm"/>
+                            <constraint firstItem="gDg-0M-Kz0" firstAttribute="leading" secondItem="vQ3-GN-MgO" secondAttribute="leading" constant="19" id="5aS-Gh-nRf"/>
+                            <constraint firstItem="vQ3-GN-MgO" firstAttribute="trailing" secondItem="VgW-Mz-Bdw" secondAttribute="trailing" constant="155" id="7Jy-ms-UTX"/>
+                            <constraint firstItem="vQ3-GN-MgO" firstAttribute="trailing" secondItem="gDg-0M-Kz0" secondAttribute="trailing" constant="19" id="QA8-OK-vL0"/>
+                            <constraint firstItem="4V6-fY-NFm" firstAttribute="top" secondItem="6ba-dj-dTh" secondAttribute="bottom" constant="25" id="QBk-ky-sFF"/>
+                            <constraint firstItem="VgW-Mz-Bdw" firstAttribute="top" secondItem="gDg-0M-Kz0" secondAttribute="bottom" constant="20" id="Sgn-n5-QRF"/>
+                            <constraint firstItem="vQ3-GN-MgO" firstAttribute="trailing" secondItem="6ba-dj-dTh" secondAttribute="trailing" id="Vo8-2x-ZAM"/>
+                            <constraint firstItem="vQ3-GN-MgO" firstAttribute="trailing" secondItem="4V6-fY-NFm" secondAttribute="trailing" constant="122" id="lSh-qK-4Y4"/>
+                            <constraint firstItem="4V6-fY-NFm" firstAttribute="leading" secondItem="vQ3-GN-MgO" secondAttribute="leading" constant="26" id="no0-Pq-eYR"/>
+                            <constraint firstItem="6ba-dj-dTh" firstAttribute="leading" secondItem="vQ3-GN-MgO" secondAttribute="leading" id="s6X-E1-Djz"/>
+                            <constraint firstItem="6ba-dj-dTh" firstAttribute="top" secondItem="vQ3-GN-MgO" secondAttribute="top" constant="65" id="xwP-tc-cd3"/>
+                            <constraint firstItem="VgW-Mz-Bdw" firstAttribute="leading" secondItem="vQ3-GN-MgO" secondAttribute="leading" constant="155" id="yTi-PG-rm1"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="vQ3-GN-MgO"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="b1J-bW-fKg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1660" y="507.79610194902551"/>
+        </scene>
         <!--Reset Password View Controller-->
         <scene sceneID="53a-XT-zs2">
             <objects>
@@ -278,9 +344,12 @@
                                     <constraint firstAttribute="height" constant="1.5" id="9Tn-wn-tRp"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FkE-Cx-qmd">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FkE-Cx-qmd">
                                 <rect key="frame" x="19" y="369" width="337" height="46"/>
                                 <color key="backgroundColor" red="0.97647058819999999" green="0.58039215690000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="46" id="a88-ha-2oA"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="18"/>
                                 <state key="normal" title="SAVE">
                                     <color key="titleColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
@@ -370,9 +439,12 @@
                                     <constraint firstAttribute="height" constant="1.5" id="SmA-LH-XYd"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jBJ-wo-4QC">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jBJ-wo-4QC">
                                 <rect key="frame" x="19" y="360" width="337" height="46"/>
                                 <color key="backgroundColor" red="0.97647058819999999" green="0.58039215690000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="46" id="KUe-IY-yIc"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="18"/>
                                 <state key="normal" title="SEND">
                                     <color key="titleColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>

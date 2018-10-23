@@ -23,6 +23,7 @@
 		48F4F41C2004CE55005CD239 /* CoreAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F4F41B2004CE54005CD239 /* CoreAPI.swift */; };
 		48F7F1871FFE0412008D827A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F7F1861FFE0412008D827A /* Constants.swift */; };
 		48FC9DA120B1B99D00838CA7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 48FC9DA020B1B99D00838CA7 /* Assets.xcassets */; };
+		48FFC674217F82A300AB09D5 /* TwofactorAuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FFC673217F82A300AB09D5 /* TwofactorAuthenticationViewController.swift */; };
 		5BA214B5CE37180904C788FC /* Pods_ImaginingLinkTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25E4F226D8A2D1C7F29514AE /* Pods_ImaginingLinkTests.framework */; };
 		91627CFE2C2AEF0AAC60FDA4 /* Pods_ImaginingLink.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44081079CB6F5DFCAE24A12 /* Pods_ImaginingLink.framework */; };
 		AC01CA5320C05DF200034C90 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC01CA5220C05DF100034C90 /* Roboto-Regular.ttf */; };
@@ -103,6 +104,7 @@
 		48F4F41B2004CE54005CD239 /* CoreAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreAPI.swift; sourceTree = "<group>"; };
 		48F7F1861FFE0412008D827A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		48FC9DA020B1B99D00838CA7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ImaginingLink/Assets.xcassets; sourceTree = "<group>"; };
+		48FFC673217F82A300AB09D5 /* TwofactorAuthenticationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwofactorAuthenticationViewController.swift; sourceTree = "<group>"; };
 		4A89F47CB1DECEB960C1836C /* Pods-ImaginingLinkUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ImaginingLinkUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ImaginingLinkUITests/Pods-ImaginingLinkUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		5638ABADB5EB61D7A7B72833 /* Pods-ImaginingLinkTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ImaginingLinkTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ImaginingLinkTests/Pods-ImaginingLinkTests.debug.xcconfig"; sourceTree = "<group>"; };
 		61B1E1A23891F115D5109A83 /* Pods-ImaginingLink.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ImaginingLink.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ImaginingLink/Pods-ImaginingLink.debug.xcconfig"; sourceTree = "<group>"; };
@@ -332,6 +334,7 @@
 				ACC98D10211B37F00098B53A /* MenuViewController.swift */,
 				AC1F1D262126DFDA00A57DD4 /* MenuViewcontrollerTableCell.swift */,
 				480D9B082177A32C000DEBFC /* ChangeEmailViewController.swift */,
+				48FFC673217F82A300AB09D5 /* TwofactorAuthenticationViewController.swift */,
 			);
 			path = VerificationView;
 			sourceTree = "<group>";
@@ -682,6 +685,7 @@
 				ACD18C7420C551D50059DE7B /* TwoFactorAuthenticationViewcontroller.swift in Sources */,
 				AC153A49217E265C0017692B /* BaseHamburgerViewController.swift in Sources */,
 				ACC94BDC210B4DAD009D6B2F /* PresentationTableViewCell.swift in Sources */,
+				48FFC674217F82A300AB09D5 /* TwofactorAuthenticationViewController.swift in Sources */,
 				BCFFFBB320BAEE5A003A0652 /* SignInViewController.swift in Sources */,
 				4897CCE520038E6500360EB7 /* SSHttpRequest.swift in Sources */,
 				AC0AD38E20D13C4100FCB371 /* ListViewController.swift in Sources */,
