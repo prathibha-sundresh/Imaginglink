@@ -34,6 +34,7 @@
 		AC0AD39220D13CDE00FCB371 /* ListViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0AD39120D13CDE00FCB371 /* ListViewTableViewCell.swift */; };
 		AC0E194F215AA49A00ADAFB1 /* SignInLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0E194E215AA49A00ADAFB1 /* SignInLabel.swift */; };
 		AC12A32F217A27B900858A47 /* AlreadyHaveOTPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC12A32E217A27B800858A47 /* AlreadyHaveOTPViewController.swift */; };
+		AC153A49217E265C0017692B /* BaseHamburgerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC153A48217E265C0017692B /* BaseHamburgerViewController.swift */; };
 		AC1F1D272126DFDA00A57DD4 /* MenuViewcontrollerTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1F1D262126DFDA00A57DD4 /* MenuViewcontrollerTableCell.swift */; };
 		AC323B3320FF750F0015ECB4 /* SF-Pro-Display-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC323B3220FF750E0015ECB4 /* SF-Pro-Display-Regular.ttf */; };
 		AC323B3520FF76BD0015ECB4 /* SF-Pro-Display-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC323B3420FF76BC0015ECB4 /* SF-Pro-Display-Semibold.ttf */; };
@@ -115,6 +116,7 @@
 		AC0AD39120D13CDE00FCB371 /* ListViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewTableViewCell.swift; sourceTree = "<group>"; };
 		AC0E194E215AA49A00ADAFB1 /* SignInLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInLabel.swift; sourceTree = "<group>"; };
 		AC12A32E217A27B800858A47 /* AlreadyHaveOTPViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlreadyHaveOTPViewController.swift; sourceTree = "<group>"; };
+		AC153A48217E265C0017692B /* BaseHamburgerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseHamburgerViewController.swift; sourceTree = "<group>"; };
 		AC1F1D262126DFDA00A57DD4 /* MenuViewcontrollerTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewcontrollerTableCell.swift; sourceTree = "<group>"; };
 		AC323B3220FF750E0015ECB4 /* SF-Pro-Display-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Regular.ttf"; sourceTree = "<group>"; };
 		AC323B3420FF76BC0015ECB4 /* SF-Pro-Display-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Semibold.ttf"; sourceTree = "<group>"; };
@@ -302,6 +304,7 @@
 				AC099D8020F79D6D0090B0CA /* LoaderView.storyboard */,
 				AC099D8220F79DEE0090B0CA /* LoaderView.swift */,
 				AC0E194E215AA49A00ADAFB1 /* SignInLabel.swift */,
+				AC153A48217E265C0017692B /* BaseHamburgerViewController.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -377,7 +380,6 @@
 				4842792A1FF39B9E0056A089 /* Frameworks */,
 				4842792B1FF39B9E0056A089 /* Resources */,
 				F4DDDA8485735A0BA8B81A08 /* [CP] Embed Pods Frameworks */,
-				9E436B49227195165093C67A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -396,8 +398,6 @@
 				4842793D1FF39B9E0056A089 /* Sources */,
 				4842793E1FF39B9E0056A089 /* Frameworks */,
 				4842793F1FF39B9E0056A089 /* Resources */,
-				4E3AF853B4B8D55830809A7E /* [CP] Embed Pods Frameworks */,
-				19D175B3C97A371E74F215AF /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -417,8 +417,6 @@
 				484279481FF39B9E0056A089 /* Sources */,
 				484279491FF39B9E0056A089 /* Frameworks */,
 				4842794A1FF39B9E0056A089 /* Resources */,
-				4697B17383086C168DB58291 /* [CP] Embed Pods Frameworks */,
-				D487AF7CE4CF0ADF58165C66 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -516,51 +514,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		19D175B3C97A371E74F215AF /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ImaginingLinkTests/Pods-ImaginingLinkTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		4697B17383086C168DB58291 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ImaginingLinkUITests/Pods-ImaginingLinkUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		4E3AF853B4B8D55830809A7E /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ImaginingLinkTests/Pods-ImaginingLinkTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		8271856352C2AE0EF1642B5A /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -579,21 +532,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		9E436B49227195165093C67A /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ImaginingLink/Pods-ImaginingLink-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		BF7E960A2C109B1B5B2EECDD /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -610,21 +548,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		D487AF7CE4CF0ADF58165C66 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ImaginingLinkUITests/Pods-ImaginingLinkUITests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		DE838A5572DE264BB5DDE9A0 /* [CP] Check Pods Manifest.lock */ = {
@@ -653,12 +576,14 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-ImaginingLink/Pods-ImaginingLink-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/ECSlidingViewController/ECSlidingViewController.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ECSlidingViewController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 			);
@@ -675,6 +600,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ACD18C7420C551D50059DE7B /* TwoFactorAuthenticationViewcontroller.swift in Sources */,
+				AC153A49217E265C0017692B /* BaseHamburgerViewController.swift in Sources */,
 				ACC94BDC210B4DAD009D6B2F /* PresentationTableViewCell.swift in Sources */,
 				BCFFFBB320BAEE5A003A0652 /* SignInViewController.swift in Sources */,
 				4897CCE520038E6500360EB7 /* SSHttpRequest.swift in Sources */,

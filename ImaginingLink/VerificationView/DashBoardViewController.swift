@@ -8,14 +8,14 @@
 
 import UIKit
 
-class DashBoardViewController:  BaseViewController {
+class DashBoardViewController:  BaseHamburgerViewController {
     let Cases = 0
     let Quiz = 1
     let Portfolio = 2
     let SocialConnect = 3
     let Presentation = 4
 //  kUserName
-    
+
 
     @IBAction func CasesIconPressed(_ sender: Any) {
     }
@@ -50,7 +50,8 @@ class DashBoardViewController:  BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        ILUtility.addNavigationBarBackButton(controller: self, userName: UserDefaults.standard.value(forKey: kUserName) as! String, userType: "Radiologist")
+        addSlideMenuButton()
+//        ILUtility.addNavigationBarBackButton(controller: self, userName: UserDefaults.standard.value(forKey: kUserName) as! String, userType: "Radiologist")
        
         
     }

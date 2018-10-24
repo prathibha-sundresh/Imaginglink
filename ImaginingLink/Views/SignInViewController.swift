@@ -38,13 +38,17 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        UserDefaults.standard.setValue("prathibha", forKey: kUserName)
+        let storyboard = UIStoryboard.init(name: "DashBoard", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "DashBoard") as! DashBoardViewController
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyBoard.instantiateViewController(withIdentifier: "SignUpViewcontroller") as! SignUpViewcontroller
-        self.navigationController?.pushViewController(vc, animated: true)
+//        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+//        let vc = storyBoard.instantiateViewController(withIdentifier: "SignUpViewcontroller") as! SignUpViewcontroller
+//        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     func SignInPressed() {
@@ -79,18 +83,15 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
                 ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: "Something went wrong while signIn")
             })
         
+        } else if (username?.count == 0){
+             ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: "Please enter Email")
+        } else if (passWord?.count == 0) {
+             ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: "Please enter password")
         }
         
     
     }
     
-    
-//    @objc func NewInvitePressedAction(sender : UITapGestureRecognizer) -> Void {
-//         let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
-//        let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-//        let vc = storyboard.instantiateViewController(withIdentifier: "EmailViewcontroller") as! EmailScreenViewcontroller
-//        self.navigationController?.pushViewController(vc, animated: true)
-//    }
     
 
 }

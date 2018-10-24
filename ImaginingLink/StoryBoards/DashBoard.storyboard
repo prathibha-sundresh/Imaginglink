@@ -1,20 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="2EA-Rs-iNa">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="2EA-Rs-iNa">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="HelveticaNeue.ttc">
-            <string>HelveticaNeue</string>
-        </array>
         <array key="SF-Pro-Display-Regular.ttf">
             <string>SFProDisplay-Regular</string>
         </array>
@@ -785,7 +782,7 @@
         <!--Menu View Controller-->
         <scene sceneID="R1X-N4-ehT">
             <objects>
-                <viewController id="OOd-BS-dxc" customClass="MenuViewController" customModule="ImaginingLink" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MenuViewController" id="OOd-BS-dxc" customClass="MenuViewController" customModule="ImaginingLink" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="UrW-Jx-HL5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -793,11 +790,23 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rff-mh-eeu" userLabel="MenuView">
                                 <rect key="frame" x="100" y="20" width="275" height="647"/>
                                 <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="85I-Z1-YeP" userLabel="CloseMenu">
+                                        <rect key="frame" x="233" y="18" width="23" height="23"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="23" id="LJl-cy-AFf"/>
+                                            <constraint firstAttribute="width" constant="23" id="mVH-Ze-gnn"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="33"/>
+                                        <state key="normal" title="X"/>
+                                        <connections>
+                                            <action selector="CloseMenuPressed:" destination="OOd-BS-dxc" eventType="touchUpInside" id="ddN-Ja-qah"/>
+                                        </connections>
+                                    </button>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hxb-L2-H3H">
-                                        <rect key="frame" x="0.0" y="0.0" width="275" height="647"/>
+                                        <rect key="frame" x="0.0" y="60" width="275" height="587"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="57" id="a63-Vg-d2N" customClass="MenuViewcontrollerTableCell" customModule="ImaginingLink" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MenuViewId" rowHeight="57" id="a63-Vg-d2N" customClass="MenuViewcontrollerTableCell" customModule="ImaginingLink" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="28" width="275" height="57"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="a63-Vg-d2N" id="EkB-6e-nm5">
@@ -846,6 +855,10 @@
                                                 </connections>
                                             </tableViewCell>
                                         </prototypes>
+                                        <connections>
+                                            <outlet property="dataSource" destination="OOd-BS-dxc" id="i9x-Kp-13C"/>
+                                            <outlet property="delegate" destination="OOd-BS-dxc" id="cjV-gX-WEf"/>
+                                        </connections>
                                     </tableView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -853,12 +866,14 @@
                                     <constraint firstItem="hxb-L2-H3H" firstAttribute="leading" secondItem="Rff-mh-eeu" secondAttribute="leading" id="7E0-6b-rzQ"/>
                                     <constraint firstAttribute="bottom" secondItem="hxb-L2-H3H" secondAttribute="bottom" id="K8u-ax-7eh"/>
                                     <constraint firstAttribute="trailing" secondItem="hxb-L2-H3H" secondAttribute="trailing" id="Rxf-xU-U2M"/>
-                                    <constraint firstItem="hxb-L2-H3H" firstAttribute="top" secondItem="Rff-mh-eeu" secondAttribute="top" id="kxA-hu-jey"/>
+                                    <constraint firstItem="hxb-L2-H3H" firstAttribute="top" secondItem="85I-Z1-YeP" secondAttribute="bottom" constant="19" id="dXY-by-KFh"/>
+                                    <constraint firstItem="hxb-L2-H3H" firstAttribute="top" secondItem="Rff-mh-eeu" secondAttribute="top" constant="60" id="kxA-hu-jey"/>
+                                    <constraint firstAttribute="trailing" secondItem="85I-Z1-YeP" secondAttribute="trailing" constant="19" id="oS6-s5-HfT"/>
                                     <constraint firstAttribute="width" constant="275" id="olj-pf-6nb"/>
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="1" alpha="0.29087114726027397" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Rff-mh-eeu" firstAttribute="top" secondItem="3h3-G4-E4f" secondAttribute="top" id="HJX-iq-nFu"/>
                             <constraint firstItem="3h3-G4-E4f" firstAttribute="trailing" secondItem="Rff-mh-eeu" secondAttribute="trailing" id="qDD-5J-4tt"/>
