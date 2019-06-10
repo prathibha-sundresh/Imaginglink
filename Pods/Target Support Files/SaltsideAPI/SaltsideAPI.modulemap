@@ -1,0 +1,6 @@
+framework module SaltsideAPI {
+  umbrella header "SaltsideAPI-umbrella.h"
+
+  export *
+  module * { export * }
+}
