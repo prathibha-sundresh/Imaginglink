@@ -103,18 +103,26 @@ class OTPViewcontroller : UIViewController, TapOnLabelDelegate{
     }
     
     @objc func tapResend() {
-        CoreAPI.sharedManaged.RegisterEmail(Email: EmailId, successResponse: {(response) in
-            let dictResponse = response as! [String:Any]
-            ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: dictResponse["message"] as! String)
-            
-        }, faliure: {(error) in
-            
-            if (error == "Email already Registered") {
-               self.resendOtpLabel.isHidden = false
+        
+        if screenId == kResetPasswordOTP{
+            ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: "Resending...")
+            CoreAPI.sharedManaged.requesrForgotPassword(emailId: EmailId, successResponse: { (response) in
+               self.showToast(message: "successfully sent")
+            }) { (error) in
+                self.showToast(message: error)
             }
-        })
+        }
+        else{
+            CoreAPI.sharedManaged.RegisterEmail(Email: EmailId, successResponse: {(response) in
+                let dictResponse = response as! [String:Any]
+                ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: dictResponse["message"] as! String)
+                
+            }, faliure: {(error) in
+                
+                if (error == "Email already Registered") {
+                    self.resendOtpLabel.isHidden = false
+                }
+            })
+        }
     }
-    
-    
-    
 }

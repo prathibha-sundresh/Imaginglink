@@ -30,7 +30,6 @@ class ForgotPasswordViewController: UIViewController , UITextFieldDelegate {
                 let dictResponse = response as! [String:Any]
                 let status = dictResponse["status"] as! String
                 if status == "success" {
-                    self.showToast(message: "successfully changed")
                       UserDefaults.standard.setValue(self.forgotPasswordTextField.text!, forKey: kAuthenticatedEmailId)
                     let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                     let vc = storyboard.instantiateViewController(withIdentifier: "EmailSuccessViewController") as! EmailSuccessViewController

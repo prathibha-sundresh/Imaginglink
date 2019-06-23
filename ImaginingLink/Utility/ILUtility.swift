@@ -95,7 +95,7 @@ class ILUtility : NSObject {
    class func isValidPassword(_ passwordString: String?) -> Bool {
         
 //        let regex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[#%!$@^*()_.])[A-Za-z\\d#%!$@^*()_.]{8,}"
-        let regex = "^(?=.*[a-z])(?=.*[#%!$@^*()_.])[A-Za-z\\d#%!$@^*()_.]{8,}"
+        let regex = "^(?=.*[#%!&$@~^*()_.])[A-Za-z\\d#%!&$@~^*()_.]{8,}"
         let passwordTest = NSPredicate(format: "SELF MATCHES %@", regex)
         
         let isValid: Bool = passwordTest.evaluate(with: passwordString)
@@ -190,9 +190,12 @@ class ILUtility : NSObject {
 //        }, atPosition: MBLMessageBannerPosition.bottom, canBeDismissedByUser: true, delegate: nil)
         
     }
-
-    
-
+    class func showAlert(title:String, message: String, controller: UIViewController){
+        let alertContoller = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        let alertAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil)
+        alertContoller.addAction(alertAction)
+        controller.present(alertContoller, animated: true, completion: nil)
+    }
 }
 
 extension UIApplication {

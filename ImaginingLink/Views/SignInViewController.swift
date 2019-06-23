@@ -84,12 +84,12 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
                     ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: "Successfully Login.")
                     if let usertype : [String:Any] = data["user_type"] as? [String:Any] {
                         UserDefaults.standard.set(usertype["title"] as! String, forKey: kUserType)
-
                     }
                
                     UserDefaults.standard.set(data["token"] as! String, forKey: kToken)
                     UserDefaults.standard.set(data["email"] as! String, forKey: kAuthenticatedEmailId)
-                    UserDefaults.standard.set(data["first_name"], forKey: kUserName)
+                    let fullName = "\(data["first_name"]as? String ?? "") \(data["last_name"]as? String ?? "")"
+                    UserDefaults.standard.set(fullName, forKey: kUserName)
                     
                     if (data["is_enable_2f_authentication"] as? NSNull) != nil {
                         let storyboard = UIStoryboard(name: "Main", bundle: nil)

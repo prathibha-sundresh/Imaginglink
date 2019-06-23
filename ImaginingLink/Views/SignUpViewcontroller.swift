@@ -68,7 +68,7 @@ class SignUpViewcontroller: UIViewController,  UITextFieldDelegate, UserTypeDele
         SignInLabel.tapDelegate = self
         EmailTextField?.text = emailId
         setUpTermsAndCondition()
-       
+        PasswordTextField.setRightPaddingPoints(30)
         
     }
     
@@ -94,7 +94,16 @@ class SignUpViewcontroller: UIViewController,  UITextFieldDelegate, UserTypeDele
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
-    
+    @IBAction func textDidChange(_ textField: UITextField){
+        if textField == PasswordTextField{
+            if !ILUtility.isValidPassword(PasswordTextField.text!){
+                passwordValidator.textColor = UIColor.red
+            }
+            else{
+                passwordValidator.textColor = UIColor.black
+            }
+        }
+    }
     func setUpTermsAndCondition() {
         acceptTextView.isSelectable = true
         acceptTextView.isEditable = false
@@ -148,18 +157,18 @@ class SignUpViewcontroller: UIViewController,  UITextFieldDelegate, UserTypeDele
             ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: "please enter FirstName")
         } else if LastNameTextfield.text?.count == 0 {
             ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: "please enter LastName")
-        } else if (ConfirmPasswordTextfield.text?.count == 0 || !ILUtility.isValidPassword(ConfirmPasswordTextfield.text!)){
+        }
+        else if (PasswordTextField.text?.count == 0 || !ILUtility.isValidPassword(PasswordTextField.text!)){
             passwordValidator.textColor = UIColor.red
-        } else if (PasswordTextField.text?.count == 0 || !ILUtility.isValidPassword(PasswordTextField.text!)){
-            passwordValidator.textColor = UIColor.red
-           // ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: "Password must be 8 or more characters and must contain at least one special character")
-        } else if UserTypeTextField.text?.count == 0 {
+        }else if PasswordTextField.text != ConfirmPasswordTextfield.text{
+            ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: "Password mismatch")
+        }
+        else if UserTypeTextField.text?.count == 0 {
             ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: "please select usertype")
         } else if !CheckoutBoxClicked.isSelected {
             ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: "please click terms and condition")
-        } else if !((EmailTextField.text?.isValidEmail())!) {
-            ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: "please enter valid email")
-        } else if ConfirmPasswordTextfield.text == PasswordTextField.text && EmailTextField.text?.count != 0 && UserTypeTextField.text?.count != 0 && firstnameTextField.text?.count != 0 && LastNameTextfield.text?.count != 0 && CheckoutBoxClicked.isSelected {
+        } 
+        else if ConfirmPasswordTextfield.text == PasswordTextField.text && EmailTextField.text?.count != 0 && UserTypeTextField.text?.count != 0 && firstnameTextField.text?.count != 0 && LastNameTextfield.text?.count != 0 && CheckoutBoxClicked.isSelected {
             passwordValidator.textColor = UIColor.black
              ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: "SigningUp....")
             CoreAPI.sharedManaged.signUpWithEmailId(firstName: firstnameTextField.text!, lastNAme: LastNameTextfield.text!, email: EmailTextField.text!, password: ConfirmPasswordTextfield.text!, userType: userTypeId, successResponse: {(response) in
@@ -224,3 +233,16 @@ extension UITapGestureRecognizer {
     }
     
 }
+extension UITextField {
+    func setLeftPaddingPoints(_ amount:CGFloat){
+        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: amount, height: self.frame.size.height))
+        self.leftView = paddingView
+        self.leftViewMode = .always
+    }
+    func setRightPaddingPoints(_ amount:CGFloat) {
+        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: amount, height: self.frame.size.height))
+        self.rightView = paddingView
+        self.rightViewMode = .always
+    }
+}
+

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="2EA-Rs-iNa">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="2EA-Rs-iNa">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -295,7 +295,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Syx-RB-N8N" userLabel="Diffusion-Weighted MR imaging (DWI) in  Differentiating Benig…">
-                                                            <rect key="frame" x="20" y="29" width="332" height="33"/>
+                                                            <rect key="frame" x="20" y="29" width="332" height="33.5"/>
                                                             <string key="text">Diffusion-Weighted MR imaging (DWI) in 
 Differentiating Benig…</string>
                                                             <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="14"/>
@@ -303,43 +303,43 @@ Differentiating Benig…</string>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Section" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SSU-TN-3BR">
-                                                            <rect key="frame" x="20" y="72" width="332" height="14"/>
+                                                            <rect key="frame" x="20" y="72.5" width="332" height="14"/>
                                                             <fontDescription key="fontDescription" name="SFProDisplay-Light" family="SF Pro Display" pointSize="12"/>
                                                             <color key="textColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cardiac Imaging" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B9k-ev-Uez">
-                                                            <rect key="frame" x="20" y="91" width="332" height="17"/>
+                                                            <rect key="frame" x="20" y="91.5" width="332" height="17"/>
                                                             <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="14"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sub Section" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qfz-1T-Bui">
-                                                            <rect key="frame" x="20" y="118" width="332" height="14"/>
+                                                            <rect key="frame" x="20" y="118.5" width="332" height="14"/>
                                                             <fontDescription key="fontDescription" name="SFProDisplay-Light" family="SF Pro Display" pointSize="12"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Aorta" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5fV-Te-GfH">
-                                                            <rect key="frame" x="20" y="137" width="332" height="17"/>
+                                                            <rect key="frame" x="20" y="137.5" width="332" height="17"/>
                                                             <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="14"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Keyword" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1V0-Oa-fVY">
-                                                            <rect key="frame" x="20" y="164" width="332" height="14"/>
+                                                            <rect key="frame" x="20" y="164.5" width="332" height="14"/>
                                                             <fontDescription key="fontDescription" name="SFProDisplay-Light" family="SF Pro Display" pointSize="12"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sample Keyword" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gXs-ZJ-Sb0">
-                                                            <rect key="frame" x="20" y="183" width="332" height="17"/>
+                                                            <rect key="frame" x="20" y="183.5" width="332" height="17"/>
                                                             <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="14"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Te-zD-uHA">
-                                                            <rect key="frame" x="20" y="210" width="332" height="18.5"/>
+                                                            <rect key="frame" x="20" y="210.5" width="332" height="18"/>
                                                             <fontDescription key="fontDescription" name="SFProDisplay-Light" family="SF Pro Display" pointSize="12"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -519,7 +519,7 @@ Differentiating Benig…</string>
                                                                     <state key="normal" title="Button" image="Icon_love"/>
                                                                 </button>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="147 ratings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nLw-lI-Ddw" userLabel="ratingsLabel">
-                                                                    <rect key="frame" x="248" y="9" width="60" height="28"/>
+                                                                    <rect key="frame" x="248" y="9" width="54" height="28"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="28" id="M5h-eP-DKA"/>
                                                                     </constraints>
@@ -702,7 +702,7 @@ nstrate the visual form</string>
                                                             </constraints>
                                                         </view>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6hr ago" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ekz-BS-bx6" userLabel="TimeAgo">
-                                                            <rect key="frame" x="60" y="134" width="51.5" height="30"/>
+                                                            <rect key="frame" x="60" y="134" width="48.5" height="30"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="30" id="eUt-TQ-xdF"/>
                                                             </constraints>
@@ -711,7 +711,7 @@ nstrate the visual form</string>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ySe-Hi-Sei">
-                                                            <rect key="frame" x="121.5" y="134" width="233.5" height="30"/>
+                                                            <rect key="frame" x="118.5" y="134" width="236.5" height="30"/>
                                                             <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="15"/>
                                                             <state key="normal" title="Replay">
                                                                 <color key="titleColor" red="0.31372549019607843" green="0.34509803921568627" blue="0.36470588235294116" alpha="1" colorSpace="calibratedRGB"/>
@@ -805,7 +805,7 @@ nstrate the visual form</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Npf-JB-7Ah">
-                                <rect key="frame" x="23" y="88.5" width="329" height="49"/>
+                                <rect key="frame" x="23" y="88.5" width="329" height="50.5"/>
                                 <string key="text">An email is sent to your new email address for 
 verification. Please click the verify link from your 
 new email address..</string>
@@ -814,7 +814,7 @@ new email address..</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zPd-52-TOE">
-                                <rect key="frame" x="23" y="147.5" width="330" height="49"/>
+                                <rect key="frame" x="23" y="149" width="330" height="50.5"/>
                                 <string key="text">If you do not have access to the new email address, 
 your old email ID will still be your registered email 
 with Imaginglink.</string>
@@ -823,7 +823,7 @@ with Imaginglink.</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YPn-Jc-Uqx">
-                                <rect key="frame" x="19" y="254.5" width="337" height="46"/>
+                                <rect key="frame" x="19" y="257.5" width="337" height="46"/>
                                 <color key="backgroundColor" red="0.97647058819999999" green="0.58039215690000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="46" id="YPR-IF-MK6"/>
@@ -915,7 +915,7 @@ code below to authenticate change request.</string>
                                     <constraint firstAttribute="height" constant="46" id="Gr2-aM-OHl"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="18"/>
-                                <state key="normal" title="NEXT">
+                                <state key="normal" title="VERIFY">
                                     <color key="titleColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
@@ -1078,19 +1078,29 @@ support@imaginglink.com for reset.</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Kaq-m7-hj1" userLabel="New Password Text" customClass="FloatingLabel" customModule="ImagingLink" customModuleProvider="target">
-                                <rect key="frame" x="24" y="134" width="329" height="21"/>
+                                <rect key="frame" x="24" y="135" width="329" height="22"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="18"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <connections>
+                                    <action selector="textDidChange:" destination="SWB-qx-auI" eventType="editingChanged" id="CdJ-Hn-wkh"/>
+                                </connections>
                             </textField>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PasswordInfoImage" translatesAutoresizingMaskIntoConstraints="NO" id="ZAT-GU-LDG">
+                                <rect key="frame" x="327" y="137" width="18" height="18"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="18" id="ia1-4o-RdD"/>
+                                    <constraint firstAttribute="height" constant="18" id="sSb-Ts-nob"/>
+                                </constraints>
+                            </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0LF-S1-XNc" userLabel="Confirm Password Text" customClass="FloatingLabel" customModule="ImagingLink" customModuleProvider="target">
-                                <rect key="frame" x="24" y="220.5" width="332" height="21"/>
+                                <rect key="frame" x="24" y="223.5" width="332" height="22"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="18"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FkE-Cx-qmd">
-                                <rect key="frame" x="19" y="271.5" width="337" height="46"/>
+                                <rect key="frame" x="19" y="275.5" width="337" height="46"/>
                                 <color key="backgroundColor" red="0.97647058819999999" green="0.58039215690000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="46" id="a88-ha-2oA"/>
@@ -1104,13 +1114,13 @@ support@imaginglink.com for reset.</string>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6Zo-SE-Y29" userLabel="Current Password Text" customClass="FloatingLabel" customModule="ImagingLink" customModuleProvider="target">
-                                <rect key="frame" x="21" y="83" width="329" height="21"/>
+                                <rect key="frame" x="21" y="83" width="329" height="22"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="18"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tfr-CX-0he">
-                                <rect key="frame" x="20" y="170" width="335" height="30.5"/>
+                                <rect key="frame" x="20" y="172" width="335" height="31.5"/>
                                 <string key="text">Password must be 8 or more characters and must 
 contain at least one special character (! @ # $ % ^ &amp; *)</string>
                                 <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="13"/>
@@ -1118,7 +1128,7 @@ contain at least one special character (! @ # $ % ^ &amp; *)</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zvi-wd-F3j">
-                                <rect key="frame" x="20" y="332.5" width="335" height="30"/>
+                                <rect key="frame" x="20" y="336.5" width="335" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="GiY-IE-Xcv"/>
                                 </constraints>
@@ -1142,6 +1152,7 @@ contain at least one special character (! @ # $ % ^ &amp; *)</string>
                             <constraint firstItem="Zvi-wd-F3j" firstAttribute="top" secondItem="FkE-Cx-qmd" secondAttribute="bottom" constant="15" id="Hqv-YR-PS0"/>
                             <constraint firstItem="Zvi-wd-F3j" firstAttribute="leading" secondItem="3E1-MR-Blu" secondAttribute="leading" constant="20" id="JQF-Yu-XbR"/>
                             <constraint firstItem="N8H-tb-sa7" firstAttribute="leading" secondItem="3E1-MR-Blu" secondAttribute="leading" constant="24" id="KbQ-1c-pea"/>
+                            <constraint firstItem="3E1-MR-Blu" firstAttribute="trailing" secondItem="ZAT-GU-LDG" secondAttribute="trailing" constant="30" id="LcC-k0-2X3"/>
                             <constraint firstItem="Kaq-m7-hj1" firstAttribute="top" secondItem="6Zo-SE-Y29" secondAttribute="bottom" constant="30" id="OZt-TI-8Ix"/>
                             <constraint firstItem="3E1-MR-Blu" firstAttribute="trailing" secondItem="tfr-CX-0he" secondAttribute="trailing" constant="20" id="Q4A-cX-dQb"/>
                             <constraint firstItem="FkE-Cx-qmd" firstAttribute="leading" secondItem="3E1-MR-Blu" secondAttribute="leading" constant="19" id="Tb3-p8-HKD"/>
@@ -1149,6 +1160,7 @@ contain at least one special character (! @ # $ % ^ &amp; *)</string>
                             <constraint firstItem="6Zo-SE-Y29" firstAttribute="top" secondItem="N8H-tb-sa7" secondAttribute="bottom" constant="15" id="WXl-ic-tIf"/>
                             <constraint firstItem="3E1-MR-Blu" firstAttribute="trailing" secondItem="Kaq-m7-hj1" secondAttribute="trailing" constant="22" id="XHF-6U-4mb"/>
                             <constraint firstItem="Kaq-m7-hj1" firstAttribute="leading" secondItem="3E1-MR-Blu" secondAttribute="leading" constant="24" id="Zv1-w6-fW1"/>
+                            <constraint firstItem="ZAT-GU-LDG" firstAttribute="centerY" secondItem="Kaq-m7-hj1" secondAttribute="centerY" id="bPJ-31-vcP"/>
                             <constraint firstItem="0LF-S1-XNc" firstAttribute="top" secondItem="tfr-CX-0he" secondAttribute="bottom" constant="20" id="dby-dJ-9xv"/>
                             <constraint firstItem="6Zo-SE-Y29" firstAttribute="leading" secondItem="3E1-MR-Blu" secondAttribute="leading" constant="21" id="eaP-jL-b4U"/>
                             <constraint firstItem="3E1-MR-Blu" firstAttribute="trailing" secondItem="Zvi-wd-F3j" secondAttribute="trailing" constant="20" id="ezJ-K7-uQD"/>
@@ -1164,6 +1176,7 @@ contain at least one special character (! @ # $ % ^ &amp; *)</string>
                         <outlet property="confirmNewPasswordTextField" destination="0LF-S1-XNc" id="zQH-gV-z36"/>
                         <outlet property="currentPasswordTextField" destination="6Zo-SE-Y29" id="y4C-VD-Zih"/>
                         <outlet property="newPasswordTextField" destination="Kaq-m7-hj1" id="43f-1O-zBl"/>
+                        <outlet property="passwordValidator" destination="tfr-CX-0he" id="Ido-uo-KuC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vCC-bN-9vP" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1192,13 +1205,13 @@ contain at least one special character (! @ # $ % ^ &amp; *)</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Let’s build an awesome professional Radiology network and change the way you connect, learn, educate and innovate!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Vu-Ed-SdT">
-                                <rect key="frame" x="18" y="87" width="343" height="49"/>
+                                <rect key="frame" x="18" y="87" width="343" height="50.5"/>
                                 <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xRa-HP-Sae" customClass="FloatingLabel" customModule="ImagingLink" customModuleProvider="target">
-                                <rect key="frame" x="22" y="172" width="337" height="40"/>
+                                <rect key="frame" x="22" y="173.5" width="337" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="50Q-US-tYe"/>
                                 </constraints>
@@ -1207,7 +1220,7 @@ contain at least one special character (! @ # $ % ^ &amp; *)</string>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jBJ-wo-4QC">
-                                <rect key="frame" x="19" y="250" width="337" height="46"/>
+                                <rect key="frame" x="19" y="251.5" width="337" height="46"/>
                                 <color key="backgroundColor" red="0.97647058819999999" green="0.58039215690000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="46" id="KUe-IY-yIc"/>
@@ -1427,7 +1440,7 @@ contain at least one special character (! @ # $ % ^ &amp; *)</string>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="GU IMAGING" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XKE-dJ-ga7" userLabel="GUImagingLabel">
-                                                    <rect key="frame" x="68" y="28" width="60.5" height="14.5"/>
+                                                    <rect key="frame" x="68" y="28" width="56.5" height="14.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="14.5" id="FU3-4F-8kW"/>
                                                     </constraints>
@@ -1447,7 +1460,7 @@ contain at least one special character (! @ # $ % ^ &amp; *)</string>
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12 min ago" lineBreakMode="characterWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="drL-Cx-uM5">
-                                                    <rect key="frame" x="138.5" y="28" width="186.5" height="14"/>
+                                                    <rect key="frame" x="134.5" y="28" width="190.5" height="14"/>
                                                     <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="12"/>
                                                     <color key="textColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -1649,17 +1662,17 @@ contain at least one special character (! @ # $ % ^ &amp; *)</string>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1mr-ly-186">
-                                                            <rect key="frame" x="0.0" y="-34" width="275" height="15.5"/>
+                                                            <rect key="frame" x="0.0" y="-34" width="275" height="16.5"/>
                                                             <subviews>
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jPK-IP-Dga">
-                                                                    <rect key="frame" x="25" y="20" width="16" height="16"/>
+                                                                    <rect key="frame" x="25" y="20.5" width="16" height="16"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="16" id="Idz-NP-SQ2"/>
                                                                         <constraint firstAttribute="height" constant="16" id="bGV-Kr-dLX"/>
                                                                     </constraints>
                                                                 </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kOU-ii-Iwr" userLabel="MenuTextLabel">
-                                                                    <rect key="frame" x="55" y="0.0" width="200" height="15.5"/>
+                                                                    <rect key="frame" x="55" y="0.0" width="200" height="16.5"/>
                                                                     <fontDescription key="fontDescription" name="SFProDisplay-Light" family="SF Pro Display" pointSize="13"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
@@ -1756,6 +1769,7 @@ contain at least one special character (! @ # $ % ^ &amp; *)</string>
         <image name="Icon_share" width="14" height="14"/>
         <image name="Icon_smile" width="28" height="28"/>
         <image name="Icon_views" width="20" height="13"/>
+        <image name="PasswordInfoImage" width="18" height="18"/>
         <image name="PortPolioIcon" width="158" height="140"/>
         <image name="PresentationLogo" width="158" height="140"/>
         <image name="PresentationMenuIcon" width="5" height="22"/>

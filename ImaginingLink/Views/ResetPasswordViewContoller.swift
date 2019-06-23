@@ -23,7 +23,7 @@ class ResetPasswordViewContoller: UIViewController, TapOnLabelDelegate {
     
     @IBOutlet weak var NewPasswordTextField: FloatingLabel!
     @IBOutlet weak var ConfirmPasswordTF: FloatingLabel!
-    
+    @IBOutlet weak var passwordValidator: UILabel!
     
     @IBOutlet weak var signInLabel: SignInLabel!
     var otpValue = ""
@@ -33,16 +33,15 @@ class ResetPasswordViewContoller: UIViewController, TapOnLabelDelegate {
         signInLabel.tapDelegate = self
         NewPasswordTextField.setUpLabel(WithText: "New password")
         ConfirmPasswordTF.setUpLabel(WithText: "confirm Password")
-       
+        NewPasswordTextField.setRightPaddingPoints(30)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
     @IBAction func SavePressed(_ sender: Any) {
-//        ILUtility.showInAppNotification(withTitle: "Resetting...")
-        ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: "Resetting...")
         if ((ConfirmPasswordTF.text! == NewPasswordTextField.text!) && (ILUtility.isValidPassword(ConfirmPasswordTF.text!)) && (ILUtility.isValidPassword(NewPasswordTextField.text!))) {
+            ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: "Resetting...")
             let requestValues = ["email" : UserDefaults.standard.value(forKey: kAuthenticatedEmailId)!,"otp_code" : otpValue, "new_password" : NewPasswordTextField.text!, "confirm_new_password" : ConfirmPasswordTF.text!] as [String:Any]
             CoreAPI.sharedManaged.requestForgetPassword(params: requestValues, successResponse: {(response) in
                 let dictValue = response as! [String:Any]
@@ -66,5 +65,14 @@ class ResetPasswordViewContoller: UIViewController, TapOnLabelDelegate {
         }
     }
     
-
+    @IBAction func textDidChange(_ textField: UITextField){
+        if textField == NewPasswordTextField{
+            if !ILUtility.isValidPassword(NewPasswordTextField.text!){
+                passwordValidator.textColor = UIColor.red
+            }
+            else{
+                passwordValidator.textColor = UIColor.black
+            }
+        }
+    }
 }
