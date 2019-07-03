@@ -32,7 +32,7 @@ class ResetPasswordViewContoller: UIViewController, TapOnLabelDelegate {
         super.viewDidLoad()
         signInLabel.tapDelegate = self
         NewPasswordTextField.setUpLabel(WithText: "New password")
-        ConfirmPasswordTF.setUpLabel(WithText: "confirm Password")
+        ConfirmPasswordTF.setUpLabel(WithText: "Confirm new password")
         NewPasswordTextField.setRightPaddingPoints(30)
     }
     

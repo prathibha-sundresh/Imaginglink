@@ -13,15 +13,11 @@ import UIKit
 class  InviteFriendsViewController: BaseHamburgerViewController{
     
     @IBAction func sendButtonPressed(_ sender: UIButton) {
+        ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: "Inviting...")
         CoreAPI.sharedManaged.requestToInviteFriends(params: ["email" : inviteFriendsTextField.text!], successResponse: {(response) in
              if let responeValue : [String : Any] = response as? [String : Any] {
                 if (responeValue["status"] as! String == "success") {
-                    ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: response["message"] as! String)
-                    let storyboard: UIStoryboard = UIStoryboard(name: "DashBoard", bundle: nil)
-                    let vc = storyboard.instantiateViewController(withIdentifier: "ILTabViewController") as! ILTabViewController
-                    vc.selectedIndex = 2
-                    self.navigationController?.present(vc, animated: true, completion: nil)
-                    
+                    ILUtility.showAlert(message: response["message"] as? String ?? "", controller: self)
                 }
             }
         }, faliure: {(error) in
@@ -39,5 +35,11 @@ class  InviteFriendsViewController: BaseHamburgerViewController{
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+    }
+    @IBAction func cancelButton(_ sender: UIButton){
+        let storyboard: UIStoryboard = UIStoryboard(name: "DashBoard", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "ILTabViewController") as! ILTabViewController
+        vc.selectedIndex = 2
+        self.navigationController?.present(vc, animated: true, completion: nil)
     }
 }

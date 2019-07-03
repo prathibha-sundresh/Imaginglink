@@ -13,6 +13,7 @@ class EmailchangeOTPViewcontroller : UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     @IBOutlet weak var CancelPressed: UIButton!
+    @IBOutlet weak var nextOrVerify: UIButton!
     var oldEmailId : String? = nil
     var isOldEmailId : Bool? = nil
     var isnewEmailId : Bool? = nil
@@ -31,7 +32,8 @@ class EmailchangeOTPViewcontroller : UIViewController {
                 VerificationAttributedText.addAttributes([NSAttributedStringKey.font : UIFont(name: "SFProDisplay-Regular", size: 14.0)!], range: NSRange(location: 0, length: newEmail.count))
                 VerificationAttributedText.addAttributes([NSAttributedStringKey.font : UIFont(name: "SFProDisplay-Regular", size: 18.0)!], range: Verificationrange)
                 self.VerificationLabel.attributedText! = VerificationAttributedText
-                
+                self.nextOrVerify.setTitle("VERIFY", for: .normal)
+                self.CancelPressed.isHidden = true
                 self.oldEmailId = nil
                 self.TokenTextField.text! = ""
             }, faliure: {(error) in

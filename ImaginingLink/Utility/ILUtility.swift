@@ -190,7 +190,7 @@ class ILUtility : NSObject {
 //        }, atPosition: MBLMessageBannerPosition.bottom, canBeDismissedByUser: true, delegate: nil)
         
     }
-    class func showAlert(title:String, message: String, controller: UIViewController){
+    class func showAlert(title:String = "Imaginglink", message: String, controller: UIViewController){
         let alertContoller = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
         let alertAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil)
         alertContoller.addAction(alertAction)

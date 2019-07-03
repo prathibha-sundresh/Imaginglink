@@ -909,22 +909,21 @@ code below to authenticate change request.</string>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CeC-pP-078">
-                                <rect key="frame" x="16" y="293" width="337" height="34"/>
+                                <rect key="frame" x="16" y="293" width="337" height="46"/>
                                 <color key="backgroundColor" red="0.97647058819999999" green="0.58039215690000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="46" id="Gr2-aM-OHl"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="18"/>
-                                <state key="normal" title="VERIFY">
+                                <state key="normal" title="NEXT">
                                     <color key="titleColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="VerifyPressed:" destination="kVR-PU-uwu" eventType="touchUpInside" id="xYC-rG-KH7"/>
-                                    <action selector="enableNowButtonPressed:" destination="6di-tT-jof" eventType="touchUpInside" id="QPJ-H3-aNV"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lDG-dw-lVG">
-                                <rect key="frame" x="23" y="354" width="329" height="46"/>
+                                <rect key="frame" x="23" y="366" width="329" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="46" id="WWb-KR-DFq"/>
                                 </constraints>
@@ -977,6 +976,7 @@ support@imaginglink.com for reset.</string>
                         <outlet property="CancelPressed" destination="lDG-dw-lVG" id="Xab-2b-ZCg"/>
                         <outlet property="TokenTextField" destination="a9r-eb-2LG" id="Iri-SN-ex3"/>
                         <outlet property="VerificationLabel" destination="tT2-Wr-0ah" id="6W6-cw-T2F"/>
+                        <outlet property="nextOrVerify" destination="CeC-pP-078" id="Ms0-EW-VV8"/>
                         <outlet property="supportTextView" destination="F4h-yG-nAP" id="stF-RI-lme"/>
                     </connections>
                 </viewController>
@@ -1233,6 +1233,19 @@ contain at least one special character (! @ # $ % ^ &amp; *)</string>
                                     <action selector="sendButtonPressed:" destination="2EA-Rs-iNa" eventType="touchUpInside" id="xIk-IM-5Vk"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2py-8N-PyD">
+                                <rect key="frame" x="19" y="312.5" width="337" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="2tI-IR-rgQ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="17"/>
+                                <state key="normal" title="Cancel">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="0.75" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancelButton:" destination="2EA-Rs-iNa" eventType="touchUpInside" id="C13-kL-LZ3"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -1242,9 +1255,12 @@ contain at least one special character (! @ # $ % ^ &amp; *)</string>
                             <constraint firstItem="XwZ-IE-oJg" firstAttribute="leading" secondItem="V69-Zg-2rA" secondAttribute="leading" id="D9v-16-ivx"/>
                             <constraint firstItem="3Vu-Ed-SdT" firstAttribute="leading" secondItem="V69-Zg-2rA" secondAttribute="leading" constant="18" id="Dox-hb-DCl"/>
                             <constraint firstItem="V69-Zg-2rA" firstAttribute="trailing" secondItem="XwZ-IE-oJg" secondAttribute="trailing" id="HQK-kx-rdE"/>
+                            <constraint firstItem="2py-8N-PyD" firstAttribute="leading" secondItem="jBJ-wo-4QC" secondAttribute="leading" id="I0L-P3-1mb"/>
                             <constraint firstItem="Wsa-aF-7mU" firstAttribute="leading" secondItem="V69-Zg-2rA" secondAttribute="leading" constant="19" id="Q1s-42-gLg"/>
                             <constraint firstItem="Wsa-aF-7mU" firstAttribute="top" secondItem="XwZ-IE-oJg" secondAttribute="bottom" constant="24" id="R8m-sK-6U0"/>
                             <constraint firstItem="XwZ-IE-oJg" firstAttribute="top" secondItem="V69-Zg-2rA" secondAttribute="top" id="VL9-jW-NKr"/>
+                            <constraint firstItem="2py-8N-PyD" firstAttribute="top" secondItem="jBJ-wo-4QC" secondAttribute="bottom" constant="15" id="X0N-E5-ssn"/>
+                            <constraint firstItem="2py-8N-PyD" firstAttribute="trailing" secondItem="jBJ-wo-4QC" secondAttribute="trailing" id="eVz-WT-Nf4"/>
                             <constraint firstItem="V69-Zg-2rA" firstAttribute="trailing" secondItem="jBJ-wo-4QC" secondAttribute="trailing" constant="19" id="g4a-TX-KRU"/>
                             <constraint firstItem="3Vu-Ed-SdT" firstAttribute="top" secondItem="Wsa-aF-7mU" secondAttribute="bottom" constant="19" id="gq1-bZ-65M"/>
                             <constraint firstItem="xRa-HP-Sae" firstAttribute="leading" secondItem="V69-Zg-2rA" secondAttribute="leading" constant="22" id="j4J-P8-216"/>
