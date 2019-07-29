@@ -8,11 +8,13 @@
 
 import Foundation
 import UIKit
-class ResetPasswordWithMenuViewController: BaseHamburgerViewController{
+class ResetPasswordWithMenuViewController: BaseHamburgerViewController,UITextFieldDelegate{
     
     @IBOutlet weak var passwordValidator: UILabel!
     @IBOutlet weak var newPasswordTextField: FloatingLabel!
     @IBOutlet weak var currentPasswordTextField: FloatingLabel!
+    @IBOutlet weak var passwordToolTipImage: UIImageView!
+    @IBOutlet weak var confirmTextFieldY: NSLayoutConstraint!
     @IBAction func CancelPressed(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
@@ -52,6 +54,7 @@ class ResetPasswordWithMenuViewController: BaseHamburgerViewController{
         confirmNewPasswordTextField.setUpLabel(WithText: "Confirm new Password")
         currentPasswordTextField.setUpLabel(WithText: "Current Password")
         newPasswordTextField.setRightPaddingPoints(30)
+        showHiddedToolTipMessageAndImage(isBool: true)
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -65,6 +68,19 @@ class ResetPasswordWithMenuViewController: BaseHamburgerViewController{
                 passwordValidator.textColor = UIColor.black
             }
         }
+    }
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if textField == newPasswordTextField || textField == confirmNewPasswordTextField{
+            showHiddedToolTipMessageAndImage(isBool: false)
+        }
+    }
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        showHiddedToolTipMessageAndImage(isBool: true)
+    }
+    func showHiddedToolTipMessageAndImage(isBool: Bool){
+        passwordValidator.isHidden = isBool
+        passwordToolTipImage.isHidden = isBool
+        confirmTextFieldY.constant = isBool ? 0: 20
     }
 }
 

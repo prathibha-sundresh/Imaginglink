@@ -55,16 +55,23 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rkP-G9-Mpd" userLabel="SocialNetworkButton">
                                 <rect key="frame" x="197" y="237" width="158" height="131"/>
-                                <state key="normal" title="Button" image="SocialNetWorkLogo"/>
+                                <state key="normal" image="SocialNetWorkLogo"/>
                                 <connections>
                                     <action selector="SocialNetworkIconPressed:" destination="IDK-ok-QZS" eventType="touchUpInside" id="RPj-DM-9zS"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5ge-m6-kmN" userLabel="PresentationButton">
                                 <rect key="frame" x="21" y="388" width="158" height="131"/>
-                                <state key="normal" title="Button" image="PresentationLogo"/>
+                                <state key="normal" image="PresentationLogo"/>
                                 <connections>
                                     <action selector="PresentationIconPressed:" destination="IDK-ok-QZS" eventType="touchUpInside" id="wv9-D6-Zl1"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LHS-fR-0bk" userLabel="PresentationButton">
+                                <rect key="frame" x="197" y="388" width="158" height="131"/>
+                                <state key="normal" image="PublishLogo"/>
+                                <connections>
+                                    <action selector="publishIconPressed:" destination="IDK-ok-QZS" eventType="touchUpInside" id="iC8-Qt-8Y0"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -77,14 +84,18 @@
                             <constraint firstItem="5ge-m6-kmN" firstAttribute="height" secondItem="0cJ-5i-L1P" secondAttribute="height" id="Jmp-JN-Pd4"/>
                             <constraint firstItem="rkP-G9-Mpd" firstAttribute="leading" secondItem="0cJ-5i-L1P" secondAttribute="trailing" constant="18" id="Omq-qm-k0K"/>
                             <constraint firstItem="gUg-eu-bRO" firstAttribute="width" secondItem="bfc-rG-ADJ" secondAttribute="width" id="PMd-7K-oET"/>
+                            <constraint firstItem="LHS-fR-0bk" firstAttribute="width" secondItem="5ge-m6-kmN" secondAttribute="width" id="TGz-f2-7SG"/>
+                            <constraint firstItem="LHS-fR-0bk" firstAttribute="leading" secondItem="5ge-m6-kmN" secondAttribute="trailing" constant="18" id="VEf-ee-P3f"/>
                             <constraint firstItem="0cJ-5i-L1P" firstAttribute="leading" secondItem="RpO-cS-Qrq" secondAttribute="leading" constant="21" id="WQa-9p-ZE8"/>
                             <constraint firstItem="rkP-G9-Mpd" firstAttribute="top" secondItem="bfc-rG-ADJ" secondAttribute="bottom" constant="21" id="Y4D-sp-9Bw"/>
                             <constraint firstItem="RpO-cS-Qrq" firstAttribute="trailing" secondItem="bfc-rG-ADJ" secondAttribute="trailing" constant="20" id="cpR-Le-Bfw"/>
                             <constraint firstItem="rkP-G9-Mpd" firstAttribute="height" secondItem="0cJ-5i-L1P" secondAttribute="height" id="dT5-PJ-snb"/>
                             <constraint firstItem="RpO-cS-Qrq" firstAttribute="bottom" secondItem="5ge-m6-kmN" secondAttribute="bottom" constant="99" id="gUx-AO-9Yr"/>
                             <constraint firstItem="RpO-cS-Qrq" firstAttribute="trailing" secondItem="rkP-G9-Mpd" secondAttribute="trailing" constant="20" id="gfD-Hw-YZT"/>
+                            <constraint firstItem="LHS-fR-0bk" firstAttribute="height" secondItem="5ge-m6-kmN" secondAttribute="height" id="i7y-cQ-U2L"/>
                             <constraint firstItem="0cJ-5i-L1P" firstAttribute="height" secondItem="gUg-eu-bRO" secondAttribute="height" id="mLf-IQ-TbQ"/>
                             <constraint firstItem="gUg-eu-bRO" firstAttribute="top" secondItem="RpO-cS-Qrq" secondAttribute="top" constant="21" id="mc5-nF-HKm"/>
+                            <constraint firstItem="LHS-fR-0bk" firstAttribute="top" secondItem="rkP-G9-Mpd" secondAttribute="bottom" constant="20" id="nAL-Iy-jZK"/>
                             <constraint firstItem="0cJ-5i-L1P" firstAttribute="width" secondItem="rkP-G9-Mpd" secondAttribute="width" id="nNv-he-3ns"/>
                             <constraint firstItem="5ge-m6-kmN" firstAttribute="width" secondItem="0cJ-5i-L1P" secondAttribute="width" id="o8e-uu-Bcw"/>
                             <constraint firstItem="bfc-rG-ADJ" firstAttribute="leading" secondItem="gUg-eu-bRO" secondAttribute="trailing" constant="18" id="q59-q1-ZXP"/>
@@ -472,7 +483,7 @@ Differentiating Benig…</string>
                                                             <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                                                             <subviews>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NUg-6x-g6z" userLabel="likeButton">
-                                                                    <rect key="frame" x="20" y="9" width="28" height="28"/>
+                                                                    <rect key="frame" x="20" y="9" width="28" height="22"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="28" id="IgJ-MF-kqw"/>
                                                                     </constraints>
@@ -909,7 +920,7 @@ code below to authenticate change request.</string>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CeC-pP-078">
-                                <rect key="frame" x="16" y="293" width="337" height="46"/>
+                                <rect key="frame" x="16" y="293" width="337" height="34"/>
                                 <color key="backgroundColor" red="0.97647058819999999" green="0.58039215690000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="46" id="Gr2-aM-OHl"/>
@@ -923,7 +934,7 @@ code below to authenticate change request.</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lDG-dw-lVG">
-                                <rect key="frame" x="23" y="366" width="329" height="34"/>
+                                <rect key="frame" x="23" y="354" width="329" height="46"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="46" id="WWb-KR-DFq"/>
                                 </constraints>
@@ -1084,6 +1095,7 @@ support@imaginglink.com for reset.</string>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                 <connections>
                                     <action selector="textDidChange:" destination="SWB-qx-auI" eventType="editingChanged" id="CdJ-Hn-wkh"/>
+                                    <outlet property="delegate" destination="SWB-qx-auI" id="r2F-J3-EDa"/>
                                 </connections>
                             </textField>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PasswordInfoImage" translatesAutoresizingMaskIntoConstraints="NO" id="ZAT-GU-LDG">
@@ -1098,6 +1110,9 @@ support@imaginglink.com for reset.</string>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="SWB-qx-auI" id="y01-VQ-vAR"/>
+                                </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FkE-Cx-qmd">
                                 <rect key="frame" x="19" y="275.5" width="337" height="46"/>
@@ -1174,8 +1189,10 @@ contain at least one special character (! @ # $ % ^ &amp; *)</string>
                     </view>
                     <connections>
                         <outlet property="confirmNewPasswordTextField" destination="0LF-S1-XNc" id="zQH-gV-z36"/>
+                        <outlet property="confirmTextFieldY" destination="dby-dJ-9xv" id="wH5-sk-rEk"/>
                         <outlet property="currentPasswordTextField" destination="6Zo-SE-Y29" id="y4C-VD-Zih"/>
                         <outlet property="newPasswordTextField" destination="Kaq-m7-hj1" id="43f-1O-zBl"/>
+                        <outlet property="passwordToolTipImage" destination="ZAT-GU-LDG" id="elz-M0-Q4B"/>
                         <outlet property="passwordValidator" destination="tfr-CX-0he" id="Ido-uo-KuC"/>
                     </connections>
                 </viewController>
@@ -1512,7 +1529,7 @@ contain at least one special character (! @ # $ % ^ &amp; *)</string>
                                                     </constraints>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SJ1-m0-8BB" userLabel="CommentView">
-                                                    <rect key="frame" x="0.0" y="210.5" width="375" height="66"/>
+                                                    <rect key="frame" x="0.0" y="210.5" width="375" height="64"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="32 Likes" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uXU-Ul-3Sq" userLabel="LikeLabel">
                                                             <rect key="frame" x="17.5" y="13" width="106" height="17"/>
@@ -1540,18 +1557,18 @@ contain at least one special character (! @ # $ % ^ &amp; *)</string>
                                                             </constraints>
                                                         </view>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qur-1W-bIU" userLabel="LikeButton">
-                                                            <rect key="frame" x="21" y="42" width="99" height="24"/>
+                                                            <rect key="frame" x="21" y="42" width="99" height="22"/>
                                                             <state key="normal" image="Icon_Like_Unselected"/>
                                                             <connections>
                                                                 <action selector="LikeActionPressed:" destination="nD1-Go-qQc" eventType="touchUpInside" id="7Vj-d8-yEb"/>
                                                             </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KDr-Jt-vl7" userLabel="ShareButton">
-                                                            <rect key="frame" x="135" y="40" width="100" height="26"/>
+                                                            <rect key="frame" x="135" y="40" width="100" height="24"/>
                                                             <state key="normal" image="Icon_presentation_share"/>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9XO-8h-d5p" userLabel="FavouriteButton">
-                                                            <rect key="frame" x="255" y="42" width="99" height="24"/>
+                                                            <rect key="frame" x="255" y="42" width="99" height="22"/>
                                                             <state key="normal" image="Icon_favourite"/>
                                                             <connections>
                                                                 <action selector="FavouriteActionPressed:" destination="nD1-Go-qQc" eventType="touchUpInside" id="iXD-qL-FV3"/>
@@ -1787,8 +1804,9 @@ contain at least one special character (! @ # $ % ^ &amp; *)</string>
         <image name="Icon_views" width="20" height="13"/>
         <image name="PasswordInfoImage" width="18" height="18"/>
         <image name="PortPolioIcon" width="158" height="140"/>
-        <image name="PresentationLogo" width="158" height="140"/>
+        <image name="PresentationLogo" width="237" height="210"/>
         <image name="PresentationMenuIcon" width="5" height="22"/>
+        <image name="PublishLogo" width="158" height="140"/>
         <image name="QuizIcon" width="158" height="140"/>
         <image name="SocialNetWorkLogo" width="158" height="140"/>
         <image name="account_TabBar_Icon" width="24" height="24"/>

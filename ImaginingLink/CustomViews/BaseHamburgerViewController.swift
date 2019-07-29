@@ -29,8 +29,15 @@ class BaseHamburgerViewController: UIViewController {
         if (showBackButton == true) {
              backButton.setImage(UIImage(named: "BackButtonIcon"), for: UIControlState.normal)
             backButton.titleEdgeInsets = UIEdgeInsetsMake(0.0, 10.0, 0.0, 0.0)
-        } 
-        backButton.setTitle(backbuttonTitle, for: UIControlState.normal)
+        }
+        let attributes = [NSAttributedString.Key.font: UIFont(name: "SFProDisplay-Regular", size: 12.0)!, NSAttributedString.Key.foregroundColor: UIColor(red: 116.0/255.0, green: 116.0/255.0, blue: 116.0/255.0, alpha: 1)]
+        let attributesForBold = [NSAttributedString.Key.font: UIFont(name: "SFProDisplay-Semibold", size: 18.0)!, NSAttributedString.Key.foregroundColor: UIColor(red: 74.0/255.0, green: 74.0/255.0, blue: 74.0/255.0, alpha: 1)]
+        let userName = UserDefaults.standard.value(forKey: kUserName) as! String
+        let range = NSRange(location: 0, length: userName.count)
+        let str1 = NSMutableAttributedString(string: backbuttonTitle, attributes: attributes)
+        str1.addAttributes(attributesForBold, range: range)
+        backButton.setAttributedTitle(str1, for: .normal)
+        //backButton.setTitle(backbuttonTitle, for: UIControlState.normal)
 //        backButton.setTitle("\(UserDefaults.standard.value(forKey: kUserName) as! String)\n\(UserDefaults.standard.value(forKey: kUserType) as! String)", for: .normal)
         backButton.titleLabel?.adjustsFontSizeToFitWidth = true
         backButton.titleLabel?.lineBreakMode = .byWordWrapping

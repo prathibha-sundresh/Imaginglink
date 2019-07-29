@@ -66,6 +66,7 @@ class EmailchangeOTPViewcontroller : UIViewController {
     @IBOutlet weak var VerificationLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
+        supportTextView.isHidden = true
         TokenTextField.setUpLabel(WithText: "Token")
         supportTextView.isSelectable = true
         supportTextView.isEditable = false

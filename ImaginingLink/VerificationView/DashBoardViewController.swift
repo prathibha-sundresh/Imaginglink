@@ -44,7 +44,9 @@ class DashBoardViewController:  BaseHamburgerViewController {
     @IBAction func SocialNetworkIconPressed(_ sender: Any) {
     }
     
-
+    @IBAction func publishIconPressed(_ sender: Any) {
+        
+    }
     
     
     override func viewDidLoad() {
