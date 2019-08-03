@@ -10,22 +10,35 @@ import UIKit
 
 class ForgotPasswordViewController: UIViewController , UITextFieldDelegate {
     @IBOutlet weak var forgotPasswordTextField: FloatingLabel!
+    @IBOutlet weak var backButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         forgotPasswordTextField.setUpLabel(WithText: "E-mail address")
         forgotPasswordTextField.delegate = self
+        
+        setAttributedString()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
     }
+    fileprivate func setAttributedString() {
+        let attributedString = NSMutableAttributedString(string: "Back to Login")
+        let s = NSString(string: "Back to Login")
+        let range = s.range(of: "Login")
+        attributedString.addAttributes([.font: UIFont(name: "SFProDisplay-Semibold", size: 14.0)!, .foregroundColor: UIColor(red: 33.0 / 255.0, green: 150.0 / 255.0, blue: 243.0 / 255.0, alpha: 1.0)], range: range)
+        backButton.setAttributedTitle(attributedString, for: .normal)
+    }
+    @IBAction func backButtonAction(_ sender: Any){
+        self.navigationController?.popViewController(animated: true)
+    }
     @IBAction func ForgotPasswordSubmitPresses(_ sender: Any) {
         if (forgotPasswordTextField.text?.count == 0) {
-            self.showToast(message: "Please Enter E-mail address")
+            self.showToast(message: "Please Enter E-mail address",true)
         }
-        ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: "Resetting...")
-        if (forgotPasswordTextField.text?.count != 0 && ILUtility.isValidEmail(testStr: forgotPasswordTextField.text!)){
+        else if (forgotPasswordTextField.text?.count != 0 && ILUtility.isValidEmail(testStr: forgotPasswordTextField.text!)){
+            ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: "Resetting...")
             CoreAPI.sharedManaged.requesrForgotPassword(emailId: forgotPasswordTextField.text!, successResponse: {(response) in
                 let dictResponse = response as! [String:Any]
                 let status = dictResponse["status"] as! String
@@ -37,11 +50,14 @@ class ForgotPasswordViewController: UIViewController , UITextFieldDelegate {
                     vc.emailId = self.forgotPasswordTextField.text!
                     self.navigationController?.pushViewController(vc, animated: true)
                 } else if status == "Failure" {
-                    self.showToast(message: "User not found")
+                    self.showToast(message: "User not found",true)
                 }
             }, faliure: {(error) in
-                self.showToast(message: error)
+                self.showToast(message: error,true)
             })
+        }
+        else{
+            self.showToast(message: "Please enter Valid Email Address",true)
         }
     }
     

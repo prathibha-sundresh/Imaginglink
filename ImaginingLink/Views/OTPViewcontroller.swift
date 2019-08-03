@@ -38,19 +38,16 @@ class OTPViewcontroller : UIViewController, TapOnLabelDelegate{
                 })
             } else if screenId == kResetPasswordOTP {
                  ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: "Resetting password...")
-                CoreAPI.sharedManaged.requestOTPForResetPassword(Email: UserDefaults.standard.value(forKey: kAuthenticatedEmailId) as! String, OTP: OTPTextField!.text!, successResponse: {(response) in
+                CoreAPI.sharedManaged.requestOTPForResetPassword(Email: UserDefaults.standard.value(forKey: kAuthenticatedEmailId) as! String, OTP: OTPTextField!.text!, successResponse: {[unowned self](response) in
                     let dictResponse = response as! [String:Any]
                     let status = dictResponse["status"] as! String
                     if status == "success" {
-                        ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: "Successfully Resetted the password ...")
-                        UserDefaults.standard.set(self.OTPTextField.text, forKey: OTP_Value)
-                        let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                        let vc = storyboard.instantiateViewController(withIdentifier: "ResetPasswordViewContoller") as! ResetPasswordViewContoller
-                        vc.otpValue = self.OTPTextField.text!
-                        self.navigationController?.pushViewController(vc, animated: true)
+                        ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: "Successfully Resetted the password.")
+                        self.perform(#selector(self.moveToResetPasswordAfterDelay), with: nil, afterDelay: 1.0)
                     }
                 }, faliure: {(error) in
-                    ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: error)
+                    //ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: error)
+                    self.showToast(message: error, true,90)
                 })
             }
             
@@ -79,7 +76,13 @@ class OTPViewcontroller : UIViewController, TapOnLabelDelegate{
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
     }
-    
+    @objc func moveToResetPasswordAfterDelay(){
+        UserDefaults.standard.set(self.OTPTextField.text, forKey: OTP_Value)
+        let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "ResetPasswordViewContoller") as! ResetPasswordViewContoller
+        vc.otpValue = self.OTPTextField.text!
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
     func tapForSignIn() {
         let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "SignInViewController") as! SignInViewController
@@ -107,9 +110,9 @@ class OTPViewcontroller : UIViewController, TapOnLabelDelegate{
         if screenId == kResetPasswordOTP{
             ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: "Resending...")
             CoreAPI.sharedManaged.requesrForgotPassword(emailId: EmailId, successResponse: { (response) in
-               self.showToast(message: "successfully sent")
+               self.showToast(message: "successfully sent",false,90)
             }) { (error) in
-                self.showToast(message: error)
+                self.showToast(message: error,true,90)
             }
         }
         else{

@@ -22,8 +22,18 @@ class ResetPasswordWithMenuViewController: BaseHamburgerViewController,UITextFie
         if currentPasswordTextField.text?.count == 0{
             ILUtility.showAlert(message: "please enter current password", controller: self)
         }
+        else if newPasswordTextField.text?.count == 0{
+            ILUtility.showAlert(message: "please enter new password", controller: self)
+        }
+        else if confirmNewPasswordTextField.text?.count == 0{
+            ILUtility.showAlert(message: "please enter confirm password", controller: self)
+        }
+        else if newPasswordTextField.text! != confirmNewPasswordTextField.text!{
+            ILUtility.showAlert(message: "New password and confirm password should be same", controller: self)
+        }
         else if (newPasswordTextField.text?.count == 0 || !ILUtility.isValidPassword(newPasswordTextField.text!)){
             passwordValidator.textColor = UIColor.red
+            showHiddedToolTipMessageAndImage(isBool: false)
         }
         else if confirmNewPasswordTextField.text == newPasswordTextField.text {
             ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: "Changing..")
@@ -41,8 +51,6 @@ class ResetPasswordWithMenuViewController: BaseHamburgerViewController,UITextFie
             }, faliure: {(error) in
                 ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: error)
             })
-        } else {
-            ILUtility.showAlert(message: "New password and confirm password should be same", controller: self)
         }
     }
     @IBOutlet weak var confirmNewPasswordTextField: FloatingLabel!
@@ -63,24 +71,18 @@ class ResetPasswordWithMenuViewController: BaseHamburgerViewController,UITextFie
         if textField == newPasswordTextField{
             if !ILUtility.isValidPassword(newPasswordTextField.text!){
                 passwordValidator.textColor = UIColor.red
+                showHiddedToolTipMessageAndImage(isBool: false)
             }
             else{
                 passwordValidator.textColor = UIColor.black
+                showHiddedToolTipMessageAndImage(isBool: true)
             }
         }
-    }
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        if textField == newPasswordTextField || textField == confirmNewPasswordTextField{
-            showHiddedToolTipMessageAndImage(isBool: false)
-        }
-    }
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        showHiddedToolTipMessageAndImage(isBool: true)
     }
     func showHiddedToolTipMessageAndImage(isBool: Bool){
         passwordValidator.isHidden = isBool
         passwordToolTipImage.isHidden = isBool
-        confirmTextFieldY.constant = isBool ? 0: 20
+        confirmTextFieldY.constant = isBool ? -15 : 20
     }
 }
 

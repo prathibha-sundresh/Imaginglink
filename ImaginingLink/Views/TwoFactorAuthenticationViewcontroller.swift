@@ -22,7 +22,7 @@ class TwoFactorAuthenticationViewcontroller: UIViewController {
         CoreAPI.sharedManaged.DisableTwoFactorAuthentication(successResponse: {(response) in
             let storyboard: UIStoryboard = UIStoryboard(name: "DashBoard", bundle: nil)
             let vc = storyboard.instantiateViewController(withIdentifier: "ILTabViewController") as! ILTabViewController
-            vc.selectedIndex = 2
+            vc.selectedIndex = 1
             self.navigationController?.present(vc, animated: true, completion: nil)
         }, faliure: {(error) in
             ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: error)

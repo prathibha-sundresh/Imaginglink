@@ -103,7 +103,7 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
                         if (!isEnableTwoFactorAuthentication) {
                             let storyboard: UIStoryboard = UIStoryboard(name: "DashBoard", bundle: nil)
                            let vc = storyboard.instantiateViewController(withIdentifier: "ILTabViewController") as! ILTabViewController
-                            vc.selectedIndex = 2
+                            vc.selectedIndex = 1
                             self.navigationController?.present(vc, animated: true, completion: nil)
                         } else {
                             ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: "Sending..")

@@ -51,7 +51,7 @@ class ILTabViewController: UITabBarController {
     }
     
     @objc private func menuButtonAction(sender: UIButton) {
-        selectedIndex = 2
+        selectedIndex = 1
     }
 
     

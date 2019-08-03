@@ -60,23 +60,23 @@ class EmailScreenViewcontroller: UIViewController, TapOnLabelDelegate, UITextFie
                             vc.screenId = kEmailOTP
                             self.navigationController?.pushViewController(vc, animated: true)
                         } else {
-                      self.showToast(message: dictResponse["message"] as! String)
+                      self.showToast(message: dictResponse["message"] as! String,true,90)
 //                            ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: dictResponse["message"] as! String)
                 }
                 }, faliure: {(error) in
                     
                     if (error == "Email already Registered" || error == "The email has already been taken.") {
-                        self.showToast(message: "Email already Registered")
+                        self.showToast(message: "Email already Registered",true,90)
 //                        self.EmailTextField.errorMessage = "Email already Registered"
                     } else {
-                        self.showToast(message: error)
+                        self.showToast(message: error,true,90)
                     }
             })
             } else {
                     EmailTextField.errorMessage = "Please Enter valid Email Id"
             }
         } else {
-             EmailTextField.errorMessage = "Please Enter valid Email Id"
+             EmailTextField.errorMessage = "Please Enter Email Id"
         }
         
     }

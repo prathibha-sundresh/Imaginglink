@@ -15,7 +15,8 @@ class SignUpViewcontroller: UIViewController,  UITextFieldDelegate, UserTypeDele
         userTypeId = dic["id"] as! String
     }
     
-    
+    @IBOutlet weak var passwordToolTipImage: UIImageView!
+    @IBOutlet weak var confirmTextFieldY: NSLayoutConstraint!
     @IBOutlet weak var acceptTextView: UITextView!
     @IBAction func UserTypeClickButton(_ sender: Any) {
         let storyboard = UIStoryboard(name: "ListView", bundle: nil)
@@ -69,26 +70,26 @@ class SignUpViewcontroller: UIViewController,  UITextFieldDelegate, UserTypeDele
         EmailTextField?.text = emailId
         setUpTermsAndCondition()
         PasswordTextField.setRightPaddingPoints(30)
-        
+        showHiddedToolTipMessageAndImage(isBool: true)
     }
     
     func setUpTextFields() {
         
-        firstnameTextField.setUpLabel(WithText: "FirstName *")
+        firstnameTextField.setUpLabel(WithText: "First name *")
         firstnameTextField.delegate = self
         
-        LastNameTextfield.setUpLabel(WithText: "LastName *")
+        LastNameTextfield.setUpLabel(WithText: "Last name *")
         LastNameTextfield.delegate = self
         
-        ConfirmPasswordTextfield.setUpLabel(WithText: "ConfirmPassword *")
+        ConfirmPasswordTextfield.setUpLabel(WithText: "Confirm password *")
         ConfirmPasswordTextfield.delegate = self
         
-        PasswordTextField.setUpLabel(WithText: "Password *")
+        PasswordTextField.setUpLabel(WithText: "Create password *")
         PasswordTextField.delegate = self
         
         EmailTextField.setUpLabel(WithText: "Email *")
         EmailTextField.delegate = self
-        EmailTextField.text = "psundresh@mailinator.com"
+        //EmailTextField.text = "psundresh@mailinator.com"
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -98,9 +99,11 @@ class SignUpViewcontroller: UIViewController,  UITextFieldDelegate, UserTypeDele
         if textField == PasswordTextField{
             if !ILUtility.isValidPassword(PasswordTextField.text!){
                 passwordValidator.textColor = UIColor.red
+                showHiddedToolTipMessageAndImage(isBool: false)
             }
             else{
                 passwordValidator.textColor = UIColor.black
+                showHiddedToolTipMessageAndImage(isBool: true)
             }
         }
     }
@@ -118,7 +121,11 @@ class SignUpViewcontroller: UIViewController,  UITextFieldDelegate, UserTypeDele
         self.acceptTextView.attributedText = attributedString
         
     }
-    
+    func showHiddedToolTipMessageAndImage(isBool: Bool){
+        passwordValidator.isHidden = isBool
+        passwordToolTipImage.isHidden = isBool
+        confirmTextFieldY.constant = isBool ? 0: 15
+    }
 //    @objc func tapOnLabel(tap : UITapGestureRecognizer) {
 //         let foundRange = NSRange(location: "I accept the ".count, length: "Terms and conditions".count)
 //         let legaltermsrange = NSRange(location: "I accept the Terms and conditions & ".count, length: "Privacy policy".count)
@@ -161,7 +168,7 @@ class SignUpViewcontroller: UIViewController,  UITextFieldDelegate, UserTypeDele
         else if (PasswordTextField.text?.count == 0 || !ILUtility.isValidPassword(PasswordTextField.text!)){
             passwordValidator.textColor = UIColor.red
         }else if PasswordTextField.text != ConfirmPasswordTextfield.text{
-            ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: "Password mismatch")
+            ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: "New password and confirm password should be same")
         }
         else if UserTypeTextField.text?.count == 0 {
             ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: "please select usertype")

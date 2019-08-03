@@ -36,7 +36,7 @@ class AlreadyHaveOTPViewController: UIViewController, TapOnLabelDelegate, UIText
                     self.navigationController?.pushViewController(vc, animated: true)
                 }
             }, faliure: {(error) in
-                self.showToast(message: error)
+                self.showToast(message: error,true,90)
 //                self.OTPTextField.errorMessage = error
             })
         }
@@ -89,7 +89,7 @@ class AlreadyHaveOTPViewController: UIViewController, TapOnLabelDelegate, UIText
             
         }, faliure: {(error) in
             if (error == "Email already Registered") {
-                self.showToast(message: error)
+                self.showToast(message: error,true,90)
 //                self.OTPTextField.errorMessage = error
             }
         })

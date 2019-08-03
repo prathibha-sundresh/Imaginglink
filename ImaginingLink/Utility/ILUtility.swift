@@ -217,11 +217,18 @@ extension UIApplication {
 
 extension UIViewController {
     
-    func showToast(message : String) {
+    func showToast(message : String, _ error: Bool = false ,_ value: CGFloat = 50) {
         
-        let toastLabel = UILabel(frame: CGRect(x: 0, y: self.view.frame.size.height-50, width: self.view.frame.width, height: 50))
-        toastLabel.backgroundColor = UIColor.red
-        toastLabel.textColor = UIColor.black
+        let toastLabel = UILabel(frame: CGRect(x: 0, y: self.view.frame.size.height - value, width: self.view.frame.width, height: 50))
+        if error{
+            toastLabel.backgroundColor = UIColor.red
+            toastLabel.textColor = UIColor.white
+        }
+        else{
+            toastLabel.backgroundColor = UIColor.green
+            toastLabel.textColor = UIColor.black
+        }
+        
         toastLabel.textAlignment = .center;
         toastLabel.font = UIFont(name: "Montserrat-Light", size: 12.0)
         toastLabel.text = message
