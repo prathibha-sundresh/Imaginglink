@@ -150,7 +150,7 @@ class BaseHamburgerViewController: UIViewController {
     func openViewControllerBasedOnIdentifier(_ strIdentifier:String){
         let storyboard = UIStoryboard(name: "DashBoard", bundle: nil)
         let destViewController : UIViewController? = storyboard.instantiateViewController(withIdentifier: strIdentifier)
-        destViewController?.hidesBottomBarWhenPushed = true
+        //destViewController?.hidesBottomBarWhenPushed = true
             self.navigationController!.pushViewController(destViewController!, animated: true)
     }
     

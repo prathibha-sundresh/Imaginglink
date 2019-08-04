@@ -161,19 +161,19 @@ class SignUpViewcontroller: UIViewController,  UITextFieldDelegate, UserTypeDele
     
     func submit() -> Void {
         if firstnameTextField.text?.count == 0 {
-            ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: "please enter FirstName")
+            ILUtility.showAlert(message: "please enter First name", controller: self)
         } else if LastNameTextfield.text?.count == 0 {
-            ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: "please enter LastName")
+            ILUtility.showAlert(message: "please enter Last name", controller: self)
         }
         else if (PasswordTextField.text?.count == 0 || !ILUtility.isValidPassword(PasswordTextField.text!)){
             passwordValidator.textColor = UIColor.red
         }else if PasswordTextField.text != ConfirmPasswordTextfield.text{
-            ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: "New password and confirm password should be same")
+            ILUtility.showAlert(message: "New password and confirm password should be same", controller: self)
         }
         else if UserTypeTextField.text?.count == 0 {
-            ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: "please select usertype")
+            ILUtility.showAlert(message: "please select User Type", controller: self)
         } else if !CheckoutBoxClicked.isSelected {
-            ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: "please click terms and condition")
+            ILUtility.showAlert(message: "Please accept Terms and conditions and Privacy Policy", controller: self)
         } 
         else if ConfirmPasswordTextfield.text == PasswordTextField.text && EmailTextField.text?.count != 0 && UserTypeTextField.text?.count != 0 && firstnameTextField.text?.count != 0 && LastNameTextfield.text?.count != 0 && CheckoutBoxClicked.isSelected {
             passwordValidator.textColor = UIColor.black

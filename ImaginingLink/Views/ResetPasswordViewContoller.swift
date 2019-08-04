@@ -15,7 +15,7 @@ enum MessageBanner {
 }
 
 class ResetPasswordViewContoller: UIViewController, TapOnLabelDelegate {
-    func tapForSignIn() {
+    @objc func tapForSignIn() {
         let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "SignInViewController") as! SignInViewController
         self.navigationController?.pushViewController(vc, animated: true)
@@ -58,7 +58,7 @@ class ResetPasswordViewContoller: UIViewController, TapOnLabelDelegate {
                 let dictValue = response as! [String:Any]
                 if dictValue["status"] as! String == "success" {
                     ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: dictValue["message"] as! String)
-                    self.perform(#selector(self.moveToSignInAfterDelay), with: nil, afterDelay: 1.0)
+                    self.perform(#selector(self.tapForSignIn), with: nil, afterDelay: 1.0)
                 }
             }, faliure: {(error) in
                 self.showToast(message: error,true,90)
@@ -71,6 +71,7 @@ class ResetPasswordViewContoller: UIViewController, TapOnLabelDelegate {
         }
     }
     @objc func moveToSignInAfterDelay(){
+        self.tapForSignIn()
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "SignInViewController") as!
         SignInViewController

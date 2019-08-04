@@ -61,21 +61,12 @@ class EmailchangeOTPViewcontroller : UIViewController {
        
         
     }
-    @IBOutlet weak var supportTextView: UITextView!
     @IBOutlet weak var TokenTextField: FloatingLabel!
     @IBOutlet weak var VerificationLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
-        supportTextView.isHidden = true
         TokenTextField.setUpLabel(WithText: "Token")
-        supportTextView.isSelectable = true
-        supportTextView.isEditable = false
         VerificationLabel.text! = kOldEmailVerificationText
-        let attributedText = NSMutableAttributedString(string: kSupportText)
-      
-        let range : NSRange = NSRange(location: kSupportLocationText.count, length: kSupportLinkText.count)
-        attributedText.addAttributes([NSAttributedStringKey.link : URL(string: "mailto:\(kSupportLinkText)")!, NSAttributedStringKey.foregroundColor : UIColor(red: 33, green: 150, blue: 243, alpha: 1) ,NSAttributedStringKey.font : UIFont(name: "SFProDisplay-Regular", size: 14.0)!], range: range)
-        supportTextView.attributedText! = attributedText
         
         let newEmail = kNewEmailChange.replacingOccurrences(of: knewEmail, with: oldEmailId!)
         let VerificationAttributedText = NSMutableAttributedString(string: newEmail)

@@ -29,7 +29,7 @@ class EmailScreenViewcontroller: UIViewController, TapOnLabelDelegate, UITextFie
     override func viewDidLoad() {
         super.viewDidLoad()
         RequestInviteLabel.tapDelegate = self
-        EmailTextField.setUpLabel(WithText: "E-mail address")
+        EmailTextField.setUpLabel(WithText: "Enter your E-mail address")
         EmailTextField.delegate = self
 //    This e-mail id is already registered
     }
@@ -92,6 +92,7 @@ class EmailScreenViewcontroller: UIViewController, TapOnLabelDelegate, UITextFie
             else
             {
                 floatingLabelTextField.errorMessage = "Please enter Valid Email Address"
+                floatingLabelTextField.errorColor = .red
                 return true
             }
         }

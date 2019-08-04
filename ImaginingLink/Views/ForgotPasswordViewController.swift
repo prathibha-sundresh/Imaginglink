@@ -34,6 +34,7 @@ class ForgotPasswordViewController: UIViewController , UITextFieldDelegate {
         self.navigationController?.popViewController(animated: true)
     }
     @IBAction func ForgotPasswordSubmitPresses(_ sender: Any) {
+        forgotPasswordTextField.resignFirstResponder()
         if (forgotPasswordTextField.text?.count == 0) {
             self.showToast(message: "Please Enter E-mail address",true)
         }

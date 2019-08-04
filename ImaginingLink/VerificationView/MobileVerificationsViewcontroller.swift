@@ -84,6 +84,7 @@ class MobileVerificationsViewcontroller: UIViewController, UserTypeDelegate, UIT
         
         countryCodeTF.setUpLabel(WithText: "select country code")
         countryCodeTF.delegate = self
+        addRightView()
     }
     
     func parseDataToFetchPhoneNumber(data: [[String:Any]]) {
@@ -92,5 +93,13 @@ class MobileVerificationsViewcontroller: UIViewController, UserTypeDelegate, UIT
             CountryCodeForPhoneNumber.append(value["m_code"] as! String)
             countryName.append(value["name"] as! String)
         }
+    }
+    func addRightView(){
+        let button = UIButton(type: .custom)
+        button.setImage(UIImage(named: "BlackColorDropDownImage"), for: .normal)
+        button.frame = CGRect(x: CGFloat(countryCodeTF.frame.size.width - 25), y: 0, width: 40, height: 40)
+        //button.addTarget(self, action: #selector(self.GetListOfCountried(_:)), for: .touchUpInside)
+        countryCodeTF.rightView = button
+        countryCodeTF.rightViewMode = .always
     }
 }
