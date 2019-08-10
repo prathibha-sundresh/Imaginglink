@@ -13,12 +13,6 @@ import Alamofire
     
     private static var manager: Alamofire.SessionManager = {
         
-//        // Create the server trust policies
-//        let serverTrustPolicies: [String: ServerTrustPolicy] = [
-//            "https://stage-api.ufs.com": .disableEvaluation,"https://52.19.87.124:9002": .disableEvaluation,
-//            "https://52.31.80.240:51002":.disableEvaluation
-//        ]
-        
         // Create custom manager
         let configuration = URLSessionConfiguration.default
         configuration.httpAdditionalHeaders = Alamofire.SessionManager.defaultHTTPHeaders
@@ -69,14 +63,17 @@ import Alamofire
                             if let value = (error["errors"]) as? [String:Any] {
                                 if let emaiValue : [String] = value["email"] as? [String] {
                                     faliure(emaiValue.first!)
+                                    return
                                 }
                                 
                                 if let emaiValue : [String] = value["mobile"] as? [String] {
                                     faliure(emaiValue.first!)
+                                    return
                                 }
                                 
                                 if let emaiValue : [String] = value["new_password"] as? [String] {
                                     faliure(emaiValue.first!)
+                                    return
                                 }                                
                             }
                             if let value = (error["message"]) {
@@ -88,9 +85,11 @@ import Alamofire
                                 let error = (response.result.value!) as! [String : Any]
                                 if let value = (error["error"]) {
                                     faliure(value as! String)
+                                    return
                                 }
                                 if let value = (error["message"]) {
                                     faliure(value as! String)
+                                    return
                                 }
                             } else {
                                 faliure("Unknow Error Found")

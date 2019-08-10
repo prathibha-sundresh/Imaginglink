@@ -19,14 +19,15 @@ class SignInLabel: UILabel {
         
         
         let attributedString = NSMutableAttributedString(string: "Already A Member  LOGIN", attributes: [
-            .font: UIFont.systemFont(ofSize: 14.0),
+            .font: UIFont(name: "SFProDisplay-Light", size: 14)!,
             .foregroundColor: UIColor(white: 0.0, alpha: 1.0),
             .kern: 0.5
             ])
+        let str = NSString(string: "Already A Member  LOGIN")
         attributedString.addAttributes([
-            .font: UIFont.systemFont(ofSize: 14.0),
+            .font: UIFont(name: "SFProDisplay-Semibold", size: 14)!,
             .foregroundColor: UIColor(red: 33.0 / 255.0, green: 150.0 / 255.0, blue: 243.0 / 255.0, alpha: 1.0)
-            ], range: NSRange(location: 18, length: 5))
+            ], range: str.range(of: "LOGIN"))
         self.attributedText = attributedString
         self.isUserInteractionEnabled = true
         
@@ -38,11 +39,17 @@ class SignInLabel: UILabel {
         tapDelegate?.tapForSignIn()
     }
     
-    
-       
-    
-   
-    
-    
-    
+    func changeTextForSignInLabel() -> NSAttributedString{
+        let attributedString = NSMutableAttributedString(string: "Back to  Login", attributes: [
+            .font: UIFont(name: "SFProDisplay-Light", size: 14)!,
+            .foregroundColor: UIColor(white: 0.0, alpha: 1.0),
+            .kern: 0.5
+            ])
+        let str = NSString(string: "Back to  Login")
+        attributedString.addAttributes([
+            .font: UIFont(name: "SFProDisplay-Semibold", size: 14)!,
+            .foregroundColor: UIColor(red: 33.0 / 255.0, green: 150.0 / 255.0, blue: 243.0 / 255.0, alpha: 1.0)
+            ], range: str.range(of: "Login"))
+        return attributedString
+    }
 }

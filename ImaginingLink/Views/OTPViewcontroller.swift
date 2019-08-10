@@ -25,7 +25,7 @@ class OTPViewcontroller : UIViewController, TapOnLabelDelegate{
                     let dictResponse = response as! [String:Any]
                     let status = dictResponse["status"] as! String
                     if status == "success" {
-                        ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: "successfully Verified")
+                        ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: "Successfully verified")
                         UserDefaults.standard.set(self.OTPTextField.text, forKey: OTP_Value)
                         let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                         let vc = storyboard.instantiateViewController(withIdentifier: "EmailSuccessViewController") as! EmailSuccessViewController
@@ -42,7 +42,9 @@ class OTPViewcontroller : UIViewController, TapOnLabelDelegate{
                     let dictResponse = response as! [String:Any]
                     let status = dictResponse["status"] as! String
                     if status == "success" {
-                        ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: "Successfully Resetted the password.")
+                        
+                        ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: "Code verified successfully.")
+                        //ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: "Successfully Resetted the password.")
                         self.perform(#selector(self.moveToResetPasswordAfterDelay), with: nil, afterDelay: 1.0)
                     }
                 }, faliure: {(error) in
@@ -57,8 +59,10 @@ class OTPViewcontroller : UIViewController, TapOnLabelDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         SignInLabel.tapDelegate = self
-        OTPTextField.setUpLabel(WithText: "Enter Otp")
+        OTPTextField.setUpLabel(WithText: "Enter CODE")
+        SignInLabel.attributedText = SignInLabel.changeTextForSignInLabel()
 //        OTPTextField.text = EmailId
 //        if screenId == kResetPasswordOTP {
             resendLabelAttribute()
@@ -110,16 +114,14 @@ class OTPViewcontroller : UIViewController, TapOnLabelDelegate{
         if screenId == kResetPasswordOTP{
             ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: "Resending...")
             CoreAPI.sharedManaged.requesrForgotPassword(emailId: EmailId, successResponse: { (response) in
-               self.showToast(message: "successfully sent",false,90)
+               self.showToast(message: "CODE send to your mail",false,90)
             }) { (error) in
                 self.showToast(message: error,true,90)
             }
         }
         else{
             CoreAPI.sharedManaged.RegisterEmail(Email: EmailId, successResponse: {(response) in
-                let dictResponse = response as! [String:Any]
-                ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: dictResponse["message"] as! String)
-                
+                self.showToast(message: "CODE send to your mail",false,90)
             }, faliure: {(error) in
                 
                 if (error == "Email already Registered") {

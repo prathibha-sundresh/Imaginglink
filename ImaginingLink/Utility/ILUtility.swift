@@ -222,13 +222,11 @@ extension UIViewController {
         let toastLabel = UILabel(frame: CGRect(x: 0, y: self.view.frame.size.height - value, width: self.view.frame.width, height: 50))
         if error{
             toastLabel.backgroundColor = UIColor.red
-            toastLabel.textColor = UIColor.white
         }
         else{
-            toastLabel.backgroundColor = UIColor.green
-            toastLabel.textColor = UIColor.black
+            toastLabel.backgroundColor = UIColor(red: 6.0/255.0, green: 170.0/255.0, blue: 99.0/255.0, alpha: 1)
         }
-        
+        toastLabel.textColor = UIColor.white
         toastLabel.textAlignment = .center;
         toastLabel.font = UIFont(name: "Montserrat-Light", size: 12.0)
         toastLabel.text = message

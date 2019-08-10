@@ -55,8 +55,13 @@ class MenuViewController: BaseHamburgerViewController, UITableViewDelegate, UITa
     
     var imagelist = ["InviteFriendsICon", "ChangePasswordIcon", "TwoFactorAuthenticationMenuIcon", "ChangeEmailIcon", "logoutIcon"]
     var textlist = ["INVITE FRIENDS", "CHANGE PASSWORD", "2 FACTOR AUTHENTICATION", "CHANGE EMAIL", "LOGOUT"]
+    @IBOutlet weak var mTableView: UITableView!
+    @IBOutlet weak var menuView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        mTableView.tableFooterView = UIView(frame: CGRect.zero)
+        addShadowView()
         self.delegate = self
         addSlideMenuButton(showBackButton: false, backbuttonTitle: "\(UserDefaults.standard.value(forKey: kUserName) as! String)\n\(UserDefaults.standard.value(forKey: kAuthenticatedEmailId) as! String)")
 //        self.navigationController?.setNavigationBarHidden(true, animated: false)
@@ -76,6 +81,14 @@ class MenuViewController: BaseHamburgerViewController, UITableViewDelegate, UITa
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
+    
+    func addShadowView() {
+        menuView.layer.shadowColor = UIColor(red:0.29, green:0.29, blue:0.29, alpha:1.0).cgColor
+        menuView.layer.shadowOpacity = 1
+        menuView.layer.shadowOffset = CGSize.zero
+        menuView.layer.shadowRadius = 10
+    }
+    
     @IBAction func CloseMenuPressed(_ button:UIButton!) {
         btnMenu.tag = 0
         

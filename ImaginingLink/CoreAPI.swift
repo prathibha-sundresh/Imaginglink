@@ -101,9 +101,8 @@ class CoreAPI {
     }
     
     func getCountryList(successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void) {
-    let request =  SSHttpRequest(withuUrl: kCountryListAPI)
+        let request =  SSHttpRequest(withuUrl: kCountryListAPI)
 
-        
         request.getMethod(dictParameter: [:], url: kCountryListAPI, successResponse: {(response) in
             successResponse(response)
         }, faliure: {(error) in

@@ -18,7 +18,7 @@ class TwoFactorAuthenticationViewcontroller: UIViewController {
     }
 
     @IBAction func EnableLaterSelected(_ sender: Any) {
-        ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: "Disabling..")
+        ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: "Skipped successfully.")
         CoreAPI.sharedManaged.DisableTwoFactorAuthentication(successResponse: {(response) in
             let storyboard: UIStoryboard = UIStoryboard(name: "DashBoard", bundle: nil)
             let vc = storyboard.instantiateViewController(withIdentifier: "ILTabViewController") as! ILTabViewController

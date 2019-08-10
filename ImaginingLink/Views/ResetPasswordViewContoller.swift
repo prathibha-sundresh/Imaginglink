@@ -36,6 +36,7 @@ class ResetPasswordViewContoller: UIViewController, TapOnLabelDelegate {
         ConfirmPasswordTF.setUpLabel(WithText: "Confirm new password")
         NewPasswordTextField.setRightPaddingPoints(30)
         showHiddedToolTipMessageAndImage(isBool: true)
+        signInLabel.attributedText = signInLabel.changeTextForSignInLabel()
     }
     
     override func viewWillAppear(_ animated: Bool) {

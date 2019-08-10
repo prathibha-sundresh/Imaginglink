@@ -52,7 +52,6 @@ class EmailScreenViewcontroller: UIViewController, TapOnLabelDelegate, UITextFie
             ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: "Requesting..")
             CoreAPI.sharedManaged.RegisterEmail(Email: EmailTextField.text!, successResponse: {(response) in
                 let dictResponse = response as! [String:Any]
-                ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: "")
                 if dictResponse["message"] != nil {
                             let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                             let vc = storyboard.instantiateViewController(withIdentifier: "OTPViewcontroller") as! OTPViewcontroller
@@ -61,13 +60,11 @@ class EmailScreenViewcontroller: UIViewController, TapOnLabelDelegate, UITextFie
                             self.navigationController?.pushViewController(vc, animated: true)
                         } else {
                       self.showToast(message: dictResponse["message"] as! String,true,90)
-//                            ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: dictResponse["message"] as! String)
                 }
                 }, faliure: {(error) in
                     
                     if (error == "Email already Registered" || error == "The email has already been taken.") {
                         self.showToast(message: "Email already Registered",true,90)
-//                        self.EmailTextField.errorMessage = "Email already Registered"
                     } else {
                         self.showToast(message: error,true,90)
                     }
@@ -78,7 +75,6 @@ class EmailScreenViewcontroller: UIViewController, TapOnLabelDelegate, UITextFie
         } else {
              EmailTextField.errorMessage = "Please Enter Email Id"
         }
-        
     }
     
     // This will notify us when something has changed on the textfield

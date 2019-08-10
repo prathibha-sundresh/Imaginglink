@@ -76,13 +76,18 @@ class MobileVerificationsViewcontroller: UIViewController, UserTypeDelegate, UIT
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
     func setUpTextField() {
-        mobileNumberTF.setUpLabel(WithText: "Mobile")
+        mobileNumberTF.setUpLabel(WithText: "Enter Mobile")
         mobileNumberTF.delegate = self
         
-        countryCodeTF.setUpLabel(WithText: "select country code")
+        countryCodeTF.setUpLabel(WithText: "Select country code")
         countryCodeTF.delegate = self
         addRightView()
     }
@@ -98,7 +103,6 @@ class MobileVerificationsViewcontroller: UIViewController, UserTypeDelegate, UIT
         let button = UIButton(type: .custom)
         button.setImage(UIImage(named: "BlackColorDropDownImage"), for: .normal)
         button.frame = CGRect(x: CGFloat(countryCodeTF.frame.size.width - 25), y: 0, width: 40, height: 40)
-        //button.addTarget(self, action: #selector(self.GetListOfCountried(_:)), for: .touchUpInside)
         countryCodeTF.rightView = button
         countryCodeTF.rightViewMode = .always
     }

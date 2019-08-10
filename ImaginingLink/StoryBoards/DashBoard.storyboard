@@ -483,7 +483,7 @@ Differentiating Benig…</string>
                                                             <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                                                             <subviews>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NUg-6x-g6z" userLabel="likeButton">
-                                                                    <rect key="frame" x="20" y="9" width="28" height="28"/>
+                                                                    <rect key="frame" x="20" y="9" width="28" height="22"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="28" id="IgJ-MF-kqw"/>
                                                                     </constraints>
@@ -1716,11 +1716,12 @@ contain at least one special character (! @ # $ % ^ &amp; *)</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rff-mh-eeu" userLabel="MenuView">
-                                <rect key="frame" x="100" y="20" width="275" height="547"/>
+                                <rect key="frame" x="100" y="20" width="275" height="632"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hxb-L2-H3H">
-                                        <rect key="frame" x="0.0" y="0.0" width="275" height="547"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="275" height="632"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MenuViewId" rowHeight="57" id="a63-Vg-d2N" customClass="MenuViewcontrollerTableCell" customModule="ImagingLink" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="28" width="275" height="57"/>
@@ -1730,25 +1731,25 @@ contain at least one special character (! @ # $ % ^ &amp; *)</string>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1mr-ly-186">
-                                                            <rect key="frame" x="0.0" y="-34" width="275" height="16.5"/>
+                                                            <rect key="frame" x="0.0" y="-42" width="275" height="16"/>
                                                             <subviews>
-                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jPK-IP-Dga">
-                                                                    <rect key="frame" x="25" y="20.5" width="16" height="16"/>
+                                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jPK-IP-Dga">
+                                                                    <rect key="frame" x="25" y="20" width="24" height="24.5"/>
                                                                     <constraints>
-                                                                        <constraint firstAttribute="width" constant="16" id="Idz-NP-SQ2"/>
-                                                                        <constraint firstAttribute="height" constant="16" id="bGV-Kr-dLX"/>
+                                                                        <constraint firstAttribute="width" constant="24" id="Idz-NP-SQ2"/>
+                                                                        <constraint firstAttribute="height" constant="24" id="bGV-Kr-dLX"/>
                                                                     </constraints>
                                                                 </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kOU-ii-Iwr" userLabel="MenuTextLabel">
-                                                                    <rect key="frame" x="55" y="0.0" width="200" height="16.5"/>
-                                                                    <fontDescription key="fontDescription" name="SFProDisplay-Light" family="SF Pro Display" pointSize="13"/>
+                                                                    <rect key="frame" x="64" y="0.0" width="191" height="16"/>
+                                                                    <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="13"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                             </subviews>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
-                                                                <constraint firstItem="kOU-ii-Iwr" firstAttribute="leading" secondItem="jPK-IP-Dga" secondAttribute="trailing" constant="14" id="3tl-vq-69s"/>
+                                                                <constraint firstItem="kOU-ii-Iwr" firstAttribute="leading" secondItem="jPK-IP-Dga" secondAttribute="trailing" constant="15" id="3tl-vq-69s"/>
                                                                 <constraint firstItem="jPK-IP-Dga" firstAttribute="leading" secondItem="1mr-ly-186" secondAttribute="leading" constant="25" id="3yo-Pr-ggj"/>
                                                                 <constraint firstAttribute="trailing" secondItem="kOU-ii-Iwr" secondAttribute="trailing" constant="20" id="4LB-BJ-73q"/>
                                                                 <constraint firstAttribute="bottom" secondItem="kOU-ii-Iwr" secondAttribute="bottom" id="5rM-8Y-2h1"/>
@@ -1779,11 +1780,11 @@ contain at least one special character (! @ # $ % ^ &amp; *)</string>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="hxb-L2-H3H" firstAttribute="leading" secondItem="Rff-mh-eeu" secondAttribute="leading" id="7E0-6b-rzQ"/>
-                                    <constraint firstAttribute="bottom" secondItem="hxb-L2-H3H" secondAttribute="bottom" id="K8u-ax-7eh"/>
-                                    <constraint firstAttribute="trailing" secondItem="hxb-L2-H3H" secondAttribute="trailing" id="Rxf-xU-U2M"/>
-                                    <constraint firstItem="hxb-L2-H3H" firstAttribute="top" secondItem="Rff-mh-eeu" secondAttribute="top" id="kxA-hu-jey"/>
+                                    <constraint firstAttribute="trailing" secondItem="hxb-L2-H3H" secondAttribute="trailing" id="AmH-oT-O1W"/>
+                                    <constraint firstItem="hxb-L2-H3H" firstAttribute="top" secondItem="Rff-mh-eeu" secondAttribute="top" id="VJ4-5P-0GN"/>
+                                    <constraint firstItem="hxb-L2-H3H" firstAttribute="leading" secondItem="Rff-mh-eeu" secondAttribute="leading" id="enO-d8-NOZ"/>
                                     <constraint firstAttribute="width" constant="275" id="olj-pf-6nb"/>
+                                    <constraint firstAttribute="bottom" secondItem="hxb-L2-H3H" secondAttribute="bottom" id="tau-km-CCo"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -1791,10 +1792,14 @@ contain at least one special character (! @ # $ % ^ &amp; *)</string>
                         <constraints>
                             <constraint firstItem="Rff-mh-eeu" firstAttribute="top" secondItem="3h3-G4-E4f" secondAttribute="top" id="HJX-iq-nFu"/>
                             <constraint firstItem="3h3-G4-E4f" firstAttribute="trailing" secondItem="Rff-mh-eeu" secondAttribute="trailing" id="qDD-5J-4tt"/>
-                            <constraint firstItem="3h3-G4-E4f" firstAttribute="bottom" secondItem="Rff-mh-eeu" secondAttribute="bottom" constant="100" id="rzE-Qo-d4Y"/>
+                            <constraint firstItem="3h3-G4-E4f" firstAttribute="bottom" secondItem="Rff-mh-eeu" secondAttribute="bottom" constant="15" id="rzE-Qo-d4Y"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="3h3-G4-E4f"/>
                     </view>
+                    <connections>
+                        <outlet property="mTableView" destination="hxb-L2-H3H" id="0fj-kN-ZRr"/>
+                        <outlet property="menuView" destination="Rff-mh-eeu" id="rup-Gu-oS6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tuS-7O-cMT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

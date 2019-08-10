@@ -50,7 +50,7 @@ class AlreadyHaveOTPViewController: UIViewController, TapOnLabelDelegate, UIText
         EmailTextField.text = EmailId
         EmailTextField.delegate = self
         
-        OTPTextField.setUpLabel(WithText: "Enter the CODE sent  to your E-mail")
+        OTPTextField.setUpLabel(WithText: "Enter the CODE sent to your E-mail")
         OTPTextField.delegate = self
         
         resendLabelAttribute()
@@ -84,13 +84,10 @@ class AlreadyHaveOTPViewController: UIViewController, TapOnLabelDelegate, UIText
     
     @objc func tapResend() {
         CoreAPI.sharedManaged.RegisterEmail(Email: EmailTextField.text!, successResponse: {(response) in
-            let dictResponse = response as! [String:Any]
-                ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: dictResponse["message"] as! String)
-            
+            self.showToast(message: "CODE send to your mail",false,90)
         }, faliure: {(error) in
             if (error == "Email already Registered") {
                 self.showToast(message: error,true,90)
-//                self.OTPTextField.errorMessage = error
             }
         })
     }
