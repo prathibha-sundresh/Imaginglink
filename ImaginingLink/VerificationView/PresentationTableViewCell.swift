@@ -24,7 +24,7 @@ class PresentationTableViewCell: UITableViewCell {
     @IBOutlet weak var URLImageView: UIImageView!
     @IBOutlet weak var UserImageView: UIImageView!
     @IBOutlet weak var UsernameLabel: UILabel!
-     @IBOutlet weak var ImaginingLabel: UILabel!
+    @IBOutlet weak var ImaginingLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var HeadingTitleLabel: UILabel!
     weak var myVC : UIViewController?
@@ -32,21 +32,32 @@ class PresentationTableViewCell: UITableViewCell {
         
         let actionsheet = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
         
-        actionsheet.addAction(UIAlertAction(title: "Follow and Unfollow", style: UIAlertActionStyle.default, handler: { (action) -> Void in
-            
+        let followPostAction = UIAlertAction(title: "Follow this post", style: .default, handler: { (action) -> Void in
             self.delegate?.followUnfollowWithPresentationId(id: self.presentationId!, successResponse: {(response) in
                 
             })
-        }))
+        })
+        let image = UIImage(named: "FollowPost_Icon")
+        followPostAction.setValue(image?.withRenderingMode(.alwaysOriginal), forKey: "image")
+        followPostAction.setValue(UIColor(red:0.29, green:0.29, blue:0.29, alpha:1.0), forKey: "titleTextColor")
+        actionsheet.addAction(followPostAction)
         
-        actionsheet.addAction(UIAlertAction(title: "Turn on and Turn off notification", style: UIAlertActionStyle.default, handler: { (action) -> Void in
-            self.delegate?.notifyOrCancelWithPresentationId(id: self.presentationId!, successResponse: {(response) in
-                
-            })
-        }))
-        actionsheet.addAction(UIAlertAction(title: "Give feedback on this post", style: UIAlertActionStyle.default, handler: { (action) -> Void in
+        let reportPostAction = UIAlertAction(title: "Report post", style: .default, handler: { (action) -> Void in
             
-        }))
+        })
+        let image1 = UIImage(named: "ReportPost_Icon")
+        reportPostAction.setValue(image1?.withRenderingMode(.alwaysOriginal), forKey: "image")
+        reportPostAction.setValue(UIColor(red:0.29, green:0.29, blue:0.29, alpha:1.0), forKey: "titleTextColor")
+        actionsheet.addAction(reportPostAction)
+        
+//        actionsheet.addAction(UIAlertAction(title: "Turn on and Turn off notification", style: UIAlertActionStyle.default, handler: { (action) -> Void in
+//            self.delegate?.notifyOrCancelWithPresentationId(id: self.presentationId!, successResponse: {(response) in
+//
+//            })
+//        }))
+//        actionsheet.addAction(UIAlertAction(title: "Give feedback on this post", style: UIAlertActionStyle.default, handler: { (action) -> Void in
+//
+//        }))
         actionsheet.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: { (action) -> Void in
             
         }))
@@ -77,13 +88,13 @@ class PresentationTableViewCell: UITableViewCell {
     
     func setupUI(dic:[String:Any]) {
        if let value = dic["id"] {
-        presentationId = value as! String
+        presentationId = value as? String ?? ""
         }
-        ImaginingLabel.textAlignment = .center
-        ImaginingLabel.layer.borderColor = UIColor.orange.cgColor
-        ImaginingLabel.layer.cornerRadius = 5
-        ImaginingLabel.frame.size.width = ImaginingLabel.intrinsicContentSize.width + 30
-        ImaginingLabel.frame.size.height = ImaginingLabel.intrinsicContentSize.height + 30
+        //ImaginingLabel.textAlignment = .center
+        ImaginingLabel.layer.borderColor = UIColor(red:0.98, green:0.58, blue:0.00, alpha:1.0).cgColor
+        ImaginingLabel.layer.cornerRadius = 10
+//        ImaginingLabel.frame.size.width = ImaginingLabel.intrinsicContentSize.width + 30
+//        ImaginingLabel.frame.size.height = ImaginingLabel.intrinsicContentSize.height + 30
         ImaginingLabel.layer.borderWidth = 1
         HeadingTitleLabel.sizeToFit()
         HeadingTitleLabel.textAlignment = .left
@@ -94,12 +105,12 @@ class PresentationTableViewCell: UITableViewCell {
         } else {
             FavouriteImage.setImage(UIImage(named: "Icon_favourite"), for: UIControlState.normal)
         }
-            ViewsLabel.text! = "\((dic["views_count"] as! NSNumber).stringValue) Views"
-            LikeLabel.text! = "\((dic["likes_count"] as! NSNumber).stringValue) Likes"
-            CommentLabel.text! = "\((dic["comments_count"] as! NSNumber).stringValue) Comments"
-            HeadingTitleLabel.text! = dic["title"] as! String
-            timeLabel.text! = dic["created_at"] as! String
-            ImaginingLabel.text! = dic["section"] as! String
+            ViewsLabel.text = "\((dic["views_count"] as? NSNumber ?? 0).stringValue) Views"
+            LikeLabel.text = "\((dic["likes_count"] as? NSNumber ?? 0).stringValue) Likes"
+            CommentLabel.text = "\((dic["comments_count"] as? NSNumber ?? 0).stringValue) Comments"
+            HeadingTitleLabel.text = dic["title"] as? String ?? ""
+            timeLabel.text = dic["created_at"] as? String ?? ""
+            ImaginingLabel.text! = " \(dic["section"] as? String ?? "")  "
             if let author : [String : Any] = dic["author"] as? [String:Any] {
                 UsernameLabel.text! = author["name"] as! String
                 if let photo : String = author["profile_photo"] as? String {
@@ -128,12 +139,6 @@ class PresentationTableViewCell: UITableViewCell {
                 }
             }
         }
-        
-        
-        
-        
-        
-        
     }
     
     func setUpProfileImage() {

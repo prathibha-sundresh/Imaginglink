@@ -63,7 +63,7 @@ class MenuViewController: BaseHamburgerViewController, UITableViewDelegate, UITa
         mTableView.tableFooterView = UIView(frame: CGRect.zero)
         addShadowView()
         self.delegate = self
-        addSlideMenuButton(showBackButton: false, backbuttonTitle: "\(UserDefaults.standard.value(forKey: kUserName) as! String)\n\(UserDefaults.standard.value(forKey: kAuthenticatedEmailId) as! String)")
+        addSlideMenuButton(showBackButton: false, backbuttonTitle: "\(UserDefaults.standard.value(forKey: kUserName) as! String)\n\(UserDefaults.standard.value(forKey: kUserName) as! String)")
 //        self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
     

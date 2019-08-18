@@ -18,7 +18,10 @@ class ImageTableViewCell: UITableViewCell {
     @IBOutlet weak var webView: UIWebView!
     @IBOutlet weak var Imageview: UIImageView!
     var downloadableLink : String?
-    
+    @IBOutlet weak var UserImageView: UIImageView!
+    @IBOutlet weak var UsernameLabel: UILabel!
+    @IBOutlet weak var ImaginingLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
     var delegate : ImagePressDelegate?
     
     func setLongPresstoFile() {
@@ -33,6 +36,20 @@ class ImageTableViewCell: UITableViewCell {
 //    }
     
     func setupUI(dic: [String:Any]) {
+        
+        ImaginingLabel.layer.borderColor = UIColor(red:0.98, green:0.58, blue:0.00, alpha:1.0).cgColor
+        ImaginingLabel.layer.cornerRadius = 10
+        ImaginingLabel.layer.borderWidth = 1
+        UserImageView.layer.cornerRadius = UserImageView.frame.height / 2
+        UserImageView.clipsToBounds = true
+        timeLabel.text = dic["created_at"] as? String ?? ""
+        ImaginingLabel.text! = "  \(dic["section"] as? String ?? "")  "
+        if let author : [String : Any] = dic["author"] as? [String:Any] {
+            UsernameLabel.text! = author["name"] as! String
+            if let photo : String = author["profile_photo"] as? String {
+                UserImageView.sd_setImage(with: URL(string: photo), placeholderImage: UIImage(named: "ImagingLinkLogo"))
+            }
+        }
         
         if let isDownloadable = dic["is_downloadable"] as? Int
         {

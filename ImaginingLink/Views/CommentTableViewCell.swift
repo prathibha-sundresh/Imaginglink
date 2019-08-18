@@ -43,9 +43,9 @@ class CommentTableViewCell : UITableViewCell {
         Textview.layer.borderWidth = 1
         Textview.layer.cornerRadius = 10
         
-        commentButton.setTitle(" \((dic["comments_count"] as! NSNumber).stringValue) Comments", for: UIControlState.normal)
-           ViewButton.setTitle(" \((dic["views_count"] as! NSNumber).stringValue) Views", for: UIControlState.normal)
+        commentButton.setTitle(" \((dic["comments_count"] as? NSNumber ?? 0).stringValue) Comments", for: UIControlState.normal)
+           ViewButton.setTitle(" \((dic["views_count"] as? NSNumber ?? 0).stringValue) Views", for: UIControlState.normal)
         
-        ShareButton.setTitle(" \((dic["likes_count"] as! NSNumber).stringValue) Share", for: UIControlState.normal)
+        ShareButton.setTitle(" \((dic["likes_count"] as? NSNumber ?? 0).stringValue) Share", for: UIControlState.normal)
     }
 }

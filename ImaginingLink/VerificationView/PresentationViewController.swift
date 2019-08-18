@@ -83,8 +83,9 @@ class PresentationViewController: BaseHamburgerViewController, UITableViewDelega
         super.viewDidLoad()
          PresenationTableView.dataSource = self
         PresenationTableView.delegate = self
+        PresenationTableView.tableFooterView = UIView(frame: .zero)
 //        self.navigationItem.title = "presenations"
-        addSlideMenuButton(showBackButton: false, backbuttonTitle: "presentations")
+        addSlideMenuButton(showBackButton: true, backbuttonTitle: "Presentations")
         
     }
     

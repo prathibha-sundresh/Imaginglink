@@ -1152,7 +1152,7 @@ at least one special character (! @ # $ % ^ &amp; *)</string>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BwR-3q-JRb">
                                 <rect key="frame" x="20" y="422.5" width="335" height="30"/>
                                 <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="15"/>
-                                <state key="normal" title="Already have an CODE?">
+                                <state key="normal" title="Already have a CODE?">
                                     <color key="titleColor" red="0.12941176470588234" green="0.58823529411764708" blue="0.95294117647058818" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>

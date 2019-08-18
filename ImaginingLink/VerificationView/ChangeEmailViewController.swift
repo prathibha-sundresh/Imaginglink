@@ -52,7 +52,7 @@ class ChangeEmailViewController: BaseHamburgerViewController {
     @IBOutlet weak var currentEmailIdTextField: FloatingLabel!
     override func viewDidLoad() {
         super.viewDidLoad()
-        addSlideMenuButton(showBackButton: true, backbuttonTitle: "\(UserDefaults.standard.value(forKey: kUserName) as! String)\n\(UserDefaults.standard.value(forKey: kAuthenticatedEmailId) as! String)")
+        addSlideMenuButton(showBackButton: true, backbuttonTitle: "\(UserDefaults.standard.value(forKey: kUserName) as! String)\n\(UserDefaults.standard.value(forKey: kUserName) as! String)")
         confirmNewEmailTextField.setUpLabel(WithText: "Confirm New E-mail")
         currentEmailIdTextField.setUpLabel(WithText: "Current E-mail")
         newEmailTextField.setUpLabel(WithText: "Enter New E-Mail")

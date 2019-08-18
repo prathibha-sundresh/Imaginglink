@@ -11,15 +11,16 @@ import UIKit
 class PresentationDetailTextCell : UITableViewCell {
     
     @IBOutlet weak var AllowToDownloadLabel: UILabel!
-    @IBOutlet weak var univercityLabel: UILabel!
+    @IBOutlet weak var univercityValueLabel: UILabel!
     @IBOutlet weak var PrimaryAuthorValueLabel: UILabel!
     @IBOutlet weak var DescriptionLabel: UILabel!
     @IBOutlet weak var SampleKeywordLabel: UILabel!
     @IBOutlet weak var SubSectionLabel: UILabel!
     @IBOutlet weak var sectionLabel: UILabel!
     @IBOutlet weak var DescriptionTitleLabel: UILabel!
-    
-
+    @IBOutlet weak var univercityLabel: UILabel!
+    @IBOutlet weak var coAuthorsLabel: UILabel!
+    @IBOutlet weak var coAuthorsValueLabel: UILabel!
     
     func setupValue(dic: [String:Any]) {
         
@@ -37,8 +38,20 @@ class PresentationDetailTextCell : UITableViewCell {
         {
             SubSectionLabel?.text = keywords[0]
         }
-        
-        
+        if let coAuthors = dic["co_authors"] as? [[String: Any]], coAuthors.count > 0
+        {
+            var str = coAuthors.reduce("") { (result, dict) -> String in
+                return result + "\(dict["name"] as? String ?? "")" + ","
+            }
+            if str[str.index(before: str.endIndex)] == ","{
+                str.removeLast()
+            }
+            coAuthorsValueLabel.text = str
+        }
+        else{
+            coAuthorsLabel.text = ""
+            coAuthorsValueLabel.text = ""
+        }
         if let keywords = dic["keywords"] as? [String]
         {
             SampleKeywordLabel?.text = keywords[0]
@@ -46,7 +59,12 @@ class PresentationDetailTextCell : UITableViewCell {
         
         if let isDownloadable = dic["is_downloadable"] as? Int
         {
-            AllowToDownloadLabel?.text = "\(isDownloadable)"
+            if isDownloadable == 1{
+                AllowToDownloadLabel?.text = "Yes"
+            }
+            else{
+                AllowToDownloadLabel?.text = "No"
+            }
         }
         
         if let title = dic["title"] as? String
@@ -57,9 +75,10 @@ class PresentationDetailTextCell : UITableViewCell {
         if let author : [String : Any] = dic["author"] as? [String:Any] {
             PrimaryAuthorValueLabel?.text = author["name"] as? String
             if let university = author["university"] as? String {
-                univercityLabel?.text = university
+                univercityValueLabel?.text = university
             } else {
-                univercityLabel?.text = "Null"
+                univercityValueLabel?.text = ""
+                univercityLabel?.text = ""
             }
         }
      }

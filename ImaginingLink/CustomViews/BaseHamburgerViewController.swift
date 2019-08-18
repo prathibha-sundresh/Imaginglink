@@ -32,19 +32,16 @@ class BaseHamburgerViewController: UIViewController {
         }
         let attributes = [NSAttributedString.Key.font: UIFont(name: "SFProDisplay-Regular", size: 12.0)!, NSAttributedString.Key.foregroundColor: UIColor(red: 116.0/255.0, green: 116.0/255.0, blue: 116.0/255.0, alpha: 1)]
         let attributesForBold = [NSAttributedString.Key.font: UIFont(name: "SFProDisplay-Semibold", size: 18.0)!, NSAttributedString.Key.foregroundColor: UIColor(red: 74.0/255.0, green: 74.0/255.0, blue: 74.0/255.0, alpha: 1)]
-        let userName = UserDefaults.standard.value(forKey: kUserName) as! String
-        let range = NSRange(location: 0, length: userName.count)
-        let str1 = NSMutableAttributedString(string: backbuttonTitle, attributes: attributes)
-        str1.addAttributes(attributesForBold, range: range)
+        let str = NSString(string: backbuttonTitle)
+        let range = str.range(of: UserDefaults.standard.value(forKey: kAuthenticatedEmailId) as! String)
+        let str1 = NSMutableAttributedString(string: backbuttonTitle, attributes: attributesForBold)
+        str1.addAttributes(attributes, range: range)
         backButton.setAttributedTitle(str1, for: .normal)
-        //backButton.setTitle(backbuttonTitle, for: UIControlState.normal)
-//        backButton.setTitle("\(UserDefaults.standard.value(forKey: kUserName) as! String)\n\(UserDefaults.standard.value(forKey: kUserType) as! String)", for: .normal)
         backButton.titleLabel?.adjustsFontSizeToFitWidth = true
         backButton.titleLabel?.lineBreakMode = .byWordWrapping
         backButton.titleLabel?.numberOfLines = 0
         backButton.contentHorizontalAlignment = .left
-        backButton.setTitleColor(UIColor(red: 80.0/255.0, green: 88.0/255.0, blue: 93.0/255.0, alpha: 1), for: .normal)
-        backButton.titleLabel?.font = UIFont(name: "SFProDisplay-Regular", size: 14)
+        
         backButton.addTarget(self, action: #selector(BaseHamburgerViewController.backAction), for: .touchUpInside)
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backButton)
         

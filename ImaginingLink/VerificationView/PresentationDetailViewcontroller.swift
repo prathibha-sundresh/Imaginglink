@@ -132,7 +132,7 @@ class PresentationDetailViewcontroller: BaseHamburgerViewController, UITableView
     var commentData : [[String:Any]]?
     override func viewDidLoad() {
         super.viewDidLoad()
-        addSlideMenuButton(showBackButton: true,backbuttonTitle: "presentation")
+        addSlideMenuButton(showBackButton: true,backbuttonTitle: "Presentation")
         self.presentationDetailTableView.delegate = self
 
         CoreAPI.sharedManaged.getUserPresentationWithId(UserID: userID!, successResponse: {(response) in
