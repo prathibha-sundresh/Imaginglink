@@ -26,7 +26,7 @@ class TwofactorAuthenticationViewController: BaseHamburgerViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        addSlideMenuButton(showBackButton: true ,backbuttonTitle: "\(UserDefaults.standard.value(forKey: kUserName) as! String)\n\(UserDefaults.standard.value(forKey: kUserName) as! String)")
+        addSlideMenuButton(showBackButton: true ,backbuttonTitle: "\(UserDefaults.standard.value(forKey: kUserName) as! String)\n\(UserDefaults.standard.value(forKey: kAuthenticatedEmailId) as! String)")
     }
     
     override func viewWillAppear(_ animated: Bool) {

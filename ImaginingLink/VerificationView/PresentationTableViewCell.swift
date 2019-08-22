@@ -125,9 +125,9 @@ class PresentationTableViewCell: UITableViewCell {
                 webview.isHidden = false
                 webview.stopLoading()
                 if (webview != nil){
-//                    webview.load(URLRequest(url: url))
+                    webview.load(URLRequest(url: url))
                 }
-                
+
                 if (URLImageView != nil) {
                     URLImageView.isHidden = true
                 }

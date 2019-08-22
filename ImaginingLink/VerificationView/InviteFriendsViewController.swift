@@ -34,7 +34,7 @@ class  InviteFriendsViewController: BaseHamburgerViewController{
         super.viewDidLoad()
         inviteFriendsTextField.setUpLabel(WithText: "Enter E-mail address")
         
-        addSlideMenuButton(showBackButton: true, backbuttonTitle: "\(UserDefaults.standard.value(forKey: kUserName) as! String)\n\(UserDefaults.standard.value(forKey: kUserName) as! String)")
+        addSlideMenuButton(showBackButton: true, backbuttonTitle: "\(UserDefaults.standard.value(forKey: kUserName) as! String)\n\(UserDefaults.standard.value(forKey: kAuthenticatedEmailId) as! String)")
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

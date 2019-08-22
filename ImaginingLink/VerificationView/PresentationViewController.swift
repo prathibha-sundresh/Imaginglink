@@ -81,19 +81,13 @@ class PresentationViewController: BaseHamburgerViewController, UITableViewDelega
     var dataArray : [[String:Any]]?
     override func viewDidLoad() {
         super.viewDidLoad()
-         PresenationTableView.dataSource = self
-        PresenationTableView.delegate = self
         PresenationTableView.tableFooterView = UIView(frame: .zero)
-//        self.navigationItem.title = "presenations"
         addSlideMenuButton(showBackButton: true, backbuttonTitle: "Presentations")
-        
+        getPublicPresentations()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-//        ILUtility.addNavigationBarBackToCartButton(controller: self)
-//        ILUtility.addNavigationBarBackButton(controller: self, userName: UserDefaults.standard.value(forKey: kUserName) as! String, userType: UserDefaults.standard.value(forKey: kUserType) as! String)
-
+    fileprivate func getPublicPresentations() {
+        
         CoreAPI.sharedManaged.callPublicPresentation(successResponse: {(response) in
             let value = response as! String
             let dic : [String : Any] = value.convertToDictionary()!
@@ -104,6 +98,10 @@ class PresentationViewController: BaseHamburgerViewController, UITableViewDelega
         }, faliure: {(error) in
             ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: error)
         })
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

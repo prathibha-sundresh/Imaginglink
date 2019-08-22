@@ -21,7 +21,7 @@ let kUserType = "userType"
 
 let kEmailOTP = "EmailOTPScreen"
 let kResetPasswordOTP = "ResetPasswordOTPScreen"
-
+let kLoggedIn = "kLoggedIn"
 
 let kLoginAPI = "api/login"
 let kLogOutAPI = "api/logout"

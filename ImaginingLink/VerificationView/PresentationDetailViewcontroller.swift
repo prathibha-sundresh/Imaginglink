@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MBProgressHUD
 
 class PresentationDetailViewcontroller: BaseHamburgerViewController, UITableViewDataSource, UITableViewDelegate, CommentDelegate, ImagePressDelegate, CreateCommentDelegate {
     func clickonReplay(ParentId: String) {
@@ -130,11 +131,9 @@ class PresentationDetailViewcontroller: BaseHamburgerViewController, UITableView
     var parentCommentId : String?
     var dicData : [String:Any]?
     var commentData : [[String:Any]]?
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        addSlideMenuButton(showBackButton: true,backbuttonTitle: "Presentation")
-        self.presentationDetailTableView.delegate = self
-
+    fileprivate func getPresentationDetails() {
+        presentationDetailTableView.isHidden = true
+        MBProgressHUD.showAdded(to: self.view, animated: true)
         CoreAPI.sharedManaged.getUserPresentationWithId(UserID: userID!, successResponse: {(response) in
             let value = response as! String
             let dic : [String : Any] = value.convertToDictionary()!
@@ -142,6 +141,8 @@ class PresentationDetailViewcontroller: BaseHamburgerViewController, UITableView
             if let authorId : String = self.dicData?["id"] as? String {
                 
                 CoreAPI.sharedManaged.getCommentListWithId(presentationId: authorId, successResponse: {(response) in
+                    self.presentationDetailTableView.isHidden = false
+                    MBProgressHUD.hide(for: self.view, animated: true)
                     let value = response as! String
                     let dic : [String : Any] = value.convertToDictionary()!
                     let Commentarray : [[String:Any]] = dic["data"] as! [[String : Any]]
@@ -149,9 +150,8 @@ class PresentationDetailViewcontroller: BaseHamburgerViewController, UITableView
                         let parentId = Commentarray[0]
                         self.parentCommentId = parentId["id"] as? String
                         self.commentData = Commentarray
-                        self.presentationDetailTableView.reloadData()
                     }
-                   
+                    self.presentationDetailTableView.reloadData()
                 }, faliure: {(error) in
                     
                 })
@@ -160,6 +160,14 @@ class PresentationDetailViewcontroller: BaseHamburgerViewController, UITableView
         }, faliure: {(error) in
             
         })
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        addSlideMenuButton(showBackButton: true,backbuttonTitle: "Presentation")
+        self.presentationDetailTableView.delegate = self
+
+        getPresentationDetails()
     }
     
     override func viewWillAppear(_ animated: Bool) {

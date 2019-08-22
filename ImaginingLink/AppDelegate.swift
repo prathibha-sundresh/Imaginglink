@@ -19,6 +19,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         IQKeyboardManager.sharedManager().enable = true
         Thread.sleep(forTimeInterval: 1.5)
+        if UserDefaults.standard.bool(forKey: kLoggedIn){
+            openPresentationScreen()
+        }
         return true
     }
 
@@ -48,17 +51,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         let storyboard: UIStoryboard = UIStoryboard(name: "DashBoard", bundle: nil)
         let tabBarController : UITabBarController = storyboard.instantiateViewController(withIdentifier: "ILTabViewController") as! ILTabViewController
-        let tabbar : [UITabBarItem] = tabBarController.tabBar.items!
-        for tabbarItems in tabbar {
-            let items : UITabBarItem = tabbarItems
-            items.title = ""
-            items.imageInsets = UIEdgeInsetsMake(6,0,-6,0)
-        }
+        //let tabbar : [UITabBarItem] = tabBarController.tabBar.items!
+        tabBarController.selectedIndex = 1
+//        for tabbarItems in tabbar {
+//            let items : UITabBarItem = tabbarItems
+//            items.title = ""
+//            items.imageInsets = UIEdgeInsetsMake(6,0,-6,0)
+//        }
         self.window!.rootViewController = tabBarController
 
     }
     
     func openRegularSignIn() {
+        UserDefaults.standard.set(false, forKey: kLoggedIn)
         let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let navigationVC : UINavigationController = storyboard.instantiateViewController(withIdentifier: "SignInBaseNavigationController") as! UINavigationController
         self.window!.rootViewController = navigationVC

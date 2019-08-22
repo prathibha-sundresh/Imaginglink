@@ -59,7 +59,7 @@ class ResetPasswordWithMenuViewController: BaseHamburgerViewController,UITextFie
     @IBOutlet weak var confirmNewPasswordTextField: FloatingLabel!
     override func viewDidLoad() {
         super.viewDidLoad()
-        addSlideMenuButton(showBackButton: true, backbuttonTitle: "\(UserDefaults.standard.value(forKey: kUserName) as! String)\n\(UserDefaults.standard.value(forKey: kUserName) as! String)")
+        addSlideMenuButton(showBackButton: true, backbuttonTitle: "\(UserDefaults.standard.value(forKey: kUserName) as! String)\n\(UserDefaults.standard.value(forKey: kAuthenticatedEmailId) as! String)")
         
         newPasswordTextField.setUpLabel(WithText: "New password")
         confirmNewPasswordTextField.setUpLabel(WithText: "Confirm new Password")

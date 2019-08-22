@@ -36,7 +36,15 @@ class PresentationDetailTextCell : UITableViewCell {
         }
         if let keywords = dic["sub_sections"] as? [String]
         {
-            SubSectionLabel?.text = keywords[0]
+            if keywords.count == 1{
+                SubSectionLabel?.text = keywords[0]
+            }
+            else if keywords.count == 2{
+                SubSectionLabel?.text = keywords[0] + "," + keywords[1]
+            }
+            else if keywords.count >= 2{
+                SubSectionLabel?.text = keywords[0] + "," + keywords[1] + " " + "+\(keywords.count - 2)"
+            }
         }
         if let coAuthors = dic["co_authors"] as? [[String: Any]], coAuthors.count > 0
         {
