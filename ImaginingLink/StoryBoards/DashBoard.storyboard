@@ -13,6 +13,12 @@
         <array key="GoogleSans-Bold.ttf">
             <string>GoogleSans-Bold</string>
         </array>
+        <array key="GoogleSans-Medium.ttf">
+            <string>GoogleSans-Medium</string>
+        </array>
+        <array key="GoogleSans-Regular.ttf">
+            <string>GoogleSans-Regular</string>
+        </array>
         <array key="HelveticaNeue.ttc">
             <string>HelveticaNeue</string>
         </array>
@@ -348,6 +354,9 @@
                                                         <constraint firstAttribute="height" constant="30" id="mWz-h4-VtW"/>
                                                     </constraints>
                                                     <state key="normal" image="PresentationMenuIcon"/>
+                                                    <connections>
+                                                        <action selector="menuPressedButtonAction:" destination="WqH-Xy-nJP" eventType="touchUpInside" id="gZv-ad-onS"/>
+                                                    </connections>
                                                 </button>
                                                 <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tAQ-bi-SKV">
                                                     <rect key="frame" x="0.0" y="72" width="375" height="226"/>
@@ -907,6 +916,7 @@ nstrate the visual form</string>
                     </view>
                     <connections>
                         <outlet property="presentationDetailTableView" destination="YEr-xf-C5i" id="g1H-U5-Z0c"/>
+                        <segue destination="lwq-bM-PQz" kind="show" identifier="ReportPostID" id="gMo-lo-XTN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lWK-1D-Exj" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1602,7 +1612,7 @@ contain at least one special character (! @ # $ % ^ &amp; *)</string>
                                 <rect key="frame" x="0.0" y="20" width="375" height="598"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PresentationTableViewCell" rowHeight="400" id="nD1-Go-qQc" customClass="PresentationTableViewCell" customModule="ImagingLink" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="PresentationTableViewCell" rowHeight="400" id="nD1-Go-qQc" customClass="PresentationTableViewCell" customModule="ImagingLink" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="400"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nD1-Go-qQc" id="ebz-HB-udP">
@@ -1617,14 +1627,14 @@ contain at least one special character (! @ # $ % ^ &amp; *)</string>
                                                     </constraints>
                                                 </imageView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dbT-sP-leZ" userLabel="BorderView">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="1"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="1"/>
                                                     <color key="backgroundColor" red="0.82352941180000006" green="0.8862745098" blue="0.90980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="1" id="IyK-2w-pvq"/>
                                                     </constraints>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nagaraj setty Holalkere" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0NL-O9-Fxc" userLabel="NameLabel">
-                                                    <rect key="frame" x="68" y="9" width="257" height="17"/>
+                                                    <rect key="frame" x="68" y="9" width="202" height="17"/>
                                                     <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="14"/>
                                                     <color key="textColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -1639,18 +1649,15 @@ contain at least one special character (! @ # $ % ^ &amp; *)</string>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A9w-zh-WFG">
-                                                    <rect key="frame" x="335" y="10" width="30" height="30"/>
+                                                    <rect key="frame" x="280" y="10" width="30" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="E85-kc-z6A"/>
                                                         <constraint firstAttribute="width" constant="30" id="Yge-8A-EHx"/>
                                                     </constraints>
                                                     <state key="normal" image="PresentationMenuIcon"/>
-                                                    <connections>
-                                                        <action selector="MenuPressed:" destination="nD1-Go-qQc" eventType="touchUpInside" id="7RA-f7-esy"/>
-                                                    </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12 min ago" lineBreakMode="characterWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="drL-Cx-uM5">
-                                                    <rect key="frame" x="134.5" y="31" width="190.5" height="20"/>
+                                                    <rect key="frame" x="134.5" y="31" width="135.5" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20" id="UbB-ls-uwf"/>
                                                     </constraints>
@@ -1659,20 +1666,23 @@ contain at least one special character (! @ # $ % ^ &amp; *)</string>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hDq-zS-pDH">
-                                                    <rect key="frame" x="17" y="54" width="336" height="82"/>
+                                                    <rect key="frame" x="17" y="54" width="281" height="82"/>
                                                     <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="14"/>
                                                     <color key="textColor" red="0.31372549019607843" green="0.34509803921568627" blue="0.36470588235294116" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6AD-e1-2ry">
-                                                    <rect key="frame" x="17" y="143" width="341" height="160"/>
+                                                    <rect key="frame" x="17" y="143" width="286" height="160"/>
                                                     <subviews>
                                                         <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fs3-o2-Uwv">
-                                                            <rect key="frame" x="0.0" y="0.0" width="341" height="160"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="286" height="160"/>
                                                             <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <connections>
+                                                                <outlet property="delegate" destination="nD1-Go-qQc" id="Ipz-XV-lAZ"/>
+                                                            </connections>
                                                         </webView>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gRT-9Q-eUZ">
-                                                            <rect key="frame" x="0.0" y="0.0" width="341" height="160"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="286" height="160"/>
                                                         </imageView>
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1689,55 +1699,49 @@ contain at least one special character (! @ # $ % ^ &amp; *)</string>
                                                     </constraints>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SJ1-m0-8BB" userLabel="CommentView">
-                                                    <rect key="frame" x="0.0" y="305" width="375" height="94.5"/>
+                                                    <rect key="frame" x="0.0" y="305" width="320" height="94.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="32 Likes" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uXU-Ul-3Sq" userLabel="LikeLabel">
-                                                            <rect key="frame" x="17.5" y="13" width="106" height="17"/>
+                                                            <rect key="frame" x="17.5" y="13" width="87.5" height="17"/>
                                                             <fontDescription key="fontDescription" name="SFProDisplay-Light" family="SF Pro Display" pointSize="14"/>
                                                             <color key="textColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10 comments" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VOf-2d-UlX" userLabel="CommentLabel">
-                                                            <rect key="frame" x="134.5" y="13" width="106" height="17"/>
+                                                            <rect key="frame" x="116" y="13" width="88" height="17"/>
                                                             <fontDescription key="fontDescription" name="SFProDisplay-Light" family="SF Pro Display" pointSize="14"/>
                                                             <color key="textColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="123 views" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fdi-hM-tgX" userLabel="ViewsLabel">
-                                                            <rect key="frame" x="250.5" y="13" width="107" height="17"/>
+                                                            <rect key="frame" x="214" y="13" width="88.5" height="17"/>
                                                             <fontDescription key="fontDescription" name="SFProDisplay-Light" family="SF Pro Display" pointSize="14"/>
                                                             <color key="textColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bg4-ID-EvW">
-                                                            <rect key="frame" x="0.0" y="40" width="375" height="2"/>
+                                                            <rect key="frame" x="0.0" y="40" width="320" height="2"/>
                                                             <color key="backgroundColor" red="0.82352941180000006" green="0.8862745098" blue="0.90980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="2" id="5LT-B9-utL"/>
                                                             </constraints>
                                                         </view>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qur-1W-bIU" userLabel="LikeButton">
-                                                            <rect key="frame" x="21" y="42" width="99" height="52.5"/>
+                                                            <rect key="frame" x="21" y="42" width="80.5" height="52.5"/>
                                                             <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="14"/>
                                                             <state key="normal" title="    Like" image="Icon_Like_Unselected">
                                                                 <color key="titleColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             </state>
-                                                            <connections>
-                                                                <action selector="LikeActionPressed:" destination="nD1-Go-qQc" eventType="touchUpInside" id="7Vj-d8-yEb"/>
-                                                            </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KDr-Jt-vl7" userLabel="FavouriteButton">
-                                                            <rect key="frame" x="135" y="40" width="100" height="54.5"/>
+                                                            <rect key="frame" x="116.5" y="40" width="82" height="54.5"/>
                                                             <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="14"/>
                                                             <state key="normal" title="    Save" image="Icon_favourite">
                                                                 <color key="titleColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             </state>
-                                                            <connections>
-                                                                <action selector="FavouriteActionPressed:" destination="nD1-Go-qQc" eventType="touchUpInside" id="fVb-lQ-9wX"/>
-                                                            </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9XO-8h-d5p" userLabel="ShareButton">
-                                                            <rect key="frame" x="255" y="42" width="99" height="52.5"/>
+                                                            <rect key="frame" x="218.5" y="42" width="80.5" height="52.5"/>
                                                             <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="14"/>
                                                             <state key="normal" title="    Share" image="Icon_presentation_share">
                                                                 <color key="titleColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1757,6 +1761,7 @@ contain at least one special character (! @ # $ % ^ &amp; *)</string>
                                                         <constraint firstAttribute="trailing" secondItem="Fdi-hM-tgX" secondAttribute="trailing" constant="17.5" id="aCR-jG-38H"/>
                                                         <constraint firstAttribute="bottom" secondItem="KDr-Jt-vl7" secondAttribute="bottom" id="bIL-Sy-UbQ"/>
                                                         <constraint firstAttribute="trailing" secondItem="9XO-8h-d5p" secondAttribute="trailing" constant="21" id="c2p-M1-Slx"/>
+                                                        <constraint firstAttribute="height" constant="94.5" id="ckM-lv-qgg"/>
                                                         <constraint firstItem="VOf-2d-UlX" firstAttribute="leading" secondItem="uXU-Ul-3Sq" secondAttribute="trailing" constant="11" id="de2-75-etB"/>
                                                         <constraint firstItem="9XO-8h-d5p" firstAttribute="leading" secondItem="KDr-Jt-vl7" secondAttribute="trailing" constant="20" id="fJK-ed-krq"/>
                                                         <constraint firstItem="KDr-Jt-vl7" firstAttribute="top" secondItem="bg4-ID-EvW" secondAttribute="bottom" constant="-2" id="gsu-8c-X1u"/>
@@ -1790,7 +1795,6 @@ contain at least one special character (! @ # $ % ^ &amp; *)</string>
                                                 <constraint firstItem="XKE-dJ-ga7" firstAttribute="top" secondItem="0NL-O9-Fxc" secondAttribute="bottom" constant="5" id="Xli-fo-ZI8"/>
                                                 <constraint firstItem="SJ1-m0-8BB" firstAttribute="leading" secondItem="ebz-HB-udP" secondAttribute="leading" id="aUN-NM-FB7"/>
                                                 <constraint firstItem="A9w-zh-WFG" firstAttribute="top" secondItem="dbT-sP-leZ" secondAttribute="bottom" constant="9" id="e6n-iY-CMJ"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="6AD-e1-2ry" secondAttribute="bottom" constant="86" id="frL-hx-CiB"/>
                                                 <constraint firstItem="hDq-zS-pDH" firstAttribute="top" secondItem="HHi-Hh-t7U" secondAttribute="bottom" constant="5" id="iCN-7n-Er1"/>
                                                 <constraint firstItem="SJ1-m0-8BB" firstAttribute="top" secondItem="6AD-e1-2ry" secondAttribute="bottom" constant="2" id="l1O-VH-92q"/>
                                                 <constraint firstItem="drL-Cx-uM5" firstAttribute="leading" secondItem="XKE-dJ-ga7" secondAttribute="trailing" constant="10" id="lUH-Jc-q1n"/>
@@ -1814,8 +1818,9 @@ contain at least one special character (! @ # $ % ^ &amp; *)</string>
                                             <outlet property="UserImageView" destination="HHi-Hh-t7U" id="DbU-qo-chQ"/>
                                             <outlet property="UsernameLabel" destination="0NL-O9-Fxc" id="mll-H6-ol6"/>
                                             <outlet property="ViewsLabel" destination="Fdi-hM-tgX" id="XXo-Kp-HbB"/>
+                                            <outlet property="menuPressedButton" destination="A9w-zh-WFG" id="yCU-UB-mAw"/>
                                             <outlet property="timeLabel" destination="drL-Cx-uM5" id="saK-gU-vhr"/>
-                                            <outlet property="webview" destination="Fs3-o2-Uwv" id="cIH-vO-2Vc"/>
+                                            <outlet property="webview" destination="Fs3-o2-Uwv" id="IXN-hz-iLb"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -1838,10 +1843,18 @@ contain at least one special character (! @ # $ % ^ &amp; *)</string>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="PresenationTableView" destination="Wti-MF-7MV" id="O4Q-T1-uxS"/>
+                        <outlet property="footerView" destination="0X2-Uc-RDL" id="Cja-Uu-tCB"/>
                         <segue destination="WqH-Xy-nJP" kind="show" identifier="PresentationDetail" id="3u4-E3-iMb"/>
+                        <segue destination="lwq-bM-PQz" kind="show" identifier="ReportPostID" id="jZ1-du-8is"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BWz-wH-T6D" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="0X2-Uc-RDL">
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="20"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <viewLayoutGuide key="safeArea" id="oCc-7k-uv6"/>
+                </view>
             </objects>
             <point key="canvasLocation" x="-1660" y="-827.13643178410803"/>
         </scene>
@@ -1964,6 +1977,228 @@ contain at least one special character (! @ # $ % ^ &amp; *)</string>
             </objects>
             <point key="canvasLocation" x="-4391" y="-2732"/>
         </scene>
+        <!--Report Post View Controller-->
+        <scene sceneID="g0W-M2-e4a">
+            <objects>
+                <viewController hidesBottomBarWhenPushed="YES" id="lwq-bM-PQz" customClass="ReportPostViewController" customModule="ImagingLink" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="TYv-iS-txE">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ygf-kR-xsc" userLabel="Twofactor Authentication Main Line">
+                                <rect key="frame" x="0.0" y="20" width="375" height="1"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="xCR-mK-KWS"/>
+                                </constraints>
+                            </view>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gOp-C7-iwG">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p4d-eB-MFN" userLabel="ContentView">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="548"/>
+                                        <subviews>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vbW-m0-fCa">
+                                                <rect key="frame" x="10" y="10" width="355" height="120"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="120" id="6ll-uz-zb0"/>
+                                                </constraints>
+                                                <string key="text">If you think that the content of this post is stolen (not original), inappropriate, fake, spam or something is not right then proceed with reporting it to support@imaginglink.com. if there is an emergency call the local emergency immediately.</string>
+                                                <color key="textColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" name="GoogleSans-Regular" family="Google Sans" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                <dataDetectorType key="dataDetectorTypes" link="YES"/>
+                                            </textView>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="08H-0h-ltu">
+                                                <rect key="frame" x="0.0" y="153" width="375" height="140"/>
+                                                <subviews>
+                                                    <button opaque="NO" tag="100" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lIy-25-l6X">
+                                                        <rect key="frame" x="10" y="18" width="167" height="35"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="35" id="f10-Rz-yln"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="GoogleSans-Regular" family="Google Sans" pointSize="13"/>
+                                                        <state key="normal" title="Copied content">
+                                                            <color key="titleColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="selectReportButton:" destination="lwq-bM-PQz" eventType="touchUpInside" id="ApY-F8-9j0"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" tag="101" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YSj-sw-8Pd">
+                                                        <rect key="frame" x="195" y="18" width="90" height="35"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="90" id="bop-Yw-g7d"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="GoogleSans-Regular" family="Google Sans" pointSize="13"/>
+                                                        <state key="normal" title="False News">
+                                                            <color key="titleColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="selectReportButton:" destination="lwq-bM-PQz" eventType="touchUpInside" id="JQj-fn-eaD"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" tag="102" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hBA-yG-4q1">
+                                                        <rect key="frame" x="303" y="18" width="62" height="35"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="62" id="mPE-Hf-GGF"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="GoogleSans-Regular" family="Google Sans" pointSize="13"/>
+                                                        <state key="normal" title="Spam">
+                                                            <color key="titleColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="selectReportButton:" destination="lwq-bM-PQz" eventType="touchUpInside" id="R75-Zv-cB1"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" tag="103" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gez-rF-BgG">
+                                                        <rect key="frame" x="10" y="83" width="70" height="35"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="70" id="w9z-gh-nt4"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="GoogleSans-Regular" family="Google Sans" pointSize="13"/>
+                                                        <state key="normal" title="Others">
+                                                            <color key="titleColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="selectReportButton:" destination="lwq-bM-PQz" eventType="touchUpInside" id="qlU-1n-673"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" tag="104" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9mP-av-q5b">
+                                                        <rect key="frame" x="96" y="83" width="155" height="35"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <fontDescription key="fontDescription" name="GoogleSans-Regular" family="Google Sans" pointSize="13"/>
+                                                        <state key="normal" title="inappropriate">
+                                                            <color key="titleColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="selectReportButton:" destination="lwq-bM-PQz" eventType="touchUpInside" id="bZS-mW-xZk"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" tag="105" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jps-2c-Q4e">
+                                                        <rect key="frame" x="268" y="83" width="93" height="35"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="93" id="8gr-HY-ho0"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="GoogleSans-Regular" family="Google Sans" pointSize="13"/>
+                                                        <state key="normal" title="Violence">
+                                                            <color key="titleColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="selectReportButton:" destination="lwq-bM-PQz" eventType="touchUpInside" id="hKI-5p-ZxF"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstItem="Jps-2c-Q4e" firstAttribute="top" secondItem="9mP-av-q5b" secondAttribute="top" id="9rP-lG-CHX"/>
+                                                    <constraint firstItem="hBA-yG-4q1" firstAttribute="leading" secondItem="YSj-sw-8Pd" secondAttribute="trailing" constant="18" id="Ao3-sh-9u5"/>
+                                                    <constraint firstItem="lIy-25-l6X" firstAttribute="top" secondItem="08H-0h-ltu" secondAttribute="top" constant="18" id="Icp-Qj-xph"/>
+                                                    <constraint firstItem="YSj-sw-8Pd" firstAttribute="leading" secondItem="lIy-25-l6X" secondAttribute="trailing" constant="18" id="JLV-JA-ZJH"/>
+                                                    <constraint firstItem="YSj-sw-8Pd" firstAttribute="height" secondItem="lIy-25-l6X" secondAttribute="height" id="QLd-QW-VXh"/>
+                                                    <constraint firstItem="Jps-2c-Q4e" firstAttribute="height" secondItem="9mP-av-q5b" secondAttribute="height" id="SYm-gX-ROT"/>
+                                                    <constraint firstItem="9mP-av-q5b" firstAttribute="height" secondItem="gez-rF-BgG" secondAttribute="height" id="SlJ-tW-cTU"/>
+                                                    <constraint firstAttribute="trailing" secondItem="Jps-2c-Q4e" secondAttribute="trailing" constant="14" id="VWZ-5R-Mih"/>
+                                                    <constraint firstItem="gez-rF-BgG" firstAttribute="height" secondItem="lIy-25-l6X" secondAttribute="height" id="WXZ-GA-VIz"/>
+                                                    <constraint firstAttribute="height" constant="140" id="YZH-OP-6im"/>
+                                                    <constraint firstItem="hBA-yG-4q1" firstAttribute="height" secondItem="YSj-sw-8Pd" secondAttribute="height" id="ZhO-7n-Trr"/>
+                                                    <constraint firstItem="9mP-av-q5b" firstAttribute="top" secondItem="gez-rF-BgG" secondAttribute="top" id="ani-Tm-a54"/>
+                                                    <constraint firstItem="Jps-2c-Q4e" firstAttribute="leading" secondItem="9mP-av-q5b" secondAttribute="trailing" constant="17" id="b9I-vs-CPL"/>
+                                                    <constraint firstAttribute="trailing" secondItem="hBA-yG-4q1" secondAttribute="trailing" constant="10" id="bai-Ot-dfg"/>
+                                                    <constraint firstItem="hBA-yG-4q1" firstAttribute="top" secondItem="YSj-sw-8Pd" secondAttribute="top" id="bpq-wq-NG7"/>
+                                                    <constraint firstItem="gez-rF-BgG" firstAttribute="top" secondItem="lIy-25-l6X" secondAttribute="bottom" constant="30" id="ef7-Sm-7gC"/>
+                                                    <constraint firstItem="YSj-sw-8Pd" firstAttribute="top" secondItem="lIy-25-l6X" secondAttribute="top" id="hjL-ZN-y5g"/>
+                                                    <constraint firstItem="lIy-25-l6X" firstAttribute="leading" secondItem="08H-0h-ltu" secondAttribute="leading" constant="10" id="kZB-P0-0ZM"/>
+                                                    <constraint firstItem="9mP-av-q5b" firstAttribute="leading" secondItem="gez-rF-BgG" secondAttribute="trailing" constant="16" id="spM-8q-7xA"/>
+                                                    <constraint firstItem="gez-rF-BgG" firstAttribute="leading" secondItem="lIy-25-l6X" secondAttribute="leading" id="uz8-0T-wlL"/>
+                                                </constraints>
+                                            </view>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="o4E-gY-lSX" customClass="FloatingLabel" customModule="ImagingLink" customModuleProvider="target">
+                                                <rect key="frame" x="18" y="323" width="338" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="gw8-uK-DcF"/>
+                                                </constraints>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="18"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5yF-zC-GHJ">
+                                                <rect key="frame" x="18" y="393" width="130" height="40"/>
+                                                <color key="backgroundColor" red="0.81568627450980391" green="0.16862745098039217" blue="0.24705882352941178" alpha="1" colorSpace="calibratedRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="DOT-kX-ghu"/>
+                                                    <constraint firstAttribute="width" constant="130" id="nVn-fu-Bia"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="GoogleSans-Medium" family="Google Sans" pointSize="14"/>
+                                                <state key="normal" title="Report Post">
+                                                    <color key="titleColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="4"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="submitReport:" destination="lwq-bM-PQz" eventType="touchUpInside" id="GOo-Up-Pcc"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="08H-0h-ltu" firstAttribute="top" secondItem="vbW-m0-fCa" secondAttribute="bottom" constant="23" id="GKI-WQ-QN2"/>
+                                            <constraint firstItem="o4E-gY-lSX" firstAttribute="leading" secondItem="p4d-eB-MFN" secondAttribute="leading" constant="18" id="Jfr-d8-oAY"/>
+                                            <constraint firstItem="08H-0h-ltu" firstAttribute="centerX" secondItem="p4d-eB-MFN" secondAttribute="centerX" id="Lcd-lI-stQ"/>
+                                            <constraint firstItem="08H-0h-ltu" firstAttribute="leading" secondItem="p4d-eB-MFN" secondAttribute="leading" id="LvG-Zd-fXT"/>
+                                            <constraint firstAttribute="trailing" secondItem="vbW-m0-fCa" secondAttribute="trailing" constant="10" id="Mf8-Cg-rpI"/>
+                                            <constraint firstAttribute="trailing" secondItem="08H-0h-ltu" secondAttribute="trailing" id="O3k-uj-058"/>
+                                            <constraint firstAttribute="trailing" secondItem="o4E-gY-lSX" secondAttribute="trailing" constant="19" id="SkC-9Q-age"/>
+                                            <constraint firstAttribute="height" constant="548" id="Xgm-3r-fqG"/>
+                                            <constraint firstItem="o4E-gY-lSX" firstAttribute="top" secondItem="08H-0h-ltu" secondAttribute="bottom" constant="30" id="e5J-E6-13a"/>
+                                            <constraint firstItem="5yF-zC-GHJ" firstAttribute="leading" secondItem="p4d-eB-MFN" secondAttribute="leading" constant="18" id="eyV-09-W2r"/>
+                                            <constraint firstItem="5yF-zC-GHJ" firstAttribute="top" secondItem="o4E-gY-lSX" secondAttribute="bottom" constant="30" id="f8m-ao-lrF"/>
+                                            <constraint firstItem="vbW-m0-fCa" firstAttribute="top" secondItem="p4d-eB-MFN" secondAttribute="top" constant="10" id="mar-KF-0zj"/>
+                                            <constraint firstItem="vbW-m0-fCa" firstAttribute="leading" secondItem="p4d-eB-MFN" secondAttribute="leading" constant="10" id="unN-tF-DNa"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="p4d-eB-MFN" firstAttribute="leading" secondItem="gOp-C7-iwG" secondAttribute="leading" id="IcY-s3-g6H"/>
+                                    <constraint firstAttribute="trailing" secondItem="p4d-eB-MFN" secondAttribute="trailing" id="JUg-UN-rYM"/>
+                                    <constraint firstItem="p4d-eB-MFN" firstAttribute="top" secondItem="gOp-C7-iwG" secondAttribute="top" id="gqi-7w-wOQ"/>
+                                    <constraint firstAttribute="bottom" secondItem="p4d-eB-MFN" secondAttribute="bottom" id="hz9-vk-rqG"/>
+                                    <constraint firstItem="p4d-eB-MFN" firstAttribute="width" secondItem="gOp-C7-iwG" secondAttribute="width" id="rSt-Po-Zb0"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.97254901960784312" green="0.97254901960784312" blue="0.97254901960784312" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="ygf-kR-xsc" secondAttribute="trailing" id="6a2-Aa-kkb"/>
+                            <constraint firstItem="gOp-C7-iwG" firstAttribute="leading" secondItem="YtY-nH-KCR" secondAttribute="leading" id="MKM-G2-w25"/>
+                            <constraint firstItem="gOp-C7-iwG" firstAttribute="trailing" secondItem="YtY-nH-KCR" secondAttribute="trailing" id="e5L-Fx-a5x"/>
+                            <constraint firstItem="ygf-kR-xsc" firstAttribute="leading" secondItem="TYv-iS-txE" secondAttribute="leading" id="gko-yg-7tp"/>
+                            <constraint firstItem="gOp-C7-iwG" firstAttribute="top" secondItem="YtY-nH-KCR" secondAttribute="top" id="hYx-Eu-7lj"/>
+                            <constraint firstItem="ygf-kR-xsc" firstAttribute="top" secondItem="YtY-nH-KCR" secondAttribute="top" id="jLm-gW-C4p"/>
+                            <constraint firstItem="gOp-C7-iwG" firstAttribute="width" secondItem="TYv-iS-txE" secondAttribute="width" id="q4f-dC-ytY"/>
+                            <constraint firstItem="gOp-C7-iwG" firstAttribute="bottom" secondItem="YtY-nH-KCR" secondAttribute="bottom" id="qQi-hc-WkQ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="YtY-nH-KCR"/>
+                    </view>
+                    <connections>
+                        <outlet property="reportTF" destination="o4E-gY-lSX" id="WK9-We-nRe"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Gms-X5-HYt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-5506.875" y="-2858.4507042253522"/>
+        </scene>
     </scenes>
     <resources>
         <image name="CasesIcon" width="158" height="140"/>
@@ -1994,4 +2229,7 @@ contain at least one special character (! @ # $ % ^ &amp; *)</string>
         <image name="home_tab_bar" width="64" height="64"/>
         <image name="notification_tab_bar" width="20" height="24"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="gMo-lo-XTN"/>
+    </inferredMetricsTieBreakers>
 </document>

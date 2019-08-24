@@ -161,7 +161,32 @@ class CoreAPI {
         })
         
     }
-    
+    func requestReportPost(presentationID: String,selectedIssue: String,reportedIssue: String, successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void ) {
+        let request =  SSHttpRequest(withuUrl: kReportPost)
+        let token = UserDefaults.standard.value(forKey: kToken) as! String
+        let OTPRequestValues = ["presentation_id" : presentationID, "selected_issue": selectedIssue, "reported_issue":reportedIssue]  as [String:Any]
+        let header : HTTPHeaders = ["Authorization":"Bearer \(token)", "Accept" : "application/json"]
+        
+        request.postMethodWithHeaderasToken(dictParameter: OTPRequestValues, url: kReportPost, header: header, successResponse: {(response) in
+            successResponse(response)
+        }, faliure: {(error) in
+            faliure(error)
+        })
+        
+    }
+    func requestLikeUnLike(presentationID: String, likeUnLikeValue: String, successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void ) {
+        let request =  SSHttpRequest(withuUrl: kPresentationLikeOrUnLike)
+        let token = UserDefaults.standard.value(forKey: kToken) as! String
+        let OTPRequestValues = ["presentation_id" : presentationID, "like_emoji": likeUnLikeValue ]  as [String:Any]
+        let header : HTTPHeaders = ["Authorization":"Bearer \(token)", "Accept" : "application/json"]
+        
+        request.postMethodWithHeaderasToken(dictParameter: OTPRequestValues, url: kPresentationLikeOrUnLike, header: header, successResponse: {(response) in
+            successResponse(response)
+        }, faliure: {(error) in
+            faliure(error)
+        })
+        
+    }
     func requestNotify(presentationID: String, successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void ) {
         let request =  SSHttpRequest(withuUrl: kNotificationorNonNotify)
         let token = UserDefaults.standard.value(forKey: kToken) as! String

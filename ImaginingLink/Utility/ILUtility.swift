@@ -196,6 +196,12 @@ class ILUtility : NSObject {
         alertContoller.addAction(alertAction)
         controller.present(alertContoller, animated: true, completion: nil)
     }
+    class func showProgressIndicator(controller: UIViewController){
+        MBProgressHUD.showAdded(to: controller.view, animated: true)
+    }
+    class func hideProgressIndicator(controller: UIViewController){
+        MBProgressHUD.hide(for: controller.view, animated: true)
+    }
 }
 
 extension UIApplication {

@@ -50,6 +50,8 @@ let kComments = "api/comments"
 let kFavouriteUnfavorite = "api/favourites"
 let kFollowOrUnfollow = "api/follows"
 let kNotificationorNonNotify = "api/notifications"
+let kPresentationLikeOrUnLike = "api/presentations/save-like"
+let kReportPost = "api/reports"
 
 //Screen Name
 let kEmailVerifiedScreen = "EmailScreen"

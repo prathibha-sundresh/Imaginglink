@@ -10,17 +10,16 @@ import UIKit
 import SDWebImage
 import WebKit
 
-protocol PresentationDelegate {
-    func favouritesUnFavouritesWithPresentationId(id : String, successResponse:@escaping (_ response:String)-> Void)
-    func followUnfollowWithPresentationId(id : String, successResponse:@escaping (_ response:String)-> Void)
-    func notifyOrCancelWithPresentationId(id : String, successResponse:@escaping (_ response:String)-> Void)
-}
+//protocol PresentationDelegate {
+//    //func followUnfollowWithPresentationId(id : String, successResponse:@escaping (_ response:String)-> Void)
+//    //func notifyOrCancelWithPresentationId(id : String, successResponse:@escaping (_ response:String)-> Void)
+//}
 
-class PresentationTableViewCell: UITableViewCell {
+class PresentationTableViewCell: UITableViewCell,UIWebViewDelegate {
     //
     @IBOutlet weak var LikeImageView: UIButton!
     @IBOutlet weak var FavouriteImage: UIButton!
-    @IBOutlet weak var webview: WKWebView!
+    @IBOutlet weak var webview: UIWebView!
     @IBOutlet weak var URLImageView: UIImageView!
     @IBOutlet weak var UserImageView: UIImageView!
     @IBOutlet weak var UsernameLabel: UILabel!
@@ -28,55 +27,46 @@ class PresentationTableViewCell: UITableViewCell {
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var HeadingTitleLabel: UILabel!
     weak var myVC : UIViewController?
+    @IBOutlet weak var menuPressedButton: UIButton!
     @IBAction func MenuPressed(_ sender: Any) {
         
-        let actionsheet = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
-        
-        let followPostAction = UIAlertAction(title: "Follow this post", style: .default, handler: { (action) -> Void in
-            self.delegate?.followUnfollowWithPresentationId(id: self.presentationId!, successResponse: {(response) in
-                
-            })
-        })
-        let image = UIImage(named: "FollowPost_Icon")
-        followPostAction.setValue(image?.withRenderingMode(.alwaysOriginal), forKey: "image")
-        followPostAction.setValue(UIColor(red:0.29, green:0.29, blue:0.29, alpha:1.0), forKey: "titleTextColor")
-        actionsheet.addAction(followPostAction)
-        
-        let reportPostAction = UIAlertAction(title: "Report post", style: .default, handler: { (action) -> Void in
-            
-        })
-        let image1 = UIImage(named: "ReportPost_Icon")
-        reportPostAction.setValue(image1?.withRenderingMode(.alwaysOriginal), forKey: "image")
-        reportPostAction.setValue(UIColor(red:0.29, green:0.29, blue:0.29, alpha:1.0), forKey: "titleTextColor")
-        actionsheet.addAction(reportPostAction)
-        
-//        actionsheet.addAction(UIAlertAction(title: "Turn on and Turn off notification", style: UIAlertActionStyle.default, handler: { (action) -> Void in
-//            self.delegate?.notifyOrCancelWithPresentationId(id: self.presentationId!, successResponse: {(response) in
-//
+//        let actionsheet = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+//        
+//        let followPostAction = UIAlertAction(title: "Follow this post", style: .default, handler: { (action) -> Void in
+//            self.delegate?.followUnfollowWithPresentationId(id: self.presentationId!, successResponse: {(response) in
+//                
 //            })
+//        })
+//        let image = UIImage(named: "FollowPost_Icon")
+//        followPostAction.setValue(image?.withRenderingMode(.alwaysOriginal), forKey: "image")
+//        followPostAction.setValue(UIColor(red:0.29, green:0.29, blue:0.29, alpha:1.0), forKey: "titleTextColor")
+//        actionsheet.addAction(followPostAction)
+//        
+//        let reportPostAction = UIAlertAction(title: "Report post", style: .default, handler: { (action) -> Void in
+//            
+//        })
+//        let image1 = UIImage(named: "ReportPost_Icon")
+//        reportPostAction.setValue(image1?.withRenderingMode(.alwaysOriginal), forKey: "image")
+//        reportPostAction.setValue(UIColor(red:0.29, green:0.29, blue:0.29, alpha:1.0), forKey: "titleTextColor")
+//        actionsheet.addAction(reportPostAction)
+//        
+////        actionsheet.addAction(UIAlertAction(title: "Turn on and Turn off notification", style: UIAlertActionStyle.default, handler: { (action) -> Void in
+////            self.delegate?.notifyOrCancelWithPresentationId(id: self.presentationId!, successResponse: {(response) in
+////
+////            })
+////        }))
+////        actionsheet.addAction(UIAlertAction(title: "Give feedback on this post", style: UIAlertActionStyle.default, handler: { (action) -> Void in
+////
+////        }))
+//        actionsheet.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: { (action) -> Void in
+//            
 //        }))
-//        actionsheet.addAction(UIAlertAction(title: "Give feedback on this post", style: UIAlertActionStyle.default, handler: { (action) -> Void in
-//
-//        }))
-        actionsheet.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: { (action) -> Void in
-            
-        }))
-        myVC?.present(actionsheet, animated: true, completion: nil)
+//        myVC?.present(actionsheet, animated: true, completion: nil)
         
     }
     
-    var delegate:PresentationDelegate?
+   // var delegate:PresentationDelegate?
     
-    @IBAction func FavouriteActionPressed(_ sender: Any) {
-        delegate?.favouritesUnFavouritesWithPresentationId(id: presentationId!,successResponse: {(response) in
-            if (response == "Made unfavourite successfully") {
-                self.FavouriteImage.setImage(UIImage(named: "Icon_unfavourite"), for: UIControlState.normal)
-            } else {
-                 self.FavouriteImage.setImage(UIImage(named: "Icon_favourite"), for: UIControlState.normal)
-            }
-        })
-       
-    }
     @IBAction func LikeActionPressed(_ sender: Any) {
     }
     @IBOutlet weak var ShareActionPressed: UIButton!
@@ -87,6 +77,7 @@ class PresentationTableViewCell: UITableViewCell {
     var presentationId : String?
     
     func setupUI(dic:[String:Any]) {
+        
        if let value = dic["id"] {
         presentationId = value as? String ?? ""
         }
@@ -99,12 +90,19 @@ class PresentationTableViewCell: UITableViewCell {
         HeadingTitleLabel.sizeToFit()
         HeadingTitleLabel.textAlignment = .left
         
-        let favourite = dic["is_my_favourite"] as! NSNumber
-        if (favourite.intValue == 0) {
+        if let favourite = dic["is_my_favourite"] as? Int, favourite == 0{
             FavouriteImage.setImage(UIImage(named: "Icon_unfavourite"), for: UIControlState.normal)
-        } else {
+        }
+        else{
             FavouriteImage.setImage(UIImage(named: "Icon_favourite"), for: UIControlState.normal)
         }
+        if let likedStatus = dic["Is_Liked"] as? Int, likedStatus == 1{
+            LikeImageView.setImage(UIImage(named: "Icon_like"), for: UIControlState.normal)
+        }
+        else{
+            LikeImageView.setImage(UIImage(named: "Icon_Like_Unselected"), for: UIControlState.normal)
+        }
+        
             ViewsLabel.text = "\((dic["views_count"] as? NSNumber ?? 0).stringValue) Views"
             LikeLabel.text = "\((dic["likes_count"] as? NSNumber ?? 0).stringValue) Likes"
             CommentLabel.text = "\((dic["comments_count"] as? NSNumber ?? 0).stringValue) Comments"
@@ -119,15 +117,12 @@ class PresentationTableViewCell: UITableViewCell {
             }
         if let imageURL : String = dic["presentation_master_url"] as? String {
             if ((dic["presentation_type"] as? String)?.contains("video"))! {
-                print("imageURL \(imageURL)")
+                
                 let url : URL = URL(string: imageURL)!
-                print("url \(url)")
                 webview.isHidden = false
-                webview.stopLoading()
-                if (webview != nil){
-                    webview.load(URLRequest(url: url))
-                }
-
+                
+                let requestObj = URLRequest(url: url)
+                webview.loadRequest(requestObj)
                 if (URLImageView != nil) {
                     URLImageView.isHidden = true
                 }
@@ -145,7 +140,6 @@ class PresentationTableViewCell: UITableViewCell {
         UserImageView.layer.borderWidth = 1.0
         UserImageView.layer.masksToBounds = false
         UserImageView.layer.borderColor = UIColor.white.cgColor
-        UserImageView.layer.cornerRadius = UserImageView.frame.size.width / 2
-        UserImageView.clipsToBounds = true
+        UserImageView.layer.cornerRadius = UserImageView.frame.size.height / 2
     }
 }
