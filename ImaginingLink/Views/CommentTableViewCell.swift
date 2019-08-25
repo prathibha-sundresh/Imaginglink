@@ -11,41 +11,96 @@ import SZTextView
 
 protocol CommentDelegate {
     func sendCommentsToAPI(comments:String)
-    
+    func updatePresentationDict(dict: [String: Any])
 }
 
 class CommentTableViewCell : UITableViewCell {
     
     @IBOutlet weak var CommentView: UIView!
-    @IBOutlet weak var ViewButton: UIButton!
+    @IBOutlet weak var FavouriteButton: UIButton!
     @IBOutlet weak var commentButton: UIButton!
     @IBOutlet weak var ShareButton: UIButton!
+    @IBOutlet weak var viewsLabel: UILabel!
+    @IBOutlet weak var likesCountLabel: UILabel!
     var delegate : CommentDelegate?
+    var presentationID: String = ""
+    var myViewcontroller: UIViewController?
+    var presentationDict: [String: Any] = [:]
     @IBAction func SendComment(_ sender: Any) {
         if (Textview.text!.count != 0) {
             delegate?.sendCommentsToAPI(comments: Textview.text!)
         }
     }
     @IBAction func ShareButtonPressed(_ sender: Any) {
+        
+        let title = presentationDict["title"] as? String ?? ""
+        let myWebsite = URL(string:presentationDict["presentation_master_url"] as? String ?? "")
+        let shareAll = [title, myWebsite!] as [Any]
+        let activityViewController = UIActivityViewController(activityItems: shareAll, applicationActivities: nil)
+        activityViewController.popoverPresentationController?.sourceView = myViewcontroller?.view
+        activityViewController.excludedActivityTypes = [ UIActivityType.airDrop]
+        myViewcontroller?.present(activityViewController, animated: false, completion: nil)
     }
-    @IBAction func ViewButtonPressed(_ sender: Any) {
+    @IBAction func favouriteUnFavouriteButtonPressed(_ sender: Any) {
+        
+        let presentationID = presentationDict["id"] as? String ?? ""
+        ILUtility.showProgressIndicator(controller: myViewcontroller!)
+        CoreAPI.sharedManaged.requestFavouriteUnfavorite(presentationID: presentationID, successResponse: {(response) in
+            ILUtility.hideProgressIndicator(controller: self.myViewcontroller!)
+            let data = response as! [String:Any]
+            ILUtility.showAlert(message: data["message"] as? String ?? "", controller: self.myViewcontroller!)
+            if let favStatus = self.presentationDict["is_my_favourite"] as? Int, favStatus == 0{
+                self.presentationDict["is_my_favourite"] = 1
+            }
+            else{
+                self.presentationDict["is_my_favourite"] = 0
+            }
+            self.delegate?.updatePresentationDict(dict: self.presentationDict)
+        }, faliure: {(error) in
+            ILUtility.hideProgressIndicator(controller: self.myViewcontroller!)
+        })
     }
     @IBAction func CommentButtonPressed(_ sender: Any) {
+        
     }
     @IBOutlet weak var Textview: SZTextView!
     
-    func setupUI(dic : [String:Any]) {
+    fileprivate func setUIValues(_ dic: [String : Any]) {
+        presentationID = dic["id"] as? String ?? ""
         CommentView.layer.borderColor = UIColor(red: 187/255, green: 205/255, blue: 217/255, alpha: 1).cgColor
-        Textview.placeholder = "Write your comment"
+        Textview.placeholder = "  Write your comment"
         Textview.placeholderTextColor = UIColor(red: 187/255, green: 205/255, blue: 217/255, alpha: 1)
         Textview.textColor = UIColor.gray
         Textview.layer.borderColor = UIColor(red: 187/255, green: 205/255, blue: 217/255, alpha: 1).cgColor
         Textview.layer.borderWidth = 1
-        Textview.layer.cornerRadius = 10
+        Textview.layer.cornerRadius = 16
+        likesCountLabel.text = "\(dic["likes_count"] as? Int ?? 0)"
+        commentButton.setTitle(" \(dic["comments_count"] as? Int ?? 0) Comments", for: UIControlState.normal)
+        viewsLabel.text = "\(dic["views_count"] as? Int ?? 0) Views"
         
-        commentButton.setTitle(" \((dic["comments_count"] as? NSNumber ?? 0).stringValue) Comments", for: UIControlState.normal)
-           ViewButton.setTitle(" \((dic["views_count"] as? NSNumber ?? 0).stringValue) Views", for: UIControlState.normal)
-        
-        ShareButton.setTitle(" \((dic["likes_count"] as? NSNumber ?? 0).stringValue) Share", for: UIControlState.normal)
+        if let favourite = dic["is_my_favourite"] as? Int, favourite == 0{
+            FavouriteButton.setImage(UIImage(named: "Icon_unfavourite"), for: UIControlState.normal)
+        }
+        else{
+            FavouriteButton.setImage(UIImage(named: "Icon_favourite"), for: UIControlState.normal)
+        }
+    }
+    
+    func setupUI(dic : [String:Any]) {
+        presentationDict = dic
+        setUIValues(presentationDict)
+    }
+    @IBAction func ratingButton(_ sender: UIButton){
+        ILUtility.showProgressIndicator(controller: myViewcontroller!)
+        let rating = sender.tag - 100
+        CoreAPI.sharedManaged.requestAddRatingPost(presentationID: presentationID, rating: rating, successResponse: { (response) in
+            if let data = response["data"] as? [String:Any]{
+                self.presentationDict["likes_count"] = data["rated_members_count"] as? Int
+            }
+            self.delegate?.updatePresentationDict(dict: self.presentationDict)
+            ILUtility.hideProgressIndicator(controller: self.myViewcontroller!)
+        }) { (error) in
+            ILUtility.hideProgressIndicator(controller: self.myViewcontroller!)
+        }
     }
 }

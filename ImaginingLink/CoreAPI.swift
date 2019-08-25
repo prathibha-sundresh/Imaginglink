@@ -174,6 +174,19 @@ class CoreAPI {
         })
         
     }
+    func requestAddRatingPost(presentationID: String,rating: Int, successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void ) {
+        let request =  SSHttpRequest(withuUrl: kAddRatings)
+        let token = UserDefaults.standard.value(forKey: kToken) as! String
+        let OTPRequestValues = ["presentation_id" : presentationID, "rating": rating]  as [String:Any]
+        let header : HTTPHeaders = ["Authorization":"Bearer \(token)", "Accept" : "application/json"]
+        
+        request.postMethodWithHeaderasToken(dictParameter: OTPRequestValues, url: kAddRatings, header: header, successResponse: {(response) in
+            successResponse(response)
+        }, faliure: {(error) in
+            faliure(error)
+        })
+        
+    }
     func requestLikeUnLike(presentationID: String, likeUnLikeValue: String, successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void ) {
         let request =  SSHttpRequest(withuUrl: kPresentationLikeOrUnLike)
         let token = UserDefaults.standard.value(forKey: kToken) as! String
@@ -256,7 +269,15 @@ class CoreAPI {
         })
         
     }
-    
+    func logOut(){
+        let appdelegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate
+        appdelegate.openRegularSignIn()
+        self.requestLogout(successResponse: { (response) in
+        
+        }) { (error) in
+            
+        }
+    }
     
     func verifyMobileOTP(verificationCode : String,successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void ) {
         let request =  SSHttpRequest(withuUrl: kTwoFactorAuthenticationMobileOTPAPI)

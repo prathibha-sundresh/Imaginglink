@@ -8,14 +8,19 @@
 
 import UIKit
 
-class PresentationDetailViewcontroller: BaseHamburgerViewController, UITableViewDataSource, UITableViewDelegate, CommentDelegate, ImagePressDelegate, CreateCommentDelegate {
+class PresentationDetailViewcontroller: BaseHamburgerViewController, UITableViewDataSource, UITableViewDelegate, CreateCommentDelegate {
     func clickonReplay(ParentId: String) {
         clickonReplay()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if (section == CommentListCell && commentData != nil) {
-            return commentData!.count
+        if (section == CommentListCell) {
+            if commentData != nil{
+                return commentData!.count
+            }
+            else{
+                return 0
+            }
         }
         
         return 1
@@ -33,6 +38,7 @@ class PresentationDetailViewcontroller: BaseHamburgerViewController, UITableView
             if (dicData != nil) {
                 ImageCell.setLongPresstoFile()
                 ImageCell.setupUI(dic: dicData!)
+                ImageCell.delegate = self
             }
             tableViewCell = ImageCell
         } else if(indexPath.section == PresentationCell) {
@@ -45,6 +51,7 @@ class PresentationDetailViewcontroller: BaseHamburgerViewController, UITableView
             let commentCell : CommentTableViewCell = tableView.dequeueReusableCell(withIdentifier: "CommentTableViewCellId", for: indexPath) as! CommentTableViewCell
             if (dicData != nil) {
                 commentCell.delegate = self
+                commentCell.myViewcontroller = self
                 commentCell.setupUI(dic: dicData!)
             }
             tableViewCell = commentCell
@@ -78,24 +85,6 @@ class PresentationDetailViewcontroller: BaseHamburgerViewController, UITableView
 //        }
     }
     
-    func downloadFileOnLongPress(File: String) {
-        let downloadService = WSDownloadFilesManager()
-        downloadService.downloadFile(urlString: File, PathName: "ImaginingLink",success: {(response) in
-            
-            ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: "Success")
-        }, failure: {(error) in
-            ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: "Failure")
-        })
-    }
-    
-    func sendCommentsToAPI(comments: String) {
-        CoreAPI.sharedManaged.requestForcomments(comment: comments, parentcommentid: self.parentCommentId!, commentedcondition: "PUBLISHED", presentationid: userID!, successResponse: {(response) in
-            self.presentationDetailTableView.reloadData()
-         }, faliure: {(error) in
-            
-         })
-    }
-    
     func clickonReplay() {
         let alertController = UIAlertController(title: "Add New Comment", message: "", preferredStyle: UIAlertControllerStyle.alert)
         alertController.addTextField { (textField : UITextField!) -> Void in
@@ -123,7 +112,6 @@ class PresentationDetailViewcontroller: BaseHamburgerViewController, UITableView
     let PresentationCell = 1
     let CommentCell = 2
     let CommentListCell = 3
-    
     
     @IBOutlet weak var presentationDetailTableView: UITableView!
     var userID : String?
@@ -163,9 +151,10 @@ class PresentationDetailViewcontroller: BaseHamburgerViewController, UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         addSlideMenuButton(showBackButton: true,backbuttonTitle: "Presentation")
         self.presentationDetailTableView.delegate = self
-
+        presentationDetailTableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: presentationDetailTableView.frame.width, height: 25))
         getPresentationDetails()
     }
     
@@ -228,5 +217,40 @@ class PresentationDetailViewcontroller: BaseHamburgerViewController, UITableView
             let vc : ReportPostViewController = segue.destination as! ReportPostViewController
             vc.userID = sender as? String ?? ""
         }
+        else if segue.identifier == "fullImageVCID"{
+            let vc : FullSizeImageViewController = segue.destination as! FullSizeImageViewController
+            vc.urlStr = sender as? String ?? ""
+        }
+    }
+    
+}
+extension PresentationDetailViewcontroller: CommentDelegate{
+    func sendCommentsToAPI(comments: String) {
+        CoreAPI.sharedManaged.requestForcomments(comment: comments, parentcommentid: self.parentCommentId!, commentedcondition: "PUBLISHED", presentationid: userID!, successResponse: {(response) in
+            self.presentationDetailTableView.reloadData()
+        }, faliure: {(error) in
+            
+        })
+    }
+    func updatePresentationDict(dict: [String : Any]) {
+        dicData = dict
+        let indexPath = IndexPath(item: 0, section: CommentCell)
+        presentationDetailTableView.reloadRows(at: [indexPath], with: .fade)
+    }
+}
+extension PresentationDetailViewcontroller: ImagePressDelegate{
+    func downloadFileOnLongPress(File: String) {
+        let downloadService = WSDownloadFilesManager()
+        downloadService.downloadFile(urlString: File, PathName: "ImaginingLink",success: {(response) in
+            
+            ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: "Success")
+        }, failure: {(error) in
+            ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: "Failure")
+        })
+    }
+    func showFullImage(urlStr: String) {
+        
+        self.performSegue(withIdentifier: "fullImageVCID", sender: urlStr)
+        
     }
 }

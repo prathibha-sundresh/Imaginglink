@@ -37,14 +37,8 @@ class MenuViewController: BaseHamburgerViewController, UITableViewDelegate, UITa
        
         
         if (indexPath.row == 4) {
-            
-            CoreAPI.sharedManaged.requestLogout(successResponse: {(response) in
-                self.CloseMenuPressed(nil)
-                let appdelegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate
-                appdelegate.openRegularSignIn()
-            }, faliure: {(error) in
-                ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: error)
-            })
+            self.CloseMenuPressed(nil)
+            CoreAPI.sharedManaged.logOut()
         } else {
             CloseMenuPressed(nil)
             delegate?.slideMenuItemSelectedAtIndex(indexPath.row)

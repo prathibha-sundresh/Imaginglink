@@ -52,6 +52,7 @@ let kFollowOrUnfollow = "api/follows"
 let kNotificationorNonNotify = "api/notifications"
 let kPresentationLikeOrUnLike = "api/presentations/save-like"
 let kReportPost = "api/reports"
+let kAddRatings = "api/ratings"
 
 //Screen Name
 let kEmailVerifiedScreen = "EmailScreen"

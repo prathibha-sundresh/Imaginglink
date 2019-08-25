@@ -141,5 +141,6 @@ class PresentationTableViewCell: UITableViewCell,UIWebViewDelegate {
         UserImageView.layer.masksToBounds = false
         UserImageView.layer.borderColor = UIColor.white.cgColor
         UserImageView.layer.cornerRadius = UserImageView.frame.size.height / 2
+        UserImageView.clipsToBounds = true
     }
 }

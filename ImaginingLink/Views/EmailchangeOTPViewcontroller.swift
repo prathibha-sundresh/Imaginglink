@@ -44,12 +44,7 @@ class EmailchangeOTPViewcontroller : UIViewController {
                 let data : [String : Any] = response as! [String : Any]
                 
                 ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: (data["message"] as! String))
-                CoreAPI.sharedManaged.requestLogout(successResponse: {(response) in
-                    let appdelegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate
-                    appdelegate.openRegularSignIn()
-                }, faliure: {(error) in
-                    ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: error)
-                })
+                CoreAPI.sharedManaged.logOut()
 //                let storyboard = UIStoryboard.init(name: "DashBoard", bundle: nil)
 //                let vc = storyboard.instantiateViewController(withIdentifier: "FinalLoginViewController") as! FinalLoginViewController
 //                self.navigationController?.pushViewController(vc, animated: true)

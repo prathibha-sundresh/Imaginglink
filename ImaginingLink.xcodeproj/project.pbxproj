@@ -10,6 +10,12 @@
 		4803D3352178D82C00C82909 /* InviteFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4803D3342178D82C00C82909 /* InviteFriendsViewController.swift */; };
 		480D9B092177A32C000DEBFC /* ChangeEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480D9B082177A32C000DEBFC /* ChangeEmailViewController.swift */; };
 		481023F22180D79A00ED37A7 /* ResetPasswordWithMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481023F12180D79A00ED37A7 /* ResetPasswordWithMenuViewController.swift */; };
+		4810C815230C018B00B6ACA4 /* GoogleSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4810C814230C018B00B6ACA4 /* GoogleSans-Bold.ttf */; };
+		4810C817230C04F100B6ACA4 /* ComingSoonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4810C816230C04F100B6ACA4 /* ComingSoonViewController.swift */; };
+		4810C81923116D1C00B6ACA4 /* ReportPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4810C81823116D1C00B6ACA4 /* ReportPostViewController.swift */; };
+		4810C81B2311759C00B6ACA4 /* GoogleSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4810C81A2311759C00B6ACA4 /* GoogleSans-Regular.ttf */; };
+		4810C81F231189BD00B6ACA4 /* GoogleSans-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4810C81E231189BC00B6ACA4 /* GoogleSans-Medium.ttf */; };
+		48222DF223131FB700751CB7 /* FullSizeImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48222DF123131FB700751CB7 /* FullSizeImageViewController.swift */; };
 		48415FAA2163A6B900D96DA6 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 48415FA52163A6B800D96DA6 /* Info.plist */; };
 		48415FAC2163A6B900D96DA6 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 48415FA82163A6B900D96DA6 /* Info.plist */; };
 		48415FAF2163A7FB00D96DA6 /* ImaginingLinkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48415FA42163A6B800D96DA6 /* ImaginingLinkTests.swift */; };
@@ -100,6 +106,12 @@
 		4803D3342178D82C00C82909 /* InviteFriendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteFriendsViewController.swift; sourceTree = "<group>"; };
 		480D9B082177A32C000DEBFC /* ChangeEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeEmailViewController.swift; sourceTree = "<group>"; };
 		481023F12180D79A00ED37A7 /* ResetPasswordWithMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordWithMenuViewController.swift; sourceTree = "<group>"; };
+		4810C814230C018B00B6ACA4 /* GoogleSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GoogleSans-Bold.ttf"; sourceTree = "<group>"; };
+		4810C816230C04F100B6ACA4 /* ComingSoonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComingSoonViewController.swift; sourceTree = "<group>"; };
+		4810C81823116D1C00B6ACA4 /* ReportPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportPostViewController.swift; sourceTree = "<group>"; };
+		4810C81A2311759C00B6ACA4 /* GoogleSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GoogleSans-Regular.ttf"; sourceTree = "<group>"; };
+		4810C81E231189BC00B6ACA4 /* GoogleSans-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GoogleSans-Medium.ttf"; sourceTree = "<group>"; };
+		48222DF123131FB700751CB7 /* FullSizeImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullSizeImageViewController.swift; sourceTree = "<group>"; };
 		48415FA42163A6B800D96DA6 /* ImaginingLinkTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImaginingLinkTests.swift; sourceTree = "<group>"; };
 		48415FA52163A6B800D96DA6 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		48415FA72163A6B900D96DA6 /* ImaginingLinkUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImaginingLinkUITests.swift; sourceTree = "<group>"; };
@@ -311,9 +323,12 @@
 			isa = PBXGroup;
 			children = (
 				AC6046AC211018DE006A42F3 /* SF-Pro-Display-Light.ttf */,
+				4810C814230C018B00B6ACA4 /* GoogleSans-Bold.ttf */,
 				AC323B3420FF76BC0015ECB4 /* SF-Pro-Display-Semibold.ttf */,
+				4810C81E231189BC00B6ACA4 /* GoogleSans-Medium.ttf */,
 				AC323B3220FF750E0015ECB4 /* SF-Pro-Display-Regular.ttf */,
 				ACD18C7120C550200059DE7B /* Roboto-Bold.ttf */,
+				4810C81A2311759C00B6ACA4 /* GoogleSans-Regular.ttf */,
 				AC01CA5420C05E4C00034C90 /* Roboto-Light.ttf */,
 				AC01CA5220C05DF100034C90 /* Roboto-Regular.ttf */,
 			);
@@ -362,6 +377,9 @@
 				48FFC673217F82A300AB09D5 /* TwofactorAuthenticationViewController.swift */,
 				AC3AD4E32188A72D00B1B81A /* LogOutTableViewCell.swift */,
 				AC20EE8021908E900083AAFE /* PresentationDetailViewcontroller.swift */,
+				4810C816230C04F100B6ACA4 /* ComingSoonViewController.swift */,
+				4810C81823116D1C00B6ACA4 /* ReportPostViewController.swift */,
+				48222DF123131FB700751CB7 /* FullSizeImageViewController.swift */,
 			);
 			path = VerificationView;
 			sourceTree = "<group>";
@@ -523,6 +541,7 @@
 				AC323B3820FF822A0015ECB4 /* Verification.storyboard in Resources */,
 				4842793B1FF39B9E0056A089 /* LaunchScreen.storyboard in Resources */,
 				AC0AD39020D13C5800FCB371 /* ListView.storyboard in Resources */,
+				4810C81F231189BD00B6ACA4 /* GoogleSans-Medium.ttf in Resources */,
 				AC6046AD211018E0006A42F3 /* SF-Pro-Display-Light.ttf in Resources */,
 				AC323B3320FF750F0015ECB4 /* SF-Pro-Display-Regular.ttf in Resources */,
 				484279361FF39B9E0056A089 /* Main.storyboard in Resources */,
@@ -534,7 +553,9 @@
 				AC323B3520FF76BD0015ECB4 /* SF-Pro-Display-Semibold.ttf in Resources */,
 				AC099D8120F79D6D0090B0CA /* LoaderView.storyboard in Resources */,
 				48FC9DA120B1B99D00838CA7 /* Assets.xcassets in Resources */,
+				4810C81B2311759C00B6ACA4 /* GoogleSans-Regular.ttf in Resources */,
 				AC9159FC21061D1C0018CB94 /* DashBoard.storyboard in Resources */,
+				4810C815230C018B00B6ACA4 /* GoogleSans-Bold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -731,6 +752,7 @@
 				ACD18C7420C551D50059DE7B /* TwoFactorAuthenticationViewcontroller.swift in Sources */,
 				AC130702218A035900790E9A /* EmailchangeOTPViewcontroller.swift in Sources */,
 				AC153A49217E265C0017692B /* BaseHamburgerViewController.swift in Sources */,
+				4810C817230C04F100B6ACA4 /* ComingSoonViewController.swift in Sources */,
 				ACC94BDC210B4DAD009D6B2F /* PresentationTableViewCell.swift in Sources */,
 				48FFC674217F82A300AB09D5 /* TwofactorAuthenticationViewController.swift in Sources */,
 				BCFFFBB320BAEE5A003A0652 /* SignInViewController.swift in Sources */,
@@ -750,6 +772,7 @@
 				AC323B3B20FF826C0015ECB4 /* MobileVerificationsViewcontroller.swift in Sources */,
 				AC099D8320F79DEE0090B0CA /* LoaderView.swift in Sources */,
 				ACD18C7620C586E20059DE7B /* EmailSuccessViewController.swift in Sources */,
+				48222DF223131FB700751CB7 /* FullSizeImageViewController.swift in Sources */,
 				484279331FF39B9E0056A089 /* ViewController.swift in Sources */,
 				48F7F1871FFE0412008D827A /* Constants.swift in Sources */,
 				488BD073218B4F2D003998AC /* ImageTableViewCell.swift in Sources */,
@@ -761,6 +784,7 @@
 				BCFFFBB520BAEE79003A0652 /* SignUpViewcontroller.swift in Sources */,
 				AC0AD39220D13CDE00FCB371 /* ListViewTableViewCell.swift in Sources */,
 				AC7E37652111EDA300A0263D /* ResetPasswordViewContoller.swift in Sources */,
+				4810C81923116D1C00B6ACA4 /* ReportPostViewController.swift in Sources */,
 				AC20EE8121908E900083AAFE /* PresentationDetailViewcontroller.swift in Sources */,
 				AC9159FA210613D30018CB94 /* MobileOTPVirecontroller.swift in Sources */,
 				BC9DD97B20B82541003CA4A6 /* WebServiceHandler.swift in Sources */,
@@ -947,7 +971,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = W8U434C9C6;
 				INFOPLIST_FILE = ImaginingLink/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.imaginglink.Imaginglink;
 				PRODUCT_NAME = ImagingLink;
@@ -964,7 +988,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = W8U434C9C6;
 				INFOPLIST_FILE = ImaginingLink/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.imaginglink.Imaginglink;
 				PRODUCT_NAME = ImagingLink;
