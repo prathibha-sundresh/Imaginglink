@@ -16,7 +16,7 @@ protocol ImagePressDelegate {
 class ImageTableViewCell: UITableViewCell,UIScrollViewDelegate {
 
     @IBOutlet weak var webView: UIWebView!
-    var downloadableLink : String?
+    
     @IBOutlet weak var UserImageView: UIImageView!
     @IBOutlet weak var UsernameLabel: UILabel!
     @IBOutlet weak var ImaginingLabel: UILabel!
@@ -53,18 +53,6 @@ class ImageTableViewCell: UITableViewCell,UIScrollViewDelegate {
             UsernameLabel.text! = author["name"] as! String
             if let photo : String = author["profile_photo"] as? String {
                 UserImageView.sd_setImage(with: URL(string: photo), placeholderImage: UIImage(named: "ImagingLinkLogo"))
-            }
-        }
-        
-        if let isDownloadable = dic["is_downloadable"] as? Int
-        {
-            if (isDownloadable == 1)
-            {
-                if let downloadLink = dic["downloadable_file_link"] as? String {
-                    downloadableLink = downloadLink
-                    delegate?.downloadFileOnLongPress(File: downloadableLink!)
-                }
-                
             }
         }
         
@@ -155,5 +143,6 @@ class ImageTableViewCell: UITableViewCell,UIScrollViewDelegate {
     @IBAction func showFullSizeImage(_ sender: UIButton){
         delegate?.showFullImage(urlStr: images[currentPage])
     }
+    
 }
 

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class PresentationDetailViewcontroller: BaseHamburgerViewController, UITableViewDataSource, UITableViewDelegate, CreateCommentDelegate {
     func clickonReplay(ParentId: String) {
@@ -46,6 +47,8 @@ class PresentationDetailViewcontroller: BaseHamburgerViewController, UITableView
             if (dicData != nil) {
                 presentationCell.setupValue(dic: dicData!)
             }
+            presentationCell.delegate = self
+            presentationCell.controller = self
             tableViewCell = presentationCell
         } else if(indexPath.section == CommentCell) {
             let commentCell : CommentTableViewCell = tableView.dequeueReusableCell(withIdentifier: "CommentTableViewCellId", for: indexPath) as! CommentTableViewCell
@@ -113,6 +116,7 @@ class PresentationDetailViewcontroller: BaseHamburgerViewController, UITableView
     let CommentCell = 2
     let CommentListCell = 3
     
+    var alomafireRequest: Alamofire.Request?
     @IBOutlet weak var presentationDetailTableView: UITableView!
     var userID : String?
     var parentCommentId : String?
@@ -160,6 +164,10 @@ class PresentationDetailViewcontroller: BaseHamburgerViewController, UITableView
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        alomafireRequest?.cancel()
     }
     @IBAction func menuPressedButtonAction(_ sender: UIButton){
         
@@ -240,17 +248,22 @@ extension PresentationDetailViewcontroller: CommentDelegate{
 }
 extension PresentationDetailViewcontroller: ImagePressDelegate{
     func downloadFileOnLongPress(File: String) {
-        let downloadService = WSDownloadFilesManager()
-        downloadService.downloadFile(urlString: File, PathName: "ImaginingLink",success: {(response) in
-            
-            ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: "Success")
-        }, failure: {(error) in
-            ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: "Failure")
-        })
+//        let downloadService = WSDownloadFilesManager()
+//        downloadService.downloadFile(urlString: File, PathName: "ImaginingLink",success: {(response) in
+//
+//            ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: "Success")
+//        }, failure: {(error) in
+//            ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: "Failure")
+//        })
     }
     func showFullImage(urlStr: String) {
         
         self.performSegue(withIdentifier: "fullImageVCID", sender: urlStr)
         
+    }
+}
+extension PresentationDetailViewcontroller: PresentationDetailTextCellDelegate{
+    func cancelRequest(request: Request) {
+        alomafireRequest = request
     }
 }

@@ -53,19 +53,24 @@ class ReportPostViewController: BaseHamburgerViewController {
         selectedIssue = reports[index]
     }
     @IBAction func submitReport(_ sender: UIButton){
-        ILUtility.showProgressIndicator(controller: self)
-        CoreAPI.sharedManaged.requestReportPost(presentationID: userID, selectedIssue: selectedIssue, reportedIssue: reportTF.text!, successResponse: { (response) in
-            ILUtility.hideProgressIndicator(controller: self)
-            let value = response as! [String:Any]
-            
-            let alert = UIAlertController(title: "Imaginglink", message: value["message"] as? String, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { action in
-                self.navigationController?.popViewController(animated: false)
-            }))
-            self.present(alert, animated: true, completion: nil)
-            
-        }) { (erorr) in
-            ILUtility.hideProgressIndicator(controller: self)
+        if reportTF.text == ""{
+            ILUtility.showAlert(message: "Please enter the text for reporting post", controller: self)
+        }
+        else{
+            ILUtility.showProgressIndicator(controller: self)
+            CoreAPI.sharedManaged.requestReportPost(presentationID: userID, selectedIssue: selectedIssue, reportedIssue: reportTF.text!, successResponse: { (response) in
+                ILUtility.hideProgressIndicator(controller: self)
+                let value = response as! [String:Any]
+                
+                let alert = UIAlertController(title: "Imaginglink", message: value["message"] as? String, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { action in
+                    self.navigationController?.popViewController(animated: false)
+                }))
+                self.present(alert, animated: true, completion: nil)
+                
+            }) { (erorr) in
+                ILUtility.hideProgressIndicator(controller: self)
+            }
         }
     }
 }

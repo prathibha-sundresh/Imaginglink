@@ -7,6 +7,11 @@
 //
 
 import UIKit
+import Alamofire
+
+protocol PresentationDetailTextCellDelegate: class {
+    func cancelRequest(request: Alamofire.Request)
+}
 
 class PresentationDetailTextCell : UITableViewCell {
     
@@ -21,8 +26,27 @@ class PresentationDetailTextCell : UITableViewCell {
     @IBOutlet weak var univercityLabel: UILabel!
     @IBOutlet weak var coAuthorsLabel: UILabel!
     @IBOutlet weak var coAuthorsValueLabel: UILabel!
-    
+    @IBOutlet weak var downloadButton: UIButton!
+    @IBOutlet weak var downloadH: NSLayoutConstraint!
+    @IBOutlet weak var downloadW: NSLayoutConstraint!
+    @IBOutlet weak var downloadProgressView: UIProgressView!
+    @IBOutlet weak var progressLabel: UILabel!
+    var downloadableLink : String = ""
+    var request: Alamofire.Request?
+    weak var controller: UIViewController?
+    weak var delegate: PresentationDetailTextCellDelegate?
     func setupValue(dic: [String:Any]) {
+        
+        setProgressUI(isBool: true)
+        if let isDownloadable = dic["is_downloadable"] as? Int
+        {
+            if (isDownloadable == 1)
+            {
+                if let downloadLink = dic["downloadable_file_link"] as? String {
+                    downloadableLink = downloadLink
+                }
+            }
+        }
         
         if let description = dic["description"] as? String
         {
@@ -69,12 +93,22 @@ class PresentationDetailTextCell : UITableViewCell {
         {
             if isDownloadable == 1{
                 AllowToDownloadLabel?.text = "Yes"
+                downloadButton.layer.cornerRadius = 18
+                downloadButton.clipsToBounds = true
+                downloadButton.isHidden = false
+                downloadH.constant = 36
             }
             else{
                 AllowToDownloadLabel?.text = "No"
+                downloadButton.isHidden = true
+                downloadH.constant = 0
             }
         }
-        
+        else{
+            AllowToDownloadLabel?.text = "No"
+            downloadButton.isHidden = true
+            downloadH.constant = 0
+        }
         if let title = dic["title"] as? String
         {
             DescriptionTitleLabel?.text = title
@@ -90,4 +124,94 @@ class PresentationDetailTextCell : UITableViewCell {
             }
         }
      }
+    func setProgressUI(isBool: Bool){
+        downloadProgressView.layer.cornerRadius = 12
+        downloadProgressView.clipsToBounds = true
+        downloadProgressView.isHidden = isBool
+        progressLabel.isHidden = isBool
+    }
+    @IBAction func tapOnDownload(_ sender: UIButton){
+        
+        if checkFileExistsOrNot(){
+            ILUtility.showAlert(message: "Already file downloaded", controller: controller!)
+            return
+        }
+        else{
+            setProgressUI(isBool: false)
+            if request != nil{
+                if !downloadButton.isSelected{
+                    downloadButton.isSelected = true
+                    downloadButton.setTitle("Downloading", for: .normal)
+                    request?.resume()
+                }
+                else{
+                    downloadButton.isSelected = false
+                    downloadButton.setTitle("Download", for: .normal)
+                    request?.suspend()
+                }
+                return
+            }
+            else{
+                downloadButton.isSelected = true
+                downloadButton.setTitle("Downloading", for: .normal)
+            }
+            request = Alamofire.request("\(downloadableLink)").downloadProgress(closure : { (progress) in
+                print(progress.fractionCompleted)
+                self.downloadProgressView.progress = Float(progress.fractionCompleted)
+                let percentageValue = Int((Float(progress.fractionCompleted) * 100).rounded())
+                self.progressLabel.text = "\(percentageValue)%"
+            }).responseData{ (response) in
+                
+                if let data = response.result.value {
+                    
+                    let array = self.downloadableLink.components(separatedBy: "/")
+                    let documentsUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+                    let destinationFileUrl = documentsUrl.appendingPathComponent("ImaginingLink/\(array.last!)")
+                    do {
+                        try data.write(to: destinationFileUrl)
+                        self.setProgressUI(isBool: true)
+                        self.downloadButton.setTitle("Downloaded", for: .normal)
+                        self.downloadButton.isEnabled = false
+                        self.downloadButton.alpha = 0.8
+                    } catch {
+                        print("Something went wrong!")
+                    }
+                }
+            }
+            self.delegate?.cancelRequest(request: request!)
+        }
+    }
+    
+    func createDirectory(){
+        
+        let documentsUrl:URL =  (FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first as URL?)!
+        var isDirectory = ObjCBool(true)
+        let exists = FileManager.default.fileExists(atPath: documentsUrl.path, isDirectory: &isDirectory)
+        if exists && isDirectory.boolValue{
+            return
+        }
+        
+        let destinationFileUrl = documentsUrl.appendingPathComponent("ImaginingLink")
+        do
+        {
+            try FileManager.default.createDirectory(atPath: destinationFileUrl.path, withIntermediateDirectories: true, attributes: nil)
+        }
+        catch let error as NSError
+        {
+            NSLog("Unable to create directory \(error.debugDescription)")
+        }
+    }
+    func checkFileExistsOrNot()-> Bool{
+        createDirectory()
+        let array = downloadableLink.components(separatedBy: "/")
+        let documentsUrl:URL =  (FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first as URL?)!
+        let destinationFileUrl = documentsUrl.appendingPathComponent("ImaginingLink/\(array.last!)")
+        let fileManager = FileManager.default
+        if fileManager.fileExists(atPath: destinationFileUrl.path) {
+            return true
+        } else {
+            return false
+        }
+    }
 }
+

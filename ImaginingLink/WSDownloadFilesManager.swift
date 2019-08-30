@@ -7,16 +7,32 @@
 
 import Foundation
 
-class WSDownloadFilesManager: NSObject {
+protocol WSDownloadFilesManagerDelegate {
+    func downloadCompleted()
+}
+class WSDownloadFilesManager: NSObject,URLSessionDownloadDelegate {
     
-    func downloadFile(urlString:String, PathName:String, success:@escaping (_ response:URL) -> Void, failure:@escaping (_ error:String) -> Void) {
+    func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
+        print("completed.")
+    }
+    
+    
+    func downloadFile(urlString:String, PathName:String, success:@escaping (_ response: String) -> Void, failure:@escaping (_ error:String) -> Void) {
         // Create destination URL
         let documentsUrl:URL =  (FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first as URL?)!
         let destinationFileUrl = documentsUrl.appendingPathComponent(PathName)
+        do
+        {
+            try FileManager.default.createDirectory(atPath: destinationFileUrl.path, withIntermediateDirectories: true, attributes: nil)
+        }
+        catch let error as NSError
+        {
+            NSLog("Unable to create directory \(error.debugDescription)")
+        }
         
         let fileManager = FileManager.default
         if fileManager.fileExists(atPath: destinationFileUrl.path) {
-            return;
+            failure("Already file downloaded.")
         } else {
             //Create URL to the source file you want to download
             let fileURL = URL(string: urlString)
@@ -42,7 +58,7 @@ class WSDownloadFilesManager: NSObject {
                     
                     do {
                         try FileManager.default.copyItem(at: tempLocalUrl, to: destinationFileUrl)
-                        success(tempLocalUrl)
+                        success("Successfully downloaded.")
                     } catch (let writeError) {
                         print("Error creating a file \(destinationFileUrl) : \(writeError)")
                     }

@@ -159,11 +159,17 @@ class SignUpViewcontroller: UIViewController,  UITextFieldDelegate, UserTypeDele
         
     }
     
-    func submit() -> Void {
+    func submit(){
         if firstnameTextField.text?.count == 0 {
             ILUtility.showAlert(message: "please enter First name", controller: self)
         } else if LastNameTextfield.text?.count == 0 {
             ILUtility.showAlert(message: "please enter Last name", controller: self)
+        }
+        else if PasswordTextField.text?.count == 0{
+            ILUtility.showAlert(message: "please enter new password", controller: self)
+        }
+        else if ConfirmPasswordTextfield.text?.count == 0{
+            ILUtility.showAlert(message: "please enter confirm password", controller: self)
         }
         else if (PasswordTextField.text?.count == 0 || !ILUtility.isValidPassword(PasswordTextField.text!)){
             passwordValidator.textColor = UIColor.red

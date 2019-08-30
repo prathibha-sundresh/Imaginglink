@@ -108,7 +108,7 @@ class PresentationTableViewCell: UITableViewCell,UIWebViewDelegate {
             CommentLabel.text = "\((dic["comments_count"] as? NSNumber ?? 0).stringValue) Comments"
             HeadingTitleLabel.text = dic["title"] as? String ?? ""
             timeLabel.text = dic["created_at"] as? String ?? ""
-            ImaginingLabel.text! = " \(dic["section"] as? String ?? "")  "
+            ImaginingLabel.text! = " \(dic["section_short"] as? String ?? "")  "
             if let author : [String : Any] = dic["author"] as? [String:Any] {
                 UsernameLabel.text! = author["name"] as! String
                 if let photo : String = author["profile_photo"] as? String {
