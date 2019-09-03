@@ -40,9 +40,11 @@ class ProfileViewController: BaseHamburgerViewController {
         }
         else{
             profilePhotoImage.sd_setImage(with: URL(string: imageUrl), placeholderImage: UIImage(named: "profileIcon"),options: SDWebImageOptions(rawValue: 0), completed: { (img, err, cacheType, imgURL) in
-                self.profilePhotoImage.image = img
-                let imgData = UIImageJPEGRepresentation(img ?? UIImage(named: "profileIcon")!, 0.75)
-                self.saveImageToLocalPath(imageData: imgData!)
+                if img != nil{
+                    self.profilePhotoImage.image = img
+                    let imgData = UIImageJPEGRepresentation(img!, 0.75)
+                    self.saveImageToLocalPath(imageData: imgData!)
+                }
             })
         }
         
@@ -186,12 +188,13 @@ class ProfileViewController: BaseHamburgerViewController {
         ILUtility.showProgressIndicator(controller: self)
         let imgData = dict["imageData"] as! Data
         CoreAPI.sharedManaged.updateProfilePhoto(requestDict: dict, successResponse: { (response) in
+            ILUtility.hideProgressIndicator(controller: self)
             if let dict = response["data"] as? [String: Any]{
                 self.imageUrl = dict["profile_photo"] as? String ?? ""
             }
             self.saveImageToLocalPath(imageData: imgData)
+            ILUtility.showAlert(message: "Photo uploaded successfully.", controller: self)
             
-            ILUtility.hideProgressIndicator(controller: self)
         }) { (error) in
             ILUtility.hideProgressIndicator(controller: self)
         }

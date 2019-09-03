@@ -270,6 +270,17 @@ class CoreAPI {
         
     }
     func logOut(){
+        
+        let fileManager = FileManager.default
+        let documentsUrl:URL =  (FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first as URL?)!
+        let imagePath = documentsUrl.appendingPathComponent("profile-photo.jpg")
+        
+        if fileManager.fileExists(atPath: imagePath.path) {
+            try! fileManager.removeItem(atPath: imagePath.path)
+        } else {
+            print("File does not exist")
+        }
+        
         let appdelegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate
         appdelegate.openRegularSignIn()
         self.requestLogout(successResponse: { (response) in
