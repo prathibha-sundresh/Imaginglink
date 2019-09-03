@@ -202,6 +202,9 @@ class ILUtility : NSObject {
     class func hideProgressIndicator(controller: UIViewController){
         MBProgressHUD.hide(for: controller.view, animated: true)
     }
+    class func getValueFromUserDefaults(key: String) -> String{
+        return UserDefaults.standard.value(forKey: key) as? String ?? ""
+    }
 }
 
 extension UIApplication {

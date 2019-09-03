@@ -34,6 +34,12 @@ class SignUpViewcontroller: UIViewController,  UITextFieldDelegate, UserTypeDele
     @IBAction func UserTypeSelectionPressed(_ sender: Any) {
         
     }
+    @IBAction func privacyPolicyPressed(_ sender: Any) {
+        self.performSegue(withIdentifier: "PrivacyPolicyID", sender: nil)
+    }
+    @IBAction func termsAndConditionsPolicyPressed(_ sender: Any) {
+        self.performSegue(withIdentifier: "TermsAndConditionsPolicyID", sender: nil)
+    }
     @IBAction func SignUpAction(_ sender: Any) {
         submit()
     }
@@ -44,8 +50,6 @@ class SignUpViewcontroller: UIViewController,  UITextFieldDelegate, UserTypeDele
         } else {
             CheckoutBoxClicked.setImage(#imageLiteral(resourceName: "unCheckedBox"), for: UIControlState.normal)
         }
-        
-        
     }
     @IBOutlet weak var CheckoutBoxClicked: UIButton!
     @IBOutlet weak var passwordValidator: UILabel!
@@ -94,6 +98,7 @@ class SignUpViewcontroller: UIViewController,  UITextFieldDelegate, UserTypeDele
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.navigationController?.isNavigationBarHidden = true
     }
     @IBAction func textDidChange(_ textField: UITextField){
         if textField == PasswordTextField{
@@ -117,7 +122,7 @@ class SignUpViewcontroller: UIViewController,  UITextFieldDelegate, UserTypeDele
         attributedString.addAttributes([NSAttributedStringKey.link:NSURL(string: termsandconditionUrl)!,NSAttributedStringKey.foregroundColor : UIColor(red: 17.0/255.0, green: 148.0/255.0, blue: 246.0/255.0, alpha: 1.0),NSAttributedStringKey.font:UIFont(name: "SFProDisplay-Regular", size: 14.0)!], range: foundRange)
         let legaltermsrange = NSRange(location: "I accept the Terms and conditions & ".count, length: "Privacy policy".count)
         attributedString.addAttributes([NSAttributedStringKey.link:NSURL(string: privacyPolicyUrl)! ,NSAttributedStringKey.foregroundColor : UIColor(red: 17.0/255.0, green: 148.0/255.0, blue: 246.0/255.0, alpha: 1.0),NSAttributedStringKey.font:UIFont(name: "SFProDisplay-Regular", size: 14.0)!], range: legaltermsrange)
-    
+        self.acceptTextView.delegate = self
         self.acceptTextView.attributedText = attributedString
         
     }
@@ -259,3 +264,18 @@ extension UITextField {
     }
 }
 
+extension SignUpViewcontroller: UITextViewDelegate{
+    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange) -> Bool {
+        self.navigationController?.isNavigationBarHidden = false
+        self.navigationController?.navigationBar.tintColor = UIColor(red:0.29, green:0.29, blue:0.29, alpha:1.0)
+        if URL.absoluteString == termsandconditionUrl{
+            self.navigationItem.title = "Terms & Condition"
+            self.performSegue(withIdentifier: "TermsAndConditionsPolicyID", sender: nil)
+        }
+        else{
+            self.navigationItem.title = "Privacy Policy"
+            self.performSegue(withIdentifier: "PrivacyPolicyID", sender: nil)
+        }
+        return false
+    }
+}

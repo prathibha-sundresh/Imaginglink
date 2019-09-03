@@ -10,8 +10,6 @@ import UIKit
 
 protocol CreateCommentDelegate {
     func clickonReplay(ParentId: String)
-    
-    
 }
 
 class CommentListTableViewCell : UITableViewCell {
@@ -19,7 +17,6 @@ class CommentListTableViewCell : UITableViewCell {
     @IBOutlet weak var TitleView: UIView!
     @IBOutlet weak var TimeLabel: UILabel!
     var delegate:CreateCommentDelegate?
-    
     @IBAction func ReplayButtonPressed(_ sender: Any) {
         delegate?.clickonReplay(ParentId: "")
         

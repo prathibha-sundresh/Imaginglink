@@ -16,7 +16,9 @@ let kTwoFactorAuthentication = "two_factor_authentication"
 let kSetPhoneNumberValidated = "phoneValidated"
 let kToken = "token"
 let kAuthenticatedEmailId = "EmailID"
-let kUserName = "userName"
+let kUserName = "fullName"
+let kFirstName = "firstName"
+let kLastName = "lastName"
 let kUserType = "userType"
 
 let kEmailOTP = "EmailOTPScreen"
@@ -73,4 +75,8 @@ let knewEmail = "newmail@gmail.com"
 let termsandconditionUrl = "http://52.39.123.104/dev/terms-conditions"
 let privacyPolicyUrl = "http://52.39.123.104/dev/privacy-policy"
 
+//UserDetails
+let KGetUserDetails = "api/edit-user-profile-info"
+let KUpdateUserDetails = "api/update-profile"
+let KUpdateProfilePhoto = "api/update-profile-photo"
 

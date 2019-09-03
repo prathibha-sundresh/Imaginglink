@@ -317,7 +317,57 @@ class CoreAPI {
         })
         
     }
-
+    func getUserDetails(successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void) {
+        let request =  SSHttpRequest(withuUrl: KGetUserDetails)
+        
+        request.getMethod(dictParameter: [:], url: KGetUserDetails, successResponse: {(response) in
+            successResponse(response)
+        }, faliure: {(error) in
+            faliure(error)
+        })
+        
+    }
+    func updateUserDetails(requestDict: [String: Any], successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void) {
+        let request =  SSHttpRequest(withuUrl: KUpdateUserDetails)
+        let token = UserDefaults.standard.value(forKey: kToken) as! String
+        let header : HTTPHeaders = ["Accept" : "application/json", "Authorization":"Bearer \(token)"]
+        request.postMethodWithHeaderasToken(dictParameter: requestDict, url: KUpdateUserDetails, header: header, successResponse: {(response) in
+            successResponse(response)
+        }, faliure: {(error) in
+            faliure(error)
+        })
+        
+    }
+    func updateProfilePhoto(requestDict: [String: Any], successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void) {
+        let serverUrl = SSHttpRequest.baseURL!.appending(KUpdateProfilePhoto)
+        let token = UserDefaults.standard.value(forKey: kToken) as! String
+        let header : HTTPHeaders = ["Accept" : "application/json", "Authorization":"Bearer \(token)"]
+        
+        let imgData = requestDict["imageData"] as! Data
+        
+        Alamofire.upload(multipartFormData: { multipartFormData in
+            multipartFormData.append(imgData, withName: "profile_photo",fileName: "images.jpg", mimeType: "image/jpeg")
+        },
+                         to:serverUrl, headers: header)
+        { (result) in
+            switch result {
+            case .success(let upload, _, _):
+                
+                upload.uploadProgress(closure: { (progress) in
+                    //print("Upload Progress: \(progress.fractionCompleted)")
+                })
+                
+                upload.responseJSON { response in
+                    successResponse(response.result.value as AnyObject)
+                }
+                
+            case .failure(let encodingError):
+                print(encodingError)
+                faliure("\(encodingError)")
+            }
+        }
+        
+    }
     func getPublicUserPresentation(successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void) {
         let request =  SSHttpRequest(withuUrl: kpublicPresentaion)
         

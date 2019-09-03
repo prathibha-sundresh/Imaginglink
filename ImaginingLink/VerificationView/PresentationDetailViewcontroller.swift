@@ -16,11 +16,16 @@ class PresentationDetailViewcontroller: BaseHamburgerViewController, UITableView
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if (section == CommentListCell) {
-            if commentData != nil{
-                return commentData!.count
+            if isCommentedSelected{
+                if commentData != nil{
+                    return commentData!.count
+                }
+                else{
+                    return 0
+                }
             }
             else{
-                return 0
+               return 0
             }
         }
         
@@ -57,6 +62,7 @@ class PresentationDetailViewcontroller: BaseHamburgerViewController, UITableView
                 commentCell.myViewcontroller = self
                 commentCell.setupUI(dic: dicData!)
             }
+            commentCell.commentButton.isSelected = isCommentedSelected
             tableViewCell = commentCell
         } else if(indexPath.section == CommentListCell) {
             
@@ -116,6 +122,7 @@ class PresentationDetailViewcontroller: BaseHamburgerViewController, UITableView
     let CommentCell = 2
     let CommentListCell = 3
     
+    var isCommentedSelected = false
     var alomafireRequest: Alamofire.Request?
     @IBOutlet weak var presentationDetailTableView: UITableView!
     var userID : String?
@@ -244,6 +251,14 @@ extension PresentationDetailViewcontroller: CommentDelegate{
         dicData = dict
         let indexPath = IndexPath(item: 0, section: CommentCell)
         presentationDetailTableView.reloadRows(at: [indexPath], with: .fade)
+    }
+    func clickOnCommentButton(isSelected: Bool) {
+        isCommentedSelected = isSelected
+        presentationDetailTableView.reloadSections([2,3], with: .fade)
+        if commentData!.count > 0 && isSelected{
+            let indexPath = IndexPath(row: 0, section: 3)
+            presentationDetailTableView.scrollToRow(at: indexPath, at: .top, animated: true)
+        }
     }
 }
 extension PresentationDetailViewcontroller: ImagePressDelegate{

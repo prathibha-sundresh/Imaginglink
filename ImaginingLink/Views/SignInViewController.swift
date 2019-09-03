@@ -88,7 +88,11 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
                
                     UserDefaults.standard.set(data["token"] as! String, forKey: kToken)
                     UserDefaults.standard.set(data["email"] as! String, forKey: kAuthenticatedEmailId)
-                    let fullName = "\(data["first_name"]as? String ?? "") \(data["last_name"]as? String ?? "")"
+                    let firstName = data["first_name"]as? String ?? ""
+                    let lastName = data["last_name"]as? String ?? ""
+                    let fullName = "\(firstName) \(lastName)"
+                    UserDefaults.standard.set(firstName, forKey: kFirstName)
+                    UserDefaults.standard.set(lastName, forKey: kLastName)
                     UserDefaults.standard.set(fullName, forKey: kUserName)
                     
                     if (data["is_enable_2f_authentication"] as? NSNull) != nil {

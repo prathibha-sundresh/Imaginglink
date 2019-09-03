@@ -9,9 +9,10 @@
 import UIKit
 import SZTextView
 
-protocol CommentDelegate {
+@objc protocol CommentDelegate {
     func sendCommentsToAPI(comments:String)
     func updatePresentationDict(dict: [String: Any])
+    @objc optional func clickOnCommentButton(isSelected: Bool)
 }
 
 class CommentTableViewCell : UITableViewCell {
@@ -62,6 +63,7 @@ class CommentTableViewCell : UITableViewCell {
     }
     @IBAction func CommentButtonPressed(_ sender: Any) {
         
+        self.delegate?.clickOnCommentButton?(isSelected: !commentButton.isSelected)
     }
     @IBOutlet weak var Textview: SZTextView!
     
