@@ -166,7 +166,7 @@ class PresentationDetailTextCell : UITableViewCell {
                     
                     let array = self.downloadableLink.components(separatedBy: "/")
                     let documentsUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-                    let destinationFileUrl = documentsUrl.appendingPathComponent("ImaginingLink/\(array.last!)")
+                    let destinationFileUrl = documentsUrl.appendingPathComponent(array.last!)
                     do {
                         try data.write(to: destinationFileUrl)
                         self.setProgressUI(isBool: true)
@@ -205,7 +205,7 @@ class PresentationDetailTextCell : UITableViewCell {
         createDirectory()
         let array = downloadableLink.components(separatedBy: "/")
         let documentsUrl:URL =  (FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first as URL?)!
-        let destinationFileUrl = documentsUrl.appendingPathComponent("ImaginingLink/\(array.last!)")
+        let destinationFileUrl = documentsUrl.appendingPathComponent(array.last!)
         let fileManager = FileManager.default
         if fileManager.fileExists(atPath: destinationFileUrl.path) {
             return true
