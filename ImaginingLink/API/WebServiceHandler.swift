@@ -108,10 +108,9 @@ import Alamofire
     
     func GETRequest(requestParameter:String,methodName:String,  header:HTTPHeaders?, success:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessageCode:String) -> Void)   {
         
-        let requestHeader = ["Authorization": "Bearer \(UserDefaults.standard.value(forKey: kToken) as! String)"]
+        //let requestHeader = ["Authorization": "Bearer \(UserDefaults.standard.value(forKey: kToken) as! String)"]
         
         let requestURL:String? = requestParameter
-        
         
         WebServiceHandler.manager.request(requestURL!, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: header!)
             .responseString { response in
@@ -121,41 +120,17 @@ import Alamofire
                 let dictResponse = response
                 if  response.response?.statusCode == 200{
                     
-                    //print(response.result.value!)   // result of response serialization
-                    
-                    
-                   
                         success( response.result.value! as AnyObject)
                         return
                     }
-                    /*****
-                     *** PARSE RESPONSE OF GET LOYALTY POINTS API
-                     ******/
-                    
-                
-                    
+
                     guard let responeString : String = response.result.value else {
                         faliure("error")
                         return
                     }
-                    
-                    
-                
-                    
-                    success( dictResponse as AnyObject)
+
+                    success( response.result.value! as AnyObject)
                 }
-//        else{
-//
-//
-//                    if let responseMessage = dictResponse["code"]{
-//                        print(responseMessage)
-//                        faliure(responseMessage as! String)
-//                    }else{
-//                        faliure("error")
-//                    }
-//
-//
-//                }
         
         }
     

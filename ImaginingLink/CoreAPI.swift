@@ -133,7 +133,17 @@ class CoreAPI {
             faliure(error)
         })
     }
-    
+    func callSavedPresentation(successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void ) {
+        let request =  SSHttpRequest(withuUrl: KSavedPresentations)
+        let OTPRequestValues = ["" : "" ]  as [String:Any]
+        request.getMethod(dictParameter: OTPRequestValues, url: KSavedPresentations, successResponse: {(response) in
+            successResponse(response)
+        }, faliure: {(error) in
+            
+            let errorDic : [String : Any] = error.convertToDictionary()!
+            faliure(errorDic["message"] as? String ?? "")
+        })
+    }
     func requestFavouriteUnfavorite(presentationID: String, successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void ) {
         let request =  SSHttpRequest(withuUrl: kFavouriteUnfavorite)
         let token = UserDefaults.standard.value(forKey: kToken) as! String

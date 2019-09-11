@@ -47,15 +47,26 @@ class PresentationViewController: BaseHamburgerViewController, UITableViewDelega
     }
     
     var dataArray : [[String:Any]] = []
-    
+    var isFromPresentations: Bool = false
     override func viewDidLoad() {
         super.viewDidLoad()
         PresenationTableView.tableFooterView = footerView
-        addSlideMenuButton(showBackButton: true, backbuttonTitle: "Presentations")
+        if isFromPresentations {
+            addSlideMenuButton(showBackButton: true, backbuttonTitle: "Presentations")
+        }
+        else{
+            addSlideMenuButton(showBackButton: true, backbuttonTitle: "Saved post")
+        }
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        getPublicPresentations()
+        if isFromPresentations{
+            getPublicPresentations()
+        }
+        else{
+            getSavedPresentations()
+        }
+        
     }
     fileprivate func getPublicPresentations() {
         
@@ -77,6 +88,42 @@ class PresentationViewController: BaseHamburgerViewController, UITableViewDelega
             ILUtility.hideProgressIndicator(controller: self)
             ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: error)
         })
+    }
+    override func backAction() {
+        if isFromPresentations{
+            self.navigationController?.popViewController(animated: true)
+        }
+        else{
+            self.tabBarController?.selectedIndex = 1
+        }
+    }
+    func getSavedPresentations(){
+        ILUtility.showProgressIndicator(controller: self)
+        CoreAPI.sharedManaged.callSavedPresentation(successResponse: { (response) in
+            
+            ILUtility.hideProgressIndicator(controller: self)
+            let value = response as? String ?? ""
+            
+            let dic : [String : Any] = value.convertToDictionary()!
+            if let error = dic["message"] as? String, error == "favourite presentations are not found."{
+                ILUtility.showAlert(message: error, controller: self)
+                self.dataArray = []
+                self.PresenationTableView.reloadData()
+                return
+            }
+            let array : [[String:Any]] = dic["data"] as! [[String : Any]]
+            let tmpArray = array.map({ (dict) -> [String: Any] in
+                var tmpDict = dict
+                tmpDict["Is_Liked"] = 0
+                return tmpDict
+            })
+            self.dataArray = tmpArray
+            self.PresenationTableView.reloadData()
+            
+        }) { (error) in
+            ILUtility.hideProgressIndicator(controller: self)
+            ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: error)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -134,6 +181,10 @@ class PresentationViewController: BaseHamburgerViewController, UITableViewDelega
                 dict["is_my_favourite"] = 1
             }
             else{
+                if !self.isFromPresentations{
+                    self.getSavedPresentations()
+                    return
+                }
                 dict["is_my_favourite"] = 0
             }
             self.dataArray[index] = dict

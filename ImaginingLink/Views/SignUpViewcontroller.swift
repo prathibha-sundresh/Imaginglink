@@ -163,7 +163,18 @@ class SignUpViewcontroller: UIViewController,  UITextFieldDelegate, UserTypeDele
         })
         
     }
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ComingSoon"{
+            //Terms And Conditions
+            let vc: TermsAndCondtionsAndPrivacyViewController = segue.destination as! TermsAndCondtionsAndPrivacyViewController
+            if sender as? String == ""{
+                vc.isClickedFrom = "Terms And Conditions"
+            }
+            else{
+                vc.isClickedFrom = "Privacy Policy"
+            }
+        }
+    }
     func submit(){
         if firstnameTextField.text?.count == 0 {
             ILUtility.showAlert(message: "please enter First name", controller: self)
@@ -270,11 +281,11 @@ extension SignUpViewcontroller: UITextViewDelegate{
         self.navigationController?.navigationBar.tintColor = UIColor(red:0.29, green:0.29, blue:0.29, alpha:1.0)
         if URL.absoluteString == termsandconditionUrl{
             self.navigationItem.title = "Terms & Condition"
-            self.performSegue(withIdentifier: "TermsAndConditionsPolicyID", sender: nil)
+            self.performSegue(withIdentifier: "TermsAndConditionsPolicyID", sender: "Terms & Condition")
         }
         else{
             self.navigationItem.title = "Privacy Policy"
-            self.performSegue(withIdentifier: "PrivacyPolicyID", sender: nil)
+            self.performSegue(withIdentifier: "TermsAndConditionsPolicyID", sender: "Privacy Policy")
         }
         return false
     }
