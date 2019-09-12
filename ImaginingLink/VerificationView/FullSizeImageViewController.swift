@@ -10,20 +10,43 @@ import UIKit
 
 class FullSizeImageViewController: UIViewController,UIScrollViewDelegate {
 
-    @IBOutlet weak var fullImage: UIImageView!
+    @IBOutlet weak var scorllView: UIScrollView!
+    @IBOutlet weak var contentViewWidth: NSLayoutConstraint!
+    @IBOutlet weak var statusLabel: UILabel!
     var urlStr = ""
+    var imagesUrls = [String]()
+    var imagesDict = [String: Any]()
     override func viewDidLoad() {
         super.viewDidLoad()
-        fullImage.sd_setImage(with: URL(string: urlStr), placeholderImage: UIImage(named: "ImagingLinkLogo"))
+        addImagesToScrollView()
         // Do any additional setup after loading the view.
     }
-    
+    func addImagesToScrollView(){
+        imagesUrls = imagesDict["images"] as? [String] ?? []
+        for (index,image) in imagesUrls.enumerated(){
+            let imageView = UIImageView(frame: CGRect(x: CGFloat(index) * self.view.frame.width, y: 30.0, width: self.view.frame.width, height: self.view.frame.height - 60.0))
+            
+            imageView.sd_setImage(with: URL(string: image), placeholderImage: UIImage(named: "ImagingLinkLogo"))
+            imageView.contentMode = .scaleAspectFit
+            scorllView.addSubview(imageView)
+        }
+        contentViewWidth.constant = CGFloat(imagesUrls.count) * scorllView.frame.width
+        scorllView.isPagingEnabled = true
+        statusLabel.text = "\(imagesDict["index"] as! Int + 1) of \(imagesUrls.count)"
+        let x = CGFloat(imagesDict["index"] as! Int) * CGFloat(self.view.frame.width)
+        scorllView.setContentOffset(CGPoint(x: x, y: 0), animated: true)
+    }
     @IBAction func fullImageCloseButtonAction(_ sender: UIButton){
         self.dismiss(animated: true, completion: nil)
     }
-    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
-        return fullImage
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        let currentPage = Int(scorllView.contentOffset.x / scorllView.frame.size.width)
+        statusLabel.text = "\(currentPage + 1) of \(imagesUrls.count)"
     }
+    
+//    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+//        return contentView
+//    }
     /*
     // MARK: - Navigation
 

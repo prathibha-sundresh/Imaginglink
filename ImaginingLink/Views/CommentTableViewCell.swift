@@ -21,7 +21,7 @@ class CommentTableViewCell : UITableViewCell {
     @IBOutlet weak var FavouriteButton: UIButton!
     @IBOutlet weak var commentButton: UIButton!
     @IBOutlet weak var ShareButton: UIButton!
-    @IBOutlet weak var viewsLabel: UILabel!
+    @IBOutlet weak var viewsButton: UIButton!
     @IBOutlet weak var likesCountLabel: UILabel!
     var delegate : CommentDelegate?
     var presentationID: String = ""
@@ -78,14 +78,15 @@ class CommentTableViewCell : UITableViewCell {
         Textview.layer.cornerRadius = 16
         likesCountLabel.text = "\(dic["likes_count"] as? Int ?? 0)"
         commentButton.setTitle(" \(dic["comments_count"] as? Int ?? 0) Comments", for: UIControlState.normal)
-        viewsLabel.text = "\(dic["views_count"] as? Int ?? 0) Views"
+        viewsButton.setTitle(" \(dic["views_count"] as? Int ?? 0) Views", for: UIControlState.normal)
+        ShareButton.setTitle(" \(dic["shared_count"] as? Int ?? 0) Shared", for: UIControlState.normal)
         
-        if let favourite = dic["is_my_favourite"] as? Int, favourite == 0{
-            FavouriteButton.setImage(UIImage(named: "Icon_unfavourite"), for: UIControlState.normal)
-        }
-        else{
-            FavouriteButton.setImage(UIImage(named: "Icon_favourite"), for: UIControlState.normal)
-        }
+//        if let favourite = dic["is_my_favourite"] as? Int, favourite == 0{
+//            FavouriteButton.setImage(UIImage(named: "Icon_unfavourite"), for: UIControlState.normal)
+//        }
+//        else{
+//            FavouriteButton.setImage(UIImage(named: "Icon_favourite"), for: UIControlState.normal)
+//        }
     }
     
     func setupUI(dic : [String:Any]) {

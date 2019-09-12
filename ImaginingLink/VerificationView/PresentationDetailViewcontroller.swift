@@ -234,7 +234,7 @@ class PresentationDetailViewcontroller: BaseHamburgerViewController, UITableView
         }
         else if segue.identifier == "fullImageVCID"{
             let vc : FullSizeImageViewController = segue.destination as! FullSizeImageViewController
-            vc.urlStr = sender as? String ?? ""
+            vc.imagesDict = sender as! [String: Any]
         }
     }
     
@@ -255,7 +255,7 @@ extension PresentationDetailViewcontroller: CommentDelegate{
     func clickOnCommentButton(isSelected: Bool) {
         isCommentedSelected = isSelected
         presentationDetailTableView.reloadSections([2,3], with: .fade)
-        if commentData!.count > 0 && isSelected{
+        if let comments = commentData?.count, comments > 0 && isSelected{
             let indexPath = IndexPath(row: 0, section: 3)
             presentationDetailTableView.scrollToRow(at: indexPath, at: .top, animated: true)
         }
@@ -271,9 +271,9 @@ extension PresentationDetailViewcontroller: ImagePressDelegate{
 //            ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: "Failure")
 //        })
     }
-    func showFullImage(urlStr: String) {
-        
-        self.performSegue(withIdentifier: "fullImageVCID", sender: urlStr)
+    func showFullImage(imagesUrls: [String],index: Int) {
+        let tmpDict = ["index": index, "images": imagesUrls] as [String : Any]
+        self.performSegue(withIdentifier: "fullImageVCID", sender: tmpDict)
         
     }
 }

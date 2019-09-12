@@ -10,7 +10,7 @@ import UIKit
 
 protocol ImagePressDelegate {
     func downloadFileOnLongPress(File:String)
-    func showFullImage(urlStr: String)
+    func showFullImage(imagesUrls: [String],index: Int)
 }
 
 class ImageTableViewCell: UITableViewCell,UIScrollViewDelegate {
@@ -141,7 +141,7 @@ class ImageTableViewCell: UITableViewCell,UIScrollViewDelegate {
         }
     }
     @IBAction func showFullSizeImage(_ sender: UIButton){
-        delegate?.showFullImage(urlStr: images[currentPage])
+        delegate?.showFullImage(imagesUrls: images,index: currentPage)
     }
     
 }
