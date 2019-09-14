@@ -11,6 +11,7 @@ import UIKit
 class ReportPostViewController: BaseHamburgerViewController {
     
     var userID : String = ""
+    var presentationTitle = ""
     var selectedIssue: String = "Copied content"
     @IBOutlet weak var reportTF: FloatingLabel!
     let reports: [String] = ["Copied content","False News","Spam","Others","inappropriate","Violence"]
@@ -62,7 +63,7 @@ class ReportPostViewController: BaseHamburgerViewController {
                 ILUtility.hideProgressIndicator(controller: self)
                 let value = response as! [String:Any]
                 
-                let alert = UIAlertController(title: "Imaginglink", message: value["message"] as? String, preferredStyle: .alert)
+                let alert = UIAlertController(title: self.presentationTitle, message: value["message"] as? String, preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { action in
                     self.navigationController?.popViewController(animated: false)
                 }))

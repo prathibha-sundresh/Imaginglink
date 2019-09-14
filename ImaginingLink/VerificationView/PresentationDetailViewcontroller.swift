@@ -42,8 +42,8 @@ class PresentationDetailViewcontroller: BaseHamburgerViewController, UITableView
         if (indexPath.section == ImageViewCell) {
             let ImageCell : ImageTableViewCell = tableView.dequeueReusableCell(withIdentifier: "ImageTableViewCellId", for: indexPath) as! ImageTableViewCell
             if (dicData != nil) {
-                ImageCell.setLongPresstoFile()
                 ImageCell.setupUI(dic: dicData!)
+                ImageCell.myViewcontroller = self
                 ImageCell.delegate = self
             }
             tableViewCell = ImageCell
@@ -216,7 +216,7 @@ class PresentationDetailViewcontroller: BaseHamburgerViewController, UITableView
         CoreAPI.sharedManaged.requestFollowUnFollow(presentationID: presentationID, successResponse: {(response) in
             ILUtility.hideProgressIndicator(controller: self)
             let value = response as! [String:Any]
-            ILUtility.showAlert(message: value["message"] as? String ?? "", controller: self)
+            ILUtility.showAlert(title: self.dicData?["title"] as? String ?? "Imaginglink",message: value["message"] as? String ?? "", controller: self)
             if let IsFollowed = self.dicData?["is_followed_by_me"] as? Int, IsFollowed == 0{
                 self.dicData?["is_followed_by_me"] = 1
             }
@@ -231,6 +231,7 @@ class PresentationDetailViewcontroller: BaseHamburgerViewController, UITableView
         if (segue.identifier == "ReportPostID") {
             let vc : ReportPostViewController = segue.destination as! ReportPostViewController
             vc.userID = sender as? String ?? ""
+            vc.presentationTitle = self.dicData?["title"] as? String ?? "Imaginglink"
         }
         else if segue.identifier == "fullImageVCID"{
             let vc : FullSizeImageViewController = segue.destination as! FullSizeImageViewController
@@ -241,7 +242,7 @@ class PresentationDetailViewcontroller: BaseHamburgerViewController, UITableView
 }
 extension PresentationDetailViewcontroller: CommentDelegate{
     func sendCommentsToAPI(comments: String) {
-        CoreAPI.sharedManaged.requestForcomments(comment: comments, parentcommentid: self.parentCommentId!, commentedcondition: "PUBLISHED", presentationid: userID!, successResponse: {(response) in
+        CoreAPI.sharedManaged.requestForcomments(comment: comments, parentcommentid: self.parentCommentId ?? "", commentedcondition: "PUBLISHED", presentationid: userID ?? "", successResponse: {(response) in
             self.presentationDetailTableView.reloadData()
         }, faliure: {(error) in
             
@@ -262,19 +263,15 @@ extension PresentationDetailViewcontroller: CommentDelegate{
     }
 }
 extension PresentationDetailViewcontroller: ImagePressDelegate{
-    func downloadFileOnLongPress(File: String) {
-//        let downloadService = WSDownloadFilesManager()
-//        downloadService.downloadFile(urlString: File, PathName: "ImaginingLink",success: {(response) in
-//
-//            ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: "Success")
-//        }, failure: {(error) in
-//            ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: "Failure")
-//        })
-    }
     func showFullImage(imagesUrls: [String],index: Int) {
         let tmpDict = ["index": index, "images": imagesUrls] as [String : Any]
         self.performSegue(withIdentifier: "fullImageVCID", sender: tmpDict)
         
+    }
+    func updatePresentationDictForFavourite(dict: [String : Any]) {
+        dicData = dict
+        let indexPath = IndexPath(item: 0, section: ImageViewCell)
+        presentationDetailTableView.reloadRows(at: [indexPath], with: .fade)
     }
 }
 extension PresentationDetailViewcontroller: PresentationDetailTextCellDelegate{

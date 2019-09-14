@@ -16,7 +16,8 @@ import WebKit
 //}
 
 class PresentationTableViewCell: UITableViewCell,UIWebViewDelegate {
-    //
+    
+    @IBOutlet weak var borderView: UIView!
     @IBOutlet weak var LikeImageView: UIButton!
     @IBOutlet weak var FavouriteImage: UIButton!
     @IBOutlet weak var webview: UIWebView!
@@ -30,39 +31,6 @@ class PresentationTableViewCell: UITableViewCell,UIWebViewDelegate {
     @IBOutlet weak var menuPressedButton: UIButton!
     @IBAction func MenuPressed(_ sender: Any) {
         
-//        let actionsheet = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
-//        
-//        let followPostAction = UIAlertAction(title: "Follow this post", style: .default, handler: { (action) -> Void in
-//            self.delegate?.followUnfollowWithPresentationId(id: self.presentationId!, successResponse: {(response) in
-//                
-//            })
-//        })
-//        let image = UIImage(named: "FollowPost_Icon")
-//        followPostAction.setValue(image?.withRenderingMode(.alwaysOriginal), forKey: "image")
-//        followPostAction.setValue(UIColor(red:0.29, green:0.29, blue:0.29, alpha:1.0), forKey: "titleTextColor")
-//        actionsheet.addAction(followPostAction)
-//        
-//        let reportPostAction = UIAlertAction(title: "Report post", style: .default, handler: { (action) -> Void in
-//            
-//        })
-//        let image1 = UIImage(named: "ReportPost_Icon")
-//        reportPostAction.setValue(image1?.withRenderingMode(.alwaysOriginal), forKey: "image")
-//        reportPostAction.setValue(UIColor(red:0.29, green:0.29, blue:0.29, alpha:1.0), forKey: "titleTextColor")
-//        actionsheet.addAction(reportPostAction)
-//        
-////        actionsheet.addAction(UIAlertAction(title: "Turn on and Turn off notification", style: UIAlertActionStyle.default, handler: { (action) -> Void in
-////            self.delegate?.notifyOrCancelWithPresentationId(id: self.presentationId!, successResponse: {(response) in
-////
-////            })
-////        }))
-////        actionsheet.addAction(UIAlertAction(title: "Give feedback on this post", style: UIAlertActionStyle.default, handler: { (action) -> Void in
-////
-////        }))
-//        actionsheet.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: { (action) -> Void in
-//            
-//        }))
-//        myVC?.present(actionsheet, animated: true, completion: nil)
-        
     }
     
    // var delegate:PresentationDelegate?
@@ -70,7 +38,7 @@ class PresentationTableViewCell: UITableViewCell,UIWebViewDelegate {
     @IBAction func LikeActionPressed(_ sender: Any) {
     }
     @IBOutlet weak var ShareActionPressed: UIButton!
-    @IBOutlet weak var CommentLabel: UILabel!
+    @IBOutlet weak var viewsAndCommentLabel: UILabel!
     @IBOutlet weak var LikeLabel: UILabel!
     @IBOutlet weak var ViewsLabel: UILabel!
     
@@ -78,17 +46,17 @@ class PresentationTableViewCell: UITableViewCell,UIWebViewDelegate {
     
     func setupUI(dic:[String:Any]) {
         
-       if let value = dic["id"] {
-        presentationId = value as? String ?? ""
+        borderView.layer.borderWidth = 1.0
+        borderView.layer.cornerRadius = 4.0
+        borderView.layer.borderColor = UIColor(red:0.89, green:0.92, blue:0.93, alpha:1.0).cgColor
+        
+        if let value = dic["id"] {
+            presentationId = value as? String ?? ""
         }
-        //ImaginingLabel.textAlignment = .center
+        
         ImaginingLabel.layer.borderColor = UIColor(red:0.98, green:0.58, blue:0.00, alpha:1.0).cgColor
         ImaginingLabel.layer.cornerRadius = 10
-//        ImaginingLabel.frame.size.width = ImaginingLabel.intrinsicContentSize.width + 30
-//        ImaginingLabel.frame.size.height = ImaginingLabel.intrinsicContentSize.height + 30
         ImaginingLabel.layer.borderWidth = 1
-        HeadingTitleLabel.sizeToFit()
-        HeadingTitleLabel.textAlignment = .left
         
         if let favourite = dic["is_my_favourite"] as? Int, favourite == 0{
             FavouriteImage.setImage(UIImage(named: "Icon_unfavourite"), for: UIControlState.normal)
@@ -103,18 +71,20 @@ class PresentationTableViewCell: UITableViewCell,UIWebViewDelegate {
             LikeImageView.setImage(UIImage(named: "Icon_Like_Unselected"), for: UIControlState.normal)
         }
         
-            ViewsLabel.text = "\((dic["views_count"] as? NSNumber ?? 0).stringValue) Views"
-            LikeLabel.text = "\((dic["likes_count"] as? NSNumber ?? 0).stringValue) Likes"
-            CommentLabel.text = "\((dic["comments_count"] as? NSNumber ?? 0).stringValue) Comments"
-            HeadingTitleLabel.text = dic["title"] as? String ?? ""
-            timeLabel.text = dic["created_at"] as? String ?? ""
-            ImaginingLabel.text! = " \(dic["section_short"] as? String ?? "")  "
-            if let author : [String : Any] = dic["author"] as? [String:Any] {
-                UsernameLabel.text! = author["name"] as! String
-                if let photo : String = author["profile_photo"] as? String {
-                    UserImageView.sd_setImage(with: URL(string: photo), placeholderImage: UIImage(named: "ImagingLinkLogo"))
-                }
+        let views = "\((dic["views_count"] as? NSNumber ?? 0).stringValue)"
+        let comments = "\((dic["comments_count"] as? NSNumber ?? 0).stringValue)"
+        viewsAndCommentLabel.text = "\(comments) Comments      \(views) Views"
+        LikeLabel.text = "\((dic["likes_count"] as? NSNumber ?? 0).stringValue) Likes"
+        HeadingTitleLabel.text = dic["title"] as? String ?? ""
+        timeLabel.text = dic["created_at"] as? String ?? ""
+        ImaginingLabel.text! = "     \(dic["section_short"] as? String ?? "")     ".uppercased()
+        if let author : [String : Any] = dic["author"] as? [String:Any] {
+            let authorName = author["name"] as? String ?? ""
+            UsernameLabel.text! = authorName.capitalized
+            if let photo : String = author["profile_photo"] as? String {
+                UserImageView.sd_setImage(with: URL(string: photo), placeholderImage: UIImage(named: "ImagingLinkLogo"))
             }
+        }
         if let imageURL : String = dic["presentation_master_url"] as? String {
             if ((dic["presentation_type"] as? String)?.contains("video"))! {
                 

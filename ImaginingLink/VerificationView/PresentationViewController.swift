@@ -137,7 +137,11 @@ class PresentationViewController: BaseHamburgerViewController, UITableViewDelega
         }
         else if (segue.identifier == "ReportPostID") {
             let vc : ReportPostViewController = segue.destination as! ReportPostViewController
-            vc.userID = sender as? String ?? ""
+            
+            if let dict = sender as? [String: Any]{
+                vc.userID = dict["id"] as? String ?? ""
+                vc.presentationTitle = dict["title"] as? String ?? "Imaginglink"
+            }
         }
     }
     @objc func likeUnLikeAction(_ sender: UIButton){
@@ -176,7 +180,7 @@ class PresentationViewController: BaseHamburgerViewController, UITableViewDelega
         CoreAPI.sharedManaged.requestFavouriteUnfavorite(presentationID: presentationID, successResponse: {(response) in
             ILUtility.hideProgressIndicator(controller: self)
             let data = response as! [String:Any]
-            ILUtility.showAlert(message: data["message"] as? String ?? "", controller: self)
+            ILUtility.showAlert(title: dict["title"] as? String ?? "Imaginglink",message: data["message"] as? String ?? "", controller: self)
             if let favStatus = dict["is_my_favourite"] as? Int, favStatus == 0{
                 dict["is_my_favourite"] = 1
             }
@@ -227,7 +231,7 @@ class PresentationViewController: BaseHamburgerViewController, UITableViewDelega
         actionsheet.addAction(followPostAction)
         
         let reportPostAction = UIAlertAction(title: "Report post", style: .default, handler: { (action) -> Void in
-            self.performSegue(withIdentifier: "ReportPostID", sender: dict["id"] as? String)
+            self.performSegue(withIdentifier: "ReportPostID", sender: dict)
         })
         let image1 = UIImage(named: "ReportPost_Icon")
         reportPostAction.setValue(image1?.withRenderingMode(.alwaysOriginal), forKey: "image")
@@ -246,7 +250,7 @@ class PresentationViewController: BaseHamburgerViewController, UITableViewDelega
         CoreAPI.sharedManaged.requestFollowUnFollow(presentationID: presentationID, successResponse: {(response) in
             ILUtility.hideProgressIndicator(controller: self)
             let value = response as! [String:Any]
-            ILUtility.showAlert(message: value["message"] as? String ?? "", controller: self)
+            ILUtility.showAlert(title: dict["title"] as? String ?? "Imaginglink",message: value["message"] as? String ?? "", controller: self)
             if let IsFollowed = dict["is_followed_by_me"] as? Int, IsFollowed == 0{
                 dict["is_followed_by_me"] = 1
             }

@@ -18,7 +18,7 @@ import SZTextView
 class CommentTableViewCell : UITableViewCell {
     
     @IBOutlet weak var CommentView: UIView!
-    @IBOutlet weak var FavouriteButton: UIButton!
+    
     @IBOutlet weak var commentButton: UIButton!
     @IBOutlet weak var ShareButton: UIButton!
     @IBOutlet weak var viewsButton: UIButton!
@@ -42,25 +42,6 @@ class CommentTableViewCell : UITableViewCell {
         activityViewController.excludedActivityTypes = [ UIActivityType.airDrop]
         myViewcontroller?.present(activityViewController, animated: false, completion: nil)
     }
-    @IBAction func favouriteUnFavouriteButtonPressed(_ sender: Any) {
-        
-        let presentationID = presentationDict["id"] as? String ?? ""
-        ILUtility.showProgressIndicator(controller: myViewcontroller!)
-        CoreAPI.sharedManaged.requestFavouriteUnfavorite(presentationID: presentationID, successResponse: {(response) in
-            ILUtility.hideProgressIndicator(controller: self.myViewcontroller!)
-            let data = response as! [String:Any]
-            ILUtility.showAlert(message: data["message"] as? String ?? "", controller: self.myViewcontroller!)
-            if let favStatus = self.presentationDict["is_my_favourite"] as? Int, favStatus == 0{
-                self.presentationDict["is_my_favourite"] = 1
-            }
-            else{
-                self.presentationDict["is_my_favourite"] = 0
-            }
-            self.delegate?.updatePresentationDict(dict: self.presentationDict)
-        }, faliure: {(error) in
-            ILUtility.hideProgressIndicator(controller: self.myViewcontroller!)
-        })
-    }
     @IBAction func CommentButtonPressed(_ sender: Any) {
         
         self.delegate?.clickOnCommentButton?(isSelected: !commentButton.isSelected)
@@ -80,13 +61,6 @@ class CommentTableViewCell : UITableViewCell {
         commentButton.setTitle(" \(dic["comments_count"] as? Int ?? 0) Comments", for: UIControlState.normal)
         viewsButton.setTitle(" \(dic["views_count"] as? Int ?? 0) Views", for: UIControlState.normal)
         ShareButton.setTitle(" \(dic["shared_count"] as? Int ?? 0) Shared", for: UIControlState.normal)
-        
-//        if let favourite = dic["is_my_favourite"] as? Int, favourite == 0{
-//            FavouriteButton.setImage(UIImage(named: "Icon_unfavourite"), for: UIControlState.normal)
-//        }
-//        else{
-//            FavouriteButton.setImage(UIImage(named: "Icon_favourite"), for: UIControlState.normal)
-//        }
     }
     
     func setupUI(dic : [String:Any]) {

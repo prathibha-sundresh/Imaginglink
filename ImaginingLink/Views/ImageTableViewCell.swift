@@ -9,14 +9,14 @@
 import UIKit
 
 protocol ImagePressDelegate {
-    func downloadFileOnLongPress(File:String)
     func showFullImage(imagesUrls: [String],index: Int)
+    func updatePresentationDictForFavourite(dict: [String: Any])
 }
 
 class ImageTableViewCell: UITableViewCell,UIScrollViewDelegate {
 
     @IBOutlet weak var webView: UIWebView!
-    
+    @IBOutlet weak var FavouriteButton: UIButton!
     @IBOutlet weak var UserImageView: UIImageView!
     @IBOutlet weak var UsernameLabel: UILabel!
     @IBOutlet weak var ImaginingLabel: UILabel!
@@ -29,18 +29,11 @@ class ImageTableViewCell: UITableViewCell,UIScrollViewDelegate {
     @IBOutlet weak var leftButton: UIButton!
     @IBOutlet weak var rightButton: UIButton!
     @IBOutlet weak var imagesView: UIView!
-    func setLongPresstoFile() {
-//        let longpress = UITapGestureRecognizer(target: self, action:#selector(toDownloadFile(gestureRecognizer:)))
-//        longpress.numberOfTapsRequired = 1
-//        longpress.numberOfTouchesRequired = 1
-//        Imageview.addGestureRecognizer(longpress)
-    }
-    
-//    @objc func toDownloadFile(gestureRecognizer: UITapGestureRecognizer) {
-//        delegate?.downloadFileOnLongPress(File: downloadableLink!)
-//    }
+    var presentationDict = [String: Any]()
+    var myViewcontroller: UIViewController?
     
     func setupUI(dic: [String:Any]) {
+        presentationDict = dic
         imageScrollView.frame = CGRect(x: 0, y: 0, width: self.frame.width, height: 226)
         ImaginingLabel.layer.borderColor = UIColor(red:0.98, green:0.58, blue:0.00, alpha:1.0).cgColor
         ImaginingLabel.layer.cornerRadius = 10
@@ -70,7 +63,36 @@ class ImageTableViewCell: UITableViewCell,UIScrollViewDelegate {
                 imagesView.isHidden = false
             }
         }
+        if let favourite = dic["is_my_favourite"] as? Int, favourite == 0{
+            FavouriteButton.setBackgroundImage(UIImage(named: "Icon_unfavourite"), for: .normal)
+            FavouriteButton.setImage(nil, for: .normal)
+        }
+        else{
+            FavouriteButton.setBackgroundImage(nil, for: .normal)
+            FavouriteButton.setImage(UIImage(named: "Icon_favourite"), for: UIControlState.normal)
+        }
     }
+    
+    @IBAction func favouriteUnFavouriteButtonPressed(_ sender: Any) {
+        
+        let presentationID = presentationDict["id"] as? String ?? ""
+        ILUtility.showProgressIndicator(controller: myViewcontroller!)
+        CoreAPI.sharedManaged.requestFavouriteUnfavorite(presentationID: presentationID, successResponse: {(response) in
+            ILUtility.hideProgressIndicator(controller: self.myViewcontroller!)
+            let data = response as! [String:Any]
+            ILUtility.showAlert(title: self.presentationDict["title"] as? String ?? "Imaginglink",message: data["message"] as? String ?? "", controller: self.myViewcontroller!)
+            if let favStatus = self.presentationDict["is_my_favourite"] as? Int, favStatus == 0{
+                self.presentationDict["is_my_favourite"] = 1
+            }
+            else{
+                self.presentationDict["is_my_favourite"] = 0
+            }
+            self.delegate?.updatePresentationDictForFavourite(dict: self.presentationDict)
+        }, faliure: {(error) in
+            ILUtility.hideProgressIndicator(controller: self.myViewcontroller!)
+        })
+    }
+    
     func addImagesToScroll(images: [String]){
         
         if images.count > 1{

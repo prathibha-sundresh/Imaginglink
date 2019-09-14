@@ -14,7 +14,7 @@ class DashBoardViewController:  BaseHamburgerViewController {
     let Portfolio = 2
     let SocialConnect = 3
     let Presentation = 4
-
+    
     @IBAction func CasesIconPressed(_ sender: Any) {
         self.performSegue(withIdentifier: "ComingSoon", sender: Cases)
     }
@@ -32,7 +32,12 @@ class DashBoardViewController:  BaseHamburgerViewController {
         self.navigationController?.pushViewController(vc, animated: true)
 //    self.tabBarController?.selectedIndex = 0
     }
-    
+    func addShadowToButton(button: UIButton) {
+        button.layer.shadowColor = UIColor(red:0.29, green:0.29, blue:0.29, alpha:1.0).cgColor
+        button.layer.shadowOpacity = 0.4
+        button.layer.shadowOffset = CGSize.zero
+        button.layer.shadowRadius = 4.0
+    }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "ComingSoon"{
@@ -65,7 +70,9 @@ class DashBoardViewController:  BaseHamburgerViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        addSlideMenuButton(showBackButton: false, backbuttonTitle: "\(UserDefaults.standard.value(forKey: kUserName) as! String)\n\(UserDefaults.standard.value(forKey: kAuthenticatedEmailId) as! String)")
+        for tagValue in 1001..<1007{
+            addShadowToButton(button: self.view.viewWithTag(tagValue) as! UIButton)
+        }
 //        ILUtility.addNavigationBarBackButton(controller: self, userName: UserDefaults.standard.value(forKey: kUserName) as! String, userType: "Radiologist")
        
         
@@ -74,6 +81,7 @@ class DashBoardViewController:  BaseHamburgerViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         UserDefaults.standard.set(true, forKey: kLoggedIn)
+        addSlideMenuButton(showBackButton: false, backbuttonTitle: "\(UserDefaults.standard.value(forKey: kUserName) as! String)\n\(UserDefaults.standard.value(forKey: kAuthenticatedEmailId) as! String)")
     }
     
 }

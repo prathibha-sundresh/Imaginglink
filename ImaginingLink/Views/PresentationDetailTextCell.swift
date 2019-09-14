@@ -31,6 +31,7 @@ class PresentationDetailTextCell : UITableViewCell {
     @IBOutlet weak var downloadW: NSLayoutConstraint!
     @IBOutlet weak var downloadProgressView: UIProgressView!
     @IBOutlet weak var progressLabel: UILabel!
+    @IBOutlet weak var downloadCancelButton: UIButton!
     var downloadableLink : String = ""
     var request: Alamofire.Request?
     weak var controller: UIViewController?
@@ -125,12 +126,27 @@ class PresentationDetailTextCell : UITableViewCell {
         }
      }
     func setProgressUI(isBool: Bool){
-        downloadProgressView.layer.cornerRadius = 12
+        downloadProgressView.layer.cornerRadius = 10
         downloadProgressView.clipsToBounds = true
         downloadProgressView.isHidden = isBool
+        downloadCancelButton.isHidden = isBool
         progressLabel.isHidden = isBool
     }
+    @IBAction func tapOnDownloadCancel(_ sender: UIButton){
+        request?.cancel()
+        request = nil
+        downloadProgressView.progress = 0.0
+        setProgressUI(isBool: true)
+        downloadButton.isSelected = false
+        downloadButton.setTitle("Download", for: .normal)
+        progressLabel.text = "0%"
+    }
     @IBAction func tapOnDownload(_ sender: UIButton){
+        
+        downloadCancelButton.layer.cornerRadius = 10
+        downloadCancelButton.layer.borderWidth = 1.0
+        downloadCancelButton.layer.borderColor = UIColor(red:0.89, green:0.00, blue:0.00, alpha:1.0).cgColor
+        downloadCancelButton.clipsToBounds = true
         
         if checkFileExistsOrNot(){
             ILUtility.showAlert(message: "Already file downloaded", controller: controller!)
