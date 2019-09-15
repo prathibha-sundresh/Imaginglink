@@ -15,9 +15,16 @@ import WebKit
 //    //func notifyOrCancelWithPresentationId(id : String, successResponse:@escaping (_ response:String)-> Void)
 //}
 
+protocol PresentationTableViewCellDelegate {
+    func getLikedStatus(row: Int)
+    func updateRatingWithIndex(row: Int, rating: Int)
+}
+
 class PresentationTableViewCell: UITableViewCell,UIWebViewDelegate {
     
     @IBOutlet weak var borderView: UIView!
+    @IBOutlet weak var smileyView: UIView!
+    @IBOutlet weak var smileyContainerView: UIView!
     @IBOutlet weak var LikeImageView: UIButton!
     @IBOutlet weak var FavouriteImage: UIButton!
     @IBOutlet weak var webview: UIWebView!
@@ -29,13 +36,20 @@ class PresentationTableViewCell: UITableViewCell,UIWebViewDelegate {
     @IBOutlet weak var HeadingTitleLabel: UILabel!
     weak var myVC : UIViewController?
     @IBOutlet weak var menuPressedButton: UIButton!
+    var selectedLikes: [Int] = []
     @IBAction func MenuPressed(_ sender: Any) {
         
     }
     
-   // var delegate:PresentationDelegate?
+    var delegate:PresentationTableViewCellDelegate?
     
-    @IBAction func LikeActionPressed(_ sender: Any) {
+    @IBAction func LikeActionPressed(_ sender: UIButton) {
+        if selectedLikes.contains(sender.tag){
+            removeAnimate(sender.tag)
+        }
+        else{
+            showAnimate(sender.tag)
+        }
     }
     @IBOutlet weak var ShareActionPressed: UIButton!
     @IBOutlet weak var viewsAndCommentLabel: UILabel!
@@ -45,7 +59,7 @@ class PresentationTableViewCell: UITableViewCell,UIWebViewDelegate {
     var presentationId : String?
     
     func setupUI(dic:[String:Any]) {
-        
+        addShadowToView()
         borderView.layer.borderWidth = 1.0
         borderView.layer.cornerRadius = 4.0
         borderView.layer.borderColor = UIColor(red:0.89, green:0.92, blue:0.93, alpha:1.0).cgColor
@@ -112,5 +126,35 @@ class PresentationTableViewCell: UITableViewCell,UIWebViewDelegate {
         UserImageView.layer.borderColor = UIColor.white.cgColor
         UserImageView.layer.cornerRadius = UserImageView.frame.size.height / 2
         UserImageView.clipsToBounds = true
+    }
+    func addShadowToView() {
+        
+        smileyView.layer.shadowColor = UIColor(red:0.29, green:0.29, blue:0.29, alpha:1.0).cgColor
+        smileyView.layer.shadowOpacity = 0.4
+        smileyView.layer.shadowOffset = CGSize.zero
+        smileyView.layer.shadowRadius = 4.0
+        smileyContainerView.layer.cornerRadius = 20
+        smileyContainerView.layer.masksToBounds = true
+        smileyView.isHidden = true
+    }
+    func showAnimate(_ tag: Int)
+    {
+        smileyView.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
+        self.smileyView.isHidden = true
+        UIView.animate(withDuration: 0.25, animations: {
+            self.smileyView.isHidden = false
+            self.smileyView.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+        });
+        self.delegate?.getLikedStatus(row: tag)
+    }
+    
+    func removeAnimate(_ tag: Int)
+    {
+        self.smileyView.isHidden = true
+        self.delegate?.getLikedStatus(row: tag)
+    }
+    @IBAction func ratingButton(_ sender: UIButton){
+        print(LikeImageView.tag)
+        delegate?.updateRatingWithIndex(row: LikeImageView.tag, rating: sender.tag - 100)
     }
 }

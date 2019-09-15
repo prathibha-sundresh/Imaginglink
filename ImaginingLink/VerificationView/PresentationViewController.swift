@@ -32,11 +32,18 @@ class PresentationViewController: BaseHamburgerViewController, UITableViewDelega
         tableviewcell.FavouriteImage.tag = indexPath.row
         tableviewcell.ShareActionPressed.tag = indexPath.row
         tableviewcell.menuPressedButton.tag = indexPath.row
-        tableviewcell.LikeImageView.addTarget(self, action: #selector(likeUnLikeAction), for: .touchUpInside)
+        //tableviewcell.LikeImageView.addTarget(self, action: #selector(likeUnLikeAction), for: .touchUpInside)
         tableviewcell.FavouriteImage.addTarget(self, action: #selector(favouritesUnFavouritesToPresentation), for: .touchUpInside)
         tableviewcell.ShareActionPressed.addTarget(self, action: #selector(sharePresentation), for: .touchUpInside)
         tableviewcell.menuPressedButton.addTarget(self, action: #selector(menuPressedButtonAction), for: .touchUpInside)
-        
+        tableviewcell.delegate = self
+        tableviewcell.selectedLikes = likesArray
+        if likesArray.contains(indexPath.row){
+            tableviewcell.smileyView.isHidden = false
+        }
+        else{
+            tableviewcell.smileyView.isHidden = true
+        }
         return tableviewcell
     }
     
@@ -48,6 +55,7 @@ class PresentationViewController: BaseHamburgerViewController, UITableViewDelega
     
     var dataArray : [[String:Any]] = []
     var isFromPresentations: Bool = false
+    var likesArray : [Int] = []
     override func viewDidLoad() {
         super.viewDidLoad()
         PresenationTableView.tableFooterView = footerView
@@ -261,5 +269,33 @@ class PresentationViewController: BaseHamburgerViewController, UITableViewDelega
         }, faliure: {(error) in
             ILUtility.hideProgressIndicator(controller: self)
         })
+    }
+}
+extension PresentationViewController: PresentationTableViewCellDelegate{
+    func getLikedStatus(row: Int) {
+        if likesArray.contains(row){
+            if let index = likesArray.index(of: row) {
+                likesArray.remove(at: index)
+            }
+        }
+        else{
+            likesArray.append(row)
+        }
+        self.PresenationTableView.reloadRows(at: [IndexPath(row: row, section: 0)], with: .fade)
+    }
+    func updateRatingWithIndex(row: Int, rating: Int) {
+        ILUtility.showProgressIndicator(controller: self)
+        var dict = dataArray[row]
+        let presentationID = dict["id"] as? String ?? ""
+        CoreAPI.sharedManaged.requestAddRatingPost(presentationID: presentationID, rating: rating, successResponse: { (response) in
+            self.getLikedStatus(row: row)
+//            if let data = response["data"] as? [String:Any]{
+//                self.presentationDict["likes_count"] = data["rated_members_count"] as? Int
+//            }
+            //self.delegate?.updatePresentationDict(dict: self.presentationDict)
+            ILUtility.hideProgressIndicator(controller: self)
+        }) { (error) in
+            ILUtility.hideProgressIndicator(controller: self)
+        }
     }
 }

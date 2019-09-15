@@ -1977,6 +1977,9 @@ contain at least one special character (! @ # $ % ^ &amp; *)</string>
                                                                     <state key="normal" title="   Like" image="Icon_Like_Unselected">
                                                                         <color key="titleColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     </state>
+                                                                    <connections>
+                                                                        <action selector="LikeActionPressed:" destination="nD1-Go-qQc" eventType="touchUpInside" id="ZYE-Q3-GKe"/>
+                                                                    </connections>
                                                                 </button>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KDr-Jt-vl7" userLabel="FavouriteButton">
                                                                     <rect key="frame" x="128.5" y="28" width="98" height="54"/>
@@ -2021,6 +2024,74 @@ contain at least one special character (! @ # $ % ^ &amp; *)</string>
                                                                 <constraint firstItem="Qur-1W-bIU" firstAttribute="leading" secondItem="SJ1-m0-8BB" secondAttribute="leading" constant="11" id="zjH-fy-rdS"/>
                                                             </constraints>
                                                         </view>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Njg-fZ-Ngp">
+                                                            <rect key="frame" x="11" y="286" width="220" height="40"/>
+                                                            <subviews>
+                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rXm-sb-4PS" userLabel="SmiliesContainerView">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="220" height="40"/>
+                                                                    <subviews>
+                                                                        <button opaque="NO" tag="101" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QXh-Tp-JBr" userLabel="likeButton">
+                                                                            <rect key="frame" x="13" y="8" width="24" height="24"/>
+                                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                            <state key="normal" image="Icon_like"/>
+                                                                            <connections>
+                                                                                <action selector="ratingButton:" destination="nD1-Go-qQc" eventType="touchUpInside" id="wEZ-Hd-cwF"/>
+                                                                            </connections>
+                                                                        </button>
+                                                                        <button opaque="NO" tag="102" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PHr-DJ-Kd0" userLabel="sadButton">
+                                                                            <rect key="frame" x="47" y="8" width="24" height="24"/>
+                                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                            <state key="normal" image="Icon_sad"/>
+                                                                            <connections>
+                                                                                <action selector="ratingButton:" destination="nD1-Go-qQc" eventType="touchUpInside" id="00D-1e-Lr4"/>
+                                                                            </connections>
+                                                                        </button>
+                                                                        <button opaque="NO" tag="103" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d1S-5q-d7C" userLabel="sadButton">
+                                                                            <rect key="frame" x="81" y="8" width="24" height="24"/>
+                                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                            <state key="normal" image="Icon_normal"/>
+                                                                            <connections>
+                                                                                <action selector="ratingButton:" destination="nD1-Go-qQc" eventType="touchUpInside" id="9Yd-bq-lUJ"/>
+                                                                            </connections>
+                                                                        </button>
+                                                                        <button opaque="NO" tag="104" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y2G-Hv-XOm" userLabel="happyButton">
+                                                                            <rect key="frame" x="115" y="8" width="24" height="24"/>
+                                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                            <state key="normal" image="Icon_happy"/>
+                                                                            <connections>
+                                                                                <action selector="ratingButton:" destination="nD1-Go-qQc" eventType="touchUpInside" id="ZvY-Sn-sYz"/>
+                                                                            </connections>
+                                                                        </button>
+                                                                        <button opaque="NO" tag="105" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gvg-ob-hzr" userLabel="smileButton">
+                                                                            <rect key="frame" x="149" y="8" width="24" height="24"/>
+                                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                            <state key="normal" image="Icon_smile"/>
+                                                                            <connections>
+                                                                                <action selector="ratingButton:" destination="nD1-Go-qQc" eventType="touchUpInside" id="UE3-gp-8ZH"/>
+                                                                            </connections>
+                                                                        </button>
+                                                                        <button opaque="NO" tag="106" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vuj-OS-w1D" userLabel="loveButton">
+                                                                            <rect key="frame" x="183" y="8" width="24" height="24"/>
+                                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                            <state key="normal" image="Icon_love"/>
+                                                                            <connections>
+                                                                                <action selector="ratingButton:" destination="nD1-Go-qQc" eventType="touchUpInside" id="B5C-hj-qo5"/>
+                                                                            </connections>
+                                                                        </button>
+                                                                    </subviews>
+                                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                </view>
+                                                            </subviews>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="40" id="VJy-eq-ubT"/>
+                                                                <constraint firstAttribute="width" constant="220" id="Wzq-DK-16m"/>
+                                                                <constraint firstAttribute="trailing" secondItem="rXm-sb-4PS" secondAttribute="trailing" id="nCd-Au-642"/>
+                                                                <constraint firstAttribute="bottom" secondItem="rXm-sb-4PS" secondAttribute="bottom" id="oI5-At-QST"/>
+                                                                <constraint firstItem="rXm-sb-4PS" firstAttribute="leading" secondItem="Njg-fZ-Ngp" secondAttribute="leading" id="upc-DO-NVd"/>
+                                                                <constraint firstItem="rXm-sb-4PS" firstAttribute="top" secondItem="Njg-fZ-Ngp" secondAttribute="top" id="z6U-r3-QLW"/>
+                                                            </constraints>
+                                                        </view>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
@@ -2041,12 +2112,14 @@ contain at least one special character (! @ # $ % ^ &amp; *)</string>
                                                         <constraint firstAttribute="bottom" secondItem="SJ1-m0-8BB" secondAttribute="bottom" constant="-4" id="UjM-8H-2ns"/>
                                                         <constraint firstItem="drL-Cx-uM5" firstAttribute="leading" secondItem="XKE-dJ-ga7" secondAttribute="trailing" constant="10" id="VW4-iB-pD5"/>
                                                         <constraint firstItem="SJ1-m0-8BB" firstAttribute="leading" secondItem="jv2-fg-Nlp" secondAttribute="leading" id="XBg-Pu-Z3P"/>
+                                                        <constraint firstItem="Njg-fZ-Ngp" firstAttribute="leading" secondItem="jv2-fg-Nlp" secondAttribute="leading" constant="11" id="XK5-jQ-EeE"/>
                                                         <constraint firstItem="HHi-Hh-t7U" firstAttribute="leading" secondItem="jv2-fg-Nlp" secondAttribute="leading" constant="11" id="cG4-SC-whl"/>
                                                         <constraint firstItem="SJ1-m0-8BB" firstAttribute="top" secondItem="Fs3-o2-Uwv" secondAttribute="bottom" constant="15" id="ffO-yi-2OX"/>
                                                         <constraint firstItem="A9w-zh-WFG" firstAttribute="top" secondItem="jv2-fg-Nlp" secondAttribute="top" constant="6" id="goK-6E-mUE"/>
                                                         <constraint firstItem="gRT-9Q-eUZ" firstAttribute="top" secondItem="Fs3-o2-Uwv" secondAttribute="top" id="inw-Mq-bhl"/>
                                                         <constraint firstAttribute="trailing" secondItem="drL-Cx-uM5" secondAttribute="trailing" constant="20" id="myK-xx-gTn"/>
                                                         <constraint firstItem="drL-Cx-uM5" firstAttribute="bottom" secondItem="XKE-dJ-ga7" secondAttribute="bottom" id="nRf-FG-GBQ"/>
+                                                        <constraint firstItem="Njg-fZ-Ngp" firstAttribute="top" secondItem="Fs3-o2-Uwv" secondAttribute="bottom" constant="7" id="nY1-Sm-UY9"/>
                                                         <constraint firstItem="Fs3-o2-Uwv" firstAttribute="leading" secondItem="jv2-fg-Nlp" secondAttribute="leading" constant="11" id="oRJ-fq-EPX"/>
                                                         <constraint firstAttribute="trailing" secondItem="Fs3-o2-Uwv" secondAttribute="trailing" constant="11" id="rqB-K6-biK"/>
                                                         <constraint firstItem="0NL-O9-Fxc" firstAttribute="leading" secondItem="HHi-Hh-t7U" secondAttribute="trailing" constant="11" id="uRx-ut-oqa"/>
@@ -2074,6 +2147,8 @@ contain at least one special character (! @ # $ % ^ &amp; *)</string>
                                             <outlet property="UsernameLabel" destination="0NL-O9-Fxc" id="mll-H6-ol6"/>
                                             <outlet property="borderView" destination="jv2-fg-Nlp" id="elT-JB-y8k"/>
                                             <outlet property="menuPressedButton" destination="A9w-zh-WFG" id="yCU-UB-mAw"/>
+                                            <outlet property="smileyContainerView" destination="rXm-sb-4PS" id="D32-ZZ-r3G"/>
+                                            <outlet property="smileyView" destination="Njg-fZ-Ngp" id="oxp-BL-Hyf"/>
                                             <outlet property="timeLabel" destination="drL-Cx-uM5" id="saK-gU-vhr"/>
                                             <outlet property="viewsAndCommentLabel" destination="Fdi-hM-tgX" id="HmC-3d-qnZ"/>
                                             <outlet property="webview" destination="Fs3-o2-Uwv" id="IXN-hz-iLb"/>
