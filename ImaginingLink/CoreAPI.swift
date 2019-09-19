@@ -197,7 +197,7 @@ class CoreAPI {
         })
         
     }
-    func requestLikeUnLike(presentationID: String, likeUnLikeValue: String, successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void ) {
+    func requestForSaveLikeEmoji(presentationID: String, likeUnLikeValue: String, successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void ) {
         let request =  SSHttpRequest(withuUrl: kPresentationLikeOrUnLike)
         let token = UserDefaults.standard.value(forKey: kToken) as! String
         let OTPRequestValues = ["presentation_id" : presentationID, "like_emoji": likeUnLikeValue ]  as [String:Any]

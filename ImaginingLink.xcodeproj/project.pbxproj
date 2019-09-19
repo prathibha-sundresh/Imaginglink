@@ -34,6 +34,7 @@
 		4897CCE520038E6500360EB7 /* SSHttpRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4897CCE420038E6500360EB7 /* SSHttpRequest.swift */; };
 		4897CCE720038E7200360EB7 /* SSHttpResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4897CCE620038E7200360EB7 /* SSHttpResponse.swift */; };
 		4897CCEA20039B9D00360EB7 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4897CCE920039B9D00360EB7 /* StringExtension.swift */; };
+		48A7A5F92330B196008A2EB3 /* SF-Pro-Display-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 48A7A5F82330B196008A2EB3 /* SF-Pro-Display-Medium.otf */; };
 		48F4F41C2004CE55005CD239 /* CoreAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F4F41B2004CE54005CD239 /* CoreAPI.swift */; };
 		48F7F1871FFE0412008D827A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F7F1861FFE0412008D827A /* Constants.swift */; };
 		48FC9DA120B1B99D00838CA7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 48FC9DA020B1B99D00838CA7 /* Assets.xcassets */; };
@@ -137,6 +138,7 @@
 		4897CCE420038E6500360EB7 /* SSHttpRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSHttpRequest.swift; sourceTree = "<group>"; };
 		4897CCE620038E7200360EB7 /* SSHttpResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSHttpResponse.swift; sourceTree = "<group>"; };
 		4897CCE920039B9D00360EB7 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		48A7A5F82330B196008A2EB3 /* SF-Pro-Display-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Medium.otf"; sourceTree = "<group>"; };
 		48F4F41B2004CE54005CD239 /* CoreAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreAPI.swift; sourceTree = "<group>"; };
 		48F7F1861FFE0412008D827A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		48FC9DA020B1B99D00838CA7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ImaginingLink/Assets.xcassets; sourceTree = "<group>"; };
@@ -334,6 +336,7 @@
 				4810C814230C018B00B6ACA4 /* GoogleSans-Bold.ttf */,
 				AC323B3420FF76BC0015ECB4 /* SF-Pro-Display-Semibold.ttf */,
 				4810C81E231189BC00B6ACA4 /* GoogleSans-Medium.ttf */,
+				48A7A5F82330B196008A2EB3 /* SF-Pro-Display-Medium.otf */,
 				AC323B3220FF750E0015ECB4 /* SF-Pro-Display-Regular.ttf */,
 				ACD18C7120C550200059DE7B /* Roboto-Bold.ttf */,
 				4810C81A2311759C00B6ACA4 /* GoogleSans-Regular.ttf */,
@@ -553,6 +556,7 @@
 				48415FAA2163A6B900D96DA6 /* Info.plist in Resources */,
 				ACD18C7220C550210059DE7B /* Roboto-Bold.ttf in Resources */,
 				48415FAC2163A6B900D96DA6 /* Info.plist in Resources */,
+				48A7A5F92330B196008A2EB3 /* SF-Pro-Display-Medium.otf in Resources */,
 				AC01CA5520C05E4D00034C90 /* Roboto-Light.ttf in Resources */,
 				AC01CA5320C05DF200034C90 /* Roboto-Regular.ttf in Resources */,
 				AC323B3520FF76BD0015ECB4 /* SF-Pro-Display-Semibold.ttf in Resources */,

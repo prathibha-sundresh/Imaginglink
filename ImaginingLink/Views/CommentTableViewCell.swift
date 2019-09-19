@@ -30,6 +30,7 @@ class CommentTableViewCell : UITableViewCell {
     @IBAction func SendComment(_ sender: Any) {
         if (Textview.text!.count != 0) {
             delegate?.sendCommentsToAPI(comments: Textview.text!)
+            Textview.text = ""
         }
     }
     @IBAction func ShareButtonPressed(_ sender: Any) {
@@ -58,7 +59,8 @@ class CommentTableViewCell : UITableViewCell {
         Textview.layer.borderWidth = 1
         Textview.layer.cornerRadius = 16
         likesCountLabel.text = "\(dic["likes_count"] as? Int ?? 0)"
-        commentButton.setTitle(" \(dic["comments_count"] as? Int ?? 0) Comments", for: UIControlState.normal)
+        let totalComments = Int(dic["parent_comments_count"] as? Int ?? 0) + Int(dic["child_comments_count"] as? Int ?? 0)
+        commentButton.setTitle(" \(totalComments) Comments", for: UIControlState.normal)
         viewsButton.setTitle(" \(dic["views_count"] as? Int ?? 0) Views", for: UIControlState.normal)
         ShareButton.setTitle(" \(dic["shared_count"] as? Int ?? 0) Shared", for: UIControlState.normal)
     }
@@ -70,9 +72,19 @@ class CommentTableViewCell : UITableViewCell {
     @IBAction func ratingButton(_ sender: UIButton){
         ILUtility.showProgressIndicator(controller: myViewcontroller!)
         let rating = sender.tag - 100
-        CoreAPI.sharedManaged.requestAddRatingPost(presentationID: presentationID, rating: rating, successResponse: { (response) in
+//        CoreAPI.sharedManaged.requestAddRatingPost(presentationID: presentationID, rating: rating, successResponse: { (response) in
+//            if let data = response["data"] as? [String:Any]{
+//                self.presentationDict["likes_count"] = data["rated_members_count"] as? Int
+//            }
+//            self.delegate?.updatePresentationDict(dict: self.presentationDict)
+//            ILUtility.hideProgressIndicator(controller: self.myViewcontroller!)
+//        }) { (error) in
+//            ILUtility.hideProgressIndicator(controller: self.myViewcontroller!)
+//        }
+        
+        CoreAPI.sharedManaged.requestForSaveLikeEmoji(presentationID: presentationID, likeUnLikeValue: "\(rating)", successResponse: { (response) in
             if let data = response["data"] as? [String:Any]{
-                self.presentationDict["likes_count"] = data["rated_members_count"] as? Int
+                self.presentationDict["likes_count"] = data["liked_members_count"] as? Int
             }
             self.delegate?.updatePresentationDict(dict: self.presentationDict)
             ILUtility.hideProgressIndicator(controller: self.myViewcontroller!)

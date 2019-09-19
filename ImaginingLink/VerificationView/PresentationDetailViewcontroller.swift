@@ -10,19 +10,16 @@ import UIKit
 import Alamofire
 
 class PresentationDetailViewcontroller: BaseHamburgerViewController, UITableViewDataSource, UITableViewDelegate, CreateCommentDelegate {
-    func clickonReplay(ParentId: String) {
-        clickonReplay()
+    func clickonReplay(index: Int) {
+        let dict = ParentAndChildComments[index]
+        let id = dict["id"] as? String ?? ""
+        clickonReplay(parentID: id)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if (section == CommentListCell) {
             if isCommentedSelected{
-                if commentData != nil{
-                    return commentData!.count
-                }
-                else{
-                    return 0
-                }
+                return ParentAndChildComments.count
             }
             else{
                return 0
@@ -66,16 +63,14 @@ class PresentationDetailViewcontroller: BaseHamburgerViewController, UITableView
             tableViewCell = commentCell
         } else if(indexPath.section == CommentListCell) {
             
-                let commentListCell : CommentListTableViewCell = tableView.dequeueReusableCell(withIdentifier: "CommentListTableViewCellId", for: indexPath) as! CommentListTableViewCell
-                if (commentData != nil) {
-                    commentListCell.delegate = self
-                    commentListCell.setupUI(dic: commentData![indexPath.row])
-                }
-                tableViewCell = commentListCell
-           
+            let commentListCell : CommentListTableViewCell = tableView.dequeueReusableCell(withIdentifier: "CommentListTableViewCellId", for: indexPath) as! CommentListTableViewCell
+            commentListCell.delegate = self
+            commentListCell.replyButton.tag = indexPath.row
+            commentListCell.setupUI(dic: ParentAndChildComments[indexPath.row])
+            commentListCell.separatorInset = UIEdgeInsetsMake(0, commentListCell.bounds.size.width, 0, 0);
+            tableViewCell = commentListCell
+            
         }
-        
-        
         tableViewCell.selectionStyle = UITableViewCellSelectionStyle.none
         return tableViewCell
     }
@@ -94,41 +89,65 @@ class PresentationDetailViewcontroller: BaseHamburgerViewController, UITableView
 //        }
     }
     
-    func clickonReplay() {
-        let alertController = UIAlertController(title: "Add New Comment", message: "", preferredStyle: UIAlertControllerStyle.alert)
-        alertController.addTextField { (textField : UITextField!) -> Void in
-            textField.placeholder = "Enter message"
+    fileprivate func determineParentAndChildComments(_ response: AnyObject) {
+        if let dic = response as? [String: Any]{
+            self.dicData?["parent_comments_count"] = dic["parent_comment_count"] as? Int ?? 0
+            self.dicData?["child_comments_count"] = dic["child_comment_count"] as? Int ?? 0
+            if let Commentarray : [[String:Any]] = dic["data"] as? [[String : Any]]{
+                self.getParentAndChildComments(dataArray: Commentarray)
+                self.presentationDetailTableView.reloadSections([2,3], with: .fade)
+            }
         }
-        let saveAction = UIAlertAction(title: "Send", style: UIAlertActionStyle.default, handler: { alert -> Void in
-            let firstTextField = alertController.textFields![0] as UITextField
-            CoreAPI.sharedManaged.requestForcomments(comment: firstTextField.text!, parentcommentid: self.parentCommentId!, commentedcondition: "PUBLISHED", presentationid: self.userID!, successResponse: {(response) in
-                self.presentationDetailTableView.reloadData()
-            }, faliure: {(error) in
-                
-            })
-        })
-                let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: {
-                    alert -> Void in
-                })
-    
-                alertController.addAction(saveAction)
-                alertController.addAction(cancelAction)
-    
-        self.present(alertController, animated: true, completion: nil)
     }
     
+    func clickonReplay(parentID: String) {
+        let alertController = UIAlertController(title: "Add New Comment", message: "", preferredStyle: UIAlertControllerStyle.alert)
+        
+        alertController.addTextField(configurationHandler: {(textField: UITextField) in
+            textField.placeholder = "Enter message"
+            textField.addTarget(self, action: #selector(self.textChanged), for: .editingChanged)
+        })
+        saveAction = UIAlertAction(title: "Send", style: UIAlertActionStyle.default, handler: { alert -> Void in
+            let firstTextField = alertController.textFields![0] as UITextField
+            if firstTextField.text != ""{
+                ILUtility.showProgressIndicator(controller: self)
+                CoreAPI.sharedManaged.requestForcomments(comment: firstTextField.text!, parentcommentid: parentID, commentedcondition: "PUBLISHED", presentationid: self.userID!, successResponse: {(response) in
+                    ILUtility.hideProgressIndicator(controller: self)
+                    self.determineParentAndChildComments(response)
+                }, faliure: {(error) in
+                    ILUtility.hideProgressIndicator(controller: self)
+                })
+            }
+            else{
+                ILUtility.showAlert(message: "Please enter message", controller: self)
+            }
+        })
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: {
+            alert -> Void in
+        })
+        
+        alertController.addAction(saveAction!)
+        alertController.addAction(cancelAction)
+        saveAction?.isEnabled = false
+        self.present(alertController, animated: true, completion: nil)
+    }
+    @objc func textChanged(_ sender:UITextField) {
+        self.saveAction?.isEnabled  = (sender.text! != "")
+    }
     var ImageViewCell = 0
     let PresentationCell = 1
     let CommentCell = 2
     let CommentListCell = 3
     
+    weak var saveAction : UIAlertAction?
     var isCommentedSelected = false
     var alomafireRequest: Alamofire.Request?
     @IBOutlet weak var presentationDetailTableView: UITableView!
+    @IBOutlet weak var footerView: UIView!
     var userID : String?
-    var parentCommentId : String?
     var dicData : [String:Any]?
-    var commentData : [[String:Any]]?
+    var commentData : [[String:Any]] = []
+    var ParentAndChildComments : [[String:Any]] = []
     fileprivate func getPresentationDetails() {
         presentationDetailTableView.isHidden = true
         ILUtility.showProgressIndicator(controller: self)
@@ -145,9 +164,7 @@ class PresentationDetailViewcontroller: BaseHamburgerViewController, UITableView
                     let dic : [String : Any] = value.convertToDictionary()!
                     let Commentarray : [[String:Any]] = dic["data"] as! [[String : Any]]
                     if (Commentarray.count != 0) {
-                        let parentId = Commentarray[0]
-                        self.parentCommentId = parentId["id"] as? String
-                        self.commentData = Commentarray
+                        self.getParentAndChildComments(dataArray: Commentarray)
                     }
                     self.presentationDetailTableView.reloadData()
                 }, faliure: {(error) in
@@ -160,9 +177,27 @@ class PresentationDetailViewcontroller: BaseHamburgerViewController, UITableView
         })
     }
     
+    func getParentAndChildComments(dataArray: [[String: Any]]){
+        commentData = dataArray
+        var totalCommentsArray = [[String: Any]]()
+        for dict in commentData{
+            totalCommentsArray.append(dict)
+            if let tmpArray = dict["child_comments"] as? [[String: Any]], tmpArray.count > 0{
+                let childArray = tmpArray.map { (tempDict) -> [String : Any] in
+                    var dict1 = tempDict
+                    dict1["commentType"] = "Child"
+                    return dict1
+                }
+                totalCommentsArray.append(contentsOf: childArray)
+            }
+        }
+        ParentAndChildComments = totalCommentsArray
+        //print(commentData.count, ParentAndChildComments.count)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        presentationDetailTableView.tableFooterView = footerView
         addSlideMenuButton(showBackButton: true,backbuttonTitle: "Presentation")
         self.presentationDetailTableView.delegate = self
         presentationDetailTableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: presentationDetailTableView.frame.width, height: 25))
@@ -242,10 +277,20 @@ class PresentationDetailViewcontroller: BaseHamburgerViewController, UITableView
 }
 extension PresentationDetailViewcontroller: CommentDelegate{
     func sendCommentsToAPI(comments: String) {
-        CoreAPI.sharedManaged.requestForcomments(comment: comments, parentcommentid: self.parentCommentId ?? "", commentedcondition: "PUBLISHED", presentationid: userID ?? "", successResponse: {(response) in
-            self.presentationDetailTableView.reloadData()
-        }, faliure: {(error) in
+        ILUtility.showProgressIndicator(controller: self)
+        CoreAPI.sharedManaged.requestForcomments(comment: comments, parentcommentid: "0", commentedcondition: "PUBLISHED", presentationid: userID ?? "", successResponse: {(response) in
             
+            ILUtility.hideProgressIndicator(controller: self)
+            if let dic = response as? [String: Any]{
+                self.dicData?["parent_comments_count"] = dic["parent_comment_count"] as? Int ?? 0
+                self.dicData?["child_comments_count"] = dic["child_comment_count"] as? Int ?? 0
+                if let Commentarray : [[String:Any]] = dic["data"] as? [[String : Any]]{
+                    self.getParentAndChildComments(dataArray: Commentarray)
+                    self.presentationDetailTableView.reloadSections([2,3], with: .fade)
+                }
+            }
+        }, faliure: {(error) in
+            ILUtility.hideProgressIndicator(controller: self)
         })
     }
     func updatePresentationDict(dict: [String : Any]) {
@@ -256,7 +301,7 @@ extension PresentationDetailViewcontroller: CommentDelegate{
     func clickOnCommentButton(isSelected: Bool) {
         isCommentedSelected = isSelected
         presentationDetailTableView.reloadSections([2,3], with: .fade)
-        if let comments = commentData?.count, comments > 0 && isSelected{
+        if ParentAndChildComments.count > 0 && isSelected{
             let indexPath = IndexPath(row: 0, section: 3)
             presentationDetailTableView.scrollToRow(at: indexPath, at: .top, animated: true)
         }

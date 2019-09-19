@@ -172,7 +172,7 @@ class PresentationDetailTextCell : UITableViewCell {
                 downloadButton.setTitle("Downloading", for: .normal)
             }
             request = Alamofire.request("\(downloadableLink)").downloadProgress(closure : { (progress) in
-                print(progress.fractionCompleted)
+                //print(progress.fractionCompleted)
                 self.downloadProgressView.progress = Float(progress.fractionCompleted)
                 let percentageValue = Int((Float(progress.fractionCompleted) * 100).rounded())
                 self.progressLabel.text = "\(percentageValue)%"

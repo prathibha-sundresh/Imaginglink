@@ -86,8 +86,8 @@ class PresentationTableViewCell: UITableViewCell,UIWebViewDelegate {
         }
         
         let views = "\((dic["views_count"] as? NSNumber ?? 0).stringValue)"
-        let comments = "\((dic["comments_count"] as? NSNumber ?? 0).stringValue)"
-        viewsAndCommentLabel.text = "\(comments) Comments      \(views) Views"
+        let totalComments = dic["total_comments_count"] as? Int ?? 0
+        viewsAndCommentLabel.text = "\(totalComments) Comments      \(views) Views"
         LikeLabel.text = "\((dic["likes_count"] as? NSNumber ?? 0).stringValue) Likes"
         HeadingTitleLabel.text = dic["title"] as? String ?? ""
         timeLabel.text = dic["created_at"] as? String ?? ""

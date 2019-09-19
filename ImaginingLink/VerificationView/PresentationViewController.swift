@@ -158,7 +158,7 @@ class PresentationViewController: BaseHamburgerViewController, UITableViewDelega
 
         let presentationID = dict["id"] as? String ?? ""
         ILUtility.showProgressIndicator(controller: self)
-        CoreAPI.sharedManaged.requestLikeUnLike(presentationID: presentationID, likeUnLikeValue: "1", successResponse: { (response) in
+        CoreAPI.sharedManaged.requestForSaveLikeEmoji(presentationID: presentationID, likeUnLikeValue: "1", successResponse: { (response) in
             ILUtility.hideProgressIndicator(controller: self)
             if let data = response["data"] as? [String:Any]{
                 dict["likes_count"] = data["liked_members_count"] as? Int 
@@ -287,13 +287,24 @@ extension PresentationViewController: PresentationTableViewCellDelegate{
         ILUtility.showProgressIndicator(controller: self)
         var dict = dataArray[row]
         let presentationID = dict["id"] as? String ?? ""
-        CoreAPI.sharedManaged.requestAddRatingPost(presentationID: presentationID, rating: rating, successResponse: { (response) in
+
+        CoreAPI.sharedManaged.requestForSaveLikeEmoji(presentationID: presentationID, likeUnLikeValue: "\(rating)", successResponse: { (response) in
+            ILUtility.hideProgressIndicator(controller: self)
             self.getLikedStatus(row: row)
 //            if let data = response["data"] as? [String:Any]{
-//                self.presentationDict["likes_count"] = data["rated_members_count"] as? Int
+//                dict["likes_count"] = data["liked_members_count"] as? Int
 //            }
-            //self.delegate?.updatePresentationDict(dict: self.presentationDict)
-            ILUtility.hideProgressIndicator(controller: self)
+//
+//            if let likedStatus = dict["Is_Liked"] as? Int, likedStatus == 0{
+//                dict["Is_Liked"] = 1
+//            }
+//            else{
+//                dict["Is_Liked"] = 0
+//            }
+//            self.dataArray[index] = dict
+//            let indexPath = IndexPath(item: index, section: 0)
+//            self.PresenationTableView.reloadRows(at: [indexPath], with: .fade)
+            
         }) { (error) in
             ILUtility.hideProgressIndicator(controller: self)
         }
