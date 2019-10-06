@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MobileVerificationsViewcontroller: UIViewController, UserTypeDelegate, UITextFieldDelegate {
+class MobileVerificationsViewcontroller: BaseHamburgerViewController, UserTypeDelegate, UITextFieldDelegate {
     func selectedUserType(userType: String, indexRow: Int) {
         selectedCountryCode = CountryCodeForPhoneNumber[indexRow] as String
         let selectedCountryName = countryName[indexRow] as String
@@ -29,23 +29,18 @@ class MobileVerificationsViewcontroller: UIViewController, UserTypeDelegate, UIT
     @IBOutlet weak var countryCodeTF: FloatingLabel!
     @IBOutlet weak var mobileNumberTF: FloatingLabel!
     var selectedCountryCode = ""
+    var isFromSignIn = false
     @IBAction func VerifyMobileNumberAction(_ sender: Any) {
-        ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: "Verifying..")
+        ILUtility.showProgressIndicator(controller: self)
         CoreAPI.sharedManaged.VerifyPhonenumber(phoneNumber: mobileNumberTF.text!, countryCode: selectedCountryCode, successResponse: {(response) in
-            ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: "success..")
-             
-            let storyBoard = UIStoryboard(name: "Verification", bundle: nil)
-            let vc = storyBoard.instantiateViewController(withIdentifier: "MobileOTPViewController") as! MobileOTPVirecontroller
-            self.navigationController?.pushViewController(vc, animated: true)
+             ILUtility.hideProgressIndicator(controller: self)
+            self.moveToMobileOTPViewController()
         }, faliure: {(error) in
-           
-            let string : String = error
-             ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: error)
-            if (string.contains("The mobile has already been taken")) {
+            ILUtility.hideProgressIndicator(controller: self)
+            ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: error)
+            if (error.contains("The mobile has already been taken")) {
                 CoreAPI.sharedManaged.reSendMobileOTP(successResponse: {(response) in
-                    let storyBoard = UIStoryboard(name: "Verification", bundle: nil)
-                    let vc = storyBoard.instantiateViewController(withIdentifier: "MobileOTPViewController") as! MobileOTPVirecontroller
-                    self.navigationController?.pushViewController(vc, animated: true)
+                    self.moveToMobileOTPViewController()
                 }, faliure: {(error) in
                     ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: error)
                 })
@@ -61,6 +56,12 @@ class MobileVerificationsViewcontroller: UIViewController, UserTypeDelegate, UIT
     var listOfData = [[String:Any]]()
     override func viewDidLoad() {
         super.viewDidLoad()
+        if !isFromSignIn{
+            addSlideMenuButton(showBackButton: true ,backbuttonTitle: "\(UserDefaults.standard.value(forKey: kUserName) as! String)\n\(UserDefaults.standard.value(forKey: kAuthenticatedEmailId) as! String)")
+        }
+        else{
+            self.navigationController?.setNavigationBarHidden(false, animated: true)
+        }
         setUpTextField()
         CoreAPI.sharedManaged.getCountryList(successResponse: {(response) in
             let responseData = (response as! String).convertToDictionary()
@@ -73,15 +74,18 @@ class MobileVerificationsViewcontroller: UIViewController, UserTypeDelegate, UIT
         })
         
     }
-    
+    func moveToMobileOTPViewController(){
+        let storyBoard = UIStoryboard(name: "Verification", bundle: nil)
+        let vc = storyBoard.instantiateViewController(withIdentifier: "MobileOTPViewController") as! MobileOTPVirecontroller
+        vc.isFromSignIn = isFromSignIn
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        self.navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     func setUpTextField() {
         mobileNumberTF.setUpLabel(WithText: "Enter Mobile")

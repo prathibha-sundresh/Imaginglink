@@ -13,6 +13,7 @@ class TwoFactorAuthenticationViewcontroller: UIViewController {
     @IBAction func EnableNowSelected(_ sender: Any) {
         let storyboard: UIStoryboard = UIStoryboard(name: "Verification", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "MobileVerification") as! MobileVerificationsViewcontroller
+        vc.isFromSignIn = true
         self.navigationController?.pushViewController(vc, animated: true)
        
     }
@@ -20,10 +21,8 @@ class TwoFactorAuthenticationViewcontroller: UIViewController {
     @IBAction func EnableLaterSelected(_ sender: Any) {
         ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: "Skipped successfully.")
         CoreAPI.sharedManaged.DisableTwoFactorAuthentication(successResponse: {(response) in
-            let storyboard: UIStoryboard = UIStoryboard(name: "DashBoard", bundle: nil)
-            let vc = storyboard.instantiateViewController(withIdentifier: "ILTabViewController") as! ILTabViewController
-            vc.selectedIndex = 1
-            self.navigationController?.present(vc, animated: true, completion: nil)
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            appDelegate.openDashBoardScreen()
         }, faliure: {(error) in
             ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: error)
         })

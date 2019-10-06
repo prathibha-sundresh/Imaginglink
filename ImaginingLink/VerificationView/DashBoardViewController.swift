@@ -15,17 +15,20 @@ class DashBoardViewController:  BaseHamburgerViewController {
     let SocialConnect = 3
     let Presentation = 4
     
-    @IBAction func CasesIconPressed(_ sender: Any) {
+    @IBAction func CasesIconPressed(_ sender: AnyObject) {
+        changeButtonsBackgroundImage(sender: sender.tag)
         self.performSegue(withIdentifier: "ComingSoon", sender: Cases)
     }
-    @IBAction func QuizIconPressed(_ sender: Any) {
+    @IBAction func QuizIconPressed(_ sender: AnyObject) {
+        changeButtonsBackgroundImage(sender: sender.tag)
         self.performSegue(withIdentifier: "ComingSoon", sender: Quiz)
     }
-    @IBAction func PortpolioIconPresses(_ sender: Any) {
+    @IBAction func PortpolioIconPresses(_ sender: AnyObject) {
+        changeButtonsBackgroundImage(sender: sender.tag)
         self.performSegue(withIdentifier: "ComingSoon", sender: Portfolio)
     }
-    @IBAction func PresentationIconPressed(_ sender: Any) {
-        
+    @IBAction func PresentationIconPressed(_ sender: AnyObject) {
+        changeButtonsBackgroundImage(sender: sender.tag)
         let storyBoard = UIStoryboard(name: "DashBoard", bundle: nil)
         let vc = storyBoard.instantiateViewController(withIdentifier: "PresentationViewController") as! PresentationViewController
         vc.isFromPresentations = true
@@ -59,7 +62,8 @@ class DashBoardViewController:  BaseHamburgerViewController {
     }
     
     
-    @IBAction func SocialNetworkIconPressed(_ sender: Any) {
+    @IBAction func SocialNetworkIconPressed(_ sender: AnyObject) {
+        changeButtonsBackgroundImage(sender: sender.tag)
         self.performSegue(withIdentifier: "ComingSoon", sender: SocialConnect)
     }
     
@@ -67,15 +71,20 @@ class DashBoardViewController:  BaseHamburgerViewController {
         
     }
     
+    func changeButtonsBackgroundImage(sender: Int){
+        for tag in 1001...1006{
+            let btn = self.view.viewWithTag(tag) as! UIButton
+            btn.isSelected = false
+        }
+        let btn = self.view.viewWithTag(sender) as! UIButton
+        btn.isSelected = true
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         for tagValue in 1001..<1007{
             addShadowToButton(button: self.view.viewWithTag(tagValue) as! UIButton)
         }
-//        ILUtility.addNavigationBarBackButton(controller: self, userName: UserDefaults.standard.value(forKey: kUserName) as! String, userType: "Radiologist")
-       
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -123,7 +123,30 @@ class CoreAPI {
         })
         
     }
-    
+    func sendOtpToEnabledUser(successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void ) {
+        let request =  SSHttpRequest(withuUrl: k2FASendOTPToEnabledUserAPI)
+        let token = UserDefaults.standard.value(forKey: kToken) as! String
+        let header : HTTPHeaders = ["Authorization":"Bearer \(token)"]
+        
+        request.postMethodWithHeaderasToken(dictParameter: [:], url: k2FASendOTPToEnabledUserAPI, header: header, successResponse: {(response) in
+            successResponse(response)
+        }, faliure: {(error) in
+            faliure(error)
+        })
+        
+    }
+    func disable2faToUser(successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void ) {
+        let request =  SSHttpRequest(withuUrl: k2FADisableAPI)
+        let token = UserDefaults.standard.value(forKey: kToken) as! String
+        let header : HTTPHeaders = ["Authorization":"Bearer \(token)"]
+        
+        request.postMethodWithHeaderasToken(dictParameter: [:], url: k2FADisableAPI, header: header, successResponse: {(response) in
+            successResponse(response)
+        }, faliure: {(error) in
+            faliure(error)
+        })
+        
+    }
     func callPublicPresentation(successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void ) {
         let request =  SSHttpRequest(withuUrl: kpublicPresentaion)
         let OTPRequestValues = ["" : "" ]  as [String:Any]
@@ -298,6 +321,7 @@ class CoreAPI {
         }) { (error) in
             
         }
+        ILUtility.clearUserDefaults()
     }
     
     func verifyMobileOTP(verificationCode : String,successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void ) {

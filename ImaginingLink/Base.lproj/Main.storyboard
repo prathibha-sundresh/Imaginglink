@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bxs-oE-SEj">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bxs-oE-SEj">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -48,25 +46,33 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ImagingLinkLogoWithText" translatesAutoresizingMaskIntoConstraints="NO" id="2Nc-EN-5oR">
-                                <rect key="frame" x="127.5" y="87" width="120" height="120"/>
+                                <rect key="frame" x="127.5" y="67" width="120" height="120"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="120" id="LTv-q7-Ayn"/>
                                     <constraint firstAttribute="width" constant="120" id="obA-kx-zzQ"/>
                                 </constraints>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ow2-Oe-AjV" userLabel="OTPText" customClass="FloatingLabel" customModule="ImagingLink" customModuleProvider="target">
-                                <rect key="frame" x="20" y="276" width="335" height="24"/>
-                                <nil key="textColor"/>
+                                <rect key="frame" x="20" y="256" width="335" height="24"/>
                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VED-0r-Y0E">
-                                <rect key="frame" x="20" y="353" width="335" height="34"/>
+                                <rect key="frame" x="20" y="333" width="335" height="46"/>
                                 <color key="backgroundColor" red="0.12941176470588234" green="0.58823529411764708" blue="0.95294117647058818" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="46" id="hl5-sJ-2jK"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="18"/>
                                 <state key="normal" title="VERIFY CODE">
                                     <color key="titleColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="OTPPressed:" destination="ogH-Zc-LoJ" eventType="touchUpInside" id="u1g-lT-cLk"/>
                                 </connections>
@@ -81,7 +87,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hq7-Se-mCg">
-                                <rect key="frame" x="15" y="408" width="345" height="33"/>
+                                <rect key="frame" x="15" y="401" width="345" height="33"/>
                                 <string key="text">If CODE is not received in 3 minutes, you may request 
 new CODE, Generate CODE &gt;&gt;</string>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
@@ -98,7 +104,7 @@ new CODE, Generate CODE &gt;&gt;</string>
                             <constraint firstItem="tBq-E9-byi" firstAttribute="trailing" secondItem="VED-0r-Y0E" secondAttribute="trailing" constant="20" id="9qx-1v-piI"/>
                             <constraint firstItem="Ow2-Oe-AjV" firstAttribute="leading" secondItem="tBq-E9-byi" secondAttribute="leading" constant="20" id="H1Q-Ou-aWo"/>
                             <constraint firstItem="tBq-E9-byi" firstAttribute="trailing" secondItem="z2z-BI-97B" secondAttribute="trailing" id="Rt0-eS-0am"/>
-                            <constraint firstItem="hq7-Se-mCg" firstAttribute="top" secondItem="VED-0r-Y0E" secondAttribute="bottom" constant="21" id="Yfv-4P-JxK"/>
+                            <constraint firstItem="hq7-Se-mCg" firstAttribute="top" secondItem="VED-0r-Y0E" secondAttribute="bottom" constant="22" id="Yfv-4P-JxK"/>
                             <constraint firstItem="tBq-E9-byi" firstAttribute="trailing" secondItem="Ow2-Oe-AjV" secondAttribute="trailing" constant="20" id="fk4-dx-cEe"/>
                             <constraint firstItem="z2z-BI-97B" firstAttribute="leading" secondItem="tBq-E9-byi" secondAttribute="leading" id="gfa-ie-xmE"/>
                             <constraint firstItem="tBq-E9-byi" firstAttribute="bottom" secondItem="z2z-BI-97B" secondAttribute="bottom" id="kG0-TV-Rku"/>
@@ -127,10 +133,10 @@ new CODE, Generate CODE &gt;&gt;</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TOT-kq-Nab">
-                                <rect key="frame" x="0.0" y="20" width="375" height="730"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="750"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cUh-gN-5Ce" userLabel="ContentView">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="730"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="750"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ImagingLinkLogoWithText" translatesAutoresizingMaskIntoConstraints="NO" id="6ca-k5-L7h">
                                                 <rect key="frame" x="134.5" y="81" width="120" height="120"/>
@@ -150,7 +156,6 @@ new CODE, Generate CODE &gt;&gt;</string>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="agn-GN-XO7" userLabel="MobileNumberTextField" customClass="FloatingLabel" customModule="ImagingLink" customModuleProvider="target">
                                                 <rect key="frame" x="23" y="332" width="332" height="17"/>
-                                                <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                                 <userDefinedRuntimeAttributes>
@@ -181,7 +186,6 @@ new CODE, Generate CODE &gt;&gt;</string>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="cPX-7t-nV4"/>
                                                 </constraints>
-                                                <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                                 <userDefinedRuntimeAttributes>
@@ -198,15 +202,21 @@ new CODE, Generate CODE &gt;&gt;</string>
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r57-iO-gfZ">
-                                                <rect key="frame" x="19" y="495" width="337" height="34"/>
+                                                <rect key="frame" x="19" y="495" width="337" height="46"/>
                                                 <color key="backgroundColor" red="0.97647058819999999" green="0.58039215690000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="34" id="hnu-FT-mUe"/>
+                                                    <constraint firstAttribute="height" constant="46" id="hnu-FT-mUe"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="18"/>
                                                 <state key="normal" title="SAVE PASSWORD">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="4"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="SavePressed:" destination="n4H-lq-DdW" eventType="touchUpInside" id="Kb5-yI-fYa"/>
                                                 </connections>
@@ -220,7 +230,7 @@ at least one special character (! @ # $ % ^ &amp; *)</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4AE-q4-3A5" userLabel="SignInLabel" customClass="SignInLabel" customModule="ImagingLink" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="686" width="375" height="44"/>
+                                                <rect key="frame" x="0.0" y="706" width="375" height="44"/>
                                                 <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="44" id="RHl-Zr-ySH"/>
@@ -303,7 +313,7 @@ at least one special character (! @ # $ % ^ &amp; *)</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="EmailVerifiedLogo" translatesAutoresizingMaskIntoConstraints="NO" id="k5C-6L-0zx">
-                                <rect key="frame" x="141" y="119" width="95" height="95"/>
+                                <rect key="frame" x="141" y="99" width="95" height="95"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="95" id="X5o-4u-nzn"/>
                                     <constraint firstAttribute="height" constant="95" id="ovN-NM-yuU"/>
@@ -366,7 +376,6 @@ Registration successful</string>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="35" id="dyM-yx-eFt"/>
                                                 </constraints>
-                                                <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <userDefinedRuntimeAttributes>
@@ -378,7 +387,6 @@ Registration successful</string>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="35" id="SN4-pf-hu4"/>
                                                 </constraints>
-                                                <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <userDefinedRuntimeAttributes>
@@ -390,7 +398,6 @@ Registration successful</string>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="35" id="EB7-XI-ZIK"/>
                                                 </constraints>
-                                                <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                                                 <userDefinedRuntimeAttributes>
@@ -402,7 +409,6 @@ Registration successful</string>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="35" id="hrI-pQ-0ka"/>
                                                 </constraints>
-                                                <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="15"/>
                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                                 <userDefinedRuntimeAttributes>
@@ -424,7 +430,6 @@ Registration successful</string>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="35" id="UOB-57-mVQ"/>
                                                 </constraints>
-                                                <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                                 <userDefinedRuntimeAttributes>
@@ -445,7 +450,6 @@ Registration successful</string>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="24" id="ba1-W9-zTb"/>
                                                 </constraints>
-                                                <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
@@ -472,18 +476,27 @@ Registration successful</string>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DE1-eA-R58">
-                                                <rect key="frame" x="19" y="716.5" width="337" height="38"/>
+                                                <rect key="frame" x="19" y="716.5" width="337" height="46"/>
                                                 <color key="backgroundColor" red="0.12941176469999999" green="0.58823529409999997" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="46" id="yCJ-2s-MfS"/>
+                                                </constraints>
                                                 <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="19"/>
                                                 <state key="normal" title="SIGNUP">
                                                     <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="4"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="SignUpAction:" destination="sca-AY-poQ" eventType="touchUpInside" id="Z4C-oJ-Thu"/>
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eM7-vM-QGJ" userLabel="Rectangle3" customClass="SignInLabel" customModule="ImagingLink" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="814.5" width="375" height="44"/>
+                                                <rect key="frame" x="0.0" y="822.5" width="375" height="44"/>
                                                 <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="44" id="KcL-1L-Aqx"/>
@@ -620,10 +633,10 @@ at least one special character (! @ # $ % ^ &amp; *)</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="82V-14-NdF">
-                                <rect key="frame" x="0.0" y="20" width="375" height="755"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="775"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QU9-hA-PSI" userLabel="ContentView">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="755"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="775"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JA8-We-Vzn">
                                                 <rect key="frame" x="23" y="287" width="333.5" height="46"/>
@@ -636,6 +649,12 @@ at least one special character (! @ # $ % ^ &amp; *)</string>
                                                 <state key="normal" title="LOGIN">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="4"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="SignInAction:" destination="Ovy-m5-sTc" eventType="touchUpInside" id="xEn-Ks-U26"/>
                                                 </connections>
@@ -675,7 +694,6 @@ at least one special character (! @ # $ % ^ &amp; *)</string>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zpS-LA-A6q" userLabel="PasswordText" customClass="FloatingLabel" customModule="ImagingLink" customModuleProvider="target">
                                                 <rect key="frame" x="23" y="214" width="329" height="24"/>
-                                                <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                             </textField>
@@ -689,13 +707,18 @@ at least one special character (! @ # $ % ^ &amp; *)</string>
                                                 <state key="normal" title="SIGN UP">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="4"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="SignUpPresses:" destination="Ovy-m5-sTc" eventType="touchUpInside" id="j9d-tf-p8Y"/>
                                                 </connections>
                                             </button>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="dyM-DZ-Psu" userLabel="UsernameText" customClass="FloatingLabel" customModule="ImagingLink" customModuleProvider="target">
                                                 <rect key="frame" x="22" y="170" width="333" height="24"/>
-                                                <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
@@ -816,7 +839,6 @@ at least one special character (! @ # $ % ^ &amp; *)</string>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="35" id="NMN-N9-y7y"/>
                                                 </constraints>
-                                                <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
@@ -972,7 +994,7 @@ at least one special character (! @ # $ % ^ &amp; *)</string>
                                         </connections>
                                     </pickerView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imageView:opD-0A-22v:image" translatesAutoresizingMaskIntoConstraints="NO" id="opD-0A-22v">
-                                        <rect key="frame" x="68" y="59" width="227" height="160"/>
+                                        <rect key="frame" x="68" y="55" width="227" height="160"/>
                                         <accessibility key="accessibilityConfiguration">
                                             <accessibilityTraits key="traits" image="YES" adjustable="YES"/>
                                         </accessibility>
@@ -981,7 +1003,7 @@ at least one special character (! @ # $ % ^ &amp; *)</string>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gsn-BJ-bdI">
-                                        <rect key="frame" x="31.5" y="234" width="106.5" height="25"/>
+                                        <rect key="frame" x="31.5" y="230" width="106.5" height="25"/>
                                         <color key="backgroundColor" red="0.66799789669999998" green="0.47512125970000002" blue="0.25860109930000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="25" id="L6b-gu-90o"/>
@@ -991,11 +1013,10 @@ at least one special character (! @ # $ % ^ &amp; *)</string>
                                         <color key="highlightedColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="emn-0r-E5G">
-                                        <rect key="frame" x="168" y="236" width="190" height="30"/>
+                                        <rect key="frame" x="168" y="232" width="190" height="34"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="190" id="PfE-kX-Lns"/>
                                         </constraints>
-                                        <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
@@ -1053,14 +1074,14 @@ at least one special character (! @ # $ % ^ &amp; *)</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ImagingLinkLogoWithText" translatesAutoresizingMaskIntoConstraints="NO" id="hLE-fC-rdP">
-                                <rect key="frame" x="137" y="85" width="120" height="120"/>
+                                <rect key="frame" x="137" y="65" width="120" height="120"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="120" id="7EW-zL-YAZ"/>
                                     <constraint firstAttribute="height" constant="120" id="vZi-Zi-86k"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Two-factor Authentication" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cgc-jh-eS0">
-                                <rect key="frame" x="0.0" y="297" width="375" height="70"/>
+                                <rect key="frame" x="0.0" y="277" width="375" height="70"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="70" id="b3o-cX-fFc"/>
                                 </constraints>
@@ -1069,7 +1090,7 @@ at least one special character (! @ # $ % ^ &amp; *)</string>
                                 <color key="highlightedColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zuq-E0-XrI" userLabel="EnableNowButton">
-                                <rect key="frame" x="19" y="407" width="337" height="46"/>
+                                <rect key="frame" x="19" y="387" width="337" height="46"/>
                                 <color key="backgroundColor" red="1" green="0.59607843137254901" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="46" id="Yr7-8E-3m6"/>
@@ -1078,12 +1099,18 @@ at least one special character (! @ # $ % ^ &amp; *)</string>
                                 <state key="normal" title="ENABLE NOW">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="EnableNowSelected:" destination="izc-8D-Zaw" eventType="touchUpInside" id="bHB-dJ-PfH"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M7K-OX-EvK" userLabel="SkipButton">
-                                <rect key="frame" x="19" y="478" width="346" height="46"/>
+                                <rect key="frame" x="19" y="458" width="346" height="46"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="46" id="Oyh-FX-cyF"/>
                                 </constraints>
@@ -1125,25 +1152,33 @@ at least one special character (! @ # $ % ^ &amp; *)</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ImagingLinkLogoWithText" translatesAutoresizingMaskIntoConstraints="NO" id="fMu-qh-mDU">
-                                <rect key="frame" x="127.5" y="87" width="120" height="120"/>
+                                <rect key="frame" x="127.5" y="67" width="120" height="120"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="120" id="IeN-Ue-Uxx"/>
                                     <constraint firstAttribute="width" constant="120" id="zu9-gC-emP"/>
                                 </constraints>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nJb-tW-LJy" userLabel="EmailText" customClass="FloatingLabel" customModule="ImagingLink" customModuleProvider="target">
-                                <rect key="frame" x="20" y="277" width="335" height="24"/>
-                                <nil key="textColor"/>
+                                <rect key="frame" x="20" y="257" width="335" height="24"/>
                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TQx-EO-HVC">
-                                <rect key="frame" x="20" y="375.5" width="335" height="38"/>
+                                <rect key="frame" x="20" y="355.5" width="335" height="46"/>
                                 <color key="backgroundColor" red="0.12941176469999999" green="0.58823529409999997" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="46" id="aGx-Zl-WPb"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="19"/>
                                 <state key="normal" title="SEND CODE">
                                     <color key="titleColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="RequestOTP:" destination="12t-kj-7P3" eventType="touchUpInside" id="yVV-TB-QUm"/>
                                 </connections>
@@ -1158,7 +1193,7 @@ at least one special character (! @ # $ % ^ &amp; *)</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BwR-3q-JRb">
-                                <rect key="frame" x="20" y="422.5" width="335" height="30"/>
+                                <rect key="frame" x="20" y="410.5" width="335" height="30"/>
                                 <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="15"/>
                                 <state key="normal" title="Already have a CODE?">
                                     <color key="titleColor" red="0.12941176470588234" green="0.58823529411764708" blue="0.95294117647058818" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1168,7 +1203,7 @@ at least one special character (! @ # $ % ^ &amp; *)</string>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f3C-xa-GLf">
-                                <rect key="frame" x="15" y="313" width="345" height="33.5"/>
+                                <rect key="frame" x="15" y="293" width="345" height="33.5"/>
                                 <string key="text">A Code will be sent your E-mail address for verification. 
 Please check your E-mail after clicking Send code.</string>
                                 <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="14"/>
@@ -1218,31 +1253,38 @@ Please check your E-mail after clicking Send code.</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ImagingLinkLogoWithText" translatesAutoresizingMaskIntoConstraints="NO" id="S8I-vM-zkD">
-                                <rect key="frame" x="127.5" y="101" width="120" height="120"/>
+                                <rect key="frame" x="127.5" y="81" width="120" height="120"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="120" id="BU5-DL-Kjo"/>
                                     <constraint firstAttribute="width" constant="120" id="jrJ-UT-6Hk"/>
                                 </constraints>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email " minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Biz-BQ-LD4" customClass="FloatingLabel" customModule="ImagingLink" customModuleProvider="target">
-                                <rect key="frame" x="23" y="288" width="329" height="22"/>
-                                <nil key="textColor"/>
+                                <rect key="frame" x="23" y="268" width="329" height="22"/>
                                 <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="18"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter CODE" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aQT-KT-PGh" customClass="FloatingLabel" customModule="ImagingLink" customModuleProvider="target">
-                                <rect key="frame" x="23" y="331" width="329" height="22"/>
-                                <nil key="textColor"/>
+                                <rect key="frame" x="23" y="311" width="329" height="22"/>
                                 <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="18"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tOr-FJ-w89">
-                                <rect key="frame" x="19" y="397" width="337" height="55"/>
+                                <rect key="frame" x="19" y="377" width="337" height="46"/>
                                 <color key="backgroundColor" red="0.12941176470588234" green="0.58823529411764708" blue="0.95294117647058818" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="46" id="B9h-x3-jn9"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="18"/>
                                 <state key="normal" title="VERIFY CODE ">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="VerifyOTPPressed:" destination="JnX-iX-0F1" eventType="touchUpInside" id="NiJ-Wz-gAb"/>
                                 </connections>
@@ -1257,7 +1299,7 @@ Please check your E-mail after clicking Send code.</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We sent CODE to your E-mail if not received. Resend " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Xp-vT-6bh">
-                                <rect key="frame" x="15" y="473" width="375" height="16.5"/>
+                                <rect key="frame" x="15" y="444" width="375" height="16.5"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -1327,11 +1369,11 @@ Please check your E-mail after clicking Send code.</string>
             <objects>
                 <viewController id="L2d-qR-Gfc" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="P4R-Wq-CP5">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hbg-ot-0UW">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nrq-tq-7xe" userLabel="ContentView">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
@@ -1456,11 +1498,11 @@ on this Privacy Policy in any case.</string>
             <objects>
                 <viewController id="FTx-ZG-Rij" customClass="TermsAndCondtionsAndPrivacyViewController" customModule="ImagingLink" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="04h-ll-Xzr">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cfW-xy-U2Y">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <wkWebViewConfiguration key="configuration">
                                     <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>

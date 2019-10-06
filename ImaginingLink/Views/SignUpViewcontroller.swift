@@ -204,7 +204,6 @@ class SignUpViewcontroller: UIViewController,  UITextFieldDelegate, UserTypeDele
                 let dictResponse = response as! [String:Any]
                 let status = dictResponse["status"] as! String
                 if status == "success" {
-                    UserDefaults.standard.set(false, forKey: kTwoFactorAuthentication)
                     UserDefaults.standard.setValue(self.EmailTextField.text, forKey: kAuthenticatedEmailId)
 
                     let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)

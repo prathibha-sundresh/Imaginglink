@@ -98,7 +98,6 @@ class ILTabViewController: UITabBarController {
             
             break
         case 1:
-            print("My UFS\n", terminator: "")
             
             //            if (getTopViewController() is WSFavouriteShoppingListViewController ) || (getTopViewController() is WSRecipeOverViewViewController ) || (getTopViewController() is SearchViewController ){
             //                self.tabBarController?.selectedIndex = 0
@@ -169,6 +168,4 @@ class ILTabViewController: UITabBarController {
         let destViewController : UIViewController? = storyboard.instantiateViewController(withIdentifier: strIdentifier)
         self.navigationController!.pushViewController(destViewController!, animated: true)
     }
-
-    //
 }

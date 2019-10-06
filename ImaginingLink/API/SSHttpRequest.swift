@@ -50,8 +50,6 @@ class SSHttpRequest {
     func postMethodWithHeaderasToken(dictParameter:[String:Any], url : String,header:HTTPHeaders, successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void)  {
         let webServiceHandler:WebServiceHandler = WebServiceHandler()
 
-        
-
         webServiceHandler.POSTRequest(dictParameter: dictParameter, header: header, requestURL: (SSHttpRequest.baseURL?.appending(url))!, success: {(response) in
         successResponse(response)
        }, faliure: {(Error) in

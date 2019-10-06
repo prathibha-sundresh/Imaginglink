@@ -76,12 +76,12 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
         let passWord = PasswordTextField.text
         
         if username?.count != 0 && passWord?.count != 0 {
+            ILUtility.showProgressIndicator(controller: self)
             CoreAPI.sharedManaged.signIn(userName: username!, password: passWord!, successResponse: {(response) in
-                
+                ILUtility.hideProgressIndicator(controller: self)
                 let dictResponse = response as! [String:Any]
                 if let data : [String:Any] = dictResponse["data"] as? [String : Any]  {
                 
-                    ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: "Successfully Login.")
                     if let usertype : [String:Any] = data["user_type"] as? [String:Any] {
                         UserDefaults.standard.set(usertype["title"] as! String, forKey: kUserType)
                     }
@@ -90,7 +90,7 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
                     UserDefaults.standard.set(data["email"] as! String, forKey: kAuthenticatedEmailId)
                     let firstName = data["first_name"]as? String ?? ""
                     let lastName = data["last_name"]as? String ?? ""
-                    let fullName = "\(firstName) \(lastName)"
+                    let fullName = "\(firstName) \(lastName)".capitalized
                     UserDefaults.standard.set(firstName, forKey: kFirstName)
                     UserDefaults.standard.set(lastName, forKey: kLastName)
                     UserDefaults.standard.set(fullName, forKey: kUserName)
@@ -105,19 +105,18 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
                         let isEnableTwoFactorAuthentication = data["is_enable_2f_authentication"] as! Bool
                         UserDefaults.standard.set(isEnableTwoFactorAuthentication, forKey: kTwoFactorAuthentication)
                         if (!isEnableTwoFactorAuthentication) {
-                            let storyboard: UIStoryboard = UIStoryboard(name: "DashBoard", bundle: nil)
-                           let vc = storyboard.instantiateViewController(withIdentifier: "ILTabViewController") as! ILTabViewController
-                            vc.selectedIndex = 1
-                            self.navigationController?.present(vc, animated: true, completion: nil)
+                            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                            appDelegate.openDashBoardScreen()
                         } else {
-                            ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: "Sending..")
-                            CoreAPI.sharedManaged.reSendMobileOTP(successResponse: {(response) in
+                            
+                            CoreAPI.sharedManaged.sendOtpToEnabledUser(successResponse: {(response) in
                                 
                                 let storyBoard = UIStoryboard(name: "Verification", bundle: nil)
                                 let vc = storyBoard.instantiateViewController(withIdentifier: "MobileOTPViewController") as! MobileOTPVirecontroller
+                                vc.isFromSignIn = true
                                 self.navigationController?.pushViewController(vc, animated: true)
                             }, faliure: {(error) in
-                                ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: error)
+                                
                             })
                             
                         }
@@ -125,6 +124,7 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
                     
             }, faliure: {(error) in
                 ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: error)
+                ILUtility.hideProgressIndicator(controller: self)
             })
         
         } else if (username?.count == 0) {

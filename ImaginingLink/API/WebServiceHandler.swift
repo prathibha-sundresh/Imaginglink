@@ -88,7 +88,7 @@ import Alamofire
                                     return
                                 }
                                 if let value = (error["message"]) {
-                                    faliure(value as! String)
+                                    faliure(value as? String ?? "")
                                     return
                                 }
                             } else {

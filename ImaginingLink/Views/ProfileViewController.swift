@@ -73,7 +73,7 @@ class ProfileViewController: BaseHamburgerViewController {
             CoreAPI.sharedManaged.updateUserDetails(requestDict: dict, successResponse: { (response) in
                 ILUtility.hideProgressIndicator(controller: self)
                 ILUtility.showAlert(message: "Profile deatils updated successfully.", controller: self)
-                let fullName = "\(self.firstNameTF.text!) \(self.lastNameTF.text!)"
+                let fullName = "\(self.firstNameTF.text!) \(self.lastNameTF.text!)".capitalized
                 UserDefaults.standard.set(fullName, forKey: kUserName)
                 self.getUserDetails()
             }) { (error) in
@@ -149,7 +149,7 @@ class ProfileViewController: BaseHamburgerViewController {
                 let lastName = dict1["last_name"] as? String ?? ""
                 UserDefaults.standard.set(firstName, forKey: kFirstName)
                 UserDefaults.standard.set(lastName, forKey: kLastName)
-                let fullName = "\(firstName) \(lastName)"
+                let fullName = "\(firstName) \(lastName)".capitalized
                 UserDefaults.standard.set(fullName, forKey: kUserName)
                 self.imageUrl = dict1["profile_photo"] as? String ?? ""
                 self.setUI()

@@ -205,6 +205,17 @@ class ILUtility : NSObject {
     class func getValueFromUserDefaults(key: String) -> String{
         return UserDefaults.standard.value(forKey: key) as? String ?? ""
     }
+    class func clearUserDefaults(){
+        UserDefaults.standard.set(false, forKey: kLoggedIn)
+        UserDefaults.standard.set(false, forKey: kTwoFactorAuthentication)
+        UserDefaults.standard.set(nil, forKey: kUserType)
+        UserDefaults.standard.set(nil, forKey: kToken)
+        UserDefaults.standard.setValue(nil, forKey: kAuthenticatedEmailId)
+        UserDefaults.standard.set(nil, forKey: kFirstName)
+        UserDefaults.standard.set(nil, forKey: kLastName)
+        UserDefaults.standard.set(nil, forKey: kUserName)
+        UserDefaults.standard.set(nil, forKey: OTP_Value)
+    }
 }
 
 extension UIApplication {

@@ -43,8 +43,6 @@ class ResetPasswordWithMenuViewController: BaseHamburgerViewController,UITextFie
                 //ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: dictValue["message"] as! String)
                 let alert = UIAlertController(title: "Imaginglink", message: dictValue["message"] as? String, preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { action in
-                    let appdelegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate
-                    appdelegate.openRegularSignIn()
                     CoreAPI.sharedManaged.logOut()
                 }))
                 self.present(alert, animated: true, completion: nil)

@@ -39,8 +39,11 @@ class PresentationDetailTextCell : UITableViewCell {
     func setupValue(dic: [String:Any]) {
         
         setProgressUI(isBool: true)
-        if let isDownloadable = dic["is_downloadable"] as? Int
+        if var isDownloadable = dic["is_downloadable"] as? Int
         {
+            if ((dic["presentation_type"] as? String)?.contains("video"))! {
+                isDownloadable = 0
+            }
             if (isDownloadable == 1)
             {
                 if let downloadLink = dic["downloadable_file_link"] as? String {
@@ -90,8 +93,11 @@ class PresentationDetailTextCell : UITableViewCell {
             SampleKeywordLabel?.text = keywords[0]
         }
         
-        if let isDownloadable = dic["is_downloadable"] as? Int
+        if var isDownloadable = dic["is_downloadable"] as? Int
         {
+            if ((dic["presentation_type"] as? String)?.contains("video"))! {
+                isDownloadable = 0
+            }
             if isDownloadable == 1{
                 AllowToDownloadLabel?.text = "Yes"
                 downloadButton.layer.cornerRadius = 18

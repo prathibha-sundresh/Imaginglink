@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         IQKeyboardManager.sharedManager().enable = true
         Thread.sleep(forTimeInterval: 1.5)
         if UserDefaults.standard.bool(forKey: kLoggedIn){
-            openPresentationScreen()
+            openDashBoardScreen()
         }
         return true
     }
@@ -47,7 +47,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
     
-    func openPresentationScreen() {
+    func openDashBoardScreen() {
 
         let storyboard: UIStoryboard = UIStoryboard(name: "DashBoard", bundle: nil)
         let tabBarController : UITabBarController = storyboard.instantiateViewController(withIdentifier: "ILTabViewController") as! ILTabViewController
@@ -63,7 +63,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func openRegularSignIn() {
-        UserDefaults.standard.set(false, forKey: kLoggedIn)
+        
         let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let navigationVC : UINavigationController = storyboard.instantiateViewController(withIdentifier: "SignInBaseNavigationController") as! UINavigationController
         self.window!.rootViewController = navigationVC

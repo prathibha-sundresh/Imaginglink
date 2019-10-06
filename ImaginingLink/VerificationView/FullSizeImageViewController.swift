@@ -30,7 +30,7 @@ class FullSizeImageViewController: UIViewController,UIScrollViewDelegate {
             imageView.contentMode = .scaleAspectFit
             scorllView.addSubview(imageView)
         }
-        contentViewWidth.constant = CGFloat(imagesUrls.count) * scorllView.frame.width
+        contentViewWidth.constant = CGFloat(imagesUrls.count) * self.view.frame.width
         scorllView.isPagingEnabled = true
         statusLabel.text = "\(imagesDict["index"] as! Int + 1) of \(imagesUrls.count)"
         let x = CGFloat(imagesDict["index"] as! Int) * CGFloat(self.view.frame.width)
