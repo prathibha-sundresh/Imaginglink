@@ -123,8 +123,8 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
             }
                     
             }, faliure: {(error) in
-                ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: error)
                 ILUtility.hideProgressIndicator(controller: self)
+                ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: error)
             })
         
         } else if (username?.count == 0) {

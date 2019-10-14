@@ -32,14 +32,17 @@ class FullSizeImageViewController: UIViewController,UIScrollViewDelegate {
         }
         contentViewWidth.constant = CGFloat(imagesUrls.count) * self.view.frame.width
         scorllView.isPagingEnabled = true
-        statusLabel.text = "\(imagesDict["index"] as! Int + 1) of \(imagesUrls.count)"
-        let x = CGFloat(imagesDict["index"] as! Int) * CGFloat(self.view.frame.width)
-        scorllView.setContentOffset(CGPoint(x: x, y: 0), animated: true)
+        scrollViewDidEndDecelerating(scorllView)
+        //statusLabel.text = "\(imagesDict["index"] as! Int + 1) of \(imagesUrls.count)"
+        //let x = CGFloat(imagesDict["index"] as! Int) * CGFloat(self.view.frame.width)
+        //scorllView.setContentOffset(CGPoint(x: x, y: 0), animated: false)
+        
     }
     @IBAction func fullImageCloseButtonAction(_ sender: UIButton){
         self.dismiss(animated: true, completion: nil)
     }
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        
         let currentPage = Int(scorllView.contentOffset.x / scorllView.frame.size.width)
         statusLabel.text = "\(currentPage + 1) of \(imagesUrls.count)"
     }

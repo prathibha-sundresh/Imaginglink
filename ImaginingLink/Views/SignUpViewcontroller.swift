@@ -10,9 +10,13 @@ import UIKit
 
 class SignUpViewcontroller: UIViewController,  UITextFieldDelegate, UserTypeDelegate, TapOnLabelDelegate {
     func selectedUserType(userType: String, indexRow: Int) {
-        UserTypeTextField.text = userType
-        let dic = userTypeResponse![indexRow]
-        userTypeId = dic["id"] as! String
+        let filteredArray = userTypeResponse.filter({ (dict) -> Bool in
+            return dict["profession"] as? String ?? "" == userType
+        })
+        if filteredArray.count > 0{
+            userTypeId = filteredArray[0]["id"] as! String
+            UserTypeTextField.text = userType
+        }
     }
     
     @IBOutlet weak var passwordToolTipImage: UIImageView!
@@ -23,6 +27,8 @@ class SignUpViewcontroller: UIViewController,  UITextFieldDelegate, UserTypeDele
         let VC = storyboard.instantiateViewController(withIdentifier: "ListViewId") as! ListViewController
         VC.delegate = self
         VC.listValue = self.userTypeArray
+        VC.filteredArray = self.userTypeArray
+        VC.selectedIndexValue = UserTypeTextField.text!
         self.present(VC, animated: true, completion: nil)
     }
     
@@ -64,7 +70,7 @@ class SignUpViewcontroller: UIViewController,  UITextFieldDelegate, UserTypeDele
     var userTypeArray : [String] = [""]
     var userTypeId : String = ""
     var emailId : String = ""
-    var userTypeResponse : [[String:Any]]?
+    var userTypeResponse : [[String:Any]] = []
     override func viewDidLoad() {
         super.viewDidLoad()
 

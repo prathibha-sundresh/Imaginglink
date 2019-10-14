@@ -56,7 +56,8 @@ class ImageTableViewCell: UITableViewCell,UIScrollViewDelegate {
                     webView.loadRequest(URLRequest(url: URL(string: imageURL)!))
                 }
                 imagesView.isHidden = true
-            } else if let photos : [String] = dic["presentation_jpg_files"] as? [String] {
+            } else if let tmpPhotos = dic["presentation_jpg_files"] as? [[String: Any]] {
+                let photos = tmpPhotos.map{ $0["image"] as? String ?? "" }
                 webView.isHidden = true
                 images = photos
                 addImagesToScroll(images: photos)

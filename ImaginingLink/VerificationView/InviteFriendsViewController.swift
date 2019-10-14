@@ -40,9 +40,10 @@ class  InviteFriendsViewController: BaseHamburgerViewController{
         super.viewWillAppear(animated)
     }
     @IBAction func cancelButton(_ sender: UIButton){
-        let storyboard: UIStoryboard = UIStoryboard(name: "DashBoard", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "ILTabViewController") as! ILTabViewController
-        vc.selectedIndex = 1
-        self.navigationController?.present(vc, animated: true, completion: nil)
+//        let storyboard: UIStoryboard = UIStoryboard(name: "DashBoard", bundle: nil)
+//        let vc = storyboard.instantiateViewController(withIdentifier: "ILTabViewController") as! ILTabViewController
+//        vc.selectedIndex = 1
+//        self.present(vc, animated: false, completion: nil)
+        backAction()
     }
 }

@@ -10,11 +10,14 @@ import UIKit
 
 class MobileVerificationsViewcontroller: BaseHamburgerViewController, UserTypeDelegate, UITextFieldDelegate {
     func selectedUserType(userType: String, indexRow: Int) {
-        selectedCountryCode = CountryCodeForPhoneNumber[indexRow] as String
-        let selectedCountryName = countryName[indexRow] as String
-        
-        countryCodeTF.text = "\(selectedCountryName)(\(selectedCountryCode))"
-        
+        let filterArray = listOfData.filter { (dict) -> Bool in
+            return dict["name"] as? String ?? "" == userType
+        }
+        if filterArray.count > 0{
+            selectedCountryCode = filterArray[0]["m_code"] as? String ?? ""
+            selectedCountryName = filterArray[0]["name"] as? String ?? ""
+            countryCodeTF.text = "\(selectedCountryName) (\(selectedCountryCode))"
+        }
     }
     
 
@@ -23,6 +26,8 @@ class MobileVerificationsViewcontroller: BaseHamburgerViewController, UserTypeDe
         let VC = storyboard.instantiateViewController(withIdentifier: "ListViewId") as! ListViewController
         VC.delegate = self
         VC.listValue = countryName
+        VC.filteredArray = countryName
+        VC.selectedIndexValue = selectedCountryName
         self.present(VC, animated: true, completion: nil)
     }
     
@@ -30,6 +35,7 @@ class MobileVerificationsViewcontroller: BaseHamburgerViewController, UserTypeDe
     @IBOutlet weak var mobileNumberTF: FloatingLabel!
     var selectedCountryCode = ""
     var isFromSignIn = false
+    var selectedCountryName = ""
     @IBAction func VerifyMobileNumberAction(_ sender: Any) {
         ILUtility.showProgressIndicator(controller: self)
         CoreAPI.sharedManaged.VerifyPhonenumber(phoneNumber: mobileNumberTF.text!, countryCode: selectedCountryCode, successResponse: {(response) in
@@ -37,7 +43,6 @@ class MobileVerificationsViewcontroller: BaseHamburgerViewController, UserTypeDe
             self.moveToMobileOTPViewController()
         }, faliure: {(error) in
             ILUtility.hideProgressIndicator(controller: self)
-            ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: error)
             if (error.contains("The mobile has already been taken")) {
                 CoreAPI.sharedManaged.reSendMobileOTP(successResponse: {(response) in
                     self.moveToMobileOTPViewController()
@@ -46,13 +51,15 @@ class MobileVerificationsViewcontroller: BaseHamburgerViewController, UserTypeDe
                 })
             
             }
-
+            else{
+                ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: error)
+            }
         })
     }
     
-    var CountryCodeForPhoneNumber : [String] = [""]
-    var countryCode : [String] = [""]
-    var countryName : [String] = [""]
+    var CountryCodeForPhoneNumber : [String] = []
+    var countryCode : [String] = []
+    var countryName : [String] = []
     var listOfData = [[String:Any]]()
     override func viewDidLoad() {
         super.viewDidLoad()
