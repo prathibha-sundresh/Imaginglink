@@ -8,14 +8,17 @@
 
 import UIKit
 
+protocol FullSizeImageViewControllerDelegate: NSObject {
+    func currentPageIndex(index: Int)
+}
 class FullSizeImageViewController: UIViewController,UIScrollViewDelegate {
 
     @IBOutlet weak var scorllView: UIScrollView!
-    @IBOutlet weak var contentViewWidth: NSLayoutConstraint!
     @IBOutlet weak var statusLabel: UILabel!
     var urlStr = ""
     var imagesUrls = [String]()
     var imagesDict = [String: Any]()
+    weak var delegate: FullSizeImageViewControllerDelegate?
     override func viewDidLoad() {
         super.viewDidLoad()
         addImagesToScrollView()
@@ -30,15 +33,16 @@ class FullSizeImageViewController: UIViewController,UIScrollViewDelegate {
             imageView.contentMode = .scaleAspectFit
             scorllView.addSubview(imageView)
         }
-        contentViewWidth.constant = CGFloat(imagesUrls.count) * self.view.frame.width
+        scorllView.contentSize = CGSize(width: CGFloat(imagesUrls.count) * self.view.frame.width,height: scorllView.frame.size.height)
         scorllView.isPagingEnabled = true
-        scrollViewDidEndDecelerating(scorllView)
-        //statusLabel.text = "\(imagesDict["index"] as! Int + 1) of \(imagesUrls.count)"
-        //let x = CGFloat(imagesDict["index"] as! Int) * CGFloat(self.view.frame.width)
-        //scorllView.setContentOffset(CGPoint(x: x, y: 0), animated: false)
+        statusLabel.text = "\(imagesDict["index"] as! Int + 1) of \(imagesUrls.count)"
+        let x = CGFloat(imagesDict["index"] as! Int) * CGFloat(self.view.frame.width)
+        scorllView.setContentOffset(CGPoint(x: x, y: 0), animated: false)
         
     }
     @IBAction func fullImageCloseButtonAction(_ sender: UIButton){
+        let currentPage = Int(scorllView.contentOffset.x / scorllView.frame.size.width)
+        delegate?.currentPageIndex(index: currentPage)
         self.dismiss(animated: true, completion: nil)
     }
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {

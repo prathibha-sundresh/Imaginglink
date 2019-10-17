@@ -39,6 +39,7 @@ class PresentationDetailViewcontroller: BaseHamburgerViewController, UITableView
         if (indexPath.section == ImageViewCell) {
             let ImageCell : ImageTableViewCell = tableView.dequeueReusableCell(withIdentifier: "ImageTableViewCellId", for: indexPath) as! ImageTableViewCell
             if (dicData != nil) {
+                ImageCell.currentPage = fullSizeCurrentIndex
                 ImageCell.setupUI(dic: dicData!)
                 ImageCell.myViewcontroller = self
                 ImageCell.delegate = self
@@ -148,6 +149,7 @@ class PresentationDetailViewcontroller: BaseHamburgerViewController, UITableView
     var dicData : [String:Any]?
     var commentData : [[String:Any]] = []
     var ParentAndChildComments : [[String:Any]] = []
+    var fullSizeCurrentIndex: Int = 0
     fileprivate func getPresentationDetails() {
         presentationDetailTableView.isHidden = true
         ILUtility.showProgressIndicator(controller: self)
@@ -271,6 +273,7 @@ class PresentationDetailViewcontroller: BaseHamburgerViewController, UITableView
         else if segue.identifier == "fullImageVCID"{
             let vc : FullSizeImageViewController = segue.destination as! FullSizeImageViewController
             vc.imagesDict = sender as! [String: Any]
+            vc.delegate = self
         }
     }
     
@@ -322,5 +325,12 @@ extension PresentationDetailViewcontroller: ImagePressDelegate{
 extension PresentationDetailViewcontroller: PresentationDetailTextCellDelegate{
     func cancelRequest(request: Request) {
         alomafireRequest = request
+    }
+}
+extension PresentationDetailViewcontroller: FullSizeImageViewControllerDelegate{
+    func currentPageIndex(index: Int) {
+        fullSizeCurrentIndex = index
+        let indexPath = IndexPath(item: 0, section: ImageViewCell)
+        presentationDetailTableView.reloadRows(at: [indexPath], with: .fade)
     }
 }

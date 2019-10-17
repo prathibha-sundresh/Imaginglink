@@ -338,22 +338,7 @@
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsVerticalScrollIndicator="NO" maximumZoomScale="3" translatesAutoresizingMaskIntoConstraints="NO" id="daJ-51-caN">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V5z-Fu-6it" userLabel="ContentView">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="375" id="bhH-6A-Gy6"/>
-                                        </constraints>
-                                    </view>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="V5z-Fu-6it" firstAttribute="height" secondItem="daJ-51-caN" secondAttribute="height" id="6QF-9G-kIh"/>
-                                    <constraint firstItem="V5z-Fu-6it" firstAttribute="top" secondItem="daJ-51-caN" secondAttribute="top" id="HcP-QQ-5XF"/>
-                                    <constraint firstAttribute="trailing" secondItem="V5z-Fu-6it" secondAttribute="trailing" id="M9O-0O-azS"/>
-                                    <constraint firstItem="V5z-Fu-6it" firstAttribute="leading" secondItem="daJ-51-caN" secondAttribute="leading" id="nSO-i9-g2W"/>
-                                    <constraint firstAttribute="bottom" secondItem="V5z-Fu-6it" secondAttribute="bottom" id="vwR-cO-f1y"/>
-                                </constraints>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="delegate" destination="wtQ-Cg-n57" id="0bs-Ya-kjW"/>
                                 </connections>
@@ -397,7 +382,6 @@
                         <viewLayoutGuide key="safeArea" id="Zep-sc-hsT"/>
                     </view>
                     <connections>
-                        <outlet property="contentViewWidth" destination="bhH-6A-Gy6" id="5z2-dq-NuH"/>
                         <outlet property="scorllView" destination="daJ-51-caN" id="JF0-Pr-F5z"/>
                         <outlet property="statusLabel" destination="Nub-lM-8a3" id="cv1-TY-Gq7"/>
                     </connections>

@@ -114,6 +114,11 @@ class ImageTableViewCell: UITableViewCell,UIScrollViewDelegate {
             imageScrollView.addSubview(imageView)
         }
         imageScrollView.contentSize = CGSize(width: CGFloat(images.count) * imageScrollView.frame.width, height: imageScrollView.frame.height)
+        let x = CGFloat(currentPage) * CGFloat(imageScrollView.frame.width)
+        
+        imageScrollView.setContentOffset(CGPoint(x: x, y: 0), animated: false)
+        showHideLeftButton()
+        showHideRightButton()
     }
     
     @IBAction func scrollLeft(_ sender: UIButton) {
