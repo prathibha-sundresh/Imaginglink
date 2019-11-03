@@ -39,8 +39,8 @@ class FinalSubmissionViewController: UIViewController {
           .foregroundColor: UIColor(white: 74.0 / 255.0, alpha: 1.0),
           .kern: 0.34
         ])
-        attributedString.addAttributes([NSAttributedStringKey.link:NSURL(string: termsandconditionUrl)!,NSAttributedStringKey.foregroundColor : UIColor(red:0.13, green:0.59, blue:0.95, alpha:1.0),NSAttributedStringKey.font:UIFont(name: "GoogleSans-Medium", size: 12.0)!], range: strTnC.range(of: "“terms and conditions”"))
-        attributedString.addAttributes([NSAttributedStringKey.link:NSURL(string: privacyPolicyUrl)! ,NSAttributedStringKey.foregroundColor : UIColor(red:0.13, green:0.59, blue:0.95, alpha:1.0),NSAttributedStringKey.font:UIFont(name: "GoogleSans-Medium", size: 12.0)!], range: strTnC.range(of: "“privacy policy.”"))
+        attributedString.addAttributes([NSAttributedString.Key.link:NSURL(string: termsandconditionUrl)!,NSAttributedString.Key.foregroundColor : UIColor(red:0.13, green:0.59, blue:0.95, alpha:1.0),NSAttributedString.Key.font:UIFont(name: "GoogleSans-Medium", size: 12.0)!], range: strTnC.range(of: "“terms and conditions”"))
+        attributedString.addAttributes([NSAttributedString.Key.link:NSURL(string: privacyPolicyUrl)! ,NSAttributedString.Key.foregroundColor : UIColor(red:0.13, green:0.59, blue:0.95, alpha:1.0),NSAttributedString.Key.font:UIFont(name: "GoogleSans-Medium", size: 12.0)!], range: strTnC.range(of: "“privacy policy.”"))
         termsAndConditionsTextView.attributedText = attributedString
         // Do any additional setup after loading the view.
     }
@@ -60,9 +60,9 @@ class FinalSubmissionViewController: UIViewController {
     @IBAction func checkUncheckButtonAction(_ sender: UIButton) {
         sender.isSelected = !sender.isSelected
         if sender.isSelected {
-            checkUncheckButton.setBackgroundImage(#imageLiteral(resourceName: "ClickedCheckBox"), for: UIControlState.normal)
+            checkUncheckButton.setBackgroundImage(#imageLiteral(resourceName: "ClickedCheckBox"), for: UIControl.State.normal)
         } else {
-            checkUncheckButton.setBackgroundImage(#imageLiteral(resourceName: "unCheckedBox"), for: UIControlState.normal)
+            checkUncheckButton.setBackgroundImage(#imageLiteral(resourceName: "unCheckedBox"), for: UIControl.State.normal)
         }
     }
     /*
@@ -113,7 +113,7 @@ extension FinalSubmissionViewController:UITableViewDelegate, UITableViewDataSour
         return 4
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableViewAutomaticDimension
+        return UITableView.automaticDimension
     }
 }
 

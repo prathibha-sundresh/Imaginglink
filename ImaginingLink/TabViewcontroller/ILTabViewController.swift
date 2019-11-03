@@ -65,19 +65,19 @@ class ILTabViewController: UITabBarController {
         backButton.titleLabel?.lineBreakMode = .byWordWrapping
         backButton.titleLabel?.numberOfLines = 0
         backButton.contentHorizontalAlignment = .left
-        backButton.titleEdgeInsets = UIEdgeInsetsMake(0.0, 10.0, 0.0, 0.0)
+        backButton.titleEdgeInsets = UIEdgeInsets(top: 0.0, left: 10.0, bottom: 0.0, right: 0.0)
         backButton.setTitleColor(UIColor(red: 80.0/255.0, green: 88.0/255.0, blue: 93.0/255.0, alpha: 1), for: .normal)
         backButton.titleLabel?.font = UIFont(name: "SFProDisplay-Regular", size: 14)
         backButton.addTarget(self, action: #selector(ILTabViewController.backAction), for: .touchUpInside)
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backButton)
         
-        let btnShowCart = UIButton(type: UIButtonType.custom)
+        let btnShowCart = UIButton(type: UIButton.ButtonType.custom)
         btnShowCart.backgroundColor = UIColor.clear
-        btnShowCart.setImage(UIImage(named: "MenuIcon"), for: UIControlState.normal)
+        btnShowCart.setImage(UIImage(named: "MenuIcon"), for: UIControl.State.normal)
         btnShowCart.frame = CGRect(x: self.view.frame.width - 60, y: 0, width: 45, height: 45)
         btnShowCart.contentEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         btnShowCart.contentMode = .scaleAspectFit
-        btnShowCart.addTarget(self, action: #selector(ILTabViewController.onSlideMenuButtonPressed(_:)), for: UIControlEvents.touchUpInside)
+        btnShowCart.addTarget(self, action: #selector(ILTabViewController.onSlideMenuButtonPressed(_:)), for: UIControl.Event.touchUpInside)
         let customRightBarItem = UIBarButtonItem(customView: btnShowCart)
         self.navigationItem.rightBarButtonItem = customRightBarItem;
         
@@ -158,7 +158,7 @@ class ILTabViewController: UITabBarController {
         window.addSubview(menuVC.view)
         
         // self.view.addSubview(menuVC.view)
-        self.addChildViewController(menuVC)
+        self.addChild(menuVC)
         menuVC.view.layoutIfNeeded()
         
     }

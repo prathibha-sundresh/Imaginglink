@@ -19,7 +19,7 @@ class PresentationViewController: BaseHamburgerViewController, UITableViewDelega
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableViewAutomaticDimension
+        return UITableView.automaticDimension
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -215,12 +215,12 @@ class PresentationViewController: BaseHamburgerViewController, UITableViewDelega
         let shareAll = [title, myWebsite!] as [Any]
         let activityViewController = UIActivityViewController(activityItems: shareAll, applicationActivities: nil)
         activityViewController.popoverPresentationController?.sourceView = self.view
-        activityViewController.excludedActivityTypes = [ UIActivityType.airDrop]
+        activityViewController.excludedActivityTypes = [ UIActivity.ActivityType.airDrop]
         self.present(activityViewController, animated: false, completion: nil)
     }
     @objc func menuPressedButtonAction(_ sender: UIButton){
         
-        let actionsheet = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+        let actionsheet = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
         let dict = dataArray[sender.tag]
         var title = ""
         if let IsFollowed = dict["is_followed_by_me"] as? Int, IsFollowed == 0{
@@ -246,7 +246,7 @@ class PresentationViewController: BaseHamburgerViewController, UITableViewDelega
         reportPostAction.setValue(UIColor(red:0.29, green:0.29, blue:0.29, alpha:1.0), forKey: "titleTextColor")
         actionsheet.addAction(reportPostAction)
         
-        actionsheet.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: { (action) -> Void in
+        actionsheet.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: { (action) -> Void in
             
         }))
         self.present(actionsheet, animated: true, completion: nil)

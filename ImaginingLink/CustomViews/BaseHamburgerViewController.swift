@@ -24,11 +24,11 @@ class BaseHamburgerViewController: UIViewController {
         
         let backButton = UIButton(type: .custom)
         backButton.frame = CGRect(x: 0, y: 5, width: self.view.frame.width / 2, height: 50)
-        backButton.titleEdgeInsets = UIEdgeInsetsMake(0.0, 0.0, 0.0, 0.0)
+        backButton.titleEdgeInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 0.0, right: 0.0)
         
         if (showBackButton == true) {
-             backButton.setImage(UIImage(named: "BackButtonIcon"), for: UIControlState.normal)
-            backButton.titleEdgeInsets = UIEdgeInsetsMake(0.0, 10.0, 0.0, 0.0)
+            backButton.setImage(UIImage(named: "BackButtonIcon"), for: UIControl.State.normal)
+            backButton.titleEdgeInsets = UIEdgeInsets(top: 0.0, left: 10.0, bottom: 0.0, right: 0.0)
         }
         let attributes = [NSAttributedString.Key.font: UIFont(name: "SFProDisplay-Regular", size: 12.0)!, NSAttributedString.Key.foregroundColor: UIColor(red: 116.0/255.0, green: 116.0/255.0, blue: 116.0/255.0, alpha: 1)]
         let attributesForBold = [NSAttributedString.Key.font: UIFont(name: "SFProDisplay-Semibold", size: 18.0)!, NSAttributedString.Key.foregroundColor: UIColor(red: 74.0/255.0, green: 74.0/255.0, blue: 74.0/255.0, alpha: 1)]
@@ -45,13 +45,13 @@ class BaseHamburgerViewController: UIViewController {
         backButton.addTarget(self, action: #selector(BaseHamburgerViewController.backAction), for: .touchUpInside)
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backButton)
         
-        let btnShowCart = UIButton(type: UIButtonType.custom)
+        let btnShowCart = UIButton(type: UIButton.ButtonType.custom)
         btnShowCart.backgroundColor = UIColor.clear
-        btnShowCart.setImage(UIImage(named: "MenuIcon"), for: UIControlState.normal)
+        btnShowCart.setImage(UIImage(named: "MenuIcon"), for: UIControl.State.normal)
         btnShowCart.frame = CGRect(x: self.view.frame.width - 60, y: 0, width: 45, height: 45)
         btnShowCart.contentEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         btnShowCart.contentMode = .scaleAspectFit
-        btnShowCart.addTarget(self, action: #selector(BaseHamburgerViewController.onSlideMenuButtonPressed(_:)), for: UIControlEvents.touchUpInside)
+        btnShowCart.addTarget(self, action: #selector(BaseHamburgerViewController.onSlideMenuButtonPressed(_:)), for: UIControl.Event.touchUpInside)
         let customRightBarItem = UIBarButtonItem(customView: btnShowCart)
         self.navigationItem.rightBarButtonItem = customRightBarItem;
     }
@@ -139,7 +139,7 @@ class BaseHamburgerViewController: UIViewController {
         window.addSubview(menuVC.view)
         
         // self.view.addSubview(menuVC.view)
-        self.addChildViewController(menuVC)
+        self.addChild(menuVC)
         menuVC.view.layoutIfNeeded()
         
     }

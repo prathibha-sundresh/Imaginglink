@@ -27,7 +27,7 @@ class MenuViewController: BaseHamburgerViewController, UITableViewDelegate, UITa
             menuCell.iconImageView.image = UIImage(named: imagelist[indexPath.row])
             menuCell.MenuTextLabel.text = textlist[indexPath.row]
             
-            menuCell.selectionStyle = UITableViewCellSelectionStyle.none
+        menuCell.selectionStyle = UITableViewCell.SelectionStyle.none
             tableviewcell = menuCell
 
         return tableviewcell
@@ -98,7 +98,7 @@ class MenuViewController: BaseHamburgerViewController, UITableViewDelegate, UITa
             self.view.backgroundColor = UIColor.clear
         }, completion: { (finished) -> Void in
             self.view.removeFromSuperview()
-            self.removeFromParentViewController()
+            self.removeFromParent()
         })
     }
 }

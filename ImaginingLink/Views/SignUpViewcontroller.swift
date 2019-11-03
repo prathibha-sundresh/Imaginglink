@@ -52,9 +52,9 @@ class SignUpViewcontroller: UIViewController,  UITextFieldDelegate, UserTypeDele
     @IBAction func IAgreeAction(_ sender: UIButton) {
          sender.isSelected = !sender.isSelected
         if sender.isSelected {
-            CheckoutBoxClicked.setImage(#imageLiteral(resourceName: "ClickedCheckBox"), for: UIControlState.normal)
+            CheckoutBoxClicked.setImage(#imageLiteral(resourceName: "ClickedCheckBox"), for: UIControl.State.normal)
         } else {
-            CheckoutBoxClicked.setImage(#imageLiteral(resourceName: "unCheckedBox"), for: UIControlState.normal)
+            CheckoutBoxClicked.setImage(#imageLiteral(resourceName: "unCheckedBox"), for: UIControl.State.normal)
         }
     }
     @IBOutlet weak var CheckoutBoxClicked: UIButton!
@@ -125,9 +125,9 @@ class SignUpViewcontroller: UIViewController,  UITextFieldDelegate, UserTypeDele
         let strTnC : String = "I accept the Terms and conditions & Privacy policy"
         let attributedString = NSMutableAttributedString(string: strTnC)
         let foundRange = NSRange(location: "I accept the ".count, length: "Terms and conditions".count)
-        attributedString.addAttributes([NSAttributedStringKey.link:NSURL(string: termsandconditionUrl)!,NSAttributedStringKey.foregroundColor : UIColor(red: 17.0/255.0, green: 148.0/255.0, blue: 246.0/255.0, alpha: 1.0),NSAttributedStringKey.font:UIFont(name: "SFProDisplay-Regular", size: 14.0)!], range: foundRange)
+        attributedString.addAttributes([NSAttributedString.Key.link:NSURL(string: termsandconditionUrl)!,NSAttributedString.Key.foregroundColor : UIColor(red: 17.0/255.0, green: 148.0/255.0, blue: 246.0/255.0, alpha: 1.0),NSAttributedString.Key.font:UIFont(name: "SFProDisplay-Regular", size: 14.0)!], range: foundRange)
         let legaltermsrange = NSRange(location: "I accept the Terms and conditions & ".count, length: "Privacy policy".count)
-        attributedString.addAttributes([NSAttributedStringKey.link:NSURL(string: privacyPolicyUrl)! ,NSAttributedStringKey.foregroundColor : UIColor(red: 17.0/255.0, green: 148.0/255.0, blue: 246.0/255.0, alpha: 1.0),NSAttributedStringKey.font:UIFont(name: "SFProDisplay-Regular", size: 14.0)!], range: legaltermsrange)
+        attributedString.addAttributes([NSAttributedString.Key.link:NSURL(string: privacyPolicyUrl)! ,NSAttributedString.Key.foregroundColor : UIColor(red: 17.0/255.0, green: 148.0/255.0, blue: 246.0/255.0, alpha: 1.0),NSAttributedString.Key.font:UIFont(name: "SFProDisplay-Regular", size: 14.0)!], range: legaltermsrange)
         self.acceptTextView.delegate = self
         self.acceptTextView.attributedText = attributedString
         

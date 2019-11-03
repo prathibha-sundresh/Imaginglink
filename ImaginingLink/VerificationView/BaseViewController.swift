@@ -19,9 +19,9 @@ class BaseViewController: UIViewController {
         //        let customBarItem = UIBarButtonItem(customView: btnShowMenu)
         //        self.navigationItem.leftBarButtonItem = customBarItem;
         
-        let btnShowCart = UIButton(type: UIButtonType.system)
+        let btnShowCart = UIButton(type: UIButton.ButtonType.system)
         btnShowCart.backgroundColor = UIColor.clear
-        btnShowCart.setImage(UIImage(named: "MenuIcon"), for: UIControlState.normal)
+        btnShowCart.setImage(UIImage(named: "MenuIcon"), for: UIControl.State.normal)
         btnShowCart.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
         btnShowCart.contentEdgeInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
         //        btnShowCart.addTarget(self, action: #selector(BaseViewController.cartButtonPressed(_:)), for: UIControlEvents.touchUpInside)

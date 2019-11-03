@@ -70,7 +70,7 @@ class ImageTableViewCell: UITableViewCell,UIScrollViewDelegate {
         }
         else{
             FavouriteButton.setBackgroundImage(nil, for: .normal)
-            FavouriteButton.setImage(UIImage(named: "Icon_favourite"), for: UIControlState.normal)
+            FavouriteButton.setImage(UIImage(named: "Icon_favourite"), for: UIControl.State.normal)
         }
     }
     

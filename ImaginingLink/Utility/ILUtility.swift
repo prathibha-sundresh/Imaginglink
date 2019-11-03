@@ -34,19 +34,19 @@ class ILUtility : NSObject {
         backButton.titleLabel?.lineBreakMode = .byWordWrapping
         backButton.titleLabel?.numberOfLines = 0
         backButton.contentHorizontalAlignment = .left
-        backButton.titleEdgeInsets = UIEdgeInsetsMake(0.0, 10.0, 0.0, 0.0)
+        backButton.titleEdgeInsets = UIEdgeInsets(top: 0.0, left: 10.0, bottom: 0.0, right: 0.0)
         backButton.setTitleColor(UIColor(red: 80.0/255.0, green: 88.0/255.0, blue: 93.0/255.0, alpha: 1), for: .normal)
         backButton.titleLabel?.font = UIFont(name: "SFProDisplay-Bold", size: 17)
         backButton.addTarget(controller, action: #selector(self.backAction(_:)), for: .touchUpInside)
         controller.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backButton)
         
-        let btnShowCart = UIButton(type: UIButtonType.custom)
+        let btnShowCart = UIButton(type: UIButton.ButtonType.custom)
         btnShowCart.backgroundColor = UIColor.clear
-        btnShowCart.setImage(UIImage(named: "MenuIcon"), for: UIControlState.normal)
+        btnShowCart.setImage(UIImage(named: "MenuIcon"), for: UIControl.State.normal)
         btnShowCart.frame = CGRect(x: 0, y: 0, width: 45, height: 45)
         btnShowCart.contentEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         btnShowCart.contentMode = .scaleAspectFit
-        btnShowCart.addTarget(self, action: #selector(addMenuViewcontroller), for: UIControlEvents.touchUpInside)
+        btnShowCart.addTarget(self, action: #selector(addMenuViewcontroller), for: UIControl.Event.touchUpInside)
         let customRightBarItem = UIBarButtonItem(customView: btnShowCart)
         controller.navigationItem.rightBarButtonItem = customRightBarItem;
 
@@ -57,18 +57,18 @@ class ILUtility : NSObject {
         backButton.frame = CGRect(x: 0, y: 0, width: 150, height: 100)
         backButton.setImage(UIImage(named: "BackButtonIcon"), for: .normal)
         backButton.contentHorizontalAlignment = .left
-        backButton.titleEdgeInsets = UIEdgeInsetsMake(0.0, 10.0, 0.0, 0.0)
+        backButton.titleEdgeInsets = UIEdgeInsets(top: 0.0, left: 10.0, bottom: 0.0, right: 0.0)
        
         backButton.addTarget(controller, action: #selector(self.backAction(_:)), for: .touchUpInside)
         //        controller.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backButton)
         
-        let btnShowCart = UIButton(type: UIButtonType.custom)
+        let btnShowCart = UIButton(type: UIButton.ButtonType.custom)
         btnShowCart.backgroundColor = UIColor.clear
-        btnShowCart.setImage(UIImage(named: "MenuIcon"), for: UIControlState.normal)
+        btnShowCart.setImage(UIImage(named: "MenuIcon"), for: UIControl.State.normal)
         btnShowCart.frame = CGRect(x: 0, y: 0, width: 45, height: 45)
         btnShowCart.contentEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         btnShowCart.contentMode = .scaleAspectFit
-        btnShowCart.addTarget(self, action: #selector(addMenuViewcontroller), for: UIControlEvents.touchUpInside)
+        btnShowCart.addTarget(self, action: #selector(addMenuViewcontroller), for: UIControl.Event.touchUpInside)
         let customRightBarItem = UIBarButtonItem(customView: btnShowCart)
         controller.navigationItem.rightBarButtonItem = customRightBarItem;
         
@@ -80,7 +80,7 @@ class ILUtility : NSObject {
         backButton.setImage(UIImage(named: "MenuIcon"), for: .normal)
 //        backButton.setTitle(WSUtility.getlocalizedString(key: "Back to cart", lang: WSUtility.getLanguage(), table: "Localizable"), for: .normal)
         backButton.contentHorizontalAlignment = .left
-        backButton.titleEdgeInsets = UIEdgeInsetsMake(0.0, 10.0, 0.0, 0.0)
+        backButton.titleEdgeInsets = UIEdgeInsets(top: 0.0, left: 10.0, bottom: 0.0, right: 0.0)
         backButton.titleLabel?.adjustsFontSizeToFitWidth = true
 //        backButton.setTitleColor(ApplicationOrangeColor, for: .normal)
         backButton.titleLabel?.font = UIFont(name: "DINPro-Regular", size: 12)
@@ -111,16 +111,16 @@ class ILUtility : NSObject {
     }
     
     func addSlideMenuButton(viewcontroller:UIViewController){
-        let btnShowMenu = UIButton(type: UIButtonType.system)
+        let btnShowMenu = UIButton(type: UIButton.ButtonType.system)
         btnShowMenu.backgroundColor = UIColor.clear
-        btnShowMenu.setImage(UIImage(named: "MenuIcon"), for: UIControlState.normal)
+        btnShowMenu.setImage(UIImage(named: "MenuIcon"), for: UIControl.State.normal)
         btnShowMenu.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
 //        btnShowMenu.addTarget(self, action: #selector(BaseViewController.onSlideMenuButtonPressed(_:)), for: UIControlEvents.touchUpInside)
         let customBarItem = UIBarButtonItem(customView: btnShowMenu)
         viewcontroller.navigationItem.leftBarButtonItem = customBarItem;
         
-        let btnShowCart = UIButton(type: UIButtonType.system)
-        btnShowCart.setImage(#imageLiteral(resourceName: "WebShop-ShoppingCart"), for: UIControlState())
+        let btnShowCart = UIButton(type: UIButton.ButtonType.system)
+        btnShowCart.setImage(#imageLiteral(resourceName: "WebShop-ShoppingCart"), for: UIControl.State())
         btnShowCart.frame = CGRect(x: 0, y: 0, width: 45, height: 45)
         btnShowCart.contentEdgeInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
 //        btnShowCart.addTarget(self, action: #selector(BaseViewController.cartButtonPressed(_:)), for: UIControlEvents.touchUpInside)
@@ -191,8 +191,8 @@ class ILUtility : NSObject {
         
     }
     class func showAlert(title:String = "Imaginglink", message: String, controller: UIViewController){
-        let alertContoller = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
-        let alertAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil)
+        let alertContoller = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+        let alertAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
         alertContoller.addAction(alertAction)
         controller.present(alertContoller, animated: true, completion: nil)
     }

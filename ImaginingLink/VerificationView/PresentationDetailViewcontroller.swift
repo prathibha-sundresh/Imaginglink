@@ -68,16 +68,16 @@ class PresentationDetailViewcontroller: BaseHamburgerViewController, UITableView
             commentListCell.delegate = self
             commentListCell.replyButton.tag = indexPath.row
             commentListCell.setupUI(dic: ParentAndChildComments[indexPath.row])
-            commentListCell.separatorInset = UIEdgeInsetsMake(0, commentListCell.bounds.size.width, 0, 0);
+            commentListCell.separatorInset = UIEdgeInsets(top: 0, left: commentListCell.bounds.size.width, bottom: 0, right: 0);
             tableViewCell = commentListCell
             
         }
-        tableViewCell.selectionStyle = UITableViewCellSelectionStyle.none
+        tableViewCell.selectionStyle = UITableViewCell.SelectionStyle.none
         return tableViewCell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableViewAutomaticDimension
+        return UITableView.automaticDimension
         
 //        if (indexPath.row == ImageViewCell) {
 //            return 226
@@ -102,13 +102,13 @@ class PresentationDetailViewcontroller: BaseHamburgerViewController, UITableView
     }
     
     func clickonReplay(parentID: String) {
-        let alertController = UIAlertController(title: "Add New Comment", message: "", preferredStyle: UIAlertControllerStyle.alert)
+        let alertController = UIAlertController(title: "Add New Comment", message: "", preferredStyle: UIAlertController.Style.alert)
         
         alertController.addTextField(configurationHandler: {(textField: UITextField) in
             textField.placeholder = "Enter message"
             textField.addTarget(self, action: #selector(self.textChanged), for: .editingChanged)
         })
-        saveAction = UIAlertAction(title: "Send", style: UIAlertActionStyle.default, handler: { alert -> Void in
+        saveAction = UIAlertAction(title: "Send", style: UIAlertAction.Style.default, handler: { alert -> Void in
             let firstTextField = alertController.textFields![0] as UITextField
             if firstTextField.text != ""{
                 ILUtility.showProgressIndicator(controller: self)
@@ -123,7 +123,7 @@ class PresentationDetailViewcontroller: BaseHamburgerViewController, UITableView
                 ILUtility.showAlert(message: "Please enter message", controller: self)
             }
         })
-        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: {
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: {
             alert -> Void in
         })
         
@@ -215,7 +215,7 @@ class PresentationDetailViewcontroller: BaseHamburgerViewController, UITableView
     }
     @IBAction func menuPressedButtonAction(_ sender: UIButton){
         
-        let actionsheet = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+        let actionsheet = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
         
         var title = ""
         if let IsFollowed = dicData?["is_followed_by_me"] as? Int, IsFollowed == 0{
@@ -241,7 +241,7 @@ class PresentationDetailViewcontroller: BaseHamburgerViewController, UITableView
         reportPostAction.setValue(UIColor(red:0.29, green:0.29, blue:0.29, alpha:1.0), forKey: "titleTextColor")
         actionsheet.addAction(reportPostAction)
         
-        actionsheet.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: { (action) -> Void in
+        actionsheet.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: { (action) -> Void in
             
         }))
         self.present(actionsheet, animated: true, completion: nil)

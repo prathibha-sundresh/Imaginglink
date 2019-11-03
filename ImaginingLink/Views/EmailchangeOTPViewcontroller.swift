@@ -29,8 +29,8 @@ class EmailchangeOTPViewcontroller : BaseHamburgerViewController {
                 let VerificationAttributedText = NSMutableAttributedString(string: newEmail)
                 
                 let Verificationrange : NSRange = NSRange(location: kNewEmailLenght.count, length: self.newEmailId!.count)
-                VerificationAttributedText.addAttributes([NSAttributedStringKey.font : UIFont(name: "SFProDisplay-Regular", size: 14.0)!], range: NSRange(location: 0, length: newEmail.count))
-                VerificationAttributedText.addAttributes([NSAttributedStringKey.font : UIFont(name: "SFProDisplay-Regular", size: 18.0)!], range: Verificationrange)
+                VerificationAttributedText.addAttributes([NSAttributedString.Key.font : UIFont(name: "SFProDisplay-Regular", size: 14.0)!], range: NSRange(location: 0, length: newEmail.count))
+                VerificationAttributedText.addAttributes([NSAttributedString.Key.font : UIFont(name: "SFProDisplay-Regular", size: 18.0)!], range: Verificationrange)
                 self.VerificationLabel.attributedText! = VerificationAttributedText
                 self.nextOrVerify.setTitle("VERIFY", for: .normal)
                 self.CancelPressed.isHidden = true
@@ -66,8 +66,8 @@ class EmailchangeOTPViewcontroller : BaseHamburgerViewController {
         let VerificationAttributedText = NSMutableAttributedString(string: newEmail)
         
         let Verificationrange : NSRange = NSRange(location: kNewEmailLenght.count, length: oldEmailId!.count)
-        VerificationAttributedText.addAttributes([NSAttributedStringKey.font : UIFont(name: "SFProDisplay-Regular", size: 14.0)!], range: NSRange(location: 0, length: newEmail.count))
-        VerificationAttributedText.addAttributes([NSAttributedStringKey.font : UIFont(name: "SFProDisplay-Regular", size: 18.0)!], range: Verificationrange)
+        VerificationAttributedText.addAttributes([NSAttributedString.Key.font : UIFont(name: "SFProDisplay-Regular", size: 14.0)!], range: NSRange(location: 0, length: newEmail.count))
+        VerificationAttributedText.addAttributes([NSAttributedString.Key.font : UIFont(name: "SFProDisplay-Regular", size: 18.0)!], range: Verificationrange)
         VerificationLabel.attributedText! = VerificationAttributedText
         
         let str = NSString(string: "If you do not have access to this E-mail, contact support@imaginglink.com for reset.")

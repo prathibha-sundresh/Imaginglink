@@ -73,16 +73,16 @@ class PresentationTableViewCell: UITableViewCell,UIWebViewDelegate {
         ImaginingLabel.layer.borderWidth = 1
         
         if let favourite = dic["is_my_favourite"] as? Int, favourite == 0{
-            FavouriteImage.setImage(UIImage(named: "Icon_unfavourite"), for: UIControlState.normal)
+            FavouriteImage.setImage(UIImage(named: "Icon_unfavourite"), for: UIControl.State.normal)
         }
         else{
-            FavouriteImage.setImage(UIImage(named: "Icon_favourite"), for: UIControlState.normal)
+            FavouriteImage.setImage(UIImage(named: "Icon_favourite"), for: UIControl.State.normal)
         }
         if let likedStatus = dic["Is_Liked"] as? Int, likedStatus == 1{
-            LikeImageView.setImage(UIImage(named: "Icon_like"), for: UIControlState.normal)
+            LikeImageView.setImage(UIImage(named: "Icon_like"), for: UIControl.State.normal)
         }
         else{
-            LikeImageView.setImage(UIImage(named: "Icon_Like_Unselected"), for: UIControlState.normal)
+            LikeImageView.setImage(UIImage(named: "Icon_Like_Unselected"), for: UIControl.State.normal)
         }
         
         let views = "\((dic["views_count"] as? NSNumber ?? 0).stringValue)"

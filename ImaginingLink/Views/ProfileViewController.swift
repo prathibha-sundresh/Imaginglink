@@ -42,7 +42,7 @@ class ProfileViewController: BaseHamburgerViewController {
             profilePhotoImage.sd_setImage(with: URL(string: imageUrl), placeholderImage: UIImage(named: "profileIcon"),options: SDWebImageOptions(rawValue: 0), completed: { (img, err, cacheType, imgURL) in
                 if img != nil{
                     self.profilePhotoImage.image = img
-                    let imgData = UIImageJPEGRepresentation(img!, 0.75)
+                    let imgData = img!.jpegData(compressionQuality: 0.75)
                     self.saveImageToLocalPath(imageData: imgData!)
                 }
             })
@@ -237,11 +237,11 @@ class ProfileViewController: BaseHamburgerViewController {
 }
 extension ProfileViewController: UIImagePickerControllerDelegate,UINavigationControllerDelegate{
     //MARK:-- ImagePicker delegate
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        guard let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage else { return }
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        guard let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
         profilePhotoImage.image = pickedImage
-        if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            let imgData = UIImageJPEGRepresentation(pickedImage, 0.75)
+        if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            let imgData = pickedImage.jpegData(compressionQuality: 0.75)
             updateProfilePhoto(dict: ["imageData": imgData!])
         }
         isFromPicker = true
