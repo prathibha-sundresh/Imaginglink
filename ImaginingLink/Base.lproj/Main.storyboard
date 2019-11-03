@@ -1496,7 +1496,7 @@ on this Privacy Policy in any case.</string>
         <!--Terms And Condtions And Privacy View Controller-->
         <scene sceneID="lEG-w2-oER">
             <objects>
-                <viewController id="FTx-ZG-Rij" customClass="TermsAndCondtionsAndPrivacyViewController" customModule="ImagingLink" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TermsAndCondtionsAndPrivacyVCID" useStoryboardIdentifierAsRestorationIdentifier="YES" id="FTx-ZG-Rij" customClass="TermsAndCondtionsAndPrivacyViewController" customModule="ImagingLink" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="04h-ll-Xzr">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

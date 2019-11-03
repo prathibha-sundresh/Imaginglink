@@ -36,7 +36,8 @@ class CommentTableViewCell : UITableViewCell {
     @IBAction func ShareButtonPressed(_ sender: Any) {
         
         let title = presentationDict["title"] as? String ?? ""
-        let myWebsite = URL(string:presentationDict["presentation_master_url"] as? String ?? "")
+        let pathStr = NSString(string: presentationDict["presentation_master_url"] as? String ?? "").deletingLastPathComponent
+        let myWebsite = URL(string:pathStr)
         let shareAll = [title, myWebsite!] as [Any]
         let activityViewController = UIActivityViewController(activityItems: shareAll, applicationActivities: nil)
         activityViewController.popoverPresentationController?.sourceView = myViewcontroller?.view

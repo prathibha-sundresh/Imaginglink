@@ -83,3 +83,6 @@ let KGetUserDetails = "api/edit-user-profile-info"
 let KUpdateUserDetails = "api/update-profile"
 let KUpdateProfilePhoto = "api/update-profile-photo"
 
+//Create Presentations
+let KSectionsAndSubSections = "api/sections-related"
+let KCreatePresentations = "api/presentations/user"

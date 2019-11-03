@@ -62,7 +62,7 @@ class PresentationTableViewCell: UITableViewCell,UIWebViewDelegate {
         addShadowToView()
         borderView.layer.borderWidth = 1.0
         borderView.layer.cornerRadius = 4.0
-        borderView.layer.borderColor = UIColor(red:0.89, green:0.92, blue:0.93, alpha:1.0).cgColor
+        borderView.layer.borderColor = UIColor(red:0.29, green:0.29, blue:0.29, alpha:1.0).cgColor
         
         if let value = dic["id"] {
             presentationId = value as? String ?? ""

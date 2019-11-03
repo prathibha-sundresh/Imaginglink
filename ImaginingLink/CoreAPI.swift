@@ -506,8 +506,62 @@ class CoreAPI {
         
     }
     
+    func getSectionsAndSubSections(successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void) {
+        let request =  SSHttpRequest(withuUrl: KSectionsAndSubSections)
+        
+        request.getMethod(dictParameter: [:], url: KSectionsAndSubSections, successResponse: {(response) in
+            successResponse(response)
+        }, faliure: {(error) in
+            faliure(error)
+        })
+    }
+    
+    func createPresentation(params:[String:Any], successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void) {
+        
+        let request =  SSHttpRequest(withuUrl: KCreatePresentations)
+        let token = UserDefaults.standard.value(forKey: kToken) as! String
+        let headers : HTTPHeaders = ["Accept" : "application/json", "Authorization":"Bearer \(token)"]
+        var fileData: Data?
+        var parameters = ["title": params["title"]!, "section": params["section"]!, "sub_sections": params["sub_sections"]!, "is_file_upload": params["is_file_upload"]!, "is_downloadable": 0, "keywords": params["keywords"]!, "description": params["description"]!, "university": ""] as [String : Any]
+        
+        if params["is_file_upload"] as! Int == 0{
+            parameters["youtube_url"] = params["youtube_url"]!
+        }
+        else{
+            let filepath = Bundle.main.path(forResource: "Presentations-Tips", ofType: "ppt")
+            do {
+                fileData = try Data(contentsOf: URL(fileURLWithPath: filepath!))
+            } catch {
+                print ("loading image file error")
+            }
+        }
+        
+        Alamofire.upload(multipartFormData: { multipartFormData in
+            if let data = fileData {
+                //application/vnd
+                //application/pdf
+                multipartFormData.append(data, withName: "ppt_pdf_file", fileName: "Presentations-Tips.ppt", mimeType: "application/vnd")
+            }
+            for (key, value) in parameters {
+                multipartFormData.append("\(value)".data(using: String.Encoding.utf8)!, withName: key as String)
+            }},to:"http://52.39.123.104/dev/api/presentations/user", headers: headers)
+        { (result) in
+            switch result {
+            case .success(let upload, _, _):
+                
+                //                upload.uploadProgress(closure: { (progress) in
+                //                    //print("Upload Progress: \(progress.fractionCompleted)")
+                //                })
+                
+                upload.responseJSON { response in
+                    print(response.result.value as AnyObject)
+                    // successResponse(response.result.value as AnyObject)
+                }
+                
+            case .failure(let encodingError):
+                print(encodingError)
+                //faliure("\(encodingError)")
+            }
+        }
+    }
 }
-
-
-
-

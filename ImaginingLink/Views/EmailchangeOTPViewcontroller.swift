@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EmailchangeOTPViewcontroller : UIViewController {
+class EmailchangeOTPViewcontroller : BaseHamburgerViewController {
     @IBAction func CancelPressed(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
@@ -45,9 +45,6 @@ class EmailchangeOTPViewcontroller : UIViewController {
                 
                 ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: (data["message"] as! String))
                 CoreAPI.sharedManaged.logOut()
-//                let storyboard = UIStoryboard.init(name: "DashBoard", bundle: nil)
-//                let vc = storyboard.instantiateViewController(withIdentifier: "FinalLoginViewController") as! FinalLoginViewController
-//                self.navigationController?.pushViewController(vc, animated: true)
             }, faliure: {(error) in
                 ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: error)
             })
@@ -57,9 +54,12 @@ class EmailchangeOTPViewcontroller : UIViewController {
     }
     @IBOutlet weak var TokenTextField: FloatingLabel!
     @IBOutlet weak var VerificationLabel: UILabel!
+    @IBOutlet weak var supportTextView: UITextView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        TokenTextField.setUpLabel(WithText: "Token")
+        
+        self.title = "Change E-mail Address"
+        TokenTextField.setUpLabel(WithText: "Code")
         VerificationLabel.text! = kOldEmailVerificationText
         
         let newEmail = kNewEmailChange.replacingOccurrences(of: knewEmail, with: oldEmailId!)
@@ -69,6 +69,11 @@ class EmailchangeOTPViewcontroller : UIViewController {
         VerificationAttributedText.addAttributes([NSAttributedStringKey.font : UIFont(name: "SFProDisplay-Regular", size: 14.0)!], range: NSRange(location: 0, length: newEmail.count))
         VerificationAttributedText.addAttributes([NSAttributedStringKey.font : UIFont(name: "SFProDisplay-Regular", size: 18.0)!], range: Verificationrange)
         VerificationLabel.attributedText! = VerificationAttributedText
+        
+        let str = NSString(string: "If you do not have access to this E-mail, contact support@imaginglink.com for reset.")
+        let attributedString = NSMutableAttributedString(string: str as String)
+        attributedString.addAttribute(.foregroundColor, value: UIColor(red: 17.0 / 255.0, green: 148.0 / 255.0, blue: 246.0 / 255.0, alpha: 1.0), range: str.range(of: "support@imaginglink.com"))
+        supportTextView.attributedText = attributedString
     }
     
     

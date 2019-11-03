@@ -14,6 +14,7 @@ class DashBoardViewController:  BaseHamburgerViewController {
     let Portfolio = 2
     let SocialConnect = 3
     let Presentation = 4
+    let Publish = 5
     
     @IBAction func CasesIconPressed(_ sender: AnyObject) {
         changeButtonsBackgroundImage(sender: sender.tag)
@@ -68,7 +69,7 @@ class DashBoardViewController:  BaseHamburgerViewController {
     }
     
     @IBAction func publishIconPressed(_ sender: Any) {
-        
+        self.performSegue(withIdentifier: "PublishVCID", sender: Publish)
     }
     
     func changeButtonsBackgroundImage(sender: Int){
