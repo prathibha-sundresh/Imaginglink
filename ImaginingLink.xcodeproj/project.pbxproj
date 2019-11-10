@@ -33,6 +33,7 @@
 		484279331FF39B9E0056A089 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484279321FF39B9E0056A089 /* ViewController.swift */; };
 		484279361FF39B9E0056A089 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 484279341FF39B9E0056A089 /* Main.storyboard */; };
 		4842793B1FF39B9E0056A089 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 484279391FF39B9E0056A089 /* LaunchScreen.storyboard */; };
+		485E3DCF2377F09E00B94F05 /* AddCommentReplyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485E3DCE2377F09E00B94F05 /* AddCommentReplyViewController.swift */; };
 		488BD073218B4F2D003998AC /* ImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488BD072218B4F2D003998AC /* ImageTableViewCell.swift */; };
 		488BD075218B4F4E003998AC /* PresentationDetailTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488BD074218B4F4E003998AC /* PresentationDetailTextCell.swift */; };
 		488BD077218B4F98003998AC /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488BD076218B4F98003998AC /* CommentTableViewCell.swift */; };
@@ -141,6 +142,7 @@
 		4842793C1FF39B9E0056A089 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		484279411FF39B9E0056A089 /* ImaginingLinkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ImaginingLinkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4842794C1FF39B9E0056A089 /* ImaginingLinkUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ImaginingLinkUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		485E3DCE2377F09E00B94F05 /* AddCommentReplyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCommentReplyViewController.swift; sourceTree = "<group>"; };
 		488BD072218B4F2D003998AC /* ImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTableViewCell.swift; sourceTree = "<group>"; };
 		488BD074218B4F4E003998AC /* PresentationDetailTextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationDetailTextCell.swift; sourceTree = "<group>"; };
 		488BD076218B4F98003998AC /* CommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
@@ -404,6 +406,7 @@
 				48FFC673217F82A300AB09D5 /* TwofactorAuthenticationViewController.swift */,
 				AC3AD4E32188A72D00B1B81A /* LogOutTableViewCell.swift */,
 				AC20EE8021908E900083AAFE /* PresentationDetailViewcontroller.swift */,
+				485E3DCE2377F09E00B94F05 /* AddCommentReplyViewController.swift */,
 				4810C816230C04F100B6ACA4 /* ComingSoonViewController.swift */,
 				4810C81823116D1C00B6ACA4 /* ReportPostViewController.swift */,
 				48222DF123131FB700751CB7 /* FullSizeImageViewController.swift */,
@@ -727,6 +730,7 @@
 				AC4B6F59224BDB5700576C7D /* FloatingLabel.swift in Sources */,
 				48216E3D2326C4EB00ADE8D5 /* TermsAndCondtionsAndPrivacyViewController.swift in Sources */,
 				ACD18C7420C551D50059DE7B /* TwoFactorAuthenticationViewcontroller.swift in Sources */,
+				485E3DCF2377F09E00B94F05 /* AddCommentReplyViewController.swift in Sources */,
 				AC130702218A035900790E9A /* EmailchangeOTPViewcontroller.swift in Sources */,
 				AC153A49217E265C0017692B /* BaseHamburgerViewController.swift in Sources */,
 				4810C817230C04F100B6ACA4 /* ComingSoonViewController.swift in Sources */,

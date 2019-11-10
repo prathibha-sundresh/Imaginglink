@@ -14,6 +14,7 @@ class ComingSoonViewController: BaseHamburgerViewController {
         case Quiz
         case Portfolio
         case SocialConnect
+		case Publish
     }
     var typeOfVC = ComingSoon.Cases
     override func viewDidLoad() {
@@ -28,7 +29,10 @@ class ComingSoonViewController: BaseHamburgerViewController {
             addSlideMenuButton(showBackButton: true, backbuttonTitle: "Portfolio")
         case .SocialConnect:
             addSlideMenuButton(showBackButton: true, backbuttonTitle: "Social Connect")
+		case .Publish:
+            addSlideMenuButton(showBackButton: true, backbuttonTitle: "Publish")
         }
+		
         // Do any additional setup after loading the view.
     }
     

@@ -33,7 +33,12 @@ class CreatePresentationViewController: UIViewController {
     var isFileUploaded: Bool = false
     override func viewDidLoad() {
         super.viewDidLoad()
-        callSectionsAndSubSectionsAPI()
+        //callSectionsAndSubSectionsAPI()
+        CoreAPI.sharedManaged.getUserPresentationDetails(presentationID: "5dbe4a404b0f606d221b5001", successResponse: { (response) in
+            
+        }) { (error) in
+            
+        }
         // Do any additional setup after loading the view.
     }
     

@@ -200,8 +200,7 @@ class PresentationViewController: BaseHamburgerViewController, UITableViewDelega
                 dict["is_my_favourite"] = 0
             }
             self.dataArray[index] = dict
-            let indexPath = IndexPath(item: index, section: 0)
-            self.PresenationTableView.reloadRows(at: [indexPath], with: .fade)
+			self.reloadTableView(at: index)
             
         }, faliure: {(error) in
             ILUtility.hideProgressIndicator(controller: self)
@@ -272,16 +271,22 @@ class PresentationViewController: BaseHamburgerViewController, UITableViewDelega
     }
 }
 extension PresentationViewController: PresentationTableViewCellDelegate{
-    func getLikedStatus(row: Int) {
+	fileprivate func reloadTableView(at row: Int) {
+		DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+			self.PresenationTableView.reloadRows(at: [IndexPath(row: row, section: 0)], with: .fade)
+		}
+	}
+	
+	func getLikedStatus(row: Int) {
         if likesArray.contains(row){
-            if let index = likesArray.index(of: row) {
+			if let index = likesArray.firstIndex(of: row) {
                 likesArray.remove(at: index)
             }
         }
         else{
             likesArray.append(row)
         }
-        self.PresenationTableView.reloadRows(at: [IndexPath(row: row, section: 0)], with: .fade)
+		reloadTableView(at: row)
     }
     func updateRatingWithIndex(row: Int, rating: Int) {
         ILUtility.showProgressIndicator(controller: self)
@@ -290,20 +295,19 @@ extension PresentationViewController: PresentationTableViewCellDelegate{
 
         CoreAPI.sharedManaged.requestForSaveLikeEmoji(presentationID: presentationID, likeUnLikeValue: "\(rating)", successResponse: { (response) in
             ILUtility.hideProgressIndicator(controller: self)
-            self.getLikedStatus(row: row)
-//            if let data = response["data"] as? [String:Any]{
-//                dict["likes_count"] = data["liked_members_count"] as? Int
-//            }
-//
-//            if let likedStatus = dict["Is_Liked"] as? Int, likedStatus == 0{
-//                dict["Is_Liked"] = 1
-//            }
-//            else{
-//                dict["Is_Liked"] = 0
-//            }
-//            self.dataArray[index] = dict
-//            let indexPath = IndexPath(item: index, section: 0)
-//            self.PresenationTableView.reloadRows(at: [indexPath], with: .fade)
+            
+            if let data = response["data"] as? [String:Any]{
+                dict["likes_count"] = data["liked_members_count"] as? Int
+				if let strRating = data["like_emoji"] as? String{
+					dict["like_emoji"] = Int(strRating) ?? 1
+				}
+				else{
+					dict["like_emoji"] = data["like_emoji"] as? Int ?? 1
+				}
+            }
+
+            self.dataArray[row] = dict
+			self.getLikedStatus(row: row)
             
         }) { (error) in
             ILUtility.hideProgressIndicator(controller: self)

@@ -19,7 +19,26 @@ protocol PresentationTableViewCellDelegate {
     func getLikedStatus(row: Int)
     func updateRatingWithIndex(row: Int, rating: Int)
 }
-
+enum LikeEmojies: Int {
+    case like = 1
+    case love, insightful, celebrate, curious, dislike
+    func getEmojiString() -> String {
+        switch self {
+        case .like:
+            return "Like"
+        case .love:
+            return "Love"
+        case .insightful:
+            return "Insightful"
+		case .celebrate:
+            return "Celebrate"
+		case .curious:
+            return "Curious"
+		case .dislike:
+            return "Dislike"
+        }
+    }
+}
 class PresentationTableViewCell: UITableViewCell,UIWebViewDelegate {
     
     @IBOutlet weak var borderView: UIView!
@@ -78,11 +97,16 @@ class PresentationTableViewCell: UITableViewCell,UIWebViewDelegate {
         else{
             FavouriteImage.setImage(UIImage(named: "Icon_favourite"), for: UIControl.State.normal)
         }
-        if let likedStatus = dic["Is_Liked"] as? Int, likedStatus == 1{
-            LikeImageView.setImage(UIImage(named: "Icon_like"), for: UIControl.State.normal)
+        if let likedStatus = dic["like_emoji"] as? Int{
+			
+			let emojiName = LikeEmojies(rawValue: likedStatus)?.getEmojiString() ?? "Like"
+			
+			LikeImageView.setImage(UIImage(named: "Icon_\(emojiName)"), for: UIControl.State.normal)
+			LikeImageView.setTitle("  \(emojiName)", for: .normal)
         }
         else{
             LikeImageView.setImage(UIImage(named: "Icon_Like_Unselected"), for: UIControl.State.normal)
+			LikeImageView.setTitle("Like", for: .normal)
         }
         
         let views = "\((dic["views_count"] as? NSNumber ?? 0).stringValue)"

@@ -59,7 +59,7 @@ class CommentTableViewCell : UITableViewCell {
         Textview.layer.borderColor = UIColor(red: 187/255, green: 205/255, blue: 217/255, alpha: 1).cgColor
         Textview.layer.borderWidth = 1
         Textview.layer.cornerRadius = 16
-        likesCountLabel.text = "\(dic["likes_count"] as? Int ?? 0)"
+        likesCountLabel.text = "(\(dic["likes_count"] as? Int ?? 0))"
         let totalComments = Int(dic["parent_comments_count"] as? Int ?? 0) + Int(dic["child_comments_count"] as? Int ?? 0)
         commentButton.setTitle(" \(totalComments) Comments", for: UIControl.State.normal)
         viewsButton.setTitle(" \(dic["views_count"] as? Int ?? 0) Views", for: UIControl.State.normal)

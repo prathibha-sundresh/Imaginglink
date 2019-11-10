@@ -86,3 +86,4 @@ let KUpdateProfilePhoto = "api/update-profile-photo"
 //Create Presentations
 let KSectionsAndSubSections = "api/sections-related"
 let KCreatePresentations = "api/presentations/user"
+let KUserPresentationDetails = "api/presentations/user/{presentation_id}"

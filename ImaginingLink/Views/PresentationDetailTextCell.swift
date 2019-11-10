@@ -62,17 +62,18 @@ class PresentationDetailTextCell : UITableViewCell {
         {
             sectionLabel?.text = section
         }
-        if let keywords = dic["sub_sections"] as? [String]
+        if let subsections = dic["sub_sections"] as? [String]
         {
-            if keywords.count == 1{
-                SubSectionLabel?.text = keywords[0]
-            }
-            else if keywords.count == 2{
-                SubSectionLabel?.text = keywords[0] + "," + keywords[1]
-            }
-            else if keywords.count >= 2{
-                SubSectionLabel?.text = keywords[0] + "," + keywords[1] + " " + "+\(keywords.count - 2)"
-            }
+			SubSectionLabel?.text = subsections.joined(separator: ",")
+//            if keywords.count == 1{
+//                SubSectionLabel?.text = keywords[0]
+//            }
+//            else if keywords.count == 2{
+//                SubSectionLabel?.text = keywords[0] + "," + keywords[1]
+//            }
+//            else if keywords.count >= 2{
+//                SubSectionLabel?.text = keywords[0] + "," + keywords[1] + " " + "+\(keywords.count - 2)"
+//            }
         }
         if let coAuthors = dic["co_authors"] as? [[String: Any]], coAuthors.count > 0
         {
@@ -90,7 +91,7 @@ class PresentationDetailTextCell : UITableViewCell {
         }
         if let keywords = dic["keywords"] as? [String]
         {
-            SampleKeywordLabel?.text = keywords[0]
+            SampleKeywordLabel?.text = keywords.joined(separator: ",")
         }
         
         if var isDownloadable = dic["is_downloadable"] as? Int

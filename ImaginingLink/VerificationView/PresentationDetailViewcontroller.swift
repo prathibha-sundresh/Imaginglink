@@ -78,16 +78,6 @@ class PresentationDetailViewcontroller: BaseHamburgerViewController, UITableView
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
-        
-//        if (indexPath.row == ImageViewCell) {
-//            return 226
-//        } else if (indexPath.row == PresentationCell) {
-//            return UITableViewAutomaticDimension
-//        } else if (indexPath.row == CommentCell) {
-//            return 124
-//        } else {
-//            return 348
-//        }
     }
     
     fileprivate func determineParentAndChildComments(_ response: AnyObject) {
@@ -102,35 +92,36 @@ class PresentationDetailViewcontroller: BaseHamburgerViewController, UITableView
     }
     
     func clickonReplay(parentID: String) {
-        let alertController = UIAlertController(title: "Add New Comment", message: "", preferredStyle: UIAlertController.Style.alert)
-        
-        alertController.addTextField(configurationHandler: {(textField: UITextField) in
-            textField.placeholder = "Enter message"
-            textField.addTarget(self, action: #selector(self.textChanged), for: .editingChanged)
-        })
-        saveAction = UIAlertAction(title: "Send", style: UIAlertAction.Style.default, handler: { alert -> Void in
-            let firstTextField = alertController.textFields![0] as UITextField
-            if firstTextField.text != ""{
-                ILUtility.showProgressIndicator(controller: self)
-                CoreAPI.sharedManaged.requestForcomments(comment: firstTextField.text!, parentcommentid: parentID, commentedcondition: "PUBLISHED", presentationid: self.userID!, successResponse: {(response) in
-                    ILUtility.hideProgressIndicator(controller: self)
-                    self.determineParentAndChildComments(response)
-                }, faliure: {(error) in
-                    ILUtility.hideProgressIndicator(controller: self)
-                })
-            }
-            else{
-                ILUtility.showAlert(message: "Please enter message", controller: self)
-            }
-        })
-        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: {
-            alert -> Void in
-        })
-        
-        alertController.addAction(saveAction!)
-        alertController.addAction(cancelAction)
-        saveAction?.isEnabled = false
-        self.present(alertController, animated: true, completion: nil)
+		self.performSegue(withIdentifier: "AddCommentReplyVCID", sender: parentID)
+//        let alertController = UIAlertController(title: "Add New Comment", message: "", preferredStyle: UIAlertController.Style.alert)
+//
+//        alertController.addTextField(configurationHandler: {(textField: UITextField) in
+//            textField.placeholder = "Enter message"
+//            textField.addTarget(self, action: #selector(self.textChanged), for: .editingChanged)
+//        })
+//        saveAction = UIAlertAction(title: "Send", style: UIAlertAction.Style.default, handler: { alert -> Void in
+//            let firstTextField = alertController.textFields![0] as UITextField
+//            if firstTextField.text != ""{
+//                ILUtility.showProgressIndicator(controller: self)
+//                CoreAPI.sharedManaged.requestForcomments(comment: firstTextField.text!, parentcommentid: parentID, commentedcondition: "PUBLISHED", presentationid: self.userID!, successResponse: {(response) in
+//                    ILUtility.hideProgressIndicator(controller: self)
+//                    self.determineParentAndChildComments(response)
+//                }, faliure: {(error) in
+//                    ILUtility.hideProgressIndicator(controller: self)
+//                })
+//            }
+//            else{
+//                ILUtility.showAlert(message: "Please enter message", controller: self)
+//            }
+//        })
+//        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: {
+//            alert -> Void in
+//        })
+//
+//        alertController.addAction(saveAction!)
+//        alertController.addAction(cancelAction)
+//        saveAction?.isEnabled = false
+//        self.present(alertController, animated: true, completion: nil)
     }
     @objc func textChanged(_ sender:UITextField) {
         self.saveAction?.isEnabled  = (sender.text! != "")
@@ -140,7 +131,7 @@ class PresentationDetailViewcontroller: BaseHamburgerViewController, UITableView
     let CommentCell = 2
     let CommentListCell = 3
     
-    weak var saveAction : UIAlertAction?
+    var saveAction : UIAlertAction?
     var isCommentedSelected = false
     var alomafireRequest: Alamofire.Request?
     @IBOutlet weak var presentationDetailTableView: UITableView!
@@ -150,6 +141,8 @@ class PresentationDetailViewcontroller: BaseHamburgerViewController, UITableView
     var commentData : [[String:Any]] = []
     var ParentAndChildComments : [[String:Any]] = []
     var fullSizeCurrentIndex: Int = 0
+	var parentCommentID: String = ""
+	
     fileprivate func getPresentationDetails() {
         presentationDetailTableView.isHidden = true
         ILUtility.showProgressIndicator(controller: self)
@@ -270,13 +263,25 @@ class PresentationDetailViewcontroller: BaseHamburgerViewController, UITableView
             vc.userID = sender as? String ?? ""
             vc.presentationTitle = self.dicData?["title"] as? String ?? "Imaginglink"
         }
-        else if segue.identifier == "fullImageVCID"{
+        else if segue.identifier == "fullImageVCID" {
             let vc : FullSizeImageViewController = segue.destination as! FullSizeImageViewController
             vc.imagesDict = sender as! [String: Any]
             vc.delegate = self
         }
+		else if segue.identifier == "AddCommentReplyVCID" {
+			let vc : AddCommentReplyViewController = segue.destination as! AddCommentReplyViewController
+			vc.callBack = { (replyMessage) in
+				ILUtility.showProgressIndicator(controller: self)
+				CoreAPI.sharedManaged.requestForcomments(comment: replyMessage, parentcommentid: sender as? String ?? "", commentedcondition: "PUBLISHED", presentationid: self.userID!, successResponse: {(response) in
+					ILUtility.hideProgressIndicator(controller: self)
+					self.determineParentAndChildComments(response)
+				}, faliure: {(error) in
+					ILUtility.hideProgressIndicator(controller: self)
+				})
+			}
+		}
     }
-    
+
 }
 extension PresentationDetailViewcontroller: CommentDelegate{
     func sendCommentsToAPI(comments: String) {

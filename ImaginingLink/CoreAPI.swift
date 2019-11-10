@@ -61,14 +61,10 @@ class CoreAPI {
         
     }
     
-
     func VerifyPhonenumber(phoneNumber : String,countryCode : String,successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void) {
         let request =  SSHttpRequest(withuUrl: kTwoFactorAuthenticationMobileVerificationAPI)
-        let token = UserDefaults.standard.value(forKey: kToken) as! String
-         let header : HTTPHeaders = ["Accept" : "application/json", "Authorization":"Bearer \(token)"]
         let OTPRequestValues = ["mobile" :  phoneNumber, "country_code": countryCode] as [String:Any]
-        
-        request.postMethodWithHeaderasToken(dictParameter: OTPRequestValues, url: kTwoFactorAuthenticationMobileVerificationAPI, header: header, successResponse: {(response) in
+        request.postMethodWithHeaderasToken(dictParameter: OTPRequestValues, url: kTwoFactorAuthenticationMobileVerificationAPI, header: getHeader(), successResponse: {(response) in
             successResponse(response)
         }, faliure: {(error) in
             faliure(error)
@@ -79,8 +75,7 @@ class CoreAPI {
     func getUserPresentationWithId(UserID:String, successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void) {
         let url = kUserPresentation.replacingOccurrences(of: "{id}", with: UserID)
         let request =  SSHttpRequest(withuUrl: url)
-        
-        
+    
         request.getMethod(dictParameter: [:], url: url, successResponse: {(response) in
             successResponse(response)
         }, faliure: {(error) in
@@ -102,7 +97,6 @@ class CoreAPI {
     
     func getCountryList(successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void) {
         let request =  SSHttpRequest(withuUrl: kCountryListAPI)
-
         request.getMethod(dictParameter: [:], url: kCountryListAPI, successResponse: {(response) in
             successResponse(response)
         }, faliure: {(error) in
@@ -112,11 +106,7 @@ class CoreAPI {
     }
     func reSendMobileOTP(successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void ) {
         let request =  SSHttpRequest(withuUrl: kTwoFactorAuthenticationResendOTPAPI)
-        let token = UserDefaults.standard.value(forKey: kToken) as! String
-        let OTPRequestValues = ["" : "" ]  as [String:Any]
-        let header : HTTPHeaders = ["Authorization":"Bearer \(token)"]
-        
-        request.postMethodWithHeaderasToken(dictParameter: OTPRequestValues, url: kTwoFactorAuthenticationResendOTPAPI, header: header, successResponse: {(response) in
+        request.postMethodWithHeaderasToken(dictParameter: [:], url: kTwoFactorAuthenticationResendOTPAPI, header: getHeader(), successResponse: {(response) in
             successResponse(response)
         }, faliure: {(error) in
             faliure(error)
@@ -125,10 +115,7 @@ class CoreAPI {
     }
     func sendOtpToEnabledUser(successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void ) {
         let request =  SSHttpRequest(withuUrl: k2FASendOTPToEnabledUserAPI)
-        let token = UserDefaults.standard.value(forKey: kToken) as! String
-        let header : HTTPHeaders = ["Authorization":"Bearer \(token)"]
-        
-        request.postMethodWithHeaderasToken(dictParameter: [:], url: k2FASendOTPToEnabledUserAPI, header: header, successResponse: {(response) in
+        request.postMethodWithHeaderasToken(dictParameter: [:], url: k2FASendOTPToEnabledUserAPI, header: getHeader(), successResponse: {(response) in
             successResponse(response)
         }, faliure: {(error) in
             faliure(error)
@@ -137,10 +124,7 @@ class CoreAPI {
     }
     func disable2faToUser(successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void ) {
         let request =  SSHttpRequest(withuUrl: k2FADisableAPI)
-        let token = UserDefaults.standard.value(forKey: kToken) as! String
-        let header : HTTPHeaders = ["Authorization":"Bearer \(token)"]
-        
-        request.postMethodWithHeaderasToken(dictParameter: [:], url: k2FADisableAPI, header: header, successResponse: {(response) in
+        request.postMethodWithHeaderasToken(dictParameter: [:], url: k2FADisableAPI, header: getHeader(), successResponse: {(response) in
             successResponse(response)
         }, faliure: {(error) in
             faliure(error)
@@ -149,8 +133,7 @@ class CoreAPI {
     }
     func callPublicPresentation(successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void ) {
         let request =  SSHttpRequest(withuUrl: kpublicPresentaion)
-        let OTPRequestValues = ["" : "" ]  as [String:Any]
-        request.getMethod(dictParameter: OTPRequestValues, url: kpublicPresentaion, successResponse: {(response) in
+        request.getMethod(dictParameter: [:], url: kpublicPresentaion, successResponse: {(response) in
             successResponse(response)
         }, faliure: {(error) in
             faliure(error)
@@ -158,8 +141,7 @@ class CoreAPI {
     }
     func callSavedPresentation(successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void ) {
         let request =  SSHttpRequest(withuUrl: KSavedPresentations)
-        let OTPRequestValues = ["" : "" ]  as [String:Any]
-        request.getMethod(dictParameter: OTPRequestValues, url: KSavedPresentations, successResponse: {(response) in
+        request.getMethod(dictParameter: [:], url: KSavedPresentations, successResponse: {(response) in
             successResponse(response)
         }, faliure: {(error) in
             
@@ -169,11 +151,8 @@ class CoreAPI {
     }
     func requestFavouriteUnfavorite(presentationID: String, successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void ) {
         let request =  SSHttpRequest(withuUrl: kFavouriteUnfavorite)
-        let token = UserDefaults.standard.value(forKey: kToken) as! String
         let OTPRequestValues = ["presentation_id" : presentationID ]  as [String:Any]
-        let header : HTTPHeaders = ["Authorization":"Bearer \(token)", "Accept" : "application/json"]
-        
-        request.postMethodWithHeaderasToken(dictParameter: OTPRequestValues, url: kFavouriteUnfavorite, header: header, successResponse: {(response) in
+        request.postMethodWithHeaderasToken(dictParameter: OTPRequestValues, url: kFavouriteUnfavorite, header: getHeader(), successResponse: {(response) in
             successResponse(response)
         }, faliure: {(error) in
             faliure(error)
@@ -183,11 +162,8 @@ class CoreAPI {
     
     func requestFollowUnFollow(presentationID: String, successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void ) {
         let request =  SSHttpRequest(withuUrl: kFollowOrUnfollow)
-        let token = UserDefaults.standard.value(forKey: kToken) as! String
         let OTPRequestValues = ["presentation_id" : presentationID ]  as [String:Any]
-        let header : HTTPHeaders = ["Authorization":"Bearer \(token)", "Accept" : "application/json"]
-        
-        request.postMethodWithHeaderasToken(dictParameter: OTPRequestValues, url: kFollowOrUnfollow, header: header, successResponse: {(response) in
+        request.postMethodWithHeaderasToken(dictParameter: OTPRequestValues, url: kFollowOrUnfollow, header: getHeader(), successResponse: {(response) in
             successResponse(response)
         }, faliure: {(error) in
             faliure(error)
@@ -196,11 +172,8 @@ class CoreAPI {
     }
     func requestReportPost(presentationID: String,selectedIssue: String,reportedIssue: String, successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void ) {
         let request =  SSHttpRequest(withuUrl: kReportPost)
-        let token = UserDefaults.standard.value(forKey: kToken) as! String
         let OTPRequestValues = ["presentation_id" : presentationID, "selected_issue": selectedIssue, "reported_issue":reportedIssue]  as [String:Any]
-        let header : HTTPHeaders = ["Authorization":"Bearer \(token)", "Accept" : "application/json"]
-        
-        request.postMethodWithHeaderasToken(dictParameter: OTPRequestValues, url: kReportPost, header: header, successResponse: {(response) in
+        request.postMethodWithHeaderasToken(dictParameter: OTPRequestValues, url: kReportPost, header: getHeader(), successResponse: {(response) in
             successResponse(response)
         }, faliure: {(error) in
             faliure(error)
@@ -209,11 +182,8 @@ class CoreAPI {
     }
     func requestAddRatingPost(presentationID: String,rating: Int, successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void ) {
         let request =  SSHttpRequest(withuUrl: kAddRatings)
-        let token = UserDefaults.standard.value(forKey: kToken) as! String
         let OTPRequestValues = ["presentation_id" : presentationID, "rating": rating]  as [String:Any]
-        let header : HTTPHeaders = ["Authorization":"Bearer \(token)", "Accept" : "application/json"]
-        
-        request.postMethodWithHeaderasToken(dictParameter: OTPRequestValues, url: kAddRatings, header: header, successResponse: {(response) in
+        request.postMethodWithHeaderasToken(dictParameter: OTPRequestValues, url: kAddRatings, header: getHeader(), successResponse: {(response) in
             successResponse(response)
         }, faliure: {(error) in
             faliure(error)
@@ -222,11 +192,8 @@ class CoreAPI {
     }
     func requestForSaveLikeEmoji(presentationID: String, likeUnLikeValue: String, successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void ) {
         let request =  SSHttpRequest(withuUrl: kPresentationLikeOrUnLike)
-        let token = UserDefaults.standard.value(forKey: kToken) as! String
         let OTPRequestValues = ["presentation_id" : presentationID, "like_emoji": likeUnLikeValue ]  as [String:Any]
-        let header : HTTPHeaders = ["Authorization":"Bearer \(token)", "Accept" : "application/json"]
-        
-        request.postMethodWithHeaderasToken(dictParameter: OTPRequestValues, url: kPresentationLikeOrUnLike, header: header, successResponse: {(response) in
+        request.postMethodWithHeaderasToken(dictParameter: OTPRequestValues, url: kPresentationLikeOrUnLike, header: getHeader(), successResponse: {(response) in
             successResponse(response)
         }, faliure: {(error) in
             faliure(error)
@@ -235,11 +202,8 @@ class CoreAPI {
     }
     func requestNotify(presentationID: String, successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void ) {
         let request =  SSHttpRequest(withuUrl: kNotificationorNonNotify)
-        let token = UserDefaults.standard.value(forKey: kToken) as! String
         let OTPRequestValues = ["presentation_id" : presentationID ]  as [String:Any]
-        let header : HTTPHeaders = ["Authorization":"Bearer \(token)", "Accept" : "application/json"]
-        
-        request.postMethodWithHeaderasToken(dictParameter: OTPRequestValues, url: kNotificationorNonNotify, header: header, successResponse: {(response) in
+        request.postMethodWithHeaderasToken(dictParameter: OTPRequestValues, url: kNotificationorNonNotify, header: getHeader(), successResponse: {(response) in
             successResponse(response)
         }, faliure: {(error) in
             faliure(error)
@@ -249,11 +213,8 @@ class CoreAPI {
 
     func requestOldEmailOTP(otpCode: String, successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void ) {
         let request =  SSHttpRequest(withuUrl: kVerifyOldEmailAPI)
-        let token = UserDefaults.standard.value(forKey: kToken) as! String
         let OTPRequestValues = ["otp_code" : otpCode ]  as [String:Any]
-        let header : HTTPHeaders = ["Authorization":"Bearer \(token)", "Accept" : "application/json"]
-        
-        request.postMethodWithHeaderasToken(dictParameter: OTPRequestValues, url: kVerifyOldEmailAPI, header: header, successResponse: {(response) in
+        request.postMethodWithHeaderasToken(dictParameter: OTPRequestValues, url: kVerifyOldEmailAPI, header: getHeader(), successResponse: {(response) in
             successResponse(response)
         }, faliure: {(error) in
             faliure(error)
@@ -263,11 +224,8 @@ class CoreAPI {
     
     func requestNewEmailOTP(otpCode: String, successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void ) {
         let request =  SSHttpRequest(withuUrl: kVerifyNewEmailAPI)
-        let token = UserDefaults.standard.value(forKey: kToken) as! String
         let OTPRequestValues = ["otp_code" : otpCode ]  as [String:Any]
-        let header : HTTPHeaders = ["Authorization":"Bearer \(token)", "Accept" : "application/json"]
-        
-        request.postMethodWithHeaderasToken(dictParameter: OTPRequestValues, url: kVerifyNewEmailAPI, header: header, successResponse: {(response) in
+        request.postMethodWithHeaderasToken(dictParameter: OTPRequestValues, url: kVerifyNewEmailAPI, header: getHeader(), successResponse: {(response) in
             successResponse(response)
         }, faliure: {(error) in
             faliure(error)
@@ -277,11 +235,8 @@ class CoreAPI {
     
     func requestForcomments(comment: String,parentcommentid: String, commentedcondition:String,presentationid:String, successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void ) {
         let request =  SSHttpRequest(withuUrl: kComments)
-        let token = UserDefaults.standard.value(forKey: kToken) as! String
         let commentRequestValues = ["comment" : comment, "parent_comment_id" : parentcommentid, "commented_condition" : commentedcondition, "presentation_id" : presentationid ]  as [String:Any]
-        let header : HTTPHeaders = ["Authorization":"Bearer \(token)", "Accept" : "application/json"]
-        
-        request.postMethodWithHeaderasToken(dictParameter: commentRequestValues, url: kComments, header: header, successResponse: {(response) in
+        request.postMethodWithHeaderasToken(dictParameter: commentRequestValues, url: kComments, header: getHeader(), successResponse: {(response) in
             successResponse(response)
         }, faliure: {(error) in
             faliure(error)
@@ -291,18 +246,13 @@ class CoreAPI {
     
     func requestLogout(successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void ) {
         let request =  SSHttpRequest(withuUrl: kLogOutAPI)
-        let token = UserDefaults.standard.value(forKey: kToken) as! String
-        let OTPRequestValues = ["" : "" ]  as [String:Any]
-        let header : HTTPHeaders = ["Authorization":"Bearer \(token)"]
-        
-        request.postMethodWithHeaderasToken(dictParameter: OTPRequestValues, url: kLogOutAPI, header: header, successResponse: {(response) in
+        request.postMethodWithHeaderasToken(dictParameter: [:], url: kLogOutAPI, header: getHeader(), successResponse: {(response) in
             successResponse(response)
         }, faliure: {(error) in
             faliure(error)
         })
-        
     }
-    func logOut(){
+    func logOut() {
         
         let fileManager = FileManager.default
         let documentsUrl:URL =  (FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first as URL?)!
@@ -326,11 +276,8 @@ class CoreAPI {
     
     func verifyMobileOTP(verificationCode : String,successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void ) {
         let request =  SSHttpRequest(withuUrl: kTwoFactorAuthenticationMobileOTPAPI)
-        let token = UserDefaults.standard.value(forKey: kToken) as! String
-        let OTPRequestValues = ["Accept" : "application/json","verify_code" :  verificationCode] as [String:Any]
-        let header : HTTPHeaders = ["Authorization":"Bearer \(token)"]
-        
-        request.postMethodWithHeaderasToken(dictParameter: OTPRequestValues, url: kTwoFactorAuthenticationMobileOTPAPI, header: header, successResponse: {(response) in
+        let OTPRequestValues = ["verify_code" :  verificationCode] as [String:Any]
+        request.postMethodWithHeaderasToken(dictParameter: OTPRequestValues, url: kTwoFactorAuthenticationMobileOTPAPI, header: getHeader(), successResponse: {(response) in
             successResponse(response)
         }, faliure: {(error) in
             faliure(error)
@@ -340,11 +287,7 @@ class CoreAPI {
     
     func DisableTwoFactorAuthentication(successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void ) {
         let request =  SSHttpRequest(withuUrl: kTwoFactorAuthenticationDisableAPI)
-        let token = UserDefaults.standard.value(forKey: kToken) as! String
-        let OTPRequestValues = ["" : ""]
-        let header : HTTPHeaders = ["Authorization":"Bearer \(token)"]
-        
-        request.postMethodWithHeaderasToken(dictParameter: OTPRequestValues, url: kTwoFactorAuthenticationDisableAPI, header: header, successResponse: {(response) in
+        request.postMethodWithHeaderasToken(dictParameter: [:], url: kTwoFactorAuthenticationDisableAPI, header: getHeader(), successResponse: {(response) in
             successResponse(response)
         }, faliure: {(error) in
             faliure(error)
@@ -374,9 +317,7 @@ class CoreAPI {
     }
     func updateUserDetails(requestDict: [String: Any], successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void) {
         let request =  SSHttpRequest(withuUrl: KUpdateUserDetails)
-        let token = UserDefaults.standard.value(forKey: kToken) as! String
-        let header : HTTPHeaders = ["Accept" : "application/json", "Authorization":"Bearer \(token)"]
-        request.postMethodWithHeaderasToken(dictParameter: requestDict, url: KUpdateUserDetails, header: header, successResponse: {(response) in
+        request.postMethodWithHeaderasToken(dictParameter: requestDict, url: KUpdateUserDetails, header: getHeader(), successResponse: {(response) in
             successResponse(response)
         }, faliure: {(error) in
             faliure(error)
@@ -385,15 +326,13 @@ class CoreAPI {
     }
     func updateProfilePhoto(requestDict: [String: Any], successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void) {
         let serverUrl = SSHttpRequest.baseURL!.appending(KUpdateProfilePhoto)
-        let token = UserDefaults.standard.value(forKey: kToken) as! String
-        let header : HTTPHeaders = ["Accept" : "application/json", "Authorization":"Bearer \(token)"]
         
         let imgData = requestDict["imageData"] as! Data
         
         Alamofire.upload(multipartFormData: { multipartFormData in
             multipartFormData.append(imgData, withName: "profile_photo",fileName: "images.jpg", mimeType: "image/jpeg")
         },
-                         to:serverUrl, headers: header)
+                         to:serverUrl, headers: getHeader())
         { (result) in
             switch result {
             case .success(let upload, _, _):
@@ -473,9 +412,7 @@ class CoreAPI {
     
     func requestResetPassword(params:[String:Any], successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void) {
         let request =  SSHttpRequest(withuUrl: kResetPasswordAPI)
-        let token = UserDefaults.standard.value(forKey: kToken) as! String
-        let header : HTTPHeaders = ["Accept" : "application/json", "Authorization":"Bearer \(token)"]
-        request.postMethodWithHeaderasToken(dictParameter: params, url: kResetPasswordAPI, header: header, successResponse: {(response) in
+        request.postMethodWithHeaderasToken(dictParameter: params, url: kResetPasswordAPI, header: getHeader(), successResponse: {(response) in
             successResponse(response)
         }, faliure: {(error) in
             faliure(error)
@@ -484,9 +421,7 @@ class CoreAPI {
     
     func requestToUpdateEmail(params:[String:Any], successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void) {
         let request =  SSHttpRequest(withuUrl: kUpdateEmailAPI)
-        let token = UserDefaults.standard.value(forKey: kToken) as! String
-        let header : HTTPHeaders = ["Accept" : "application/json", "Authorization":"Bearer \(token)"]
-        request.postMethodWithHeaderasToken(dictParameter: params, url: kUpdateEmailAPI, header: header, successResponse: {(response) in
+        request.postMethodWithHeaderasToken(dictParameter: params, url: kUpdateEmailAPI, header: getHeader(), successResponse: {(response) in
             successResponse(response)
         }, faliure: {(error) in
             faliure(error)
@@ -496,9 +431,7 @@ class CoreAPI {
     
     func requestToInviteFriends(params:[String:Any], successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void) {
         let request =  SSHttpRequest(withuUrl: kInviteFriendsAPI)
-        let token = UserDefaults.standard.value(forKey: kToken) as! String
-        let header : HTTPHeaders = ["Accept" : "application/json", "Authorization":"Bearer \(token)"]
-        request.postMethodWithHeaderasToken(dictParameter: params, url: kInviteFriendsAPI, header: header, successResponse: {(response) in
+        request.postMethodWithHeaderasToken(dictParameter: params, url: kInviteFriendsAPI, header: getHeader(), successResponse: {(response) in
             successResponse(response)
         }, faliure: {(error) in
             faliure(error)
@@ -518,9 +451,7 @@ class CoreAPI {
     
     func createPresentation(params:[String:Any], successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void) {
         
-        let request =  SSHttpRequest(withuUrl: KCreatePresentations)
-        let token = UserDefaults.standard.value(forKey: kToken) as! String
-        let headers : HTTPHeaders = ["Accept" : "application/json", "Authorization":"Bearer \(token)"]
+        let requestUrl = "\(kBaseUrl + KCreatePresentations)"
         var fileData: Data?
         var parameters = ["title": params["title"]!, "section": params["section"]!, "sub_sections": params["sub_sections"]!, "is_file_upload": params["is_file_upload"]!, "is_downloadable": 0, "keywords": params["keywords"]!, "description": params["description"]!, "university": ""] as [String : Any]
         
@@ -544,7 +475,7 @@ class CoreAPI {
             }
             for (key, value) in parameters {
                 multipartFormData.append("\(value)".data(using: String.Encoding.utf8)!, withName: key as String)
-            }},to:"http://52.39.123.104/dev/api/presentations/user", headers: headers)
+            }},to: requestUrl, headers: getHeader())
         { (result) in
             switch result {
             case .success(let upload, _, _):
@@ -563,5 +494,21 @@ class CoreAPI {
                 //faliure("\(encodingError)")
             }
         }
+    }
+    
+    func getUserPresentationDetails(presentationID: String, successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void) {
+        let url = KUserPresentationDetails.replacingOccurrences(of: "{presentation_id}", with: presentationID)
+        let request =  SSHttpRequest(withuUrl: url)
+        request.getMethod(dictParameter: [:], url: url, successResponse: {(response) in
+            successResponse(response)
+        }, faliure: {(error) in
+            faliure(error)
+        })
+    }
+    
+    func getHeader() -> HTTPHeaders{
+        let token = UserDefaults.standard.value(forKey: kToken) as! String
+        let header : HTTPHeaders = ["Accept" : "application/json", "Authorization":"Bearer \(token)"]
+        return header
     }
 }
