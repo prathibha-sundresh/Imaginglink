@@ -81,7 +81,7 @@ class PresentationTableViewCell: UITableViewCell,UIWebViewDelegate {
         addShadowToView()
         borderView.layer.borderWidth = 1.0
         borderView.layer.cornerRadius = 4.0
-        borderView.layer.borderColor = UIColor(red:0.29, green:0.29, blue:0.29, alpha:1.0).cgColor
+		borderView.layer.borderColor = UIColor(red:0.29, green:0.29, blue:0.29, alpha: 0.5).cgColor
         
         if let value = dic["id"] {
             presentationId = value as? String ?? ""
@@ -99,10 +99,10 @@ class PresentationTableViewCell: UITableViewCell,UIWebViewDelegate {
         }
         if let likedStatus = dic["like_emoji"] as? Int{
 			
-			let emojiName = LikeEmojies(rawValue: likedStatus)?.getEmojiString() ?? "Like"
+			let emojiName = LikeEmojies(rawValue: likedStatus)?.getEmojiString() ?? "Like_Unselected"
 			
 			LikeImageView.setImage(UIImage(named: "Icon_\(emojiName)"), for: UIControl.State.normal)
-			LikeImageView.setTitle("  \(emojiName)", for: .normal)
+			LikeImageView.setTitle("  \(likedStatus == 0 ? "Like" : emojiName)", for: .normal)
         }
         else{
             LikeImageView.setImage(UIImage(named: "Icon_Like_Unselected"), for: UIControl.State.normal)
@@ -112,7 +112,7 @@ class PresentationTableViewCell: UITableViewCell,UIWebViewDelegate {
         let views = "\((dic["views_count"] as? NSNumber ?? 0).stringValue)"
         let totalComments = dic["total_comments_count"] as? Int ?? 0
         viewsAndCommentLabel.text = "\(totalComments) Comments      \(views) Views"
-        LikeLabel.text = "\((dic["likes_count"] as? NSNumber ?? 0).stringValue) Likes"
+        LikeLabel.text = "\((dic["likes_count"] as? NSNumber ?? 0).stringValue)"
         HeadingTitleLabel.text = dic["title"] as? String ?? ""
         timeLabel.text = dic["created_at"] as? String ?? ""
         ImaginingLabel.text! = "     \(dic["section_short"] as? String ?? "")     ".uppercased()

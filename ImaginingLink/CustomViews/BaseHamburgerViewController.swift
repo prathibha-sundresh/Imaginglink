@@ -23,7 +23,7 @@ class BaseHamburgerViewController: UIViewController {
     func addSlideMenuButton(showBackButton:Bool, backbuttonTitle: String){
         
         let backButton = UIButton(type: .custom)
-        backButton.frame = CGRect(x: 0, y: 5, width: self.view.frame.width / 2, height: 50)
+        backButton.frame = CGRect(x: 0, y: 5, width: self.view.frame.width - 100, height: 50)
         backButton.titleEdgeInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 0.0, right: 0.0)
         
         if (showBackButton == true) {

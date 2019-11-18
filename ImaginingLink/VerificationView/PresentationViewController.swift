@@ -63,7 +63,7 @@ class PresentationViewController: BaseHamburgerViewController, UITableViewDelega
             addSlideMenuButton(showBackButton: true, backbuttonTitle: "Presentations")
         }
         else{
-            addSlideMenuButton(showBackButton: true, backbuttonTitle: "Saved post")
+            addSlideMenuButton(showBackButton: true, backbuttonTitle: "My Favourite Presentations")
         }
     }
     override func viewDidAppear(_ animated: Bool) {
@@ -200,7 +200,8 @@ class PresentationViewController: BaseHamburgerViewController, UITableViewDelega
                 dict["is_my_favourite"] = 0
             }
             self.dataArray[index] = dict
-			self.reloadTableView(at: index)
+			//self.reloadTableView(at: index)
+			self.PresenationTableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .none)
             
         }, faliure: {(error) in
             ILUtility.hideProgressIndicator(controller: self)

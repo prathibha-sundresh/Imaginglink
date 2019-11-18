@@ -16,6 +16,8 @@ protocol PresentationDetailTextCellDelegate: class {
 class PresentationDetailTextCell : UITableViewCell {
     
     @IBOutlet weak var AllowToDownloadLabel: UILabel!
+	@IBOutlet weak var AllowToDownloadHintLabel: UILabel!
+	@IBOutlet weak var DownloadButtonY: NSLayoutConstraint!
     @IBOutlet weak var univercityValueLabel: UILabel!
     @IBOutlet weak var PrimaryAuthorValueLabel: UILabel!
     @IBOutlet weak var DescriptionLabel: UILabel!
@@ -96,8 +98,10 @@ class PresentationDetailTextCell : UITableViewCell {
         
         if var isDownloadable = dic["is_downloadable"] as? Int
         {
+			var isFileTypeVideo = false
             if ((dic["presentation_type"] as? String)?.contains("video"))! {
                 isDownloadable = 0
+				isFileTypeVideo = true
             }
             if isDownloadable == 1{
                 AllowToDownloadLabel?.text = "Yes"
@@ -107,13 +111,24 @@ class PresentationDetailTextCell : UITableViewCell {
                 downloadH.constant = 36
             }
             else{
-                AllowToDownloadLabel?.text = "No"
+				AllowToDownloadLabel?.text = isFileTypeVideo ? "" : "No"
+				AllowToDownloadHintLabel.text = isFileTypeVideo ? "" : "Allow other to download"
+				DownloadButtonY.constant = isFileTypeVideo ? -12 : 12
                 downloadButton.isHidden = true
                 downloadH.constant = 0
             }
         }
         else{
-            AllowToDownloadLabel?.text = "No"
+			if ((dic["presentation_type"] as? String)?.contains("video"))! {
+				AllowToDownloadHintLabel.text = ""
+				AllowToDownloadLabel?.text = ""
+				DownloadButtonY.constant = -30
+			}
+			else{
+				AllowToDownloadLabel?.text = "No"
+				AllowToDownloadHintLabel.text = "Allow other to download"
+				DownloadButtonY.constant = 12
+			}
             downloadButton.isHidden = true
             downloadH.constant = 0
         }
