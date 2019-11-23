@@ -12,17 +12,25 @@ class MobileOTPVirecontroller: BaseHamburgerViewController {
     var isFromSignIn: Bool = false
     @IBOutlet weak var OTPTextField: FloatingLabel!
     @IBAction func SubmitPressed(_ sender: Any) {
+		
+		if OTPTextField.text == ""{
+			ILUtility.showAlert(message: "Please enter valid CODE", controller: self)
+			return
+		}
+		
         ILUtility.showProgressIndicator(controller: self)
         CoreAPI.sharedManaged.verifyMobileOTP(verificationCode: OTPTextField.text!, successResponse: {(response) in
             ILUtility.hideProgressIndicator(controller: self)
-            if self.isFromSignIn{
-                UserDefaults.standard.set(true, forKey: kTwoFactorAuthentication)
-                let appDelegate = UIApplication.shared.delegate as! AppDelegate
-                appDelegate.openDashBoardScreen()
-            }
-            else{
-                CoreAPI.sharedManaged.logOut()
-            }
+			self.createAlertView()
+			
+//            if self.isFromSignIn{
+//                UserDefaults.standard.set(true, forKey: kTwoFactorAuthentication)
+//                let appDelegate = UIApplication.shared.delegate as! AppDelegate
+//                appDelegate.openDashBoardScreen()
+//            }
+//            else{
+//                CoreAPI.sharedManaged.logOut()
+//            }
         }, faliure: {(error) in
             ILUtility.hideProgressIndicator(controller: self)
             ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: error)
@@ -34,6 +42,7 @@ class MobileOTPVirecontroller: BaseHamburgerViewController {
         CoreAPI.sharedManaged.reSendMobileOTP( successResponse: {(response) in
             self.OTPTextField.text! = ""
             ILUtility.hideProgressIndicator(controller: self)
+			ILUtility.showAlert(message: "Sent Verification CODE to your email", controller: self)
         }, faliure: {(error) in
             ILUtility.hideProgressIndicator(controller: self)
         })
@@ -54,4 +63,19 @@ class MobileOTPVirecontroller: BaseHamburgerViewController {
         super.viewWillAppear(animated)
         
     }
+	
+	func createAlertView(){
+		let alert  = UIAlertController(title: "ImaginingLink", message: "CODE verified successfully", preferredStyle: .alert)
+		alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action) in
+			if self.isFromSignIn{
+				UserDefaults.standard.set(true, forKey: kTwoFactorAuthentication)
+				let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                appDelegate.openDashBoardScreen()
+			}
+			else{
+				CoreAPI.sharedManaged.logOut()
+			}
+		}))
+		self.present(alert, animated: true, completion: nil)
+	}
 }

@@ -211,8 +211,9 @@ class PresentationViewController: BaseHamburgerViewController, UITableViewDelega
         let index = sender.tag
         let dict = dataArray[index]
         let title = dict["title"] as? String ?? ""
-        let myWebsite = URL(string:dict["presentation_master_url"] as? String ?? "")
-        let shareAll = [title, myWebsite!] as [Any]
+		
+        let shareUrl = URL(string: kBaseUrl + "presentations/public/\(dict["id"] as? String ?? "")")
+        let shareAll = [title, shareUrl!] as [Any]
         let activityViewController = UIActivityViewController(activityItems: shareAll, applicationActivities: nil)
         activityViewController.popoverPresentationController?.sourceView = self.view
         activityViewController.excludedActivityTypes = [ UIActivity.ActivityType.airDrop]

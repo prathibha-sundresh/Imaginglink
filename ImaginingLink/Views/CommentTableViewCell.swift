@@ -38,10 +38,11 @@ class CommentTableViewCell : UITableViewCell {
     @IBAction func ShareButtonPressed(_ sender: Any) {
         
         let title = presentationDict["title"] as? String ?? ""
+		let shareUrl = URL(string: kBaseUrl + "presentations/public/\(presentationDict["id"] as? String ?? "")")
         //let pathStr = NSString(string: presentationDict["presentation_master_url"] as? String ?? "").deletingLastPathComponent
         //let myWebsite = URL(string:pathStr)
-		let myWebsite = URL(string:presentationDict["presentation_master_url"] as? String ?? "")
-        let shareAll = [title, myWebsite!] as [Any]
+		//let myWebsite = URL(string:presentationDict["presentation_master_url"] as? String ?? "")
+        let shareAll = [title, shareUrl!] as [Any]
         let activityViewController = UIActivityViewController(activityItems: shareAll, applicationActivities: nil)
         activityViewController.popoverPresentationController?.sourceView = myViewcontroller?.view
         activityViewController.excludedActivityTypes = [ UIActivity.ActivityType.airDrop]
