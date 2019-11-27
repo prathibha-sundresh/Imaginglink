@@ -45,7 +45,7 @@ class CommentTableViewCell : UITableViewCell {
         let shareAll = [title, shareUrl!] as [Any]
         let activityViewController = UIActivityViewController(activityItems: shareAll, applicationActivities: nil)
         activityViewController.popoverPresentationController?.sourceView = myViewcontroller?.view
-        activityViewController.excludedActivityTypes = [ UIActivity.ActivityType.airDrop]
+        //activityViewController.excludedActivityTypes = [ UIActivity.ActivityType.airDrop]
         myViewcontroller?.present(activityViewController, animated: false, completion: nil)
     }
     @IBAction func CommentButtonPressed(_ sender: Any) {
@@ -80,7 +80,7 @@ class CommentTableViewCell : UITableViewCell {
         let totalComments = Int(dic["parent_comments_count"] as? Int ?? 0) + Int(dic["child_comments_count"] as? Int ?? 0)
         commentButton.setTitle(" \(totalComments) Comments", for: UIControl.State.normal)
         viewsButton.setTitle(" \(dic["views_count"] as? Int ?? 0) Views", for: UIControl.State.normal)
-        ShareButton.setTitle(" \(dic["shared_count"] as? Int ?? 0) Shared", for: UIControl.State.normal)
+        //ShareButton.setTitle(" \(dic["shared_count"] as? Int ?? 0) Shared", for: UIControl.State.normal)
     }
     
     func setupUI(dic : [String:Any]) {

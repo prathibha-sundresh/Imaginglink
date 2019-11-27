@@ -106,14 +106,14 @@ class PresentationTableViewCell: UITableViewCell,UIWebViewDelegate {
         }
         else{
             LikeImageView.setImage(UIImage(named: "Icon_Like_Unselected"), for: UIControl.State.normal)
-			LikeImageView.setTitle("Like", for: .normal)
+			LikeImageView.setTitle("  Like", for: .normal)
         }
         
         let views = "\((dic["views_count"] as? NSNumber ?? 0).stringValue)"
         let totalComments = dic["total_comments_count"] as? Int ?? 0
         viewsAndCommentLabel.text = "\(totalComments) Comments      \(views) Views"
         LikeLabel.text = "\((dic["likes_count"] as? NSNumber ?? 0).stringValue)"
-        HeadingTitleLabel.text = dic["title"] as? String ?? ""
+		HeadingTitleLabel.text = (dic["title"] as? String ?? "").capitalized
         timeLabel.text = dic["created_at"] as? String ?? ""
         ImaginingLabel.text! = "     \(dic["section_short"] as? String ?? "")     ".uppercased()
         if let author : [String : Any] = dic["author"] as? [String:Any] {

@@ -21,7 +21,7 @@ class TermsAndCondtionsAndPrivacyViewController: UIViewController, WKNavigationD
             webView.allowsBackForwardNavigationGestures = true
         }
         else{
-            let url = URL(string: "http://52.39.123.104/dev/privacy-policy")!
+            let url = URL(string: "https://www.imaginglink.com/dev/privacy-policy")!
             webView.load(URLRequest(url: url))
             webView.allowsBackForwardNavigationGestures = true
         }

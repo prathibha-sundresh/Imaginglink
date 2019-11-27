@@ -11,7 +11,7 @@ import Foundation
 
 let OTP_Value = "OTP_VALUE"
 
-let kBaseUrl:String = "http://52.39.123.104/dev/"
+let kBaseUrl:String = "https://www.imaginglink.com/dev/"
 let kTwoFactorAuthentication = "two_factor_authentication"
 let kSetPhoneNumberValidated = "phoneValidated"
 let kToken = "token"
@@ -75,8 +75,8 @@ let kNewEmailLenght = "A 6-digit verification code is sent to "
 let knewEmail = "newmail@gmail.com"
 
 //links
-let termsandconditionUrl = "http://52.39.123.104/dev/terms-conditions"
-let privacyPolicyUrl = "http://52.39.123.104/dev/privacy-policy"
+let termsandconditionUrl = "https://www.imaginglink.com/dev/terms-conditions"
+let privacyPolicyUrl = "https://www.imaginglink.com/dev/privacy-policy"
 
 //UserDetails
 let KGetUserDetails = "api/edit-user-profile-info"

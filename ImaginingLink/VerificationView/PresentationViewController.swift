@@ -201,7 +201,8 @@ class PresentationViewController: BaseHamburgerViewController, UITableViewDelega
             }
             self.dataArray[index] = dict
 			//self.reloadTableView(at: index)
-			self.PresenationTableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .none)
+			self.PresenationTableView.reloadData()
+			//self.PresenationTableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .none)
             
         }, faliure: {(error) in
             ILUtility.hideProgressIndicator(controller: self)
@@ -216,7 +217,7 @@ class PresentationViewController: BaseHamburgerViewController, UITableViewDelega
         let shareAll = [title, shareUrl!] as [Any]
         let activityViewController = UIActivityViewController(activityItems: shareAll, applicationActivities: nil)
         activityViewController.popoverPresentationController?.sourceView = self.view
-        activityViewController.excludedActivityTypes = [ UIActivity.ActivityType.airDrop]
+        //activityViewController.excludedActivityTypes = [ UIActivity.ActivityType.airDrop]
         self.present(activityViewController, animated: false, completion: nil)
     }
     @objc func menuPressedButtonAction(_ sender: UIButton){
@@ -274,7 +275,7 @@ class PresentationViewController: BaseHamburgerViewController, UITableViewDelega
 }
 extension PresentationViewController: PresentationTableViewCellDelegate{
 	fileprivate func reloadTableView(at row: Int) {
-		DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+		DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
 			self.PresenationTableView.reloadRows(at: [IndexPath(row: row, section: 0)], with: .fade)
 		}
 	}
@@ -288,7 +289,7 @@ extension PresentationViewController: PresentationTableViewCellDelegate{
         else{
             likesArray.append(row)
         }
-		reloadTableView(at: row)
+		self.PresenationTableView.reloadData()
     }
     func updateRatingWithIndex(row: Int, rating: Int) {
         ILUtility.showProgressIndicator(controller: self)

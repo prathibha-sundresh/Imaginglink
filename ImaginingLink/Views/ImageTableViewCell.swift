@@ -66,11 +66,9 @@ class ImageTableViewCell: UITableViewCell,UIScrollViewDelegate {
         }
         if let favourite = dic["is_my_favourite"] as? Int, favourite == 0{
             FavouriteButton.setBackgroundImage(UIImage(named: "Icon_unfavourite"), for: .normal)
-            FavouriteButton.setImage(nil, for: .normal)
         }
         else{
-            FavouriteButton.setBackgroundImage(nil, for: .normal)
-            FavouriteButton.setImage(UIImage(named: "Icon_favourite"), for: UIControl.State.normal)
+			FavouriteButton.setBackgroundImage(UIImage(named: "Icon_favourite"), for: .normal)
         }
     }
     
