@@ -14,7 +14,7 @@ class MobileOTPVirecontroller: BaseHamburgerViewController {
     @IBAction func SubmitPressed(_ sender: Any) {
 		
 		if OTPTextField.text == ""{
-			ILUtility.showAlert(message: "Please enter valid CODE", controller: self)
+			ILUtility.showAlert(message: "Please enter verification code", controller: self)
 			return
 		}
 		
@@ -33,7 +33,7 @@ class MobileOTPVirecontroller: BaseHamburgerViewController {
 //            }
         }, faliure: {(error) in
             ILUtility.hideProgressIndicator(controller: self)
-            ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: error)
+            ILUtility.showAlert(message: "Please enter valid code", controller: self)
         })
         
     }
@@ -42,7 +42,7 @@ class MobileOTPVirecontroller: BaseHamburgerViewController {
         CoreAPI.sharedManaged.reSendMobileOTP( successResponse: {(response) in
             self.OTPTextField.text! = ""
             ILUtility.hideProgressIndicator(controller: self)
-			ILUtility.showAlert(message: "Sent Verification CODE to your email", controller: self)
+			ILUtility.showAlert(message: "Sent Verification CODE to your registered mobile number", controller: self)
         }, faliure: {(error) in
             ILUtility.hideProgressIndicator(controller: self)
         })
@@ -65,7 +65,7 @@ class MobileOTPVirecontroller: BaseHamburgerViewController {
     }
 	
 	func createAlertView(){
-		let alert  = UIAlertController(title: "ImaginingLink", message: "CODE verified successfully", preferredStyle: .alert)
+		let alert  = UIAlertController(title: "Imaginglink", message: "CODE verified successfully", preferredStyle: .alert)
 		alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action) in
 			if self.isFromSignIn{
 				UserDefaults.standard.set(true, forKey: kTwoFactorAuthentication)

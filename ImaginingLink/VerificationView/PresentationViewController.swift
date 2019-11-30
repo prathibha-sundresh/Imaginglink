@@ -77,13 +77,21 @@ class PresentationViewController: BaseHamburgerViewController, UITableViewDelega
         
     }
     fileprivate func getPublicPresentations() {
-        
+		
         ILUtility.showProgressIndicator(controller: self)
         CoreAPI.sharedManaged.callPublicPresentation(successResponse: { (response) in
             ILUtility.hideProgressIndicator(controller: self)
             let value = response as! String
             let dic : [String : Any] = value.convertToDictionary()!
             let array : [[String:Any]] = dic["data"] as! [[String : Any]]
+			
+			if array.count == 0{
+				ILUtility.showAlert(message: "Currently we don't have published presentations.", controller: self)
+				self.dataArray = []
+				self.PresenationTableView.reloadData()
+				return
+			}
+			
             let tmpArray = array.map({ (dict) -> [String: Any] in
                 var tmpDict = dict
                 tmpDict["Is_Liked"] = 0

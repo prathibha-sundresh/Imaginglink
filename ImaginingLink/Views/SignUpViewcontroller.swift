@@ -40,12 +40,7 @@ class SignUpViewcontroller: UIViewController,  UITextFieldDelegate, UserTypeDele
     @IBAction func UserTypeSelectionPressed(_ sender: Any) {
         
     }
-    @IBAction func privacyPolicyPressed(_ sender: Any) {
-        self.performSegue(withIdentifier: "PrivacyPolicyID", sender: nil)
-    }
-    @IBAction func termsAndConditionsPolicyPressed(_ sender: Any) {
-        self.performSegue(withIdentifier: "TermsAndConditionsPolicyID", sender: nil)
-    }
+    
     @IBAction func SignUpAction(_ sender: Any) {
         submit()
     }
@@ -170,11 +165,11 @@ class SignUpViewcontroller: UIViewController,  UITextFieldDelegate, UserTypeDele
         
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "ComingSoon"{
+        if segue.identifier == "TermsAndConditionsPolicyID"{
             //Terms And Conditions
             let vc: TermsAndCondtionsAndPrivacyViewController = segue.destination as! TermsAndCondtionsAndPrivacyViewController
-            if sender as? String == ""{
-                vc.isClickedFrom = "Terms And Conditions"
+            if sender as? String == "Terms & Conditions"{
+                vc.isClickedFrom = "Terms & Conditions"
             }
             else{
                 vc.isClickedFrom = "Privacy Policy"
@@ -286,7 +281,7 @@ extension SignUpViewcontroller: UITextViewDelegate{
         self.navigationController?.navigationBar.tintColor = UIColor(red:0.29, green:0.29, blue:0.29, alpha:1.0)
         if URL.absoluteString == termsandconditionUrl{
             self.navigationItem.title = "Terms & Condition"
-            self.performSegue(withIdentifier: "TermsAndConditionsPolicyID", sender: "Terms & Condition")
+            self.performSegue(withIdentifier: "TermsAndConditionsPolicyID", sender: "Terms & Conditions")
         }
         else{
             self.navigationItem.title = "Privacy Policy"

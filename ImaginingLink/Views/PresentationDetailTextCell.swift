@@ -134,7 +134,7 @@ class PresentationDetailTextCell : UITableViewCell {
         }
         if let title = dic["title"] as? String
         {
-            DescriptionTitleLabel?.text = title
+			DescriptionTitleLabel?.text = title.capitalized
         }
         
         if let author : [String : Any] = dic["author"] as? [String:Any] {
@@ -229,7 +229,7 @@ class PresentationDetailTextCell : UITableViewCell {
             return
         }
         
-        let destinationFileUrl = documentsUrl.appendingPathComponent("ImaginingLink")
+        let destinationFileUrl = documentsUrl.appendingPathComponent("Imaginglink")
         do
         {
             try FileManager.default.createDirectory(atPath: destinationFileUrl.path, withIntermediateDirectories: true, attributes: nil)

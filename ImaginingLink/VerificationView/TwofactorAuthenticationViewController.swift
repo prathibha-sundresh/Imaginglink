@@ -25,7 +25,7 @@ class TwofactorAuthenticationViewController: BaseHamburgerViewController {
             CoreAPI.sharedManaged.disable2faToUser(successResponse: {(response) in
                 ILUtility.hideProgressIndicator(controller: self)
                 UserDefaults.standard.set(false, forKey: kTwoFactorAuthentication)
-                let alert  = UIAlertController(title: "ImaginingLink", message: "Two-factor Authentication disabled successfully", preferredStyle: .alert)
+                let alert  = UIAlertController(title: "Imaginglink", message: "Two-factor Authentication disabled successfully", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action) in
                     self.backAction()
                 }))

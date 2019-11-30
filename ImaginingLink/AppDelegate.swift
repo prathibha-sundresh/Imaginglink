@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        IQKeyboardManager.sharedManager().enable = true
+		IQKeyboardManager.shared.enable = true
         Thread.sleep(forTimeInterval: 1.5)
         if UserDefaults.standard.bool(forKey: kLoggedIn){
             openDashBoardScreen()

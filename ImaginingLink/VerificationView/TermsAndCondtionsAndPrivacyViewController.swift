@@ -15,13 +15,13 @@ class TermsAndCondtionsAndPrivacyViewController: UIViewController, WKNavigationD
     override func viewDidLoad() {
         super.viewDidLoad()
         webView.navigationDelegate = self
-        if isClickedFrom == "Terms And Conditions"{
-            let url = URL(string: "http://52.39.123.104/terms-conditions")!
+        if isClickedFrom == "Terms & Conditions"{
+            let url = URL(string: termsandconditionUrl)!
             webView.load(URLRequest(url: url))
             webView.allowsBackForwardNavigationGestures = true
         }
         else{
-            let url = URL(string: "https://www.imaginglink.com/dev/privacy-policy")!
+            let url = URL(string: privacyPolicyUrl)!
             webView.load(URLRequest(url: url))
             webView.allowsBackForwardNavigationGestures = true
         }

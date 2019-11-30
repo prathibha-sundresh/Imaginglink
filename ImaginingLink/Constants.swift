@@ -75,8 +75,8 @@ let kNewEmailLenght = "A 6-digit verification code is sent to "
 let knewEmail = "newmail@gmail.com"
 
 //links
-let termsandconditionUrl = "https://www.imaginglink.com/dev/terms-conditions"
-let privacyPolicyUrl = "https://www.imaginglink.com/dev/privacy-policy"
+let termsandconditionUrl = kBaseUrl + "terms-conditions"
+let privacyPolicyUrl = kBaseUrl + "privacy-policy"
 
 //UserDetails
 let KGetUserDetails = "api/edit-user-profile-info"
