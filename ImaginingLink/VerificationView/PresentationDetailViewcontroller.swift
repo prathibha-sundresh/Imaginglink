@@ -315,7 +315,8 @@ extension PresentationDetailViewcontroller: CommentDelegate{
         }
     }
 }
-extension PresentationDetailViewcontroller: ImagePressDelegate{
+
+extension PresentationDetailViewcontroller: FullSizeImageViewDelegate{
     func showFullImage(imagesUrls: [String],index: Int) {
         let tmpDict = ["index": index, "images": imagesUrls] as [String : Any]
         self.performSegue(withIdentifier: "fullImageVCID", sender: tmpDict)

@@ -30,6 +30,7 @@ class FinalSubmissionViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var termsAndConditionsTextView: UITextView!
     @IBOutlet weak var checkUncheckButton: UIButton!
+	var presentationID: String = ""
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.tableFooterView = checkMarkFooterView
@@ -50,7 +51,24 @@ class FinalSubmissionViewController: UIViewController {
     }
     
     @IBAction func submitButtonAction(_ sender: UIButton) {
-        
+		if !checkUncheckButton.isSelected {
+            ILUtility.showAlert(message: "Please accept Terms and conditions and Privacy Policy", controller: self)
+        }
+		else{
+			ILUtility.showProgressIndicator(controller: self)
+			CoreAPI.sharedManaged.savePresentation(params: ["presentation_id": presentationID, "is_submit_for_review": 1], successResponse: { (response) in
+				ILUtility.hideProgressIndicator(controller: self)
+				
+				let alert = UIAlertController(title: "Imaginglink", message: "Presentation submitted for review, We will notify you once editor review complete. Please wait redirecting..", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { action in
+					let appDelegate = UIApplication.shared.delegate as! AppDelegate
+					appDelegate.openDashBoardScreen()
+                }))
+				self.present(alert, animated: true, completion: nil)
+			}) { (error) in
+				ILUtility.hideProgressIndicator(controller: self)
+			}
+		}
     }
     
     @IBAction func cancelButtonAction(_ sender: UIButton) {

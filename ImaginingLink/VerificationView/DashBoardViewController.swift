@@ -72,8 +72,8 @@ class DashBoardViewController:  BaseHamburgerViewController {
     }
     
     @IBAction func publishIconPressed(_ sender: Any) {
-		self.performSegue(withIdentifier: "ComingSoon", sender: Publish)
-       // self.performSegue(withIdentifier: "PublishVCID", sender: Publish)
+		//self.performSegue(withIdentifier: "ComingSoon", sender: Publish)
+        self.performSegue(withIdentifier: "PublishVCID", sender: Publish)
     }
     
     func changeButtonsBackgroundImage(sender: Int){

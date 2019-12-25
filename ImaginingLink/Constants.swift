@@ -11,7 +11,13 @@ import Foundation
 
 let OTP_Value = "OTP_VALUE"
 
-let kBaseUrl:String = "https://www.imaginglink.com/dev/"
+#if DEBUG
+    let kBaseUrl:String = "https://www.imaginglink.com/dev/"
+#else
+    let kBaseUrl:String = "https://www.imaginglink.com/dev/"
+	//let kBaseUrl:String = "https://www.imaginglink.com/"
+#endif
+
 let kTwoFactorAuthentication = "two_factor_authentication"
 let kSetPhoneNumberValidated = "phoneValidated"
 let kToken = "token"
@@ -87,3 +93,7 @@ let KUpdateProfilePhoto = "api/update-profile-photo"
 let KSectionsAndSubSections = "api/sections-related"
 let KCreatePresentations = "api/presentations/user"
 let KUserPresentationDetails = "api/presentations/user/{presentation_id}"
+let KUpdatePresentationDetails = "api/presentations/details/{presentation_id}"
+let KUpdatePresentationFile = "api/presentations/file-update"
+let KCoAuthors = "api/co-authors"
+let KSavePresentation = "api/user/save"

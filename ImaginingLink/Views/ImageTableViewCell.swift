@@ -8,9 +8,9 @@
 
 import UIKit
 
-protocol ImagePressDelegate {
+@objc protocol FullSizeImageViewDelegate {
     func showFullImage(imagesUrls: [String],index: Int)
-    func updatePresentationDictForFavourite(dict: [String: Any])
+    @objc optional func updatePresentationDictForFavourite(dict: [String: Any])
 }
 
 class ImageTableViewCell: UITableViewCell,UIScrollViewDelegate {
@@ -21,7 +21,7 @@ class ImageTableViewCell: UITableViewCell,UIScrollViewDelegate {
     @IBOutlet weak var UsernameLabel: UILabel!
     @IBOutlet weak var ImaginingLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
-    var delegate : ImagePressDelegate?
+    var delegate : FullSizeImageViewDelegate?
     @IBOutlet weak var imageScrollView: UIScrollView!
     var images: [String] = []
     var currentPage: Int = 0
@@ -86,7 +86,7 @@ class ImageTableViewCell: UITableViewCell,UIScrollViewDelegate {
             else{
                 self.presentationDict["is_my_favourite"] = 0
             }
-            self.delegate?.updatePresentationDictForFavourite(dict: self.presentationDict)
+            self.delegate?.updatePresentationDictForFavourite?(dict: self.presentationDict)
         }, faliure: {(error) in
             ILUtility.hideProgressIndicator(controller: self.myViewcontroller!)
         })

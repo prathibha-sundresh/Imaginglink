@@ -24,6 +24,8 @@
 		48216E3D2326C4EB00ADE8D5 /* TermsAndCondtionsAndPrivacyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48216E3C2326C4EB00ADE8D5 /* TermsAndCondtionsAndPrivacyViewController.swift */; };
 		48216E3F2326CAB200ADE8D5 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48216E3E2326CAB200ADE8D5 /* WebKit.framework */; };
 		48222DF223131FB700751CB7 /* FullSizeImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48222DF123131FB700751CB7 /* FullSizeImageViewController.swift */; };
+		482D2C2123A215C90024CF00 /* RemovePresentationsFileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482D2C2023A215C90024CF00 /* RemovePresentationsFileCell.swift */; };
+		482D2C2323A5312F0024CF00 /* EditPresentationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482D2C2223A5312F0024CF00 /* EditPresentationTableViewCell.swift */; };
 		483DF7D1236807460081A157 /* CustomPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 483DF7D0236807460081A157 /* CustomPopUpViewController.swift */; };
 		48415FAF2163A7FB00D96DA6 /* ImaginingLinkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48415FA42163A6B800D96DA6 /* ImaginingLinkTests.swift */; };
 		48415FB02163A80000D96DA6 /* ImaginingLinkUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48415FA72163A6B900D96DA6 /* ImaginingLinkUITests.swift */; };
@@ -42,6 +44,7 @@
 		48A7A5F92330B196008A2EB3 /* SF-Pro-Display-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 48A7A5F82330B196008A2EB3 /* SF-Pro-Display-Medium.otf */; };
 		48B6EDBE235CD25A00C1152D /* UpdatePresentationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B6EDBD235CD25A00C1152D /* UpdatePresentationViewController.swift */; };
 		48B6EDC0235D4AE700C1152D /* FinalSubmissionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B6EDBF235D4AE700C1152D /* FinalSubmissionViewController.swift */; };
+		48CCC16D239CDD7100CBD5F5 /* SendCommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CCC16C239CDD7100CBD5F5 /* SendCommentTableViewCell.swift */; };
 		48F4F41C2004CE55005CD239 /* CoreAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F4F41B2004CE54005CD239 /* CoreAPI.swift */; };
 		48F7F1871FFE0412008D827A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F7F1861FFE0412008D827A /* Constants.swift */; };
 		48FC9DA120B1B99D00838CA7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 48FC9DA020B1B99D00838CA7 /* Assets.xcassets */; };
@@ -127,6 +130,8 @@
 		48216E3C2326C4EB00ADE8D5 /* TermsAndCondtionsAndPrivacyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsAndCondtionsAndPrivacyViewController.swift; sourceTree = "<group>"; };
 		48216E3E2326CAB200ADE8D5 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		48222DF123131FB700751CB7 /* FullSizeImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullSizeImageViewController.swift; sourceTree = "<group>"; };
+		482D2C2023A215C90024CF00 /* RemovePresentationsFileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemovePresentationsFileCell.swift; sourceTree = "<group>"; };
+		482D2C2223A5312F0024CF00 /* EditPresentationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPresentationTableViewCell.swift; sourceTree = "<group>"; };
 		483DF7D0236807460081A157 /* CustomPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPopUpViewController.swift; sourceTree = "<group>"; };
 		48415FA42163A6B800D96DA6 /* ImaginingLinkTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImaginingLinkTests.swift; sourceTree = "<group>"; };
 		48415FA52163A6B800D96DA6 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -151,6 +156,7 @@
 		48A7A5F82330B196008A2EB3 /* SF-Pro-Display-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Medium.otf"; sourceTree = "<group>"; };
 		48B6EDBD235CD25A00C1152D /* UpdatePresentationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatePresentationViewController.swift; sourceTree = "<group>"; };
 		48B6EDBF235D4AE700C1152D /* FinalSubmissionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalSubmissionViewController.swift; sourceTree = "<group>"; };
+		48CCC16C239CDD7100CBD5F5 /* SendCommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendCommentTableViewCell.swift; sourceTree = "<group>"; };
 		48F4F41B2004CE54005CD239 /* CoreAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreAPI.swift; sourceTree = "<group>"; };
 		48F7F1861FFE0412008D827A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		48FC9DA020B1B99D00838CA7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ImaginingLink/Assets.xcassets; sourceTree = "<group>"; };
@@ -250,6 +256,7 @@
 		480A3BEA2359842100EA4EF4 /* Publishing */ = {
 			isa = PBXGroup;
 			children = (
+				48CCC16B239CDD5500CBD5F5 /* Cells */,
 				480A3BEB2359847100EA4EF4 /* PublishStepOneViewController.swift */,
 				480A3BED235ADAFF00EA4EF4 /* PageViewController.swift */,
 				480A3BEF235B762B00EA4EF4 /* CreatePresentationViewController.swift */,
@@ -342,6 +349,16 @@
 				4897CCE920039B9D00360EB7 /* StringExtension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		48CCC16B239CDD5500CBD5F5 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				48CCC16C239CDD7100CBD5F5 /* SendCommentTableViewCell.swift */,
+				482D2C2023A215C90024CF00 /* RemovePresentationsFileCell.swift */,
+				482D2C2223A5312F0024CF00 /* EditPresentationTableViewCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		AC01CA5120C05DDF00034C90 /* Fonts */ = {
@@ -724,6 +741,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC4B6F59224BDB5700576C7D /* FloatingLabel.swift in Sources */,
+				48CCC16D239CDD7100CBD5F5 /* SendCommentTableViewCell.swift in Sources */,
 				48216E3D2326C4EB00ADE8D5 /* TermsAndCondtionsAndPrivacyViewController.swift in Sources */,
 				ACD18C7420C551D50059DE7B /* TwoFactorAuthenticationViewcontroller.swift in Sources */,
 				485E3DCF2377F09E00B94F05 /* AddCommentReplyViewController.swift in Sources */,
@@ -736,6 +754,7 @@
 				BCFFFBB320BAEE5A003A0652 /* SignInViewController.swift in Sources */,
 				4897CCE520038E6500360EB7 /* SSHttpRequest.swift in Sources */,
 				488BD075218B4F4E003998AC /* PresentationDetailTextCell.swift in Sources */,
+				482D2C2123A215C90024CF00 /* RemovePresentationsFileCell.swift in Sources */,
 				AC0AD38E20D13C4100FCB371 /* ListViewController.swift in Sources */,
 				ACB08028212ACAEB0061B5D2 /* BaseViewController.swift in Sources */,
 				BCFFFBB720BAEEB0003A0652 /* OTPViewcontroller.swift in Sources */,
@@ -760,6 +779,7 @@
 				AC4843F92126A3B3003492DB /* ILTabViewController.swift in Sources */,
 				AC130700218A030500790E9A /* FinalLoginViewController.swift in Sources */,
 				480A3BEE235ADAFF00EA4EF4 /* PageViewController.swift in Sources */,
+				482D2C2323A5312F0024CF00 /* EditPresentationTableViewCell.swift in Sources */,
 				BC0B83A120BC6E490082A53B /* EmailScreenViewcontroller.swift in Sources */,
 				488BD077218B4F98003998AC /* CommentTableViewCell.swift in Sources */,
 				48B6EDC0235D4AE700C1152D /* FinalSubmissionViewController.swift in Sources */,
@@ -953,7 +973,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 18;
+				CURRENT_PROJECT_VERSION = 20;
 				DEVELOPMENT_TEAM = W8U434C9C6;
 				INFOPLIST_FILE = ImaginingLink/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -971,7 +991,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 18;
+				CURRENT_PROJECT_VERSION = 20;
 				DEVELOPMENT_TEAM = W8U434C9C6;
 				INFOPLIST_FILE = ImaginingLink/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;

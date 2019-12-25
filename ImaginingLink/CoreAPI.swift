@@ -449,19 +449,32 @@ class CoreAPI {
         })
     }
     
-    func createPresentation(params:[String:Any], successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void) {
+    func createOrFileUpdatePresentation(params:[String:Any], successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void) {
         
-        let requestUrl = "\(kBaseUrl + KCreatePresentations)"
+		var requestUrl = ""
+		var parameters: [String: Any] = [:]
+		let isFromFileUpdate = params["isFromFileUpdate"] as? Bool ?? false
+		if isFromFileUpdate {
+			requestUrl = "\(kBaseUrl + KUpdatePresentationFile)"
+			parameters = ["presentation_id": params["presentation_id"]!, "is_file_upload": params["is_file_upload"]!, "is_downloadable": params["is_downloadable"]!] as [String : Any]
+		}
+		else{
+			requestUrl = "\(kBaseUrl + KCreatePresentations)"
+			parameters = ["title": params["title"]!, "section": params["section"]!, "sub_sections": params["sub_sections"]!, "is_file_upload": params["is_file_upload"]!, "is_downloadable": params["is_downloadable"]!, "keywords": params["keywords"]!, "description": params["description"]!, "university": ""] as [String : Any]
+		}
+
         var fileData: Data?
-        var parameters = ["title": params["title"]!, "section": params["section"]!, "sub_sections": params["sub_sections"]!, "is_file_upload": params["is_file_upload"]!, "is_downloadable": 0, "keywords": params["keywords"]!, "description": params["description"]!, "university": ""] as [String : Any]
-        
         if params["is_file_upload"] as! Int == 0{
             parameters["youtube_url"] = params["youtube_url"]!
         }
         else{
-            let filepath = Bundle.main.path(forResource: "Presentations-Tips", ofType: "ppt")
+			//9241546778_eng-1-5.pdf
+			//Presentations-Tips.ppt
+			//5dce69f66cbc2-123.pptx
+			let url = params["fileUrl"] as? URL
             do {
-                fileData = try Data(contentsOf: URL(fileURLWithPath: filepath!))
+                fileData = try Data(contentsOf: url!)
+				//fileData = try Data(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "sample", ofType: "pdf")!))
             } catch {
                 print ("loading image file error")
             }
@@ -471,7 +484,15 @@ class CoreAPI {
             if let data = fileData {
                 //application/vnd
                 //application/pdf
-                multipartFormData.append(data, withName: "ppt_pdf_file", fileName: "Presentations-Tips.ppt", mimeType: "application/vnd")
+				let fileName = params["fileName"] as? String ?? ""
+				var mimeTypeStr = ""
+				if let fileExtension = params["fileExtension"] as? String, fileExtension == "pdf" {
+					mimeTypeStr = "application/pdf"
+				}
+				else{
+					mimeTypeStr = "application/vnd"
+				}
+                multipartFormData.append(data, withName: "ppt_pdf_file", fileName: fileName, mimeType: mimeTypeStr)
             }
             for (key, value) in parameters {
                 multipartFormData.append("\(value)".data(using: String.Encoding.utf8)!, withName: key as String)
@@ -486,12 +507,11 @@ class CoreAPI {
                 
                 upload.responseJSON { response in
                     print(response.result.value as AnyObject)
-                    // successResponse(response.result.value as AnyObject)
+                    successResponse(response.result.value as AnyObject)
                 }
                 
-            case .failure(let encodingError):
-                print(encodingError)
-                //faliure("\(encodingError)")
+            case .failure(let error):
+                faliure("\(error)")
             }
         }
     }
@@ -510,5 +530,44 @@ class CoreAPI {
         let token = UserDefaults.standard.value(forKey: kToken) as! String
         let header : HTTPHeaders = ["Accept" : "application/json", "Authorization":"Bearer \(token)"]
         return header
+    }
+	
+	func getCoAuthors(successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void) {
+        let request =  SSHttpRequest(withuUrl: KCoAuthors)
+        
+        request.getMethod(dictParameter: [:], url: KCoAuthors, successResponse: {(response) in
+            successResponse(response)
+        }, faliure: {(error) in
+            faliure(error)
+        })
+    }
+	
+	func addCoAuthors(params:[String:Any], successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void) {
+        let request =  SSHttpRequest(withuUrl: KCoAuthors)
+        request.postMethodWithHeaderasToken(dictParameter: params, url: KCoAuthors, header: getHeader(), successResponse: {(response) in
+            successResponse(response)
+        }, faliure: {(error) in
+            faliure(error)
+        })
+    }
+	
+	func updateUserPresentationDetails(params:[String:Any], successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void) {
+		
+		let url = KUpdatePresentationDetails.replacingOccurrences(of: "{presentation_id}", with: params["presentation_id"] as? String ?? "")
+        let request =  SSHttpRequest(withuUrl: url)
+        request.postMethodWithHeaderasToken(dictParameter: params, url: url, header: getHeader(), successResponse: {(response) in
+            successResponse(response)
+        }, faliure: {(error) in
+            faliure(error)
+        })
+    }
+	
+	func savePresentation(params:[String:Any], successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void) {
+        let request =  SSHttpRequest(withuUrl: KSavePresentation)
+        request.postMethodWithHeaderasToken(dictParameter: params, url: KSavePresentation, header: getHeader(), successResponse: {(response) in
+            successResponse(response)
+        }, faliure: {(error) in
+            faliure(error)
+        })
     }
 }

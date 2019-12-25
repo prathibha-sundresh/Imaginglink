@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MobileCoreServices
 
 class KeywordsCVCell: UICollectionViewCell {
     @IBOutlet weak var nameButton: UIButton!
@@ -21,7 +22,8 @@ class KeywordsCVCell: UICollectionViewCell {
 class CreatePresentationViewController: UIViewController {
     var selectedSubsections: [String] = []
     @IBOutlet weak var subSectionsCV: UICollectionView!
-    //@IBOutlet weak var keyWordsCVHeight: NSLayoutConstraint!
+    @IBOutlet weak var subSectionConstraintY: NSLayoutConstraint!
+	@IBOutlet weak var downloadableConstraintH: NSLayoutConstraint!
     var sections: [[String: Any]] = []
     var subSections: [String: Any] = [:]
     @IBOutlet weak var sectionTitleTF: UITextField!
@@ -29,20 +31,42 @@ class CreatePresentationViewController: UIViewController {
     @IBOutlet weak var titleTF: UITextField!
     @IBOutlet weak var descriptionTF: UITextField!
     @IBOutlet weak var addVideoUrlTF: UITextField!
-    @IBOutlet weak var fileNameButton: UIButton!
+	@IBOutlet weak var fileNameButton: UIButton!
+	@IBOutlet weak var downloadableButton: UIButton!
+	@IBOutlet weak var subSectionTextLabel: UILabel!
+	var isDownloadable = 0
     var isFileUploaded: Bool = false
+	var fileExtension: String = ""
+	var fileName: String = ""
+	var fileUrl: URL?
+	var isSubSectionEmpty: Bool = false {
+		didSet{
+			self.subSectionConstraintY.constant = isSubSectionEmpty ? 60 : 20
+			subSectionTextLabel.text = isSubSectionEmpty ? " Sub-section(s)*" : "Sub-section(s)*".uppercased()
+		}
+	}
     override func viewDidLoad() {
         super.viewDidLoad()
-        //callSectionsAndSubSectionsAPI()
-        CoreAPI.sharedManaged.getUserPresentationDetails(presentationID: "5dbe4a404b0f606d221b5001", successResponse: { (response) in
-            
-        }) { (error) in
-            
-        }
+		getSections()
+		fileNameButton.isHidden = true
+		downloadableConstraintH.constant = 0
+		subSectionConstraintY.constant = 60
         // Do any additional setup after loading the view.
     }
     
-
+	@IBAction func textDidchange(_ textField: UITextField) {
+		
+		if textField == addVideoUrlTF{
+			if textField.text != "" {
+				isFileUploaded = false
+				fileNameButton.setTitle("", for: .normal)
+				fileNameButton.isHidden = true
+				downloadableConstraintH.constant = 0
+				downloadableButton.isSelected = false
+			}
+		}
+		
+	}
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -59,62 +83,97 @@ class CreatePresentationViewController: UIViewController {
                     subSectionsTmpArray = tmpArray
                 }
             }
+			vc.selectionType = sender as? Int == 100 ? .Single : .Multiple
+			vc.selectedRowTitles = sender as? Int == 100 ? [sectionTitleTF.text!] : selectedSubsections
             let tmpArray = sender as? Int == 100 ? sections : subSectionsTmpArray
             vc.titleArray = tmpArray.map({ (dict) -> String in
                 return dict["title"] as? String ?? ""
             })
-            vc.callBack = { (title) in
+            vc.callBack = { (titles) in
                 if sender as? Int == 100{
-                    self.sectionTitleTF.text = title
-                    
+					self.sectionTitleTF.text = titles[0]
+					self.selectedSubsections.removeAll()
                 }
                 else{
-                    if !self.selectedSubsections.contains(title){
-                        self.selectedSubsections.append(title)
-                        self.subSectionsCV.reloadData()
-                    }
-                    
+					self.selectedSubsections = titles
                 }
+				self.isSubSectionEmpty = self.selectedSubsections.isEmpty ? true : false
+				self.subSectionsCV.reloadData()
             }
         }
-        
+		else if segue.identifier == "UpdatePresentationVCID" {
+			let vc = segue.destination as! UpdatePresentationViewController
+			vc.presentationID = sender as? String ?? ""
+			vc.sections = sections
+			vc.subSections = subSections
+		}
     }
     
+	@IBAction func downloadableButtonAction(_ sender: UIButton) {
+        if !sender.isSelected {
+			downloadableButton.isSelected = true
+			isDownloadable = 1
+        } else {
+			downloadableButton.isSelected = false
+			isDownloadable = 0
+        }
+	}
+	
     @IBAction func nextButton(_ sender: UIButton) {
-        
-        let subSectionsStr = selectedSubsections.reduce("",+)
+//        self.performSegue(withIdentifier: "UpdatePresentationVCID", sender: "5e02fcdd4b0f60212a570d71")
+//		return
+//		//isFileUploaded = true
+        let subSectionsStr = selectedSubsections.joined(separator: ",")
         
         if titleTF.text == "" {
-            
+            ILUtility.showAlert(message: "Title is mandatory", controller: self)
         }
         else if sectionTitleTF.text == "" {
-            
+            ILUtility.showAlert(message: "Section is mandatory", controller: self)
         }
         else if selectedSubsections.count == 0 {
-            
+            ILUtility.showAlert(message: "Sub-Section(s) is mandatory", controller: self)
         }
-        else if descriptionTF.text == "" {
-            
+		else if keywordsTF.text == "" {
+			ILUtility.showAlert(message: "Keyword(s) are mandatory", controller: self)
+		}
+		else if descriptionTF.text == "" {
+			ILUtility.showAlert(message: "Description is mandatory", controller: self)
+		}
+        else if !isFileUploaded && addVideoUrlTF.text == ""{
+            ILUtility.showAlert(message: "PDF or YoutubeURL is mandatory", controller: self)
         }
-        else if isFileUploaded || addVideoUrlTF.text == ""{
-            
-        }
+		else if addVideoUrlTF.text != "" && !addVideoUrlTF.text!.canOpenURL() {
+			ILUtility.showAlert(message: "Please upload valid youtube url", controller: self)
+			return
+		}
         else{
-            var requestDict = ["title": titleTF.text!, "section": sectionTitleTF.text!, "sub_sections": subSectionsStr, "is_file_upload": 1, "is_downloadable": 0, "keywords": keywordsTF.text!, "description": descriptionTF.text!, "university": ""] as [String : Any]
+			var requestDict = ["title": titleTF.text!, "section": sectionTitleTF.text!, "sub_sections": subSectionsStr, "is_downloadable": isDownloadable, "keywords": keywordsTF.text!, "description": descriptionTF.text!, "university": "", "isFromFileUpdate": false] as [String : Any]
             
             if addVideoUrlTF.text != "" {
+				requestDict["is_file_upload"] = 0
                 requestDict["youtube_url"] = addVideoUrlTF.text! //"https://www.youtube.com/watch?v=JczSfmRpwUQ"//
             }
             else{
                 //file upload
-                
+//				fileUrl = URL(string: Bundle.main.path(forResource: "sample", ofType: "pdf")!)
+//				fileName = "sample.pdf"
+//				fileExtension = "pdf"
+                requestDict["is_file_upload"] = 1
+				requestDict["fileUrl"] = fileUrl
+				requestDict["fileName"] = fileName
+				requestDict["fileExtension"] = fileExtension
             }
-            CoreAPI.sharedManaged.createPresentation(params: requestDict, successResponse: { (response) in
-                print(response)
-                self.performSegue(withIdentifier: "UpdatePresentationVCID", sender: nil)
-            }) { (error) in
-                
-            }
+			
+			ILUtility.showProgressIndicator(controller: self)
+			CoreAPI.sharedManaged.createOrFileUpdatePresentation(params: requestDict, successResponse: { (response) in
+				ILUtility.hideProgressIndicator(controller: self)
+				if let dict = response["data"] as? [String: Any]{
+					self.performSegue(withIdentifier: "UpdatePresentationVCID", sender: dict["presentation_id"] as? String ?? "")
+				}
+			}) { (error) in
+				ILUtility.hideProgressIndicator(controller: self)
+			}
         }
         
         
@@ -131,7 +190,7 @@ class CreatePresentationViewController: UIViewController {
         
     }
     
-    func callSectionsAndSubSectionsAPI() {
+    func getSections() {
         ILUtility.showProgressIndicator(controller: self)
         CoreAPI.sharedManaged.getSectionsAndSubSections(successResponse: { (response) in
             
@@ -146,20 +205,33 @@ class CreatePresentationViewController: UIViewController {
         }
     }
     @IBAction func uploadFileButtonAction(_ sender: Any) {
-
+		
+		let documentPicker = UIDocumentPickerViewController(documentTypes: [String(kUTTypeData)], in: .import)
+        documentPicker.delegate = self
+        present(documentPicker, animated: true, completion: nil)
     }
+	
+	@objc func removeSubSection(_ sender: UIButton){
+		selectedSubsections.remove(at: sender.tag)
+		self.isSubSectionEmpty = self.selectedSubsections.isEmpty ? true : false
+		subSectionsCV.reloadData()
+	}
+	
 }
 extension CreatePresentationViewController: UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellID", for: indexPath) as! KeywordsCVCell
+		cell.nameButton.tag = indexPath.item
         cell.nameButton.setTitle("    \(selectedSubsections[indexPath.item])   ✕    ", for: .normal)
+		cell.nameButton.addTarget(self, action: #selector(removeSubSection), for: .touchUpInside)
         cell.SetUI()
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return selectedSubsections.count
     }
+	
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let size = ("    \(selectedSubsections[indexPath.item])    ✕    ").size(withAttributes: nil)
         return size
@@ -170,4 +242,34 @@ extension CreatePresentationViewController: UICollectionViewDelegate,UICollectio
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 10.0
     }
+}
+
+extension CreatePresentationViewController: UIDocumentPickerDelegate{
+
+	func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentAt url: URL) {
+		
+		isFileUploaded = true
+		addVideoUrlTF.text = ""
+		print(url)
+		print(url.lastPathComponent)
+		print(url.pathExtension)
+		
+		fileUrl = url
+		fileName = url.lastPathComponent
+		fileExtension = url.pathExtension
+		fileNameButton.setTitle("  \(fileName)", for: .normal)
+		fileNameButton.isHidden = false
+		downloadableConstraintH.constant = 20
+		downloadableButton.isSelected = false
+	}
+}
+
+extension String{
+	func canOpenURL() -> Bool {
+		if let url = NSURL(string: self) {
+			// check if your application can open the NSURL instance
+			return UIApplication.shared.canOpenURL(url as URL)
+		}
+		return false
+	}
 }

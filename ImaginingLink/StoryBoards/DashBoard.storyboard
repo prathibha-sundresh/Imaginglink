@@ -342,7 +342,7 @@
         <!--Full Size Image View Controller-->
         <scene sceneID="oXj-gf-Vqe">
             <objects>
-                <viewController id="wtQ-Cg-n57" customClass="FullSizeImageViewController" customModule="ImagingLink" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FullSizeImageViewControllerID" id="wtQ-Cg-n57" customClass="FullSizeImageViewController" customModule="ImagingLink" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bTb-Gv-ibm">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -404,7 +404,7 @@
         <!--Add Comment Reply View Controller-->
         <scene sceneID="3kt-JQ-3we">
             <objects>
-                <viewController id="vmR-HV-DYo" customClass="AddCommentReplyViewController" customModule="ImagingLink" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddCommentReplyViewControllerID" id="vmR-HV-DYo" customClass="AddCommentReplyViewController" customModule="ImagingLink" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6Op-ml-vfD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -745,14 +745,14 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="PresentationDetailCellId" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PresentationDetailTextCellId" id="Fyf-4Z-F38" userLabel="PresentationDetailTextCell" customClass="PresentationDetailTextCell" customModule="ImagingLink" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="328" width="375" height="498"/>
+                                        <rect key="frame" x="0.0" y="328" width="375" height="497.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Fyf-4Z-F38" id="bxt-Kb-Wrd">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="498"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="497.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uub-Uh-OcR" userLabel="DetailView">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="498"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="497.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="59Y-zu-0Au">
                                                             <rect key="frame" x="20" y="10" width="335" height="14"/>
@@ -805,67 +805,67 @@ Differentiating Benig…</string>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Te-zD-uHA">
-                                                            <rect key="frame" x="20" y="210.5" width="335" height="15.5"/>
+                                                            <rect key="frame" x="20" y="210.5" width="335" height="15"/>
                                                             <fontDescription key="fontDescription" name="SFProDisplay-Light" family="SF Pro Display" pointSize="12"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sample Description edited by reviewer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ykF-5u-rk0">
-                                                            <rect key="frame" x="20" y="231" width="335" height="17"/>
+                                                            <rect key="frame" x="20" y="230.5" width="335" height="17"/>
                                                             <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="14"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Primary Author" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R2w-Sq-44y">
-                                                            <rect key="frame" x="20" y="258" width="335" height="14"/>
+                                                            <rect key="frame" x="20" y="257.5" width="335" height="14"/>
                                                             <fontDescription key="fontDescription" name="SFProDisplay-Light" family="SF Pro Display" pointSize="12"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Test2330 8687" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gKz-MJ-2Ma">
-                                                            <rect key="frame" x="20" y="277" width="335" height="17"/>
+                                                            <rect key="frame" x="20" y="276.5" width="335" height="17"/>
                                                             <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="14"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Co-author(s)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YKz-5e-WAQ">
-                                                            <rect key="frame" x="20" y="298.5" width="335" height="14"/>
+                                                            <rect key="frame" x="20" y="298" width="335" height="14"/>
                                                             <fontDescription key="fontDescription" name="SFProDisplay-Light" family="SF Pro Display" pointSize="12"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Test2330 8687" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BEn-ob-U7E">
-                                                            <rect key="frame" x="20" y="317" width="335" height="17"/>
+                                                            <rect key="frame" x="20" y="316.5" width="335" height="17"/>
                                                             <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="14"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contributing University/ Institution" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4gR-bK-DFF">
-                                                            <rect key="frame" x="20" y="344" width="335" height="14"/>
+                                                            <rect key="frame" x="20" y="343.5" width="335" height="14"/>
                                                             <fontDescription key="fontDescription" name="SFProDisplay-Light" family="SF Pro Display" pointSize="12"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="University from reviewer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OqR-4e-ApI">
-                                                            <rect key="frame" x="20" y="363" width="335" height="17"/>
+                                                            <rect key="frame" x="20" y="362.5" width="335" height="17"/>
                                                             <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="14"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Allow other to download" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mgb-CC-fCO">
-                                                            <rect key="frame" x="20" y="390" width="335" height="14"/>
+                                                            <rect key="frame" x="20" y="389.5" width="335" height="14"/>
                                                             <fontDescription key="fontDescription" name="SFProDisplay-Light" family="SF Pro Display" pointSize="12"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nYw-Fx-rRN">
-                                                            <rect key="frame" x="20" y="409" width="335" height="17"/>
+                                                            <rect key="frame" x="20" y="408.5" width="335" height="17"/>
                                                             <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="14"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RPI-jv-0Dp">
-                                                            <rect key="frame" x="20" y="438" width="140" height="40"/>
+                                                            <rect key="frame" x="20" y="437.5" width="140" height="40"/>
                                                             <color key="backgroundColor" red="0.97647058823529409" green="0.58039215686274503" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="40" id="OoJ-OR-YGk"/>
@@ -880,20 +880,20 @@ Differentiating Benig…</string>
                                                             </connections>
                                                         </button>
                                                         <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="6lq-IF-vlH">
-                                                            <rect key="frame" x="180" y="438" width="175" height="20"/>
+                                                            <rect key="frame" x="180" y="437.5" width="175" height="20"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="20" id="hNQ-Pq-Oul"/>
                                                             </constraints>
                                                             <color key="progressTintColor" red="0.12941176470588234" green="0.58823529411764708" blue="0.95294117647058818" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </progressView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gQd-s1-2q2">
-                                                            <rect key="frame" x="272.5" y="468" width="82.5" height="18"/>
+                                                            <rect key="frame" x="272.5" y="467.5" width="82.5" height="18"/>
                                                             <fontDescription key="fontDescription" name="GoogleSans-Regular" family="Google Sans" pointSize="14"/>
                                                             <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XUY-4U-g4i">
-                                                            <rect key="frame" x="180" y="466" width="82.5" height="20"/>
+                                                            <rect key="frame" x="180" y="465.5" width="82.5" height="20"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="20" id="hGz-Vz-LkR"/>
                                                             </constraints>
@@ -1006,7 +1006,7 @@ Differentiating Benig…</string>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="CommentCellId" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CommentTableViewCellId" rowHeight="134" id="uc8-0C-Zp9" userLabel="CommentTableViewCell" customClass="CommentTableViewCell" customModule="ImagingLink" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="826" width="375" height="134"/>
+                                        <rect key="frame" x="0.0" y="825.5" width="375" height="134"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="uc8-0C-Zp9" id="QdQ-YN-h6R">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="134"/>
@@ -1238,7 +1238,7 @@ Differentiating Benig…</string>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="CommentListCellId" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CommentListTableViewCellId" rowHeight="160" id="nAQ-E4-yX6" userLabel="CommentListTableViewCell" customClass="CommentListTableViewCell" customModule="ImagingLink" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="960" width="375" height="160"/>
+                                        <rect key="frame" x="0.0" y="959.5" width="375" height="160"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nAQ-E4-yX6" id="Beq-bN-dmp">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="160"/>

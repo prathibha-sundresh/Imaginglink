@@ -9,14 +9,23 @@
 import UIKit
 
 class CustomPopUpViewController: UIViewController {
-
+	enum SelectionType {
+		case Single
+		case Multiple
+		case None
+	}
+	enum SelectionLimit: Int {
+		case Limit
+	}
     var titleArray : [String] = []
-    var callBack: ((String) -> Void)?
-    var selectedRowTitle: String = ""
+    var callBack: (([String]) -> Void)?
+	var selectedRowTitles: [String] = []
+	var selectionType: SelectionType = SelectionType.None
+	
     @IBOutlet weak var titleTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+		titleTableView.tableFooterView = UIView(frame: .zero)
         // Do any additional setup after loading the view.
     }
     
@@ -32,7 +41,7 @@ class CustomPopUpViewController: UIViewController {
     */
     @IBAction func closeButtonAction(_ sender: UIButton) {
         if let callback = callBack {
-            callback(selectedRowTitle)
+            callback(selectedRowTitles)
         }
         self.dismiss(animated: false, completion: nil)
     }
@@ -41,8 +50,8 @@ class CustomPopUpViewController: UIViewController {
 extension CustomPopUpViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = "\(titleArray[indexPath.row])"
-        if selectedRowTitle == titleArray[indexPath.row] {
+		cell.textLabel?.text = "\(titleArray[indexPath.row])".capitalized
+		if selectedRowTitles.contains(titleArray[indexPath.row]) {
             cell.accessoryType = .checkmark
         }
         else{
@@ -59,7 +68,27 @@ extension CustomPopUpViewController: UITableViewDelegate, UITableViewDataSource{
         return UITableView.automaticDimension
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectedRowTitle = "\(titleArray[indexPath.row])"
+        
+		switch selectionType {
+		case .Single:
+			selectedRowTitles.removeAll()
+			selectedRowTitles.append(titleArray[indexPath.row])
+		case .Multiple:
+			
+			if selectedRowTitles.contains(titleArray[indexPath.row]) {
+				if let index = selectedRowTitles.firstIndex(of: titleArray[indexPath.row]){
+					selectedRowTitles.remove(at: index)
+				}
+			}
+			else{
+				if selectedRowTitles.count >= 5 {
+					return
+				}
+				selectedRowTitles.append(titleArray[indexPath.row])
+			}
+		case .None:
+			print("None")
+		}
         titleTableView.reloadData()
     }
 }
