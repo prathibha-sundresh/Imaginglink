@@ -19,6 +19,11 @@ class TextCell1: UITableViewCell {
     }
     
 }
+
+@objc protocol FinalSubmissionViewControllerDelegate {
+	@objc optional func pushToPresentationScreen()
+}
+
 enum CellIdentifiers: String {
     case cell1 = "cell1"
     case cell2 = "cell2"
@@ -31,6 +36,7 @@ class FinalSubmissionViewController: UIViewController {
     @IBOutlet weak var termsAndConditionsTextView: UITextView!
     @IBOutlet weak var checkUncheckButton: UIButton!
 	var presentationID: String = ""
+	var delegate: FinalSubmissionViewControllerDelegate?
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.tableFooterView = checkMarkFooterView
@@ -61,8 +67,9 @@ class FinalSubmissionViewController: UIViewController {
 				
 				let alert = UIAlertController(title: "Imaginglink", message: "Presentation submitted for review, We will notify you once editor review complete. Please wait redirecting..", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { action in
-					let appDelegate = UIApplication.shared.delegate as! AppDelegate
-					appDelegate.openDashBoardScreen()
+					self.dismiss(animated: true) {
+						self.delegate?.pushToPresentationScreen?()
+					}
                 }))
 				self.present(alert, animated: true, completion: nil)
 			}) { (error) in

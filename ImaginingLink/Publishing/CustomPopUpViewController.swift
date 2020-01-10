@@ -14,18 +14,27 @@ class CustomPopUpViewController: UIViewController {
 		case Multiple
 		case None
 	}
-	enum SelectionLimit: Int {
-		case Limit
+	enum SectionType {
+		case Section
+		case SubSection
+		case AddCoAuthors
+		case None
 	}
     var titleArray : [String] = []
+	var filteredArray : [String] = []
     var callBack: (([String]) -> Void)?
 	var selectedRowTitles: [String] = []
 	var selectionType: SelectionType = SelectionType.None
-	
+	var sectionType: SectionType = SectionType.None
+	@IBOutlet weak var searchTF: UITextField!
     @IBOutlet weak var titleTableView: UITableView!
+	@IBOutlet weak var searchTFConstraintH: NSLayoutConstraint!
+	var isCoAuthor = false
     override func viewDidLoad() {
         super.viewDidLoad()
 		titleTableView.tableFooterView = UIView(frame: .zero)
+		filteredArray = titleArray
+		searchTFConstraintH.constant = isCoAuthor ? 34: 0
         // Do any additional setup after loading the view.
     }
     
@@ -45,13 +54,26 @@ class CustomPopUpViewController: UIViewController {
         }
         self.dismiss(animated: false, completion: nil)
     }
+	
+	@IBAction func textDidchange(_ textField: UITextField) {
+		
+		if let searchText = textField.text, searchText.count >= 3{
+			filteredArray = titleArray.filter { (str) -> Bool in
+				return str.contains(searchText)
+			}
+		}
+		else{
+			filteredArray = titleArray
+		}
+		titleTableView.reloadData()
+	}
 }
 
 extension CustomPopUpViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-		cell.textLabel?.text = "\(titleArray[indexPath.row])".capitalized
-		if selectedRowTitles.contains(titleArray[indexPath.row]) {
+		cell.textLabel?.text = "\(filteredArray[indexPath.row])".capitalized
+		if selectedRowTitles.contains(filteredArray[indexPath.row]) {
             cell.accessoryType = .checkmark
         }
         else{
@@ -61,7 +83,7 @@ extension CustomPopUpViewController: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return titleArray.count
+        return filteredArray.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -72,19 +94,21 @@ extension CustomPopUpViewController: UITableViewDelegate, UITableViewDataSource{
 		switch selectionType {
 		case .Single:
 			selectedRowTitles.removeAll()
-			selectedRowTitles.append(titleArray[indexPath.row])
+			selectedRowTitles.append(filteredArray[indexPath.row])
 		case .Multiple:
 			
-			if selectedRowTitles.contains(titleArray[indexPath.row]) {
-				if let index = selectedRowTitles.firstIndex(of: titleArray[indexPath.row]){
+			if selectedRowTitles.contains(filteredArray[indexPath.row]) {
+				if let index = selectedRowTitles.firstIndex(of: filteredArray[indexPath.row]){
 					selectedRowTitles.remove(at: index)
 				}
 			}
 			else{
-				if selectedRowTitles.count >= 5 {
-					return
+				if sectionType == SectionType.AddCoAuthors {
+					if selectedRowTitles.count >= 5 {
+						return
+					}
 				}
-				selectedRowTitles.append(titleArray[indexPath.row])
+				selectedRowTitles.append(filteredArray[indexPath.row])
 			}
 		case .None:
 			print("None")

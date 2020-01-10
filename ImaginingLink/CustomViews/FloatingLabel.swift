@@ -20,8 +20,8 @@ class FloatingLabel: SkyFloatingLabelTextField {
         self.selectedTitleColor = color
         self.errorColor = color
         self.lineColor = lightGrey
-        self.titleFont = UIFont(name: "Helvetica Neue", size: 10)!
-        self.font = UIFont(name: "Helvetica Neue", size: 14)!
+        self.titleFont = UIFont(name: "GoogleSans-Regular", size: 12)!
+        self.font = UIFont(name: "GoogleSans-Regular", size: 16)!
         self.titleColor = lightGrey
     }
     

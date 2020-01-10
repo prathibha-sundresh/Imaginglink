@@ -59,6 +59,8 @@ class PresentationViewController: BaseHamburgerViewController, UITableViewDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         PresenationTableView.tableFooterView = footerView
+		self.navigationController?.isNavigationBarHidden = false
+		self.tabBarController?.tabBar.isHidden = false
         if isFromPresentations {
             addSlideMenuButton(showBackButton: true, backbuttonTitle: "Presentations")
         }
@@ -107,7 +109,9 @@ class PresentationViewController: BaseHamburgerViewController, UITableViewDelega
     }
     override func backAction() {
         if isFromPresentations{
-            self.navigationController?.popViewController(animated: true)
+//            self.navigationController?.popViewController(animated: true)
+			let appDelegate = UIApplication.shared.delegate as! AppDelegate
+			appDelegate.openDashBoardScreen()
         }
         else{
             self.tabBarController?.selectedIndex = 1

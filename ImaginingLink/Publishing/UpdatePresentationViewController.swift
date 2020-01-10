@@ -11,10 +11,10 @@ import UIKit
 class UserDetailsTableViewCell: UITableViewCell {
 	@IBOutlet weak var UserNameLbl: UILabel!
 	@IBOutlet weak var UserImageView: UIImageView!
-	
+	@IBOutlet weak var deleteFileBtn: UIButton!
 	func setUI(dict: [String: Any]) {
 		if let author : [String : Any] = dict["author"] as? [String:Any] {
-            UserNameLbl.text! = author["name"] as! String
+			UserNameLbl.text! = (author["name"] as! String).capitalized
             if let photo : String = author["profile_photo"] as? String {
                 UserImageView.sd_setImage(with: URL(string: photo), placeholderImage: UIImage(named: "ImagingLinkLogo"))
             }
@@ -36,7 +36,7 @@ class ImageViewCell: UITableViewCell,UIScrollViewDelegate {
 	var delegate : FullSizeImageViewDelegate?
 	
 	func setUI(dict: [String: Any]) {
-		imageScrollView.frame = CGRect(x: 0, y: 0, width: self.frame.width, height: 200)
+		imageScrollView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 200)
 		if dict["presentation_type"] as? String  == "video"{
 			webView.loadRequest(URLRequest(url: URL(string: dict["presentation_master_url"] as? String ?? "")!))
 			imagesView.isHidden = true
@@ -68,13 +68,13 @@ class ImageViewCell: UITableViewCell,UIScrollViewDelegate {
         }
         
         for (index,image) in images.enumerated(){
-            let imageView = UIImageView(frame: CGRect(x: CGFloat(index) * self.frame.width, y: 0.0, width: self.frame.width, height: 200))
+            let imageView = UIImageView(frame: CGRect(x: CGFloat(index) * imageScrollView.frame.width, y: 0.0, width: imageScrollView.frame.width, height: 200))
             
             imageView.sd_setImage(with: URL(string: image), placeholderImage: UIImage(named: "ImagingLinkLogo"))
             imageScrollView.addSubview(imageView)
         }
-        imageScrollView.contentSize = CGSize(width: CGFloat(images.count) * self.frame.width, height: imageScrollView.frame.height)
-        let x = CGFloat(currentPage) * CGFloat(self.frame.width)
+        imageScrollView.contentSize = CGSize(width: CGFloat(images.count) * imageScrollView.frame.width, height: imageScrollView.frame.height)
+        let x = CGFloat(currentPage) * CGFloat(imageScrollView.frame.width)
         
         imageScrollView.setContentOffset(CGPoint(x: x, y: 0), animated: false)
         showHideLeftButton()
@@ -119,6 +119,7 @@ class ImageViewCell: UITableViewCell,UIScrollViewDelegate {
         else{
             leftButton.isHidden = true
         }
+		delegate?.getCurrentIndex?(index: currentPage)
     }
     func showHideRightButton(){
         if images.count - 1 > currentPage{
@@ -127,6 +128,7 @@ class ImageViewCell: UITableViewCell,UIScrollViewDelegate {
         else{
             rightButton.isHidden = true
         }
+		delegate?.getCurrentIndex?(index: currentPage)
     }
     @IBAction func showFullSizeImage(_ sender: UIButton){
         delegate?.showFullImage(imagesUrls: images,index: currentPage)
@@ -138,6 +140,10 @@ extension UpdatePresentationViewController: FullSizeImageViewDelegate{
         let tmpDict = ["index": index, "images": imagesUrls] as [String : Any]
         self.performSegue(withIdentifier: "fullImageVCID", sender: tmpDict)
     }
+	
+	func getCurrentIndex(index: Int) {
+		fullSizeCurrentIndex = index
+	}
 }
 
 
@@ -155,6 +161,7 @@ class UpdatePresentationViewController: UIViewController {
 	}
     @IBOutlet weak var updatePresentationTV: UITableView!
 	var responseDict = [String: Any]()
+	var originalResponseDict = [String: Any]()
 	var sections: [[String: Any]] = []
 	var subSections: [String: Any] = [:]
 	var selectedSubsections: [String] = []
@@ -236,6 +243,7 @@ class UpdatePresentationViewController: UIViewController {
 			let value = response as? String ?? ""
             if let dict = value.convertToDictionary(), let dict1 = dict["data"] as? [String: Any] {
                 self.responseDict = dict1
+				self.originalResponseDict = dict1
 				self.selectedSubsections = self.responseDict["sub_sections"] as? [String] ?? []
 				self.selectedCoauthors = self.responseDict["co_authors"] as? [[String: Any]] ?? []
 				if let reviewComments = dict1["review_comments"] as? [[String: Any]], reviewComments.count > 0 {
@@ -257,8 +265,7 @@ class UpdatePresentationViewController: UIViewController {
 			ILUtility.showProgressIndicator(controller: self)
 			CoreAPI.sharedManaged.savePresentation(params: ["presentation_id": presentationID, "is_submit_for_review": 0], successResponse: { (response) in
 				ILUtility.showAlert(message: "Presentation saved as draft successfully.", controller: self)
-				self.saveAsDraftButton.isEnabled = false
-				self.saveAsDraftButton.alpha = 0.6
+				self.saveAsDraftButton.isHidden = true
 				ILUtility.hideProgressIndicator(controller: self)
 			}) { (error) in
 				ILUtility.hideProgressIndicator(controller: self)
@@ -313,18 +320,16 @@ class UpdatePresentationViewController: UIViewController {
 		else if segue.identifier == "FinalSubmissionVCID" {
 			let vc : FinalSubmissionViewController = segue.destination as! FinalSubmissionViewController
 			vc.presentationID = presentationID
+			vc.delegate = self
 		}
 		else if segue.identifier == "PopUpVCID" {
             
             let vc = segue.destination as! CustomPopUpViewController
 			
-			if sender as! Int == 102 {
-				vc.titleArray = ["Yes","No"]
-				vc.selectionType = .Single
-				vc.selectedRowTitles = [responseDict["is_downloadable"] as? Bool ?? false ? "Yes" : "No"]
-			}
-			else if sender as! Int == 103 {
+			if sender as! Int == 103 {
 				vc.selectionType = .Multiple
+				vc.sectionType = .AddCoAuthors
+				vc.isCoAuthor = true
 				if selectedCoauthors.count > 0 {
 					let coAuthorsNames = selectedCoauthors.map { $0["full_name"] as? String ?? "" }
 					vc.selectedRowTitles = coAuthorsNames
@@ -335,6 +340,7 @@ class UpdatePresentationViewController: UIViewController {
 			}
 			else{
 				vc.selectionType = sender as? Int == 100 ? .Single : .Multiple
+				vc.sectionType = sender as? Int == 100 ? .Section : .SubSection
 				var subSectionsTmpArray = [[String: Any]]()
 				if sectionTitle != "" {
 					if let tmpArray = subSections[sectionTitle] as? [[String: Any]]{
@@ -361,9 +367,6 @@ class UpdatePresentationViewController: UIViewController {
 					self.selectedSubsections = titles
 					tmpDict["sub_sections"] = self.selectedSubsections
                 }
-				else if sender as? Int == 102{
-					tmpDict["is_downloadable"] = (titles[0] == "Yes") ? true : false
-				}
 				else if sender as? Int == 103{
 					
 					var idAndauthors = [[String : Any]]()
@@ -384,8 +387,14 @@ class UpdatePresentationViewController: UIViewController {
     }
     
 	@objc func deleteFileAction(_ sender: UIButton){
-		isDeletedFile = true
-		updatePresentationTV.reloadSections([1], with: .fade)
+		let alert = UIAlertController(title: "Imaginglink", message: "Are you sure you want to delete this file and upload a new file", preferredStyle: .alert)
+		alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { action in
+			self.isDeletedFile = true
+			self.fullSizeCurrentIndex = 0
+			self.updatePresentationTV.reloadSections([0,1], with: .fade)
+		}))
+		alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
+		self.present(alert, animated: true, completion: nil)
 	}
 }
 
@@ -406,6 +415,8 @@ extension UpdatePresentationViewController: UITableViewDelegate, UITableViewData
 		var cell = UITableViewCell()
 		if indexPath.section == 0 {
 			let userCell: UserDetailsTableViewCell = tableView.dequeueReusableCell(withIdentifier: "UserCellID", for: indexPath) as! UserDetailsTableViewCell
+			userCell.deleteFileBtn.addTarget(self, action: #selector(deleteFileAction), for: .touchUpInside)
+			userCell.deleteFileBtn.isHidden = isDeletedFile ? true : false
 			userCell.setUI(dict: responseDict)
 			cell = userCell
 		}
@@ -424,10 +435,6 @@ extension UpdatePresentationViewController: UITableViewDelegate, UITableViewData
 			}
 			else{
 				var presentationTypeCell: ImageViewCell = ImageViewCell()
-				let deleteBtn = UIButton(type: .custom)
-				deleteBtn.frame = CGRect(x: tableView.frame.width - 50, y: 15, width: 35, height: 35)
-				deleteBtn.setImage(UIImage(named: "deleteIcon"), for: .normal)
-				deleteBtn.addTarget(self, action: #selector(deleteFileAction), for: .touchUpInside)
 				let pType = getPresentationFileType(dict: responseDict)
 				switch pType {
 				case .Video , .Pdf :
@@ -439,7 +446,6 @@ extension UpdatePresentationViewController: UITableViewDelegate, UITableViewData
 				default:
 					cell = tableView.dequeueReusableCell(withIdentifier: "PPTorPPtxFileCellID", for: indexPath)
 				}
-				cell.addSubview(deleteBtn)
 			}
 		}
 		else if indexPath.section == 2 {
@@ -533,9 +539,9 @@ extension UpdatePresentationViewController: RemovePresentationsFileCellDelegate{
 		}
 	}
 	
-	func submitAction() {
-		let allowDownloadStatus = responseDict["is_downloadable"] as? Bool ?? false
-		var requestDict = ["presentation_id": presentationID, "is_downloadable": allowDownloadStatus, "isFromFileUpdate": true] as [String : Any]
+	func submitAction(isDownloaded: Int) {
+		
+		var requestDict = ["presentation_id": presentationID, "is_downloadable": isDownloaded, "isFromFileUpdate": true] as [String : Any]
 		
 		if addVideoUrlTF != "" {
 			requestDict["is_file_upload"] = 0
@@ -619,6 +625,9 @@ extension UpdatePresentationViewController: EditPresentationTableViewCellDelegat
 	
 	func editButtonEnabled(isEnabled: Bool) {
 		isEditButtonEnabled = isEnabled
+		if isEnabled == false {
+			responseDict = originalResponseDict
+		}
 		updatePresentationTV.reloadSections([2], with: .fade)
 	}
 	
@@ -639,10 +648,19 @@ extension UpdatePresentationViewController: EditPresentationTableViewCellDelegat
 		ILUtility.showProgressIndicator(controller: self)
 		CoreAPI.sharedManaged.updateUserPresentationDetails(params: requestDict, successResponse: { (response) in
 			ILUtility.hideProgressIndicator(controller: self)
+			self.getUserPresentationDetails()
 			ILUtility.showAlert(message: "Presentation details are successfully updated.", controller: self)
 			self.editButtonEnabled(isEnabled: false)
 		}) { (error) in
 			ILUtility.hideProgressIndicator(controller: self)
 		}
+	}
+}
+extension UpdatePresentationViewController: FinalSubmissionViewControllerDelegate{
+	func pushToPresentationScreen(){
+		let storyBoard = UIStoryboard(name: "DashBoard", bundle: nil)
+		let vc = storyBoard.instantiateViewController(withIdentifier: "PresentationViewController") as! PresentationViewController
+		vc.isFromPresentations = true
+		self.navigationController?.pushViewController(vc, animated: true)
 	}
 }

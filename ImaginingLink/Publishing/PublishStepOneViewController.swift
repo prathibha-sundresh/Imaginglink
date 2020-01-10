@@ -19,7 +19,7 @@ class PublishStepOneViewController: UIViewController {
         shadowView.layer.shadowOpacity = 1.0
         shadowView.layer.shadowOffset = CGSize(width: 0, height: 3)
         shadowView.layer.shadowRadius = 2
-        selectedTapXCon.constant = self.view.frame.width / 3
+        selectedTapXCon.constant = 0 //self.view.frame.width / 3
         // Do any additional setup after loading the view.
     }
     

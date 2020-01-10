@@ -10,6 +10,7 @@ import UIKit
 
 @objc protocol FullSizeImageViewDelegate {
     func showFullImage(imagesUrls: [String],index: Int)
+	@objc optional func getCurrentIndex(index: Int)
     @objc optional func updatePresentationDictForFavourite(dict: [String: Any])
 }
 

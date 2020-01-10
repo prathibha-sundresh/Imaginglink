@@ -26,11 +26,11 @@ class CreatePresentationViewController: UIViewController {
 	@IBOutlet weak var downloadableConstraintH: NSLayoutConstraint!
     var sections: [[String: Any]] = []
     var subSections: [String: Any] = [:]
-    @IBOutlet weak var sectionTitleTF: UITextField!
-    @IBOutlet weak var keywordsTF: UITextField!
-    @IBOutlet weak var titleTF: UITextField!
-    @IBOutlet weak var descriptionTF: UITextField!
-    @IBOutlet weak var addVideoUrlTF: UITextField!
+    @IBOutlet weak var sectionTitleTF: FloatingLabel!
+    @IBOutlet weak var keywordsTF: FloatingLabel!
+    @IBOutlet weak var titleTF: FloatingLabel!
+    @IBOutlet weak var descriptionTF: FloatingLabel!
+    @IBOutlet weak var addVideoUrlTF: FloatingLabel!
 	@IBOutlet weak var fileNameButton: UIButton!
 	@IBOutlet weak var downloadableButton: UIButton!
 	@IBOutlet weak var subSectionTextLabel: UILabel!
@@ -42,7 +42,8 @@ class CreatePresentationViewController: UIViewController {
 	var isSubSectionEmpty: Bool = false {
 		didSet{
 			self.subSectionConstraintY.constant = isSubSectionEmpty ? 60 : 20
-			subSectionTextLabel.text = isSubSectionEmpty ? " Sub-section(s)*" : "Sub-section(s)*".uppercased()
+			subSectionTextLabel.text = isSubSectionEmpty ? " Sub-section(s)*" : "Sub-section(s)*"
+			subSectionTextLabel.font = isSubSectionEmpty ? UIFont.init(name: "GoogleSans-Regular", size: 16.0) : UIFont.init(name: "GoogleSans-Regular", size: 13.0)
 		}
 	}
     override func viewDidLoad() {
@@ -51,6 +52,11 @@ class CreatePresentationViewController: UIViewController {
 		fileNameButton.isHidden = true
 		downloadableConstraintH.constant = 0
 		subSectionConstraintY.constant = 60
+		titleTF.titleFormatter = { $0 }
+		sectionTitleTF.titleFormatter = { $0 }
+		keywordsTF.titleFormatter = { $0 }
+		addVideoUrlTF.titleFormatter = { $0 }
+		descriptionTF.titleFormatter = { $0 }
         // Do any additional setup after loading the view.
     }
     
@@ -84,6 +90,7 @@ class CreatePresentationViewController: UIViewController {
                 }
             }
 			vc.selectionType = sender as? Int == 100 ? .Single : .Multiple
+			vc.sectionType = sender as? Int == 100 ? .Section : .SubSection
 			vc.selectedRowTitles = sender as? Int == 100 ? [sectionTitleTF.text!] : selectedSubsections
             let tmpArray = sender as? Int == 100 ? sections : subSectionsTmpArray
             vc.titleArray = tmpArray.map({ (dict) -> String in
@@ -122,9 +129,8 @@ class CreatePresentationViewController: UIViewController {
     @IBAction func nextButton(_ sender: UIButton) {
 //        self.performSegue(withIdentifier: "UpdatePresentationVCID", sender: "5e02fcdd4b0f60212a570d71")
 //		return
-//		//isFileUploaded = true
+
         let subSectionsStr = selectedSubsections.joined(separator: ",")
-        
         if titleTF.text == "" {
             ILUtility.showAlert(message: "Title is mandatory", controller: self)
         }

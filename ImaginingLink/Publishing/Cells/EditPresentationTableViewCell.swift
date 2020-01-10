@@ -22,13 +22,13 @@ protocol EditPresentationTableViewCellDelegate {
 	func removeSubSection(subSections: [String])
 }
 class EditPresentationTableViewCell: UITableViewCell {
-	@IBOutlet weak var titleTF: UITextField!
-	@IBOutlet weak var sectionTitleTF: UITextField!
-    @IBOutlet weak var keywordsTF: UITextField!
-    @IBOutlet weak var descriptionTF: UITextField!
-	@IBOutlet weak var universityTF: UITextField!
-	@IBOutlet weak var coAuthorsTF: UITextField!
-	@IBOutlet weak var allowDownloadableTF: UITextField!
+	@IBOutlet weak var titleTF: FloatingLabel!
+	@IBOutlet weak var sectionTitleTF: FloatingLabel!
+    @IBOutlet weak var keywordsTF: FloatingLabel!
+    @IBOutlet weak var descriptionTF: FloatingLabel!
+	@IBOutlet weak var universityTF: FloatingLabel!
+	@IBOutlet weak var coAuthorsTF: FloatingLabel!
+	@IBOutlet weak var allowDownloadableTF: FloatingLabel!
 	@IBOutlet weak var subSectionsCV: UICollectionView!
 	@IBOutlet weak var editButton: UIButton!
 	@IBOutlet weak var sectionDropDownButton: UIButton!
@@ -45,12 +45,22 @@ class EditPresentationTableViewCell: UITableViewCell {
 	var editButtonEnabled: Bool = false
 	var myController: UIViewController?
 	@IBOutlet weak var subSectionConstraintY: NSLayoutConstraint!
+	@IBOutlet weak var allowDownloadableTFConstraintH: NSLayoutConstraint!
 	var isSubSectionEmpty: Bool = false {
 		didSet{
 			self.subSectionConstraintY.constant = isSubSectionEmpty ? 60 : 20
+			subSectionTextLabel.font = isSubSectionEmpty ? UIFont.init(name: "GoogleSans-Regular", size: 16.0) : UIFont.init(name: "GoogleSans-Regular", size: 13.0)
 		}
 	}
 	func setUI(dict: [String: Any]) {
+		
+		titleTF.titleFormatter = { $0 }
+		sectionTitleTF.titleFormatter = { $0 }
+		keywordsTF.titleFormatter = { $0 }
+		allowDownloadableTF.titleFormatter = { $0 }
+		descriptionTF.titleFormatter = { $0 }
+		universityTF.titleFormatter = { $0 }
+		coAuthorsTF.titleFormatter = { $0 }
 		
 		editButton.isHidden = editButtonEnabled
 		saveButtonConstraintH.constant = editButtonEnabled ? 36 : 0
@@ -60,7 +70,16 @@ class EditPresentationTableViewCell: UITableViewCell {
 		universityTF.isUserInteractionEnabled = editButtonEnabled
 		sectionDropDownButton.isHidden = !editButtonEnabled
 		subSectionDropDownButton.isHidden = !editButtonEnabled
-		downloadDropDownButton.isHidden = !editButtonEnabled
+		//downloadDropDownButton.isHidden = !editButtonEnabled
+		
+		if dict["presentation_type"] as? String  == "video"{
+			allowDownloadableTFConstraintH.constant = 0
+			allowDownloadableTF.isHidden = true
+		}
+		else{
+			allowDownloadableTFConstraintH.constant = 55
+			allowDownloadableTF.isHidden = false
+		}
 		
 		titleTF.text = dict["title"] as? String ?? ""
 		sectionTitleTF.text = dict["section"] as? String ?? ""
@@ -95,7 +114,7 @@ class EditPresentationTableViewCell: UITableViewCell {
 		allowDownloadableTF.text = (dict["is_downloadable"] as? Bool ?? false) ? "Yes" : "No"
 		selectedSubsections = dict["sub_sections"] as? [String] ?? []
 		isSubSectionEmpty = selectedSubsections.isEmpty ? true : false
-		subSectionTextLabel.text = isSubSectionEmpty ? " Sub-section(s)*" : "Sub-section(s)*".uppercased()
+		subSectionTextLabel.text = isSubSectionEmpty ? " Sub-section(s)*" : "Sub-section(s)*"
 		subSectionsCV.reloadData()
 	}
 	
