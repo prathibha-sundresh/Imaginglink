@@ -13,7 +13,7 @@ class PresentationViewController: BaseHamburgerViewController, UITableViewDelega
     
     @IBOutlet weak var PresenationTableView: UITableView!
     @IBOutlet weak var footerView: UIView!
-    
+    @IBOutlet weak var headerLbl: UILabel!
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataArray.count
     }
@@ -56,67 +56,102 @@ class PresentationViewController: BaseHamburgerViewController, UITableViewDelega
     var dataArray : [[String:Any]] = []
     var isFromPresentations: Bool = false
     var likesArray : [Int] = []
+	enum VCTypes: String{
+		case Presentations
+		case FavouritePresentations
+		case FilterVC
+		case None
+	}
+	static var isFromVC: VCTypes = VCTypes.None
     override func viewDidLoad() {
         super.viewDidLoad()
         PresenationTableView.tableFooterView = footerView
-		self.navigationController?.isNavigationBarHidden = false
+		self.navigationController?.isNavigationBarHidden = true
 		self.tabBarController?.tabBar.isHidden = false
-        if isFromPresentations {
-            addSlideMenuButton(showBackButton: true, backbuttonTitle: "Presentations")
-        }
-        else{
-            addSlideMenuButton(showBackButton: true, backbuttonTitle: "My Favourite Presentations")
-        }
+		switch PresentationViewController.self.isFromVC {
+		case .Presentations:
+			//addSlideMenuButton(showBackButton: true, backbuttonTitle: "Presentations")
+			headerLbl.text = "Public Presentations"
+		case .FavouritePresentations:
+			headerLbl.text = "My Favourite Presentations"
+			//addSlideMenuButton(showBackButton: true, backbuttonTitle: "My Favourite Presentations")
+		default:
+			break
+		}
     }
+	
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if isFromPresentations{
-            getPublicPresentations()
-        }
-        else{
-            getSavedPresentations()
-        }
-        
+		switch PresentationViewController.isFromVC {
+		case .Presentations:
+			getPublicPresentations()
+		case .FavouritePresentations:
+			getSavedPresentations()
+		case .FilterVC:
+			//isFromVC = .Presentations
+			break
+		default:
+			break
+		}
     }
+	
+	override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+		self.navigationController?.isNavigationBarHidden = false
+    }
+	
     fileprivate func getPublicPresentations() {
 		
         ILUtility.showProgressIndicator(controller: self)
         CoreAPI.sharedManaged.callPublicPresentation(successResponse: { (response) in
             ILUtility.hideProgressIndicator(controller: self)
-            let value = response as! String
-            let dic : [String : Any] = value.convertToDictionary()!
-            let array : [[String:Any]] = dic["data"] as! [[String : Any]]
-			
-			if array.count == 0{
-				ILUtility.showAlert(message: "Currently we don't have published presentations.", controller: self)
-				self.dataArray = []
-				self.PresenationTableView.reloadData()
-				return
-			}
-			
-            let tmpArray = array.map({ (dict) -> [String: Any] in
-                var tmpDict = dict
-                tmpDict["Is_Liked"] = 0
-                return tmpDict
-            })
-            self.dataArray = tmpArray
-            self.PresenationTableView.reloadData()
-            
+			self.getDataResults(response: response as! String)
         }, faliure: {(error) in
             ILUtility.hideProgressIndicator(controller: self)
             ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: error)
         })
     }
-    override func backAction() {
-        if isFromPresentations{
-//            self.navigationController?.popViewController(animated: true)
+	
+	func getDataResults(response: String){
+		
+		let dic : [String : Any] = response.convertToDictionary()!
+		let array : [[String:Any]] = dic["data"] as? [[String : Any]] ?? []
+		
+		if array.count == 0{
+			ILUtility.showAlert(message: "Currently we don't have published presentations.", controller: self)
+			self.dataArray = []
+			self.PresenationTableView.reloadData()
+			return
+		}
+		
+		let tmpArray = array.map({ (dict) -> [String: Any] in
+			var tmpDict = dict
+			tmpDict["Is_Liked"] = 0
+			return tmpDict
+		})
+		self.dataArray = tmpArray
+		self.PresenationTableView.reloadData()
+	}
+	
+	@IBAction func backAction(_ sender: UIButton) {
+		switch PresentationViewController.isFromVC {
+		case .Presentations:
 			let appDelegate = UIApplication.shared.delegate as! AppDelegate
 			appDelegate.openDashBoardScreen()
-        }
-        else{
-            self.tabBarController?.selectedIndex = 1
-        }
+		case .FavouritePresentations:
+			self.tabBarController?.selectedIndex = 1
+		case .FilterVC:
+			self.navigationController?.popViewController(animated: true)
+			
+		default:
+			break
+		}
     }
+	
+	@IBAction func menuAction(_ sender: UIButton) {
+		onSlideMenuButtonPressed(sender)
+	}
+	
     func getSavedPresentations(){
         ILUtility.showProgressIndicator(controller: self)
         CoreAPI.sharedManaged.callSavedPresentation(successResponse: { (response) in
@@ -163,6 +198,10 @@ class PresentationViewController: BaseHamburgerViewController, UITableViewDelega
                 vc.presentationTitle = dict["title"] as? String ?? "Imaginglink"
             }
         }
+		else if (segue.identifier == "FilterVC") {
+			let vc: FilterPublishViewController = segue.destination as! FilterPublishViewController
+			vc.delegate = self
+		}
     }
     @objc func likeUnLikeAction(_ sender: UIButton){
         let index = sender.tag
@@ -205,7 +244,7 @@ class PresentationViewController: BaseHamburgerViewController, UITableViewDelega
                 dict["is_my_favourite"] = 1
             }
             else{
-                if !self.isFromPresentations{
+				if PresentationViewController.self.isFromVC == .FavouritePresentations{
                     self.getSavedPresentations()
                     return
                 }
@@ -284,6 +323,10 @@ class PresentationViewController: BaseHamburgerViewController, UITableViewDelega
             ILUtility.hideProgressIndicator(controller: self)
         })
     }
+	
+	@IBAction func filterButtonAction(_ sender: UIButton){
+		self.performSegue(withIdentifier: "FilterVC", sender: nil)
+	}
 }
 extension PresentationViewController: PresentationTableViewCellDelegate{
 	fileprivate func reloadTableView(at row: Int) {
@@ -328,4 +371,11 @@ extension PresentationViewController: PresentationTableViewCellDelegate{
             ILUtility.hideProgressIndicator(controller: self)
         }
     }
+}
+
+extension PresentationViewController: FilterPublishViewControllerDelegte{
+	func UpdatedFilterResults(result: String){
+		PresentationViewController.isFromVC = .FilterVC
+		self.getDataResults(response: result)
+	}
 }

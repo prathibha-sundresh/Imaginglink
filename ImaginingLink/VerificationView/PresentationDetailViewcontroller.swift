@@ -93,35 +93,6 @@ class PresentationDetailViewcontroller: BaseHamburgerViewController, UITableView
     
     func clickonReplay(parentID: String) {
 		self.performSegue(withIdentifier: "AddCommentReplyVCID", sender: parentID)
-//        let alertController = UIAlertController(title: "Add New Comment", message: "", preferredStyle: UIAlertController.Style.alert)
-//
-//        alertController.addTextField(configurationHandler: {(textField: UITextField) in
-//            textField.placeholder = "Enter message"
-//            textField.addTarget(self, action: #selector(self.textChanged), for: .editingChanged)
-//        })
-//        saveAction = UIAlertAction(title: "Send", style: UIAlertAction.Style.default, handler: { alert -> Void in
-//            let firstTextField = alertController.textFields![0] as UITextField
-//            if firstTextField.text != ""{
-//                ILUtility.showProgressIndicator(controller: self)
-//                CoreAPI.sharedManaged.requestForcomments(comment: firstTextField.text!, parentcommentid: parentID, commentedcondition: "PUBLISHED", presentationid: self.userID!, successResponse: {(response) in
-//                    ILUtility.hideProgressIndicator(controller: self)
-//                    self.determineParentAndChildComments(response)
-//                }, faliure: {(error) in
-//                    ILUtility.hideProgressIndicator(controller: self)
-//                })
-//            }
-//            else{
-//                ILUtility.showAlert(message: "Please enter message", controller: self)
-//            }
-//        })
-//        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: {
-//            alert -> Void in
-//        })
-//
-//        alertController.addAction(saveAction!)
-//        alertController.addAction(cancelAction)
-//        saveAction?.isEnabled = false
-//        self.present(alertController, animated: true, completion: nil)
     }
     @objc func textChanged(_ sender:UITextField) {
         self.saveAction?.isEnabled  = (sender.text! != "")
@@ -201,10 +172,14 @@ class PresentationDetailViewcontroller: BaseHamburgerViewController, UITableView
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+		self.navigationController?.isNavigationBarHidden = false
+		self.tabBarController?.tabBar.isHidden = true
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         alomafireRequest?.cancel()
+		self.navigationController?.isNavigationBarHidden = true
+		self.tabBarController?.tabBar.isHidden = false
     }
     @IBAction func menuPressedButtonAction(_ sender: UIButton){
         

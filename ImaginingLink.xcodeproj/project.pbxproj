@@ -13,6 +13,7 @@
 		480A3BEC2359847100EA4EF4 /* PublishStepOneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480A3BEB2359847100EA4EF4 /* PublishStepOneViewController.swift */; };
 		480A3BEE235ADAFF00EA4EF4 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480A3BED235ADAFF00EA4EF4 /* PageViewController.swift */; };
 		480A3BF0235B762B00EA4EF4 /* CreatePresentationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480A3BEF235B762B00EA4EF4 /* CreatePresentationViewController.swift */; };
+		480D5DBE23E9293A0019848C /* MyPresentationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480D5DBD23E9293A0019848C /* MyPresentationsViewController.swift */; };
 		480D9B092177A32C000DEBFC /* ChangeEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480D9B082177A32C000DEBFC /* ChangeEmailViewController.swift */; };
 		481023F22180D79A00ED37A7 /* ResetPasswordWithMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481023F12180D79A00ED37A7 /* ResetPasswordWithMenuViewController.swift */; };
 		4810C815230C018B00B6ACA4 /* GoogleSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4810C814230C018B00B6ACA4 /* GoogleSans-Bold.ttf */; };
@@ -41,6 +42,7 @@
 		4897CCE520038E6500360EB7 /* SSHttpRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4897CCE420038E6500360EB7 /* SSHttpRequest.swift */; };
 		4897CCE720038E7200360EB7 /* SSHttpResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4897CCE620038E7200360EB7 /* SSHttpResponse.swift */; };
 		4897CCEA20039B9D00360EB7 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4897CCE920039B9D00360EB7 /* StringExtension.swift */; };
+		48A0799E23DC99F900495BC2 /* FilterPublishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A0799D23DC99F900495BC2 /* FilterPublishViewController.swift */; };
 		48A7A5F92330B196008A2EB3 /* SF-Pro-Display-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 48A7A5F82330B196008A2EB3 /* SF-Pro-Display-Medium.otf */; };
 		48B6EDBE235CD25A00C1152D /* UpdatePresentationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B6EDBD235CD25A00C1152D /* UpdatePresentationViewController.swift */; };
 		48B6EDC0235D4AE700C1152D /* FinalSubmissionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B6EDBF235D4AE700C1152D /* FinalSubmissionViewController.swift */; };
@@ -119,6 +121,7 @@
 		480A3BEB2359847100EA4EF4 /* PublishStepOneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublishStepOneViewController.swift; sourceTree = "<group>"; };
 		480A3BED235ADAFF00EA4EF4 /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		480A3BEF235B762B00EA4EF4 /* CreatePresentationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePresentationViewController.swift; sourceTree = "<group>"; };
+		480D5DBD23E9293A0019848C /* MyPresentationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPresentationsViewController.swift; sourceTree = "<group>"; };
 		480D9B082177A32C000DEBFC /* ChangeEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeEmailViewController.swift; sourceTree = "<group>"; };
 		481023F12180D79A00ED37A7 /* ResetPasswordWithMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordWithMenuViewController.swift; sourceTree = "<group>"; };
 		4810C814230C018B00B6ACA4 /* GoogleSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GoogleSans-Bold.ttf"; sourceTree = "<group>"; };
@@ -153,6 +156,7 @@
 		4897CCE420038E6500360EB7 /* SSHttpRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSHttpRequest.swift; sourceTree = "<group>"; };
 		4897CCE620038E7200360EB7 /* SSHttpResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSHttpResponse.swift; sourceTree = "<group>"; };
 		4897CCE920039B9D00360EB7 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		48A0799D23DC99F900495BC2 /* FilterPublishViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterPublishViewController.swift; sourceTree = "<group>"; };
 		48A7A5F82330B196008A2EB3 /* SF-Pro-Display-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Medium.otf"; sourceTree = "<group>"; };
 		48B6EDBD235CD25A00C1152D /* UpdatePresentationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatePresentationViewController.swift; sourceTree = "<group>"; };
 		48B6EDBF235D4AE700C1152D /* FinalSubmissionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalSubmissionViewController.swift; sourceTree = "<group>"; };
@@ -263,6 +267,8 @@
 				48B6EDBD235CD25A00C1152D /* UpdatePresentationViewController.swift */,
 				48B6EDBF235D4AE700C1152D /* FinalSubmissionViewController.swift */,
 				483DF7D0236807460081A157 /* CustomPopUpViewController.swift */,
+				48A0799D23DC99F900495BC2 /* FilterPublishViewController.swift */,
+				480D5DBD23E9293A0019848C /* MyPresentationsViewController.swift */,
 			);
 			path = Publishing;
 			sourceTree = "<group>";
@@ -742,6 +748,7 @@
 			files = (
 				AC4B6F59224BDB5700576C7D /* FloatingLabel.swift in Sources */,
 				48CCC16D239CDD7100CBD5F5 /* SendCommentTableViewCell.swift in Sources */,
+				480D5DBE23E9293A0019848C /* MyPresentationsViewController.swift in Sources */,
 				48216E3D2326C4EB00ADE8D5 /* TermsAndCondtionsAndPrivacyViewController.swift in Sources */,
 				ACD18C7420C551D50059DE7B /* TwoFactorAuthenticationViewcontroller.swift in Sources */,
 				485E3DCF2377F09E00B94F05 /* AddCommentReplyViewController.swift in Sources */,
@@ -760,6 +767,7 @@
 				BCFFFBB720BAEEB0003A0652 /* OTPViewcontroller.swift in Sources */,
 				AC3AD4E42188A72D00B1B81A /* LogOutTableViewCell.swift in Sources */,
 				480D9B092177A32C000DEBFC /* ChangeEmailViewController.swift in Sources */,
+				48A0799E23DC99F900495BC2 /* FilterPublishViewController.swift in Sources */,
 				4897CCE720038E7200360EB7 /* SSHttpResponse.swift in Sources */,
 				ACCA1D1721076D1B00383104 /* DashBoardCollectionViewCell.swift in Sources */,
 				AC12A32F217A27B900858A47 /* AlreadyHaveOTPViewController.swift in Sources */,
@@ -973,7 +981,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 23;
+				CURRENT_PROJECT_VERSION = 25;
 				DEVELOPMENT_TEAM = W8U434C9C6;
 				INFOPLIST_FILE = ImaginingLink/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -991,7 +999,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 23;
+				CURRENT_PROJECT_VERSION = 25;
 				DEVELOPMENT_TEAM = W8U434C9C6;
 				INFOPLIST_FILE = ImaginingLink/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;

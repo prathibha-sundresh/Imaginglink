@@ -80,12 +80,12 @@ class SSHttpRequest {
     }
         
     
-    func getMethod(dictParameter:[String:Any], url : String, successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void)  {
+    func getMethod(dictParameter:[String:Any], url : String,_ isEncodedUrl : Bool = false, successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void)  {
         let webServiceHandler:WebServiceHandler = WebServiceHandler()
         let token = UserDefaults.standard.value(forKey: kToken) as! String
         let header : HTTPHeaders = ["Authorization":"Bearer \(token)","Accept" : "application/json"]
         
-        webServiceHandler.GETRequest(requestParameter: (SSHttpRequest.baseURL?.appending(url))!, methodName: "GET", header: header, success: {(response) in
+        webServiceHandler.GETRequest(requestParameter: (SSHttpRequest.baseURL?.appending(url))!, methodName: "GET", isEncodedUrl ,header: header, success: {(response) in
             successResponse(response)
         }, faliure: {(error) in
             

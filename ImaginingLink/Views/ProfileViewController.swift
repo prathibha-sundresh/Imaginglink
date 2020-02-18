@@ -104,7 +104,6 @@ class ProfileViewController: BaseHamburgerViewController {
     }
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        print("dd")
         isFromPicker = false
     }
     func openCamera()

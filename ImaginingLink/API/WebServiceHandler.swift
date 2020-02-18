@@ -106,25 +106,27 @@ import Alamofire
         }
     }
     
-    func GETRequest(requestParameter:String,methodName:String,  header:HTTPHeaders?, success:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessageCode:String) -> Void)   {
+    func GETRequest(requestParameter:String,methodName:String, _ isEncodedUrl : Bool = false,  header:HTTPHeaders?, success:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessageCode:String) -> Void)   {
         
-        //let requestHeader = ["Authorization": "Bearer \(UserDefaults.standard.value(forKey: kToken) as! String)"]
-        
-        let requestURL:String? = requestParameter
+		var requestURL:String?
+		if isEncodedUrl {
+			requestURL = requestParameter.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+		}
+		else{
+			requestURL = requestParameter
+		}
         
         WebServiceHandler.manager.request(requestURL!, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: header!)
             .responseString { response in
                 print(response.request as Any)  // original URL request
                 print(response.response as Any) // URL response
                 print(response.result.value as Any)   // result of response serialization
-                let dictResponse = response
                 if  response.response?.statusCode == 200{
-                    
                         success( response.result.value! as AnyObject)
                         return
                     }
 
-                    guard let responeString : String = response.result.value else {
+                    guard let _ = response.result.value else {
                         faliure("error")
                         return
                     }

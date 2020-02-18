@@ -32,6 +32,7 @@ class SendCommentTableViewCell: UITableViewCell {
 	var myViewcontroller: UIViewController?
 	var delegate: SendCommentDelegate?
 	var presentationID: String = ""
+	@IBOutlet weak var sendCommentButton: UIButton!
 	
 	@IBAction func SendComment(_ sender: Any) {
         if (Textview.text!.count != 0) {
@@ -51,7 +52,7 @@ class SendCommentTableViewCell: UITableViewCell {
         }
     }
 	
-	func setUI(id: String) {
+	func setUI(id: String, dict: [String: Any]) {
 		presentationID = id
 		Textview.layer.borderWidth = 1.0
 		Textview.layer.borderColor = UIColor(red:0.73, green:0.80, blue:0.83, alpha:1.0).cgColor
@@ -60,6 +61,15 @@ class SendCommentTableViewCell: UITableViewCell {
 		Textview.placeholder = "Write your comment"
 		Textview.placeholderTextColor = UIColor(red:0.43, green:0.50, blue:0.53, alpha:1.0)
 		Textview.contentInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0);
+		let status = dict["status"] as? String ?? ""
+		if status == "REVIEW_EDITED" {
+			Textview.isHidden = true
+			sendCommentButton.isHidden = true
+		}
+		else {
+			Textview.isHidden = false
+			sendCommentButton.isHidden = false
+		}
 	}
 	
 }

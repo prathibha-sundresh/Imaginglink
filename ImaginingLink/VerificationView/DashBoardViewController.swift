@@ -33,6 +33,7 @@ class DashBoardViewController:  BaseHamburgerViewController {
         let storyBoard = UIStoryboard(name: "DashBoard", bundle: nil)
         let vc = storyBoard.instantiateViewController(withIdentifier: "PresentationViewController") as! PresentationViewController
         vc.isFromPresentations = true
+		PresentationViewController.isFromVC = PresentationViewController.VCTypes.Presentations
         self.navigationController?.pushViewController(vc, animated: true)
 //    self.tabBarController?.selectedIndex = 0
     }

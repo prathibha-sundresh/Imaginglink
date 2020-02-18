@@ -44,7 +44,7 @@ class RemovePresentationsFileCell: UITableViewCell,UIDocumentPickerDelegate {
 			fileNameButton.isHidden = true
 			downloadableConstraintH.constant = 0
 			downloadableButton.isSelected = false
-			delegate?.updateFileUploadStatus(fileUpload: isFileUploaded, url: URL(string: textField.text!))
+			delegate?.updateFileUploadStatus(fileUpload: false, url: URL(string: textField.text!))
 		}
 	}
 	

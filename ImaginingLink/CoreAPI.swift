@@ -570,4 +570,36 @@ class CoreAPI {
             faliure(error)
         })
     }
+	
+	func filterPublishPresentation(params:[String:Any], successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void) {
+		let stringURL = KFilterPublishPresentation + "?sortby=\(params["sortby"]!)&section= \(params["section"]!) &subsections=\(params["subsections"]!)"
+		
+		let request =  SSHttpRequest(withuUrl: stringURL)
+		
+		request.getMethod(dictParameter: [:], url: stringURL, true, successResponse: {(response) in
+            successResponse(response)
+        }, faliure: {(error) in
+            faliure(error)
+        })
+    }
+	//filterUserPresentation
+	func filterUserPresentation(params:[String:Any], successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void) {
+		let stringURL = KFilterUserPresentation
+		let request =  SSHttpRequest(withuUrl: stringURL)
+		request.getMethod(dictParameter: [:], url: stringURL, true, successResponse: {(response) in
+            successResponse(response)
+        }, faliure: {(error) in
+            faliure(error)
+        })
+		
+    }
+	
+	func authorApproveOrRejectEditorChangesToPresentation(params:[String:Any], successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void) {
+        let request =  SSHttpRequest(withuUrl: KUserPresentationAcceptOrReject)
+        request.postMethodWithHeaderasToken(dictParameter: params, url: KUserPresentationAcceptOrReject, header: getHeader(), successResponse: {(response) in
+            successResponse(response)
+        }, faliure: {(error) in
+            faliure(error)
+        })
+    }
 }

@@ -13,6 +13,14 @@ class UserDetailsTableViewCell: UITableViewCell {
 	@IBOutlet weak var UserImageView: UIImageView!
 	@IBOutlet weak var deleteFileBtn: UIButton!
 	func setUI(dict: [String: Any]) {
+		
+		let status = dict["status"] as? String ?? ""
+		if status == "REVIEW_EDITED" {
+			deleteFileBtn.isHidden = true
+		}
+		else {
+			deleteFileBtn.isHidden = false
+		}
 		if let author : [String : Any] = dict["author"] as? [String:Any] {
 			UserNameLbl.text! = (author["name"] as! String).capitalized
             if let photo : String = author["profile_photo"] as? String {
@@ -60,6 +68,7 @@ class ImageViewCell: UITableViewCell,UIScrollViewDelegate {
             currentPageLabel.text = "\(currentPage + 1) of \(images.count)"
             leftButton.isHidden = true
             rightButton.isHidden = false
+			currentPageLabel.isHidden = false
         }
         else{
             currentPageLabel.isHidden = true
@@ -180,6 +189,9 @@ class UpdatePresentationViewController: UIViewController {
 	var sectionTitle: String = ""
 	var coAuthors: [[String: Any]] = []
 	@IBOutlet weak var saveAsDraftButton: UIButton!
+	@IBOutlet weak var submitForReviewButton: UIButton!
+	@IBOutlet weak var submitForReviewViewH: NSLayoutConstraint!
+	var isFromFilterCard: Bool = false
     override func viewDidLoad() {
         super.viewDidLoad()
 		
@@ -192,9 +204,22 @@ class UpdatePresentationViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+	override func viewWillAppear(_ animated: Bool) {
+		self.tabBarController?.tabBar.isHidden = true
+	}
+	
+	override func viewWillDisappear(_ animated: Bool) {
+		self.tabBarController?.tabBar.isHidden = false
+	}
+	
     @IBAction func backButtonAction(_ sender: UIButton) {
-		let appDelegate = UIApplication.shared.delegate as! AppDelegate
-		appDelegate.openDashBoardScreen()
+		if isFromFilterCard{
+			self.navigationController?.popViewController(animated: true)
+		}
+		else {
+			let appDelegate = UIApplication.shared.delegate as! AppDelegate
+			appDelegate.openDashBoardScreen()
+		}
     }
     @IBAction func submitForReviewBtnAction(_ sender: UIButton) {
 		if isDeletedFile{
@@ -246,6 +271,9 @@ class UpdatePresentationViewController: UIViewController {
 				self.originalResponseDict = dict1
 				self.selectedSubsections = self.responseDict["sub_sections"] as? [String] ?? []
 				self.selectedCoauthors = self.responseDict["co_authors"] as? [[String: Any]] ?? []
+				if self.isFromFilterCard {
+					self.showHideSaveAsDraftAndSubmitButton()
+				}
 				if let reviewComments = dict1["review_comments"] as? [[String: Any]], reviewComments.count > 0 {
 					self.getParentAndChildComments(dataArray: reviewComments)
 				}
@@ -253,6 +281,27 @@ class UpdatePresentationViewController: UIViewController {
 			self.updatePresentationTV.reloadData()
 		}) { (error) in
 			ILUtility.hideProgressIndicator(controller: self)
+		}
+	}
+	
+	func showHideSaveAsDraftAndSubmitButton() {
+		let status = responseDict["status"] as? String ?? ""
+		let isCoauthor = responseDict["is_co_author"] as? Bool ?? false
+		if status == "DRAFT" && !isCoauthor{
+			//Draft
+			saveAsDraftButton.isHidden = true
+			submitForReviewButton.isHidden = false
+		}
+		else if (status == "DRAFT" && isCoauthor) ||  status == "REVIEW_EDITED"{
+			//Coauthor card or EDITOR MODIFIED
+			saveAsDraftButton.isHidden = true
+			submitForReviewButton.isHidden = true
+			submitForReviewViewH.constant = 0
+		}
+		else if status == "NEED MODIFICATION" {
+			//NEED MODIFICATION
+			saveAsDraftButton.isHidden = true
+			submitForReviewButton.isHidden = false
 		}
 	}
 	
@@ -461,7 +510,7 @@ extension UpdatePresentationViewController: UITableViewDelegate, UITableViewData
 		}
 		else if indexPath.section == 3 {
 			let sendCommentPresentationCell: SendCommentTableViewCell = tableView.dequeueReusableCell(withIdentifier: "CommentTableViewCellID", for: indexPath) as! SendCommentTableViewCell
-			sendCommentPresentationCell.setUI(id: presentationID)
+			sendCommentPresentationCell.setUI(id: presentationID, dict: responseDict)
 			sendCommentPresentationCell.myViewcontroller = self
 			sendCommentPresentationCell.delegate = self
 			cell = sendCommentPresentationCell
@@ -473,6 +522,13 @@ extension UpdatePresentationViewController: UITableViewDelegate, UITableViewData
             commentListCell.replyButton.tag = indexPath.row
             commentListCell.setupUI(dic: parentAndChildComments[indexPath.row])
             commentListCell.separatorInset = UIEdgeInsets(top: 0, left: commentListCell.bounds.size.width, bottom: 0, right: 0);
+			let status = responseDict["status"] as? String ?? ""
+			if status == "REVIEW_EDITED" {
+				commentListCell.isUserInteractionEnabled = false
+			}
+			else {
+				commentListCell.isUserInteractionEnabled = true
+			}
             cell = commentListCell
 		}
 		cell.selectionStyle = .none

@@ -46,6 +46,8 @@ class EditPresentationTableViewCell: UITableViewCell {
 	var myController: UIViewController?
 	@IBOutlet weak var subSectionConstraintY: NSLayoutConstraint!
 	@IBOutlet weak var allowDownloadableTFConstraintH: NSLayoutConstraint!
+	@IBOutlet weak var addCoAuthorsH: NSLayoutConstraint!
+	@IBOutlet weak var coAuthorsDropDownButton: UIButton!
 	var isSubSectionEmpty: Bool = false {
 		didSet{
 			self.subSectionConstraintY.constant = isSubSectionEmpty ? 60 : 20
@@ -81,6 +83,10 @@ class EditPresentationTableViewCell: UITableViewCell {
 			allowDownloadableTF.isHidden = false
 		}
 		
+		if let tmpDict = dict["author"] as? [String: Any]{
+			universityTF.text = tmpDict["university"] as? String ?? ""
+		}
+		
 		titleTF.text = dict["title"] as? String ?? ""
 		sectionTitleTF.text = dict["section"] as? String ?? ""
 		if let keywords = dict["keywords"] as? [String] {
@@ -110,12 +116,38 @@ class EditPresentationTableViewCell: UITableViewCell {
 			selectedCoAuthorsTextLabel.text = "No co-author added"
 		}
 		descriptionTF.text = dict["description"] as? String ?? ""
-		universityTF.text = dict["university"] as? String ?? ""
 		allowDownloadableTF.text = (dict["is_downloadable"] as? Bool ?? false) ? "Yes" : "No"
 		selectedSubsections = dict["sub_sections"] as? [String] ?? []
 		isSubSectionEmpty = selectedSubsections.isEmpty ? true : false
 		subSectionTextLabel.text = isSubSectionEmpty ? " Sub-section(s)*" : "Sub-section(s)*"
 		subSectionsCV.reloadData()
+		
+		let status = dict["status"] as? String ?? ""
+		let isCoauthor = dict["is_co_author"] as? Bool ?? false
+		
+		if (status == "DRAFT" && isCoauthor) {
+			//Coauthor card
+			addCoAuthorsH.constant = 0
+			coAuthorsDropDownButton.isHidden = true
+		}
+		else if status == "REVIEW_EDITED" {
+			//EDITOR MODIFIED
+			addCoAuthorsH.constant = 0
+			coAuthorsDropDownButton.isHidden = true
+			editButton.isHidden = true
+			editButtonEnabled = false
+			self.isUserInteractionEnabled = false
+			saveButtonConstraintH.constant = 0
+		}
+		else if status == "NEED MODIFICATION" {
+			//NEED MODIFICATION
+			addCoAuthorsH.constant = 0
+			coAuthorsDropDownButton.isHidden = true
+		}
+		else{
+			addCoAuthorsH.constant = 36
+			coAuthorsDropDownButton.isHidden = false
+		}
 	}
 	
 	override func awakeFromNib() {
@@ -208,6 +240,7 @@ extension EditPresentationTableViewCell: UICollectionViewDelegate,UICollectionVi
         cell.nameButton.setTitle("    \(selectedSubsections[indexPath.item])   ✕    ", for: .normal)
 		cell.nameButton.tag = indexPath.item
 		cell.nameButton.addTarget(self, action: #selector(removeSubSectionAction), for: .touchUpInside)
+		cell.nameButton.isEnabled = editButtonEnabled
         cell.SetUI()
         return cell
     }

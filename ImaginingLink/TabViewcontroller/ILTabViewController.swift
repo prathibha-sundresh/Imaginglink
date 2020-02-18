@@ -8,11 +8,11 @@
 
 import UIKit
 
-class ILTabViewController: UITabBarController {
+class ILTabViewController: UITabBarController,UITabBarControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.delegate = self
         // Do any additional setup after loading the view.
 //        addSlideMenuButton()
 //        setupMiddleButton()
@@ -23,11 +23,12 @@ class ILTabViewController: UITabBarController {
         // Dispose of any resources that can be recreated.
     }
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
-        
     }
     
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-//       addSlideMenuButton()
+		if item.tag == 102 {
+			PresentationViewController.isFromVC = .FavouritePresentations
+		}
     }
     
     func setupMiddleButton() {
@@ -168,4 +169,8 @@ class ILTabViewController: UITabBarController {
         let destViewController : UIViewController? = storyboard.instantiateViewController(withIdentifier: strIdentifier)
         self.navigationController!.pushViewController(destViewController!, animated: true)
     }
+	
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		
+	}
 }
