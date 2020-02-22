@@ -173,11 +173,13 @@ class MyPresentationsViewController: BaseHamburgerViewController {
 			vc.isFromFilterCard = true
 			vc.sections = sections
 			vc.subSections = subSections
+			vc.delegate = self
 		}
 		else if segue.identifier == "FinalSubmissionVCID" {
 			let vc : FinalSubmissionViewController = segue.destination as! FinalSubmissionViewController
 			vc.presentationID = sender as? String ?? ""
-			//vc.delegate = self
+			vc.isFromPresentationsFiltered = true
+			vc.delegate = self
 		}
 		else if (segue.identifier == "PresentationDetail") {
             let vc : PresentationDetailViewcontroller = segue.destination as! PresentationDetailViewcontroller
@@ -245,5 +247,21 @@ extension MyPresentationsViewController: UITableViewDelegate, UITableViewDataSou
 		if dataArray[indexPath.row]["status"] as? String ?? "" == "PUBLISHED" {
 			navigateToSegue(dataArray[indexPath.row], identifier: "PresentationDetail")
 		}
+	}
+}
+
+extension MyPresentationsViewController: FinalSubmissionViewControllerDelegate{
+	func removePresentationCard(id: String) {
+		if let index = dataArray.firstIndex(where: {$0["id"] as! String == id}) {
+			self.dataArray.remove(at: index)
+			self.isShowHideResutlsLbl = self.dataArray.count > 0
+			self.myPresenationTableView.reloadData()
+		}
+	}
+}
+
+extension MyPresentationsViewController: UpdatePresentationViewControllerDelegate{
+	func sendPresentationToRemove(id: String) {
+		removePresentationCard(id: id)
 	}
 }

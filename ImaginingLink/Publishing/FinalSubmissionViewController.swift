@@ -22,6 +22,7 @@ class TextCell1: UITableViewCell {
 
 @objc protocol FinalSubmissionViewControllerDelegate {
 	@objc optional func pushToPresentationScreen()
+	@objc optional func removePresentationCard(id: String)
 }
 
 enum CellIdentifiers: String {
@@ -37,6 +38,7 @@ class FinalSubmissionViewController: UIViewController {
     @IBOutlet weak var checkUncheckButton: UIButton!
 	var presentationID: String = ""
 	var delegate: FinalSubmissionViewControllerDelegate?
+	var isFromPresentationsFiltered: Bool = false
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.tableFooterView = checkMarkFooterView
@@ -68,6 +70,10 @@ class FinalSubmissionViewController: UIViewController {
 				let alert = UIAlertController(title: "Imaginglink", message: "Presentation submitted for review, We will notify you once editor review complete. Please wait redirecting..", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { action in
 					self.dismiss(animated: true) {
+						if self.isFromPresentationsFiltered {
+							self.delegate?.removePresentationCard?(id: self.presentationID)
+							return
+						}
 						self.delegate?.pushToPresentationScreen?()
 					}
                 }))
@@ -78,7 +84,7 @@ class FinalSubmissionViewController: UIViewController {
 		}
     }
     
-    @IBAction func cancelButtonAction(_ sender: UIButton) {
+    @IBAction func cancelButtonAction(_ sender: UIButton?) {
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -101,11 +107,11 @@ class FinalSubmissionViewController: UIViewController {
     */
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "ComingSoon"{
+        if segue.identifier == "TermsAndConditionsPolicyID"{
             //Terms And Conditions
             let vc: TermsAndCondtionsAndPrivacyViewController = segue.destination as! TermsAndCondtionsAndPrivacyViewController
-            if sender as? String == ""{
-                vc.isClickedFrom = "Terms And Conditions"
+            if sender as? String == "Terms & Conditions"{
+                vc.isClickedFrom = "Terms & Conditions"
             }
             else{
                 vc.isClickedFrom = "Privacy Policy"
@@ -148,7 +154,7 @@ extension FinalSubmissionViewController: UITextViewDelegate {
         self.navigationController?.navigationBar.tintColor = UIColor(red:0.29, green:0.29, blue:0.29, alpha:1.0)
         if URL.absoluteString == termsandconditionUrl{
             self.navigationItem.title = "Terms & Condition"
-            self.performSegue(withIdentifier: "TermsAndConditionsPolicyID", sender: "Terms & Condition")
+            self.performSegue(withIdentifier: "TermsAndConditionsPolicyID", sender: "Terms & Conditions")
         }
         else{
             self.navigationItem.title = "Privacy Policy"

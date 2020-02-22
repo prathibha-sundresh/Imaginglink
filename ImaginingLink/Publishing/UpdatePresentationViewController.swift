@@ -155,7 +155,9 @@ extension UpdatePresentationViewController: FullSizeImageViewDelegate{
 	}
 }
 
-
+@objc protocol UpdatePresentationViewControllerDelegate {
+	@objc optional func sendPresentationToRemove(id: String)
+}
 
 class UpdatePresentationViewController: UIViewController {
 	
@@ -168,6 +170,7 @@ class UpdatePresentationViewController: UIViewController {
 			return
 		}
 	}
+	var delegate: UpdatePresentationViewControllerDelegate?
     @IBOutlet weak var updatePresentationTV: UITableView!
 	var responseDict = [String: Any]()
 	var originalResponseDict = [String: Any]()
@@ -369,6 +372,7 @@ class UpdatePresentationViewController: UIViewController {
 		else if segue.identifier == "FinalSubmissionVCID" {
 			let vc : FinalSubmissionViewController = segue.destination as! FinalSubmissionViewController
 			vc.presentationID = presentationID
+			vc.isFromPresentationsFiltered = isFromFilterCard
 			vc.delegate = self
 		}
 		else if segue.identifier == "PopUpVCID" {
@@ -718,5 +722,10 @@ extension UpdatePresentationViewController: FinalSubmissionViewControllerDelegat
 		let vc = storyBoard.instantiateViewController(withIdentifier: "PresentationViewController") as! PresentationViewController
 		vc.isFromPresentations = true
 		self.navigationController?.pushViewController(vc, animated: true)
+	}
+	
+	func removePresentationCard(id: String){
+		self.navigationController?.popViewController(animated: true)
+		self.delegate?.sendPresentationToRemove?(id: id)
 	}
 }

@@ -19,7 +19,7 @@ class FilterPublishViewController: BaseHamburgerViewController {
 	@IBOutlet weak var sectionButton: UIButton!
 	@IBOutlet weak var subSectionButton: UIButton!
 	@IBOutlet weak var applyButton: UIButton!
-	
+	@IBOutlet weak var subSectionTextView: UITextView!
 	var sections: [[String: Any]] = []
 	var myPresentationsArray: [[String: Any]] = []
 	var delegate: FilterPublishViewControllerDelegte?
@@ -99,7 +99,6 @@ class FilterPublishViewController: BaseHamburgerViewController {
 		presentationTypeButton.setTitle("", for: .normal)
 		sortByButton.setTitle("", for: .normal)
 		sectionButton.setTitle("", for: .normal)
-		subSectionButton.setTitle("", for: .normal)
 		isApplyButtonEnabled = false
 	}
 	
@@ -108,7 +107,7 @@ class FilterPublishViewController: BaseHamburgerViewController {
 		if presentationTypeButton.title(for: .normal) ?? "" == "Published Presentations" {
 			let sortby = sortByButton.title(for: .normal) ?? ""
 			let section = sectionButton.title(for: .normal) ?? ""
-			let subsections = subSectionButton.title(for: .normal) ?? ""
+			let subsections = subSectionTextView.text!
 			let requestDict = ["sortby": sortby, "section": section, "subsections": subsections]
 			ILUtility.showProgressIndicator(controller: self)
 			CoreAPI.sharedManaged.filterPublishPresentation(params: requestDict, successResponse: { (response) in
@@ -240,8 +239,12 @@ class FilterPublishViewController: BaseHamburgerViewController {
 				})
 			}
 			else if sender as? Int == 103 {
+				vc.selectionType = .Multiple
 				let sectionStr = sectionButton.title(for: .normal) ?? ""
-				selectedTitleStr = [subSectionButton.title(for: .normal) ?? ""]
+				let splitStringArray = (subSectionTextView.text!).split(separator: ",").map({ (substring) in
+					return String(substring)
+				})
+				selectedTitleStr = splitStringArray
 				var subSectionsTmpArray = [[String: Any]]()
 				if sectionStr != "" {
 					if let tmpArray = subSections[sectionStr] as? [[String: Any]]{
@@ -276,17 +279,17 @@ class FilterPublishViewController: BaseHamburgerViewController {
 					self.sectionButton.setTitle(titles[0], for: .normal)
 				}
 				else if sender as? Int == 103 {
-					self.subSectionButton.setTitle(titles[0], for: .normal)
+					self.subSectionTextView.text = titles.joined(separator: ",")
 				}
 				
 				let pType = self.presentationTypeButton.title(for: .normal) ?? ""
 				let sortType = self.sortByButton.title(for: .normal) ?? ""
 				let sectionType = self.sectionButton.title(for: .normal) ?? ""
-				let subSectionType = self.subSectionButton.title(for: .normal) ?? ""
+				let subSectionType = self.subSectionTextView.text!
 				
 				if pType == "Published Presentations" {
 					
-					if sortType == "" && sectionType == "" && subSectionType == ""{
+					if sortType == "" || sectionType == "" || subSectionType == ""{
 						self.isApplyButtonEnabled = false
 					}
 					else{
