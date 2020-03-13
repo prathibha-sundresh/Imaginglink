@@ -135,14 +135,14 @@ class MyPresentationsTableViewCell: UITableViewCell,UIWebViewDelegate {
 
 class MyPresentationsViewController: BaseHamburgerViewController {
 	@IBOutlet weak var myPresenationTableView: UITableView!
-	@IBOutlet weak var noResutlsLbl: UILabel!
+	@IBOutlet weak var noPresentationsFoundView: UIImageView!
 	@IBOutlet weak var footerView: UIView!
 	var dataArray : [[String:Any]] = []
 	var sections: [[String: Any]] = []
     var subSections: [String: Any] = [:]
 	var isShowHideResutlsLbl: Bool = false {
 		didSet {
-			noResutlsLbl.isHidden = isShowHideResutlsLbl
+			noPresentationsFoundView.isHidden = isShowHideResutlsLbl
 			myPresenationTableView.isHidden = !isShowHideResutlsLbl
 		}
 	}
@@ -184,6 +184,7 @@ class MyPresentationsViewController: BaseHamburgerViewController {
 		else if (segue.identifier == "PresentationDetail") {
             let vc : PresentationDetailViewcontroller = segue.destination as! PresentationDetailViewcontroller
             vc.userID = sender as? String
+			vc.isComingFromMyPresentation = true
         }
     }
     
@@ -193,6 +194,10 @@ class MyPresentationsViewController: BaseHamburgerViewController {
 	
 	@objc func previewBtnAction(_ sender: UIButton) {
 		navigateToSegue(dataArray[sender.tag], identifier: "UpdatePresentationVCID")
+	}
+	
+	@objc func previewBtn2Action(_ sender: UIButton) {
+		navigateToSegue(dataArray[sender.tag], identifier: "PresentationDetail")
 	}
 	
 	@objc func submitForReviewAction(_ sender: UIButton) {
@@ -218,6 +223,14 @@ class MyPresentationsViewController: BaseHamburgerViewController {
 			self.myPresenationTableView.reloadData()
 			self.isShowHideResutlsLbl = self.dataArray.count > 0
 			ILUtility.hideProgressIndicator(controller: self)
+			let isApproved = requestDict["is_approved"] as? Int ?? 0
+			if isApproved == 0 {
+				ILUtility.showAlert(message: "Rejected editor changes and presentation will move to rejected list", controller: self)
+			}
+			else{
+				ILUtility.showAlert(message: "Approved to editor changes and published", controller: self)
+			}
+			
 		}) { (error) in
 			ILUtility.hideProgressIndicator(controller: self)
 		}
@@ -236,7 +249,7 @@ extension MyPresentationsViewController: UITableViewDelegate, UITableViewDataSou
 		cell.onlyPreviewBtn1.tag = indexPath.row
 		cell.previewBtn.addTarget(self, action: #selector(previewBtnAction), for: .touchUpInside)
 		cell.onlyPreviewBtn1.addTarget(self, action: #selector(previewBtnAction), for: .touchUpInside)
-		cell.previewBtn2.addTarget(self, action: #selector(previewBtnAction), for: .touchUpInside)
+		cell.previewBtn2.addTarget(self, action: #selector(previewBtn2Action), for: .touchUpInside)
 		cell.approveBtn.addTarget(self, action: #selector(acceptAction), for: .touchUpInside)
 		cell.rejectBtn.addTarget(self, action: #selector(rejectAction), for: .touchUpInside)
 		cell.submitForReviewButton.addTarget(self, action: #selector(submitForReviewAction), for: .touchUpInside)

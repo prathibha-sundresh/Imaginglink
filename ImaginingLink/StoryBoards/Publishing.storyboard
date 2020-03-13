@@ -1280,6 +1280,7 @@
                                             <outlet property="allowDownloadableTF" destination="cgi-VW-Xie" id="MRa-zp-lge"/>
                                             <outlet property="allowDownloadableTFConstraintH" destination="N5d-lN-781" id="EJw-wb-eXA"/>
                                             <outlet property="coAuthorsConstraintY" destination="wRS-U5-DFZ" id="U30-jH-N8Q"/>
+                                            <outlet property="coAuthorsDescriptionLblH" destination="fdy-2U-Zvd" id="f4a-wR-G5Z"/>
                                             <outlet property="coAuthorsDropDownButton" destination="Rnu-Fh-ruE" id="ZCU-zQ-s7v"/>
                                             <outlet property="coAuthorsTF" destination="VAa-WN-nBV" id="bg5-3k-XzD"/>
                                             <outlet property="descriptionTF" destination="Vca-gb-5YG" id="ubn-7c-5OY"/>
@@ -1480,6 +1481,7 @@ nstrate the visual form</string>
                                             <outlet property="TimeLabel" destination="glO-X3-2gS" id="Wgn-tr-7Ed"/>
                                             <outlet property="TitleView" destination="nUu-Xy-94E" id="CvB-se-Lfx"/>
                                             <outlet property="imageXPosition" destination="LBe-HT-17W" id="Uy1-kb-FzU"/>
+                                            <outlet property="nameLblH" destination="c0a-c0-3c3" id="RMw-Nl-C6S"/>
                                             <outlet property="replyButton" destination="4gW-sU-zKj" id="ZcT-W1-gL0"/>
                                         </connections>
                                     </tableViewCell>
@@ -1834,6 +1836,15 @@ nstrate the visual form</string>
                                             <action selector="menuButtonAction:" destination="LwV-08-p1z" eventType="touchUpInside" id="owl-W7-t9i"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Presentations filter" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FMP-dH-vnQ" userLabel="NameLabel">
+                                        <rect key="frame" x="54" y="8" width="187" height="49"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="49" id="RLC-bO-UIj"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="GoogleSans-Medium" family="Google Sans" pointSize="18"/>
+                                        <color key="textColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pCM-FN-Ugu">
                                         <rect key="frame" x="0.0" y="63" width="320" height="1"/>
                                         <color key="backgroundColor" red="0.59215686270000001" green="0.59215686270000001" blue="0.59215686270000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -1847,6 +1858,9 @@ nstrate the visual form</string>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
+                                    <constraint firstItem="a8G-nF-jqi" firstAttribute="leading" secondItem="FMP-dH-vnQ" secondAttribute="trailing" constant="13" id="3rI-fy-YcB"/>
+                                    <constraint firstItem="FMP-dH-vnQ" firstAttribute="leading" secondItem="bGx-8D-jKs" secondAttribute="trailing" constant="4" id="ARQ-Y2-fEs"/>
+                                    <constraint firstItem="FMP-dH-vnQ" firstAttribute="top" secondItem="fWs-Oc-KoN" secondAttribute="top" constant="8" id="Cl2-Om-BaF"/>
                                     <constraint firstItem="a8G-nF-jqi" firstAttribute="top" secondItem="fWs-Oc-KoN" secondAttribute="top" constant="8" id="EOh-iG-F7P"/>
                                     <constraint firstAttribute="height" constant="64" id="KhA-as-MhH"/>
                                     <constraint firstItem="pCM-FN-Ugu" firstAttribute="leading" secondItem="fWs-Oc-KoN" secondAttribute="leading" id="KkV-jm-saw"/>
@@ -2671,27 +2685,33 @@ not allowed once submitted.</string>
             <objects>
                 <viewController id="TCQ-EK-iTZ" customClass="CustomPopUpViewController" customModule="ImagingLink" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cg0-Xw-2wM">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view alpha="0.69999998807907104" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H6P-Pg-x5N">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="71T-PR-U3V">
-                                <rect key="frame" x="275" y="9" width="40" height="40"/>
+                                <rect key="frame" x="225" y="10" width="80" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="QT7-G7-8af"/>
-                                    <constraint firstAttribute="width" constant="40" id="bvO-Mk-nYk"/>
+                                    <constraint firstAttribute="height" constant="30" id="QT7-G7-8af"/>
+                                    <constraint firstAttribute="width" constant="80" id="bvO-Mk-nYk"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="GoogleSans-Regular" family="Google Sans" pointSize="22"/>
-                                <state key="normal" title="✕"/>
+                                <fontDescription key="fontDescription" name="GoogleSans-Regular" family="Google Sans" pointSize="16"/>
+                                <state key="normal" title="Apply"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="closeButtonAction:" destination="TCQ-EK-iTZ" eventType="touchUpInside" id="ufC-t6-5b4"/>
+                                    <action selector="applyButtonAction:" destination="TCQ-EK-iTZ" eventType="touchUpInside" id="J6m-kJ-ouJ"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="CqT-Hx-8ny">
-                                <rect key="frame" x="0.0" y="103" width="320" height="445"/>
+                                <rect key="frame" x="0.0" y="94" width="320" height="474"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
@@ -2710,7 +2730,7 @@ not allowed once submitted.</string>
                                 </connections>
                             </tableView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search coauthor name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WrB-mb-kaK">
-                                <rect key="frame" x="10" y="59" width="300" height="34"/>
+                                <rect key="frame" x="10" y="50" width="300" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="9Iu-zN-sUc"/>
                                 </constraints>
@@ -2723,12 +2743,12 @@ not allowed once submitted.</string>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="m0A-Fs-1bg" firstAttribute="trailing" secondItem="71T-PR-U3V" secondAttribute="trailing" constant="5" id="BAZ-0I-1KH"/>
+                            <constraint firstItem="m0A-Fs-1bg" firstAttribute="trailing" secondItem="71T-PR-U3V" secondAttribute="trailing" constant="15" id="BAZ-0I-1KH"/>
                             <constraint firstItem="H6P-Pg-x5N" firstAttribute="top" secondItem="m0A-Fs-1bg" secondAttribute="top" id="GJC-GM-dlO"/>
                             <constraint firstItem="WrB-mb-kaK" firstAttribute="leading" secondItem="m0A-Fs-1bg" secondAttribute="leading" constant="10" id="HXR-AG-gK6"/>
                             <constraint firstItem="H6P-Pg-x5N" firstAttribute="trailing" secondItem="m0A-Fs-1bg" secondAttribute="trailing" id="IF4-aN-pox"/>
                             <constraint firstItem="CqT-Hx-8ny" firstAttribute="trailing" secondItem="m0A-Fs-1bg" secondAttribute="trailing" id="IN6-u5-4Mc"/>
-                            <constraint firstItem="71T-PR-U3V" firstAttribute="top" secondItem="m0A-Fs-1bg" secondAttribute="top" constant="9" id="JRs-K0-CB1"/>
+                            <constraint firstItem="71T-PR-U3V" firstAttribute="top" secondItem="m0A-Fs-1bg" secondAttribute="top" constant="10" id="JRs-K0-CB1"/>
                             <constraint firstAttribute="bottom" secondItem="CqT-Hx-8ny" secondAttribute="bottom" id="NvE-hb-F1F"/>
                             <constraint firstItem="CqT-Hx-8ny" firstAttribute="top" secondItem="WrB-mb-kaK" secondAttribute="bottom" constant="10" id="PIe-Sy-F5Q"/>
                             <constraint firstItem="CqT-Hx-8ny" firstAttribute="leading" secondItem="m0A-Fs-1bg" secondAttribute="leading" id="QXW-K2-Qds"/>
@@ -2740,6 +2760,7 @@ not allowed once submitted.</string>
                         <viewLayoutGuide key="safeArea" id="m0A-Fs-1bg"/>
                     </view>
                     <connections>
+                        <outlet property="applyButton" destination="71T-PR-U3V" id="07o-GH-MuW"/>
                         <outlet property="searchTF" destination="WrB-mb-kaK" id="Rba-Lc-dnS"/>
                         <outlet property="searchTFConstraintH" destination="9Iu-zN-sUc" id="m6J-w6-UUM"/>
                         <outlet property="titleTableView" destination="CqT-Hx-8ny" id="Qj4-B4-0Dr"/>
@@ -2896,7 +2917,7 @@ not allowed once submitted.</string>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Diffusion-Weighted MR imaging (DWI)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q1m-ah-UWw">
-                                                            <rect key="frame" x="11" y="65" width="238.5" height="28"/>
+                                                            <rect key="frame" x="11" y="65" width="278" height="28"/>
                                                             <fontDescription key="fontDescription" name="GoogleSans-Regular" family="Google Sans" pointSize="14"/>
                                                             <color key="textColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -3094,7 +3115,6 @@ not allowed once submitted.</string>
                                                                 <constraint firstAttribute="trailing" secondItem="9bm-3d-Ep9" secondAttribute="trailing" constant="10" id="pYH-bc-DBy"/>
                                                                 <constraint firstItem="9bm-3d-Ep9" firstAttribute="top" secondItem="lEf-jK-T4N" secondAttribute="top" constant="15" id="qD7-e3-0Mg"/>
                                                                 <constraint firstItem="18x-jJ-RvW" firstAttribute="leading" secondItem="lEf-jK-T4N" secondAttribute="leading" constant="10" id="swu-qM-ZFL"/>
-                                                                <constraint firstAttribute="width" constant="300" id="yHO-3o-fiQ"/>
                                                             </constraints>
                                                         </view>
                                                     </subviews>
@@ -3113,6 +3133,7 @@ not allowed once submitted.</string>
                                                         <constraint firstItem="iMJ-37-FtH" firstAttribute="top" secondItem="tLM-YK-L0r" secondAttribute="bottom" constant="10" id="HiJ-HX-K6v"/>
                                                         <constraint firstItem="Y8M-jH-TfN" firstAttribute="leading" secondItem="2MT-pm-XE4" secondAttribute="leading" id="Inz-Er-Frb"/>
                                                         <constraint firstAttribute="bottom" secondItem="iMJ-37-FtH" secondAttribute="bottom" constant="10" id="JHu-HG-3lG"/>
+                                                        <constraint firstAttribute="trailing" secondItem="lEf-jK-T4N" secondAttribute="trailing" id="MSq-zH-jUt"/>
                                                         <constraint firstItem="uEe-ji-FVS" firstAttribute="bottom" secondItem="tLM-YK-L0r" secondAttribute="bottom" id="N6i-Af-YU5"/>
                                                         <constraint firstItem="PsF-JA-yp6" firstAttribute="top" secondItem="UpE-Nt-XsP" secondAttribute="top" id="Ngb-nx-Qcb"/>
                                                         <constraint firstAttribute="trailing" secondItem="tLM-YK-L0r" secondAttribute="trailing" constant="11" id="RGW-d4-xuK"/>
@@ -3129,6 +3150,7 @@ not allowed once submitted.</string>
                                                         <constraint firstAttribute="trailing" secondItem="db6-4Y-qFy" secondAttribute="trailing" constant="8" id="iva-Z4-JTI"/>
                                                         <constraint firstItem="9lD-sa-T2k" firstAttribute="leading" secondItem="2MT-pm-XE4" secondAttribute="leading" id="lrH-K2-s0a"/>
                                                         <constraint firstItem="tLM-YK-L0r" firstAttribute="top" secondItem="q1m-ah-UWw" secondAttribute="bottom" constant="7" id="nJE-un-YBR"/>
+                                                        <constraint firstAttribute="trailing" secondItem="q1m-ah-UWw" secondAttribute="trailing" constant="11" id="o3d-Uh-YeM"/>
                                                         <constraint firstItem="IAB-dV-DD2" firstAttribute="leading" secondItem="PsF-JA-yp6" secondAttribute="leading" id="owU-z8-8J5"/>
                                                         <constraint firstItem="q1m-ah-UWw" firstAttribute="top" secondItem="IAB-dV-DD2" secondAttribute="bottom" constant="11" id="rSb-eM-rpV"/>
                                                         <constraint firstItem="PsF-JA-yp6" firstAttribute="leading" secondItem="UpE-Nt-XsP" secondAttribute="trailing" constant="11" id="rsX-aI-S5i"/>
@@ -3176,24 +3198,25 @@ not allowed once submitted.</string>
                                     <outlet property="delegate" destination="1ty-a7-10O" id="DNB-7e-fDl"/>
                                 </connections>
                             </tableView>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No results found." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kgR-ti-1CA">
-                                <rect key="frame" x="100.5" y="264.5" width="119.5" height="19.5"/>
-                                <fontDescription key="fontDescription" name="GoogleSans-Medium" family="Google Sans" pointSize="15"/>
-                                <color key="textColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="No_presentations_found-Icon" translatesAutoresizingMaskIntoConstraints="NO" id="bc9-hf-NHY">
+                                <rect key="frame" x="10" y="74" width="300" height="240"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="240" id="V6z-pU-Hca"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="bc9-hf-NHY" firstAttribute="leading" secondItem="gPQ-5q-nCN" secondAttribute="leading" constant="10" id="3y3-1s-baj"/>
+                            <constraint firstItem="bc9-hf-NHY" firstAttribute="top" secondItem="34d-mp-V9K" secondAttribute="bottom" constant="10" id="B0s-86-y8Q"/>
                             <constraint firstItem="34d-mp-V9K" firstAttribute="trailing" secondItem="gPQ-5q-nCN" secondAttribute="trailing" id="Ef2-9Y-262"/>
                             <constraint firstItem="34d-mp-V9K" firstAttribute="leading" secondItem="gPQ-5q-nCN" secondAttribute="leading" id="F3B-eB-TbM"/>
                             <constraint firstItem="Y4y-yi-7MA" firstAttribute="top" secondItem="gPQ-5q-nCN" secondAttribute="top" constant="8" id="Tz7-fT-gax"/>
-                            <constraint firstItem="kgR-ti-1CA" firstAttribute="centerY" secondItem="7RN-ts-fJ6" secondAttribute="centerY" id="Zb0-B3-uj7"/>
                             <constraint firstItem="JkF-WH-GkR" firstAttribute="leading" secondItem="Y4y-yi-7MA" secondAttribute="trailing" id="a4P-1J-CP6"/>
                             <constraint firstItem="OY5-VH-Lf1" firstAttribute="bottom" secondItem="gPQ-5q-nCN" secondAttribute="bottom" id="dbF-t6-eR4"/>
                             <constraint firstItem="Y4y-yi-7MA" firstAttribute="leading" secondItem="nMm-0X-4JW" secondAttribute="trailing" constant="4" id="gM3-DN-SOa"/>
+                            <constraint firstItem="gPQ-5q-nCN" firstAttribute="trailing" secondItem="bc9-hf-NHY" secondAttribute="trailing" constant="10" id="hox-8d-tVY"/>
                             <constraint firstItem="OY5-VH-Lf1" firstAttribute="top" secondItem="34d-mp-V9K" secondAttribute="bottom" id="p4y-F9-KDg"/>
-                            <constraint firstItem="kgR-ti-1CA" firstAttribute="centerX" secondItem="7RN-ts-fJ6" secondAttribute="centerX" id="r8A-RE-QjA"/>
                             <constraint firstItem="OY5-VH-Lf1" firstAttribute="leading" secondItem="gPQ-5q-nCN" secondAttribute="leading" id="sX3-Ke-oJb"/>
                             <constraint firstItem="34d-mp-V9K" firstAttribute="top" secondItem="gPQ-5q-nCN" secondAttribute="top" id="z3W-HZ-C4U"/>
                             <constraint firstItem="OY5-VH-Lf1" firstAttribute="trailing" secondItem="gPQ-5q-nCN" secondAttribute="trailing" id="zxN-h1-EZY"/>
@@ -3204,7 +3227,7 @@ not allowed once submitted.</string>
                     <connections>
                         <outlet property="footerView" destination="chV-z1-BX9" id="XFO-TT-KBH"/>
                         <outlet property="myPresenationTableView" destination="OY5-VH-Lf1" id="X5A-xz-ODi"/>
-                        <outlet property="noResutlsLbl" destination="kgR-ti-1CA" id="Zck-DS-Rxk"/>
+                        <outlet property="noPresentationsFoundView" destination="bc9-hf-NHY" id="Tx8-c5-OOV"/>
                         <segue destination="Gib-12-KnN" kind="presentation" identifier="FinalSubmissionVCID" id="yd8-HE-QJD"/>
                         <segue destination="T9Q-pG-Tjs" kind="show" identifier="UpdatePresentationVCID" id="xr3-yP-efF"/>
                         <segue destination="Acp-Jy-MS9" kind="show" identifier="PresentationDetail" id="frZ-Hh-fl6"/>
@@ -3244,9 +3267,10 @@ not allowed once submitted.</string>
         <image name="ForwardImage" width="250" height="250"/>
         <image name="Icon_arrow" width="36" height="36"/>
         <image name="MenuIcon" width="28" height="20"/>
+        <image name="No_presentations_found-Icon" width="355" height="290"/>
         <image name="UploadImage" width="32" height="22"/>
         <image name="collapseImage" width="32" height="35"/>
-        <image name="deleteIcon" width="34" height="35"/>
+        <image name="deleteIcon" width="24" height="24"/>
         <image name="editBlueIcon" width="34" height="34"/>
         <image name="filterIcon" width="29" height="36"/>
         <image name="like_Count_Icon" width="46" height="20"/>
@@ -3254,8 +3278,8 @@ not allowed once submitted.</string>
         <image name="unCheckedBox" width="15" height="15"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="IW8-Ez-hJu"/>
-        <segue reference="yd8-HE-QJD"/>
+        <segue reference="hHm-qk-JV5"/>
+        <segue reference="6z1-Mj-emu"/>
         <segue reference="xr3-yP-efF"/>
     </inferredMetricsTieBreakers>
 </document>

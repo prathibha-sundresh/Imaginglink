@@ -18,6 +18,7 @@ class CommentListTableViewCell : UITableViewCell {
     @IBOutlet weak var TimeLabel: UILabel!
     @IBOutlet weak var imageXPosition: NSLayoutConstraint!
     @IBOutlet weak var replyButton: UIButton!
+	@IBOutlet weak var nameLblH: NSLayoutConstraint!
     var delegate:CreateCommentDelegate?
     @IBAction func ReplayButtonPressed(_ sender: Any) {
         delegate?.clickonReplay(index: replyButton.tag)
@@ -50,7 +51,7 @@ class CommentListTableViewCell : UITableViewCell {
         }
         
         if let profilePhoto = dic["profile_photo"] as? String {
-             ImageView?.sd_setImage(with: URL(string: profilePhoto), placeholderImage: UIImage(named: "ImagingLinkLogo"))
+             ImageView?.sd_setImage(with: URL(string: profilePhoto), placeholderImage: UIImage(named: "profileIcon"))
             setUpProfileImage()
         }
     }

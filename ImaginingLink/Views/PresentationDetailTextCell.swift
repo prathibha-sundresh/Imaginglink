@@ -80,7 +80,11 @@ class PresentationDetailTextCell : UITableViewCell {
         if let coAuthors = dic["co_authors"] as? [[String: Any]], coAuthors.count > 0
         {
             var str = coAuthors.reduce("") { (result, dict) -> String in
-                return result + "\(dict["name"] as? String ?? "")" + ","
+				var name = dict["name"] as? String ?? ""
+				if name == "" {
+					name =  dict["full_name"] as? String ?? ""
+				}
+				return result + "\(name)" + ","
             }
             if str[str.index(before: str.endIndex)] == ","{
                 str.removeLast()

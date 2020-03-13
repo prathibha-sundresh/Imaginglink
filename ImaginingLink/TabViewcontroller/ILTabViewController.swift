@@ -23,6 +23,10 @@ class ILTabViewController: UITabBarController,UITabBarControllerDelegate {
         // Dispose of any resources that can be recreated.
     }
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+		if tabBarController.selectedIndex == 1 {
+			let appDelegate = UIApplication.shared.delegate as! AppDelegate
+			appDelegate.openDashBoardScreen()
+		}
     }
     
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {

@@ -533,6 +533,11 @@ extension UpdatePresentationViewController: UITableViewDelegate, UITableViewData
 			else {
 				commentListCell.isUserInteractionEnabled = true
 			}
+			if status == "NEED MODIFICATION" {
+				commentListCell.NameLabel.isHidden = true
+				commentListCell.nameLblH.constant = 0
+				commentListCell.ImageView.image = UIImage(named: "profileIcon")
+			}
             cell = commentListCell
 		}
 		cell.selectionStyle = .none
@@ -702,9 +707,18 @@ extension UpdatePresentationViewController: EditPresentationTableViewCellDelegat
 	
 	func updatePresentationDetails() {
 		
+		let status = responseDict["status"] as? String ?? ""
+		let isCoauthor = responseDict["is_co_author"] as? Bool ?? false
+		var edited_by = ""
+		if status == "DRAFT" && isCoauthor {
+			edited_by = "CO-AUTHOR"
+		}
+		else {
+			edited_by = "AUTHOR"
+		}
 		let subSectionsStr = selectedSubsections.joined(separator: ",")
 		let keywords = (responseDict["keywords"] as? [String] ?? []).joined(separator: ",")
-		let requestDict = ["presentation_id": presentationID,"title": responseDict["title"]!, "section": responseDict["section"]!,"keywords": keywords, "description": responseDict["description"] as? String ?? "", "university": responseDict["university"] as? String ?? "", "sub_sections": subSectionsStr, "edited_by": "AUTHOR"] as [String : Any]
+		let requestDict = ["presentation_id": presentationID,"title": responseDict["title"]!, "section": responseDict["section"]!,"keywords": keywords, "description": responseDict["description"] as? String ?? "", "university": responseDict["university"] as? String ?? "", "sub_sections": subSectionsStr, "edited_by": edited_by] as [String : Any]
 		ILUtility.showProgressIndicator(controller: self)
 		CoreAPI.sharedManaged.updateUserPresentationDetails(params: requestDict, successResponse: { (response) in
 			ILUtility.hideProgressIndicator(controller: self)

@@ -97,7 +97,6 @@ class PresentationViewController: BaseHamburgerViewController, UITableViewDelega
 	
 	override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-		self.navigationController?.isNavigationBarHidden = false
     }
 	
     fileprivate func getPublicPresentations() {
@@ -135,14 +134,11 @@ class PresentationViewController: BaseHamburgerViewController, UITableViewDelega
 	
 	@IBAction func backAction(_ sender: UIButton) {
 		switch PresentationViewController.isFromVC {
-		case .Presentations:
+		case .Presentations, .FavouritePresentations:
 			let appDelegate = UIApplication.shared.delegate as! AppDelegate
 			appDelegate.openDashBoardScreen()
-		case .FavouritePresentations:
-			self.tabBarController?.selectedIndex = 1
 		case .FilterVC:
-			self.navigationController?.popViewController(animated: true)
-			
+			self.performSegue(withIdentifier: "FilterVC", sender: nil)
 		default:
 			break
 		}

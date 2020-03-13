@@ -50,7 +50,15 @@ class ImageTableViewCell: UITableViewCell,UIScrollViewDelegate {
             }
         }
         
-        if let imageURL : String = dic["presentation_master_url"] as? String {
+		var imageURL: String?
+		
+		if let tmpDict = dic["presentation_master_url"] as? [String : Any]{
+			imageURL = tmpDict["image"] as? String ?? ""
+		}
+		else {
+			imageURL = dic["presentation_master_url"] as? String ?? ""
+		}
+        if let imageURL : String = imageURL {
             if ((dic["presentation_type"] as? String)?.contains("video"))! {
                 webView.isHidden = false
                 if (webView != nil){
@@ -65,6 +73,7 @@ class ImageTableViewCell: UITableViewCell,UIScrollViewDelegate {
                 imagesView.isHidden = false
             }
         }
+		
         if let favourite = dic["is_my_favourite"] as? Int, favourite == 0{
             FavouriteButton.setBackgroundImage(UIImage(named: "Icon_unfavourite"), for: .normal)
         }

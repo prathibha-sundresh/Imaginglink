@@ -25,7 +25,7 @@ class FilterPublishViewController: BaseHamburgerViewController {
 	var delegate: FilterPublishViewControllerDelegte?
     var subSections: [String: Any] = [:]
 	let publishTypeArray = ["Published Presentations","My Presentation"]
-	let sortByArrayForPublishPresentations = ["Recent","Top Viewed","Top Shared","New To Old","Old To New"]
+	let sortByArrayForPublishPresentations = ["Recent","Top Viewed","Top Shared","New to Old","Old to New"]
 	let sortByArrayForMyPresentations: [[String: Any]] = [[
 		"title": "All",
 		"value": "ALL"
@@ -99,6 +99,7 @@ class FilterPublishViewController: BaseHamburgerViewController {
 		presentationTypeButton.setTitle("", for: .normal)
 		sortByButton.setTitle("", for: .normal)
 		sectionButton.setTitle("", for: .normal)
+		self.subSectionTextView.text = ""
 		isApplyButtonEnabled = false
 	}
 	
@@ -181,6 +182,7 @@ class FilterPublishViewController: BaseHamburgerViewController {
 	}
 	
 	@IBAction func backButtonAction(_ sender: UIButton){
+		PresentationViewController.isFromVC = .Presentations
 		self.navigationController?.popViewController(animated: true)
 	}
 	
@@ -277,6 +279,7 @@ class FilterPublishViewController: BaseHamburgerViewController {
 				}
 				else if sender as? Int == 102 {
 					self.sectionButton.setTitle(titles[0], for: .normal)
+					self.subSectionTextView.text = ""
 				}
 				else if sender as? Int == 103 {
 					self.subSectionTextView.text = titles.joined(separator: ",")

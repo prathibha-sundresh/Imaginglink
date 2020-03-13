@@ -48,6 +48,7 @@ class EditPresentationTableViewCell: UITableViewCell {
 	@IBOutlet weak var allowDownloadableTFConstraintH: NSLayoutConstraint!
 	@IBOutlet weak var addCoAuthorsH: NSLayoutConstraint!
 	@IBOutlet weak var coAuthorsDropDownButton: UIButton!
+	@IBOutlet weak var coAuthorsDescriptionLblH: NSLayoutConstraint!
 	var isSubSectionEmpty: Bool = false {
 		didSet{
 			self.subSectionConstraintY.constant = isSubSectionEmpty ? 60 : 20
@@ -55,7 +56,7 @@ class EditPresentationTableViewCell: UITableViewCell {
 		}
 	}
 	func setUI(dict: [String: Any]) {
-		
+		titleTF.setRightPaddingPoints(40)
 		titleTF.titleFormatter = { $0 }
 		sectionTitleTF.titleFormatter = { $0 }
 		keywordsTF.titleFormatter = { $0 }
@@ -125,10 +126,11 @@ class EditPresentationTableViewCell: UITableViewCell {
 		let status = dict["status"] as? String ?? ""
 		let isCoauthor = dict["is_co_author"] as? Bool ?? false
 		
-		if (status == "DRAFT" && isCoauthor) {
+		if (status == "DRAFT" && isCoauthor) || (status == "NEED MODIFICATION") {
 			//Coauthor card
 			addCoAuthorsH.constant = 0
 			coAuthorsDropDownButton.isHidden = true
+			coAuthorsDescriptionLblH.constant = 0
 		}
 		else if status == "REVIEW_EDITED" {
 			//EDITOR MODIFIED
@@ -138,11 +140,6 @@ class EditPresentationTableViewCell: UITableViewCell {
 			editButtonEnabled = false
 			self.isUserInteractionEnabled = false
 			saveButtonConstraintH.constant = 0
-		}
-		else if status == "NEED MODIFICATION" {
-			//NEED MODIFICATION
-			addCoAuthorsH.constant = 0
-			coAuthorsDropDownButton.isHidden = true
 		}
 		else{
 			addCoAuthorsH.constant = 36

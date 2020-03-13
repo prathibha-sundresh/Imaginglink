@@ -9,6 +9,30 @@
 import UIKit
 import Alamofire
 
+class CommentListWithOutReplyTableViewCell : UITableViewCell {
+	@IBOutlet weak var commentLbl: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
+	@IBOutlet weak var ImageView: UIImageView!
+	
+	func setUI(dic: [String:Any]) {
+        
+        if let comment = dic["comment"] as? String {
+            commentLbl?.text = comment
+        }
+        if let createdAt = dic["created_at"] as? String {
+            timeLabel?.text = createdAt
+        }
+		setUpProfileImage()
+    }
+    
+    func setUpProfileImage() {
+        ImageView.layer.borderWidth = 1.0
+        ImageView.layer.borderColor = UIColor.white.cgColor
+        ImageView.layer.cornerRadius = ImageView.frame.size.width / 2
+        ImageView.clipsToBounds = true
+    }
+}
+
 class PresentationDetailViewcontroller: BaseHamburgerViewController, UITableViewDataSource, UITableViewDelegate, CreateCommentDelegate {
     func clickonReplay(index: Int) {
         let dict = ParentAndChildComments[index]
@@ -25,6 +49,13 @@ class PresentationDetailViewcontroller: BaseHamburgerViewController, UITableView
                return 0
             }
         }
+		if (section == CommentCell) {
+			if isComingFromMyPresentation {
+				return 0
+			} else {
+				return 1
+			}
+		}
         
         return 1
     }
@@ -64,12 +95,19 @@ class PresentationDetailViewcontroller: BaseHamburgerViewController, UITableView
             tableViewCell = commentCell
         } else if(indexPath.section == CommentListCell) {
             
-            let commentListCell : CommentListTableViewCell = tableView.dequeueReusableCell(withIdentifier: "CommentListTableViewCellId", for: indexPath) as! CommentListTableViewCell
-            commentListCell.delegate = self
-            commentListCell.replyButton.tag = indexPath.row
-            commentListCell.setupUI(dic: ParentAndChildComments[indexPath.row])
-            commentListCell.separatorInset = UIEdgeInsets(top: 0, left: commentListCell.bounds.size.width, bottom: 0, right: 0);
-            tableViewCell = commentListCell
+			if isComingFromMyPresentation {
+				let commentListWithOutReplyCell : CommentListWithOutReplyTableViewCell = tableView.dequeueReusableCell(withIdentifier: "CommentListWithOutReplyCellId", for: indexPath) as! CommentListWithOutReplyTableViewCell
+				commentListWithOutReplyCell.setUI(dic: ParentAndChildComments[indexPath.row])
+				tableViewCell = commentListWithOutReplyCell
+			}
+			else {
+				let commentListCell : CommentListTableViewCell = tableView.dequeueReusableCell(withIdentifier: "CommentListTableViewCellId", for: indexPath) as! CommentListTableViewCell
+				commentListCell.delegate = self
+				commentListCell.replyButton.tag = indexPath.row
+				commentListCell.setupUI(dic: ParentAndChildComments[indexPath.row])
+				commentListCell.separatorInset = UIEdgeInsets(top: 0, left: commentListCell.bounds.size.width, bottom: 0, right: 0);
+				tableViewCell = commentListCell
+			}
             
         }
         tableViewCell.selectionStyle = UITableViewCell.SelectionStyle.none
@@ -104,6 +142,7 @@ class PresentationDetailViewcontroller: BaseHamburgerViewController, UITableView
     
     var saveAction : UIAlertAction?
     var isCommentedSelected = false
+	var isComingFromMyPresentation = false
     var alomafireRequest: Alamofire.Request?
     @IBOutlet weak var presentationDetailTableView: UITableView!
     @IBOutlet weak var footerView: UIView!
@@ -114,36 +153,59 @@ class PresentationDetailViewcontroller: BaseHamburgerViewController, UITableView
     var fullSizeCurrentIndex: Int = 0
 	var parentCommentID: String = ""
 	
-    fileprivate func getPresentationDetails() {
+	func parseData(_ response: AnyObject) {
+		let value = response as! String
+		let dic : [String : Any] = value.convertToDictionary()!
+		self.dicData = dic["data"] as? [String : Any]
+		if isComingFromMyPresentation {
+			if let commentarray = self.dicData?["review_comments"] as? [[String:Any]] {
+				ILUtility.hideProgressIndicator(controller: self)
+				self.getParentAndChildComments(dataArray: commentarray)
+				isCommentedSelected = true
+				self.presentationDetailTableView.reloadData()
+			}
+			return
+		}
+		if let authorId : String = self.dicData?["id"] as? String {
+			
+			CoreAPI.sharedManaged.getCommentListWithId(presentationId: authorId, successResponse: {(response) in
+				self.presentationDetailTableView.isHidden = false
+				ILUtility.hideProgressIndicator(controller: self)
+				let value = response as! String
+				let dic : [String : Any] = value.convertToDictionary()!
+				let commentarray : [[String:Any]] = dic["data"] as! [[String : Any]]
+				if (commentarray.count != 0) {
+					self.getParentAndChildComments(dataArray: commentarray)
+				}
+				self.presentationDetailTableView.reloadData()
+			}, faliure: {(error) in
+				ILUtility.hideProgressIndicator(controller: self)
+			})
+		}
+	}
+	
+	fileprivate func getPublicPresentationDetails() {
         presentationDetailTableView.isHidden = true
         ILUtility.showProgressIndicator(controller: self)
         CoreAPI.sharedManaged.getUserPresentationWithId(UserID: userID!, successResponse: {(response) in
-            let value = response as! String
-            let dic : [String : Any] = value.convertToDictionary()!
-            self.dicData = dic["data"] as? [String : Any]
-            if let authorId : String = self.dicData?["id"] as? String {
-                
-                CoreAPI.sharedManaged.getCommentListWithId(presentationId: authorId, successResponse: {(response) in
-                    self.presentationDetailTableView.isHidden = false
-                    ILUtility.hideProgressIndicator(controller: self)
-                    let value = response as! String
-                    let dic : [String : Any] = value.convertToDictionary()!
-                    let Commentarray : [[String:Any]] = dic["data"] as! [[String : Any]]
-                    if (Commentarray.count != 0) {
-                        self.getParentAndChildComments(dataArray: Commentarray)
-                    }
-                    self.presentationDetailTableView.reloadData()
-                }, faliure: {(error) in
-                    ILUtility.hideProgressIndicator(controller: self)
-                })
-            }
-      
+			self.parseData(response)
         }, faliure: {(error) in
             ILUtility.hideProgressIndicator(controller: self)
         })
     }
     
+	func getUserPresentationDetails() {
+		
+		ILUtility.showProgressIndicator(controller: self)
+		CoreAPI.sharedManaged.getUserPresentationDetails(presentationID: userID!, successResponse: { (response) in
+			self.parseData(response)
+		}) { (error) in
+			ILUtility.hideProgressIndicator(controller: self)
+		}
+	}
+	
     func getParentAndChildComments(dataArray: [[String: Any]]){
+		//review_comments
         commentData = dataArray
         var totalCommentsArray = [[String: Any]]()
         for dict in commentData{
@@ -167,7 +229,7 @@ class PresentationDetailViewcontroller: BaseHamburgerViewController, UITableView
         addSlideMenuButton(showBackButton: true,backbuttonTitle: "Presentation")
         self.presentationDetailTableView.delegate = self
         presentationDetailTableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: presentationDetailTableView.frame.width, height: 25))
-        getPresentationDetails()
+		isComingFromMyPresentation ? getUserPresentationDetails() : getPublicPresentationDetails()
     }
     
     override func viewWillAppear(_ animated: Bool) {

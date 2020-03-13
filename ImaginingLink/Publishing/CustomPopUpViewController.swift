@@ -29,10 +29,13 @@ class CustomPopUpViewController: UIViewController {
 	@IBOutlet weak var searchTF: UITextField!
     @IBOutlet weak var titleTableView: UITableView!
 	@IBOutlet weak var searchTFConstraintH: NSLayoutConstraint!
+	@IBOutlet weak var applyButton: UIButton!
 	var isCoAuthor = false
     override func viewDidLoad() {
         super.viewDidLoad()
 		titleTableView.tableFooterView = UIView(frame: .zero)
+		applyButton.layer.borderWidth = 1.0
+		applyButton.layer.borderColor = UIColor.white.cgColor
 		filteredArray = titleArray
 		searchTFConstraintH.constant = isCoAuthor ? 34: 0
         // Do any additional setup after loading the view.
@@ -48,7 +51,7 @@ class CustomPopUpViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-    @IBAction func closeButtonAction(_ sender: UIButton) {
+    @IBAction func applyButtonAction(_ sender: UIButton) {
         if let callback = callBack {
             callback(selectedRowTitles)
         }
@@ -72,7 +75,12 @@ class CustomPopUpViewController: UIViewController {
 extension CustomPopUpViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-		cell.textLabel?.text = "\(filteredArray[indexPath.row])".capitalized
+		if filteredArray[indexPath.row] != "New to Old" && filteredArray[indexPath.row] != "Old to New" {
+			cell.textLabel?.text = "\(filteredArray[indexPath.row])".capitalized
+		}
+		else{
+			cell.textLabel?.text = "\(filteredArray[indexPath.row])"
+		}
 		if selectedRowTitles.contains(filteredArray[indexPath.row]) {
             cell.accessoryType = .checkmark
         }
