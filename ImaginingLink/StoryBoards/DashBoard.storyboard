@@ -2516,11 +2516,19 @@ contain at least one special character (! @ # $ % ^ &amp; *)</string>
                                     <outlet property="delegate" destination="7qs-Y9-kxw" id="cWE-35-tVQ"/>
                                 </connections>
                             </tableView>
+                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="No_presentations_found-Icon" translatesAutoresizingMaskIntoConstraints="NO" id="wSZ-pe-cd9">
+                                <rect key="frame" x="15" y="79" width="345" height="240"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="240" id="FP4-ak-WNX"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Qls-kK-9hL" firstAttribute="leading" secondItem="l1c-ce-xkX" secondAttribute="trailing" constant="2" id="0I0-kk-Sqc"/>
                             <constraint firstItem="R56-Ia-mIG" firstAttribute="bottom" secondItem="Wti-MF-7MV" secondAttribute="bottom" id="8PA-hM-khT"/>
+                            <constraint firstItem="wSZ-pe-cd9" firstAttribute="leading" secondItem="R56-Ia-mIG" secondAttribute="leading" constant="15" id="93O-oO-eJe"/>
+                            <constraint firstItem="wSZ-pe-cd9" firstAttribute="top" secondItem="aRx-wk-3Gi" secondAttribute="bottom" constant="15" id="93e-Pl-6ni"/>
                             <constraint firstItem="l1c-ce-xkX" firstAttribute="leading" secondItem="R56-Ia-mIG" secondAttribute="leading" constant="51" id="Hzt-Mx-Ek7"/>
                             <constraint firstItem="aRx-wk-3Gi" firstAttribute="leading" secondItem="R56-Ia-mIG" secondAttribute="leading" id="J9m-RB-Ete"/>
                             <constraint firstItem="Wti-MF-7MV" firstAttribute="leading" secondItem="R56-Ia-mIG" secondAttribute="leading" id="Wrd-BK-VAZ"/>
@@ -2529,6 +2537,7 @@ contain at least one special character (! @ # $ % ^ &amp; *)</string>
                             <constraint firstItem="aRx-wk-3Gi" firstAttribute="trailing" secondItem="R56-Ia-mIG" secondAttribute="trailing" id="tCI-eP-wgL"/>
                             <constraint firstItem="aRx-wk-3Gi" firstAttribute="top" secondItem="R56-Ia-mIG" secondAttribute="top" id="uFO-HT-Q1x"/>
                             <constraint firstItem="Wti-MF-7MV" firstAttribute="top" secondItem="aRx-wk-3Gi" secondAttribute="bottom" id="wvQ-Wi-lga"/>
+                            <constraint firstItem="R56-Ia-mIG" firstAttribute="trailing" secondItem="wSZ-pe-cd9" secondAttribute="trailing" constant="15" id="xWI-xi-Oqh"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="R56-Ia-mIG"/>
                     </view>
@@ -2539,6 +2548,7 @@ contain at least one special character (! @ # $ % ^ &amp; *)</string>
                         <outlet property="PresenationTableView" destination="Wti-MF-7MV" id="O4Q-T1-uxS"/>
                         <outlet property="footerView" destination="0X2-Uc-RDL" id="Cja-Uu-tCB"/>
                         <outlet property="headerLbl" destination="l1c-ce-xkX" id="KNI-KQ-stG"/>
+                        <outlet property="noPresentationsFoundView" destination="wSZ-pe-cd9" id="i9Z-uX-ctL"/>
                         <segue destination="WqH-Xy-nJP" kind="show" identifier="PresentationDetail" id="3u4-E3-iMb"/>
                         <segue destination="lwq-bM-PQz" kind="show" identifier="ReportPostID" id="jZ1-du-8is"/>
                         <segue destination="YO5-if-DJ7" kind="show" identifier="FilterVC" id="Zx7-Ev-JpG"/>
@@ -3186,6 +3196,7 @@ contain at least one special character (! @ # $ % ^ &amp; *)</string>
         <image name="Icon_unfavourite" width="25" height="25"/>
         <image name="Icon_views" width="20" height="20"/>
         <image name="MenuIcon" width="28" height="20"/>
+        <image name="No_presentations_found-Icon" width="355" height="290"/>
         <image name="PasswordInfoImage" width="18" height="18"/>
         <image name="PortPolioIcon" width="158" height="140"/>
         <image name="PresentationLogo" width="158" height="140"/>
@@ -3213,6 +3224,6 @@ contain at least one special character (! @ # $ % ^ &amp; *)</string>
         <image name="sel_favourite_Post_tab_bar" width="18" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="gMo-lo-XTN"/>
+        <segue reference="jZ1-du-8is"/>
     </inferredMetricsTieBreakers>
 </document>

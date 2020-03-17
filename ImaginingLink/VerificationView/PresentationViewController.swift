@@ -14,6 +14,7 @@ class PresentationViewController: BaseHamburgerViewController, UITableViewDelega
     @IBOutlet weak var PresenationTableView: UITableView!
     @IBOutlet weak var footerView: UIView!
     @IBOutlet weak var headerLbl: UILabel!
+	@IBOutlet weak var noPresentationsFoundView: UIImageView!
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataArray.count
     }
@@ -115,11 +116,11 @@ class PresentationViewController: BaseHamburgerViewController, UITableViewDelega
 		
 		let dic : [String : Any] = response.convertToDictionary()!
 		let array : [[String:Any]] = dic["data"] as? [[String : Any]] ?? []
-		
+		noPresentationsFoundView.isHidden = array.count > 0 ? true: false
+		self.PresenationTableView.isHidden = array.count > 0 ? false: true
 		if array.count == 0{
-			ILUtility.showAlert(message: "Currently we don't have published presentations.", controller: self)
+			//ILUtility.showAlert(message: "Currently we don't have published presentations.", controller: self)
 			self.dataArray = []
-			self.PresenationTableView.reloadData()
 			return
 		}
 		
