@@ -46,60 +46,59 @@ import Alamofire
             // here "decoded" is of type `Any`, decoded from JSON data
             
             // you can now cast it with the right type
-            if let dictFromJSON = decoded as? [String:Any] {
-                
-                let requestHeader = header
-                
-                WebServiceHandler.manager.request("\(requestURL)", method: .post, parameters: dictFromJSON, encoding: JSONEncoding.default, headers: requestHeader)
-                    .responseJSON { response in
-                        print(response.request as Any)  // original URL request
-                        print(response.result.value as Any)   // result of response serialization
-                        if response.response?.statusCode == 200{
-                            success((response.result.value) as AnyObject)
-                        }else if (response.response?.statusCode == 400){
-                            faliure("server Issue")
-                        } else if (response.response?.statusCode == 422) {
-                            let error = (response.result.value!) as! [String : Any]
-                            if let value = (error["errors"]) as? [String:Any] {
-                                if let emaiValue : [String] = value["email"] as? [String] {
-                                    faliure(emaiValue.first!)
-                                    return
-                                }
-                                
-                                if let emaiValue : [String] = value["mobile"] as? [String] {
-                                    faliure(emaiValue.first!)
-                                    return
-                                }
-                                
-                                if let emaiValue : [String] = value["new_password"] as? [String] {
-                                    faliure(emaiValue.first!)
-                                    return
-                                }                                
-                            }
-                            if let value = (error["message"]) {
-                                faliure(value as! String)
-                            }
-                           // faliure("Email already Registered")
-                        } else {
-                            if (response.result.value != nil) {
-                                let error = (response.result.value!) as! [String : Any]
-                                if let value = (error["error"]) {
-                                    faliure(value as! String)
-                                    return
-                                }
-                                if let value = (error["message"]) {
-                                    faliure(value as? String ?? "")
-                                    return
-                                }
-                            } else {
-                                faliure("Unknow Error Found")
-                            }
-                            
-                            
-                            
-                        }
-                }
-            }
+			if let dictFromJSON = decoded as? [String:Any] {
+				
+				let requestHeader = header
+				WebServiceHandler.manager.request("\(requestURL)", method: .post, parameters: dictFromJSON, encoding: JSONEncoding.default, headers: requestHeader)
+					.responseJSON { response in
+						print(response.request as Any)  // original URL request
+						print(response.result.value as Any)   // result of response serialization
+						if response.response?.statusCode == 200{
+							success((response.result.value) as AnyObject)
+							return
+						}else if (response.response?.statusCode == 400){
+							faliure("server Issue")
+							return
+						} else if (response.response?.statusCode == 422) {
+							let error = (response.result.value!) as! [String : Any]
+							if let value = (error["errors"]) as? [String:Any] {
+								if let emaiValue : [String] = value["email"] as? [String] {
+									faliure(emaiValue.first!)
+									return
+								}
+								
+								if let emaiValue : [String] = value["mobile"] as? [String] {
+									faliure(emaiValue.first!)
+									return
+								}
+								
+								if let emaiValue : [String] = value["new_password"] as? [String] {
+									faliure(emaiValue.first!)
+									return
+								}
+							}
+							if let value = (error["message"]) {
+								faliure(value as! String)
+								return
+							}
+						} else {
+							if (response.result.value != nil) {
+								let error = (response.result.value!) as! [String : Any]
+								if let value = (error["error"]) {
+									faliure(value as! String)
+									return
+								}
+								if let value = (error["message"]) {
+									faliure(value as? String ?? "")
+									return
+								}
+							} else {
+								faliure("Unknow Error Found")
+								return
+							}
+						}
+				}
+			}
         } catch {
             print(error.localizedDescription)
             faliure("error")

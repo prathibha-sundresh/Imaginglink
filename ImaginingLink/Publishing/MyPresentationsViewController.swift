@@ -140,6 +140,7 @@ class MyPresentationsViewController: BaseHamburgerViewController {
 	var dataArray : [[String:Any]] = []
 	var sections: [[String: Any]] = []
     var subSections: [String: Any] = [:]
+	var isClickedOnEditModified = false
 	var isShowHideResutlsLbl: Bool = false {
 		didSet {
 			noPresentationsFoundView.isHidden = isShowHideResutlsLbl
@@ -185,6 +186,7 @@ class MyPresentationsViewController: BaseHamburgerViewController {
             let vc : PresentationDetailViewcontroller = segue.destination as! PresentationDetailViewcontroller
             vc.userID = sender as? String
 			vc.isComingFromMyPresentation = true
+			vc.isEditorModified = isClickedOnEditModified
         }
     }
     
@@ -197,6 +199,7 @@ class MyPresentationsViewController: BaseHamburgerViewController {
 	}
 	
 	@objc func previewBtn2Action(_ sender: UIButton) {
+		isClickedOnEditModified = true
 		navigateToSegue(dataArray[sender.tag], identifier: "PresentationDetail")
 	}
 	
@@ -247,6 +250,7 @@ extension MyPresentationsViewController: UITableViewDelegate, UITableViewDataSou
 		cell.previewBtn.tag = indexPath.row
 		cell.submitForReviewButton.tag = indexPath.row
 		cell.onlyPreviewBtn1.tag = indexPath.row
+		cell.previewBtn2.tag = indexPath.row
 		cell.previewBtn.addTarget(self, action: #selector(previewBtnAction), for: .touchUpInside)
 		cell.onlyPreviewBtn1.addTarget(self, action: #selector(previewBtnAction), for: .touchUpInside)
 		cell.previewBtn2.addTarget(self, action: #selector(previewBtn2Action), for: .touchUpInside)

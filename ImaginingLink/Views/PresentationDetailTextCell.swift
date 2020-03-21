@@ -38,6 +38,7 @@ class PresentationDetailTextCell : UITableViewCell {
     var request: Alamofire.Request?
     weak var controller: UIViewController?
     weak var delegate: PresentationDetailTextCellDelegate?
+	var editorModifiedCard: Bool = false
     func setupValue(dic: [String:Any]) {
         
         setProgressUI(isBool: true)
@@ -46,6 +47,7 @@ class PresentationDetailTextCell : UITableViewCell {
             if ((dic["presentation_type"] as? String)?.contains("video"))! {
                 isDownloadable = 0
             }
+			isDownloadable = editorModifiedCard ? 0: isDownloadable
             if (isDownloadable == 1)
             {
                 if let downloadLink = dic["downloadable_file_link"] as? String {
@@ -107,6 +109,7 @@ class PresentationDetailTextCell : UITableViewCell {
                 isDownloadable = 0
 				isFileTypeVideo = true
             }
+			isDownloadable = editorModifiedCard ? 0: isDownloadable
             if isDownloadable == 1{
                 AllowToDownloadLabel?.text = "Yes"
                 downloadButton.layer.cornerRadius = 18

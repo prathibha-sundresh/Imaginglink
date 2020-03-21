@@ -18,6 +18,7 @@ class ImageTableViewCell: UITableViewCell,UIScrollViewDelegate {
 
     @IBOutlet weak var webView: UIWebView!
     @IBOutlet weak var FavouriteButton: UIButton!
+	@IBOutlet weak var settingButton: UIButton!
     @IBOutlet weak var UserImageView: UIImageView!
     @IBOutlet weak var UsernameLabel: UILabel!
     @IBOutlet weak var ImaginingLabel: UILabel!
@@ -32,8 +33,11 @@ class ImageTableViewCell: UITableViewCell,UIScrollViewDelegate {
     @IBOutlet weak var imagesView: UIView!
     var presentationDict = [String: Any]()
     var myViewcontroller: UIViewController?
-    
+    var editorModifiedCard: Bool = false
+	
     func setupUI(dic: [String:Any]) {
+		FavouriteButton.isHidden = editorModifiedCard
+		settingButton.isHidden = editorModifiedCard
         presentationDict = dic
         imageScrollView.frame = CGRect(x: 0, y: 0, width: self.frame.width, height: 226)
         ImaginingLabel.layer.borderColor = UIColor(red:0.98, green:0.58, blue:0.00, alpha:1.0).cgColor

@@ -740,6 +740,7 @@
                                             <outlet property="imagesView" destination="1EI-G3-QS5" id="7EC-8F-9eI"/>
                                             <outlet property="leftButton" destination="nOc-zp-dTL" id="OOz-9Z-NMq"/>
                                             <outlet property="rightButton" destination="1MU-fc-ZMH" id="t0j-6M-tDD"/>
+                                            <outlet property="settingButton" destination="Pk6-84-YzZ" id="53Q-Oz-H8K"/>
                                             <outlet property="timeLabel" destination="yFB-4R-i0p" id="LBm-Pc-wyi"/>
                                             <outlet property="webView" destination="tAQ-bi-SKV" id="TCY-oe-9J2"/>
                                         </connections>
@@ -3224,6 +3225,6 @@ contain at least one special character (! @ # $ % ^ &amp; *)</string>
         <image name="sel_favourite_Post_tab_bar" width="18" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="jZ1-du-8is"/>
+        <segue reference="gMo-lo-XTN"/>
     </inferredMetricsTieBreakers>
 </document>

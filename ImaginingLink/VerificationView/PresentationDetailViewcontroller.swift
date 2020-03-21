@@ -50,7 +50,7 @@ class PresentationDetailViewcontroller: BaseHamburgerViewController, UITableView
             }
         }
 		if (section == CommentCell) {
-			if isComingFromMyPresentation {
+			if isEditorModified {
 				return 0
 			} else {
 				return 1
@@ -71,6 +71,7 @@ class PresentationDetailViewcontroller: BaseHamburgerViewController, UITableView
             let ImageCell : ImageTableViewCell = tableView.dequeueReusableCell(withIdentifier: "ImageTableViewCellId", for: indexPath) as! ImageTableViewCell
             if (dicData != nil) {
                 ImageCell.currentPage = fullSizeCurrentIndex
+				ImageCell.editorModifiedCard = isEditorModified
                 ImageCell.setupUI(dic: dicData!)
                 ImageCell.myViewcontroller = self
                 ImageCell.delegate = self
@@ -78,6 +79,7 @@ class PresentationDetailViewcontroller: BaseHamburgerViewController, UITableView
             tableViewCell = ImageCell
         } else if(indexPath.section == PresentationCell) {
             let presentationCell : PresentationDetailTextCell = tableView.dequeueReusableCell(withIdentifier: "PresentationDetailTextCellId", for: indexPath) as! PresentationDetailTextCell
+			presentationCell.editorModifiedCard = isEditorModified
             if (dicData != nil) {
                 presentationCell.setupValue(dic: dicData!)
             }
@@ -95,7 +97,7 @@ class PresentationDetailViewcontroller: BaseHamburgerViewController, UITableView
             tableViewCell = commentCell
         } else if(indexPath.section == CommentListCell) {
             
-			if isComingFromMyPresentation {
+			if isEditorModified {
 				let commentListWithOutReplyCell : CommentListWithOutReplyTableViewCell = tableView.dequeueReusableCell(withIdentifier: "CommentListWithOutReplyCellId", for: indexPath) as! CommentListWithOutReplyTableViewCell
 				commentListWithOutReplyCell.setUI(dic: ParentAndChildComments[indexPath.row])
 				tableViewCell = commentListWithOutReplyCell
@@ -143,6 +145,7 @@ class PresentationDetailViewcontroller: BaseHamburgerViewController, UITableView
     var saveAction : UIAlertAction?
     var isCommentedSelected = false
 	var isComingFromMyPresentation = false
+	var isEditorModified = false
     var alomafireRequest: Alamofire.Request?
     @IBOutlet weak var presentationDetailTableView: UITableView!
     @IBOutlet weak var footerView: UIView!
@@ -157,9 +160,9 @@ class PresentationDetailViewcontroller: BaseHamburgerViewController, UITableView
 		let value = response as! String
 		let dic : [String : Any] = value.convertToDictionary()!
 		self.dicData = dic["data"] as? [String : Any]
-		if isComingFromMyPresentation {
+		if isEditorModified {
+			ILUtility.hideProgressIndicator(controller: self)
 			if let commentarray = self.dicData?["review_comments"] as? [[String:Any]] {
-				ILUtility.hideProgressIndicator(controller: self)
 				self.getParentAndChildComments(dataArray: commentarray)
 				isCommentedSelected = true
 				self.presentationDetailTableView.reloadData()
