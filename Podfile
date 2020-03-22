@@ -6,7 +6,7 @@ target 'ImaginingLink' do
   
   # Pods for ImaginingLink
 
-pod 'Alamofire', '~> 4.2.0'
+pod 'Alamofire', '~> 4.5'
 pod 'MBProgressHUD', '~> 1.1.0'
 pod 'IQKeyboardManagerSwift'
 pod 'ECSlidingViewController', '~> 2.0.3'
