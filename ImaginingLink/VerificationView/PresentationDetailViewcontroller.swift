@@ -198,9 +198,10 @@ class PresentationDetailViewcontroller: BaseHamburgerViewController, UITableView
     }
     
 	func getUserPresentationDetails() {
-		
+		presentationDetailTableView.isHidden = true
 		ILUtility.showProgressIndicator(controller: self)
 		CoreAPI.sharedManaged.getUserPresentationDetails(presentationID: userID!, successResponse: { (response) in
+			self.presentationDetailTableView.isHidden = false
 			self.parseData(response)
 		}) { (error) in
 			ILUtility.hideProgressIndicator(controller: self)
