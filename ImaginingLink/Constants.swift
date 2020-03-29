@@ -11,11 +11,10 @@ import Foundation
 
 let OTP_Value = "OTP_VALUE"
 
-#if DEBUG
+#if DEV
     let kBaseUrl:String = "https://www.imaginglink.com/dev/"
 #else
-    let kBaseUrl:String = "https://www.imaginglink.com/dev/"
-	//let kBaseUrl:String = "https://www.imaginglink.com/"
+	let kBaseUrl:String = "https://www.imaginglink.com/"
 #endif
 
 let kTwoFactorAuthentication = "two_factor_authentication"

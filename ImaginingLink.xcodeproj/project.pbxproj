@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3F2752C37776D9DD851496AE /* Pods_ImaginingLink.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0F1376E7E6943EB82E220C2 /* Pods_ImaginingLink.framework */; };
+		287EEB46CBEF2EC652C5ECD8 /* Pods_ImaginingLink.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C197B3231518ADEE55E9DE0 /* Pods_ImaginingLink.framework */; };
 		4803D3352178D82C00C82909 /* InviteFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4803D3342178D82C00C82909 /* InviteFriendsViewController.swift */; };
 		480A3BE923580B3100EA4EF4 /* Publishing.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 480A3BE823580B3100EA4EF4 /* Publishing.storyboard */; };
 		480A3BEC2359847100EA4EF4 /* PublishStepOneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480A3BEB2359847100EA4EF4 /* PublishStepOneViewController.swift */; };
@@ -51,7 +51,8 @@
 		48F7F1871FFE0412008D827A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F7F1861FFE0412008D827A /* Constants.swift */; };
 		48FC9DA120B1B99D00838CA7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 48FC9DA020B1B99D00838CA7 /* Assets.xcassets */; };
 		48FFC674217F82A300AB09D5 /* TwofactorAuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FFC673217F82A300AB09D5 /* TwofactorAuthenticationViewController.swift */; };
-		7E7005011885899295446F37 /* Pods_ImaginingLinkTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9E4C04BA9212155CE8EE32E /* Pods_ImaginingLinkTests.framework */; };
+		632771F6AA887BD97D5FEE9D /* Pods_ImaginingLinkUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80D2D8F5E391E9A8F1208BBF /* Pods_ImaginingLinkUITests.framework */; };
+		A76DE396226AE80A7AEA82AA /* Pods_ImaginingLinkTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDAA1D0E0C0A2F8C391542F2 /* Pods_ImaginingLinkTests.framework */; };
 		AC01CA5320C05DF200034C90 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC01CA5220C05DF100034C90 /* Roboto-Regular.ttf */; };
 		AC01CA5520C05E4D00034C90 /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC01CA5420C05E4C00034C90 /* Roboto-Light.ttf */; };
 		AC099D8120F79D6D0090B0CA /* LoaderView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC099D8020F79D6D0090B0CA /* LoaderView.storyboard */; };
@@ -94,7 +95,6 @@
 		BCFFFBB320BAEE5A003A0652 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCFFFBB220BAEE5A003A0652 /* SignInViewController.swift */; };
 		BCFFFBB520BAEE79003A0652 /* SignUpViewcontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCFFFBB420BAEE79003A0652 /* SignUpViewcontroller.swift */; };
 		BCFFFBB720BAEEB0003A0652 /* OTPViewcontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCFFFBB620BAEEB0003A0652 /* OTPViewcontroller.swift */; };
-		E99DF94DCCF2DBFFA3B63C78 /* Pods_ImaginingLinkUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C0590D41CF3E6509DA690EE /* Pods_ImaginingLinkUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -115,7 +115,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		3912A770DDF9F3CD4B37864C /* Pods-ImaginingLink.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ImaginingLink.release.xcconfig"; path = "Target Support Files/Pods-ImaginingLink/Pods-ImaginingLink.release.xcconfig"; sourceTree = "<group>"; };
+		096AE459B54ED2A03F1C33C0 /* Pods-ImaginingLinkUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ImaginingLinkUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ImaginingLinkUITests/Pods-ImaginingLinkUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		0E27BEDD969C5B3380ECA7B0 /* Pods-ImaginingLink.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ImaginingLink.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ImaginingLink/Pods-ImaginingLink.debug.xcconfig"; sourceTree = "<group>"; };
+		198135D850CED581AC7B7301 /* Pods-ImaginingLinkUITests.dev-debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ImaginingLinkUITests.dev-debug.xcconfig"; path = "Pods/Target Support Files/Pods-ImaginingLinkUITests/Pods-ImaginingLinkUITests.dev-debug.xcconfig"; sourceTree = "<group>"; };
+		1C197B3231518ADEE55E9DE0 /* Pods_ImaginingLink.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ImaginingLink.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2CAB9E9D9892F0A317314B93 /* Pods-ImaginingLink.pro-release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ImaginingLink.pro-release.xcconfig"; path = "Pods/Target Support Files/Pods-ImaginingLink/Pods-ImaginingLink.pro-release.xcconfig"; sourceTree = "<group>"; };
 		4803D3342178D82C00C82909 /* InviteFriendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteFriendsViewController.swift; sourceTree = "<group>"; };
 		480A3BE823580B3100EA4EF4 /* Publishing.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Publishing.storyboard; sourceTree = "<group>"; };
 		480A3BEB2359847100EA4EF4 /* PublishStepOneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublishStepOneViewController.swift; sourceTree = "<group>"; };
@@ -165,10 +169,11 @@
 		48F7F1861FFE0412008D827A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		48FC9DA020B1B99D00838CA7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ImaginingLink/Assets.xcassets; sourceTree = "<group>"; };
 		48FFC673217F82A300AB09D5 /* TwofactorAuthenticationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwofactorAuthenticationViewController.swift; sourceTree = "<group>"; };
-		4C0590D41CF3E6509DA690EE /* Pods_ImaginingLinkUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ImaginingLinkUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		58E01A8C5A18D3DBAD09BF0E /* Pods-ImaginingLinkTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ImaginingLinkTests.release.xcconfig"; path = "Target Support Files/Pods-ImaginingLinkTests/Pods-ImaginingLinkTests.release.xcconfig"; sourceTree = "<group>"; };
-		76EAC3A4D9E2D00E80A7A44F /* Pods-ImaginingLinkUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ImaginingLinkUITests.debug.xcconfig"; path = "Target Support Files/Pods-ImaginingLinkUITests/Pods-ImaginingLinkUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		891AD0C435731AE1189C2638 /* Pods-ImaginingLink.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ImaginingLink.debug.xcconfig"; path = "Target Support Files/Pods-ImaginingLink/Pods-ImaginingLink.debug.xcconfig"; sourceTree = "<group>"; };
+		57049332FFCF8D77740AB83B /* Pods-ImaginingLinkUITests.pro-release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ImaginingLinkUITests.pro-release.xcconfig"; path = "Pods/Target Support Files/Pods-ImaginingLinkUITests/Pods-ImaginingLinkUITests.pro-release.xcconfig"; sourceTree = "<group>"; };
+		80D2D8F5E391E9A8F1208BBF /* Pods_ImaginingLinkUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ImaginingLinkUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9F08D0AD3F490C121B859CF9 /* Pods-ImaginingLinkTests.dev-debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ImaginingLinkTests.dev-debug.xcconfig"; path = "Pods/Target Support Files/Pods-ImaginingLinkTests/Pods-ImaginingLinkTests.dev-debug.xcconfig"; sourceTree = "<group>"; };
+		9F8561790EC9637F0E5AF112 /* Pods-ImaginingLinkTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ImaginingLinkTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ImaginingLinkTests/Pods-ImaginingLinkTests.debug.xcconfig"; sourceTree = "<group>"; };
+		A8706F27AE5B9D38409A333D /* Pods-ImaginingLink.dev-debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ImaginingLink.dev-debug.xcconfig"; path = "Pods/Target Support Files/Pods-ImaginingLink/Pods-ImaginingLink.dev-debug.xcconfig"; sourceTree = "<group>"; };
 		AC01CA5220C05DF100034C90 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		AC01CA5420C05E4C00034C90 /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
 		AC099D8020F79D6D0090B0CA /* LoaderView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoaderView.storyboard; sourceTree = "<group>"; };
@@ -206,15 +211,16 @@
 		ACD18C7320C551D50059DE7B /* TwoFactorAuthenticationViewcontroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoFactorAuthenticationViewcontroller.swift; sourceTree = "<group>"; };
 		ACD18C7520C586E20059DE7B /* EmailSuccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailSuccessViewController.swift; sourceTree = "<group>"; };
 		ACE9CA8E21188FFD00AAC035 /* ILUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ILUtility.swift; sourceTree = "<group>"; };
-		B00277BD7F99F0DE90B1DD4A /* Pods-ImaginingLinkTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ImaginingLinkTests.debug.xcconfig"; path = "Target Support Files/Pods-ImaginingLinkTests/Pods-ImaginingLinkTests.debug.xcconfig"; sourceTree = "<group>"; };
-		B0F1376E7E6943EB82E220C2 /* Pods_ImaginingLink.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ImaginingLink.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B7FA3DF3374A2E19A6E3483E /* Pods-ImaginingLinkTests.pro-release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ImaginingLinkTests.pro-release.xcconfig"; path = "Pods/Target Support Files/Pods-ImaginingLinkTests/Pods-ImaginingLinkTests.pro-release.xcconfig"; sourceTree = "<group>"; };
 		BC0B83A020BC6E490082A53B /* EmailScreenViewcontroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailScreenViewcontroller.swift; sourceTree = "<group>"; };
 		BC9DD97A20B82541003CA4A6 /* WebServiceHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebServiceHandler.swift; sourceTree = "<group>"; };
 		BCFFFBB220BAEE5A003A0652 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		BCFFFBB420BAEE79003A0652 /* SignUpViewcontroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewcontroller.swift; sourceTree = "<group>"; };
 		BCFFFBB620BAEEB0003A0652 /* OTPViewcontroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPViewcontroller.swift; sourceTree = "<group>"; };
-		E9E4C04BA9212155CE8EE32E /* Pods_ImaginingLinkTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ImaginingLinkTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		F3E37BB9058E10B3D8F39E32 /* Pods-ImaginingLinkUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ImaginingLinkUITests.release.xcconfig"; path = "Target Support Files/Pods-ImaginingLinkUITests/Pods-ImaginingLinkUITests.release.xcconfig"; sourceTree = "<group>"; };
+		D42D1D9BF458A03AB264FB46 /* Pods-ImaginingLinkTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ImaginingLinkTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ImaginingLinkTests/Pods-ImaginingLinkTests.release.xcconfig"; sourceTree = "<group>"; };
+		DDAA1D0E0C0A2F8C391542F2 /* Pods_ImaginingLinkTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ImaginingLinkTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F7B05AFFA5A2EC5FD2B38B20 /* Pods-ImaginingLink.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ImaginingLink.release.xcconfig"; path = "Pods/Target Support Files/Pods-ImaginingLink/Pods-ImaginingLink.release.xcconfig"; sourceTree = "<group>"; };
+		FC6CFBBD0FCABAB52E476C67 /* Pods-ImaginingLinkUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ImaginingLinkUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ImaginingLinkUITests/Pods-ImaginingLinkUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -223,7 +229,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				48216E3F2326CAB200ADE8D5 /* WebKit.framework in Frameworks */,
-				3F2752C37776D9DD851496AE /* Pods_ImaginingLink.framework in Frameworks */,
+				287EEB46CBEF2EC652C5ECD8 /* Pods_ImaginingLink.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -231,7 +237,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7E7005011885899295446F37 /* Pods_ImaginingLinkTests.framework in Frameworks */,
+				A76DE396226AE80A7AEA82AA /* Pods_ImaginingLinkTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -239,7 +245,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E99DF94DCCF2DBFFA3B63C78 /* Pods_ImaginingLinkUITests.framework in Frameworks */,
+				632771F6AA887BD97D5FEE9D /* Pods_ImaginingLinkUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -250,9 +256,9 @@
 			isa = PBXGroup;
 			children = (
 				48216E3E2326CAB200ADE8D5 /* WebKit.framework */,
-				B0F1376E7E6943EB82E220C2 /* Pods_ImaginingLink.framework */,
-				E9E4C04BA9212155CE8EE32E /* Pods_ImaginingLinkTests.framework */,
-				4C0590D41CF3E6509DA690EE /* Pods_ImaginingLinkUITests.framework */,
+				1C197B3231518ADEE55E9DE0 /* Pods_ImaginingLink.framework */,
+				DDAA1D0E0C0A2F8C391542F2 /* Pods_ImaginingLinkTests.framework */,
+				80D2D8F5E391E9A8F1208BBF /* Pods_ImaginingLinkUITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -478,14 +484,20 @@
 		F56462FBA53779B5FD326466 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				891AD0C435731AE1189C2638 /* Pods-ImaginingLink.debug.xcconfig */,
-				3912A770DDF9F3CD4B37864C /* Pods-ImaginingLink.release.xcconfig */,
-				B00277BD7F99F0DE90B1DD4A /* Pods-ImaginingLinkTests.debug.xcconfig */,
-				58E01A8C5A18D3DBAD09BF0E /* Pods-ImaginingLinkTests.release.xcconfig */,
-				76EAC3A4D9E2D00E80A7A44F /* Pods-ImaginingLinkUITests.debug.xcconfig */,
-				F3E37BB9058E10B3D8F39E32 /* Pods-ImaginingLinkUITests.release.xcconfig */,
+				0E27BEDD969C5B3380ECA7B0 /* Pods-ImaginingLink.debug.xcconfig */,
+				F7B05AFFA5A2EC5FD2B38B20 /* Pods-ImaginingLink.release.xcconfig */,
+				9F8561790EC9637F0E5AF112 /* Pods-ImaginingLinkTests.debug.xcconfig */,
+				D42D1D9BF458A03AB264FB46 /* Pods-ImaginingLinkTests.release.xcconfig */,
+				096AE459B54ED2A03F1C33C0 /* Pods-ImaginingLinkUITests.debug.xcconfig */,
+				FC6CFBBD0FCABAB52E476C67 /* Pods-ImaginingLinkUITests.release.xcconfig */,
+				A8706F27AE5B9D38409A333D /* Pods-ImaginingLink.dev-debug.xcconfig */,
+				2CAB9E9D9892F0A317314B93 /* Pods-ImaginingLink.pro-release.xcconfig */,
+				9F08D0AD3F490C121B859CF9 /* Pods-ImaginingLinkTests.dev-debug.xcconfig */,
+				B7FA3DF3374A2E19A6E3483E /* Pods-ImaginingLinkTests.pro-release.xcconfig */,
+				198135D850CED581AC7B7301 /* Pods-ImaginingLinkUITests.dev-debug.xcconfig */,
+				57049332FFCF8D77740AB83B /* Pods-ImaginingLinkUITests.pro-release.xcconfig */,
 			);
-			path = Pods;
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -495,11 +507,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 484279551FF39B9F0056A089 /* Build configuration list for PBXNativeTarget "ImaginingLink" */;
 			buildPhases = (
-				153B57C5F8DC564024B05E3C /* [CP] Check Pods Manifest.lock */,
+				289163DB4DB725DCD658045F /* [CP] Check Pods Manifest.lock */,
 				484279291FF39B9E0056A089 /* Sources */,
 				4842792A1FF39B9E0056A089 /* Frameworks */,
 				4842792B1FF39B9E0056A089 /* Resources */,
-				5DE6E17B4F228B64164D3A75 /* [CP] Embed Pods Frameworks */,
+				BB984484888932260EDB05C4 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -514,7 +526,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 484279581FF39B9F0056A089 /* Build configuration list for PBXNativeTarget "ImaginingLinkTests" */;
 			buildPhases = (
-				0A7EA93BD679D741BD95DE73 /* [CP] Check Pods Manifest.lock */,
+				183E2AF3152068ED4F6B21ED /* [CP] Check Pods Manifest.lock */,
 				4842793D1FF39B9E0056A089 /* Sources */,
 				4842793E1FF39B9E0056A089 /* Frameworks */,
 				4842793F1FF39B9E0056A089 /* Resources */,
@@ -533,7 +545,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4842795B1FF39B9F0056A089 /* Build configuration list for PBXNativeTarget "ImaginingLinkUITests" */;
 			buildPhases = (
-				4865ED879EF6636BB5DB1763 /* [CP] Check Pods Manifest.lock */,
+				05B55BA1E6C8FAE703AE6E41 /* [CP] Check Pods Manifest.lock */,
 				484279481FF39B9E0056A089 /* Sources */,
 				484279491FF39B9E0056A089 /* Frameworks */,
 				4842794A1FF39B9E0056A089 /* Resources */,
@@ -637,51 +649,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0A7EA93BD679D741BD95DE73 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-ImaginingLinkTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		153B57C5F8DC564024B05E3C /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-ImaginingLink-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		4865ED879EF6636BB5DB1763 /* [CP] Check Pods Manifest.lock */ = {
+		05B55BA1E6C8FAE703AE6E41 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -703,7 +671,51 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		5DE6E17B4F228B64164D3A75 /* [CP] Embed Pods Frameworks */ = {
+		183E2AF3152068ED4F6B21ED /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ImaginingLinkTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		289163DB4DB725DCD658045F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ImaginingLink-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BB984484888932260EDB05C4 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -864,6 +876,221 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		4823BFB0243099F200450A22 /* DEV-Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = "DEV-Debug";
+		};
+		4823BFB1243099F200450A22 /* DEV-Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A8706F27AE5B9D38409A333D /* Pods-ImaginingLink.dev-debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 30;
+				DEVELOPMENT_TEAM = W8U434C9C6;
+				INFOPLIST_FILE = ImaginingLink/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_SWIFT_FLAGS = "$(inherited) -DDEV";
+				PRODUCT_BUNDLE_IDENTIFIER = com.imaginglink.Imaginglink;
+				PRODUCT_NAME = ImagingLink;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = "DEV-Debug";
+		};
+		4823BFB2243099F200450A22 /* DEV-Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9F08D0AD3F490C121B859CF9 /* Pods-ImaginingLinkTests.dev-debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = ImaginingLinkTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.imaginglink.ImaginingLinkTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ImaginingLink.app/ImaginingLink";
+			};
+			name = "DEV-Debug";
+		};
+		4823BFB3243099F200450A22 /* DEV-Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 198135D850CED581AC7B7301 /* Pods-ImaginingLinkUITests.dev-debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = ImaginingLinkUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.imaginglink.ImaginingLinkUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = ImaginingLink;
+			};
+			name = "DEV-Debug";
+		};
+		4823BFB424309A1E00450A22 /* PRO-Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = "PRO-Release";
+		};
+		4823BFB524309A1E00450A22 /* PRO-Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2CAB9E9D9892F0A317314B93 /* Pods-ImaginingLink.pro-release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 30;
+				DEVELOPMENT_TEAM = W8U434C9C6;
+				INFOPLIST_FILE = ImaginingLink/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_SWIFT_FLAGS = "$(inherited) -DPRO";
+				PRODUCT_BUNDLE_IDENTIFIER = com.imaginglink.Imaginglink;
+				PRODUCT_NAME = ImagingLink;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = "PRO-Release";
+		};
+		4823BFB624309A1E00450A22 /* PRO-Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B7FA3DF3374A2E19A6E3483E /* Pods-ImaginingLinkTests.pro-release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = ImaginingLinkTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.imaginglink.ImaginingLinkTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ImaginingLink.app/ImaginingLink";
+			};
+			name = "PRO-Release";
+		};
+		4823BFB724309A1E00450A22 /* PRO-Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 57049332FFCF8D77740AB83B /* Pods-ImaginingLinkUITests.pro-release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = ImaginingLinkUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.imaginglink.ImaginingLinkUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = ImaginingLink;
+			};
+			name = "PRO-Release";
+		};
 		484279531FF39B9F0056A089 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -977,15 +1204,16 @@
 		};
 		484279561FF39B9F0056A089 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 891AD0C435731AE1189C2638 /* Pods-ImaginingLink.debug.xcconfig */;
+			baseConfigurationReference = 0E27BEDD969C5B3380ECA7B0 /* Pods-ImaginingLink.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 28;
+				CURRENT_PROJECT_VERSION = 30;
 				DEVELOPMENT_TEAM = W8U434C9C6;
 				INFOPLIST_FILE = ImaginingLink/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.imaginglink.Imaginglink;
 				PRODUCT_NAME = ImagingLink;
 				SWIFT_VERSION = 5.0;
@@ -995,15 +1223,16 @@
 		};
 		484279571FF39B9F0056A089 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3912A770DDF9F3CD4B37864C /* Pods-ImaginingLink.release.xcconfig */;
+			baseConfigurationReference = F7B05AFFA5A2EC5FD2B38B20 /* Pods-ImaginingLink.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 28;
+				CURRENT_PROJECT_VERSION = 30;
 				DEVELOPMENT_TEAM = W8U434C9C6;
 				INFOPLIST_FILE = ImaginingLink/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.imaginglink.Imaginglink;
 				PRODUCT_NAME = ImagingLink;
 				SWIFT_VERSION = 5.0;
@@ -1013,7 +1242,7 @@
 		};
 		484279591FF39B9F0056A089 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B00277BD7F99F0DE90B1DD4A /* Pods-ImaginingLinkTests.debug.xcconfig */;
+			baseConfigurationReference = 9F8561790EC9637F0E5AF112 /* Pods-ImaginingLinkTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1030,7 +1259,7 @@
 		};
 		4842795A1FF39B9F0056A089 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 58E01A8C5A18D3DBAD09BF0E /* Pods-ImaginingLinkTests.release.xcconfig */;
+			baseConfigurationReference = D42D1D9BF458A03AB264FB46 /* Pods-ImaginingLinkTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1047,7 +1276,7 @@
 		};
 		4842795C1FF39B9F0056A089 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 76EAC3A4D9E2D00E80A7A44F /* Pods-ImaginingLinkUITests.debug.xcconfig */;
+			baseConfigurationReference = 096AE459B54ED2A03F1C33C0 /* Pods-ImaginingLinkUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -1063,7 +1292,7 @@
 		};
 		4842795D1FF39B9F0056A089 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F3E37BB9058E10B3D8F39E32 /* Pods-ImaginingLinkUITests.release.xcconfig */;
+			baseConfigurationReference = FC6CFBBD0FCABAB52E476C67 /* Pods-ImaginingLinkUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -1084,7 +1313,9 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				484279531FF39B9F0056A089 /* Debug */,
+				4823BFB0243099F200450A22 /* DEV-Debug */,
 				484279541FF39B9F0056A089 /* Release */,
+				4823BFB424309A1E00450A22 /* PRO-Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1093,7 +1324,9 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				484279561FF39B9F0056A089 /* Debug */,
+				4823BFB1243099F200450A22 /* DEV-Debug */,
 				484279571FF39B9F0056A089 /* Release */,
+				4823BFB524309A1E00450A22 /* PRO-Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1102,7 +1335,9 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				484279591FF39B9F0056A089 /* Debug */,
+				4823BFB2243099F200450A22 /* DEV-Debug */,
 				4842795A1FF39B9F0056A089 /* Release */,
+				4823BFB624309A1E00450A22 /* PRO-Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1111,7 +1346,9 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4842795C1FF39B9F0056A089 /* Debug */,
+				4823BFB3243099F200450A22 /* DEV-Debug */,
 				4842795D1FF39B9F0056A089 /* Release */,
+				4823BFB724309A1E00450A22 /* PRO-Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
