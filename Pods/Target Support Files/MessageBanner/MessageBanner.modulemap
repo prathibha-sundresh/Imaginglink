@@ -1,0 +1,6 @@
+framework module MessageBanner {
+  umbrella header "MessageBanner-umbrella.h"
+
+  export *
+  module * { export * }
+}
