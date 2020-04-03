@@ -157,20 +157,21 @@ class PresentationViewController: BaseHamburgerViewController, UITableViewDelega
             let value = response as? String ?? ""
             
             let dic : [String : Any] = value.convertToDictionary()!
-            if let error = dic["message"] as? String, error == "favourite presentations are not found."{
-                ILUtility.showAlert(message: error, controller: self)
+            
+			if let array : [[String:Any]] = dic["data"] as? [[String : Any]], array.count > 0 {
+				let tmpArray = array.map({ (dict) -> [String: Any] in
+					var tmpDict = dict
+					tmpDict["Is_Liked"] = 0
+					return tmpDict
+				})
+				self.dataArray = tmpArray
+				self.PresenationTableView.reloadData()
+			}
+			else {
+				ILUtility.showAlert(message: "favourite presentations are not found.", controller: self)
                 self.dataArray = []
                 self.PresenationTableView.reloadData()
-                return
-            }
-            let array : [[String:Any]] = dic["data"] as! [[String : Any]]
-            let tmpArray = array.map({ (dict) -> [String: Any] in
-                var tmpDict = dict
-                tmpDict["Is_Liked"] = 0
-                return tmpDict
-            })
-            self.dataArray = tmpArray
-            self.PresenationTableView.reloadData()
+			}
             
         }) { (error) in
             ILUtility.hideProgressIndicator(controller: self)

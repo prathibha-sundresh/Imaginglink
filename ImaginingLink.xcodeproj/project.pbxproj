@@ -474,7 +474,6 @@
 				68146003AE08AE2447A023B8 /* Pods-ImaginingLinkUITests.release.xcconfig */,
 				ED31FE4398902952AC91D5E6 /* Pods-ImaginingLinkUITests.pro-release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -951,7 +950,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.imaginglink.Imaginglink;
 				PRODUCT_NAME = ImagingLink;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = "DEV-Debug";
 		};
@@ -1055,7 +1054,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.imaginglink.Imaginglink;
 				PRODUCT_NAME = ImagingLink;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = "PRO-Release";
 		};
@@ -1218,7 +1217,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.imaginglink.Imaginglink;
 				PRODUCT_NAME = ImagingLink;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -1237,7 +1236,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.imaginglink.Imaginglink;
 				PRODUCT_NAME = ImagingLink;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
