@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import WebKit
 
 class UserDetailsTableViewCell: UITableViewCell {
 	@IBOutlet weak var UserNameLbl: UILabel!
@@ -32,11 +33,12 @@ class UserDetailsTableViewCell: UITableViewCell {
 	}
 }
 
-class ImageViewCell: UITableViewCell,UIScrollViewDelegate {
+class ImageViewCell: UITableViewCell,UIScrollViewDelegate,WKNavigationDelegate {
 	@IBOutlet weak var currentPageLabel: UILabel!
 	@IBOutlet weak var leftButton: UIButton!
 	@IBOutlet weak var rightButton: UIButton!
-	@IBOutlet weak var webView: UIWebView!
+	@IBOutlet weak var wkWebView: WKWebView!
+	@IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
 	@IBOutlet weak var imageScrollView: UIScrollView!
 	@IBOutlet weak var imagesView: UIView!
 	var images: [String] = []
@@ -46,14 +48,15 @@ class ImageViewCell: UITableViewCell,UIScrollViewDelegate {
 	func setUI(dict: [String: Any]) {
 		imageScrollView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 200)
 		if dict["presentation_type"] as? String  == "video"{
-			webView.loadRequest(URLRequest(url: URL(string: dict["presentation_master_url"] as? String ?? "")!))
+			wkWebView.load(URLRequest(url: URL(string: dict["presentation_master_url"] as? String ?? "")!))
 			imagesView.isHidden = true
-			webView.isHidden = false
+			wkWebView.isHidden = false
+			wkWebView.navigationDelegate = self
 		}
 		else{
 			if let tmpPhotos = dict["presentation_jpg_files"] as? [[String: Any]] {
 				let photos = tmpPhotos.map{ $0["image"] as? String ?? "" }
-				webView.isHidden = true
+				wkWebView.isHidden = true
 				imagesView.isHidden = false
 				images = photos
 				addImagesToScroll(images: photos)
@@ -130,8 +133,8 @@ class ImageViewCell: UITableViewCell,UIScrollViewDelegate {
         }
 		delegate?.getCurrentIndex?(index: currentPage)
     }
-    func showHideRightButton(){
-        if images.count - 1 > currentPage{
+    func showHideRightButton() {
+        if images.count - 1 > currentPage {
             rightButton.isHidden = false
         }
         else{
@@ -139,9 +142,20 @@ class ImageViewCell: UITableViewCell,UIScrollViewDelegate {
         }
 		delegate?.getCurrentIndex?(index: currentPage)
     }
-    @IBAction func showFullSizeImage(_ sender: UIButton){
+    @IBAction func showFullSizeImage(_ sender: UIButton) {
         delegate?.showFullImage(imagesUrls: images,index: currentPage)
     }
+	
+	func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
+		activityIndicatorView.startAnimating()
+	}
+
+	func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+		activityIndicatorView.stopAnimating()
+	}
+	func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
+		activityIndicatorView.stopAnimating()
+	}
 }
 
 extension UpdatePresentationViewController: FullSizeImageViewDelegate{

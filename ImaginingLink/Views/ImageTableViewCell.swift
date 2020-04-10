@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import WebKit
 
 @objc protocol FullSizeImageViewDelegate {
     func showFullImage(imagesUrls: [String],index: Int)
@@ -16,7 +17,8 @@ import UIKit
 
 class ImageTableViewCell: UITableViewCell,UIScrollViewDelegate {
 
-    @IBOutlet weak var webView: UIWebView!
+    @IBOutlet weak var wkWebView: WKWebView!
+	@IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     @IBOutlet weak var FavouriteButton: UIButton!
 	@IBOutlet weak var settingButton: UIButton!
     @IBOutlet weak var UserImageView: UIImageView!
@@ -36,6 +38,7 @@ class ImageTableViewCell: UITableViewCell,UIScrollViewDelegate {
     var editorModifiedCard: Bool = false
 	
     func setupUI(dic: [String:Any]) {
+		
 		FavouriteButton.isHidden = editorModifiedCard
 		settingButton.isHidden = editorModifiedCard
         presentationDict = dic
@@ -64,14 +67,15 @@ class ImageTableViewCell: UITableViewCell,UIScrollViewDelegate {
 		}
         if let imageURL : String = imageURL {
             if ((dic["presentation_type"] as? String)?.contains("video"))! {
-                webView.isHidden = false
-                if (webView != nil){
-                    webView.loadRequest(URLRequest(url: URL(string: imageURL)!))
+                wkWebView.isHidden = false
+				wkWebView.navigationDelegate = self
+                if (wkWebView != nil){
+					wkWebView.load(URLRequest(url: URL(string: imageURL)!))
                 }
                 imagesView.isHidden = true
             } else if let tmpPhotos = dic["presentation_jpg_files"] as? [[String: Any]] {
                 let photos = tmpPhotos.map{ $0["image"] as? String ?? "" }
-                webView.isHidden = true
+                wkWebView.isHidden = true
                 images = photos
                 addImagesToScroll(images: photos)
                 imagesView.isHidden = false
@@ -186,3 +190,15 @@ class ImageTableViewCell: UITableViewCell,UIScrollViewDelegate {
     
 }
 
+extension ImageTableViewCell: WKNavigationDelegate {
+	func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
+		activityIndicatorView.startAnimating()
+	}
+
+	func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+		activityIndicatorView.stopAnimating()
+	}
+	func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
+		activityIndicatorView.stopAnimating()
+	}
+}

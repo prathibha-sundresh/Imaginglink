@@ -10,11 +10,6 @@ import UIKit
 import SDWebImage
 import WebKit
 
-//protocol PresentationDelegate {
-//    //func followUnfollowWithPresentationId(id : String, successResponse:@escaping (_ response:String)-> Void)
-//    //func notifyOrCancelWithPresentationId(id : String, successResponse:@escaping (_ response:String)-> Void)
-//}
-
 protocol PresentationTableViewCellDelegate {
     func getLikedStatus(row: Int)
     func updateRatingWithIndex(row: Int, rating: Int)
@@ -39,14 +34,14 @@ enum LikeEmojies: Int {
         }
     }
 }
-class PresentationTableViewCell: UITableViewCell,UIWebViewDelegate {
+class PresentationTableViewCell: UITableViewCell {
     
     @IBOutlet weak var borderView: UIView!
     @IBOutlet weak var smileyView: UIView!
     @IBOutlet weak var smileyContainerView: UIView!
     @IBOutlet weak var LikeImageView: UIButton!
     @IBOutlet weak var FavouriteImage: UIButton!
-    @IBOutlet weak var webview: UIWebView!
+    @IBOutlet weak var wkWebView: WKWebView!
     @IBOutlet weak var URLImageView: UIImageView!
     @IBOutlet weak var UserImageView: UIImageView!
     @IBOutlet weak var UsernameLabel: UILabel!
@@ -127,16 +122,15 @@ class PresentationTableViewCell: UITableViewCell,UIWebViewDelegate {
             if ((dic["presentation_type"] as? String)?.contains("video"))! {
                 
                 let url : URL = URL(string: imageURL)!
-                webview.isHidden = false
-                
-                let requestObj = URLRequest(url: url)
-                webview.loadRequest(requestObj)
+                wkWebView.isHidden = false
+			
+                wkWebView.load(URLRequest(url: url))
                 if (URLImageView != nil) {
                     URLImageView.isHidden = true
                 }
             } else {
                 URLImageView.sd_setImage(with: URL(string: imageURL), placeholderImage: UIImage(named: "ImagingLinkLogo"))
-                webview.isHidden = true
+                wkWebView.isHidden = true
                 if (URLImageView != nil) {
                     URLImageView.isHidden = false
                 }

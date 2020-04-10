@@ -7,11 +7,12 @@
 //
 
 import UIKit
+import WebKit
 
-class MyPresentationsTableViewCell: UITableViewCell,UIWebViewDelegate {
+class MyPresentationsTableViewCell: UITableViewCell {
 
 	@IBOutlet weak var borderView: UIView!
-	@IBOutlet weak var webview: UIWebView!
+	@IBOutlet weak var wkWebview: WKWebView!
 	@IBOutlet weak var URLImageView: UIImageView!
 	@IBOutlet weak var UserImageView: UIImageView!
 	@IBOutlet weak var UsernameLabel: UILabel!
@@ -72,16 +73,14 @@ class MyPresentationsTableViewCell: UITableViewCell,UIWebViewDelegate {
             if ((dic["presentation_type"] as? String)?.contains("video"))! {
                 
                 let url : URL = URL(string: imageURL)!
-                webview.isHidden = false
-                
-                let requestObj = URLRequest(url: url)
-                webview.loadRequest(requestObj)
+                wkWebview.isHidden = false
+                wkWebview.load(URLRequest(url: url))
                 if (URLImageView != nil) {
                     URLImageView.isHidden = true
                 }
             } else {
                 URLImageView.sd_setImage(with: URL(string: imageURL), placeholderImage: UIImage(named: "ImagingLinkLogo"))
-                webview.isHidden = true
+                wkWebview.isHidden = true
                 if (URLImageView != nil) {
                     URLImageView.isHidden = false
                 }

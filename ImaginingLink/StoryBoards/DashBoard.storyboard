@@ -609,10 +609,18 @@
                                                         <action selector="menuPressedButtonAction:" destination="WqH-Xy-nJP" eventType="touchUpInside" id="gZv-ad-onS"/>
                                                     </connections>
                                                 </button>
-                                                <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tAQ-bi-SKV">
+                                                <wkWebView contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="N0r-vb-PhJ">
                                                     <rect key="frame" x="0.0" y="72" width="375" height="228"/>
-                                                    <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                </webView>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <wkWebViewConfiguration key="configuration" allowsInlineMediaPlayback="YES">
+                                                        <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                                        <wkPreferences key="preferences"/>
+                                                    </wkWebViewConfiguration>
+                                                </wkWebView>
+                                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="yDL-Ob-IFg">
+                                                    <rect key="frame" x="169" y="167.5" width="37" height="37"/>
+                                                    <color key="color" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                                </activityIndicatorView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1EI-G3-QS5">
                                                     <rect key="frame" x="0.0" y="73" width="375" height="226.5"/>
                                                     <subviews>
@@ -708,25 +716,27 @@
                                             <constraints>
                                                 <constraint firstItem="1EI-G3-QS5" firstAttribute="leading" secondItem="u2A-E0-gjd" secondAttribute="leading" id="2pf-Q4-VpL"/>
                                                 <constraint firstItem="yFB-4R-i0p" firstAttribute="top" secondItem="eIZ-2f-Jcn" secondAttribute="bottom" constant="5" id="3PZ-dw-Dmd"/>
-                                                <constraint firstAttribute="bottom" secondItem="tAQ-bi-SKV" secondAttribute="bottom" id="4uw-X8-naw"/>
                                                 <constraint firstItem="ou8-eS-j84" firstAttribute="leading" secondItem="eIZ-2f-Jcn" secondAttribute="trailing" constant="12" id="6vc-HC-HLQ"/>
-                                                <constraint firstAttribute="trailing" secondItem="tAQ-bi-SKV" secondAttribute="trailing" id="ANd-22-B0o"/>
+                                                <constraint firstAttribute="bottom" secondItem="N0r-vb-PhJ" secondAttribute="bottom" id="9pM-Av-GbI"/>
                                                 <constraint firstAttribute="trailing" secondItem="Pk6-84-YzZ" secondAttribute="trailing" constant="5" id="Dx6-Ui-yOM"/>
+                                                <constraint firstItem="yDL-Ob-IFg" firstAttribute="centerY" secondItem="N0r-vb-PhJ" secondAttribute="centerY" id="EhS-2D-ZFK"/>
                                                 <constraint firstItem="Pk6-84-YzZ" firstAttribute="top" secondItem="u2A-E0-gjd" secondAttribute="top" constant="14" id="FYo-6u-Q8a"/>
                                                 <constraint firstItem="yFB-4R-i0p" firstAttribute="trailing" secondItem="eIZ-2f-Jcn" secondAttribute="trailing" id="Faz-bc-JwJ"/>
                                                 <constraint firstItem="ou8-eS-j84" firstAttribute="centerY" secondItem="Pk6-84-YzZ" secondAttribute="centerY" id="HtM-eK-H8r"/>
-                                                <constraint firstItem="tAQ-bi-SKV" firstAttribute="top" secondItem="yFB-4R-i0p" secondAttribute="bottom" constant="14" id="JDg-mb-y0Q"/>
-                                                <constraint firstItem="tAQ-bi-SKV" firstAttribute="leading" secondItem="u2A-E0-gjd" secondAttribute="leading" id="Riv-5W-gAI"/>
+                                                <constraint firstItem="N0r-vb-PhJ" firstAttribute="leading" secondItem="u2A-E0-gjd" secondAttribute="leading" id="Nq3-Dl-SS9"/>
                                                 <constraint firstAttribute="trailing" secondItem="1EI-G3-QS5" secondAttribute="trailing" id="Rrg-YQ-ODr"/>
+                                                <constraint firstAttribute="trailing" secondItem="N0r-vb-PhJ" secondAttribute="trailing" id="Svn-1w-JYA"/>
                                                 <constraint firstItem="Pk6-84-YzZ" firstAttribute="leading" secondItem="ou8-eS-j84" secondAttribute="trailing" id="WL1-Vb-flW"/>
                                                 <constraint firstItem="eIZ-2f-Jcn" firstAttribute="top" secondItem="u2A-E0-gjd" secondAttribute="topMargin" constant="5" id="ayh-cj-jXd"/>
                                                 <constraint firstItem="pS4-rQ-FKG" firstAttribute="top" secondItem="eIZ-2f-Jcn" secondAttribute="bottom" constant="6" id="cwM-wh-dTR"/>
                                                 <constraint firstItem="pS4-rQ-FKG" firstAttribute="leading" secondItem="eIZ-2f-Jcn" secondAttribute="leading" id="efp-5V-Qe6"/>
                                                 <constraint firstItem="eIZ-2f-Jcn" firstAttribute="leading" secondItem="KU2-bi-ipz" secondAttribute="trailing" constant="11" id="f4z-H1-enY"/>
+                                                <constraint firstItem="N0r-vb-PhJ" firstAttribute="top" secondItem="yFB-4R-i0p" secondAttribute="bottom" constant="14" id="liA-y1-2qc"/>
                                                 <constraint firstItem="yFB-4R-i0p" firstAttribute="leading" secondItem="pS4-rQ-FKG" secondAttribute="trailing" constant="5" id="ms0-UY-g4g"/>
                                                 <constraint firstAttribute="bottom" secondItem="1EI-G3-QS5" secondAttribute="bottom" constant="0.5" id="sqr-0M-cBx"/>
                                                 <constraint firstItem="1EI-G3-QS5" firstAttribute="top" secondItem="pS4-rQ-FKG" secondAttribute="bottom" constant="14" id="v49-xv-QjG"/>
                                                 <constraint firstItem="KU2-bi-ipz" firstAttribute="leading" secondItem="u2A-E0-gjd" secondAttribute="leading" constant="13" id="wSd-EE-mzH"/>
+                                                <constraint firstItem="yDL-Ob-IFg" firstAttribute="centerX" secondItem="N0r-vb-PhJ" secondAttribute="centerX" id="zTJ-ig-sBI"/>
                                                 <constraint firstItem="KU2-bi-ipz" firstAttribute="top" secondItem="u2A-E0-gjd" secondAttribute="top" constant="14" id="zpS-Bk-fgY"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -735,6 +745,7 @@
                                             <outlet property="ImaginingLabel" destination="pS4-rQ-FKG" id="XNZ-x4-49w"/>
                                             <outlet property="UserImageView" destination="KU2-bi-ipz" id="oS7-c9-FOU"/>
                                             <outlet property="UsernameLabel" destination="eIZ-2f-Jcn" id="NKc-IY-Fff"/>
+                                            <outlet property="activityIndicatorView" destination="yDL-Ob-IFg" id="MKa-q1-9H0"/>
                                             <outlet property="currentPageLabel" destination="cv9-xi-u2c" id="Row-5H-7jR"/>
                                             <outlet property="imageScrollView" destination="Lve-p7-ZCa" id="xfo-Wg-JM9"/>
                                             <outlet property="imagesView" destination="1EI-G3-QS5" id="7EC-8F-9eI"/>
@@ -742,7 +753,7 @@
                                             <outlet property="rightButton" destination="1MU-fc-ZMH" id="t0j-6M-tDD"/>
                                             <outlet property="settingButton" destination="Pk6-84-YzZ" id="53Q-Oz-H8K"/>
                                             <outlet property="timeLabel" destination="yFB-4R-i0p" id="LBm-Pc-wyi"/>
-                                            <outlet property="webView" destination="tAQ-bi-SKV" id="TCY-oe-9J2"/>
+                                            <outlet property="wkWebView" destination="N0r-vb-PhJ" id="VFk-BB-IT3"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="PresentationDetailCellId" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PresentationDetailTextCellId" id="Fyf-4Z-F38" userLabel="PresentationDetailTextCell" customClass="PresentationDetailTextCell" customModule="ImagingLink" customModuleProvider="target">
@@ -2274,16 +2285,17 @@ contain at least one special character (! @ # $ % ^ &amp; *)</string>
                                                             <color key="textColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <webView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fs3-o2-Uwv">
+                                                        <wkWebView userInteractionEnabled="NO" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="zy9-wk-yN3">
                                                             <rect key="frame" x="11" y="119" width="333" height="160"/>
                                                             <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="height" constant="160" id="LFY-Bj-3SO"/>
+                                                                <constraint firstAttribute="height" constant="160" id="2Fm-xB-Wvo"/>
                                                             </constraints>
-                                                            <connections>
-                                                                <outlet property="delegate" destination="nD1-Go-qQc" id="Ipz-XV-lAZ"/>
-                                                            </connections>
-                                                        </webView>
+                                                            <wkWebViewConfiguration key="configuration" allowsInlineMediaPlayback="YES">
+                                                                <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                                                <wkPreferences key="preferences"/>
+                                                            </wkWebViewConfiguration>
+                                                        </wkWebView>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gRT-9Q-eUZ">
                                                             <rect key="frame" x="11" y="119" width="333" height="160"/>
                                                         </imageView>
@@ -2452,35 +2464,35 @@ contain at least one special character (! @ # $ % ^ &amp; *)</string>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
-                                                        <constraint firstItem="gRT-9Q-eUZ" firstAttribute="trailing" secondItem="Fs3-o2-Uwv" secondAttribute="trailing" id="1UJ-Ru-0vj"/>
                                                         <constraint firstItem="0NL-O9-Fxc" firstAttribute="top" secondItem="HHi-Hh-t7U" secondAttribute="top" id="1ZY-cO-v26"/>
+                                                        <constraint firstItem="gRT-9Q-eUZ" firstAttribute="bottom" secondItem="zy9-wk-yN3" secondAttribute="bottom" id="25l-PG-iwU"/>
+                                                        <constraint firstItem="Njg-fZ-Ngp" firstAttribute="top" secondItem="zy9-wk-yN3" secondAttribute="bottom" constant="7" id="3Ft-7P-dtf"/>
                                                         <constraint firstItem="hDq-zS-pDH" firstAttribute="leading" secondItem="HHi-Hh-t7U" secondAttribute="leading" id="48U-RE-7MK"/>
                                                         <constraint firstItem="XKE-dJ-ga7" firstAttribute="top" secondItem="0NL-O9-Fxc" secondAttribute="bottom" constant="5" id="7sv-pT-qLM"/>
                                                         <constraint firstAttribute="trailing" secondItem="A9w-zh-WFG" secondAttribute="trailing" constant="5" id="86E-aT-X53"/>
                                                         <constraint firstItem="hDq-zS-pDH" firstAttribute="trailing" secondItem="A9w-zh-WFG" secondAttribute="trailing" id="8L0-Qc-2yL"/>
                                                         <constraint firstItem="HHi-Hh-t7U" firstAttribute="top" secondItem="jv2-fg-Nlp" secondAttribute="top" constant="9" id="8Sk-Ri-MTq"/>
-                                                        <constraint firstItem="gRT-9Q-eUZ" firstAttribute="bottom" secondItem="Fs3-o2-Uwv" secondAttribute="bottom" id="925-yo-qz0"/>
                                                         <constraint firstAttribute="trailing" secondItem="SJ1-m0-8BB" secondAttribute="trailing" id="EUd-Di-zZv"/>
+                                                        <constraint firstAttribute="trailing" secondItem="zy9-wk-yN3" secondAttribute="trailing" constant="11" id="EVt-uc-Q0Q"/>
+                                                        <constraint firstItem="zy9-wk-yN3" firstAttribute="leading" secondItem="jv2-fg-Nlp" secondAttribute="leading" constant="11" id="Efq-my-F6y"/>
+                                                        <constraint firstItem="gRT-9Q-eUZ" firstAttribute="top" secondItem="zy9-wk-yN3" secondAttribute="top" id="EpX-Ls-F45"/>
                                                         <constraint firstItem="A9w-zh-WFG" firstAttribute="leading" secondItem="0NL-O9-Fxc" secondAttribute="trailing" constant="15" id="GWA-cP-iTZ"/>
                                                         <constraint firstItem="XKE-dJ-ga7" firstAttribute="leading" secondItem="0NL-O9-Fxc" secondAttribute="leading" id="PG6-Of-B55"/>
-                                                        <constraint firstItem="gRT-9Q-eUZ" firstAttribute="leading" secondItem="Fs3-o2-Uwv" secondAttribute="leading" id="QXm-PG-VQj"/>
                                                         <constraint firstItem="drL-Cx-uM5" firstAttribute="top" secondItem="XKE-dJ-ga7" secondAttribute="top" id="RZn-Tm-uEJ"/>
+                                                        <constraint firstItem="SJ1-m0-8BB" firstAttribute="top" secondItem="zy9-wk-yN3" secondAttribute="bottom" constant="15" id="Rls-46-Tbe"/>
                                                         <constraint firstItem="hDq-zS-pDH" firstAttribute="top" secondItem="XKE-dJ-ga7" secondAttribute="bottom" constant="11" id="S1u-c2-oX5"/>
                                                         <constraint firstAttribute="bottom" secondItem="SJ1-m0-8BB" secondAttribute="bottom" constant="-4" id="UjM-8H-2ns"/>
                                                         <constraint firstItem="drL-Cx-uM5" firstAttribute="leading" secondItem="XKE-dJ-ga7" secondAttribute="trailing" constant="10" id="VW4-iB-pD5"/>
                                                         <constraint firstItem="SJ1-m0-8BB" firstAttribute="leading" secondItem="jv2-fg-Nlp" secondAttribute="leading" id="XBg-Pu-Z3P"/>
                                                         <constraint firstItem="Njg-fZ-Ngp" firstAttribute="leading" secondItem="jv2-fg-Nlp" secondAttribute="leading" constant="11" id="XK5-jQ-EeE"/>
+                                                        <constraint firstItem="gRT-9Q-eUZ" firstAttribute="leading" secondItem="zy9-wk-yN3" secondAttribute="leading" id="ZiK-zu-sSt"/>
                                                         <constraint firstItem="HHi-Hh-t7U" firstAttribute="leading" secondItem="jv2-fg-Nlp" secondAttribute="leading" constant="11" id="cG4-SC-whl"/>
-                                                        <constraint firstItem="SJ1-m0-8BB" firstAttribute="top" secondItem="Fs3-o2-Uwv" secondAttribute="bottom" constant="15" id="ffO-yi-2OX"/>
+                                                        <constraint firstItem="gRT-9Q-eUZ" firstAttribute="trailing" secondItem="zy9-wk-yN3" secondAttribute="trailing" id="g7T-RU-Y1C"/>
                                                         <constraint firstItem="A9w-zh-WFG" firstAttribute="top" secondItem="jv2-fg-Nlp" secondAttribute="top" constant="6" id="goK-6E-mUE"/>
-                                                        <constraint firstItem="gRT-9Q-eUZ" firstAttribute="top" secondItem="Fs3-o2-Uwv" secondAttribute="top" id="inw-Mq-bhl"/>
                                                         <constraint firstAttribute="trailing" secondItem="drL-Cx-uM5" secondAttribute="trailing" constant="20" id="myK-xx-gTn"/>
                                                         <constraint firstItem="drL-Cx-uM5" firstAttribute="bottom" secondItem="XKE-dJ-ga7" secondAttribute="bottom" id="nRf-FG-GBQ"/>
-                                                        <constraint firstItem="Njg-fZ-Ngp" firstAttribute="top" secondItem="Fs3-o2-Uwv" secondAttribute="bottom" constant="7" id="nY1-Sm-UY9"/>
-                                                        <constraint firstItem="Fs3-o2-Uwv" firstAttribute="leading" secondItem="jv2-fg-Nlp" secondAttribute="leading" constant="11" id="oRJ-fq-EPX"/>
-                                                        <constraint firstAttribute="trailing" secondItem="Fs3-o2-Uwv" secondAttribute="trailing" constant="11" id="rqB-K6-biK"/>
+                                                        <constraint firstItem="zy9-wk-yN3" firstAttribute="top" secondItem="hDq-zS-pDH" secondAttribute="bottom" constant="7" id="uMZ-2k-GMK"/>
                                                         <constraint firstItem="0NL-O9-Fxc" firstAttribute="leading" secondItem="HHi-Hh-t7U" secondAttribute="trailing" constant="11" id="uRx-ut-oqa"/>
-                                                        <constraint firstItem="Fs3-o2-Uwv" firstAttribute="top" secondItem="hDq-zS-pDH" secondAttribute="bottom" constant="7" id="ueH-t5-PyP"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
@@ -2508,7 +2520,7 @@ contain at least one special character (! @ # $ % ^ &amp; *)</string>
                                             <outlet property="smileyView" destination="Njg-fZ-Ngp" id="oxp-BL-Hyf"/>
                                             <outlet property="timeLabel" destination="drL-Cx-uM5" id="saK-gU-vhr"/>
                                             <outlet property="viewsAndCommentLabel" destination="Fdi-hM-tgX" id="HmC-3d-qnZ"/>
-                                            <outlet property="webview" destination="Fs3-o2-Uwv" id="IXN-hz-iLb"/>
+                                            <outlet property="wkWebView" destination="zy9-wk-yN3" id="Xt6-Wc-oJd"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
