@@ -617,8 +617,8 @@
                                                         <wkPreferences key="preferences"/>
                                                     </wkWebViewConfiguration>
                                                 </wkWebView>
-                                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="yDL-Ob-IFg">
-                                                    <rect key="frame" x="169" y="167.5" width="37" height="37"/>
+                                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="yDL-Ob-IFg">
+                                                    <rect key="frame" x="177.5" y="176" width="20" height="20"/>
                                                     <color key="color" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
                                                 </activityIndicatorView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1EI-G3-QS5">
@@ -1584,7 +1584,7 @@ with Imaginglink.</string>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A 6-digit verification code is sent to oldmail@gmail.com  Please enter that code below to authenticate change request." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tT2-Wr-0ah">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A 6-digit verification code has been sent to oldmail@gmail.com  Please enter that code below to authenticate change request." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tT2-Wr-0ah">
                                 <rect key="frame" x="22" y="44" width="330" height="53.5"/>
                                 <fontDescription key="fontDescription" name="GoogleSans-Regular" family="Google Sans" pointSize="14"/>
                                 <nil key="textColor"/>
@@ -1596,7 +1596,7 @@ with Imaginglink.</string>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="52" id="Uqp-Gr-qHl"/>
                                 </constraints>
-                                <string key="text">If you do not have access to this E-mail, contact 
+                                <string key="text">If you do not have access to this Email, contact 
 support@imaginglink.com for reset.</string>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="GoogleSans-Regular" family="Google Sans" pointSize="14"/>
@@ -2025,7 +2025,7 @@ contain at least one special character (! @ # $ % ^ &amp; *)</string>
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Change E-mail Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cBw-rS-60V">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Change Email Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cBw-rS-60V">
                                 <rect key="frame" x="15" y="0.0" width="345" height="30"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -2287,7 +2287,7 @@ contain at least one special character (! @ # $ % ^ &amp; *)</string>
                                                         </label>
                                                         <wkWebView userInteractionEnabled="NO" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="zy9-wk-yN3">
                                                             <rect key="frame" x="11" y="119" width="333" height="160"/>
-                                                            <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="160" id="2Fm-xB-Wvo"/>
                                                             </constraints>
@@ -2296,6 +2296,10 @@ contain at least one special character (! @ # $ % ^ &amp; *)</string>
                                                                 <wkPreferences key="preferences"/>
                                                             </wkWebViewConfiguration>
                                                         </wkWebView>
+                                                        <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="lcU-HK-LWB">
+                                                            <rect key="frame" x="167.5" y="189" width="20" height="20"/>
+                                                            <color key="color" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </activityIndicatorView>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gRT-9Q-eUZ">
                                                             <rect key="frame" x="11" y="119" width="333" height="160"/>
                                                         </imageView>
@@ -2487,12 +2491,14 @@ contain at least one special character (! @ # $ % ^ &amp; *)</string>
                                                         <constraint firstItem="Njg-fZ-Ngp" firstAttribute="leading" secondItem="jv2-fg-Nlp" secondAttribute="leading" constant="11" id="XK5-jQ-EeE"/>
                                                         <constraint firstItem="gRT-9Q-eUZ" firstAttribute="leading" secondItem="zy9-wk-yN3" secondAttribute="leading" id="ZiK-zu-sSt"/>
                                                         <constraint firstItem="HHi-Hh-t7U" firstAttribute="leading" secondItem="jv2-fg-Nlp" secondAttribute="leading" constant="11" id="cG4-SC-whl"/>
+                                                        <constraint firstItem="lcU-HK-LWB" firstAttribute="centerX" secondItem="zy9-wk-yN3" secondAttribute="centerX" id="eSA-vs-Jzj"/>
                                                         <constraint firstItem="gRT-9Q-eUZ" firstAttribute="trailing" secondItem="zy9-wk-yN3" secondAttribute="trailing" id="g7T-RU-Y1C"/>
                                                         <constraint firstItem="A9w-zh-WFG" firstAttribute="top" secondItem="jv2-fg-Nlp" secondAttribute="top" constant="6" id="goK-6E-mUE"/>
                                                         <constraint firstAttribute="trailing" secondItem="drL-Cx-uM5" secondAttribute="trailing" constant="20" id="myK-xx-gTn"/>
                                                         <constraint firstItem="drL-Cx-uM5" firstAttribute="bottom" secondItem="XKE-dJ-ga7" secondAttribute="bottom" id="nRf-FG-GBQ"/>
                                                         <constraint firstItem="zy9-wk-yN3" firstAttribute="top" secondItem="hDq-zS-pDH" secondAttribute="bottom" constant="7" id="uMZ-2k-GMK"/>
                                                         <constraint firstItem="0NL-O9-Fxc" firstAttribute="leading" secondItem="HHi-Hh-t7U" secondAttribute="trailing" constant="11" id="uRx-ut-oqa"/>
+                                                        <constraint firstItem="lcU-HK-LWB" firstAttribute="centerY" secondItem="zy9-wk-yN3" secondAttribute="centerY" id="yfC-Iq-3fZ"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
@@ -2514,6 +2520,7 @@ contain at least one special character (! @ # $ % ^ &amp; *)</string>
                                             <outlet property="URLImageView" destination="gRT-9Q-eUZ" id="Gy7-Xb-8MZ"/>
                                             <outlet property="UserImageView" destination="HHi-Hh-t7U" id="DbU-qo-chQ"/>
                                             <outlet property="UsernameLabel" destination="0NL-O9-Fxc" id="mll-H6-ol6"/>
+                                            <outlet property="activityIndicatorView" destination="lcU-HK-LWB" id="lrg-ga-8ys"/>
                                             <outlet property="borderView" destination="jv2-fg-Nlp" id="elT-JB-y8k"/>
                                             <outlet property="menuPressedButton" destination="A9w-zh-WFG" id="yCU-UB-mAw"/>
                                             <outlet property="smileyContainerView" destination="rXm-sb-4PS" id="D32-ZZ-r3G"/>

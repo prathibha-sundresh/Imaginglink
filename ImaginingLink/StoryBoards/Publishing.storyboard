@@ -688,7 +688,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Czp-sk-LaH">
-                                <rect key="frame" x="0.0" y="24" width="107" height="40"/>
+                                <rect key="frame" x="0.0" y="10" width="107" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="gfn-Qx-cGe"/>
                                     <constraint firstAttribute="width" constant="107" id="hCb-ks-puA"/>
@@ -703,7 +703,7 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1s8-1h-iaA">
-                                <rect key="frame" x="0.0" y="72" width="320" height="2"/>
+                                <rect key="frame" x="0.0" y="58" width="320" height="2"/>
                                 <color key="backgroundColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.77647058820000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="2" id="pOD-jc-BNv"/>
@@ -751,7 +751,7 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="BeX-cm-co3">
-                                <rect key="frame" x="0.0" y="74" width="320" height="428"/>
+                                <rect key="frame" x="0.0" y="60" width="320" height="442"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="UserCellID" rowHeight="60" id="NXL-g5-eC1" customClass="UserDetailsTableViewCell" customModule="ImagingLink" customModuleProvider="target">
@@ -1660,8 +1660,8 @@ nstrate the visual form</string>
                                                         <wkPreferences key="preferences"/>
                                                     </wkWebViewConfiguration>
                                                 </wkWebView>
-                                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="aQi-3F-7iM">
-                                                    <rect key="frame" x="141" y="81" width="37" height="37"/>
+                                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="aQi-3F-7iM">
+                                                    <rect key="frame" x="150" y="90" width="20" height="20"/>
                                                     <color key="color" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
                                                 </activityIndicatorView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TWl-ru-bga">
@@ -1786,7 +1786,7 @@ nstrate the visual form</string>
                             <constraint firstItem="zDQ-H3-TB3" firstAttribute="leading" secondItem="oja-Pw-66p" secondAttribute="leading" id="gZg-jS-I7G"/>
                             <constraint firstItem="1s8-1h-iaA" firstAttribute="top" secondItem="Czp-sk-LaH" secondAttribute="bottom" constant="8" id="jmq-Oa-0Tg"/>
                             <constraint firstItem="BeX-cm-co3" firstAttribute="trailing" secondItem="oja-Pw-66p" secondAttribute="trailing" id="ojE-DK-O1s"/>
-                            <constraint firstItem="Czp-sk-LaH" firstAttribute="top" secondItem="oja-Pw-66p" secondAttribute="top" constant="24" id="uOO-Ao-xvI"/>
+                            <constraint firstItem="Czp-sk-LaH" firstAttribute="top" secondItem="oja-Pw-66p" secondAttribute="top" constant="10" id="uOO-Ao-xvI"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="oja-Pw-66p"/>
                     </view>
@@ -2944,6 +2944,10 @@ not allowed once submitted.</string>
                                                                 <wkPreferences key="preferences"/>
                                                             </wkWebViewConfiguration>
                                                         </wkWebView>
+                                                        <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="HWb-dY-sO5">
+                                                            <rect key="frame" x="140" y="170" width="20" height="20"/>
+                                                            <color key="color" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </activityIndicatorView>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uEe-ji-FVS">
                                                             <rect key="frame" x="11" y="100" width="278" height="160"/>
                                                         </imageView>
@@ -3150,6 +3154,7 @@ not allowed once submitted.</string>
                                                         <constraint firstItem="PsF-JA-yp6" firstAttribute="top" secondItem="UpE-Nt-XsP" secondAttribute="top" id="Ngb-nx-Qcb"/>
                                                         <constraint firstItem="uEe-ji-FVS" firstAttribute="top" secondItem="VjM-y0-rRw" secondAttribute="top" id="QCq-ck-86P"/>
                                                         <constraint firstItem="uEe-ji-FVS" firstAttribute="bottom" secondItem="VjM-y0-rRw" secondAttribute="bottom" id="QPf-z2-C6J"/>
+                                                        <constraint firstItem="HWb-dY-sO5" firstAttribute="centerY" secondItem="VjM-y0-rRw" secondAttribute="centerY" id="Qv1-zn-73p"/>
                                                         <constraint firstItem="iMJ-37-FtH" firstAttribute="top" secondItem="VjM-y0-rRw" secondAttribute="bottom" constant="10" id="T7l-Rg-CUj"/>
                                                         <constraint firstItem="7KC-Sz-CJM" firstAttribute="leading" secondItem="IAB-dV-DD2" secondAttribute="trailing" constant="15" id="U72-wL-MYC"/>
                                                         <constraint firstItem="db6-4Y-qFy" firstAttribute="top" secondItem="2MT-pm-XE4" secondAttribute="top" constant="8" id="XGM-DN-S1P"/>
@@ -3166,6 +3171,7 @@ not allowed once submitted.</string>
                                                         <constraint firstItem="IAB-dV-DD2" firstAttribute="leading" secondItem="PsF-JA-yp6" secondAttribute="leading" id="owU-z8-8J5"/>
                                                         <constraint firstAttribute="trailing" secondItem="VjM-y0-rRw" secondAttribute="trailing" constant="11" id="pKh-kZ-H1U"/>
                                                         <constraint firstItem="q1m-ah-UWw" firstAttribute="top" secondItem="IAB-dV-DD2" secondAttribute="bottom" constant="11" id="rSb-eM-rpV"/>
+                                                        <constraint firstItem="HWb-dY-sO5" firstAttribute="centerX" secondItem="VjM-y0-rRw" secondAttribute="centerX" id="rWQ-LF-7ZJ"/>
                                                         <constraint firstItem="PsF-JA-yp6" firstAttribute="leading" secondItem="UpE-Nt-XsP" secondAttribute="trailing" constant="11" id="rsX-aI-S5i"/>
                                                         <constraint firstAttribute="bottom" secondItem="9lD-sa-T2k" secondAttribute="bottom" constant="10" id="wmt-fv-qdB"/>
                                                         <constraint firstItem="VjM-y0-rRw" firstAttribute="top" secondItem="q1m-ah-UWw" secondAttribute="bottom" constant="7" id="xKn-vn-kT3"/>
@@ -3187,6 +3193,7 @@ not allowed once submitted.</string>
                                             <outlet property="URLImageView" destination="uEe-ji-FVS" id="DSh-wx-j8T"/>
                                             <outlet property="UserImageView" destination="UpE-Nt-XsP" id="tsn-Y0-2F0"/>
                                             <outlet property="UsernameLabel" destination="PsF-JA-yp6" id="YTx-ZB-unV"/>
+                                            <outlet property="activityIndicatorView" destination="HWb-dY-sO5" id="Q9b-jh-Emg"/>
                                             <outlet property="approveBtn" destination="OKZ-6d-xGF" id="9PC-HW-yed"/>
                                             <outlet property="borderView" destination="2MT-pm-XE4" id="nRq-h7-zEt"/>
                                             <outlet property="commentView" destination="lEf-jK-T4N" id="2E3-A0-6cM"/>

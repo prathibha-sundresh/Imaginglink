@@ -10,7 +10,7 @@ import UIKit
 import WebKit
 
 class MyPresentationsTableViewCell: UITableViewCell {
-
+	@IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
 	@IBOutlet weak var borderView: UIView!
 	@IBOutlet weak var wkWebview: WKWebView!
 	@IBOutlet weak var URLImageView: UIImageView!
@@ -71,19 +71,16 @@ class MyPresentationsTableViewCell: UITableViewCell {
         }
         if let imageURL : String = dic["presentation_master_url"] as? String {
             if ((dic["presentation_type"] as? String)?.contains("video"))! {
-                
                 let url : URL = URL(string: imageURL)!
                 wkWebview.isHidden = false
                 wkWebview.load(URLRequest(url: url))
-                if (URLImageView != nil) {
-                    URLImageView.isHidden = true
-                }
+				activityIndicatorView.startAnimating()
+				wkWebview.navigationDelegate = self
+                URLImageView.isHidden = true
             } else {
                 URLImageView.sd_setImage(with: URL(string: imageURL), placeholderImage: UIImage(named: "ImagingLinkLogo"))
                 wkWebview.isHidden = true
-                if (URLImageView != nil) {
-                    URLImageView.isHidden = false
-                }
+                URLImageView.isHidden = false
             }
         }
 		
@@ -279,5 +276,16 @@ extension MyPresentationsViewController: FinalSubmissionViewControllerDelegate{
 extension MyPresentationsViewController: UpdatePresentationViewControllerDelegate{
 	func sendPresentationToRemove(id: String) {
 		removePresentationCard(id: id)
+	}
+}
+extension MyPresentationsTableViewCell: WKNavigationDelegate {
+	func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
+		activityIndicatorView.startAnimating()
+	}
+	func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+		activityIndicatorView.stopAnimating()
+	}
+	func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
+		activityIndicatorView.stopAnimating()
 	}
 }

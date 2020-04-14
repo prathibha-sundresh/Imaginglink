@@ -35,7 +35,7 @@ enum LikeEmojies: Int {
     }
 }
 class PresentationTableViewCell: UITableViewCell {
-    
+    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     @IBOutlet weak var borderView: UIView!
     @IBOutlet weak var smileyView: UIView!
     @IBOutlet weak var smileyContainerView: UIView!
@@ -120,20 +120,16 @@ class PresentationTableViewCell: UITableViewCell {
         }
         if let imageURL : String = dic["presentation_master_url"] as? String {
             if ((dic["presentation_type"] as? String)?.contains("video"))! {
-                
                 let url : URL = URL(string: imageURL)!
                 wkWebView.isHidden = false
-			
                 wkWebView.load(URLRequest(url: url))
-                if (URLImageView != nil) {
-                    URLImageView.isHidden = true
-                }
+				wkWebView.navigationDelegate = self
+                URLImageView.isHidden = true
+				activityIndicatorView.startAnimating()
             } else {
                 URLImageView.sd_setImage(with: URL(string: imageURL), placeholderImage: UIImage(named: "ImagingLinkLogo"))
                 wkWebView.isHidden = true
-                if (URLImageView != nil) {
-                    URLImageView.isHidden = false
-                }
+                URLImageView.isHidden = false
             }
         }
     }
@@ -175,4 +171,17 @@ class PresentationTableViewCell: UITableViewCell {
         print(LikeImageView.tag)
         delegate?.updateRatingWithIndex(row: LikeImageView.tag, rating: sender.tag - 100)
     }
+}
+
+extension PresentationTableViewCell: WKNavigationDelegate{
+	func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
+		activityIndicatorView.startAnimating()
+	}
+
+	func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+		activityIndicatorView.stopAnimating()
+	}
+	func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
+		activityIndicatorView.stopAnimating()
+	}
 }

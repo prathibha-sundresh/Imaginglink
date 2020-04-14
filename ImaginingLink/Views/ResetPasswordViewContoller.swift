@@ -63,12 +63,9 @@ class ResetPasswordViewContoller: UIViewController, TapOnLabelDelegate {
                 }
             }, faliure: {(error) in
                 self.showToast(message: error,true,90)
-//                ILUtility.showInAppNotification(withTitle: error)
-//                ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: error)
             })
         } else {
             self.showToast(message: "Enter valid password",true,90)
-//            ILUtility.showInAppNotification(withTitle: "Enter valid password")
         }
     }
     @objc func moveToSignInAfterDelay(){

@@ -50,7 +50,7 @@ class AlreadyHaveOTPViewController: UIViewController, TapOnLabelDelegate, UIText
         EmailTextField.text = EmailId
         EmailTextField.delegate = self
         
-        OTPTextField.setUpLabel(WithText: "Enter the CODE sent to your E-mail")
+        OTPTextField.setUpLabel(WithText: "Enter the CODE sent to your email")
         OTPTextField.delegate = self
         
         resendLabelAttribute()
@@ -67,7 +67,8 @@ class AlreadyHaveOTPViewController: UIViewController, TapOnLabelDelegate, UIText
     }
     
     func resendLabelAttribute() {
-        let string : String = "We sent CODE to your E-mail if not received. Resend"
+		
+        let string : String = "If you have not received a code within 3 minutes, request a new code. Resend"
         let attributedString = NSMutableAttributedString(string: string, attributes: [
             .font: UIFont(name: "Helvetica Neue", size: 14)!,
             .foregroundColor: UIColor.black,

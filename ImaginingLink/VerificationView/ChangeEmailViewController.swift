@@ -26,23 +26,22 @@ class ChangeEmailViewController: BaseHamburgerViewController {
             ILUtility.showAlert(message: "New email and confirm email should be same", controller: self)
         }
         else{
-            ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: "changing..")
+            ILUtility.showProgressIndicator(controller: self)
             CoreAPI.sharedManaged.requestToUpdateEmail(params: ["current_email" : currentEmailIdTextField.text!, "new_email" : newEmailTextField.text!, "confirm_new_email" : confirmNewEmailTextField.text!], successResponse: {(response) in
-                
-                let data : [String : Any] = response as! [String : Any]
-                
-                ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: (data["message"] as! String))
-                
-                let storyboard = UIStoryboard.init(name: "DashBoard", bundle: nil)
-                let vc = storyboard.instantiateViewController(withIdentifier: "EmailchangeOTPViewcontroller") as! EmailchangeOTPViewcontroller
-                vc.isnewEmailId = false
-                vc.isOldEmailId = true
-                vc.oldEmailId = self.currentEmailIdTextField.text!
-                vc.newEmailId = self.newEmailTextField.text!
-                self.navigationController?.pushViewController(vc, animated: true)
-                
-                
+                ILUtility.hideProgressIndicator(controller: self)
+				let alert = UIAlertController(title: "Imaginglink", message: "A verification code has been sent to your current registered email.", preferredStyle: .alert)
+				alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { action in
+					let storyboard = UIStoryboard.init(name: "DashBoard", bundle: nil)
+					let vc = storyboard.instantiateViewController(withIdentifier: "EmailchangeOTPViewcontroller") as! EmailchangeOTPViewcontroller
+					vc.isnewEmailId = false
+					vc.isOldEmailId = true
+					vc.oldEmailId = self.currentEmailIdTextField.text!
+					vc.newEmailId = self.newEmailTextField.text!
+					self.navigationController?.pushViewController(vc, animated: true)
+				}))
+				self.present(alert, animated: true, completion: nil)
             }, faliure: {(error) in
+				ILUtility.hideProgressIndicator(controller: self)
                 ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay:error)
             })
         }
@@ -53,9 +52,9 @@ class ChangeEmailViewController: BaseHamburgerViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         addSlideMenuButton(showBackButton: true, backbuttonTitle: "\(UserDefaults.standard.value(forKey: kUserName) as! String)\n\(UserDefaults.standard.value(forKey: kAuthenticatedEmailId) as! String)")
-        confirmNewEmailTextField.setUpLabel(WithText: "Confirm New E-mail")
-        currentEmailIdTextField.setUpLabel(WithText: "Current E-mail")
-        newEmailTextField.setUpLabel(WithText: "Enter New E-Mail")
+        confirmNewEmailTextField.setUpLabel(WithText: "Confirm New Email")
+        currentEmailIdTextField.setUpLabel(WithText: "Current Email")
+        newEmailTextField.setUpLabel(WithText: "Enter New EMail")
         currentEmailIdTextField.text = "\(UserDefaults.standard.value(forKey: kAuthenticatedEmailId) as! String)"
         currentEmailIdTextField.isUserInteractionEnabled = false
         

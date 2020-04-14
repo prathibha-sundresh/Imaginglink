@@ -25,13 +25,8 @@ class TermsAndCondtionsAndPrivacyViewController: UIViewController, WKNavigationD
             webView.load(URLRequest(url: url))
             webView.allowsBackForwardNavigationGestures = true
         }
-       // perform(#selector(loadWebView), with: nil, afterDelay: 1.0)
         
         // Do any additional setup after loading the view.
-    }
-    @objc func loadWebView(){
-        
-        
     }
     
     /*
@@ -44,12 +39,10 @@ class TermsAndCondtionsAndPrivacyViewController: UIViewController, WKNavigationD
     }
     */
     func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
-        print("Start loading")
         ILUtility.showProgressIndicator(controller: self)
     }
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        print("End loading")
         ILUtility.hideProgressIndicator(controller: self)
     }
 }

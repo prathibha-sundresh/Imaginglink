@@ -40,8 +40,7 @@ class ResetPasswordWithMenuViewController: BaseHamburgerViewController,UITextFie
             let requestValues = ["current_password" : currentPasswordTextField.text!,"new_password" : newPasswordTextField.text!, "confirm_new_password" : confirmNewPasswordTextField.text!] as [String:Any]
             CoreAPI.sharedManaged.requestResetPassword(params: requestValues, successResponse: {(response) in
                 let dictValue = response as! [String:Any]
-                //ILUtility.showToastMessage(toViewcontroller: self, statusToDisplay: dictValue["message"] as! String)
-                let alert = UIAlertController(title: "Imaginglink", message: dictValue["message"] as? String, preferredStyle: .alert)
+                let alert = UIAlertController(title: "Imaginglink", message: "Your password is changed successfully. Please login again.", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { action in
                     CoreAPI.sharedManaged.logOut()
                 }))

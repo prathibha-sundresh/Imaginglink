@@ -49,6 +49,7 @@ class ImageViewCell: UITableViewCell,UIScrollViewDelegate,WKNavigationDelegate {
 		imageScrollView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 200)
 		if dict["presentation_type"] as? String  == "video"{
 			wkWebView.load(URLRequest(url: URL(string: dict["presentation_master_url"] as? String ?? "")!))
+			activityIndicatorView.startAnimating()
 			imagesView.isHidden = true
 			wkWebView.isHidden = false
 			wkWebView.navigationDelegate = self
@@ -60,7 +61,6 @@ class ImageViewCell: UITableViewCell,UIScrollViewDelegate,WKNavigationDelegate {
 				imagesView.isHidden = false
 				images = photos
 				addImagesToScroll(images: photos)
-				
 			}
 		}
 	}

@@ -75,8 +75,8 @@ let kNewEmailVerificationText = "A 6-digit verification code is sent to New Emai
 let kSupportText = "If you do not have access to this email, contact support@imaginglink.com for reset."
 let kSupportLocationText = "If you do not have access to this email, contact "
 let kSupportLinkText = "support@imaginglink.com"
-let kNewEmailChange = "A 6-digit verification code is sent to newmail@gmail.com  Please enter that code below to authenticate change request."
-let kNewEmailLenght = "A 6-digit verification code is sent to "
+let kNewEmailChange = "A 6-digit verification code has been sent to newmail@gmail.com  Please enter that code below to authenticate change request."
+let kNewEmailLength = "A 6-digit verification code has been sent to "
 let knewEmail = "newmail@gmail.com"
 
 //links

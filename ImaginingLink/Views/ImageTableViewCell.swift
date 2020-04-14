@@ -69,9 +69,8 @@ class ImageTableViewCell: UITableViewCell,UIScrollViewDelegate {
             if ((dic["presentation_type"] as? String)?.contains("video"))! {
                 wkWebView.isHidden = false
 				wkWebView.navigationDelegate = self
-                if (wkWebView != nil){
-					wkWebView.load(URLRequest(url: URL(string: imageURL)!))
-                }
+                wkWebView.load(URLRequest(url: URL(string: imageURL)!))
+				activityIndicatorView.startAnimating()
                 imagesView.isHidden = true
             } else if let tmpPhotos = dic["presentation_jpg_files"] as? [[String: Any]] {
                 let photos = tmpPhotos.map{ $0["image"] as? String ?? "" }
