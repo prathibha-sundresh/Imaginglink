@@ -14,6 +14,7 @@ class ProfileViewController: BaseHamburgerViewController {
     @IBOutlet weak var firstNameTF: FloatingLabel!
     @IBOutlet weak var lastNameTF: FloatingLabel!
     @IBOutlet weak var emailTF: FloatingLabel!
+	@IBOutlet weak var selectUserTypeTF: FloatingLabel!
     @IBOutlet weak var borderView: UIView!
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var firstNameEditButton: UIButton!
@@ -21,12 +22,21 @@ class ProfileViewController: BaseHamburgerViewController {
     var imageUrl = ""
     var firstNameStr = ""
     var lastNameStr = ""
+	var userTypeId = ""
     var isFromPicker = false
+	var userTypesResponse = [[String: Any]]()
+	var userTypesStr = [String]()
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
-    func setUI(){
+    func setUI() {
+		
+		let filterArray = self.userTypesResponse.filter{ ($0["id"] as? String ?? "") == self.userTypeId }
+		if filterArray.count > 0 {
+			self.selectUserTypeTF.text = filterArray[0]["user_type"] as? String ?? ""
+		}
+		
         addSlideMenuButton(showBackButton: true, backbuttonTitle: "Profile")
         firstNameTF.text = ILUtility.getValueFromUserDefaults(key: kFirstName)
         lastNameTF.text = ILUtility.getValueFromUserDefaults(key: kLastName)
@@ -58,6 +68,21 @@ class ProfileViewController: BaseHamburgerViewController {
     override func backAction() {
         self.tabBarController?.selectedIndex = 1
     }
+	
+	@IBAction func UserTypeClickButton(_ sender: Any) {
+		openListView()
+    }
+	
+	func openListView() {
+		let storyboard = UIStoryboard(name: "ListView", bundle: nil)
+		let vc = storyboard.instantiateViewController(withIdentifier: "ListViewId") as! ListViewController
+		vc.delegate = self
+		vc.listValue = self.userTypesStr
+		vc.filteredArray = self.userTypesStr
+		vc.selectedIndexValue = selectUserTypeTF.text!
+		self.present(vc, animated: true, completion: nil)
+	}
+	
     @IBAction func saveButtonAction(_ sender: UIButton){
         if firstNameTF.text == ""{
             ILUtility.showAlert(message: "please enter First name", controller: self)
@@ -69,7 +94,7 @@ class ProfileViewController: BaseHamburgerViewController {
             firstNameTF.resignFirstResponder()
             lastNameTF.resignFirstResponder()
             ILUtility.showProgressIndicator(controller: self)
-            let dict = ["first_name":firstNameTF.text!,"last_name":lastNameTF.text!]
+			let dict = ["first_name":firstNameTF.text!,"last_name":lastNameTF.text!, "user_type_id": userTypeId]
             CoreAPI.sharedManaged.updateUserDetails(requestDict: dict, successResponse: { (response) in
                 ILUtility.hideProgressIndicator(controller: self)
                 ILUtility.showAlert(message: "Profile deatils updated successfully.", controller: self)
@@ -81,6 +106,7 @@ class ProfileViewController: BaseHamburgerViewController {
             }
         }
     }
+	
     @IBAction func updatePofileButtonAction(_ sender: UIButton){
         let alert = UIAlertController(title: "Select any option", message: nil, preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: "Camera", style: .default, handler: { _ in
@@ -95,6 +121,7 @@ class ProfileViewController: BaseHamburgerViewController {
         
         self.present(alert, animated: true, completion: nil)
     }
+	
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if !isFromPicker{
@@ -102,12 +129,13 @@ class ProfileViewController: BaseHamburgerViewController {
             getUserDetails()
         }
     }
+	
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         isFromPicker = false
     }
-    func openCamera()
-    {
+	
+    func openCamera() {
         if UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.camera) {
             let imagePicker = UIImagePickerController()
             imagePicker.delegate = self
@@ -115,31 +143,27 @@ class ProfileViewController: BaseHamburgerViewController {
             imagePicker.allowsEditing = false
             self.present(imagePicker, animated: true, completion: nil)
         }
-        else
-        {
+        else {
             let alert  = UIAlertController(title: "Warning", message: "You don't have camera", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
     }
-    func openGallery()
-    {
-        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.photoLibrary){
+    func openGallery() {
+        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.photoLibrary) {
             let imagePicker = UIImagePickerController()
             imagePicker.delegate = self
             imagePicker.allowsEditing = true
             imagePicker.sourceType = UIImagePickerController.SourceType.photoLibrary
             self.present(imagePicker, animated: true, completion: nil)
-        }
-        else
-        {
+        } else {
             let alert  = UIAlertController(title: "Warning", message: "You don't have permission to access gallery.", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
     }
     
-    func getUserDetails(){
+    func getUserDetails() {
         
         CoreAPI.sharedManaged.getUserDetails(successResponse: { (response) in
             let value = response as? String ?? ""
@@ -151,39 +175,66 @@ class ProfileViewController: BaseHamburgerViewController {
                 let fullName = "\(firstName) \(lastName)".capitalized
                 UserDefaults.standard.set(fullName, forKey: kUserName)
                 self.imageUrl = dict1["profile_photo"] as? String ?? ""
+				self.userTypeId = dict1["user_type_id"] as? String ?? ""
+				self.userTypesResponse = dict1["user_type_details"] as? [[String: Any]] ?? []
+				self.userTypesStr = self.userTypesResponse.map{ $0["user_type"] as! String}
                 self.setUI()
             }
         }) { (error) in
             
         }
     }
-    @IBAction func firstNameEditAction(_ sender: UIButton){
+	
+	func fetchUserTypes() {
+        CoreAPI.sharedManaged.requestUserType(successResponse: {(response) in
+			if self.userTypesResponse.count > 0 {
+				return
+			}
+			ILUtility.showProgressIndicator(controller: self)
+            let responseData = (response as! String).convertToDictionary()
+            if let dataArray : [[String:Any]] = responseData!["data"] as? [[String:Any]] {
+                ILUtility.hideProgressIndicator(controller: self)
+				self.userTypesResponse = dataArray
+				if dataArray.count > 0 {
+					self.userTypesStr = dataArray.map{ $0["user_type"] as! String}
+				}
+				self.openListView()
+            }
+        }, faliure: {(failure) in
+			ILUtility.hideProgressIndicator(controller: self)
+        })
+        
+    }
+	
+    @IBAction func firstNameEditAction(_ sender: UIButton) {
         firstNameEditButton.isHidden = true
         firstNameTF.isUserInteractionEnabled = true
     }
-    @IBAction func lastNameEditAction(_ sender: UIButton){
+	
+    @IBAction func lastNameEditAction(_ sender: UIButton) {
         lastNameEditButton.isHidden = true
         lastNameTF.isUserInteractionEnabled = true
     }
-    @IBAction func textDidChange(_ textfield: UITextField){
+	
+    @IBAction func textDidChange(_ textfield: UITextField) {
         
-        if textfield == firstNameTF{
+        if textfield == firstNameTF {
             firstNameEditButton.isHidden = true
             updateSaveButtonBackground(textfield, str1: firstNameStr, str2: lastNameStr)
         }
-        else{
+        else {
             lastNameEditButton.isHidden = true
             updateSaveButtonBackground(textfield, str1: lastNameStr, str2: lastNameStr)
         }
-        
     }
-    func updateSaveButtonBackground(_ textfield: UITextField, str1: String,str2: String){
+	
+    func updateSaveButtonBackground(_ textfield: UITextField, str1: String,str2: String) {
         
-        if (str1 != firstNameTF.text && firstNameTF.text != "") || (str2 != lastNameTF.text && lastNameTF.text != ""){
+        if (str1 != firstNameTF.text && firstNameTF.text != "") || (str2 != lastNameTF.text && lastNameTF.text != "") {
             saveButton.backgroundColor = UIColor(red:0.98, green:0.58, blue:0.00, alpha:1.0)
             saveButton.isUserInteractionEnabled = true
         }
-        else{
+        else {
             saveButton.backgroundColor = UIColor(red:0.61, green:0.61, blue:0.61, alpha:1.0)
             saveButton.isUserInteractionEnabled = false
         }
@@ -204,14 +255,16 @@ class ProfileViewController: BaseHamburgerViewController {
             ILUtility.hideProgressIndicator(controller: self)
         }
     }
-    func saveImageToLocalPath(imageData: Data){
+	
+    func saveImageToLocalPath(imageData: Data) {
         
         let fileManager = FileManager.default
         let documentsPath = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first
         let imagePath = documentsPath?.appendingPathComponent("profile-photo.jpg")
         try! imageData.write(to: imagePath!)
     }
-    func photoExistOrNot() -> String{
+	
+    func photoExistOrNot() -> String {
         let fileManager = FileManager.default
         let documentsUrl:URL =  (FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first as URL?)!
         let imagePath = documentsUrl.appendingPathComponent("profile-photo.jpg")
@@ -221,8 +274,8 @@ class ProfileViewController: BaseHamburgerViewController {
         } else {
             return ""
         }
-        
     }
+	
     /*
     // MARK: - Navigation
 
@@ -234,7 +287,8 @@ class ProfileViewController: BaseHamburgerViewController {
     */
 
 }
-extension ProfileViewController: UIImagePickerControllerDelegate,UINavigationControllerDelegate{
+
+extension ProfileViewController: UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     //MARK:-- ImagePicker delegate
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         guard let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
@@ -245,5 +299,19 @@ extension ProfileViewController: UIImagePickerControllerDelegate,UINavigationCon
         }
         isFromPicker = true
         picker.dismiss(animated: true, completion: nil)
+    }
+}
+
+extension ProfileViewController: UserTypeDelegate {
+	func selectedUserType(userType: String, indexRow: Int) {
+		selectUserTypeTF.text = userType
+        let filteredArray = userTypesResponse.filter({ (dict) -> Bool in
+            return dict["user_type"] as? String ?? "" == userType
+        })
+        if filteredArray.count > 0{
+            userTypeId = filteredArray[0]["id"] as! String
+        }
+		saveButton.backgroundColor = UIColor(red:0.98, green:0.58, blue:0.00, alpha:1.0)
+		saveButton.isUserInteractionEnabled = true
     }
 }

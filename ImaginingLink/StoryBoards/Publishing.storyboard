@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="6OO-Eb-NrK">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="6OO-Eb-NrK">
     <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -3273,6 +3273,11 @@ not allowed once submitted.</string>
             <point key="canvasLocation" x="3156" y="1742"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="110-AX-9NK"/>
+        <segue reference="6z1-Mj-emu"/>
+        <segue reference="zQO-sX-6HC"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="BackButtonIcon" width="13" height="21"/>
         <image name="Backward_Image" width="250" height="250"/>
@@ -3296,9 +3301,4 @@ not allowed once submitted.</string>
         <image name="profileIcon" width="66" height="66"/>
         <image name="unCheckedBox" width="15" height="15"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="hHm-qk-JV5"/>
-        <segue reference="6z1-Mj-emu"/>
-        <segue reference="xr3-yP-efF"/>
-    </inferredMetricsTieBreakers>
 </document>

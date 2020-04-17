@@ -54,7 +54,7 @@ class ChangeEmailViewController: BaseHamburgerViewController {
         addSlideMenuButton(showBackButton: true, backbuttonTitle: "\(UserDefaults.standard.value(forKey: kUserName) as! String)\n\(UserDefaults.standard.value(forKey: kAuthenticatedEmailId) as! String)")
         confirmNewEmailTextField.setUpLabel(WithText: "Confirm New Email")
         currentEmailIdTextField.setUpLabel(WithText: "Current Email")
-        newEmailTextField.setUpLabel(WithText: "Enter New EMail")
+        newEmailTextField.setUpLabel(WithText: "Enter New Email")
         currentEmailIdTextField.text = "\(UserDefaults.standard.value(forKey: kAuthenticatedEmailId) as! String)"
         currentEmailIdTextField.isUserInteractionEnabled = false
         

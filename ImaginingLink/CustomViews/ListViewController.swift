@@ -58,13 +58,16 @@ class ListViewController: UITableViewController {
     }
     
 }
-extension ListViewController: UISearchBarDelegate{
+extension ListViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText != ""{
             filteredArray = listValue.filter { (str) -> Bool in
                 return str.contains(searchText)
             }
-            self.tableView.reloadData()
         }
+		else{
+			filteredArray = listValue
+		}
+		self.tableView.reloadData()
     }
 }
