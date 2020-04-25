@@ -95,13 +95,13 @@ class ImageTableViewCell: UITableViewCell,UIScrollViewDelegate {
         ILUtility.showProgressIndicator(controller: myViewcontroller!)
         CoreAPI.sharedManaged.requestFavouriteUnfavorite(presentationID: presentationID, successResponse: {(response) in
             ILUtility.hideProgressIndicator(controller: self.myViewcontroller!)
-            let data = response as! [String:Any]
-            ILUtility.showAlert(title: self.presentationDict["title"] as? String ?? "Imaginglink",message: data["message"] as? String ?? "", controller: self.myViewcontroller!)
             if let favStatus = self.presentationDict["is_my_favourite"] as? Int, favStatus == 0{
                 self.presentationDict["is_my_favourite"] = 1
+				ILUtility.showAlert(title: self.presentationDict["title"] as? String ?? "Imaginglink",message: "Added to the favourite list", controller: self.myViewcontroller!)
             }
             else{
                 self.presentationDict["is_my_favourite"] = 0
+				ILUtility.showAlert(title: self.presentationDict["title"] as? String ?? "Imaginglink",message: "Removed from the favourite list", controller: self.myViewcontroller!)
             }
             self.delegate?.updatePresentationDictForFavourite?(dict: self.presentationDict)
         }, faliure: {(error) in

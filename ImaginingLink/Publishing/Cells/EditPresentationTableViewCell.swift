@@ -56,7 +56,7 @@ class EditPresentationTableViewCell: UITableViewCell {
 		}
 	}
 	func setUI(dict: [String: Any]) {
-		titleTF.setRightPaddingPoints(40)
+		titleTF.setRightPaddingPoints(70)
 		titleTF.titleFormatter = { $0 }
 		sectionTitleTF.titleFormatter = { $0 }
 		keywordsTF.titleFormatter = { $0 }

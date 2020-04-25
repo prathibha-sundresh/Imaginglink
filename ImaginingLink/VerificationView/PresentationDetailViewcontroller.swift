@@ -143,7 +143,7 @@ class PresentationDetailViewcontroller: BaseHamburgerViewController, UITableView
     let CommentListCell = 3
     
     var saveAction : UIAlertAction?
-    var isCommentedSelected = false
+    var isCommentedSelected = true
 	var isComingFromMyPresentation = false
 	var isEditorModified = false
     var alomafireRequest: Alamofire.Request?
@@ -241,12 +241,14 @@ class PresentationDetailViewcontroller: BaseHamburgerViewController, UITableView
 		self.navigationController?.isNavigationBarHidden = false
 		self.tabBarController?.tabBar.isHidden = true
     }
+	
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         alomafireRequest?.cancel()
 		self.navigationController?.isNavigationBarHidden = true
 		self.tabBarController?.tabBar.isHidden = false
     }
+	
     @IBAction func menuPressedButtonAction(_ sender: UIButton){
         
         let actionsheet = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)

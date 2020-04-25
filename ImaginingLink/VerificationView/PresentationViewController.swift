@@ -236,12 +236,12 @@ class PresentationViewController: BaseHamburgerViewController, UITableViewDelega
         ILUtility.showProgressIndicator(controller: self)
         CoreAPI.sharedManaged.requestFavouriteUnfavorite(presentationID: presentationID, successResponse: {(response) in
             ILUtility.hideProgressIndicator(controller: self)
-            let data = response as! [String:Any]
-            ILUtility.showAlert(title: dict["title"] as? String ?? "Imaginglink",message: data["message"] as? String ?? "", controller: self)
             if let favStatus = dict["is_my_favourite"] as? Int, favStatus == 0{
                 dict["is_my_favourite"] = 1
+				ILUtility.showAlert(title: dict["title"] as? String ?? "Imaginglink",message: "Added to the favourite list", controller: self)
             }
             else{
+				ILUtility.showAlert(title: dict["title"] as? String ?? "Imaginglink",message: "Removed from the favourite list", controller: self)
 				if PresentationViewController.self.isFromVC == .FavouritePresentations{
                     self.getSavedPresentations()
                     return

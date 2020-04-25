@@ -993,7 +993,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 30;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = W8U434C9C6;
 				INFOPLIST_FILE = ImaginingLink/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -1013,13 +1013,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 30;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = W8U434C9C6;
 				INFOPLIST_FILE = ImaginingLink/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "$(inherited) -D RELEASE";
-				PRODUCT_BUNDLE_IDENTIFIER = com.imaginglink.Imaginglink;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Imaginglink.Imaginglink;
 				PRODUCT_NAME = ImagingLink;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

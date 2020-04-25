@@ -15,9 +15,8 @@ protocol PresentationDetailTextCellDelegate: class {
 
 class PresentationDetailTextCell : UITableViewCell {
     
-    @IBOutlet weak var AllowToDownloadLabel: UILabel!
-	@IBOutlet weak var AllowToDownloadHintLabel: UILabel!
 	@IBOutlet weak var DownloadButtonY: NSLayoutConstraint!
+	@IBOutlet weak var univercityLabelY: NSLayoutConstraint!
     @IBOutlet weak var univercityValueLabel: UILabel!
     @IBOutlet weak var PrimaryAuthorValueLabel: UILabel!
     @IBOutlet weak var DescriptionLabel: UILabel!
@@ -40,10 +39,8 @@ class PresentationDetailTextCell : UITableViewCell {
     weak var delegate: PresentationDetailTextCellDelegate?
 	var editorModifiedCard: Bool = false
     func setupValue(dic: [String:Any]) {
-        
         setProgressUI(isBool: true)
-        if var isDownloadable = dic["is_downloadable"] as? Int
-        {
+        if var isDownloadable = dic["is_downloadable"] as? Int {
             if ((dic["presentation_type"] as? String)?.contains("video"))! {
                 isDownloadable = 0
             }
@@ -56,31 +53,20 @@ class PresentationDetailTextCell : UITableViewCell {
             }
         }
         
-        if let description = dic["description"] as? String
-        {
+        if let description = dic["description"] as? String {
             DescriptionLabel?.text = "\(description)"
             DescriptionLabel.numberOfLines = 0
         }
         
-        if let section = dic["section"] as? String
-        {
+        if let section = dic["section"] as? String {
             sectionLabel?.text = section
         }
-        if let subsections = dic["sub_sections"] as? [String]
-        {
+		
+        if let subsections = dic["sub_sections"] as? [String] {
 			SubSectionLabel?.text = subsections.joined(separator: ",")
-//            if keywords.count == 1{
-//                SubSectionLabel?.text = keywords[0]
-//            }
-//            else if keywords.count == 2{
-//                SubSectionLabel?.text = keywords[0] + "," + keywords[1]
-//            }
-//            else if keywords.count >= 2{
-//                SubSectionLabel?.text = keywords[0] + "," + keywords[1] + " " + "+\(keywords.count - 2)"
-//            }
         }
-        if let coAuthors = dic["co_authors"] as? [[String: Any]], coAuthors.count > 0
-        {
+		
+        if let coAuthors = dic["co_authors"] as? [[String: Any]], coAuthors.count > 0 {
             var str = coAuthors.reduce("") { (result, dict) -> String in
 				var name = dict["name"] as? String ?? ""
 				if name == "" {
@@ -93,17 +79,15 @@ class PresentationDetailTextCell : UITableViewCell {
             }
             coAuthorsValueLabel.text = str
         }
-        else{
+        else {
             coAuthorsLabel.text = ""
             coAuthorsValueLabel.text = ""
         }
-        if let keywords = dic["keywords"] as? [String]
-        {
+        if let keywords = dic["keywords"] as? [String] {
             SampleKeywordLabel?.text = keywords.joined(separator: ",")
         }
         
-        if var isDownloadable = dic["is_downloadable"] as? Int
-        {
+        if var isDownloadable = dic["is_downloadable"] as? Int {
 			var isFileTypeVideo = false
             if ((dic["presentation_type"] as? String)?.contains("video"))! {
                 isDownloadable = 0
@@ -111,36 +95,24 @@ class PresentationDetailTextCell : UITableViewCell {
             }
 			isDownloadable = editorModifiedCard ? 0: isDownloadable
             if isDownloadable == 1{
-                AllowToDownloadLabel?.text = "Yes"
                 downloadButton.layer.cornerRadius = 18
                 downloadButton.clipsToBounds = true
                 downloadButton.isHidden = false
                 downloadH.constant = 36
             }
-            else{
-				AllowToDownloadLabel?.text = isFileTypeVideo ? "" : "No"
-				AllowToDownloadHintLabel.text = isFileTypeVideo ? "" : "Allow other to download"
-				DownloadButtonY.constant = isFileTypeVideo ? -12 : 12
+            else {
+				DownloadButtonY.constant = isFileTypeVideo ? 0 : 15
                 downloadButton.isHidden = true
                 downloadH.constant = 0
             }
         }
-        else{
-			if ((dic["presentation_type"] as? String)?.contains("video"))! {
-				AllowToDownloadHintLabel.text = ""
-				AllowToDownloadLabel?.text = ""
-				DownloadButtonY.constant = -30
-			}
-			else{
-				AllowToDownloadLabel?.text = "No"
-				AllowToDownloadHintLabel.text = "Allow other to download"
-				DownloadButtonY.constant = 12
-			}
+        else {
+			DownloadButtonY.constant = 0
             downloadButton.isHidden = true
             downloadH.constant = 0
         }
-        if let title = dic["title"] as? String
-        {
+		
+        if let title = dic["title"] as? String {
 			DescriptionTitleLabel?.text = title.capitalized
         }
         
@@ -148,20 +120,24 @@ class PresentationDetailTextCell : UITableViewCell {
             PrimaryAuthorValueLabel?.text = author["name"] as? String
             if let university = author["university"] as? String {
                 univercityValueLabel?.text = university
+				univercityLabelY.constant = 10
             } else {
                 univercityValueLabel?.text = ""
                 univercityLabel?.text = ""
+				univercityLabelY.constant = -20
             }
         }
      }
-    func setProgressUI(isBool: Bool){
+	
+    func setProgressUI(isBool: Bool) {
         downloadProgressView.layer.cornerRadius = 10
         downloadProgressView.clipsToBounds = true
         downloadProgressView.isHidden = isBool
         downloadCancelButton.isHidden = isBool
         progressLabel.isHidden = isBool
     }
-    @IBAction func tapOnDownloadCancel(_ sender: UIButton){
+	
+    @IBAction func tapOnDownloadCancel(_ sender: UIButton) {
         request?.cancel()
         request = nil
         downloadProgressView.progress = 0.0
@@ -170,8 +146,8 @@ class PresentationDetailTextCell : UITableViewCell {
         downloadButton.setTitle("Download", for: .normal)
         progressLabel.text = "0%"
     }
-    @IBAction func tapOnDownload(_ sender: UIButton){
-        
+	
+    @IBAction func tapOnDownload(_ sender: UIButton) {
         downloadCancelButton.layer.cornerRadius = 10
         downloadCancelButton.layer.borderWidth = 1.0
         downloadCancelButton.layer.borderColor = UIColor(red:0.89, green:0.00, blue:0.00, alpha:1.0).cgColor
@@ -181,7 +157,7 @@ class PresentationDetailTextCell : UITableViewCell {
             ILUtility.showAlert(message: "Already file downloaded", controller: controller!)
             return
         }
-        else{
+        else {
             setProgressUI(isBool: false)
             if request != nil{
                 if !downloadButton.isSelected{
@@ -196,7 +172,7 @@ class PresentationDetailTextCell : UITableViewCell {
                 }
                 return
             }
-            else{
+            else {
                 downloadButton.isSelected = true
                 downloadButton.setTitle("Downloading", for: .normal)
             }
