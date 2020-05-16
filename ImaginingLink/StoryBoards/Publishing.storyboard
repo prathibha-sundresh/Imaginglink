@@ -1442,7 +1442,7 @@ nstrate the visual form</string>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4gW-sU-zKj">
                                                             <rect key="frame" x="112.5" y="135" width="187.5" height="25"/>
                                                             <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="13"/>
-                                                            <state key="normal" title="Replay">
+                                                            <state key="normal" title="Reply">
                                                                 <color key="titleColor" red="0.31372549020000001" green="0.34509803919999998" blue="0.36470588240000001" alpha="1" colorSpace="calibratedRGB"/>
                                                             </state>
                                                             <connections>
