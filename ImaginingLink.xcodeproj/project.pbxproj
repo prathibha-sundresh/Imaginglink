@@ -49,6 +49,12 @@
 		48CCC16D239CDD7100CBD5F5 /* SendCommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CCC16C239CDD7100CBD5F5 /* SendCommentTableViewCell.swift */; };
 		48F4F41C2004CE55005CD239 /* CoreAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F4F41B2004CE54005CD239 /* CoreAPI.swift */; };
 		48F7F1871FFE0412008D827A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F7F1861FFE0412008D827A /* Constants.swift */; };
+		48FB2896246FD96200277FD0 /* Privacy Policy.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 48FB2894246FD96200277FD0 /* Privacy Policy.pdf */; };
+		48FB2897246FD96200277FD0 /* Terms and Conditions.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 48FB2895246FD96200277FD0 /* Terms and Conditions.pdf */; };
+		48FB28AE247121B900277FD0 /* FaqViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FB28AD247121B900277FD0 /* FaqViewController.swift */; };
+		48FB28B02471420500277FD0 /* faqs.json in Resources */ = {isa = PBXBuildFile; fileRef = 48FB28AF2471420500277FD0 /* faqs.json */; };
+		48FB28B22475051A00277FD0 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48FB28B12475051A00277FD0 /* Settings.storyboard */; };
+		48FB28B42476ADBC00277FD0 /* ContactUSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FB28B32476ADBC00277FD0 /* ContactUSViewController.swift */; };
 		48FC9DA120B1B99D00838CA7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 48FC9DA020B1B99D00838CA7 /* Assets.xcassets */; };
 		48FFC674217F82A300AB09D5 /* TwofactorAuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FFC673217F82A300AB09D5 /* TwofactorAuthenticationViewController.swift */; };
 		93BA89501F41BC6C39FEC9D3 /* Pods_ImaginingLink.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12DE6B9D2B8B81FB57AC5372 /* Pods_ImaginingLink.framework */; };
@@ -167,6 +173,12 @@
 		48CCC16C239CDD7100CBD5F5 /* SendCommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendCommentTableViewCell.swift; sourceTree = "<group>"; };
 		48F4F41B2004CE54005CD239 /* CoreAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreAPI.swift; sourceTree = "<group>"; };
 		48F7F1861FFE0412008D827A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		48FB2894246FD96200277FD0 /* Privacy Policy.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Privacy Policy.pdf"; sourceTree = "<group>"; };
+		48FB2895246FD96200277FD0 /* Terms and Conditions.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Terms and Conditions.pdf"; sourceTree = "<group>"; };
+		48FB28AD247121B900277FD0 /* FaqViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaqViewController.swift; sourceTree = "<group>"; };
+		48FB28AF2471420500277FD0 /* faqs.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = faqs.json; sourceTree = "<group>"; };
+		48FB28B12475051A00277FD0 /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
+		48FB28B32476ADBC00277FD0 /* ContactUSViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactUSViewController.swift; sourceTree = "<group>"; };
 		48FC9DA020B1B99D00838CA7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ImaginingLink/Assets.xcassets; sourceTree = "<group>"; };
 		48FFC673217F82A300AB09D5 /* TwofactorAuthenticationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwofactorAuthenticationViewController.swift; sourceTree = "<group>"; };
 		5E2205A4460125CD687F4CB7 /* Pods-ImaginingLinkTests.pro-release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ImaginingLinkTests.pro-release.xcconfig"; path = "Target Support Files/Pods-ImaginingLinkTests/Pods-ImaginingLinkTests.pro-release.xcconfig"; sourceTree = "<group>"; };
@@ -333,6 +345,7 @@
 		4842792F1FF39B9E0056A089 /* ImaginingLink */ = {
 			isa = PBXGroup;
 			children = (
+				48FB28A62471208900277FD0 /* Settings */,
 				480A3BEA2359842100EA4EF4 /* Publishing */,
 				AC269DE421A5CB59004696DE /* WSDownloadFilesManager.swift */,
 				AC4843F72126A396003492DB /* TabViewcontroller */,
@@ -351,6 +364,9 @@
 				484279391FF39B9E0056A089 /* LaunchScreen.storyboard */,
 				4842793C1FF39B9E0056A089 /* Info.plist */,
 				48F7F1861FFE0412008D827A /* Constants.swift */,
+				48FB2894246FD96200277FD0 /* Privacy Policy.pdf */,
+				48FB2895246FD96200277FD0 /* Terms and Conditions.pdf */,
+				48FB28AF2471420500277FD0 /* faqs.json */,
 			);
 			path = ImaginingLink;
 			sourceTree = "<group>";
@@ -371,6 +387,15 @@
 				482D2C2223A5312F0024CF00 /* EditPresentationTableViewCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		48FB28A62471208900277FD0 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				48FB28AD247121B900277FD0 /* FaqViewController.swift */,
+				48FB28B32476ADBC00277FD0 /* ContactUSViewController.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		AC01CA5120C05DDF00034C90 /* Fonts */ = {
@@ -411,6 +436,7 @@
 				AC323B3720FF822A0015ECB4 /* Verification.storyboard */,
 				AC9159FB21061D1C0018CB94 /* DashBoard.storyboard */,
 				480A3BE823580B3100EA4EF4 /* Publishing.storyboard */,
+				48FB28B12475051A00277FD0 /* Settings.storyboard */,
 			);
 			path = StoryBoards;
 			sourceTree = "<group>";
@@ -611,6 +637,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				48FB2897246FD96200277FD0 /* Terms and Conditions.pdf in Resources */,
 				AC323B3820FF822A0015ECB4 /* Verification.storyboard in Resources */,
 				4842793B1FF39B9E0056A089 /* LaunchScreen.storyboard in Resources */,
 				AC0AD39020D13C5800FCB371 /* ListView.storyboard in Resources */,
@@ -622,10 +649,13 @@
 				ACD18C7220C550210059DE7B /* Roboto-Bold.ttf in Resources */,
 				48A7A5F92330B196008A2EB3 /* SF-Pro-Display-Medium.otf in Resources */,
 				AC01CA5520C05E4D00034C90 /* Roboto-Light.ttf in Resources */,
+				48FB28B02471420500277FD0 /* faqs.json in Resources */,
+				48FB28B22475051A00277FD0 /* Settings.storyboard in Resources */,
 				AC01CA5320C05DF200034C90 /* Roboto-Regular.ttf in Resources */,
 				AC323B3520FF76BD0015ECB4 /* SF-Pro-Display-Semibold.ttf in Resources */,
 				AC099D8120F79D6D0090B0CA /* LoaderView.storyboard in Resources */,
 				48FC9DA120B1B99D00838CA7 /* Assets.xcassets in Resources */,
+				48FB2896246FD96200277FD0 /* Privacy Policy.pdf in Resources */,
 				4810C81B2311759C00B6ACA4 /* GoogleSans-Regular.ttf in Resources */,
 				AC9159FC21061D1C0018CB94 /* DashBoard.storyboard in Resources */,
 				4810C815230C018B00B6ACA4 /* GoogleSans-Bold.ttf in Resources */,
@@ -797,6 +827,7 @@
 				48F7F1871FFE0412008D827A /* Constants.swift in Sources */,
 				488BD073218B4F2D003998AC /* ImageTableViewCell.swift in Sources */,
 				AC4843F92126A3B3003492DB /* ILTabViewController.swift in Sources */,
+				48FB28B42476ADBC00277FD0 /* ContactUSViewController.swift in Sources */,
 				AC130700218A030500790E9A /* FinalLoginViewController.swift in Sources */,
 				480A3BEE235ADAFF00EA4EF4 /* PageViewController.swift in Sources */,
 				482D2C2323A5312F0024CF00 /* EditPresentationTableViewCell.swift in Sources */,
@@ -811,6 +842,7 @@
 				483DF7D1236807460081A157 /* CustomPopUpViewController.swift in Sources */,
 				AC20EE8121908E900083AAFE /* PresentationDetailViewcontroller.swift in Sources */,
 				AC9159FA210613D30018CB94 /* MobileOTPVirecontroller.swift in Sources */,
+				48FB28AE247121B900277FD0 /* FaqViewController.swift in Sources */,
 				BC9DD97B20B82541003CA4A6 /* WebServiceHandler.swift in Sources */,
 				ACCA1D152107697600383104 /* DashBoardViewController.swift in Sources */,
 				ACC98D11211B37F00098B53A /* MenuViewController.swift in Sources */,

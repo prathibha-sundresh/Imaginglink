@@ -72,31 +72,23 @@ class BaseHamburgerViewController: UIViewController {
         print("View Controller is : \(topViewController) \n", terminator: "")
         switch(index){
         case 0:
-            print("Home\n", terminator: "")
-            
             self.openViewControllerBasedOnIdentifier("InviteFriendsViewController")
-            
-            break
         case 1:
-            print("My UFS\n", terminator: "")
-            
-//            if (getTopViewController() is WSFavouriteShoppingListViewController ) || (getTopViewController() is WSRecipeOverViewViewController ) || (getTopViewController() is SearchViewController ){
-//                self.tabBarController?.selectedIndex = 0
-//                return
-//            }
-            
-            
             self.openViewControllerBasedOnIdentifier("ResetPasswordWithMenuViewController")
-            break
         case 2:
             self.openViewControllerBasedOnIdentifier("TwofactorAuthenticationViewController")
-            break
         case 3:
-            print("Scan\n", terminator: "")
-            
             self.openViewControllerBasedOnIdentifier("ChangeEmailViewController")
-            
-            break
+		case 4:
+			self.performSegue(withIdentifier: "FaqViewControllerVCID", sender: nil)
+		case 5:
+			break
+		case 6:
+			self.performSegue(withIdentifier: "TermsAndConditionsPolicyID", sender: "Privacy Policy")
+		case 7:
+			self.performSegue(withIdentifier: "TermsAndConditionsPolicyID", sender: "Terms & Conditions")
+		case 8:
+			self.performSegue(withIdentifier: "ContactUSViewControllerSegue", sender: nil)
         default:
             print("default\n", terminator: "")
         }
@@ -143,7 +135,17 @@ class BaseHamburgerViewController: UIViewController {
         menuVC.view.layoutIfNeeded()
         
     }
-    
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		if segue.identifier == "TermsAndConditionsPolicyID"{
+            let vc: TermsAndCondtionsAndPrivacyViewController = segue.destination as! TermsAndCondtionsAndPrivacyViewController
+            if sender as? String == "Terms & Conditions"{
+                vc.isClickedFrom = "Terms & Conditions"
+            }
+            else{
+                vc.isClickedFrom = "Privacy Policy"
+            }
+        }
+	}
     func openViewControllerBasedOnIdentifier(_ strIdentifier:String){
         let storyboard = UIStoryboard(name: "DashBoard", bundle: nil)
         let destViewController : UIViewController? = storyboard.instantiateViewController(withIdentifier: strIdentifier)

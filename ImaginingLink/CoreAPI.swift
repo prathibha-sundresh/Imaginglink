@@ -14,9 +14,9 @@ class CoreAPI {
     static let sharedManaged = CoreAPI()
     
     private init() {
-        // Do something
         SSHttpRequest.setbaseUrl(url: kBaseUrl)
     }
+	
     func signUpWithEmailId(firstName : String, lastNAme: String, email:String, password:String, userType:String, successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void) {
         let request =  SSHttpRequest(withuUrl: kSignUpAPI)
         let signUpValues = ["first_name" : firstName, "last_name" : lastNAme, "email" : email, "password" : password, "user_type_id" : userType, "otp_code" : UserDefaults.standard.value(forKey: OTP_Value) as! String] as [String:Any]
@@ -25,7 +25,6 @@ class CoreAPI {
         }, faliure: {(error) in
             faliure(error)
         })
-        
     }
     
     func signIn(userName : String, password : String, successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void) {
@@ -36,7 +35,6 @@ class CoreAPI {
         }, faliure: {(error) in
             faliure(error)
         })
-        
     }
     
     func RegisterEmail(Email : String,successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void) {
@@ -47,7 +45,6 @@ class CoreAPI {
         }, faliure: {(error) in
             faliure(error)
         })
-        
     }
     
     func requestOTPWithEmail(Email : String, OTP: String,successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void) {
@@ -58,7 +55,6 @@ class CoreAPI {
         }, faliure: {(error) in
             faliure(error)
         })
-        
     }
     
     func VerifyPhonenumber(phoneNumber : String,countryCode : String,successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void) {
@@ -69,7 +65,6 @@ class CoreAPI {
         }, faliure: {(error) in
             faliure(error)
         })
-        
     }
     
     func getUserPresentationWithId(UserID:String, successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void) {
@@ -81,7 +76,6 @@ class CoreAPI {
         }, faliure: {(error) in
             faliure(error)
         })
-        
     }
     
     func getCommentListWithId(presentationId:String, successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void) {
@@ -92,7 +86,6 @@ class CoreAPI {
         }, faliure: {(error) in
             faliure(error)
         })
-        
     }
     
     func getCountryList(successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void) {
@@ -102,8 +95,8 @@ class CoreAPI {
         }, faliure: {(error) in
             
         })
-        
     }
+	
     func reSendMobileOTP(successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void ) {
         let request =  SSHttpRequest(withuUrl: kTwoFactorAuthenticationResendOTPAPI)
         request.postMethodWithHeaderasToken(dictParameter: [:], url: kTwoFactorAuthenticationResendOTPAPI, header: getHeader(), successResponse: {(response) in
@@ -111,8 +104,8 @@ class CoreAPI {
         }, faliure: {(error) in
             faliure(error)
         })
-        
     }
+	
     func sendOtpToEnabledUser(successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void ) {
         let request =  SSHttpRequest(withuUrl: k2FASendOTPToEnabledUserAPI)
         request.postMethodWithHeaderasToken(dictParameter: [:], url: k2FASendOTPToEnabledUserAPI, header: getHeader(), successResponse: {(response) in
@@ -120,8 +113,8 @@ class CoreAPI {
         }, faliure: {(error) in
             faliure(error)
         })
-        
     }
+	
     func disable2faToUser(successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void ) {
         let request =  SSHttpRequest(withuUrl: k2FADisableAPI)
         request.postMethodWithHeaderasToken(dictParameter: [:], url: k2FADisableAPI, header: getHeader(), successResponse: {(response) in
@@ -129,8 +122,8 @@ class CoreAPI {
         }, faliure: {(error) in
             faliure(error)
         })
-        
     }
+	
     func callPublicPresentation(successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void ) {
         let request =  SSHttpRequest(withuUrl: kpublicPresentaion)
         request.getMethod(dictParameter: [:], url: kpublicPresentaion, successResponse: {(response) in
@@ -139,6 +132,7 @@ class CoreAPI {
             faliure(error)
         })
     }
+	
     func callSavedPresentation(successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void ) {
         let request =  SSHttpRequest(withuUrl: KSavedPresentations)
         request.getMethod(dictParameter: [:], url: KSavedPresentations, successResponse: {(response) in
@@ -149,6 +143,7 @@ class CoreAPI {
             faliure(errorDic["message"] as? String ?? "")
         })
     }
+	
     func requestFavouriteUnfavorite(presentationID: String, successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void ) {
         let request =  SSHttpRequest(withuUrl: kFavouriteUnfavorite)
         let OTPRequestValues = ["presentation_id" : presentationID ]  as [String:Any]
@@ -170,6 +165,7 @@ class CoreAPI {
         })
         
     }
+	
     func requestReportPost(presentationID: String,selectedIssue: String,reportedIssue: String, successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void ) {
         let request =  SSHttpRequest(withuUrl: kReportPost)
         let OTPRequestValues = ["presentation_id" : presentationID, "selected_issue": selectedIssue, "reported_issue":reportedIssue]  as [String:Any]
@@ -178,8 +174,8 @@ class CoreAPI {
         }, faliure: {(error) in
             faliure(error)
         })
-        
     }
+	
     func requestAddRatingPost(presentationID: String,rating: Int, successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void ) {
         let request =  SSHttpRequest(withuUrl: kAddRatings)
         let OTPRequestValues = ["presentation_id" : presentationID, "rating": rating]  as [String:Any]
@@ -188,8 +184,8 @@ class CoreAPI {
         }, faliure: {(error) in
             faliure(error)
         })
-        
     }
+	
     func requestForSaveLikeEmoji(presentationID: String, likeUnLikeValue: String, successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void ) {
         let request =  SSHttpRequest(withuUrl: kPresentationLikeOrUnLike)
         let OTPRequestValues = ["presentation_id" : presentationID, "like_emoji": likeUnLikeValue ]  as [String:Any]
@@ -198,8 +194,8 @@ class CoreAPI {
         }, faliure: {(error) in
             faliure(error)
         })
-        
     }
+	
     func requestNotify(presentationID: String, successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void ) {
         let request =  SSHttpRequest(withuUrl: kNotificationorNonNotify)
         let OTPRequestValues = ["presentation_id" : presentationID ]  as [String:Any]
@@ -208,7 +204,6 @@ class CoreAPI {
         }, faliure: {(error) in
             faliure(error)
         })
-        
     }
 
     func requestOldEmailOTP(otpCode: String, successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void ) {
@@ -219,7 +214,6 @@ class CoreAPI {
         }, faliure: {(error) in
             faliure(error)
         })
-        
     }
     
     func requestNewEmailOTP(otpCode: String, successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void ) {
@@ -230,7 +224,6 @@ class CoreAPI {
         }, faliure: {(error) in
             faliure(error)
         })
-        
     }
     
     func requestForcomments(comment: String,parentcommentid: String, commentedcondition:String,presentationid:String, successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void ) {
@@ -241,7 +234,6 @@ class CoreAPI {
         }, faliure: {(error) in
             faliure(error)
         })
-        
     }
     
     func requestLogout(successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void ) {
@@ -252,6 +244,7 @@ class CoreAPI {
             faliure(error)
         })
     }
+	
     func logOut() {
         
         let fileManager = FileManager.default
@@ -282,7 +275,6 @@ class CoreAPI {
         }, faliure: {(error) in
             faliure(error)
         })
-
     }
     
     func DisableTwoFactorAuthentication(successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void ) {
@@ -292,7 +284,6 @@ class CoreAPI {
         }, faliure: {(error) in
             faliure(error)
         })
-        
     }
     
     func getallUserPresentation(successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void) {
@@ -303,8 +294,8 @@ class CoreAPI {
         }, faliure: {(error) in
             faliure(error)
         })
-        
     }
+	
     func getUserDetails(successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void) {
         let request =  SSHttpRequest(withuUrl: KGetUserDetails)
         
@@ -313,8 +304,8 @@ class CoreAPI {
         }, faliure: {(error) in
             faliure(error)
         })
-        
     }
+	
     func updateUserDetails(requestDict: [String: Any], successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void) {
         let request =  SSHttpRequest(withuUrl: KUpdateUserDetails)
         request.postMethodWithHeaderasToken(dictParameter: requestDict, url: KUpdateUserDetails, header: getHeader(), successResponse: {(response) in
@@ -322,8 +313,8 @@ class CoreAPI {
         }, faliure: {(error) in
             faliure(error)
         })
-        
     }
+	
     func updateProfilePhoto(requestDict: [String: Any], successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void) {
         let serverUrl = SSHttpRequest.baseURL!.appending(KUpdateProfilePhoto)
         
@@ -350,8 +341,8 @@ class CoreAPI {
                 faliure("\(encodingError)")
             }
         }
-        
     }
+	
     func getPublicUserPresentation(successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void) {
         let request =  SSHttpRequest(withuUrl: kpublicPresentaion)
         
@@ -360,7 +351,6 @@ class CoreAPI {
         }, faliure: {(error) in
             faliure(error)
         })
-        
     }
     
     func requesrForgotPassword(emailId:String, successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void) {
@@ -371,7 +361,6 @@ class CoreAPI {
         }, faliure: {(error) in
             faliure(error)
         })
-        
     }
     
     func requestOTPForResetPassword(Email : String, OTP: String,successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void) {
@@ -382,23 +371,16 @@ class CoreAPI {
         }, faliure: {(error) in
             faliure(error)
         })
-        
     }
     
     func requestUserType(successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void) {
         let request =  SSHttpRequest(withuUrl: kUserTypeAPI)
         request.getMethodWithOutHeader(url: kUserTypeAPI, successResponse: {(response) in
-//            let responseData = response as! [String:Any]
-            
-//            print("Response is \(responseData)")
             successResponse(response)
-            
         }, faliure: {(failure) in
             
         })
-        
     }
-    
     
     func requestForgetPassword(params:[String:Any], successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void) {
         let request =  SSHttpRequest(withuUrl: kForgotPasswordUpdatePasswordAPI)
@@ -407,7 +389,6 @@ class CoreAPI {
         }, faliure: {(error) in
             faliure(error)
         })
-        
     }
     
     func requestResetPassword(params:[String:Any], successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void) {
@@ -426,7 +407,6 @@ class CoreAPI {
         }, faliure: {(error) in
             faliure(error)
         })
-        
     }
     
     func requestToInviteFriends(params:[String:Any], successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void) {
@@ -436,7 +416,6 @@ class CoreAPI {
         }, faliure: {(error) in
             faliure(error)
         })
-        
     }
     
     func getSectionsAndSubSections(successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void) {
@@ -468,13 +447,9 @@ class CoreAPI {
             parameters["youtube_url"] = params["youtube_url"]!
         }
         else{
-			//9241546778_eng-1-5.pdf
-			//Presentations-Tips.ppt
-			//5dce69f66cbc2-123.pptx
 			let url = params["fileUrl"] as? URL
             do {
                 fileData = try Data(contentsOf: url!)
-				//fileData = try Data(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "sample", ofType: "pdf")!))
             } catch {
                 print ("loading image file error")
             }
@@ -482,8 +457,6 @@ class CoreAPI {
         
         Alamofire.upload(multipartFormData: { multipartFormData in
             if let data = fileData {
-                //application/vnd
-                //application/pdf
 				let fileName = params["fileName"] as? String ?? ""
 				var mimeTypeStr = ""
 				if let fileExtension = params["fileExtension"] as? String, fileExtension == "pdf" {
@@ -582,7 +555,7 @@ class CoreAPI {
             faliure(error)
         })
     }
-	//filterUserPresentation
+	
 	func filterUserPresentation(params:[String:Any], successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void) {
 		let stringURL = KFilterUserPresentation
 		let request =  SSHttpRequest(withuUrl: stringURL)
@@ -601,5 +574,15 @@ class CoreAPI {
         }, faliure: {(error) in
             faliure(error)
         })
+    }
+	
+	func sendContactUsDetails(requestDict: [String: Any], successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void ) {
+        let request =  SSHttpRequest(withuUrl: KContactUs)
+        request.postMethodWithHeaderasToken(dictParameter: requestDict, url: KContactUs, header: getHeader(), successResponse: {(response) in
+            successResponse(response)
+        }, faliure: {(error) in
+            faliure(error)
+        })
+        
     }
 }

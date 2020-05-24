@@ -99,3 +99,6 @@ let KSavePresentation = "api/user/save"
 let KFilterPublishPresentation = "api/presentations/filter"
 let KFilterUserPresentation = "api/presentations/user"
 let KUserPresentationAcceptOrReject = "api/user/action-on-editor-modified"
+
+//Settings
+let KContactUs = "api/contact-us"

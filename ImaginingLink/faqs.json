@@ -1,0 +1,103 @@
+{
+	"faqs": [
+		{ "que": "How do I join Imaginglink ?",
+			"ans": "Currently, only Radiology professionals can become Imaginglink members and this membership may only be obtained through an exclusive invitation. This invitation can be obtained two ways.\nAn invitation sent directly to you by any approved Imaginglink member.\nInterested Radiology professionals can signup directly from the home page.\nIrrespective of self request to join, or, invitation sent out by another approved member, all users need to undergo verification process as detailed below."
+		},
+		{ "que": "How does Imaginglink verify members ?",
+			"ans": "Security and privacy are critically important to our community. Since our site was created by and for Radiologists and radiology related people, we knew that trust was essential to get our peers to join us. By utilizing publicly available information from the American Board of Radiologists, State Medical Societies, Professional Radiology Organizations, Radiology Periodicals/Research Journals, Google and our own customized databases, we scrutinize each member’s registration. With data matching and encryption technology, our identity verification process gives our members the confidence needed to collaborate in a secure and private community. Once registered, a user is not able to access the site until:Their email address is verified as legitimate, using an one time password (code) sent to their email address.\nIf requested, Radiologists submit appropriate documentation, such as licensure for verification. For more information, please contact us at support@imaginglink.com"
+		},
+		{
+			"que" : "What can I do on the Imaginglink website ?",
+			"ans" : "At the moment, Imaginkglink’s site has limited functionality. However, the full version will include the following features,\nKey features that are available now and available soon are detailed at www.Imaginglink.com/keyfeatures"
+		},
+		{
+			"que" : "How can I invite friends or colleagues to join Imaginglink ?",
+			"ans" : "Invite people using their email address: \nGo to the Imaginglink home page\nClick the Invite by email button on the right.\nType the email addresses, separating them with commas, into the text box on the left.\nClick Send Invitations.\nNote: Invitations sent this way can't be personalized."
+		},
+		{
+			"que" : "What are the security steps taken to protect passwords ?",
+			"ans" : "Imaginglink is using a combination of 512 bit encrypted standard hashing methodology along with a unique algorithm to keep your password and account secure and safe.\nIn addition, users have an option of enabling two-factor authentication (2FA). Two-factor authentication is an extra layer of security for your Imaginglink’s ID designed to ensure that you're the only person who can access your account, even if someone knows your password."
+		},
+		{
+			"que" : "How do you prevent spam on the website ?",
+			"ans" : "Imaginglink uses Google’s reCAPTCHA service that protects websites from spam by using an advanced risk analysis engine as well as adaptive CAPTCHAs to keep automated software from engaging in abusive activities on the site. It does this while letting valid users pass through with ease. Learn more about reCAPTCHA at http://www.google.com/recaptcha/."
+		},
+		{
+			"que" : "How often do I need to change my password? Can I use the same password that was used previously ?",
+			"ans" : "We recommend that you change your password every 6 months, which will reduce the risk of password theft. That said, if you prefer to keep using the same password, you may do so at your own risk."
+		},
+		{
+			"que" : "What type of cloud server is used for the website ?",
+			"ans" : "Imaginglink’s application hosting, content delivery, backup and storage are performed using Amazon Web Services (AWS). AWS provides a highly reliable and scalable platform in the cloud that powers hundreds of thousands of businesses in 190 countries around the world. Details of the AWS can be found at Amazons https://aws.amazon.com/about-aws/"
+		},
+		{
+			"que" : "How secure is my data on the cloud server ?",
+			"ans" : "Imaginglink uses cutting edge technology from AWS that provides exceptional data security. Read more about AWS security features here: https://aws.amazon.com/security/"
+		},
+		{
+			"que" : "How can I protect my identity ?",
+			"ans" : "Your basic information may be used at any time to verify that you are a licensed Radiologist. Beyond that, you have the ability to customize your profile, your privacy features and secure your identity. Please refer to our Privacy Policy for further details."
+		},
+		{
+			"que" : "I forgot my password, what do I do ?",
+			"ans" : "If you can't log into Imaginglink and need to reset your password click the \"Forgot password?\" option on the home page"
+		},
+		{
+			"que" : "What if I'm not a Radiologist and I want to join Imaginglink ?",
+			"ans" : "Yes, you can join. Imaginglink is for any one with interest or work with medical imaging including, radiology technologists, radiology physicists, radiology related businesses, medical students, radiology trainees, researches, other clinical subspecialists and others."
+		},
+		{
+			"que" : "How do I start using Imaginglink ?",
+			"ans" : "You can start using Imaginglink by visiting https://www.imaginglink.com or downloading apple or android app from respective app store. Registration to Imaginglink is completely free and registered members have many advantages including ability to interact with other members, groups, published educational content, businesses and others which helps to establish a professional Identity."
+		},
+		{
+			"que" : "Is this site HIPAA compliant ?",
+			"ans" : "Imaginglink has taken several steps to ensure compliance with HIPAA in order to protect confidential patient information. Please review our Privacy Policy and Terms and Conditions which provide important details regarding our HIPAA compliance. If you have any concerns, please contact us at support@imaginglink.com"
+		},
+		{
+			"que" : "Will posted content come up in Google Search Results ?",
+			"ans" : "Any public content on Imaginglink such as published cases, MCQ’s, presentations and others (as in this beta release) will be search engine optimized and will come up in Google search results. Private content (which will be released in the later stage of application) will not be displayed."
+		},
+		{
+			"que" : "What do I do if I notice a problem or want to make a suggestion ?",
+			"ans" : "Great! We welcome your feedback. Contact us here: support@imaginglink.com."
+		},
+		{
+			"que" : "What do I do if I see a conversation that I feel is inappropriate ?",
+			"ans" : "If you observe abusive, offensive or belligerent behavior or language, report it immediately to support@imaginglink.com. If you are uncomfortable with witnessed language or content, either respond professionally and courteously or notify us."
+		},
+		{
+			"que" : "Do my posts on Imaginglink satisfy legal obligations I have for reporting events or circumstances to authorities or regulatory agencies ?",
+			"ans" : "In short, no. Posting or uploading information onto Imaginglink does not absolve you of any legal obligations to report information deemed legally reportable by any authority. There are no substitutes for completing and filing forms required by appropriate local, state, and federal authorities. Check with your local medical society if you have any related concerns. If you have an issue that involves public health, please contact your appropriate local authority."
+		},
+		{
+			"que" : "If I give an opinion about a clinical question, is there any potential malpractice liability? Can I get sued ?",
+			"ans" : "There is no liability, but as you know with frivolous litigation, anyone can get sued. That said, opinions and information do not define legal obligations. Imaginglink’s content is for informational and educational purposes only. It is not a substitution for the professional judgment of a radiologist. Medical malpractice is an act or omission by a health care provider of services that deviate from commonly applied and accepted standards of practice by the average prudent reputable member in that local medical community. This act or omission causes injury, loss or harm to a patient or the recipient of those services or to those who would be entitled to such services."
+		},
+		{
+			"que" : "Do I have any personal liability if I discuss anecdotal observations or ‘off label’ indications for treatments ?",
+			"ans" : "Generally speaking, no. However, if a radiologist proposes an off-label indication for a device, technology, technique or product, he/she should indicate it as such and disclose any personal bias or conflict of interest. Identification of a topic as an ‘off label’ indication can help us all be more astute observers, data analysts and informed decision makers."
+		},
+		{
+			"que" : "What if another doctor takes my ‘advice’ and something bad happens to their patient? Am I indirectly a consultant, accessory or abettor ?",
+			"ans" : "No. Imaginglink is not a place where medical decision making is taking place. Users give their opinions, information or suggestions. No formal consulting or patient-physician relationships are established. Imaginglink is not a substitute for standard medical care. Radiologists accessing information on Imaginglink assume full responsibility for the implementation of suggestions. Practicing radiologist users continue to be bound by the decisions of their independent and informed medical judgment."
+		},
+		{
+			"que" : "Are there any behavioral restrictions on Imaginglink ?",
+			"ans" : "Please observe a professional code of conduct when you post on our professional community. We want to encourage our colleagues to express themselves freely and openly, but given that we are a profession-specific site, it is essential to behave professionally. Some important points to consider when posting: \nAvoid language that may be construed as a personal attack or condescension, i.e. no profanity or slander. We are a relatively small community and we strive to know each other professionally.\nRespect the privacy of your colleagues and allow your peers to remain as anonymous as they desire. Networks are built around interests and trust.\nDisclose any conflicts of interest you may have related to a given topic or post. Do this directly in your post or comment.\nDo not disclose personally identifiable information about your friends or foes. Don’t open yourself up to claims of loss regarding character defamation or financial conflicts of interest. At your discretion, consider disclosing research grants, honoraria, consulting fees, royalties, equity, reimbursement or other third part remuneration that could impact the information contributed. Disclosures should be made in any relevant postings.\nWe reserve the right to admonish or censure any user, and/or revoke membership, privileges or access of any user deemed in violation of the proper professional etiquette and manner Imaginglink espouses."
+		},
+		{
+			"que" : "Can I delete my Imaginglink account ?",
+			"ans" : "Yes, you can delete your Imaginglink account at any time.\nTo delete your account, please contact us at support@imaginglink.com and request that we delete your account for you."
+		},
+		{
+			"que" : "What is two-factor authentication(2FA) ?",
+			"ans" : "Two-factor (2F) authentication is an extra layer of security for your Imaginglink’s ID designed to ensure that you're the only person who can access your account, even if someone knows your password. Because your password alone is no longer enough to access your account, two-factor authentication dramatically improves the security of your Imaginglink’s ID and all the personal information you store with Imaginglink."
+		},
+		{
+			"que" : "How to enable two-factor authentication(2FA) ?",
+			"ans" : "2FA can be enabled or disabled with few easy steps. You could enable 2FA at the time of registration to Imaginglink or with below easy steps if you had skipped the 2FA at the time of registration.\nFirst login to Imaginglink and click the down arrow (v) just next to your registered email on the top right hand corner of the webpage and followed by clicking on 2Factor authentication. To enable 2FA, you need to register your mobile phone number by providing the country code and phone number. A 6 digit authentication code (OTP-one time password) will be sent to your registered mobile phone number via text message (SMS) for verification. This code needs to be entered on the website/app for verification purpose. If the code is matched, then the mobile phone number will be registered to your account. Once registered, you need password as well as a new authentication code that will be sent to your registered mobile phone number for every login to your Imaginglink’s account. Note: Imaginglink doesn't charge you for using text messages (SMS) for two-factor authentication. However, your mobile provider's standard rates for sending and receiving messages still apply."
+		},
+	]
+}
+

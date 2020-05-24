@@ -15,17 +15,12 @@ class TermsAndCondtionsAndPrivacyViewController: UIViewController, WKNavigationD
     override func viewDidLoad() {
         super.viewDidLoad()
         webView.navigationDelegate = self
-        if isClickedFrom == "Terms & Conditions"{
-            let url = URL(string: termsandconditionUrl)!
-            webView.load(URLRequest(url: url))
-            webView.allowsBackForwardNavigationGestures = true
-        }
-        else{
-            let url = URL(string: privacyPolicyUrl)!
-            webView.load(URLRequest(url: url))
-            webView.allowsBackForwardNavigationGestures = true
-        }
-        
+		let fileName = isClickedFrom == "Terms & Conditions" ? "Terms and Conditions" : "Privacy Policy"
+		if let filePath = Bundle.main.url(forResource: fileName, withExtension: "pdf", subdirectory: nil, localization: nil)  {
+		  let req = NSURLRequest(url: filePath)
+			webView.load(req as URLRequest)
+		}
+		webView.allowsBackForwardNavigationGestures = true
         // Do any additional setup after loading the view.
     }
     

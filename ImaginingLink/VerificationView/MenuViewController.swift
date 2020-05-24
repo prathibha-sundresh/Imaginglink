@@ -35,20 +35,17 @@ class MenuViewController: BaseHamburgerViewController, UITableViewDelegate, UITa
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
        
-        
-        if (indexPath.row == 4) {
+		if indexPath.row == textlist.count - 1 {
             self.CloseMenuPressed(nil)
             CoreAPI.sharedManaged.logOut()
         } else {
             CloseMenuPressed(nil)
             delegate?.slideMenuItemSelectedAtIndex(indexPath.row)
         }
-       
-        
     }
     
-    var imagelist = ["InviteFriendsICon", "ChangePasswordIcon", "TwoFactorAuthenticationMenuIcon", "ChangeEmailIcon", "logoutIcon"]
-    var textlist = ["INVITE FRIENDS", "CHANGE PASSWORD", "2 FACTOR AUTHENTICATION", "CHANGE EMAIL", "LOGOUT"]
+    var imagelist = ["InviteFriendsICon", "ChangePasswordIcon", "TwoFactorAuthenticationMenuIcon", "ChangeEmailIcon","FaqsIcon","GuideToAuthorsIcon","PrivacyIcon","TnCIcon","ContanctUsIcon","HelpCenterIcon", "logoutIcon"]
+    var textlist = ["INVITE FRIENDS", "CHANGE PASSWORD", "2 FACTOR AUTHENTICATION", "CHANGE EMAIL","FAQ’s","GUIDE TO AUTHORS","PRIVACY POLICY","TERMS & CONDITIONS","CONTACT US","HELP CENTER", "LOGOUT"]
     @IBOutlet weak var mTableView: UITableView!
     @IBOutlet weak var menuView: UIView!
     
