@@ -69,7 +69,9 @@ class DashBoardViewController:  BaseHamburgerViewController {
     
     @IBAction func SocialNetworkIconPressed(_ sender: AnyObject) {
         changeButtonsBackgroundImage(sender: sender.tag)
-        self.performSegue(withIdentifier: "ComingSoon", sender: SocialConnect)
+		let storyBoard = UIStoryboard(name: "SocialConnect", bundle: nil)
+        let vc = storyBoard.instantiateViewController(withIdentifier: "TimeLineAllPostsViewController") as! TimeLineAllPostsViewController
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @IBAction func publishIconPressed(_ sender: Any) {

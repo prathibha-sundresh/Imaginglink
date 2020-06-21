@@ -203,27 +203,9 @@ class PresentationDetailTextCell : UITableViewCell {
         }
     }
     
-    func createDirectory(){
-        
-        let documentsUrl:URL =  (FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first as URL?)!
-        var isDirectory = ObjCBool(true)
-        let exists = FileManager.default.fileExists(atPath: documentsUrl.path, isDirectory: &isDirectory)
-        if exists && isDirectory.boolValue{
-            return
-        }
-        
-        let destinationFileUrl = documentsUrl.appendingPathComponent("Imaginglink")
-        do
-        {
-            try FileManager.default.createDirectory(atPath: destinationFileUrl.path, withIntermediateDirectories: true, attributes: nil)
-        }
-        catch let error as NSError
-        {
-            NSLog("Unable to create directory \(error.debugDescription)")
-        }
-    }
     func checkFileExistsOrNot()-> Bool{
-        createDirectory()
+		
+		ILUtility.createDirectory()
         let array = downloadableLink.components(separatedBy: "/")
         let documentsUrl:URL =  (FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first as URL?)!
         let destinationFileUrl = documentsUrl.appendingPathComponent(array.last!)

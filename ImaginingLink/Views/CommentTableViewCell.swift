@@ -57,9 +57,10 @@ class CommentTableViewCell : UITableViewCell {
     fileprivate func setUIValues(_ dic: [String : Any]) {
         presentationID = dic["id"] as? String ?? ""
         CommentView.layer.borderColor = UIColor(red: 187/255, green: 205/255, blue: 217/255, alpha: 1).cgColor
-        Textview.placeholder = "  Write your comment"
+        Textview.placeholder = "Write your comment"
+		Textview.textContainerInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         Textview.placeholderTextColor = UIColor(red: 187/255, green: 205/255, blue: 217/255, alpha: 1)
-        Textview.textColor = UIColor.gray
+        Textview.textColor = UIColor(red: 0.29, green: 0.29, blue: 0.29, alpha: 1.00)
         Textview.layer.borderColor = UIColor(red: 187/255, green: 205/255, blue: 217/255, alpha: 1).cgColor
         Textview.layer.borderWidth = 1
         Textview.layer.cornerRadius = 16

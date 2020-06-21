@@ -168,12 +168,8 @@ class SignUpViewcontroller: UIViewController,  UITextFieldDelegate, UserTypeDele
         if segue.identifier == "TermsAndConditionsPolicyID"{
             //Terms And Conditions
             let vc: TermsAndCondtionsAndPrivacyViewController = segue.destination as! TermsAndCondtionsAndPrivacyViewController
-            if sender as? String == "Terms & Conditions"{
-                vc.isClickedFrom = "Terms & Conditions"
-            }
-            else{
-                vc.isClickedFrom = "Privacy Policy"
-            }
+            let fileName = (sender as? String == "Terms & Conditions") ? "Terms and Conditions" : "Privacy Policy"
+			vc.urlPath = Bundle.main.url(forResource: fileName, withExtension: "pdf", subdirectory: nil, localization: nil)
         }
     }
     func submit(){

@@ -10,14 +10,13 @@ import UIKit
 import WebKit
 
 class TermsAndCondtionsAndPrivacyViewController: UIViewController, WKNavigationDelegate {
-    var isClickedFrom = ""
     @IBOutlet weak var webView: WKWebView!
+	var urlPath: URL?
     override func viewDidLoad() {
         super.viewDidLoad()
         webView.navigationDelegate = self
-		let fileName = isClickedFrom == "Terms & Conditions" ? "Terms and Conditions" : "Privacy Policy"
-		if let filePath = Bundle.main.url(forResource: fileName, withExtension: "pdf", subdirectory: nil, localization: nil)  {
-		  let req = NSURLRequest(url: filePath)
+		if let url = urlPath {
+			let req = NSURLRequest(url: url)
 			webView.load(req as URLRequest)
 		}
 		webView.allowsBackForwardNavigationGestures = true

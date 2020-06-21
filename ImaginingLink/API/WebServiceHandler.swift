@@ -118,8 +118,8 @@ import Alamofire
         WebServiceHandler.manager.request(requestURL!, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: header!)
             .responseString { response in
                 print(response.request as Any)  // original URL request
-                print(response.response as Any) // URL response
-                print(response.result.value as Any)   // result of response serialization
+                //print(response.response as Any) // URL response
+                //print(response.result.value as Any)   // result of response serialization
                 if  response.response?.statusCode == 200{
                         success( response.result.value! as AnyObject)
                         return

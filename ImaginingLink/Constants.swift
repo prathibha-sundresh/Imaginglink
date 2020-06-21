@@ -102,3 +102,21 @@ let KUserPresentationAcceptOrReject = "api/user/action-on-editor-modified"
 
 //Settings
 let KContactUs = "api/contact-us"
+
+//SocialConnectAPI
+let KUserTimelineData = "api/social-connect/get-user-timeline-data"
+let kSaveAllPostLikesEmoji = "api/social-connect/save-all-post-likes"
+let kCreateTimelineStatus = "api/social-connect/timeline-status-update"
+let kTimelineFavouritePost = "api/social-connect/add-timeline-favourite-post"
+let kTimelineHidePost = "api/social-connect/hide-post"
+let kTimelineDeletePost = "api/social-connect/delete-shared-post"
+let kReportTimeLinePost = "api/social-connect/timeline-report-user-post"
+let kTimelineComments = "api/social-connect/add-comment"
+let kTimelineDetails = "api/social-connect/load-timeline-post-details?timeline_id=%@"
+let kDeleteCommentForTimelinePost = "api/social-connect/delete-comment"
+let kShareAlbumPost = "api/social-connect/create-album"
+let kShareFilesForPost = "api/social-connect/upload-files"
+let kMyWallPosts = "api/social-connect/get-user-wall"
+let kImageAndFileBaseUrl = "https://imaginglink.s3-us-west-2.amazonaws.com/"
+let kUpdateTimelineStatus = "api/social-connect/update-user-post"
+

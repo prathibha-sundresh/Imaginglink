@@ -34,6 +34,17 @@
 		484279331FF39B9E0056A089 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484279321FF39B9E0056A089 /* ViewController.swift */; };
 		484279361FF39B9E0056A089 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 484279341FF39B9E0056A089 /* Main.storyboard */; };
 		4842793B1FF39B9E0056A089 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 484279391FF39B9E0056A089 /* LaunchScreen.storyboard */; };
+		484BEA43247E38360029B89A /* SharedFileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484BEA42247E38360029B89A /* SharedFileTableViewCell.swift */; };
+		484BEA46247F88B40029B89A /* SharedStatusTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484BEA45247F88B40029B89A /* SharedStatusTableViewCell.swift */; };
+		484BEA4C247F9A8D0029B89A /* SharedMultipleImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484BEA4B247F9A8D0029B89A /* SharedMultipleImageTableViewCell.swift */; };
+		484BEA50248020400029B89A /* SocialConnectAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484BEA4F248020400029B89A /* SocialConnectAPI.swift */; };
+		484BEA54248412BB0029B89A /* SharedVideoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484BEA53248412BB0029B89A /* SharedVideoTableViewCell.swift */; };
+		484BEA562484C3E70029B89A /* CreatePostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484BEA552484C3E70029B89A /* CreatePostViewController.swift */; };
+		484BEA5824877AB30029B89A /* CommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484BEA5724877AB30029B89A /* CommentsViewController.swift */; };
+		484BEA80248BA7460029B89A /* UpdateTimelineStatusVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484BEA7F248BA7460029B89A /* UpdateTimelineStatusVC.swift */; };
+		484BEAA2248BBE220029B89A /* ShareAlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484BEAA1248BBE220029B89A /* ShareAlbumViewController.swift */; };
+		484BEAA6248E9B2D0029B89A /* ShareFileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484BEAA5248E9B2D0029B89A /* ShareFileViewController.swift */; };
+		484BEAA82490A6010029B89A /* UploadedFilesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484BEAA72490A6010029B89A /* UploadedFilesViewController.swift */; };
 		485E3DCF2377F09E00B94F05 /* AddCommentReplyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485E3DCE2377F09E00B94F05 /* AddCommentReplyViewController.swift */; };
 		488BD073218B4F2D003998AC /* ImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488BD072218B4F2D003998AC /* ImageTableViewCell.swift */; };
 		488BD075218B4F4E003998AC /* PresentationDetailTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488BD074218B4F4E003998AC /* PresentationDetailTextCell.swift */; };
@@ -55,6 +66,8 @@
 		48FB28B02471420500277FD0 /* faqs.json in Resources */ = {isa = PBXBuildFile; fileRef = 48FB28AF2471420500277FD0 /* faqs.json */; };
 		48FB28B22475051A00277FD0 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48FB28B12475051A00277FD0 /* Settings.storyboard */; };
 		48FB28B42476ADBC00277FD0 /* ContactUSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FB28B32476ADBC00277FD0 /* ContactUSViewController.swift */; };
+		48FB28B8247CE6D700277FD0 /* TimeLineAllPostsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FB28B7247CE6D700277FD0 /* TimeLineAllPostsViewController.swift */; };
+		48FB28BA247CE6F800277FD0 /* SocialConnect.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48FB28B9247CE6F800277FD0 /* SocialConnect.storyboard */; };
 		48FC9DA120B1B99D00838CA7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 48FC9DA020B1B99D00838CA7 /* Assets.xcassets */; };
 		48FFC674217F82A300AB09D5 /* TwofactorAuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FFC673217F82A300AB09D5 /* TwofactorAuthenticationViewController.swift */; };
 		93BA89501F41BC6C39FEC9D3 /* Pods_ImaginingLink.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12DE6B9D2B8B81FB57AC5372 /* Pods_ImaginingLink.framework */; };
@@ -158,6 +171,17 @@
 		4842793C1FF39B9E0056A089 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		484279411FF39B9E0056A089 /* ImaginingLinkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ImaginingLinkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4842794C1FF39B9E0056A089 /* ImaginingLinkUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ImaginingLinkUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		484BEA42247E38360029B89A /* SharedFileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedFileTableViewCell.swift; sourceTree = "<group>"; };
+		484BEA45247F88B40029B89A /* SharedStatusTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedStatusTableViewCell.swift; sourceTree = "<group>"; };
+		484BEA4B247F9A8D0029B89A /* SharedMultipleImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedMultipleImageTableViewCell.swift; sourceTree = "<group>"; };
+		484BEA4F248020400029B89A /* SocialConnectAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialConnectAPI.swift; sourceTree = "<group>"; };
+		484BEA53248412BB0029B89A /* SharedVideoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedVideoTableViewCell.swift; sourceTree = "<group>"; };
+		484BEA552484C3E70029B89A /* CreatePostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePostViewController.swift; sourceTree = "<group>"; };
+		484BEA5724877AB30029B89A /* CommentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsViewController.swift; sourceTree = "<group>"; };
+		484BEA7F248BA7460029B89A /* UpdateTimelineStatusVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateTimelineStatusVC.swift; sourceTree = "<group>"; };
+		484BEAA1248BBE220029B89A /* ShareAlbumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareAlbumViewController.swift; sourceTree = "<group>"; };
+		484BEAA5248E9B2D0029B89A /* ShareFileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareFileViewController.swift; sourceTree = "<group>"; };
+		484BEAA72490A6010029B89A /* UploadedFilesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadedFilesViewController.swift; sourceTree = "<group>"; };
 		485E3DCE2377F09E00B94F05 /* AddCommentReplyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCommentReplyViewController.swift; sourceTree = "<group>"; };
 		488BD072218B4F2D003998AC /* ImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTableViewCell.swift; sourceTree = "<group>"; };
 		488BD074218B4F4E003998AC /* PresentationDetailTextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationDetailTextCell.swift; sourceTree = "<group>"; };
@@ -179,6 +203,8 @@
 		48FB28AF2471420500277FD0 /* faqs.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = faqs.json; sourceTree = "<group>"; };
 		48FB28B12475051A00277FD0 /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		48FB28B32476ADBC00277FD0 /* ContactUSViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactUSViewController.swift; sourceTree = "<group>"; };
+		48FB28B7247CE6D700277FD0 /* TimeLineAllPostsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLineAllPostsViewController.swift; sourceTree = "<group>"; };
+		48FB28B9247CE6F800277FD0 /* SocialConnect.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SocialConnect.storyboard; sourceTree = "<group>"; };
 		48FC9DA020B1B99D00838CA7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ImaginingLink/Assets.xcassets; sourceTree = "<group>"; };
 		48FFC673217F82A300AB09D5 /* TwofactorAuthenticationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwofactorAuthenticationViewController.swift; sourceTree = "<group>"; };
 		5E2205A4460125CD687F4CB7 /* Pods-ImaginingLinkTests.pro-release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ImaginingLinkTests.pro-release.xcconfig"; path = "Target Support Files/Pods-ImaginingLinkTests/Pods-ImaginingLinkTests.pro-release.xcconfig"; sourceTree = "<group>"; };
@@ -345,6 +371,7 @@
 		4842792F1FF39B9E0056A089 /* ImaginingLink */ = {
 			isa = PBXGroup;
 			children = (
+				48FB28B5247CE60400277FD0 /* SocialConnect */,
 				48FB28A62471208900277FD0 /* Settings */,
 				480A3BEA2359842100EA4EF4 /* Publishing */,
 				AC269DE421A5CB59004696DE /* WSDownloadFilesManager.swift */,
@@ -369,6 +396,25 @@
 				48FB28AF2471420500277FD0 /* faqs.json */,
 			);
 			path = ImaginingLink;
+			sourceTree = "<group>";
+		};
+		484BEA44247F88470029B89A /* TimelineCells */ = {
+			isa = PBXGroup;
+			children = (
+				484BEA45247F88B40029B89A /* SharedStatusTableViewCell.swift */,
+				484BEA53248412BB0029B89A /* SharedVideoTableViewCell.swift */,
+				484BEA42247E38360029B89A /* SharedFileTableViewCell.swift */,
+				484BEA4B247F9A8D0029B89A /* SharedMultipleImageTableViewCell.swift */,
+			);
+			path = TimelineCells;
+			sourceTree = "<group>";
+		};
+		484BEA4E248020130029B89A /* SocialConnectAPI */ = {
+			isa = PBXGroup;
+			children = (
+				484BEA4F248020400029B89A /* SocialConnectAPI.swift */,
+			);
+			path = SocialConnectAPI;
 			sourceTree = "<group>";
 		};
 		4897CCE820039B6100360EB7 /* Extensions */ = {
@@ -396,6 +442,30 @@
 				48FB28B32476ADBC00277FD0 /* ContactUSViewController.swift */,
 			);
 			path = Settings;
+			sourceTree = "<group>";
+		};
+		48FB28B5247CE60400277FD0 /* SocialConnect */ = {
+			isa = PBXGroup;
+			children = (
+				48FB28B6247CE62C00277FD0 /* Timeline */,
+			);
+			path = SocialConnect;
+			sourceTree = "<group>";
+		};
+		48FB28B6247CE62C00277FD0 /* Timeline */ = {
+			isa = PBXGroup;
+			children = (
+				484BEA4E248020130029B89A /* SocialConnectAPI */,
+				484BEA44247F88470029B89A /* TimelineCells */,
+				48FB28B7247CE6D700277FD0 /* TimeLineAllPostsViewController.swift */,
+				484BEA552484C3E70029B89A /* CreatePostViewController.swift */,
+				484BEA5724877AB30029B89A /* CommentsViewController.swift */,
+				484BEA7F248BA7460029B89A /* UpdateTimelineStatusVC.swift */,
+				484BEAA1248BBE220029B89A /* ShareAlbumViewController.swift */,
+				484BEAA5248E9B2D0029B89A /* ShareFileViewController.swift */,
+				484BEAA72490A6010029B89A /* UploadedFilesViewController.swift */,
+			);
+			path = Timeline;
 			sourceTree = "<group>";
 		};
 		AC01CA5120C05DDF00034C90 /* Fonts */ = {
@@ -437,6 +507,7 @@
 				AC9159FB21061D1C0018CB94 /* DashBoard.storyboard */,
 				480A3BE823580B3100EA4EF4 /* Publishing.storyboard */,
 				48FB28B12475051A00277FD0 /* Settings.storyboard */,
+				48FB28B9247CE6F800277FD0 /* SocialConnect.storyboard */,
 			);
 			path = StoryBoards;
 			sourceTree = "<group>";
@@ -645,6 +716,7 @@
 				AC6046AD211018E0006A42F3 /* SF-Pro-Display-Light.ttf in Resources */,
 				480A3BE923580B3100EA4EF4 /* Publishing.storyboard in Resources */,
 				AC323B3320FF750F0015ECB4 /* SF-Pro-Display-Regular.ttf in Resources */,
+				48FB28BA247CE6F800277FD0 /* SocialConnect.storyboard in Resources */,
 				484279361FF39B9E0056A089 /* Main.storyboard in Resources */,
 				ACD18C7220C550210059DE7B /* Roboto-Bold.ttf in Resources */,
 				48A7A5F92330B196008A2EB3 /* SF-Pro-Display-Medium.otf in Resources */,
@@ -792,7 +864,9 @@
 				48CCC16D239CDD7100CBD5F5 /* SendCommentTableViewCell.swift in Sources */,
 				480D5DBE23E9293A0019848C /* MyPresentationsViewController.swift in Sources */,
 				48216E3D2326C4EB00ADE8D5 /* TermsAndCondtionsAndPrivacyViewController.swift in Sources */,
+				484BEAA2248BBE220029B89A /* ShareAlbumViewController.swift in Sources */,
 				ACD18C7420C551D50059DE7B /* TwoFactorAuthenticationViewcontroller.swift in Sources */,
+				484BEAA82490A6010029B89A /* UploadedFilesViewController.swift in Sources */,
 				485E3DCF2377F09E00B94F05 /* AddCommentReplyViewController.swift in Sources */,
 				AC130702218A035900790E9A /* EmailchangeOTPViewcontroller.swift in Sources */,
 				AC153A49217E265C0017692B /* BaseHamburgerViewController.swift in Sources */,
@@ -805,15 +879,21 @@
 				488BD075218B4F4E003998AC /* PresentationDetailTextCell.swift in Sources */,
 				482D2C2123A215C90024CF00 /* RemovePresentationsFileCell.swift in Sources */,
 				AC0AD38E20D13C4100FCB371 /* ListViewController.swift in Sources */,
+				484BEAA6248E9B2D0029B89A /* ShareFileViewController.swift in Sources */,
+				484BEA50248020400029B89A /* SocialConnectAPI.swift in Sources */,
 				ACB08028212ACAEB0061B5D2 /* BaseViewController.swift in Sources */,
 				BCFFFBB720BAEEB0003A0652 /* OTPViewcontroller.swift in Sources */,
 				AC3AD4E42188A72D00B1B81A /* LogOutTableViewCell.swift in Sources */,
+				484BEA562484C3E70029B89A /* CreatePostViewController.swift in Sources */,
 				480D9B092177A32C000DEBFC /* ChangeEmailViewController.swift in Sources */,
 				48A0799E23DC99F900495BC2 /* FilterPublishViewController.swift in Sources */,
+				484BEA54248412BB0029B89A /* SharedVideoTableViewCell.swift in Sources */,
 				4897CCE720038E7200360EB7 /* SSHttpResponse.swift in Sources */,
 				ACCA1D1721076D1B00383104 /* DashBoardCollectionViewCell.swift in Sources */,
+				484BEA46247F88B40029B89A /* SharedStatusTableViewCell.swift in Sources */,
 				AC12A32F217A27B900858A47 /* AlreadyHaveOTPViewController.swift in Sources */,
 				48F4F41C2004CE55005CD239 /* CoreAPI.swift in Sources */,
+				484BEA5824877AB30029B89A /* CommentsViewController.swift in Sources */,
 				AC269DE521A5CB59004696DE /* WSDownloadFilesManager.swift in Sources */,
 				ACC94BDA210B4AE9009D6B2F /* PresentationViewController.swift in Sources */,
 				48B6EDBE235CD25A00C1152D /* UpdatePresentationViewController.swift in Sources */,
@@ -826,10 +906,13 @@
 				484279331FF39B9E0056A089 /* ViewController.swift in Sources */,
 				48F7F1871FFE0412008D827A /* Constants.swift in Sources */,
 				488BD073218B4F2D003998AC /* ImageTableViewCell.swift in Sources */,
+				484BEA43247E38360029B89A /* SharedFileTableViewCell.swift in Sources */,
 				AC4843F92126A3B3003492DB /* ILTabViewController.swift in Sources */,
+				48FB28B8247CE6D700277FD0 /* TimeLineAllPostsViewController.swift in Sources */,
 				48FB28B42476ADBC00277FD0 /* ContactUSViewController.swift in Sources */,
 				AC130700218A030500790E9A /* FinalLoginViewController.swift in Sources */,
 				480A3BEE235ADAFF00EA4EF4 /* PageViewController.swift in Sources */,
+				484BEA80248BA7460029B89A /* UpdateTimelineStatusVC.swift in Sources */,
 				482D2C2323A5312F0024CF00 /* EditPresentationTableViewCell.swift in Sources */,
 				BC0B83A120BC6E490082A53B /* EmailScreenViewcontroller.swift in Sources */,
 				488BD077218B4F98003998AC /* CommentTableViewCell.swift in Sources */,
@@ -841,6 +924,7 @@
 				4810C81923116D1C00B6ACA4 /* ReportPostViewController.swift in Sources */,
 				483DF7D1236807460081A157 /* CustomPopUpViewController.swift in Sources */,
 				AC20EE8121908E900083AAFE /* PresentationDetailViewcontroller.swift in Sources */,
+				484BEA4C247F9A8D0029B89A /* SharedMultipleImageTableViewCell.swift in Sources */,
 				AC9159FA210613D30018CB94 /* MobileOTPVirecontroller.swift in Sources */,
 				48FB28AE247121B900277FD0 /* FaqViewController.swift in Sources */,
 				BC9DD97B20B82541003CA4A6 /* WebServiceHandler.swift in Sources */,
@@ -1025,7 +1109,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 32;
+				CURRENT_PROJECT_VERSION = 36;
 				DEVELOPMENT_TEAM = W8U434C9C6;
 				INFOPLIST_FILE = ImaginingLink/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -1045,7 +1129,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 32;
+				CURRENT_PROJECT_VERSION = 36;
 				DEVELOPMENT_TEAM = W8U434C9C6;
 				INFOPLIST_FILE = ImaginingLink/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;

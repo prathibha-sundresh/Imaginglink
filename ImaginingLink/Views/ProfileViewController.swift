@@ -149,6 +149,7 @@ class ProfileViewController: BaseHamburgerViewController {
             self.present(alert, animated: true, completion: nil)
         }
     }
+	
     func openGallery() {
         if UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.photoLibrary) {
             let imagePicker = UIImagePickerController()

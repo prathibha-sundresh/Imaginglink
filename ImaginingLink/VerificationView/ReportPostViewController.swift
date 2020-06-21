@@ -9,7 +9,7 @@
 import UIKit
 
 class ReportPostViewController: BaseHamburgerViewController {
-    
+	var isFromVC = ""
     var userID : String = ""
     var presentationTitle = ""
     var selectedIssue: String = "Copied content"
@@ -24,12 +24,12 @@ class ReportPostViewController: BaseHamburgerViewController {
         // Do any additional setup after loading the view.
     }
 	
-	override func viewWillAppear(_ animated: Bool) {
+	override func viewDidAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 		self.navigationController?.isNavigationBarHidden = false
 	//	self.tabBarController?.tabBar.isHidden = true
     }
-    override func viewWillDisappear(_ animated: Bool) {
+    override func viewDidDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
 		self.navigationController?.isNavigationBarHidden = true
 		//self.tabBarController?.tabBar.isHidden = false
@@ -70,19 +70,39 @@ class ReportPostViewController: BaseHamburgerViewController {
         }
         else{
             ILUtility.showProgressIndicator(controller: self)
-            CoreAPI.sharedManaged.requestReportPost(presentationID: userID, selectedIssue: selectedIssue, reportedIssue: reportTF.text!, successResponse: { (response) in
-                ILUtility.hideProgressIndicator(controller: self)
-                let value = response as! [String:Any]
-                
-                let alert = UIAlertController(title: self.presentationTitle, message: value["message"] as? String, preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { action in
-                    self.navigationController?.popViewController(animated: false)
-                }))
-                self.present(alert, animated: true, completion: nil)
-                
-            }) { (erorr) in
-                ILUtility.hideProgressIndicator(controller: self)
-            }
+			if isFromVC == "Timeline" {
+				callReportAPIForTimeLine()
+			}
+			else {
+				callReportAPIForPresentation()
+			}
         }
     }
+	
+	func callReportAPIForPresentation() {
+		CoreAPI.sharedManaged.requestReportPost(presentationID: userID, selectedIssue: selectedIssue, reportedIssue: reportTF.text!, successResponse: { (response) in
+			ILUtility.hideProgressIndicator(controller: self)
+			self.showAlertMessage(title: self.presentationTitle, response: response)
+		}) { (erorr) in
+			ILUtility.hideProgressIndicator(controller: self)
+		}
+	}
+	
+	func callReportAPIForTimeLine() {
+		SocialConnectAPI.sharedManaged.requestReportPost(timeLineID: userID, selectedIssue: selectedIssue, reportedIssue: reportTF.text!, successResponse: { (response) in
+			ILUtility.hideProgressIndicator(controller: self)
+			self.showAlertMessage(response: response)
+		}) { (erorr) in
+			ILUtility.hideProgressIndicator(controller: self)
+		}
+	}
+	
+	func showAlertMessage(title: String? = "Imaginglink", response: AnyObject) {
+		let value = response as! [String:Any]
+		let alert = UIAlertController(title: title, message: value["message"] as? String ?? "", preferredStyle: .alert)
+		alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { action in
+			self.navigationController?.popViewController(animated: false)
+		}))
+		self.present(alert, animated: true, completion: nil)
+	}
 }

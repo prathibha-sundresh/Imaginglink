@@ -136,15 +136,11 @@ class BaseHamburgerViewController: UIViewController {
         
     }
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-		if segue.identifier == "TermsAndConditionsPolicyID"{
-            let vc: TermsAndCondtionsAndPrivacyViewController = segue.destination as! TermsAndCondtionsAndPrivacyViewController
-            if sender as? String == "Terms & Conditions"{
-                vc.isClickedFrom = "Terms & Conditions"
-            }
-            else{
-                vc.isClickedFrom = "Privacy Policy"
-            }
-        }
+		if segue.identifier == "TermsAndConditionsPolicyID" {
+			let vc: TermsAndCondtionsAndPrivacyViewController = segue.destination as! TermsAndCondtionsAndPrivacyViewController
+			let fileName = (sender as? String == "Terms & Conditions") ? "Terms and Conditions" : "Privacy Policy"
+			vc.urlPath = Bundle.main.url(forResource: fileName, withExtension: "pdf", subdirectory: nil, localization: nil)
+		}
 	}
     func openViewControllerBasedOnIdentifier(_ strIdentifier:String){
         let storyboard = UIStoryboard(name: "DashBoard", bundle: nil)
