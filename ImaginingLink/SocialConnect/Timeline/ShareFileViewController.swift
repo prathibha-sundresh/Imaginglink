@@ -37,7 +37,7 @@ class ShareFileViewController: BaseHamburgerViewController {
     
 	@IBAction func postButton(_ sender: UIButton) {
 		var dataArray: [[String: Any]] = []
-		var existingFiles: [String] = []
+		var existingFiles: [[String: Any]] = []
 		for urlDict in filesInfo {
 			if let url = urlDict["localUrl"] as? URL {
 				var urlConvertedData: Data?
@@ -54,8 +54,15 @@ class ShareFileViewController: BaseHamburgerViewController {
 				}
 			}
 			else {
+				let detailsDict = dataDict["details"] as? [String : Any] ?? [:]
+				let files = detailsDict["attachments"] as? [[String: Any]] ?? []
 				if let url = urlDict["serverUrl"] as? URL {
-					existingFiles.append(url.lastPathComponent)
+					let filterArray = files.filter { (dict) -> Bool in
+						return url.lastPathComponent == dict["name"] as? String ?? ""
+					}
+					if filterArray.count > 0{
+						existingFiles.append(filterArray[0])
+					}
 				}
 			}
 		}
@@ -68,7 +75,7 @@ class ShareFileViewController: BaseHamburgerViewController {
 			requestDict["timeline_id"] = timeline_id
 			requestDict["post_id"] = msg_id
 			requestDict["post_type"] = "user_file"
-			SocialConnectAPI.sharedManaged.updateImageAlbumtypeOrFilesForTimelinePost(parameters:requestDict, imagesInfo: dataArray, successResponse: { (response) in
+			SocialConnectAPI.sharedManaged.updateImageAlbumtypeOrFilesForTimelinePost(true,parameters:requestDict, imagesInfo: dataArray, successResponse: { (response) in
 				self.navigationController?.popViewController(animated: false)
 				ILUtility.hideProgressIndicator(controller: self)
 			}) { (error) in

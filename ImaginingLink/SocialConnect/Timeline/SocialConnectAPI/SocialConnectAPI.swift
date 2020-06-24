@@ -191,7 +191,7 @@ class SocialConnectAPI {
         })
     }
 	
-	func updateImageAlbumtypeOrFilesForTimelinePost(parameters:[String:Any], imagesInfo: [[String: Any]], successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void) {
+	func updateImageAlbumtypeOrFilesForTimelinePost(_ isFileUpload: Bool = false,parameters:[String:Any], imagesInfo: [[String: Any]], successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void) {
         
         let requestUrl = "\(kBaseUrl + kUpdateTimelineStatus)"
         Alamofire.upload(multipartFormData: { multipartFormData in
@@ -202,9 +202,20 @@ class SocialConnectAPI {
             for (key, value) in parameters {
                 
 				if key == "existing_files[]" {
-					let names = value as? [String] ?? []
-					for str in names {
-						multipartFormData.append("\(str)".data(using: String.Encoding.utf8)!, withName: key as String)
+					if isFileUpload {
+						let existing_files = value as? [[String: Any]] ?? []
+						for i in 0..<existing_files.count {
+							let name = existing_files[i]["name"] as? String ?? ""
+							let type = existing_files[i]["type"] as? String ?? ""
+							multipartFormData.append("\(name)".data(using: String.Encoding.utf8)!, withName: "existing_files[\(i)][name]")
+							multipartFormData.append("\(type)".data(using: String.Encoding.utf8)!, withName: "existing_files[\(i)][type]")
+						}
+					}
+					else {
+						let names = value as? [String] ?? []
+						for str in names {
+							multipartFormData.append("\(str)".data(using: String.Encoding.utf8)!, withName: key as String)
+						}
 					}
 				}
 				else {

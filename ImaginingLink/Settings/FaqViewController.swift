@@ -19,9 +19,10 @@ class FaqViewController: BaseHamburgerViewController {
 	
     override func viewDidLoad() {
         super.viewDidLoad()
-		faqTableview.layer.borderWidth = 1.0
-		faqTableview.layer.borderColor = UIColor(red: 0.89, green: 0.92, blue: 0.93, alpha: 1.00).cgColor
-		faqTableview.clipsToBounds = true
+//		faqTableview.layer.borderWidth = 1.0
+//		faqTableview.layer.borderColor = UIColor(red: 0.89, green: 0.92, blue: 0.93, alpha: 1.00).cgColor
+//		faqTableview.clipsToBounds = true
+		faqTableview.backgroundColor = .clear
 		addSlideMenuButton(showBackButton: true, backbuttonTitle: "FAQ’s")
 		faqTableview.tableFooterView = UIView(frame: CGRect.zero)
 		if let url = Bundle.main.url(forResource: "faqs", withExtension: "json") {
@@ -65,9 +66,11 @@ extension FaqViewController: UITableViewDataSource,UITableViewDelegate {
 		
 		let cell : FAQCell = tableView.dequeueReusableCell(withIdentifier: "FaqCell", for: indexPath) as! FAQCell
 		cell.ansTextView.text = faqsArray[indexPath.section]["ans"] as? String ?? ""
-		cell.ansTextView.translatesAutoresizingMaskIntoConstraints = true
 		cell.ansTextView.sizeToFit()
 		cell.ansTextView.isScrollEnabled = false
+		cell.layer.borderWidth = 1.0
+		cell.layer.borderColor = UIColor(red: 0.89, green: 0.92, blue: 0.93, alpha: 1.00).cgColor
+		cell.clipsToBounds = true
 		return cell
 	}
 	
@@ -102,7 +105,7 @@ extension FaqViewController: UITableViewDataSource,UITableViewDelegate {
 		label.text          = headerTitle
 		view.addSubview(label)
 		let btn = UIButton(type: .custom)
-		btn.frame = view.frame
+		btn.frame = CGRect(x: 0, y: 0, width: faqTableview.frame.width, height: height)
 		btn.addTarget(self, action: #selector(expandButtonAction), for: .touchUpInside)
 		btn.tag = section
 		view.addSubview(btn)
@@ -114,6 +117,7 @@ extension FaqViewController: UITableViewDataSource,UITableViewDelegate {
 		else {
 			plusImage.image = UIImage(named: "plusIcon")
 		}
+		view.backgroundColor = .white
 		view.addSubview(plusImage)
 		return view
 	}
