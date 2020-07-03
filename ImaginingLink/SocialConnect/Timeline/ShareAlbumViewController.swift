@@ -203,6 +203,16 @@ class ShareAlbumViewController: BaseHamburgerViewController {
 					let selectedAlbumType = titles[0] == "Video" ? "video" : "image"
 					if album_type == selectedAlbumType {
 						self.setUI()
+						if (sender as? Int == 100) {
+							let visibility = self.dataDict["visibility"] as? String ?? "public"
+							if visibility != titles[0] {
+								self.enableDisablePostButton(isBool: true)
+							}
+							else {
+								self.enableDisablePostButton(isBool: false)
+							}
+							self.publicButton.setTitle(titles[0], for: .normal)
+						}
 					}
 					else {
 						self.videoUrlTF.text = ""
@@ -325,17 +335,18 @@ class ShareAlbumViewController: BaseHamburgerViewController {
 		postButton.alpha = isBool ? 1.0 : 0.6
 	}
 	
-	func setUI(){
+	func setUI() {
 		isUpdateStatus = dataDict["isUpdateMode"] as? Bool ?? false
 		let detailsDict = dataDict["details"] as? [String : Any] ?? [:]
 		var visibility = dataDict["visibility"] as? String ?? "public"
 		msg_id = detailsDict["message_id"] as? String ?? ""
-		if visibility == "only_me" {
+		if visibility == "only_me" || visibility == "Only Me" {
 			visibility = "Only Me"
 		}
 		else {
 			visibility = "Public"
 		}
+		dataDict["visibility"] = visibility
 		let album_type = detailsDict["album_type"] as? String ?? ""
 		if album_type == "video" {
 			if let videosUrls = detailsDict["attachments"] as? [String], videosUrls.count > 0 {
@@ -349,9 +360,11 @@ class ShareAlbumViewController: BaseHamburgerViewController {
 			albumTypeTF.text = "Video"
 			addImageView.isHidden = true
 			statusTextView.isHidden = false
+			statusTextView.text = detailsDict["description"] as? String ?? ""
 		}
 		else {
-			self.videoUrlTF.placeholder = "Say something about this album"
+			videoUrlTF.placeholder = "Say something about this album"
+			videoUrlTF.text = detailsDict["description"] as? String ?? ""
 			albumNameTF.text = detailsDict["message"] as? String ?? ""
 			albumTypeTF.text = "Images"
 			addImageView.isHidden = false

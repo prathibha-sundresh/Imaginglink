@@ -20,7 +20,7 @@ class TimeLineAllPostsViewController: BaseHamburgerViewController {
 	@IBOutlet weak var topCollectionView: UICollectionView!
 	var allPostArray: [[String: Any]] = []
 	var likesArray : [Int] = []
-	var timeLinesOptions : [[String: Any]] = [["name":"Timeline", "icon": "timeline_icon"],["name":"My wall", "icon": "mywall_icon"]]
+	var timeLinesOptions : [[String: Any]] = [["name":"Public posts", "icon": "timeline_icon"],["name":"Personal posts", "icon": "mywall_icon"]]
 	var selectedOption : Int = 0
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -84,6 +84,28 @@ class TimeLineAllPostsViewController: BaseHamburgerViewController {
 		}
 	}
 	
+	func getTimeLinePostDetails(selectedDict: [String: Any]) {
+		
+		ILUtility.showProgressIndicator(controller: self)
+		SocialConnectAPI.sharedManaged.getTimelineDetails(timeLineID: selectedDict["_id"] as? String ?? "", successResponse: { (response) in
+			ILUtility.hideProgressIndicator(controller: self)
+			let value = response as! String
+			let dic : [String : Any] = value.convertToDictionary()!
+			var postDetailsDict = selectedDict
+			postDetailsDict["isUpdateMode"] = true
+			if let tmpDict = dic["data"] as? [String : Any] {
+				if let disc = tmpDict["description"] as? String {
+					var detailsDict = postDetailsDict["details"] as? [String : Any] ?? [:]
+					detailsDict["description"] = disc
+					postDetailsDict["details"] = detailsDict
+				}
+			}
+			self.performSegue(withIdentifier: "CreatePostViewControllerSegue", sender: postDetailsDict)
+		}) { (error) in
+			ILUtility.hideProgressIndicator(controller: self)
+		}
+	}
+	
 	@IBAction func updateStausORShareAlbum(_ sender: UIButton) {
 		self.performSegue(withIdentifier: "CreatePostViewControllerSegue", sender: nil)
 	}
@@ -113,9 +135,7 @@ class TimeLineAllPostsViewController: BaseHamburgerViewController {
 		}
 		
 		let editPostAction = UIAlertAction(title: "Edit post", style: .default, handler: { (action) -> Void in
-			var tmpDict = selectedDict
-			tmpDict["isUpdateMode"] = true
-			self.editTimelinePost(dict: tmpDict)
+			self.editTimelinePost(dict: selectedDict)
 		})
 		let hidePostAction = UIAlertAction(title: "Hide post", style: .default, handler: { (action) -> Void in
 			self.hideTimelinePost(index: sender.tag, typeOfPost: typeOfPost)
@@ -196,7 +216,7 @@ class TimeLineAllPostsViewController: BaseHamburgerViewController {
     }
 	
 	func editTimelinePost(dict: [String: Any]) {
-		self.performSegue(withIdentifier: "CreatePostViewControllerSegue", sender: dict)
+		getTimeLinePostDetails(selectedDict: dict)
 	}
 	
 	func deleteTimelinePost(index: Int) {
@@ -272,40 +292,43 @@ class TimeLineAllPostsViewController: BaseHamburgerViewController {
 		let detailsDict = dict["details"] as? [String : Any] ?? [:]
 		let msg = detailsDict["message"] as? String ?? ""
 		
-		var shareUrls = [String]()
+		var sharingItems = [Any]()
 		let msgID = detailsDict["message_id"] as? String ?? ""
 		let typeOfPost = detailsDict["message_type"] as? String ?? ""
-		
+		sharingItems.append(msg)
 		if typeOfPost == "status" {
-			shareUrls = []
+			//sharingItems = []
 		}
 		else if typeOfPost == "album" {
 			let typeOfAlbum = detailsDict["album_type"] as? String ?? ""
 			if typeOfAlbum == "video" {
 				if let videosUrls = detailsDict["attachments"] as? [String], videosUrls.count > 0 {
-					shareUrls = videosUrls
+					sharingItems.append(contentsOf: videosUrls)
 				}
 				else{
-					shareUrls = [detailsDict["attachments"] as? String ?? ""]
+					sharingItems.append(contentsOf: [detailsDict["attachments"] as? String ?? ""])
 				}
 			}
 			else {
 				if let tmpArray = detailsDict["attachments"] as? [String] {
-					shareUrls = tmpArray.map { (str) -> String in
+					let array = tmpArray.map { (str) -> String in
 						return "\(kImageAndFileBaseUrl)\(msgID)/\(str)"
 					}
+					sharingItems.append(contentsOf: array)
 				}
 			}
 		}
 		else if typeOfPost == "user_file" {
 			if let tmpArray = detailsDict["attachments"] as? [[String: Any]] {
-				shareUrls = tmpArray.map { (dict) -> String in
+				let array = tmpArray.map { (dict) -> String in
 					return "\(kImageAndFileBaseUrl)\(msgID)/\(dict["name"] as? String ?? "")"
 				}
+				sharingItems.append(contentsOf: array)
 			}
 		}
-        let shareAll = [msg, shareUrls] as [Any]
-        let activityViewController = UIActivityViewController(activityItems: shareAll, applicationActivities: nil)
+		
+        let activityViewController = UIActivityViewController(activityItems: sharingItems, applicationActivities: nil)
+		
         activityViewController.popoverPresentationController?.sourceView = self.view
 		activityViewController.excludedActivityTypes = [.message, .mail, .print, .copyToPasteboard, .assignToContact, .saveToCameraRoll, .addToReadingList, .postToFlickr, .postToVimeo, .postToTencentWeibo, .airDrop, .openInIBooks, .markupAsPDF]
         self.present(activityViewController, animated: false, completion: nil)

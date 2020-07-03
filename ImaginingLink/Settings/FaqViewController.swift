@@ -19,9 +19,6 @@ class FaqViewController: BaseHamburgerViewController {
 	
     override func viewDidLoad() {
         super.viewDidLoad()
-//		faqTableview.layer.borderWidth = 1.0
-//		faqTableview.layer.borderColor = UIColor(red: 0.89, green: 0.92, blue: 0.93, alpha: 1.00).cgColor
-//		faqTableview.clipsToBounds = true
 		faqTableview.backgroundColor = .clear
 		addSlideMenuButton(showBackButton: true, backbuttonTitle: "FAQ’s")
 		faqTableview.tableFooterView = UIView(frame: CGRect.zero)

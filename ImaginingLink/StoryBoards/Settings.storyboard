@@ -79,7 +79,7 @@
                                                         <fontDescription key="fontDescription" name="GoogleSans-Regular" family="Google Sans" pointSize="16"/>
                                                         <textInputTraits key="textInputTraits" smartInsertDeleteType="yes"/>
                                                         <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="EMail *"/>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Email *"/>
                                                             <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
                                                                 <color key="value" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
                                                             </userDefinedRuntimeAttribute>
@@ -243,7 +243,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="icK-fl-VGi">
                                                 <rect key="frame" x="10" y="586" width="300" height="183"/>
                                                 <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="addressIcon" translatesAutoresizingMaskIntoConstraints="NO" id="dDZ-JA-3dy">
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AddressIcon" translatesAutoresizingMaskIntoConstraints="NO" id="dDZ-JA-3dy">
                                                         <rect key="frame" x="20" y="17" width="24" height="24"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="24" id="VqY-58-LzW"/>
@@ -409,8 +409,8 @@ Lexington, MA 02421, USA</string>
         </scene>
     </scenes>
     <resources>
+        <image name="AddressIcon" width="24" height="24"/>
         <image name="BlackColorDropDownImage" width="14" height="8"/>
-        <image name="addressIcon" width="24" height="24"/>
         <image name="emailSupportIcon" width="24" height="24"/>
         <image name="fbIcon" width="36" height="36"/>
         <image name="phoneIcon" width="24" height="24"/>

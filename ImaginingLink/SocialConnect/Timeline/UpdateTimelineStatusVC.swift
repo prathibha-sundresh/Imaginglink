@@ -118,4 +118,11 @@ extension UpdateTimelineStatusVC: UITextViewDelegate {
 			}
 		}
 	}
+	
+	func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+		let currentString: NSString = statusTextView.text! as NSString
+		let newString: NSString = currentString.replacingCharacters(in: range, with: text) as NSString
+		return newString.length <= 1000
+	}
 }
+
