@@ -234,4 +234,51 @@ class SocialConnectAPI {
             }
         }
     }
+	
+	func getUserFriends(successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void ) {
+        let request =  SSHttpRequest(withuUrl: kGetUserFriends)
+        request.getMethod(dictParameter: [:], url: kGetUserFriends, successResponse: {(response) in
+            successResponse(response)
+        }, faliure: {(error) in
+            faliure(error)
+        })
+    }
+
+	func getPendingFriendRequests(successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void ) {
+        let request =  SSHttpRequest(withuUrl: kPendingFriendRequests)
+        request.getMethod(dictParameter: [:], url: kPendingFriendRequests, successResponse: {(response) in
+            successResponse(response)
+        }, faliure: {(error) in
+            faliure(error)
+        })
+    }
+	
+	func makeAddORCancelORRejectORApproveORUnFriendRequest(friendID: String, urlStr: String, successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void ) {
+        let request =  SSHttpRequest(withuUrl: urlStr)
+        let requestValues = ["friend_id" : friendID]  as [String:Any]
+        request.postMethodWithHeaderasToken(dictParameter: requestValues, url: urlStr, header: getHeader(), successResponse: {(response) in
+            successResponse(response)
+        }, faliure: {(error) in
+            faliure(error)
+        })
+    }
+	
+	func searchFriendRequest(name: String, successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void ) {
+        let request =  SSHttpRequest(withuUrl: kSearchFriend)
+        let requestValues = ["search_name" : name]  as [String:Any]
+        request.postMethodWithHeaderasToken(dictParameter: requestValues, url: kSearchFriend, header: getHeader(), successResponse: {(response) in
+            successResponse(response)
+        }, faliure: {(error) in
+            faliure(error)
+        })
+    }
+	
+	func makeUserAddMembersInGroupFriendRequest(requestDict: [String: Any], successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void ) {
+        let request =  SSHttpRequest(withuUrl: kUserAddMembersInGroup)
+        request.postMethodWithHeaderasToken(dictParameter: requestDict, url: kUserAddMembersInGroup, header: getHeader(), successResponse: {(response) in
+            successResponse(response)
+        }, faliure: {(error) in
+            faliure(error)
+        })
+    }
 }
