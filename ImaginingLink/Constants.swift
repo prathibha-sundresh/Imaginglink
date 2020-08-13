@@ -129,3 +129,13 @@ let kIgnoreFriendRequest = "api/social-connect/ignore-friend-request"
 let kSearchFriend = "api/social-connect/search-friend"
 let kAddFriend = "api/social-connect/add-friend"
 let kUserAddMembersInGroup = "api/social-connect/user-add-members-in-group"
+
+//PortFolioAPI
+let kPortFolioBasicDetails = "api/get-portfolio-section-details?type=%@"
+let kCurrentPositionType = "current_position"
+let kTitleType = "current"
+let kBasicEducationType = "basic_education"
+let kAddPortFolioDetails = "api/add-portfolio-details"
+let kPortFolioDetails = "api/get-portfolio-details"
+let kDeletePortfolioDetails = "api/delete-portfolio-details"
+

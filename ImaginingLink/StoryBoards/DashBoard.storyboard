@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="2EA-Rs-iNa">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="2EA-Rs-iNa">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -192,6 +192,7 @@
                     <connections>
                         <segue destination="VLl-ul-iqx" kind="show" identifier="ComingSoon" id="aPr-6s-Dav"/>
                         <segue destination="B1j-Eg-dFf" kind="show" identifier="PublishVCID" id="XXj-ti-Ewv"/>
+                        <segue destination="HsZ-za-S1h" kind="show" identifier="PortFolioViewControllerID" id="CSO-A3-iQh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wv0-F4-nGQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3208,6 +3209,16 @@ contain at least one special character (! @ # $ % ^ &amp; *)</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GpI-rm-5uo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2778.4000000000001" y="-3061.6191904047978"/>
+        </scene>
+        <!--PortFolioViewControllerVCID-->
+        <scene sceneID="YL6-87-YiQ">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="PortFolioViewControllerID" storyboardName="PortFolio" referencedIdentifier="PortFolioViewControllerVCID" id="HsZ-za-S1h" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="8d2-Dg-DwZ"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2sV-Ze-X15" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3216" y="-2583"/>
         </scene>
         <!--ListView-->
         <scene sceneID="xGV-Fl-yLT">

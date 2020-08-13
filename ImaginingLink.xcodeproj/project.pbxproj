@@ -28,12 +28,22 @@
 		482D2C2123A215C90024CF00 /* RemovePresentationsFileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482D2C2023A215C90024CF00 /* RemovePresentationsFileCell.swift */; };
 		482D2C2323A5312F0024CF00 /* EditPresentationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482D2C2223A5312F0024CF00 /* EditPresentationTableViewCell.swift */; };
 		483DF7D1236807460081A157 /* CustomPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 483DF7D0236807460081A157 /* CustomPopUpViewController.swift */; };
+		4840D0E124CD565F0053D02E /* PortFolio.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4840D0E024CD565F0053D02E /* PortFolio.storyboard */; };
+		4840D0E324CE9C490053D02E /* PortFolioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4840D0E224CE9C490053D02E /* PortFolioViewController.swift */; };
+		4840D0E524CFF2A80053D02E /* PortFolioProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4840D0E424CFF2A80053D02E /* PortFolioProfileViewController.swift */; };
 		48415FAF2163A7FB00D96DA6 /* ImaginingLinkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48415FA42163A6B800D96DA6 /* ImaginingLinkTests.swift */; };
 		48415FB02163A80000D96DA6 /* ImaginingLinkUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48415FA72163A6B900D96DA6 /* ImaginingLinkUITests.swift */; };
 		484279311FF39B9E0056A089 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484279301FF39B9E0056A089 /* AppDelegate.swift */; };
 		484279331FF39B9E0056A089 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484279321FF39B9E0056A089 /* ViewController.swift */; };
 		484279361FF39B9E0056A089 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 484279341FF39B9E0056A089 /* Main.storyboard */; };
 		4842793B1FF39B9E0056A089 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 484279391FF39B9E0056A089 /* LaunchScreen.storyboard */; };
+		4848B5C124D4FFC800A7ECE9 /* UserPortFolioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4848B5C024D4FFC800A7ECE9 /* UserPortFolioViewController.swift */; };
+		4848B5C424D56E5900A7ECE9 /* PortFolioAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4848B5C324D56E5900A7ECE9 /* PortFolioAPI.swift */; };
+		4848B5C724D943BD00A7ECE9 /* SummaryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4848B5C624D943BD00A7ECE9 /* SummaryTableViewCell.swift */; };
+		4848B5C924DD2F5E00A7ECE9 /* ContactPersonalInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4848B5C824DD2F5E00A7ECE9 /* ContactPersonalInfoTableViewCell.swift */; };
+		4848B5CB24DFA4C200A7ECE9 /* SelectDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4848B5CA24DFA4C200A7ECE9 /* SelectDateViewController.swift */; };
+		4848B5CF24E26C2F00A7ECE9 /* AddSubSpecialitiesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4848B5CE24E26C2F00A7ECE9 /* AddSubSpecialitiesTableViewCell.swift */; };
+		4848B5D124E26F8700A7ECE9 /* EditSubSpecialitiesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4848B5D024E26F8700A7ECE9 /* EditSubSpecialitiesTableViewCell.swift */; };
 		484B3B4824B45D850054E42E /* FriendsSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484B3B4724B45D850054E42E /* FriendsSearchViewController.swift */; };
 		484BEA43247E38360029B89A /* SharedFileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484BEA42247E38360029B89A /* SharedFileTableViewCell.swift */; };
 		484BEA46247F88B40029B89A /* SharedStatusTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484BEA45247F88B40029B89A /* SharedStatusTableViewCell.swift */; };
@@ -49,6 +59,7 @@
 		484BEAAB24B0C7440029B89A /* MyFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484BEAAA24B0C7440029B89A /* MyFriendsViewController.swift */; };
 		485E3DCF2377F09E00B94F05 /* AddCommentReplyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485E3DCE2377F09E00B94F05 /* AddCommentReplyViewController.swift */; };
 		486CC7B524B6F21E006242E7 /* FriendsInviteToGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486CC7B424B6F21E006242E7 /* FriendsInviteToGroupViewController.swift */; };
+		48739B1524E3925400BB852F /* AddAdditionalInterestsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48739B1424E3925400BB852F /* AddAdditionalInterestsTableViewCell.swift */; };
 		488BD073218B4F2D003998AC /* ImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488BD072218B4F2D003998AC /* ImageTableViewCell.swift */; };
 		488BD075218B4F4E003998AC /* PresentationDetailTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488BD074218B4F4E003998AC /* PresentationDetailTextCell.swift */; };
 		488BD077218B4F98003998AC /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488BD076218B4F98003998AC /* CommentTableViewCell.swift */; };
@@ -164,6 +175,9 @@
 		482D2C2023A215C90024CF00 /* RemovePresentationsFileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemovePresentationsFileCell.swift; sourceTree = "<group>"; };
 		482D2C2223A5312F0024CF00 /* EditPresentationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPresentationTableViewCell.swift; sourceTree = "<group>"; };
 		483DF7D0236807460081A157 /* CustomPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPopUpViewController.swift; sourceTree = "<group>"; };
+		4840D0E024CD565F0053D02E /* PortFolio.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PortFolio.storyboard; sourceTree = "<group>"; };
+		4840D0E224CE9C490053D02E /* PortFolioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortFolioViewController.swift; sourceTree = "<group>"; };
+		4840D0E424CFF2A80053D02E /* PortFolioProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortFolioProfileViewController.swift; sourceTree = "<group>"; };
 		48415FA42163A6B800D96DA6 /* ImaginingLinkTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImaginingLinkTests.swift; sourceTree = "<group>"; };
 		48415FA52163A6B800D96DA6 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		48415FA72163A6B900D96DA6 /* ImaginingLinkUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImaginingLinkUITests.swift; sourceTree = "<group>"; };
@@ -176,6 +190,13 @@
 		4842793C1FF39B9E0056A089 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		484279411FF39B9E0056A089 /* ImaginingLinkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ImaginingLinkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4842794C1FF39B9E0056A089 /* ImaginingLinkUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ImaginingLinkUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4848B5C024D4FFC800A7ECE9 /* UserPortFolioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPortFolioViewController.swift; sourceTree = "<group>"; };
+		4848B5C324D56E5900A7ECE9 /* PortFolioAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortFolioAPI.swift; sourceTree = "<group>"; };
+		4848B5C624D943BD00A7ECE9 /* SummaryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryTableViewCell.swift; sourceTree = "<group>"; };
+		4848B5C824DD2F5E00A7ECE9 /* ContactPersonalInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactPersonalInfoTableViewCell.swift; sourceTree = "<group>"; };
+		4848B5CA24DFA4C200A7ECE9 /* SelectDateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDateViewController.swift; sourceTree = "<group>"; };
+		4848B5CE24E26C2F00A7ECE9 /* AddSubSpecialitiesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSubSpecialitiesTableViewCell.swift; sourceTree = "<group>"; };
+		4848B5D024E26F8700A7ECE9 /* EditSubSpecialitiesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSubSpecialitiesTableViewCell.swift; sourceTree = "<group>"; };
 		484B3B4724B45D850054E42E /* FriendsSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsSearchViewController.swift; sourceTree = "<group>"; };
 		484BEA42247E38360029B89A /* SharedFileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedFileTableViewCell.swift; sourceTree = "<group>"; };
 		484BEA45247F88B40029B89A /* SharedStatusTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedStatusTableViewCell.swift; sourceTree = "<group>"; };
@@ -191,6 +212,7 @@
 		484BEAAA24B0C7440029B89A /* MyFriendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFriendsViewController.swift; sourceTree = "<group>"; };
 		485E3DCE2377F09E00B94F05 /* AddCommentReplyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCommentReplyViewController.swift; sourceTree = "<group>"; };
 		486CC7B424B6F21E006242E7 /* FriendsInviteToGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsInviteToGroupViewController.swift; sourceTree = "<group>"; };
+		48739B1424E3925400BB852F /* AddAdditionalInterestsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAdditionalInterestsTableViewCell.swift; sourceTree = "<group>"; };
 		488BD072218B4F2D003998AC /* ImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTableViewCell.swift; sourceTree = "<group>"; };
 		488BD074218B4F4E003998AC /* PresentationDetailTextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationDetailTextCell.swift; sourceTree = "<group>"; };
 		488BD076218B4F98003998AC /* CommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
@@ -337,6 +359,19 @@
 			path = API;
 			sourceTree = "<group>";
 		};
+		4840D0DF24CD52990053D02E /* PortFolio */ = {
+			isa = PBXGroup;
+			children = (
+				4848B5C524D9437100A7ECE9 /* PortFolioCells */,
+				4848B5C224D56D9400A7ECE9 /* PortFolioAPI */,
+				4840D0E224CE9C490053D02E /* PortFolioViewController.swift */,
+				4840D0E424CFF2A80053D02E /* PortFolioProfileViewController.swift */,
+				4848B5C024D4FFC800A7ECE9 /* UserPortFolioViewController.swift */,
+				4848B5CA24DFA4C200A7ECE9 /* SelectDateViewController.swift */,
+			);
+			path = PortFolio;
+			sourceTree = "<group>";
+		};
 		48415FA32163A6B800D96DA6 /* ImaginingLinkTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -381,6 +416,7 @@
 		4842792F1FF39B9E0056A089 /* ImaginingLink */ = {
 			isa = PBXGroup;
 			children = (
+				4840D0DF24CD52990053D02E /* PortFolio */,
 				48FB28B5247CE60400277FD0 /* SocialConnect */,
 				48FB28A62471208900277FD0 /* Settings */,
 				480A3BEA2359842100EA4EF4 /* Publishing */,
@@ -406,6 +442,26 @@
 				48FB28AF2471420500277FD0 /* faqs.json */,
 			);
 			path = ImaginingLink;
+			sourceTree = "<group>";
+		};
+		4848B5C224D56D9400A7ECE9 /* PortFolioAPI */ = {
+			isa = PBXGroup;
+			children = (
+				4848B5C324D56E5900A7ECE9 /* PortFolioAPI.swift */,
+			);
+			path = PortFolioAPI;
+			sourceTree = "<group>";
+		};
+		4848B5C524D9437100A7ECE9 /* PortFolioCells */ = {
+			isa = PBXGroup;
+			children = (
+				4848B5C624D943BD00A7ECE9 /* SummaryTableViewCell.swift */,
+				4848B5C824DD2F5E00A7ECE9 /* ContactPersonalInfoTableViewCell.swift */,
+				4848B5CE24E26C2F00A7ECE9 /* AddSubSpecialitiesTableViewCell.swift */,
+				4848B5D024E26F8700A7ECE9 /* EditSubSpecialitiesTableViewCell.swift */,
+				48739B1424E3925400BB852F /* AddAdditionalInterestsTableViewCell.swift */,
+			);
+			path = PortFolioCells;
 			sourceTree = "<group>";
 		};
 		484BEA44247F88470029B89A /* TimelineCells */ = {
@@ -531,6 +587,7 @@
 				480A3BE823580B3100EA4EF4 /* Publishing.storyboard */,
 				48FB28B12475051A00277FD0 /* Settings.storyboard */,
 				48FB28B9247CE6F800277FD0 /* SocialConnect.storyboard */,
+				4840D0E024CD565F0053D02E /* PortFolio.storyboard */,
 			);
 			path = StoryBoards;
 			sourceTree = "<group>";
@@ -732,6 +789,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				48FB2897246FD96200277FD0 /* Terms and Conditions.pdf in Resources */,
+				4840D0E124CD565F0053D02E /* PortFolio.storyboard in Resources */,
 				AC323B3820FF822A0015ECB4 /* Verification.storyboard in Resources */,
 				4842793B1FF39B9E0056A089 /* LaunchScreen.storyboard in Resources */,
 				AC0AD39020D13C5800FCB371 /* ListView.storyboard in Resources */,
@@ -889,6 +947,7 @@
 				48216E3D2326C4EB00ADE8D5 /* TermsAndCondtionsAndPrivacyViewController.swift in Sources */,
 				484BEAA2248BBE220029B89A /* ShareAlbumViewController.swift in Sources */,
 				ACD18C7420C551D50059DE7B /* TwoFactorAuthenticationViewcontroller.swift in Sources */,
+				4848B5C724D943BD00A7ECE9 /* SummaryTableViewCell.swift in Sources */,
 				484BEAA82490A6010029B89A /* UploadedFilesViewController.swift in Sources */,
 				485E3DCF2377F09E00B94F05 /* AddCommentReplyViewController.swift in Sources */,
 				AC130702218A035900790E9A /* EmailchangeOTPViewcontroller.swift in Sources */,
@@ -897,19 +956,24 @@
 				ACC94BDC210B4DAD009D6B2F /* PresentationTableViewCell.swift in Sources */,
 				48FFC674217F82A300AB09D5 /* TwofactorAuthenticationViewController.swift in Sources */,
 				480A3BF0235B762B00EA4EF4 /* CreatePresentationViewController.swift in Sources */,
+				4848B5C124D4FFC800A7ECE9 /* UserPortFolioViewController.swift in Sources */,
 				BCFFFBB320BAEE5A003A0652 /* SignInViewController.swift in Sources */,
+				4848B5CF24E26C2F00A7ECE9 /* AddSubSpecialitiesTableViewCell.swift in Sources */,
 				4897CCE520038E6500360EB7 /* SSHttpRequest.swift in Sources */,
 				488BD075218B4F4E003998AC /* PresentationDetailTextCell.swift in Sources */,
 				482D2C2123A215C90024CF00 /* RemovePresentationsFileCell.swift in Sources */,
 				AC0AD38E20D13C4100FCB371 /* ListViewController.swift in Sources */,
 				484BEAA6248E9B2D0029B89A /* ShareFileViewController.swift in Sources */,
 				484BEA50248020400029B89A /* SocialConnectAPI.swift in Sources */,
+				4840D0E324CE9C490053D02E /* PortFolioViewController.swift in Sources */,
 				ACB08028212ACAEB0061B5D2 /* BaseViewController.swift in Sources */,
 				484B3B4824B45D850054E42E /* FriendsSearchViewController.swift in Sources */,
+				4848B5D124E26F8700A7ECE9 /* EditSubSpecialitiesTableViewCell.swift in Sources */,
 				BCFFFBB720BAEEB0003A0652 /* OTPViewcontroller.swift in Sources */,
 				AC3AD4E42188A72D00B1B81A /* LogOutTableViewCell.swift in Sources */,
 				484BEA562484C3E70029B89A /* CreatePostViewController.swift in Sources */,
 				480D9B092177A32C000DEBFC /* ChangeEmailViewController.swift in Sources */,
+				4848B5CB24DFA4C200A7ECE9 /* SelectDateViewController.swift in Sources */,
 				48A0799E23DC99F900495BC2 /* FilterPublishViewController.swift in Sources */,
 				484BEA54248412BB0029B89A /* SharedVideoTableViewCell.swift in Sources */,
 				4897CCE720038E7200360EB7 /* SSHttpResponse.swift in Sources */,
@@ -923,9 +987,11 @@
 				ACC94BDA210B4AE9009D6B2F /* PresentationViewController.swift in Sources */,
 				48B6EDBE235CD25A00C1152D /* UpdatePresentationViewController.swift in Sources */,
 				AC323B3B20FF826C0015ECB4 /* MobileVerificationsViewcontroller.swift in Sources */,
+				4848B5C424D56E5900A7ECE9 /* PortFolioAPI.swift in Sources */,
 				AC099D8320F79DEE0090B0CA /* LoaderView.swift in Sources */,
 				ACD18C7620C586E20059DE7B /* EmailSuccessViewController.swift in Sources */,
 				48216E19231BC1E300ADE8D5 /* ProfileViewController.swift in Sources */,
+				4848B5C924DD2F5E00A7ECE9 /* ContactPersonalInfoTableViewCell.swift in Sources */,
 				480A3BEC2359847100EA4EF4 /* PublishStepOneViewController.swift in Sources */,
 				48222DF223131FB700751CB7 /* FullSizeImageViewController.swift in Sources */,
 				484279331FF39B9E0056A089 /* ViewController.swift in Sources */,
@@ -933,6 +999,7 @@
 				488BD073218B4F2D003998AC /* ImageTableViewCell.swift in Sources */,
 				484BEA43247E38360029B89A /* SharedFileTableViewCell.swift in Sources */,
 				AC4843F92126A3B3003492DB /* ILTabViewController.swift in Sources */,
+				4840D0E524CFF2A80053D02E /* PortFolioProfileViewController.swift in Sources */,
 				48FB28B8247CE6D700277FD0 /* TimeLineAllPostsViewController.swift in Sources */,
 				48FB28B42476ADBC00277FD0 /* ContactUSViewController.swift in Sources */,
 				AC130700218A030500790E9A /* FinalLoginViewController.swift in Sources */,
@@ -963,6 +1030,7 @@
 				484279311FF39B9E0056A089 /* AppDelegate.swift in Sources */,
 				486CC7B524B6F21E006242E7 /* FriendsInviteToGroupViewController.swift in Sources */,
 				ACE9CA8F21188FFD00AAC035 /* ILUtility.swift in Sources */,
+				48739B1524E3925400BB852F /* AddAdditionalInterestsTableViewCell.swift in Sources */,
 				4803D3352178D82C00C82909 /* InviteFriendsViewController.swift in Sources */,
 				AC1F1D272126DFDA00A57DD4 /* MenuViewcontrollerTableCell.swift in Sources */,
 				481023F22180D79A00ED37A7 /* ResetPasswordWithMenuViewController.swift in Sources */,
@@ -1137,7 +1205,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 39;
+				CURRENT_PROJECT_VERSION = 40;
 				DEVELOPMENT_TEAM = W8U434C9C6;
 				INFOPLIST_FILE = ImaginingLink/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -1157,7 +1225,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 39;
+				CURRENT_PROJECT_VERSION = 40;
 				DEVELOPMENT_TEAM = W8U434C9C6;
 				INFOPLIST_FILE = ImaginingLink/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;

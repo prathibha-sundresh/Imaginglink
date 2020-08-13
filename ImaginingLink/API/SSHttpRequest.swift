@@ -79,7 +79,6 @@ class SSHttpRequest {
         })
     }
         
-    
     func getMethod(dictParameter:[String:Any], url : String,_ isEncodedUrl : Bool = false, successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void)  {
         let webServiceHandler:WebServiceHandler = WebServiceHandler()
         let token = UserDefaults.standard.value(forKey: kToken) as! String
@@ -90,12 +89,5 @@ class SSHttpRequest {
         }, faliure: {(error) in
             
         })
-        
-        
-//        webServiceHandler.POSTRequest(dictParameter: dictParameter, header: header, requestURL: (SSHttpRequest.baseURL?.appending(url))!, success: {(response) in
-//            successResponse(response)
-//        }, faliure: {(Error) in
-//            faliure(Error)
-//        })
     }
 }
