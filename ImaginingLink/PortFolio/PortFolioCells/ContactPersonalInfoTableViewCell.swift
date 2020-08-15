@@ -123,31 +123,35 @@ class ContactPersonalInfoTableViewCell: UITableViewCell {
         }
     }
 }
+
 extension ContactPersonalInfoTableViewCell: UITextFieldDelegate {
-
 	func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+		return textField.validateNumber(placeholderType: textField.placeholder!, str: string, range: range)
+	}
+}
 
-		if textField == mobileNoTF || textField == dayTF || textField == monthTF || textField == yearTF {
+extension UITextField {
+	func validateNumber(placeholderType: String, str: String, range: NSRange) -> Bool {
+		if placeholderType == "Mobile No" || placeholderType == "DD" || placeholderType == "MM" || placeholderType == "YYYY" {
 			let allowedCharacters = "1234567890"
 			let allowedCharcterSet = CharacterSet(charactersIn: allowedCharacters)
-			let typedCharcterSet = CharacterSet(charactersIn: string)
+			let typedCharcterSet = CharacterSet(charactersIn: str)
 			
 			var maxLength = 0
-			if textField == mobileNoTF {
+			if placeholderType == "Mobile No" {
 				maxLength = 10
 			}
-			else if textField == dayTF || textField == monthTF {
+			else if placeholderType == "DD" || placeholderType == "MM" {
 				maxLength = 2
 			}
-			else if textField == yearTF {
+			else if placeholderType == "YYYY" {
 				maxLength = 4
 			}
-			let currentString: NSString = textField.text! as NSString
+			let currentString: NSString = self.text! as NSString
 			let newString: NSString =
-				currentString.replacingCharacters(in: range, with: string) as NSString
+				currentString.replacingCharacters(in: range, with: str) as NSString
 			return allowedCharcterSet.isSuperset(of: typedCharcterSet) && newString.length <= maxLength
 		}
-		
 		return true
 	}
 }

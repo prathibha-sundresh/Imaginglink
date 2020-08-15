@@ -57,6 +57,10 @@
 		484BEAA6248E9B2D0029B89A /* ShareFileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484BEAA5248E9B2D0029B89A /* ShareFileViewController.swift */; };
 		484BEAA82490A6010029B89A /* UploadedFilesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484BEAA72490A6010029B89A /* UploadedFilesViewController.swift */; };
 		484BEAAB24B0C7440029B89A /* MyFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484BEAAA24B0C7440029B89A /* MyFriendsViewController.swift */; };
+		485186C624E55F9000335A35 /* EditHospitalORAcademicAppointmentsTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485186C524E55F9000335A35 /* EditHospitalORAcademicAppointmentsTVCell.swift */; };
+		485186C824E7919100335A35 /* AddHospitalAppointmentsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485186C724E7919100335A35 /* AddHospitalAppointmentsTableViewCell.swift */; };
+		485186CA24E7C6B000335A35 /* AddHonorAwardsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485186C924E7C6B000335A35 /* AddHonorAwardsTableViewCell.swift */; };
+		485186CC24E7C9BC00335A35 /* EditHonorAwardsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485186CB24E7C9BC00335A35 /* EditHonorAwardsTableViewCell.swift */; };
 		485E3DCF2377F09E00B94F05 /* AddCommentReplyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485E3DCE2377F09E00B94F05 /* AddCommentReplyViewController.swift */; };
 		486CC7B524B6F21E006242E7 /* FriendsInviteToGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486CC7B424B6F21E006242E7 /* FriendsInviteToGroupViewController.swift */; };
 		48739B1524E3925400BB852F /* AddAdditionalInterestsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48739B1424E3925400BB852F /* AddAdditionalInterestsTableViewCell.swift */; };
@@ -210,6 +214,10 @@
 		484BEAA5248E9B2D0029B89A /* ShareFileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareFileViewController.swift; sourceTree = "<group>"; };
 		484BEAA72490A6010029B89A /* UploadedFilesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadedFilesViewController.swift; sourceTree = "<group>"; };
 		484BEAAA24B0C7440029B89A /* MyFriendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFriendsViewController.swift; sourceTree = "<group>"; };
+		485186C524E55F9000335A35 /* EditHospitalORAcademicAppointmentsTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditHospitalORAcademicAppointmentsTVCell.swift; sourceTree = "<group>"; };
+		485186C724E7919100335A35 /* AddHospitalAppointmentsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddHospitalAppointmentsTableViewCell.swift; sourceTree = "<group>"; };
+		485186C924E7C6B000335A35 /* AddHonorAwardsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddHonorAwardsTableViewCell.swift; sourceTree = "<group>"; };
+		485186CB24E7C9BC00335A35 /* EditHonorAwardsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditHonorAwardsTableViewCell.swift; sourceTree = "<group>"; };
 		485E3DCE2377F09E00B94F05 /* AddCommentReplyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCommentReplyViewController.swift; sourceTree = "<group>"; };
 		486CC7B424B6F21E006242E7 /* FriendsInviteToGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsInviteToGroupViewController.swift; sourceTree = "<group>"; };
 		48739B1424E3925400BB852F /* AddAdditionalInterestsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAdditionalInterestsTableViewCell.swift; sourceTree = "<group>"; };
@@ -460,6 +468,10 @@
 				4848B5CE24E26C2F00A7ECE9 /* AddSubSpecialitiesTableViewCell.swift */,
 				4848B5D024E26F8700A7ECE9 /* EditSubSpecialitiesTableViewCell.swift */,
 				48739B1424E3925400BB852F /* AddAdditionalInterestsTableViewCell.swift */,
+				485186C724E7919100335A35 /* AddHospitalAppointmentsTableViewCell.swift */,
+				485186C524E55F9000335A35 /* EditHospitalORAcademicAppointmentsTVCell.swift */,
+				485186C924E7C6B000335A35 /* AddHonorAwardsTableViewCell.swift */,
+				485186CB24E7C9BC00335A35 /* EditHonorAwardsTableViewCell.swift */,
 			);
 			path = PortFolioCells;
 			sourceTree = "<group>";
@@ -972,6 +984,7 @@
 				BCFFFBB720BAEEB0003A0652 /* OTPViewcontroller.swift in Sources */,
 				AC3AD4E42188A72D00B1B81A /* LogOutTableViewCell.swift in Sources */,
 				484BEA562484C3E70029B89A /* CreatePostViewController.swift in Sources */,
+				485186C824E7919100335A35 /* AddHospitalAppointmentsTableViewCell.swift in Sources */,
 				480D9B092177A32C000DEBFC /* ChangeEmailViewController.swift in Sources */,
 				4848B5CB24DFA4C200A7ECE9 /* SelectDateViewController.swift in Sources */,
 				48A0799E23DC99F900495BC2 /* FilterPublishViewController.swift in Sources */,
@@ -980,7 +993,9 @@
 				ACCA1D1721076D1B00383104 /* DashBoardCollectionViewCell.swift in Sources */,
 				484BEA46247F88B40029B89A /* SharedStatusTableViewCell.swift in Sources */,
 				AC12A32F217A27B900858A47 /* AlreadyHaveOTPViewController.swift in Sources */,
+				485186C624E55F9000335A35 /* EditHospitalORAcademicAppointmentsTVCell.swift in Sources */,
 				48F4F41C2004CE55005CD239 /* CoreAPI.swift in Sources */,
+				485186CC24E7C9BC00335A35 /* EditHonorAwardsTableViewCell.swift in Sources */,
 				484BEAAB24B0C7440029B89A /* MyFriendsViewController.swift in Sources */,
 				484BEA5824877AB30029B89A /* CommentsViewController.swift in Sources */,
 				AC269DE521A5CB59004696DE /* WSDownloadFilesManager.swift in Sources */,
@@ -1019,6 +1034,7 @@
 				483DF7D1236807460081A157 /* CustomPopUpViewController.swift in Sources */,
 				AC20EE8121908E900083AAFE /* PresentationDetailViewcontroller.swift in Sources */,
 				484BEA4C247F9A8D0029B89A /* SharedMultipleImageTableViewCell.swift in Sources */,
+				485186CA24E7C6B000335A35 /* AddHonorAwardsTableViewCell.swift in Sources */,
 				AC9159FA210613D30018CB94 /* MobileOTPVirecontroller.swift in Sources */,
 				48FB28AE247121B900277FD0 /* FaqViewController.swift in Sources */,
 				BC9DD97B20B82541003CA4A6 /* WebServiceHandler.swift in Sources */,

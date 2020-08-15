@@ -17,8 +17,8 @@ class UserPortFolioViewController: UIViewController {
 	var userPortFolioArray: [String] = ["Summary", "Contact & Personal Info", "Under Graduate","Post Graduate","Subspecialties", "Recreational Interests", "Academic Appointments", "Hospital Appointments","Honor/Awards", "Certifications","Licenses","Committees","Teaching Responsibilities","Major Mentoring Activities","Administrative Responsibilities","Professional Societies","Editorial Boards","Grant Or Fund details","Invited Lectures & Presentations","Congressional Testimony","Congressional Testimony","Media Appearances","Custom Fields","Bibliography","CME Tracking"]
 	var expandedArray: [Int] = []
 	var dataDict = [String: Any]()
-	var subspecialtiesArray: [[String: Any]] = []
-	var editRowForSubSpecialties : Int = -1
+	var commonArray: [[String: Any]] = []
+	var editRowForSecction : Int = -1
     override func viewDidLoad() {
         super.viewDidLoad()
 		getFolioDetails()
@@ -33,7 +33,7 @@ class UserPortFolioViewController: UIViewController {
 			let value = response as? String ?? ""
             if let dict = value.convertToDictionary(), let dict1 = dict["data"] as? [String: Any]{
 				self.dataDict = dict1
-				self.setUI()
+				self.setUIResponse()
             }
 		}) { (error) in
 			ILUtility.hideProgressIndicator(controller: self)
@@ -52,16 +52,16 @@ class UserPortFolioViewController: UIViewController {
 		}
 	}
 	
-	func setUI() {
+	func setUIResponse(_ type: String = "") {
 		let portfolioCompletion = dataDict["portfolioCompletion"] as? Int ?? 0
 		folioProgressLabel.text = "\(portfolioCompletion)% Profile Completed"
 		folioProgressView.progress = Float(30) / Float(100)
 		folioProgressView.layer.cornerRadius = 4.0
 		folioProgressView.clipsToBounds = true
-		if let subspecialityDict = self.dataDict["sub_speciality"] as? [String: Any]{
-			self.subspecialtiesArray = subspecialityDict["data"] as? [[String: Any]] ?? []
+		if let tmpDict = self.dataDict[type] as? [String: Any]{
+			self.commonArray = tmpDict["data"] as? [[String: Any]] ?? []
 		}
-		userPortFolioTableview.reloadData()
+		getSectionTypeData(type)
 	}
     
 	func updateSectionResponse(for type: String, responseTypeDict: [String: Any]) {
@@ -71,7 +71,7 @@ class UserPortFolioViewController: UIViewController {
 		if let portfolioCompletion = responseTypeDict["portfolioCompletion"] as? Int {
 			self.dataDict["portfolioCompletion"] = portfolioCompletion
 		}
-		setUI()
+		setUIResponse(type)
 	}
 	
     // MARK: - Navigation
@@ -147,7 +147,7 @@ extension UserPortFolioViewController: UITableViewDataSource,UITableViewDelegate
 			return cell
 		}
 		else if indexPath.section == 4 {
-			if indexPath.row == subspecialtiesArray.count {
+			if indexPath.row == commonArray.count {
 				let cell : AddSubSpecialitiesTableViewCell = tableView.dequeueReusableCell(withIdentifier: "AddSubSpecialitiesTableViewCellID", for: indexPath) as! AddSubSpecialitiesTableViewCell
 				cell.delegate = self
 				cell.setUI()
@@ -157,8 +157,8 @@ extension UserPortFolioViewController: UITableViewDataSource,UITableViewDelegate
 				let cell : EditSubSpecialitiesTableViewCell = tableView.dequeueReusableCell(withIdentifier: "EditSubSpecialitiesTableViewCellID", for: indexPath) as! EditSubSpecialitiesTableViewCell
 				cell.delegate = self
 				cell.deleteButton.tag = indexPath.row
-				cell.isEditForSubSpecialties = (indexPath.row == editRowForSubSpecialties ? true: false)
-				cell.setUI(dict: subspecialtiesArray[indexPath.row] ,btnTag: indexPath.row)
+				cell.isEditForSubSpecialties = (indexPath.row == editRowForSecction ? true: false)
+				cell.setUI(dict: commonArray[indexPath.row] ,btnTag: indexPath.row)
 				return cell
 			}
 		}
@@ -167,6 +167,39 @@ extension UserPortFolioViewController: UITableViewDataSource,UITableViewDelegate
 			cell.delegate = self
 			cell.setUI(dict: dataDict)
 			return cell
+		}
+		else if indexPath.section == 6 || indexPath.section == 7 {
+			
+			if indexPath.row == commonArray.count {
+				let cell : AddHospitalAppointmentsTableViewCell = tableView.dequeueReusableCell(withIdentifier: "AddHospitalAppointmentsTableViewCellID", for: indexPath) as! AddHospitalAppointmentsTableViewCell
+				cell.delegate = self
+				indexPath.section == 6 ? (cell.sectionType) = "academic_appointments" : (cell.sectionType = "hospital_appointments")
+				cell.setUI()
+				return cell
+			}
+			else {
+				let cell : EditHospitalORAcademicAppointmentsTVCell = tableView.dequeueReusableCell(withIdentifier: "EditHospitalORAcademicAppointmentsTVCellID", for: indexPath) as! EditHospitalORAcademicAppointmentsTVCell
+				cell.delegate = self
+				cell.isEditMode = (indexPath.row == editRowForSecction ? true: false)
+				indexPath.section == 6 ? (cell.sectionType) = "academic_appointments" : (cell.sectionType = "hospital_appointments")
+				cell.setUI(dict: commonArray[indexPath.row] ,btnTag: indexPath.row)
+				return cell
+			}
+		}
+		else if indexPath.section == 8 {
+			if indexPath.row == commonArray.count {
+				let cell : AddHonorAwardsTableViewCell = tableView.dequeueReusableCell(withIdentifier: "AddHonorAwardsTableViewCellID", for: indexPath) as! AddHonorAwardsTableViewCell
+				cell.delegate = self
+				cell.setUI()
+				return cell
+			}
+			else {
+				let cell : EditHonorAwardsTableViewCell = tableView.dequeueReusableCell(withIdentifier: "EditHonorAwardsTableViewCellID", for: indexPath) as! EditHonorAwardsTableViewCell
+				cell.delegate = self
+				cell.isEditMode = (indexPath.row == editRowForSecction ? true: false)
+				cell.setUI(dict: commonArray[indexPath.row] ,btnTag: indexPath.row)
+				return cell
+			}
 		}
 		else {
 			contactPersonalInfoCell = tableView.dequeueReusableCell(withIdentifier: "ContactPersonalInfoTableViewCellID", for: indexPath) as? ContactPersonalInfoTableViewCell
@@ -182,10 +215,11 @@ extension UserPortFolioViewController: UITableViewDataSource,UITableViewDelegate
 	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		if expandedArray.contains(section) {
-			if section == 4 {
-				return subspecialtiesArray.count + 1
+			if section == 0 || section == 1 {
+				return 1
 			}
-			return 1
+			return commonArray.count + 1
+			
 		}
 		else {
 			return 0
@@ -232,6 +266,7 @@ extension UserPortFolioViewController: UITableViewDataSource,UITableViewDelegate
 	}
 	
 	@objc func expandButtonAction(_ sender: UIButton) {
+		
 		if expandedArray.contains(sender.tag) {
 			expandedArray.removeAll()
 		}
@@ -239,6 +274,45 @@ extension UserPortFolioViewController: UITableViewDataSource,UITableViewDelegate
 			expandedArray.removeAll()
 			expandedArray.append(sender.tag)
 		}
+		
+		if sender.tag == 0 {
+			userPortFolioTableview.reloadData()
+		}
+		else if sender.tag == 1 {
+			userPortFolioTableview.reloadData()
+		}
+		else if sender.tag == 2 {
+			
+		}
+		else if sender.tag == 3 {
+			
+		}
+		else if sender.tag == 4 {
+			getSectionTypeData("sub_speciality")
+		}
+		else if sender.tag == 5 {
+			getSectionTypeData("recreational_interests")
+		}
+		else if sender.tag == 6 {
+			getSectionTypeData("academic_appointments")
+		}
+		else if sender.tag == 7 {
+			getSectionTypeData("hospital_appointments")
+		}
+		else if sender.tag == 8 {
+			getSectionTypeData("honor_awards")
+		}
+		else if sender.tag == 9 {
+			
+		}
+	}
+	
+	func getSectionTypeData(_ sectionType: String) {
+		commonArray = []
+		if let dict = self.dataDict[sectionType] as? [String: Any]{
+			commonArray = dict["data"] as? [[String: Any]] ?? []
+		}
+		editRowForSecction = -1
 		userPortFolioTableview.reloadData()
 	}
 }
@@ -278,36 +352,42 @@ extension UserPortFolioViewController: ContactPersonalInfoTableViewCellDelegate 
 extension UserPortFolioViewController: EditSubSpecialitiesTableViewCellDelegate {
 	
 	func saveSubSpecialities(dict: [String : Any], at index: Int) {
-		let tmpDict = subspecialtiesArray[index]
+		let tmpDict = commonArray[index]
 		var requestValues = dict
 		if let id = tmpDict["id"] as? String {
 			requestValues["post_id"] = id
 			addPortFolioDetails(requestDict: requestValues, of: "sub_speciality")
+			editRowForSecction = -1
 		}
 	}
 	
 	func deleteSubSpecialities(at index: Int) {
-		let dict = subspecialtiesArray[index]
+		let dict = commonArray[index]
 		if let id = dict["id"] as? String {
-			ILUtility.showProgressIndicator(controller: self)
 			let requestDict = ["type" : "sub_speciality", "obj_id": id,"status":"delete"]
-			PortFolioAPI.sharedManaged.deletePortFolioDetails(requestDict: requestDict, successResponse: { (response) in
-				ILUtility.hideProgressIndicator(controller: self)
-				if let responseDict = response as? [String: Any] {
-					self.updateSectionResponse(for: "sub_speciality", responseTypeDict: responseDict)
-				}
-			}, faliure: { (error) in
-				ILUtility.hideProgressIndicator(controller: self)
-			})
+			deletePortFolioDetails(inputDict: requestDict, section: "sub_speciality")
 		}
 	}
+	
+	func deletePortFolioDetails(inputDict: [String: Any], section: String) {
+		ILUtility.showProgressIndicator(controller: self)
+		PortFolioAPI.sharedManaged.deletePortFolioDetails(requestDict: inputDict, successResponse: { (response) in
+			ILUtility.hideProgressIndicator(controller: self)
+			if let responseDict = response as? [String: Any] {
+				self.updateSectionResponse(for: section, responseTypeDict: responseDict)
+			}
+		}, faliure: { (error) in
+			ILUtility.hideProgressIndicator(controller: self)
+		})
+	}
+	
 	func editSubSpecialities(at index: Int) {
-		editRowForSubSpecialties = index
+		editRowForSecction = index
 		userPortFolioTableview.reloadData()
 	}
 	
 	func cancelSubSpecialities() {
-		editRowForSubSpecialties = -1
+		editRowForSecction = -1
 		userPortFolioTableview.reloadData()
 	}
 }
@@ -321,5 +401,83 @@ extension UserPortFolioViewController: AddSubSpecialitiesTableViewCellDelegate {
 extension UserPortFolioViewController: AddAdditionalInterestsTableViewCellDelegate {
 	func addOrRemoveRecreationalInterests(dict: [String : Any]) {
 		addPortFolioDetails(requestDict: dict, of: "recreational_interests")
+	}
+}
+
+extension UserPortFolioViewController: EditAppointmentsTVCellDelegate {
+	
+	func deleteAppointments(dict: [String : Any], at index: Int) {
+		var requestValues = dict
+		let tmpDict = commonArray[index]
+		if let id = tmpDict["id"] as? String {
+			requestValues["obj_id"] = id
+			deletePortFolioDetails(inputDict: requestValues, section: dict["type"] as! String)
+			editRowForSecction = -1
+		}
+	}
+	
+	func editAppointments(at index: Int) {
+		editRowForSecction = index
+		userPortFolioTableview.reloadData()
+	}
+	
+	func cancelAppointments() {
+		editRowForSecction = -1
+		userPortFolioTableview.reloadData()
+	}
+	
+	func saveAppointments(dict: [String : Any], at index: Int) {
+		var requestValues = dict
+		let tmpDict = commonArray[index]
+		if let id = tmpDict["id"] as? String {
+			requestValues["post_id"] = id
+			addPortFolioDetails(requestDict: requestValues, of: dict["type"] as! String)
+			editRowForSecction = -1
+		}
+	}
+}
+
+extension UserPortFolioViewController: AddAppointmentsTVCellDelegate {
+	func addAppointments(dict: [String: Any]) {
+		addPortFolioDetails(requestDict: dict, of: dict["type"] as! String)
+	}
+}
+
+extension UserPortFolioViewController: EditHonorAwardsTvCellDelegate {
+	
+	func deleteHonorAwards(dict: [String : Any], at index: Int) {
+		var requestValues = dict
+		let tmpDict = commonArray[index]
+		if let id = tmpDict["id"] as? String {
+			requestValues["obj_id"] = id
+			deletePortFolioDetails(inputDict: requestValues, section: dict["type"] as! String)
+			editRowForSecction = -1
+		}
+	}
+	
+	func editHonorAwards(at index: Int) {
+		editRowForSecction = index
+		userPortFolioTableview.reloadData()
+	}
+	
+	func cancelHonorAwards() {
+		editRowForSecction = -1
+		userPortFolioTableview.reloadData()
+	}
+	
+	func saveHonorAwards(dict: [String : Any], at index: Int) {
+		var requestValues = dict
+		let tmpDict = commonArray[index]
+		if let id = tmpDict["id"] as? String {
+			requestValues["post_id"] = id
+			addPortFolioDetails(requestDict: requestValues, of: dict["type"] as! String)
+			editRowForSecction = -1
+		}
+	}
+}
+
+extension UserPortFolioViewController: AddHonorAwardsTvCellDelegate {
+	func addHonorAwards(dict: [String: Any]) {
+		addPortFolioDetails(requestDict: dict, of: dict["type"] as! String)
 	}
 }
