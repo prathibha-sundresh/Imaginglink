@@ -7,24 +7,43 @@
 //
 
 import UIKit
+import MobileCoreServices
 
 class UserPortFolioViewController: UIViewController {
 	@IBOutlet weak var userPortFolioTableview: UITableView!
 	@IBOutlet weak var folioProgressView: UIProgressView!
 	@IBOutlet weak var folioProgressLabel: UILabel!
 	var contactPersonalInfoCell: ContactPersonalInfoTableViewCell!
-	
+	var addPGEducationTableViewCell: AddPGEducationTableViewCell!
 	var userPortFolioArray: [String] = ["Summary", "Contact & Personal Info", "Under Graduate","Post Graduate","Subspecialties", "Recreational Interests", "Academic Appointments", "Hospital Appointments","Honor/Awards", "Certifications","Licenses","Committees","Teaching Responsibilities","Major Mentoring Activities","Administrative Responsibilities","Professional Societies","Editorial Boards","Grant Or Fund details","Invited Lectures & Presentations","Congressional Testimony","Congressional Testimony","Media Appearances","Custom Fields","Bibliography","CME Tracking"]
 	var expandedArray: [Int] = []
 	var dataDict = [String: Any]()
 	var commonArray: [[String: Any]] = []
+	var pgDataArray: [[String: Any]] = []
+	var countryListArray: [String] = []
 	var editRowForSecction : Int = -1
+	
     override func viewDidLoad() {
         super.viewDidLoad()
 		getFolioDetails()
-		
+		getPGList()
         // Do any additional setup after loading the view.
     }
+	
+	func getPGList() {
+		if let url = Bundle.main.url(forResource: "portfolio_pg_countries", withExtension: "json") {
+			do {
+				let data = try Data(contentsOf: url)
+				let object = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
+				if let dictionary = object as? [String: Any] {
+					pgDataArray = dictionary["data"] as? [[String: Any]] ?? []
+					let countries = Array(Set(pgDataArray.map({$0["country"] as! String})))
+					countryListArray = countries.sorted(by: <)
+				}
+			} catch {
+			}
+		}
+	}
 	
 	func getFolioDetails() {
 		ILUtility.showProgressIndicator(controller: self)
@@ -58,16 +77,17 @@ class UserPortFolioViewController: UIViewController {
 		folioProgressView.progress = Float(30) / Float(100)
 		folioProgressView.layer.cornerRadius = 4.0
 		folioProgressView.clipsToBounds = true
-		if let tmpDict = self.dataDict[type] as? [String: Any]{
-			self.commonArray = tmpDict["data"] as? [[String: Any]] ?? []
-		}
 		getSectionTypeData(type)
 	}
     
 	func updateSectionResponse(for type: String, responseTypeDict: [String: Any]) {
-		if let typeDict = responseTypeDict[type] as? [String: Any] {
-			self.dataDict[type] = typeDict
+		var typeDict = responseTypeDict[type] as? [String: Any] ?? [:]
+		var typeStr = type
+		if type == "UG" || type == "PG" {
+			typeDict = responseTypeDict["education"] as? [String: Any] ?? [:]
+			typeStr = "education"
 		}
+		self.dataDict[typeStr] = typeDict
 		if let portfolioCompletion = responseTypeDict["portfolioCompletion"] as? Int {
 			self.dataDict["portfolioCompletion"] = portfolioCompletion
 		}
@@ -126,12 +146,71 @@ class UserPortFolioViewController: UIViewController {
 //					vc.selectedRowTitles = [contactPersonalInfoCell.genderTF.text!]
 //				}
 //			}
-			vc.titleArray = ["Male", "Female"]
-			vc.selectedRowTitles = [contactPersonalInfoCell.genderTF.text!]
-			vc.selectionType = .Single
-            vc.callBack = { (titles) in
-				self.contactPersonalInfoCell.genderTF.text = titles[0]
-            }
+			if let dict = sender as? [String: Any] {
+				let dropDowntype = dict["type"] as? String ?? ""
+				if dropDowntype == "selectGender" {
+					vc.titleArray = ["Male", "Female"]
+					vc.selectedRowTitles = [contactPersonalInfoCell.genderTF.text!]
+				}
+				else if dropDowntype == "selectCountry" {
+					vc.titleArray = countryListArray
+				}
+				else if dropDowntype == "selectCity" {
+					let countryName = dict["country"] as? String ?? ""
+					let cityArray = Array(Set(pgDataArray.filter({$0["country"] as! String == countryName}).map({$0["city"] as! String}))).sorted(by: <)
+					if cityArray.count > 0 {
+						vc.titleArray = cityArray
+					}
+				}
+				else if dropDowntype == "selectSchool" {
+					let country = dict["country"] as? String ?? ""
+					let city = dict["city"] as? String ?? ""
+					let colleges = pgDataArray.filter({$0["country"] as! String == country && $0["city"] as! String == city}).map({$0["college"] as! String})
+					if colleges.count > 0 {
+						vc.titleArray = colleges
+					}
+				}
+				vc.selectionType = .Single
+				vc.callBack = { (titles) in
+					if titles.count == 0 {
+						return
+					}
+					
+					if dropDowntype == "selectGender" {
+						self.contactPersonalInfoCell.genderTF.text = titles[0]
+					}
+					else if dropDowntype == "selectCountry" {
+						if self.editRowForSecction == -1 {
+							self.addPGEducationTableViewCell.countryTF.text = titles[0]
+						}
+						else {
+							let cell: EditPGEducationTableViewCell = self.userPortFolioTableview.cellForRow(at: IndexPath(row: self.editRowForSecction, section: 3)) as! EditPGEducationTableViewCell
+							cell.countryTF.text = titles[0]
+							cell.cityTF.text = ""
+							cell.schoolTF.text = ""
+						}
+					}
+					else if dropDowntype == "selectCity" {
+						if self.editRowForSecction == -1 {
+							self.addPGEducationTableViewCell.cityTF.text = titles[0]
+						}
+						else {
+							let cell: EditPGEducationTableViewCell = self.userPortFolioTableview.cellForRow(at: IndexPath(row: self.editRowForSecction, section: 3)) as! EditPGEducationTableViewCell
+							cell.cityTF.text = titles[0]
+							cell.schoolTF.text = ""
+						}
+					}
+					else if dropDowntype == "selectSchool" {
+						if self.editRowForSecction == -1 {
+							self.addPGEducationTableViewCell.schoolTF.text = titles[0]
+						}
+						else {
+							let cell: EditPGEducationTableViewCell = self.userPortFolioTableview.cellForRow(at: IndexPath(row: self.editRowForSecction, section: 3)) as! EditPGEducationTableViewCell
+							cell.schoolTF.text = titles[0]
+						}
+					}
+				}
+			}
 		}
     }
 	
@@ -145,6 +224,26 @@ extension UserPortFolioViewController: UITableViewDataSource,UITableViewDelegate
 			cell.delegate = self
 			cell.setUI(dict: dataDict)
 			return cell
+		}
+		else if indexPath.section == 3 {
+			if indexPath.row == commonArray.count {
+				let cell : AddPGEducationTableViewCell = tableView.dequeueReusableCell(withIdentifier: "AddPGEducationTableViewCellID", for: indexPath) as! AddPGEducationTableViewCell
+				cell.delegate = self
+				cell.vc = self
+				cell.setUI()
+				addPGEducationTableViewCell = cell
+				return cell
+			}
+			else {
+				let cell : EditPGEducationTableViewCell = tableView.dequeueReusableCell(withIdentifier: "EditPGEducationTableViewCellID", for: indexPath) as! EditPGEducationTableViewCell
+				cell.delegate = self
+				cell.vc = self
+				cell.editPGEducationdelegate = self
+				cell.deleteButton.tag = indexPath.row
+				cell.isEditMode = (indexPath.row == editRowForSecction ? true: false)
+				cell.setUI(dict: commonArray[indexPath.row] ,btnTag: indexPath.row)
+				return cell
+			}
 		}
 		else if indexPath.section == 4 {
 			if indexPath.row == commonArray.count {
@@ -173,6 +272,7 @@ extension UserPortFolioViewController: UITableViewDataSource,UITableViewDelegate
 			if indexPath.row == commonArray.count {
 				let cell : AddHospitalAppointmentsTableViewCell = tableView.dequeueReusableCell(withIdentifier: "AddHospitalAppointmentsTableViewCellID", for: indexPath) as! AddHospitalAppointmentsTableViewCell
 				cell.delegate = self
+				cell.vc = self
 				indexPath.section == 6 ? (cell.sectionType) = "academic_appointments" : (cell.sectionType = "hospital_appointments")
 				cell.setUI()
 				return cell
@@ -180,6 +280,7 @@ extension UserPortFolioViewController: UITableViewDataSource,UITableViewDelegate
 			else {
 				let cell : EditHospitalORAcademicAppointmentsTVCell = tableView.dequeueReusableCell(withIdentifier: "EditHospitalORAcademicAppointmentsTVCellID", for: indexPath) as! EditHospitalORAcademicAppointmentsTVCell
 				cell.delegate = self
+				cell.vc = self
 				cell.isEditMode = (indexPath.row == editRowForSecction ? true: false)
 				indexPath.section == 6 ? (cell.sectionType) = "academic_appointments" : (cell.sectionType = "hospital_appointments")
 				cell.setUI(dict: commonArray[indexPath.row] ,btnTag: indexPath.row)
@@ -190,11 +291,62 @@ extension UserPortFolioViewController: UITableViewDataSource,UITableViewDelegate
 			if indexPath.row == commonArray.count {
 				let cell : AddHonorAwardsTableViewCell = tableView.dequeueReusableCell(withIdentifier: "AddHonorAwardsTableViewCellID", for: indexPath) as! AddHonorAwardsTableViewCell
 				cell.delegate = self
+				cell.vc = self
 				cell.setUI()
 				return cell
 			}
 			else {
 				let cell : EditHonorAwardsTableViewCell = tableView.dequeueReusableCell(withIdentifier: "EditHonorAwardsTableViewCellID", for: indexPath) as! EditHonorAwardsTableViewCell
+				cell.delegate = self
+				cell.vc = self
+				cell.isEditMode = (indexPath.row == editRowForSecction ? true: false)
+				cell.setUI(dict: commonArray[indexPath.row] ,btnTag: indexPath.row)
+				return cell
+			}
+		}
+		else if indexPath.section == 9 {
+			if indexPath.row == commonArray.count {
+				let cell : AddCertificationsTableViewCell = tableView.dequeueReusableCell(withIdentifier: "AddCertificationsTableViewCellID", for: indexPath) as! AddCertificationsTableViewCell
+				cell.delegate = self
+				cell.vc = self
+				cell.setUI()
+				return cell
+			}
+			else {
+				let cell : EditCertificationsTableViewCell = tableView.dequeueReusableCell(withIdentifier: "EditCertificationsTableViewCellID", for: indexPath) as! EditCertificationsTableViewCell
+				cell.delegate = self
+				cell.vc = self
+				cell.isEditMode = (indexPath.row == editRowForSecction ? true: false)
+				cell.setUI(dict: commonArray[indexPath.row] ,btnTag: indexPath.row)
+				return cell
+			}
+		}
+		else if indexPath.section == 10 {
+			if indexPath.row == commonArray.count {
+				let cell : AddLicensesTableViewCell = tableView.dequeueReusableCell(withIdentifier: "AddLicensesTableViewCellID", for: indexPath) as! AddLicensesTableViewCell
+				cell.delegate = self
+				cell.vc = self
+				cell.setUI()
+				return cell
+			}
+			else {
+				let cell : EditLicensesTableViewCell = tableView.dequeueReusableCell(withIdentifier: "EditLicensesTableViewCellID", for: indexPath) as! EditLicensesTableViewCell
+				cell.delegate = self
+				cell.vc = self
+				cell.isEditMode = (indexPath.row == editRowForSecction ? true: false)
+				cell.setUI(dict: commonArray[indexPath.row] ,btnTag: indexPath.row)
+				return cell
+			}
+		}
+		else if indexPath.section == 11 {
+			if indexPath.row == commonArray.count {
+				let cell : AddCommitteesTableViewCell = tableView.dequeueReusableCell(withIdentifier: "AddCommitteesTableViewCellID", for: indexPath) as! AddCommitteesTableViewCell
+				cell.delegate = self
+				cell.setUI()
+				return cell
+			}
+			else {
+				let cell : EditCommitteesTableViewCell = tableView.dequeueReusableCell(withIdentifier: "EditCommitteesTableViewCellID", for: indexPath) as! EditCommitteesTableViewCell
 				cell.delegate = self
 				cell.isEditMode = (indexPath.row == editRowForSecction ? true: false)
 				cell.setUI(dict: commonArray[indexPath.row] ,btnTag: indexPath.row)
@@ -208,7 +360,6 @@ extension UserPortFolioViewController: UITableViewDataSource,UITableViewDelegate
 			return contactPersonalInfoCell
 		}
 	}
-	
 	func numberOfSections(in tableView: UITableView) -> Int {
 		return userPortFolioArray.count
 	}
@@ -225,7 +376,7 @@ extension UserPortFolioViewController: UITableViewDataSource,UITableViewDelegate
 			return 0
 		}
 	}
-	
+
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		
 	}
@@ -282,10 +433,10 @@ extension UserPortFolioViewController: UITableViewDataSource,UITableViewDelegate
 			userPortFolioTableview.reloadData()
 		}
 		else if sender.tag == 2 {
-			
+			getSectionTypeData("UG")
 		}
 		else if sender.tag == 3 {
-			
+			getSectionTypeData("PG")
 		}
 		else if sender.tag == 4 {
 			getSectionTypeData("sub_speciality")
@@ -303,7 +454,13 @@ extension UserPortFolioViewController: UITableViewDataSource,UITableViewDelegate
 			getSectionTypeData("honor_awards")
 		}
 		else if sender.tag == 9 {
-			
+			getSectionTypeData("certifications")
+		}
+		else if sender.tag == 10 {
+			getSectionTypeData("licences")
+		}
+		else if sender.tag == 11 {
+			getSectionTypeData("committees")
 		}
 	}
 	
@@ -312,8 +469,16 @@ extension UserPortFolioViewController: UITableViewDataSource,UITableViewDelegate
 		if let dict = self.dataDict[sectionType] as? [String: Any]{
 			commonArray = dict["data"] as? [[String: Any]] ?? []
 		}
+		if sectionType == "UG" || sectionType == "PG" {
+			let educationDict = self.dataDict["education"] as? [String: Any] ?? [:]
+			let tmpDict = educationDict["data"] as? [String: Any] ?? [:]
+			commonArray = tmpDict[sectionType] as? [[String: Any]] ?? []
+		}
 		editRowForSecction = -1
-		userPortFolioTableview.reloadData()
+		let contentOffset = self.userPortFolioTableview.contentOffset
+		self.userPortFolioTableview.reloadData()
+		self.userPortFolioTableview.layoutIfNeeded()
+		self.userPortFolioTableview.setContentOffset(contentOffset, animated: false)
 	}
 }
 
@@ -344,32 +509,90 @@ extension UserPortFolioViewController: ContactPersonalInfoTableViewCellDelegate 
 	}
 	
 	func openGender() {
-		self.performSegue(withIdentifier: "PopUpVCID", sender: nil)
+		self.performSegue(withIdentifier: "PopUpVCID", sender: ["type": "selectGender"])
 	}
-
 }
 
-extension UserPortFolioViewController: EditSubSpecialitiesTableViewCellDelegate {
-	
-	func saveSubSpecialities(dict: [String : Any], at index: Int) {
-		let tmpDict = commonArray[index]
+extension UserPortFolioViewController: AddOrUpdatePGEducationTvCellDelegate,EditPGEducationTableViewCellDelegate {
+	func savePGEducation(dict: [String : Any], at index: Int) {
 		var requestValues = dict
+		let tmpDict = commonArray[index]
 		if let id = tmpDict["id"] as? String {
 			requestValues["post_id"] = id
-			addPortFolioDetails(requestDict: requestValues, of: "sub_speciality")
+			addPortFolioDetails(requestDict: requestValues, of: dict["education_type"] as! String)
+		}
+	}
+	
+	func deletePGEducation(dict: [String : Any], at index: Int) {
+		deletePortFolioSection(inputDict: dict, at: index)
+	}
+	
+	func editPGEducation(at index: Int) {
+		editRowForSecction = index
+		userPortFolioTableview.reloadData()
+	}
+	
+	func cancelPGEducation() {
+		editRowForSecction = -1
+		userPortFolioTableview.reloadData()
+	}
+	
+	func chooseCountry() {
+		self.performSegue(withIdentifier: "PopUpVCID", sender: ["type": "selectCountry"])
+	}
+	
+	func chooseCity(of country: String) {
+		self.performSegue(withIdentifier: "PopUpVCID", sender: ["type": "selectCity", "country": country])
+	}
+	
+	func chooseSchool(of country: String, and city: String) {
+		self.performSegue(withIdentifier: "PopUpVCID", sender: ["type": "selectSchool", "country": country, "city": city])
+	}
+	
+	func AddOrUpdatePGEducation(dict: [String: Any]) {
+		addPortFolioDetails(requestDict: dict, of: dict["education_type"] as! String)
+	}
+}
+
+extension UserPortFolioViewController: AddSectionTvCellDelegate {
+	func addSection(dict: [String: Any]) {
+		addPortFolioDetails(requestDict: dict, of: dict["type"] as! String)
+	}
+}
+
+extension UserPortFolioViewController: EditSectionTvCellDelegate {
+	func saveSection(dict: [String : Any], at index: Int) {
+		var requestValues = dict
+		let tmpDict = commonArray[index]
+		if let id = tmpDict["id"] as? String {
+			requestValues["post_id"] = id
+			addPortFolioDetails(requestDict: requestValues, of: dict["type"] as! String)
 			editRowForSecction = -1
 		}
 	}
 	
-	func deleteSubSpecialities(at index: Int) {
-		let dict = commonArray[index]
-		if let id = dict["id"] as? String {
-			let requestDict = ["type" : "sub_speciality", "obj_id": id,"status":"delete"]
-			deletePortFolioDetails(inputDict: requestDict, section: "sub_speciality")
+	func deleteSection(dict: [String : Any], at index: Int) {
+		deletePortFolioSection(inputDict: dict, at: index)
+	}
+	
+	func deletePortFolioSection(inputDict: [String : Any], at index: Int) {
+		var requestValues = inputDict
+		let tmpDict = commonArray[index]
+		if let id = tmpDict["id"] as? String {
+			requestValues["obj_id"] = id
+			var sectionType = ""
+			if inputDict["type"] as! String == "education" {
+				sectionType = inputDict["subtype"] as! String
+			}
+			else {
+				sectionType = inputDict["type"] as! String
+			}
+			deletePortFolioDetailsAPI(inputDict: requestValues, section: sectionType)
+			editRowForSecction = -1
 		}
 	}
 	
-	func deletePortFolioDetails(inputDict: [String: Any], section: String) {
+	func deletePortFolioDetailsAPI(inputDict: [String: Any], section: String) {
 		ILUtility.showProgressIndicator(controller: self)
 		PortFolioAPI.sharedManaged.deletePortFolioDetails(requestDict: inputDict, successResponse: { (response) in
 			ILUtility.hideProgressIndicator(controller: self)
@@ -381,103 +604,13 @@ extension UserPortFolioViewController: EditSubSpecialitiesTableViewCellDelegate 
 		})
 	}
 	
-	func editSubSpecialities(at index: Int) {
+	func editSection(at index: Int) {
 		editRowForSecction = index
 		userPortFolioTableview.reloadData()
 	}
 	
-	func cancelSubSpecialities() {
+	func cancelSection() {
 		editRowForSecction = -1
 		userPortFolioTableview.reloadData()
-	}
-}
-
-extension UserPortFolioViewController: AddSubSpecialitiesTableViewCellDelegate {
-	func addSubSpecialities(dict: [String : Any]) {
-		addPortFolioDetails(requestDict: dict, of: "sub_speciality")
-	}
-}
-
-extension UserPortFolioViewController: AddAdditionalInterestsTableViewCellDelegate {
-	func addOrRemoveRecreationalInterests(dict: [String : Any]) {
-		addPortFolioDetails(requestDict: dict, of: "recreational_interests")
-	}
-}
-
-extension UserPortFolioViewController: EditAppointmentsTVCellDelegate {
-	
-	func deleteAppointments(dict: [String : Any], at index: Int) {
-		var requestValues = dict
-		let tmpDict = commonArray[index]
-		if let id = tmpDict["id"] as? String {
-			requestValues["obj_id"] = id
-			deletePortFolioDetails(inputDict: requestValues, section: dict["type"] as! String)
-			editRowForSecction = -1
-		}
-	}
-	
-	func editAppointments(at index: Int) {
-		editRowForSecction = index
-		userPortFolioTableview.reloadData()
-	}
-	
-	func cancelAppointments() {
-		editRowForSecction = -1
-		userPortFolioTableview.reloadData()
-	}
-	
-	func saveAppointments(dict: [String : Any], at index: Int) {
-		var requestValues = dict
-		let tmpDict = commonArray[index]
-		if let id = tmpDict["id"] as? String {
-			requestValues["post_id"] = id
-			addPortFolioDetails(requestDict: requestValues, of: dict["type"] as! String)
-			editRowForSecction = -1
-		}
-	}
-}
-
-extension UserPortFolioViewController: AddAppointmentsTVCellDelegate {
-	func addAppointments(dict: [String: Any]) {
-		addPortFolioDetails(requestDict: dict, of: dict["type"] as! String)
-	}
-}
-
-extension UserPortFolioViewController: EditHonorAwardsTvCellDelegate {
-	
-	func deleteHonorAwards(dict: [String : Any], at index: Int) {
-		var requestValues = dict
-		let tmpDict = commonArray[index]
-		if let id = tmpDict["id"] as? String {
-			requestValues["obj_id"] = id
-			deletePortFolioDetails(inputDict: requestValues, section: dict["type"] as! String)
-			editRowForSecction = -1
-		}
-	}
-	
-	func editHonorAwards(at index: Int) {
-		editRowForSecction = index
-		userPortFolioTableview.reloadData()
-	}
-	
-	func cancelHonorAwards() {
-		editRowForSecction = -1
-		userPortFolioTableview.reloadData()
-	}
-	
-	func saveHonorAwards(dict: [String : Any], at index: Int) {
-		var requestValues = dict
-		let tmpDict = commonArray[index]
-		if let id = tmpDict["id"] as? String {
-			requestValues["post_id"] = id
-			addPortFolioDetails(requestDict: requestValues, of: dict["type"] as! String)
-			editRowForSecction = -1
-		}
-	}
-}
-
-extension UserPortFolioViewController: AddHonorAwardsTvCellDelegate {
-	func addHonorAwards(dict: [String: Any]) {
-		addPortFolioDetails(requestDict: dict, of: dict["type"] as! String)
 	}
 }

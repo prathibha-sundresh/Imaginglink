@@ -8,14 +8,10 @@
 
 import UIKit
 
-protocol AddSubSpecialitiesTableViewCellDelegate {
-	func addSubSpecialities(dict: [String: Any])
-}
-
 class AddSubSpecialitiesTableViewCell: UITableViewCell {
 	@IBOutlet weak var addSubSpecialitiesTF: FloatingLabel!
 	@IBOutlet weak var saveButton: UIButton!
-	var delegate: AddSubSpecialitiesTableViewCellDelegate?
+	var delegate: AddSectionTvCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -48,7 +44,7 @@ class AddSubSpecialitiesTableViewCell: UITableViewCell {
 		if addSubSpecialitiesTF.text! != "" {
 			
 			let requestDict = ["type" : "sub_speciality", "post_data[sub_speciality][]": addSubSpecialitiesTF.text!]
-			delegate?.addSubSpecialities(dict: requestDict)
+			delegate?.addSection(dict: requestDict)
 		}
 	}
 }

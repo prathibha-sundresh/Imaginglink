@@ -7,13 +7,11 @@
 //
 
 import UIKit
-protocol AddAdditionalInterestsTableViewCellDelegate {
-	func addOrRemoveRecreationalInterests(dict: [String: Any])
-}
+
 class AddAdditionalInterestsTableViewCell: UITableViewCell {
 	@IBOutlet weak var addAdditionalInterestsTF: FloatingLabel!
 	@IBOutlet weak var recreationalInterestsCV: UICollectionView!
-	var delegate: AddAdditionalInterestsTableViewCellDelegate?
+	var delegate: AddSectionTvCellDelegate?
 	var recreationalInterests: [String] = []
 	var post_id: String?
     override func awakeFromNib() {
@@ -55,7 +53,7 @@ class AddAdditionalInterestsTableViewCell: UITableViewCell {
 		if post_id != "" {
 			requestDict["post_id"] = post_id
 		}
-		delegate?.addOrRemoveRecreationalInterests(dict: requestDict)
+		delegate?.addSection(dict: requestDict)
 	}
 	
 	@IBAction func addInterestsButtonAction(_ sender: UIButton) {

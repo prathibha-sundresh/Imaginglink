@@ -36,8 +36,24 @@ class PortFolioAPI {
 		
 		let requestUrl = "\(kBaseUrl + kAddPortFolioDetails)"
 		Alamofire.upload(multipartFormData: { multipartFormData in
-			
+			var isFileAdded = false
+			if let url = requestDict["source_file_name[]"] as? URL {
+				var urlConvertedData: Data?
+				do {
+					urlConvertedData = try Data(contentsOf: url)
+				} catch {
+					print(error)
+				}
+				if let data = urlConvertedData {
+					let mimeType = (url.pathExtension == "pdf") ? "application/pdf" : "application/vnd"
+					multipartFormData.append(data, withName: "source_file_name[]", fileName: url.lastPathComponent, mimeType: mimeType)
+					isFileAdded = true
+				}
+			}
 			for (key, value) in requestDict {
+				if key == "source_file_name[]" && isFileAdded{
+					continue
+				}
 				multipartFormData.append("\(value)".data(using: String.Encoding.utf8)!, withName: key as String)
 			}},to: requestUrl, headers: getHeader())
 		{ (result) in

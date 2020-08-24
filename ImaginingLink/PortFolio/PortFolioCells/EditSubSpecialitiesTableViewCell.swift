@@ -8,12 +8,6 @@
 
 import UIKit
 
-protocol EditSubSpecialitiesTableViewCellDelegate {
-	func saveSubSpecialities(dict: [String: Any], at index: Int)
-	func deleteSubSpecialities(at index: Int)
-	func editSubSpecialities(at index: Int)
-	func cancelSubSpecialities()
-}
 class EditSubSpecialitiesTableViewCell: UITableViewCell {
 
 	@IBOutlet weak var subSpecialitiesTF: FloatingLabel!
@@ -21,7 +15,7 @@ class EditSubSpecialitiesTableViewCell: UITableViewCell {
 	@IBOutlet weak var editButton: UIButton!
 	@IBOutlet weak var deleteButton: UIButton!
 	@IBOutlet weak var saveButtonH: NSLayoutConstraint!
-	var delegate: EditSubSpecialitiesTableViewCellDelegate?
+	var delegate: EditSectionTvCellDelegate?
 	var isEditForSubSpecialties: Bool = false
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -54,19 +48,19 @@ class EditSubSpecialitiesTableViewCell: UITableViewCell {
 //				requestDict["post_data[sub_speciality][\(i)]"] = "\(tmpArray[i])"
 //			}
 			let requestDict = ["type" : "sub_speciality", "post_data[sub_speciality][]": subSpecialitiesTF.text!]
-			delegate?.saveSubSpecialities(dict: requestDict, at: sender.tag)
+			delegate?.saveSection(dict: requestDict, at: sender.tag)
 		}
 	}
 	
 	@IBAction func cancelButtonAction(_ sender: UIButton) {
-		delegate?.cancelSubSpecialities()
+		delegate?.cancelSection()
 	}
 	
 	@IBAction func editButtonAction(_ sender: UIButton) {
-		delegate?.editSubSpecialities(at: sender.tag)
+		delegate?.editSection(at: sender.tag)
 	}
 	
 	@IBAction func deleteButtonAction(_ sender: UIButton) {
-		delegate?.deleteSubSpecialities(at: sender.tag)
+		delegate?.deleteSection(dict: ["type" : "sub_speciality","status":"delete"], at: sender.tag)
 	}
 }
