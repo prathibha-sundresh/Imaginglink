@@ -49,7 +49,7 @@ class AddCertificationsTableViewCell: UITableViewCell {
 		endYearTF.text = ""
 		notifyMeButton.isSelected = false
 		removeFileButton.isHidden = true
-		fileNameLabel.text = ""
+		fileNameLabel.text = "No file selected"
 	}
 	
 	@IBAction func saveButtonAction(_ sender: UIButton) {

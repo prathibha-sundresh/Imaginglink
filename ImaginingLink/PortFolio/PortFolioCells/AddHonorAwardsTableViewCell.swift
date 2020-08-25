@@ -41,7 +41,7 @@ class AddHonorAwardsTableViewCell: UITableViewCell {
 		startDateTF.text = ""
 		startMonthTF.text = ""
 		startYearTF.text = ""
-		fileNameLabel.text = ""
+		fileNameLabel.text = "No file selected"
 		removeFileButton.isHidden = true
 	}
 	

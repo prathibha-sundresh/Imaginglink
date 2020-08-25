@@ -54,7 +54,7 @@ class AddPGEducationTableViewCell: UITableViewCell {
 		residencyTypeButton.isSelected = false
 		fellowshipTypeButton.isSelected = false
 		removeFileButton.isHidden = true
-		fileNameLabel.text = ""
+		fileNameLabel.text = "No file selected"
 	}
 	@IBAction func saveButtonAction(_ sender: UIButton) {
 		var requestDict = [

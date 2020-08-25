@@ -51,7 +51,7 @@ class AddHospitalAppointmentsTableViewCell: UITableViewCell {
 		endYearTF.text = ""
 		currentYearButton.setImage(#imageLiteral(resourceName: "unCheckedBox"), for: UIControl.State.normal)
 		removeFileButton.isHidden = true
-		fileNameLabel.text = ""
+		fileNameLabel.text = "No file selected"
 	}
 	
 	@IBAction func saveButtonAction(_ sender: UIButton) {

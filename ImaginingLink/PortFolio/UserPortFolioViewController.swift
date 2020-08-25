@@ -353,6 +353,48 @@ extension UserPortFolioViewController: UITableViewDataSource,UITableViewDelegate
 				return cell
 			}
 		}
+		else if indexPath.section == 12 || indexPath.section == 13 || indexPath.section == 15 || indexPath.section == 16 {
+			
+			if indexPath.row == commonArray.count {
+				let cell : AddTeachingResponsibilitiesTvCell = tableView.dequeueReusableCell(withIdentifier: "AddTeachingResponsibilitiesTvCellID", for: indexPath) as! AddTeachingResponsibilitiesTvCell
+				cell.delegate = self
+				cell.vc = self
+				if indexPath.section == 12 {
+					cell.sectionType = "teaching"
+				}
+				else if indexPath.section == 13 {
+					cell.sectionType = "major_mentoring_activities"
+				}
+				else if indexPath.section == 15 {
+					cell.sectionType = "professional_societies"
+				}
+				else if indexPath.section == 16 {
+					cell.sectionType = "educational_boards"
+				}
+				cell.setUI()
+				return cell
+			}
+			else {
+				let cell : EditTeachingResponsibilitiesTvCell = tableView.dequeueReusableCell(withIdentifier: "EditTeachingResponsibilitiesTvCellID", for: indexPath) as! EditTeachingResponsibilitiesTvCell
+				cell.delegate = self
+				cell.vc = self
+				if indexPath.section == 12 {
+					cell.sectionType = "teaching"
+				}
+				else if indexPath.section == 13 {
+					cell.sectionType = "major_mentoring_activities"
+				}
+				else if indexPath.section == 15 {
+					cell.sectionType = "professional_societies"
+				}
+				else if indexPath.section == 16 {
+					cell.sectionType = "educational_boards"
+				}
+				cell.isEditMode = (indexPath.row == editRowForSecction ? true: false)
+				cell.setUI(dict: commonArray[indexPath.row] ,btnTag: indexPath.row)
+				return cell
+			}
+		}
 		else {
 			contactPersonalInfoCell = tableView.dequeueReusableCell(withIdentifier: "ContactPersonalInfoTableViewCellID", for: indexPath) as? ContactPersonalInfoTableViewCell
 			contactPersonalInfoCell.delegate = self
@@ -462,6 +504,24 @@ extension UserPortFolioViewController: UITableViewDataSource,UITableViewDelegate
 		else if sender.tag == 11 {
 			getSectionTypeData("committees")
 		}
+		else if sender.tag == 12 {
+			getSectionTypeData("teaching")
+		}
+		else if sender.tag == 13 {
+			getSectionTypeData("major_mentoring_activities")
+		}
+		else if sender.tag == 14 {
+			//getSectionTypeData("administrative_responsibility")
+		}
+		else if sender.tag == 15 {
+			getSectionTypeData("professional_societies")
+		}
+		else if sender.tag == 16 {
+			getSectionTypeData("educational_boards")
+		}
+		else if sender.tag == 17 {
+			//getSectionTypeData("major_mentoring_activities")
+		}
 	}
 	
 	func getSectionTypeData(_ sectionType: String) {
@@ -475,10 +535,11 @@ extension UserPortFolioViewController: UITableViewDataSource,UITableViewDelegate
 			commonArray = tmpDict[sectionType] as? [[String: Any]] ?? []
 		}
 		editRowForSecction = -1
-		let contentOffset = self.userPortFolioTableview.contentOffset
+////		let contentOffset = self.userPortFolioTableview.contentOffset
 		self.userPortFolioTableview.reloadData()
-		self.userPortFolioTableview.layoutIfNeeded()
-		self.userPortFolioTableview.setContentOffset(contentOffset, animated: false)
+//		self.userPortFolioTableview.layoutIfNeeded()
+////		self.userPortFolioTableview.setContentOffset(contentOffset, animated: false)
+		
 	}
 }
 

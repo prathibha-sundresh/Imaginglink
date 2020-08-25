@@ -64,6 +64,8 @@
 		484E1F0124EBFB5900EDF6C1 /* EditCertificationsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484E1F0024EBFB5900EDF6C1 /* EditCertificationsTableViewCell.swift */; };
 		484E1F0324ED582A00EDF6C1 /* AddLicensesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484E1F0224ED582A00EDF6C1 /* AddLicensesTableViewCell.swift */; };
 		484E1F0524ED58E500EDF6C1 /* EditLicensesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484E1F0424ED58E500EDF6C1 /* EditLicensesTableViewCell.swift */; };
+		484EEC9624F38F7D00A78D1C /* AddTeachingResponsibilitiesTvCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484EEC9524F38F7D00A78D1C /* AddTeachingResponsibilitiesTvCell.swift */; };
+		484EEC9824F4CF4800A78D1C /* EditTeachingResponsibilitiesTvCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484EEC9724F4CF4800A78D1C /* EditTeachingResponsibilitiesTvCell.swift */; };
 		485186C624E55F9000335A35 /* EditHospitalORAcademicAppointmentsTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485186C524E55F9000335A35 /* EditHospitalORAcademicAppointmentsTVCell.swift */; };
 		485186C824E7919100335A35 /* AddHospitalAppointmentsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485186C724E7919100335A35 /* AddHospitalAppointmentsTableViewCell.swift */; };
 		485186CA24E7C6B000335A35 /* AddHonorAwardsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485186C924E7C6B000335A35 /* AddHonorAwardsTableViewCell.swift */; };
@@ -230,6 +232,8 @@
 		484E1F0024EBFB5900EDF6C1 /* EditCertificationsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCertificationsTableViewCell.swift; sourceTree = "<group>"; };
 		484E1F0224ED582A00EDF6C1 /* AddLicensesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLicensesTableViewCell.swift; sourceTree = "<group>"; };
 		484E1F0424ED58E500EDF6C1 /* EditLicensesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditLicensesTableViewCell.swift; sourceTree = "<group>"; };
+		484EEC9524F38F7D00A78D1C /* AddTeachingResponsibilitiesTvCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTeachingResponsibilitiesTvCell.swift; sourceTree = "<group>"; };
+		484EEC9724F4CF4800A78D1C /* EditTeachingResponsibilitiesTvCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTeachingResponsibilitiesTvCell.swift; sourceTree = "<group>"; };
 		485186C524E55F9000335A35 /* EditHospitalORAcademicAppointmentsTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditHospitalORAcademicAppointmentsTVCell.swift; sourceTree = "<group>"; };
 		485186C724E7919100335A35 /* AddHospitalAppointmentsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddHospitalAppointmentsTableViewCell.swift; sourceTree = "<group>"; };
 		485186C924E7C6B000335A35 /* AddHonorAwardsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddHonorAwardsTableViewCell.swift; sourceTree = "<group>"; };
@@ -499,6 +503,8 @@
 				484E1F0424ED58E500EDF6C1 /* EditLicensesTableViewCell.swift */,
 				4869A96024EEE5F1009A5AD3 /* AddCommitteesTableViewCell.swift */,
 				4869A96224EEEBD2009A5AD3 /* EditCommitteesTableViewCell.swift */,
+				484EEC9524F38F7D00A78D1C /* AddTeachingResponsibilitiesTvCell.swift */,
+				484EEC9724F4CF4800A78D1C /* EditTeachingResponsibilitiesTvCell.swift */,
 			);
 			path = PortFolioCells;
 			sourceTree = "<group>";
@@ -995,6 +1001,8 @@
 				4810C817230C04F100B6ACA4 /* ComingSoonViewController.swift in Sources */,
 				ACC94BDC210B4DAD009D6B2F /* PresentationTableViewCell.swift in Sources */,
 				48FFC674217F82A300AB09D5 /* TwofactorAuthenticationViewController.swift in Sources */,
+				484EEC9624F38F7D00A78D1C /* AddTeachingResponsibilitiesTvCell.swift in Sources */,
+				484EEC9824F4CF4800A78D1C /* EditTeachingResponsibilitiesTvCell.swift in Sources */,
 				480A3BF0235B762B00EA4EF4 /* CreatePresentationViewController.swift in Sources */,
 				4848B5C124D4FFC800A7ECE9 /* UserPortFolioViewController.swift in Sources */,
 				BCFFFBB320BAEE5A003A0652 /* SignInViewController.swift in Sources */,
