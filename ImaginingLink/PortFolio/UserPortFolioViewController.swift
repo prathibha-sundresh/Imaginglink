@@ -304,11 +304,17 @@ extension UserPortFolioViewController: UITableViewDataSource,UITableViewDelegate
 				return cell
 			}
 		}
-		else if indexPath.section == 9 {
+		else if indexPath.section == 9 || indexPath.section == 14{
 			if indexPath.row == commonArray.count {
 				let cell : AddCertificationsTableViewCell = tableView.dequeueReusableCell(withIdentifier: "AddCertificationsTableViewCellID", for: indexPath) as! AddCertificationsTableViewCell
 				cell.delegate = self
 				cell.vc = self
+				if indexPath.section == 9 {
+					cell.sectionType = "certifications"
+				}
+				else if indexPath.section == 14 {
+					cell.sectionType = "administrative_responsibility"
+				}
 				cell.setUI()
 				return cell
 			}
@@ -316,6 +322,12 @@ extension UserPortFolioViewController: UITableViewDataSource,UITableViewDelegate
 				let cell : EditCertificationsTableViewCell = tableView.dequeueReusableCell(withIdentifier: "EditCertificationsTableViewCellID", for: indexPath) as! EditCertificationsTableViewCell
 				cell.delegate = self
 				cell.vc = self
+				if indexPath.section == 9 {
+					cell.sectionType = "certifications"
+				}
+				else if indexPath.section == 14 {
+					cell.sectionType = "administrative_responsibility"
+				}
 				cell.isEditMode = (indexPath.row == editRowForSecction ? true: false)
 				cell.setUI(dict: commonArray[indexPath.row] ,btnTag: indexPath.row)
 				return cell
@@ -511,7 +523,7 @@ extension UserPortFolioViewController: UITableViewDataSource,UITableViewDelegate
 			getSectionTypeData("major_mentoring_activities")
 		}
 		else if sender.tag == 14 {
-			//getSectionTypeData("administrative_responsibility")
+			getSectionTypeData("administrative_responsibility")
 		}
 		else if sender.tag == 15 {
 			getSectionTypeData("professional_societies")
@@ -520,7 +532,7 @@ extension UserPortFolioViewController: UITableViewDataSource,UITableViewDelegate
 			getSectionTypeData("educational_boards")
 		}
 		else if sender.tag == 17 {
-			//getSectionTypeData("major_mentoring_activities")
+			
 		}
 	}
 	

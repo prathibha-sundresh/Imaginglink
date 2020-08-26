@@ -27,10 +27,14 @@ class EditCertificationsTableViewCell: UITableViewCell {
 	@IBOutlet weak var deleteButton: UIButton!
 	@IBOutlet weak var cancelButton: UIButton!
 	@IBOutlet weak var disableView: UIView!
+	@IBOutlet weak var fromLabel: UILabel!
+	@IBOutlet weak var toLabel: UILabel!
+	@IBOutlet weak var notifyLabel: UILabel!
 	var delegate: EditSectionTvCellDelegate?
 	var isEditMode: Bool = false
 	var vc: UIViewController?
 	var fileUrl: URL?
+	var sectionType = ""
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -43,7 +47,35 @@ class EditCertificationsTableViewCell: UITableViewCell {
     }
 	
 	func setUI(dict: [String: Any], btnTag: Int) {
+		var fromDateKey = "issued_date"
+		var toDateKey = "expiry_date"
+		var notifyKey = "nofy_me"
 		
+		if sectionType == "certifications" {
+			givenByTF.placeholder = "Given by*"
+			certificationsNoTF.placeholder = "Certification number*"
+			fromLabel.text = "Issue Date"
+			toLabel.text = "Expiry Date"
+			notifyLabel.text = "Notify me"
+			
+			titleTF.text = dict["title"] as? String ?? ""
+			givenByTF.text = dict["given_by"] as? String ?? ""
+			certificationsNoTF.text = dict["certifications_no"] as? String ?? ""
+		}
+		else if sectionType == "administrative_responsibility" {
+			givenByTF.placeholder = "Section"
+			certificationsNoTF.placeholder = "Location"
+			fromLabel.text = "From"
+			toLabel.text = "To"
+			notifyLabel.text = "Current"
+			
+			titleTF.text = dict["title"] as? String ?? ""
+			givenByTF.text = dict["section"] as? String ?? ""
+			certificationsNoTF.text = dict["location"] as? String ?? ""
+			fromDateKey = "from_date"
+			toDateKey = "to_date"
+			notifyKey = "currently_pursuing"
+		}
 		deleteButton.tag = btnTag
 		editButton.tag = btnTag
 		saveButton.tag = btnTag
@@ -52,20 +84,18 @@ class EditCertificationsTableViewCell: UITableViewCell {
 		editButton.isHidden = isEditMode
 		cancelButton.isHidden = !isEditMode
 		
-		titleTF.text = dict["title"] as? String ?? ""
-		givenByTF.text = dict["given_by"] as? String ?? ""
-		certificationsNoTF.text = dict["certifications_no"] as? String ?? ""
-		if let startDataDict = dict["issued_date"] as? [String: Any] {
+		
+		if let startDataDict = dict[fromDateKey] as? [String: Any] {
 			startDateTF.text = startDataDict["dd"] as? String ?? ""
 			startMonthTF.text = startDataDict["mm"] as? String ?? ""
 			startYearTF.text = startDataDict["yy"] as? String ?? ""
 		}
-		if let endDataDict = dict["expiry_date"] as? [String: Any] {
+		if let endDataDict = dict[toDateKey] as? [String: Any] {
 			endDateTF.text = endDataDict["dd"] as? String ?? ""
 			endMonthTF.text = endDataDict["mm"] as? String ?? ""
 			endYearTF.text = endDataDict["yy"] as? String ?? ""
 		}
-		let graduated = (dict["nofy_me"] as? String ?? "false").lowercased()
+		let graduated = (dict[notifyKey] as? String ?? "false").lowercased()
 		
 		notifyMeButton.isSelected = (graduated == "true") ? true : false
 		
@@ -79,20 +109,31 @@ class EditCertificationsTableViewCell: UITableViewCell {
 	}
 	
 	@IBAction func saveButtonAction(_ sender: UIButton) {
-	
+		var fromDateKey = "issued_date"
+		var toDateKey = "expiry_date"
+		var notifyKey = "nofy_me"
+		var text2Key = "given_by"
+		var text3Key = "certifications_no"
+		if sectionType == "administrative_responsibility" {
+			fromDateKey = "from_date"
+			toDateKey = "to_date"
+			notifyKey = "currently_pursuing"
+			text2Key = "section"
+			text3Key = "location"
+		}
 		let notifyMe = notifyMeButton.isSelected ? "True" : "False"
 		var requestDict = [
-		"type":"certifications",
+		"type":sectionType,
 		"post_data[title]":titleTF.text!,
-		"post_data[given_by]":givenByTF.text!,
-		"post_data[certifications_no]": certificationsNoTF.text!,
-		"post_data[nofy_me]":notifyMe,
-		"post_data[issued_date][dd]":startDateTF.text!,
-		"post_data[issued_date][mm]":startMonthTF.text!,
-		"post_data[issued_date][yy]":startYearTF.text!,
-		"post_data[expiry_date][dd]":endDateTF.text!,
-		"post_data[expiry_date][mm]":endMonthTF.text!,
-		"post_data[expiry_date][yy]":endYearTF.text!,
+		"post_data[\(text2Key)]":givenByTF.text!,
+		"post_data[\(text3Key)]": certificationsNoTF.text!,
+		"post_data[\(notifyKey)]":notifyMe,
+		"post_data[\(fromDateKey)][dd]":startDateTF.text!,
+		"post_data[\(fromDateKey)][mm]":startMonthTF.text!,
+		"post_data[\(fromDateKey)][yy]":startYearTF.text!,
+		"post_data[\(toDateKey)][dd]":endDateTF.text!,
+		"post_data[\(toDateKey)][mm]":endMonthTF.text!,
+		"post_data[\(toDateKey)][yy]":endYearTF.text!,
 		"source_file_name[]" : fileUrl ?? fileNameLabel.text!,
 		"post_data[status]":false] as [String : Any]
 		if fileNameLabel.text! == "No file selected" {
@@ -110,7 +151,7 @@ class EditCertificationsTableViewCell: UITableViewCell {
 	}
 	
 	@IBAction func deleteButtonAction(_ sender: UIButton) {
-		delegate?.deleteSection(dict: ["type" : "certifications","status":"delete"], at: sender.tag)
+		delegate?.deleteSection(dict: ["type" : sectionType,"status":"delete"], at: sender.tag)
 	}
 	
 	@IBAction func notifyMeAction(_ sender: UIButton) {

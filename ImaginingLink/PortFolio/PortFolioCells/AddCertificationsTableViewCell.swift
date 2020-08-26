@@ -23,9 +23,13 @@ class AddCertificationsTableViewCell: UITableViewCell {
 	@IBOutlet weak var fileNameLabel: UILabel!
 	@IBOutlet weak var removeFileButton: UIButton!
 	@IBOutlet weak var saveButton: UIButton!
+	@IBOutlet weak var fromLabel: UILabel!
+	@IBOutlet weak var toLabel: UILabel!
+	@IBOutlet weak var notifyLabel: UILabel!
 	var delegate: AddSectionTvCellDelegate?
 	var vc: UIViewController?
 	var fileUrl: URL?
+	var sectionType = ""
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -50,23 +54,49 @@ class AddCertificationsTableViewCell: UITableViewCell {
 		notifyMeButton.isSelected = false
 		removeFileButton.isHidden = true
 		fileNameLabel.text = "No file selected"
+
+		if sectionType == "certifications" {
+			givenByTF.placeholder = "Given by*"
+			certificationsNoTF.placeholder = "Certification number*"
+			fromLabel.text = "Issue Date"
+			toLabel.text = "Expiry Date"
+			notifyLabel.text = "Notify me"
+		}
+		else if sectionType == "administrative_responsibility" {
+			givenByTF.placeholder = "Section"
+			certificationsNoTF.placeholder = "Location"
+			fromLabel.text = "From"
+			toLabel.text = "To"
+			notifyLabel.text = "Current"
+		}
 	}
 	
 	@IBAction func saveButtonAction(_ sender: UIButton) {
-	
+		var fromDateKey = "issued_date"
+		var toDateKey = "expiry_date"
+		var notifyKey = "nofy_me"
+		var text2Key = "given_by"
+		var text3Key = "certifications_no"
+		if sectionType == "administrative_responsibility" {
+			fromDateKey = "from_date"
+			toDateKey = "to_date"
+			notifyKey = "currently_pursuing"
+			text2Key = "section"
+			text3Key = "location"
+		}
 		let notifyMe = notifyMeButton.isSelected ? "True" : "False"
 		var requestDict = [
-		"type":"certifications",
+		"type":sectionType,
 		"post_data[title]":titleTF.text!,
-		"post_data[given_by]":givenByTF.text!,
-		"post_data[certifications_no]": certificationsNoTF.text!,
-		"post_data[nofy_me]":notifyMe,
-		"post_data[issued_date][dd]":startDateTF.text!,
-		"post_data[issued_date][mm]":startMonthTF.text!,
-		"post_data[issued_date][yy]":startYearTF.text!,
-		"post_data[expiry_date][dd]":endDateTF.text!,
-		"post_data[expiry_date][mm]":endMonthTF.text!,
-		"post_data[expiry_date][yy]":endYearTF.text!,
+		"post_data[\(text2Key)]":givenByTF.text!,
+		"post_data[\(text3Key)]": certificationsNoTF.text!,
+		"post_data[\(notifyKey)]":notifyMe,
+		"post_data[\(fromDateKey)][dd]":startDateTF.text!,
+		"post_data[\(fromDateKey)][mm]":startMonthTF.text!,
+		"post_data[\(fromDateKey)][yy]":startYearTF.text!,
+		"post_data[\(toDateKey)][dd]":endDateTF.text!,
+		"post_data[\(toDateKey)][mm]":endMonthTF.text!,
+		"post_data[\(toDateKey)][yy]":endYearTF.text!,
 		"post_data[status]":false] as [String : Any]
 		if fileNameLabel.text! != "No file selected" {
 			requestDict["source_file_name[]"] = fileUrl

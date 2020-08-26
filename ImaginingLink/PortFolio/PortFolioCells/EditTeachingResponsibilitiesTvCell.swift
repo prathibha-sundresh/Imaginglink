@@ -92,20 +92,15 @@ class EditTeachingResponsibilitiesTvCell: UITableViewCell {
 		textField3.isHidden = false
 		textField4.isHidden = false
 		textField5.isHidden = false
-		var placeHolder1 = ""
-		var placeHolder2 = ""
-		var placeHolder3 = ""
-		var placeHolder4 = ""
-		var placeHolder5 = ""
 		
 		if sectionType == "teaching" {
 			//5 TextFields
 			textFieldsContainerViewH.constant = 310
-			placeHolder1 = "Location*"
-			placeHolder2 = "Course Description*"
-			placeHolder3 = "Role"
-			placeHolder4 = "Audience & Contact Time"
-			placeHolder5 = "Prep Time"
+			textField1.placeholder = "Location*"
+			textField2.placeholder = "Course Description*"
+			textField3.placeholder = "Role"
+			textField4.placeholder = "Audience & Contact Time"
+			textField5.placeholder = "Prep Time"
 			
 			text1 = dict["location"] as? String ?? ""
 			text2 = dict["course_description"] as? String ?? ""
@@ -118,9 +113,9 @@ class EditTeachingResponsibilitiesTvCell: UITableViewCell {
 			textFieldsContainerViewH.constant = 190
 			textField4.isHidden = true
 			textField5.isHidden = true
-			placeHolder1 = "Trainee name*"
-			placeHolder2 = "Description*"
-			placeHolder3 = "Trainee's Current Position"
+			textField1.placeholder = "Trainee name*"
+			textField2.placeholder = "Description*"
+			textField3.placeholder = "Trainee's Current Position"
 			
 			text1 = dict["trainee_name"] as? String ?? ""
 			text2 = dict["description"] as? String ?? ""
@@ -131,10 +126,10 @@ class EditTeachingResponsibilitiesTvCell: UITableViewCell {
 			//4 TextFields
 			textFieldsContainerViewH.constant = 240
 			textField5.isHidden = true
-			placeHolder1 = "Society name*"
-			placeHolder2 = "Membership Type*"
-			placeHolder3 = "Membership ID"
-			placeHolder4 = "URL"
+			textField1.placeholder = "Society name*"
+			textField2.placeholder = "Membership Type*"
+			textField3.placeholder = "Membership ID"
+			textField4.placeholder = "URL"
 			
 			text1 = dict["society_name"] as? String ?? ""
 			text2 = dict["member_ship_type"] as? String ?? ""
@@ -145,23 +140,16 @@ class EditTeachingResponsibilitiesTvCell: UITableViewCell {
 			//4 TextFields
 			textFieldsContainerViewH.constant = 240
 			textField5.isHidden = true
-			placeHolder1 = "Role*"
-			placeHolder2 = "Journal name*"
-			placeHolder3 = "Sub Section"
-			placeHolder4 = "URL"
+			textField1.placeholder = "Role*"
+			textField2.placeholder = "Journal name*"
+			textField3.placeholder = "Sub Section"
+			textField4.placeholder = "URL"
 			
 			text1 = dict["role"] as? String ?? ""
 			text2 = dict["journal_name"] as? String ?? ""
 			text3 = dict["sub_section"] as? String ?? ""
 			text4 = dict["url"] as? String ?? ""
 		}
-		
-		textField1.placeholder = placeHolder1
-		textField2.placeholder = placeHolder2
-		textField3.placeholder = placeHolder3
-		textField4.placeholder = placeHolder4
-		textField5.placeholder = placeHolder5
-		
 		textField1.text = text1
 		textField2.text = text2
 		textField3.text = text3
