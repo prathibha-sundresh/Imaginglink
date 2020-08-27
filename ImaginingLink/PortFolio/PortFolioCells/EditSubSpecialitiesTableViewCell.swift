@@ -38,6 +38,7 @@ class EditSubSpecialitiesTableViewCell: UITableViewCell {
 		subSpecialitiesTF.setRightPaddingPoints(50)
 		let subSpecialities = dict["sub_speciality"] as? [String] ?? []
 		subSpecialitiesTF.text = subSpecialities.joined(separator: ",")
+		enableOrDisableSaveButton()
 	}
 	
 	@IBAction func saveButtonAction(_ sender: UIButton) {
@@ -62,5 +63,20 @@ class EditSubSpecialitiesTableViewCell: UITableViewCell {
 	
 	@IBAction func deleteButtonAction(_ sender: UIButton) {
 		delegate?.deleteSection(dict: ["type" : "sub_speciality","status":"delete"], at: sender.tag)
+	}
+	
+	@IBAction func textFieldDidChange(_ textView: UITextField) {
+		enableOrDisableSaveButton()
+	}
+	
+	func enableOrDisableSaveButton() {
+		if subSpecialitiesTF.text != "" {
+			saveButton.isEnabled = true
+			saveButton.alpha = 1.0
+		}
+		else {
+			saveButton.isEnabled = false
+			saveButton.alpha = 0.5
+		}
 	}
 }

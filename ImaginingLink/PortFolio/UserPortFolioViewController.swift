@@ -15,7 +15,7 @@ class UserPortFolioViewController: UIViewController {
 	@IBOutlet weak var folioProgressLabel: UILabel!
 	var contactPersonalInfoCell: ContactPersonalInfoTableViewCell!
 	var addPGEducationTableViewCell: AddPGEducationTableViewCell!
-	var userPortFolioArray: [String] = ["Summary", "Contact & Personal Info", "Under Graduate","Post Graduate","Subspecialties", "Recreational Interests", "Academic Appointments", "Hospital Appointments","Honor/Awards", "Certifications","Licenses","Committees","Teaching Responsibilities","Major Mentoring Activities","Administrative Responsibilities","Professional Societies","Editorial Boards","Grant Or Fund details","Invited Lectures & Presentations","Congressional Testimony","Congressional Testimony","Media Appearances","Custom Fields","Bibliography","CME Tracking"]
+	var userPortFolioArray: [String] = ["Summary", "Contact & Personal Info", "Under Graduate","Post Graduate","Subspecialties", "Recreational Interests", "Academic Appointments", "Hospital Appointments","Honor/Awards", "Certifications","Licenses","Committees","Teaching Responsibilities","Major Mentoring Activities","Administrative Responsibilities","Professional Societies","Editorial Boards","Grant Or Fund details","Invited Lectures & Presentations","Congressional Testimony","Media Appearances","Custom Fields","Bibliography","CME Tracking"]
 	var expandedArray: [Int] = []
 	var dataDict = [String: Any]()
 	var commonArray: [[String: Any]] = []
@@ -178,6 +178,7 @@ class UserPortFolioViewController: UIViewController {
 					
 					if dropDowntype == "selectGender" {
 						self.contactPersonalInfoCell.genderTF.text = titles[0]
+						self.contactPersonalInfoCell.enableOrDisableSaveButton()
 					}
 					else if dropDowntype == "selectCountry" {
 						if self.editRowForSecction == -1 {
@@ -407,6 +408,50 @@ extension UserPortFolioViewController: UITableViewDataSource,UITableViewDelegate
 				return cell
 			}
 		}
+		else if indexPath.section == 18 {
+			if indexPath.row == commonArray.count {
+				let cell : AddInvitedLecturesPresentationsTvCell = tableView.dequeueReusableCell(withIdentifier: "AddInvitedLecturesPresentationsTvCellID", for: indexPath) as! AddInvitedLecturesPresentationsTvCell
+				cell.delegate = self
+				cell.setUI()
+				return cell
+			}
+			else {
+				let cell : EditInvitedLecturesPresentationsTvCell = tableView.dequeueReusableCell(withIdentifier: "EditInvitedLecturesPresentationsTvCellID", for: indexPath) as! EditInvitedLecturesPresentationsTvCell
+				cell.delegate = self
+				cell.isEditMode = (indexPath.row == editRowForSecction ? true: false)
+				cell.setUI(dict: commonArray[indexPath.row] ,btnTag: indexPath.row)
+				return cell
+			}
+		}
+		else if indexPath.section == 19 || indexPath.section == 20 {
+			if indexPath.row == commonArray.count {
+				let cell : AddCongressionalAndMediaTVCell = tableView.dequeueReusableCell(withIdentifier: "AddCongressionalAndMediaTVCellID", for: indexPath) as! AddCongressionalAndMediaTVCell
+				cell.delegate = self
+				cell.vc = self
+				if indexPath.section == 19 {
+					cell.sectionType = "congressional_testimony"
+				}
+				else if indexPath.section == 20 {
+					cell.sectionType = "media_appearances"
+				}
+				cell.setUI()
+				return cell
+			}
+			else {
+				let cell : EditCongressionalAndMediaTVCell = tableView.dequeueReusableCell(withIdentifier: "EditCongressionalAndMediaTVCellID", for: indexPath) as! EditCongressionalAndMediaTVCell
+				cell.delegate = self
+				cell.vc = self
+				if indexPath.section == 19 {
+					cell.sectionType = "congressional_testimony"
+				}
+				else if indexPath.section == 20 {
+					cell.sectionType = "media_appearances"
+				}
+				cell.isEditMode = (indexPath.row == editRowForSecction ? true: false)
+				cell.setUI(dict: commonArray[indexPath.row] ,btnTag: indexPath.row)
+				return cell
+			}
+		}
 		else {
 			contactPersonalInfoCell = tableView.dequeueReusableCell(withIdentifier: "ContactPersonalInfoTableViewCellID", for: indexPath) as? ContactPersonalInfoTableViewCell
 			contactPersonalInfoCell.delegate = self
@@ -533,6 +578,15 @@ extension UserPortFolioViewController: UITableViewDataSource,UITableViewDelegate
 		}
 		else if sender.tag == 17 {
 			
+		}
+		else if sender.tag == 18 {
+			getSectionTypeData("invited_lectures_and_presentations")
+		}
+		else if sender.tag == 19 {
+			getSectionTypeData("congressional_testimony")
+		}
+		else if sender.tag == 20 {
+			getSectionTypeData("media_appearances")
 		}
 	}
 	

@@ -27,17 +27,11 @@ class AddSubSpecialitiesTableViewCell: UITableViewCell {
 		saveButton.isEnabled = false
 		saveButton.alpha = 0.5
 		addSubSpecialitiesTF.text = ""
+		enableOrDisableSaveButton()
 	}
 	
 	@IBAction func textFieldDidChange(_ textView: UITextField) {
-		if addSubSpecialitiesTF.text != "" {
-			saveButton.isEnabled = true
-			saveButton.alpha = 1.0
-		}
-		else {
-			saveButton.isEnabled = false
-			saveButton.alpha = 0.5
-		}
+		enableOrDisableSaveButton()
 	}
 	
 	@IBAction func saveButtonAction(_ sender: UIButton) {
@@ -45,6 +39,17 @@ class AddSubSpecialitiesTableViewCell: UITableViewCell {
 			
 			let requestDict = ["type" : "sub_speciality", "post_data[sub_speciality][]": addSubSpecialitiesTF.text!]
 			delegate?.addSection(dict: requestDict)
+		}
+	}
+	
+	func enableOrDisableSaveButton() {
+		if addSubSpecialitiesTF.text != "" {
+			saveButton.isEnabled = true
+			saveButton.alpha = 1.0
+		}
+		else {
+			saveButton.isEnabled = false
+			saveButton.alpha = 0.5
 		}
 	}
 }

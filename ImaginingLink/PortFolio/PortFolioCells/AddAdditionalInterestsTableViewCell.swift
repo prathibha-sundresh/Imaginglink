@@ -11,6 +11,7 @@ import UIKit
 class AddAdditionalInterestsTableViewCell: UITableViewCell {
 	@IBOutlet weak var addAdditionalInterestsTF: FloatingLabel!
 	@IBOutlet weak var recreationalInterestsCV: UICollectionView!
+	@IBOutlet weak var addButton: UIButton!
 	var delegate: AddSectionTvCellDelegate?
 	var recreationalInterests: [String] = []
 	var post_id: String?
@@ -29,6 +30,7 @@ class AddAdditionalInterestsTableViewCell: UITableViewCell {
 		let recreationalInterestsDict = dict["recreational_interests"] as? [String: Any] ?? [:]
 		recreationalInterestsDict.keys.count == 0 ? (post_id = "") : (post_id = dict["_id"] as? String ?? "")
 		addAdditionalInterestsTF.text = ""
+		enableOrDisableSaveButton()
 		let dataDict = recreationalInterestsDict["data"] as? [String: Any] ?? [:]
 		recreationalInterests = dataDict["recreational_interests"] as? [String] ?? []
 		recreationalInterestsCV.reloadData()
@@ -59,6 +61,19 @@ class AddAdditionalInterestsTableViewCell: UITableViewCell {
 	@IBAction func addInterestsButtonAction(_ sender: UIButton) {
 		if addAdditionalInterestsTF.text! != "" {
 			addOrRemoveRecreationalInterests(isAddMode: true)
+		}
+	}
+	
+	@IBAction func textFieldDidChange(_ textView: UITextField) {
+		enableOrDisableSaveButton()
+	}
+	
+	func enableOrDisableSaveButton() {
+		if addAdditionalInterestsTF.text != "" {
+			addButton.isEnabled = true
+		}
+		else {
+			addButton.isEnabled = false
 		}
 	}
 }

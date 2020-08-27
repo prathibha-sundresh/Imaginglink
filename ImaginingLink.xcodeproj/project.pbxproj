@@ -75,6 +75,10 @@
 		4869A96324EEEBD2009A5AD3 /* EditCommitteesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4869A96224EEEBD2009A5AD3 /* EditCommitteesTableViewCell.swift */; };
 		486CC7B524B6F21E006242E7 /* FriendsInviteToGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486CC7B424B6F21E006242E7 /* FriendsInviteToGroupViewController.swift */; };
 		48739B1524E3925400BB852F /* AddAdditionalInterestsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48739B1424E3925400BB852F /* AddAdditionalInterestsTableViewCell.swift */; };
+		4878412424F76CD00058CE3B /* AddCongressionalAndMediaTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4878412324F76CD00058CE3B /* AddCongressionalAndMediaTVCell.swift */; };
+		4878412624F773B90058CE3B /* EditCongressionalAndMediaTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4878412524F773B90058CE3B /* EditCongressionalAndMediaTVCell.swift */; };
+		4878412824F7BFEF0058CE3B /* AddInvitedLecturesPresentationsTvCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4878412724F7BFEF0058CE3B /* AddInvitedLecturesPresentationsTvCell.swift */; };
+		4878412A24F7C42D0058CE3B /* EditInvitedLecturesPresentationsTvCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4878412924F7C42D0058CE3B /* EditInvitedLecturesPresentationsTvCell.swift */; };
 		488BD073218B4F2D003998AC /* ImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488BD072218B4F2D003998AC /* ImageTableViewCell.swift */; };
 		488BD075218B4F4E003998AC /* PresentationDetailTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488BD074218B4F4E003998AC /* PresentationDetailTextCell.swift */; };
 		488BD077218B4F98003998AC /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488BD076218B4F98003998AC /* CommentTableViewCell.swift */; };
@@ -243,6 +247,10 @@
 		4869A96224EEEBD2009A5AD3 /* EditCommitteesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCommitteesTableViewCell.swift; sourceTree = "<group>"; };
 		486CC7B424B6F21E006242E7 /* FriendsInviteToGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsInviteToGroupViewController.swift; sourceTree = "<group>"; };
 		48739B1424E3925400BB852F /* AddAdditionalInterestsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAdditionalInterestsTableViewCell.swift; sourceTree = "<group>"; };
+		4878412324F76CD00058CE3B /* AddCongressionalAndMediaTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCongressionalAndMediaTVCell.swift; sourceTree = "<group>"; };
+		4878412524F773B90058CE3B /* EditCongressionalAndMediaTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCongressionalAndMediaTVCell.swift; sourceTree = "<group>"; };
+		4878412724F7BFEF0058CE3B /* AddInvitedLecturesPresentationsTvCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddInvitedLecturesPresentationsTvCell.swift; sourceTree = "<group>"; };
+		4878412924F7C42D0058CE3B /* EditInvitedLecturesPresentationsTvCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditInvitedLecturesPresentationsTvCell.swift; sourceTree = "<group>"; };
 		488BD072218B4F2D003998AC /* ImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTableViewCell.swift; sourceTree = "<group>"; };
 		488BD074218B4F4E003998AC /* PresentationDetailTextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationDetailTextCell.swift; sourceTree = "<group>"; };
 		488BD076218B4F98003998AC /* CommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
@@ -505,6 +513,10 @@
 				4869A96224EEEBD2009A5AD3 /* EditCommitteesTableViewCell.swift */,
 				484EEC9524F38F7D00A78D1C /* AddTeachingResponsibilitiesTvCell.swift */,
 				484EEC9724F4CF4800A78D1C /* EditTeachingResponsibilitiesTvCell.swift */,
+				4878412324F76CD00058CE3B /* AddCongressionalAndMediaTVCell.swift */,
+				4878412524F773B90058CE3B /* EditCongressionalAndMediaTVCell.swift */,
+				4878412724F7BFEF0058CE3B /* AddInvitedLecturesPresentationsTvCell.swift */,
+				4878412924F7C42D0058CE3B /* EditInvitedLecturesPresentationsTvCell.swift */,
 			);
 			path = PortFolioCells;
 			sourceTree = "<group>";
@@ -1023,6 +1035,7 @@
 				485186C824E7919100335A35 /* AddHospitalAppointmentsTableViewCell.swift in Sources */,
 				480D9B092177A32C000DEBFC /* ChangeEmailViewController.swift in Sources */,
 				4869A96324EEEBD2009A5AD3 /* EditCommitteesTableViewCell.swift in Sources */,
+				4878412424F76CD00058CE3B /* AddCongressionalAndMediaTVCell.swift in Sources */,
 				484E1F0324ED582A00EDF6C1 /* AddLicensesTableViewCell.swift in Sources */,
 				4848B5CB24DFA4C200A7ECE9 /* SelectDateViewController.swift in Sources */,
 				48A0799E23DC99F900495BC2 /* FilterPublishViewController.swift in Sources */,
@@ -1049,6 +1062,7 @@
 				4848B5C924DD2F5E00A7ECE9 /* ContactPersonalInfoTableViewCell.swift in Sources */,
 				480A3BEC2359847100EA4EF4 /* PublishStepOneViewController.swift in Sources */,
 				48222DF223131FB700751CB7 /* FullSizeImageViewController.swift in Sources */,
+				4878412624F773B90058CE3B /* EditCongressionalAndMediaTVCell.swift in Sources */,
 				484279331FF39B9E0056A089 /* ViewController.swift in Sources */,
 				48F7F1871FFE0412008D827A /* Constants.swift in Sources */,
 				488BD073218B4F2D003998AC /* ImageTableViewCell.swift in Sources */,
@@ -1064,6 +1078,7 @@
 				482D2C2323A5312F0024CF00 /* EditPresentationTableViewCell.swift in Sources */,
 				BC0B83A120BC6E490082A53B /* EmailScreenViewcontroller.swift in Sources */,
 				488BD077218B4F98003998AC /* CommentTableViewCell.swift in Sources */,
+				4878412A24F7C42D0058CE3B /* EditInvitedLecturesPresentationsTvCell.swift in Sources */,
 				48B6EDC0235D4AE700C1152D /* FinalSubmissionViewController.swift in Sources */,
 				AC0E194F215AA49A00ADAFB1 /* SignInLabel.swift in Sources */,
 				BCFFFBB520BAEE79003A0652 /* SignUpViewcontroller.swift in Sources */,
@@ -1089,6 +1104,7 @@
 				486CC7B524B6F21E006242E7 /* FriendsInviteToGroupViewController.swift in Sources */,
 				ACE9CA8F21188FFD00AAC035 /* ILUtility.swift in Sources */,
 				4869A96124EEE5F1009A5AD3 /* AddCommitteesTableViewCell.swift in Sources */,
+				4878412824F7BFEF0058CE3B /* AddInvitedLecturesPresentationsTvCell.swift in Sources */,
 				48739B1524E3925400BB852F /* AddAdditionalInterestsTableViewCell.swift in Sources */,
 				4803D3352178D82C00C82909 /* InviteFriendsViewController.swift in Sources */,
 				AC1F1D272126DFDA00A57DD4 /* MenuViewcontrollerTableCell.swift in Sources */,

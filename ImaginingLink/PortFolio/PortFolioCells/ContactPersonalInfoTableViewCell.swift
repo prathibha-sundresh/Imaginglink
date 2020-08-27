@@ -42,7 +42,7 @@ class ContactPersonalInfoTableViewCell: UITableViewCell {
     }
 	
 	func setUI(dict: [String : Any]) {
-				
+		enableOrDisableSaveButton()
 		let tmpDict = dict["contact_and_personal_info"] as? [String: Any] ?? [:]
 		if tmpDict.keys.count == 0 {
 			// add personal_info
@@ -122,6 +122,21 @@ class ContactPersonalInfoTableViewCell: UITableViewCell {
             hideYearButton.setImage(#imageLiteral(resourceName: "unCheckedBox"), for: UIControl.State.normal)
         }
     }
+	
+	@IBAction func textDidChange(_ textField: UITextField) {
+		enableOrDisableSaveButton()
+	}
+	
+	func enableOrDisableSaveButton() {
+		if emailTF.text != "" && genderTF.text != "" && dayTF.text != "" && monthTF.text != "" && yearTF.text != "" {
+			saveButton.isEnabled = true
+			saveButton.alpha = 1.0
+		}
+		else {
+			saveButton.isEnabled = false
+			saveButton.alpha = 0.5
+		}
+	}
 }
 
 extension ContactPersonalInfoTableViewCell: UITextFieldDelegate {
