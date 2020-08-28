@@ -305,7 +305,7 @@ extension UserPortFolioViewController: UITableViewDataSource,UITableViewDelegate
 				return cell
 			}
 		}
-		else if indexPath.section == 9 || indexPath.section == 14{
+		else if indexPath.section == 9 || indexPath.section == 14 || indexPath.section == 21 {
 			if indexPath.row == commonArray.count {
 				let cell : AddCertificationsTableViewCell = tableView.dequeueReusableCell(withIdentifier: "AddCertificationsTableViewCellID", for: indexPath) as! AddCertificationsTableViewCell
 				cell.delegate = self
@@ -315,6 +315,9 @@ extension UserPortFolioViewController: UITableViewDataSource,UITableViewDelegate
 				}
 				else if indexPath.section == 14 {
 					cell.sectionType = "administrative_responsibility"
+				}
+				else if indexPath.section == 21 {
+					cell.sectionType = "custom_fields"
 				}
 				cell.setUI()
 				return cell
@@ -328,6 +331,9 @@ extension UserPortFolioViewController: UITableViewDataSource,UITableViewDelegate
 				}
 				else if indexPath.section == 14 {
 					cell.sectionType = "administrative_responsibility"
+				}
+				else if indexPath.section == 21 {
+					cell.sectionType = "custom_fields"
 				}
 				cell.isEditMode = (indexPath.row == editRowForSecction ? true: false)
 				cell.setUI(dict: commonArray[indexPath.row] ,btnTag: indexPath.row)
@@ -587,6 +593,9 @@ extension UserPortFolioViewController: UITableViewDataSource,UITableViewDelegate
 		}
 		else if sender.tag == 20 {
 			getSectionTypeData("media_appearances")
+		}
+		else if sender.tag == 21 {
+			getSectionTypeData("custom_fields")
 		}
 	}
 	

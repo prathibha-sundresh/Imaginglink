@@ -23,9 +23,14 @@ class AddCertificationsTableViewCell: UITableViewCell {
 	@IBOutlet weak var fileNameLabel: UILabel!
 	@IBOutlet weak var removeFileButton: UIButton!
 	@IBOutlet weak var saveButton: UIButton!
+	@IBOutlet weak var currentButton: UIButton!
+	@IBOutlet weak var urlTF: FloatingLabel!
 	@IBOutlet weak var fromLabel: UILabel!
 	@IBOutlet weak var toLabel: UILabel!
 	@IBOutlet weak var notifyLabel: UILabel!
+	@IBOutlet weak var urlTFViewH: NSLayoutConstraint!
+	@IBOutlet weak var currentButtonViewH: NSLayoutConstraint!
+	@IBOutlet weak var currentButtonView: UIView!
 	var delegate: AddSectionTvCellDelegate?
 	var vc: UIViewController?
 	var fileUrl: URL?
@@ -51,10 +56,17 @@ class AddCertificationsTableViewCell: UITableViewCell {
 		endDateTF.text = ""
 		endMonthTF.text = ""
 		endYearTF.text = ""
+		urlTF.text = ""
 		notifyMeButton.isSelected = false
+		currentButton.isSelected = false
 		removeFileButton.isHidden = true
 		fileNameLabel.text = "No file selected"
-
+		
+		currentButtonViewH.constant = 0
+		urlTFViewH.constant = 0
+		urlTF.isHidden = true
+		currentButtonView.isHidden = true
+		
 		if sectionType == "certifications" {
 			givenByTF.placeholder = "Given by*"
 			certificationsNoTF.placeholder = "Certification number*"
@@ -69,35 +81,62 @@ class AddCertificationsTableViewCell: UITableViewCell {
 			toLabel.text = "To"
 			notifyLabel.text = "Current"
 		}
+		else if sectionType == "custom_fields" {
+			givenByTF.placeholder = "Description*"
+			certificationsNoTF.placeholder = "Number/ID"
+			urlTF.placeholder = "URL"
+			fromLabel.text = "Start Date"
+			toLabel.text = "End Date"
+			notifyLabel.text = "Notify me"
+			currentButtonViewH.constant = 30
+			urlTFViewH.constant = 55
+			urlTF.isHidden = false
+			currentButtonView.isHidden = false
+		}
 	}
 	
 	@IBAction func saveButtonAction(_ sender: UIButton) {
-		var fromDateKey = "issued_date"
-		var toDateKey = "expiry_date"
-		var notifyKey = "nofy_me"
-		var text2Key = "given_by"
-		var text3Key = "certifications_no"
-		if sectionType == "administrative_responsibility" {
-			fromDateKey = "from_date"
-			toDateKey = "to_date"
-			notifyKey = "currently_pursuing"
-			text2Key = "section"
-			text3Key = "location"
-		}
+		
+		var requestDict = ["type":sectionType,"post_data[title]":titleTF.text!,"post_data[status]":false] as [String : Any]
+		
 		let notifyMe = notifyMeButton.isSelected ? "True" : "False"
-		var requestDict = [
-		"type":sectionType,
-		"post_data[title]":titleTF.text!,
-		"post_data[\(text2Key)]":givenByTF.text!,
-		"post_data[\(text3Key)]": certificationsNoTF.text!,
-		"post_data[\(notifyKey)]":notifyMe,
-		"post_data[\(fromDateKey)][dd]":startDateTF.text!,
-		"post_data[\(fromDateKey)][mm]":startMonthTF.text!,
-		"post_data[\(fromDateKey)][yy]":startYearTF.text!,
-		"post_data[\(toDateKey)][dd]":endDateTF.text!,
-		"post_data[\(toDateKey)][mm]":endMonthTF.text!,
-		"post_data[\(toDateKey)][yy]":endYearTF.text!,
-		"post_data[status]":false] as [String : Any]
+		if sectionType == "administrative_responsibility" {
+			requestDict["post_data[from_date][dd]"] = startDateTF.text!
+			requestDict["post_data[from_date][mm]"] = startMonthTF.text!
+			requestDict["post_data[from_date][yy]"] = startYearTF.text!
+			requestDict["post_data[to_date][dd]"] = endDateTF.text!
+			requestDict["post_data[to_date][mm]"] = endMonthTF.text!
+			requestDict["post_data[to_date][yy]"] = endYearTF.text!
+			requestDict["post_data[currently_pursuing]"] = notifyMe
+			requestDict["post_data[section]"] = givenByTF.text!
+			requestDict["post_data[location]"] = certificationsNoTF.text!
+		}
+		else if sectionType == "certifications" {
+			requestDict["post_data[issued_date][dd]"] = startDateTF.text!
+			requestDict["post_data[issued_date][mm]"] = startMonthTF.text!
+			requestDict["post_data[issued_date][yy]"] = startYearTF.text!
+			requestDict["post_data[expiry_date][dd]"] = endDateTF.text!
+			requestDict["post_data[expiry_date][mm]"] = endMonthTF.text!
+			requestDict["post_data[expiry_date][yy]"] = endYearTF.text!
+			requestDict["post_data[nofy_me]"] = notifyMe
+			requestDict["post_data[given_by]"] = givenByTF.text!
+			requestDict["post_data[certifications_no]"] = certificationsNoTF.text!
+		}
+		else if sectionType == "custom_fields" {
+			let current = notifyMeButton.isSelected ? "True" : "False"
+			requestDict["post_data[date][dd]"] = startDateTF.text!
+			requestDict["post_data[date][mm]"] = startMonthTF.text!
+			requestDict["post_data[date][yy]"] = startYearTF.text!
+			requestDict["post_data[expiry][dd]"] = endDateTF.text!
+			requestDict["post_data[expiry][mm]"] = endMonthTF.text!
+			requestDict["post_data[expiry][yy]"] = endYearTF.text!
+			requestDict["post_data[currently_pursuing]"] = current
+			requestDict["post_data[nofy_me]"] = notifyMe
+			requestDict["post_data[description]"] = givenByTF.text!
+			requestDict["post_data[number_id]"] = certificationsNoTF.text!
+			requestDict["post_data[url]"] = urlTF.text!
+		}
+		
 		if fileNameLabel.text! != "No file selected" {
 			requestDict["source_file_name[]"] = fileUrl
 		}
@@ -106,6 +145,10 @@ class AddCertificationsTableViewCell: UITableViewCell {
 	
 	@IBAction func notifyMeAction(_ sender: UIButton) {
 		notifyMeButton.isSelected = !sender.isSelected
+	}
+	
+	@IBAction func currentButtonAction(_ sender: UIButton) {
+		currentButton.isSelected = !sender.isSelected
 	}
 	
 	@IBAction func addFileButtonAction(_ sender: UIButton) {
