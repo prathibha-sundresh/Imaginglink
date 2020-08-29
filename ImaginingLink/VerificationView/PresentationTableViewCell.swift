@@ -74,9 +74,9 @@ class PresentationTableViewCell: UITableViewCell {
     
     func setupUI(dic:[String:Any]) {
         addShadowToView()
-        borderView.layer.borderWidth = 1.0
-        borderView.layer.cornerRadius = 4.0
-		borderView.layer.borderColor = UIColor(red:0.29, green:0.29, blue:0.29, alpha: 0.5).cgColor
+        borderView.layer.borderWidth = 2.0
+        borderView.layer.cornerRadius = 8.0
+		borderView.layer.borderColor = UIColor(red: 0.67, green: 0.83, blue: 0.98, alpha: 1.00).cgColor
         
         if let value = dic["id"] {
             presentationId = value as? String ?? ""
