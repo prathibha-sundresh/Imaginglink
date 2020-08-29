@@ -50,6 +50,7 @@ class AddLicensesTableViewCell: UITableViewCell {
 		notifyMeButton.isSelected = false
 		removeFileButton.isHidden = true
 		fileNameLabel.text = "No file selected"
+		enableOrDisableSaveButton()
 	}
 	
 	@IBAction func saveButtonAction(_ sender: UIButton) {
@@ -88,6 +89,21 @@ class AddLicensesTableViewCell: UITableViewCell {
 		fileNameLabel.text = "No file selected"
 		fileUrl = nil
 		removeFileButton.isHidden = true
+	}
+	
+	@IBAction func textDidChange(_ textField: UITextField) {
+		enableOrDisableSaveButton()
+	}
+	
+	func enableOrDisableSaveButton() {
+		if startDateTF.text != "" && startMonthTF.text != "" && startYearTF.text != "" && endDateTF.text != "" && endYearTF.text != "" && titleTF.text != "" {
+			saveButton.isEnabled = true
+			saveButton.alpha = 1.0
+		}
+		else {
+			saveButton.isEnabled = false
+			saveButton.alpha = 0.5
+		}
 	}
 }
 

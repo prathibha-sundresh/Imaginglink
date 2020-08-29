@@ -83,6 +83,7 @@ class EditPGEducationTableViewCell: UITableViewCell {
 			fellowshipTypeButton.isSelected = true
 		}
 		graduatedButton.isSelected = (graduated == "true") ? true : false
+		enableOrDisableSaveButton()
 	}
 	
 	@IBAction func graduatedAction(_ sender: UIButton) {
@@ -150,6 +151,21 @@ class EditPGEducationTableViewCell: UITableViewCell {
 		fileNameLabel.text = "No file selected"
 		fileUrl = nil
 		removeFileButton.isHidden = true
+	}
+	
+	@IBAction func textDidChange(_ textField: UITextField) {
+		enableOrDisableSaveButton()
+	}
+	
+	func enableOrDisableSaveButton() {
+		if fromYearTF.text != "" && endYearTF.text != "" && countryTF.text != "" && cityTF.text != "" && schoolTF.text != ""{
+			saveButton.isEnabled = true
+			saveButton.alpha = 1.0
+		}
+		else {
+			saveButton.isEnabled = false
+			saveButton.alpha = 0.5
+		}
 	}
 }
 

@@ -70,7 +70,7 @@ class EditCommitteesTableViewCell: UITableViewCell {
 		let graduated = (dict["currently_pursuing"] as? String ?? "false").lowercased()
 		
 		notifyMeButton.isSelected = (graduated == "true") ? true : false
-		
+		enableOrDisableSaveButton()
 	}
 	
 	@IBAction func saveButtonAction(_ sender: UIButton) {
@@ -104,6 +104,21 @@ class EditCommitteesTableViewCell: UITableViewCell {
 	
 	@IBAction func notifyMeAction(_ sender: UIButton) {
 		notifyMeButton.isSelected = !sender.isSelected
+	}
+	
+	@IBAction func textDidChange(_ textField: UITextField) {
+		enableOrDisableSaveButton()
+	}
+	
+	func enableOrDisableSaveButton() {
+		if startMonthTF.text != "" && startYearTF.text != "" && endYearTF.text != "" && endYearTF.text != "" && committeePositionTF.text != "" {
+			saveButton.isEnabled = true
+			saveButton.alpha = 1.0
+		}
+		else {
+			saveButton.isEnabled = false
+			saveButton.alpha = 0.5
+		}
 	}
 }
 

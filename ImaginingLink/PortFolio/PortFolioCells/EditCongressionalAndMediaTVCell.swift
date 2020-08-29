@@ -139,6 +139,22 @@ class EditCongressionalAndMediaTVCell: UITableViewCell {
 	@IBAction func deleteButtonAction(_ sender: UIButton) {
 		delegate?.deleteSection(dict: ["type" : sectionType,"status":"delete"], at: sender.tag)
 	}
+	
+	@IBAction func textDidChange(_ textField: UITextField) {
+		enableOrDisableSaveButton()
+	}
+	
+	func enableOrDisableSaveButton() {
+		
+		if startDateTF.text != "" && startMonthTF.text != "" && startYearTF.text != "" && textField1.text != "" && textField2.text != "" {
+			saveButton.isEnabled = true
+			saveButton.alpha = 1.0
+		}
+		else {
+			saveButton.isEnabled = false
+			saveButton.alpha = 0.5
+		}
+	}
 }
 
 extension EditCongressionalAndMediaTVCell: UITextFieldDelegate {

@@ -55,6 +55,7 @@ class AddPGEducationTableViewCell: UITableViewCell {
 		fellowshipTypeButton.isSelected = false
 		removeFileButton.isHidden = true
 		fileNameLabel.text = "No file selected"
+		enableOrDisableSaveButton()
 	}
 	@IBAction func saveButtonAction(_ sender: UIButton) {
 		var requestDict = [
@@ -108,6 +109,21 @@ class AddPGEducationTableViewCell: UITableViewCell {
 		fileNameLabel.text = "No file selected"
 		fileUrl = nil
 		removeFileButton.isHidden = true
+	}
+	
+	@IBAction func textDidChange(_ textField: UITextField) {
+		enableOrDisableSaveButton()
+	}
+	
+	func enableOrDisableSaveButton() {
+		if fromYearTF.text != "" && endYearTF.text != "" && countryTF.text != "" && cityTF.text != "" && schoolTF.text != ""{
+			saveButton.isEnabled = true
+			saveButton.alpha = 1.0
+		}
+		else {
+			saveButton.isEnabled = false
+			saveButton.alpha = 0.5
+		}
 	}
 }
 extension AddPGEducationTableViewCell: UITextFieldDelegate {

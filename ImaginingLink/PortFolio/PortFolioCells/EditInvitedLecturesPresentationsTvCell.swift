@@ -70,6 +70,7 @@ class EditInvitedLecturesPresentationsTvCell: UITableViewCell {
 		textField4.text = dict["audience_and_contact_time"] as? String ?? ""
 		textField5.text = dict["prep_time"] as? String ?? ""
 		textField6.text = dict["url"] as? String ?? ""
+		enableOrDisableSaveButton()
 	}
 	
 	@IBAction func saveButtonAction(_ sender: UIButton) {
@@ -114,6 +115,22 @@ class EditInvitedLecturesPresentationsTvCell: UITableViewCell {
 	
 	@IBAction func deleteButtonAction(_ sender: UIButton) {
 		delegate?.deleteSection(dict: ["type" : "invited_lectures_and_presentations","status":"delete"], at: sender.tag)
+	}
+	
+	@IBAction func textDidChange(_ textField: UITextField) {
+		enableOrDisableSaveButton()
+	}
+	
+	func enableOrDisableSaveButton() {
+		
+		if startDateTF.text != "" && startMonthTF.text != "" && startYearTF.text != "" && textField2.text != "" && textField3.text != "" {
+			saveButton.isEnabled = true
+			saveButton.alpha = 1.0
+		}
+		else {
+			saveButton.isEnabled = false
+			saveButton.alpha = 0.5
+		}
 	}
 }
 

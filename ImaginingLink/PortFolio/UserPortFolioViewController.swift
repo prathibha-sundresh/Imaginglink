@@ -183,31 +183,37 @@ class UserPortFolioViewController: UIViewController {
 					else if dropDowntype == "selectCountry" {
 						if self.editRowForSecction == -1 {
 							self.addPGEducationTableViewCell.countryTF.text = titles[0]
+							self.addPGEducationTableViewCell.enableOrDisableSaveButton()
 						}
 						else {
 							let cell: EditPGEducationTableViewCell = self.userPortFolioTableview.cellForRow(at: IndexPath(row: self.editRowForSecction, section: 3)) as! EditPGEducationTableViewCell
 							cell.countryTF.text = titles[0]
 							cell.cityTF.text = ""
 							cell.schoolTF.text = ""
+							cell.enableOrDisableSaveButton()
 						}
 					}
 					else if dropDowntype == "selectCity" {
 						if self.editRowForSecction == -1 {
 							self.addPGEducationTableViewCell.cityTF.text = titles[0]
+							self.addPGEducationTableViewCell.enableOrDisableSaveButton()
 						}
 						else {
 							let cell: EditPGEducationTableViewCell = self.userPortFolioTableview.cellForRow(at: IndexPath(row: self.editRowForSecction, section: 3)) as! EditPGEducationTableViewCell
 							cell.cityTF.text = titles[0]
 							cell.schoolTF.text = ""
+							cell.enableOrDisableSaveButton()
 						}
 					}
 					else if dropDowntype == "selectSchool" {
 						if self.editRowForSecction == -1 {
 							self.addPGEducationTableViewCell.schoolTF.text = titles[0]
+							self.addPGEducationTableViewCell.enableOrDisableSaveButton()
 						}
 						else {
 							let cell: EditPGEducationTableViewCell = self.userPortFolioTableview.cellForRow(at: IndexPath(row: self.editRowForSecction, section: 3)) as! EditPGEducationTableViewCell
 							cell.schoolTF.text = titles[0]
+							cell.enableOrDisableSaveButton()
 						}
 					}
 				}

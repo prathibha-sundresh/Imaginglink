@@ -98,6 +98,7 @@ class AddTeachingResponsibilitiesTvCell: UITableViewCell {
 			textField3.placeholder = "Sub Section"
 			textField4.placeholder = "URL"
 		}
+		enableOrDisableSaveButton()
 	}
 	
 	@IBAction func saveButtonAction(_ sender: UIButton) {
@@ -157,6 +158,22 @@ class AddTeachingResponsibilitiesTvCell: UITableViewCell {
 	
 	@IBAction func currentYearAction(_ sender: UIButton) {
 		currentYearButton.isSelected = !sender.isSelected
+	}
+	
+	@IBAction func textDidChange(_ textField: UITextField) {
+		enableOrDisableSaveButton()
+	}
+	
+	func enableOrDisableSaveButton() {
+		
+		if startDateTF.text != "" && startMonthTF.text != "" && startYearTF.text != "" && endDateTF.text != "" && endYearTF.text != "" && textField1.text != "" && textField2.text != "" {
+			saveButton.isEnabled = true
+			saveButton.alpha = 1.0
+		}
+		else {
+			saveButton.isEnabled = false
+			saveButton.alpha = 0.5
+		}
 	}
 }
 

@@ -64,19 +64,19 @@ class EditCertificationsTableViewCell: UITableViewCell {
 		
 		if sectionType == "certifications" {
 			givenByTF.placeholder = "Given by*"
-			certificationsNoTF.placeholder = "Certification number*"
-			fromLabel.text = "Issue Date"
-			toLabel.text = "Expiry Date"
+			certificationsNoTF.placeholder = "Certification number"
+			fromLabel.text = "Issue Date*"
+			toLabel.text = "Expiry Date*"
 			notifyLabel.text = "Notify me"
 		
 			givenByTF.text = dict["given_by"] as? String ?? ""
 			certificationsNoTF.text = dict["certifications_no"] as? String ?? ""
 		}
 		else if sectionType == "administrative_responsibility" {
-			givenByTF.placeholder = "Section"
+			givenByTF.placeholder = "Section*"
 			certificationsNoTF.placeholder = "Location"
-			fromLabel.text = "From"
-			toLabel.text = "To"
+			fromLabel.text = "From*"
+			toLabel.text = "To*"
 			notifyLabel.text = "Current"
 			
 			givenByTF.text = dict["section"] as? String ?? ""
@@ -89,8 +89,8 @@ class EditCertificationsTableViewCell: UITableViewCell {
 			givenByTF.placeholder = "Description*"
 			certificationsNoTF.placeholder = "Number/ID"
 			urlTF.placeholder = "URL"
-			fromLabel.text = "Start Date"
-			toLabel.text = "End Date"
+			fromLabel.text = "Start Date*"
+			toLabel.text = "End Date*"
 			notifyLabel.text = "Notify me"
 			currentButtonViewH.constant = 30
 			urlTFViewH.constant = 55
@@ -135,6 +135,7 @@ class EditCertificationsTableViewCell: UITableViewCell {
 			fileNameLabel.text = files[0]
 			removeFileButton.isHidden = false
 		}
+		enableOrDisableSaveButton()
 	}
 	
 	@IBAction func saveButtonAction(_ sender: UIButton) {
@@ -216,6 +217,34 @@ class EditCertificationsTableViewCell: UITableViewCell {
 	
 	@IBAction func currentButtonAction(_ sender: UIButton) {
 		currentButton.isSelected = !sender.isSelected
+	}
+	
+	@IBAction func textDidChange(_ textField: UITextField) {
+		enableOrDisableSaveButton()
+	}
+	
+	func enableOrDisableSaveButton() {
+		var isValidationBool = false
+		
+		if sectionType == "certifications" {
+			if startDateTF.text != "" && startMonthTF.text != "" && startYearTF.text != "" && endDateTF.text != "" && endYearTF.text != "" && titleTF.text != "" {
+				isValidationBool = true
+			}
+		}
+		else if sectionType == "administrative_responsibility" || sectionType == "custom_fields" {
+			if startDateTF.text != "" && startMonthTF.text != "" && startYearTF.text != "" && endDateTF.text != "" && endYearTF.text != "" && titleTF.text != "" && givenByTF.text != ""{
+				isValidationBool = true
+			}
+		}
+		
+		if isValidationBool {
+			saveButton.isEnabled = true
+			saveButton.alpha = 1.0
+		}
+		else {
+			saveButton.isEnabled = false
+			saveButton.alpha = 0.5
+		}
 	}
 }
 extension EditCertificationsTableViewCell: UITextFieldDelegate {

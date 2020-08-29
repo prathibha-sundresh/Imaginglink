@@ -69,30 +69,31 @@ class AddCertificationsTableViewCell: UITableViewCell {
 		
 		if sectionType == "certifications" {
 			givenByTF.placeholder = "Given by*"
-			certificationsNoTF.placeholder = "Certification number*"
-			fromLabel.text = "Issue Date"
-			toLabel.text = "Expiry Date"
+			certificationsNoTF.placeholder = "Certification number"
+			fromLabel.text = "Issue Date*"
+			toLabel.text = "Expiry Date*"
 			notifyLabel.text = "Notify me"
 		}
 		else if sectionType == "administrative_responsibility" {
-			givenByTF.placeholder = "Section"
+			givenByTF.placeholder = "Section*"
 			certificationsNoTF.placeholder = "Location"
-			fromLabel.text = "From"
-			toLabel.text = "To"
+			fromLabel.text = "From*"
+			toLabel.text = "To*"
 			notifyLabel.text = "Current"
 		}
 		else if sectionType == "custom_fields" {
 			givenByTF.placeholder = "Description*"
 			certificationsNoTF.placeholder = "Number/ID"
 			urlTF.placeholder = "URL"
-			fromLabel.text = "Start Date"
-			toLabel.text = "End Date"
+			fromLabel.text = "Start Date*"
+			toLabel.text = "End Date*"
 			notifyLabel.text = "Notify me"
 			currentButtonViewH.constant = 30
 			urlTFViewH.constant = 55
 			urlTF.isHidden = false
 			currentButtonView.isHidden = false
 		}
+		enableOrDisableSaveButton()
 	}
 	
 	@IBAction func saveButtonAction(_ sender: UIButton) {
@@ -162,6 +163,34 @@ class AddCertificationsTableViewCell: UITableViewCell {
 		fileNameLabel.text = "No file selected"
 		fileUrl = nil
 		removeFileButton.isHidden = true
+	}
+	
+	@IBAction func textDidChange(_ textField: UITextField) {
+		enableOrDisableSaveButton()
+	}
+	
+	func enableOrDisableSaveButton() {
+		var isValidationBool = false
+		
+		if sectionType == "certifications" {
+			if startDateTF.text != "" && startMonthTF.text != "" && startYearTF.text != "" && endDateTF.text != "" && endYearTF.text != "" && titleTF.text != "" {
+				isValidationBool = true
+			}
+		}
+		else if sectionType == "administrative_responsibility" || sectionType == "custom_fields" {
+			if startDateTF.text != "" && startMonthTF.text != "" && startYearTF.text != "" && endDateTF.text != "" && endYearTF.text != "" && titleTF.text != "" && givenByTF.text != ""{
+				isValidationBool = true
+			}
+		}
+		
+		if isValidationBool {
+			saveButton.isEnabled = true
+			saveButton.alpha = 1.0
+		}
+		else {
+			saveButton.isEnabled = false
+			saveButton.alpha = 0.5
+		}
 	}
 }
 extension AddCertificationsTableViewCell: UITextFieldDelegate {

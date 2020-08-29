@@ -45,6 +45,7 @@ class AddCommitteesTableViewCell: UITableViewCell {
 		endMonthTF.text = ""
 		endYearTF.text = ""
 		notifyMeButton.isSelected = false
+		enableOrDisableSaveButton()
 	}
 	
 	@IBAction func notifyMeAction(_ sender: UIButton) {
@@ -66,6 +67,21 @@ class AddCommitteesTableViewCell: UITableViewCell {
 		"post_data[date_to][yy]":endYearTF.text!,
 		"post_data[status]":false] as [String : Any]
 		delegate?.addSection(dict: requestDict)
+	}
+	
+	@IBAction func textDidChange(_ textField: UITextField) {
+		enableOrDisableSaveButton()
+	}
+	
+	func enableOrDisableSaveButton() {
+		if startMonthTF.text != "" && startYearTF.text != "" && endYearTF.text != "" && endYearTF.text != "" && committeePositionTF.text != "" {
+			saveButton.isEnabled = true
+			saveButton.alpha = 1.0
+		}
+		else {
+			saveButton.isEnabled = false
+			saveButton.alpha = 0.5
+		}
 	}
 }
 

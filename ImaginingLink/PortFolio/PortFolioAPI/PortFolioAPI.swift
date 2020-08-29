@@ -50,6 +50,10 @@ class PortFolioAPI {
 					isFileAdded = true
 				}
 			}
+			if let existingFile = requestDict["source_file_name[]"] as? String, existingFile != "" {
+				multipartFormData.append("\(existingFile)".data(using: String.Encoding.utf8)!, withName: "post_data[file][]")
+				isFileAdded = true
+			}
 			for (key, value) in requestDict {
 				if key == "source_file_name[]" && isFileAdded{
 					continue
