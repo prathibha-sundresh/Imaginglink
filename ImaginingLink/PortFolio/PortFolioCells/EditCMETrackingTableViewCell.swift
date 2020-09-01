@@ -1,15 +1,15 @@
 //
-//  EditInvitedLecturesPresentationsTvCell.swift
+//  EditCMETrackingTableViewCell.swift
 //  ImaginingLink
 //
-//  Created by Imaginglink Inc on 8/27/20.
+//  Created by Imaginglink Inc on 9/1/20.
 //  Copyright © 2020 Imaginglink Inc. All rights reserved.
 //
 
 import UIKit
 import MobileCoreServices
 
-class EditInvitedLecturesPresentationsTvCell: UITableViewCell {
+class EditCMETrackingTableViewCell: UITableViewCell {
 	@IBOutlet weak var startDateTF: FloatingLabel!
 	@IBOutlet weak var startMonthTF: FloatingLabel!
 	@IBOutlet weak var startYearTF: FloatingLabel!
@@ -19,6 +19,7 @@ class EditInvitedLecturesPresentationsTvCell: UITableViewCell {
 	@IBOutlet weak var textField4: FloatingLabel!
 	@IBOutlet weak var textField5: FloatingLabel!
 	@IBOutlet weak var textField6: FloatingLabel!
+	@IBOutlet weak var textField7: FloatingLabel!
 	@IBOutlet weak var fileNameLabel: UILabel!
 	@IBOutlet weak var removeFileButton: UIButton!
 	@IBOutlet weak var uploadFileButton: UIButton!
@@ -28,6 +29,7 @@ class EditInvitedLecturesPresentationsTvCell: UITableViewCell {
 	@IBOutlet weak var cancelButton: UIButton!
 	@IBOutlet weak var disableView: UIView!
 	var delegate: EditSectionTvCellDelegate?
+	var trackingTvCellDelegate: AddCMETrackingTvCellDelegate?
 	var vc: UIViewController?
 	var fileUrl: URL?
 	var isEditMode: Bool = false
@@ -59,38 +61,44 @@ class EditInvitedLecturesPresentationsTvCell: UITableViewCell {
 			removeFileButton.isHidden = false
 		}
 	
-		if let startDataDict = dict["date"] as? [String: Any] {
+		if let startDataDict = dict["date_completed"] as? [String: Any] {
 			startDateTF.text = startDataDict["dd"] as? String ?? ""
 			startMonthTF.text = startDataDict["mm"] as? String ?? ""
 			startYearTF.text = startDataDict["yy"] as? String ?? ""
 		}
-		textField1.text = dict["role"] as? String ?? ""
-		textField2.text = dict["location"] as? String ?? ""
-		textField3.text = dict["description"] as? String ?? ""
-		textField4.text = dict["audience_and_contact_time"] as? String ?? ""
-		textField5.text = dict["prep_time"] as? String ?? ""
-		textField6.text = dict["url"] as? String ?? ""
+		textField1.text = dict["year"] as? String ?? ""
+		textField2.text = dict["credit_amount"] as? String ?? ""
+		textField3.text = dict["credit_type"] as? String ?? ""
+		textField4.text = dict["course_title"] as? String ?? ""
+		textField5.text = dict["institution_name"] as? String ?? ""
+		textField6.text = dict["course_code"] as? String ?? ""
+		textField7.text = dict["course_description"] as? String ?? ""
 		enableOrDisableSaveButton()
 	}
 	
 	@IBAction func saveButtonAction(_ sender: UIButton) {
 		var requestDict = [
-		"type":"invited_lectures_and_presentations",
-		"post_data[date][dd]":startDateTF.text!,
-		"post_data[date][mm]":startMonthTF.text!,
-		"post_data[date][yy]":startYearTF.text!,
-		"post_data[role]" : textField1.text!,
-		"post_data[location]" : textField2.text!,
-		"post_data[description]" : textField3.text!,
-		"post_data[audience_and_contact_time]" : textField4.text!,
-		"post_data[prep_time]" : textField5.text!,
-		"post_data[url]" : textField6.text!,
+		"type":"cme_tracking",
+		"post_data[date_completed][dd]":startDateTF.text!,
+		"post_data[date_completed][mm]":startMonthTF.text!,
+		"post_data[date_completed][yy]":startYearTF.text!,
+		"post_data[year]" : textField1.text!,
+		"post_data[credit_amount]" : textField2.text!,
+		"post_data[credit_type]" : textField3.text!,
+		"post_data[course_title]" : textField4.text!,
+		"post_data[institution_name]" : textField5.text!,
+		"post_data[course_code]" : textField6.text!,
+		"post_data[course_description]" : textField7.text!,
 		"source_file_name[]" : fileUrl ?? fileNameLabel.text!,
 		"post_data[status]":true] as [String : Any]
 		if fileNameLabel.text! == "No file selected" {
 			requestDict["source_file_name[]"] = nil
 		}
 		delegate?.saveSection(dict: requestDict, at: sender.tag)
+	}
+	
+	@IBAction func selectCreditTypeButtonAction(_ sender: UIButton) {
+		trackingTvCellDelegate?.chooseCreditType()
 	}
 	
 	@IBAction func addFileButtonAction(_ sender: UIButton) {
@@ -115,7 +123,7 @@ class EditInvitedLecturesPresentationsTvCell: UITableViewCell {
 	}
 	
 	@IBAction func deleteButtonAction(_ sender: UIButton) {
-		delegate?.deleteSection(dict: ["type" : "invited_lectures_and_presentations","status":"delete"], at: sender.tag)
+		delegate?.deleteSection(dict: ["type" : "cme_tracking","status":"delete"], at: sender.tag)
 	}
 	
 	@IBAction func textDidChange(_ textField: UITextField) {
@@ -124,7 +132,7 @@ class EditInvitedLecturesPresentationsTvCell: UITableViewCell {
 	
 	func enableOrDisableSaveButton() {
 		
-		if startDateTF.text != "" && startMonthTF.text != "" && startYearTF.text != "" && textField2.text != "" && textField3.text != "" {
+		if startDateTF.text != "" && startMonthTF.text != "" && startYearTF.text != "" && textField1.text != "" && textField2.text != "" && textField3.text != "" {
 			saveButton.isEnabled = true
 			saveButton.alpha = 1.0
 		}
@@ -135,13 +143,13 @@ class EditInvitedLecturesPresentationsTvCell: UITableViewCell {
 	}
 }
 
-extension EditInvitedLecturesPresentationsTvCell: UITextFieldDelegate {
+extension EditCMETrackingTableViewCell: UITextFieldDelegate {
 	func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
 		return textField.validateNumber(placeholderType: textField.placeholder!, str: string, range: range)
 	}
 }
 
-extension EditInvitedLecturesPresentationsTvCell: UIDocumentPickerDelegate {
+extension EditCMETrackingTableViewCell: UIDocumentPickerDelegate {
 	func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentAt url: URL) {
 		fileUrl = url
 		fileNameLabel.text = url.lastPathComponent

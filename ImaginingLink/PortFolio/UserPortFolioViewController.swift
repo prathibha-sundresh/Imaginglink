@@ -14,6 +14,7 @@ class UserPortFolioViewController: UIViewController {
 	@IBOutlet weak var folioProgressView: UIProgressView!
 	@IBOutlet weak var folioProgressLabel: UILabel!
 	var contactPersonalInfoCell: ContactPersonalInfoTableViewCell!
+	var addCMETrackingTableViewCell: AddCMETrackingTableViewCell!
 	var addPGEducationTableViewCell: AddPGEducationTableViewCell!
 	var userPortFolioArray: [String] = ["Summary", "Contact & Personal Info", "Under Graduate","Post Graduate","Subspecialties", "Recreational Interests", "Academic Appointments", "Hospital Appointments","Honor/Awards", "Certifications","Licenses","Committees","Teaching Responsibilities","Major Mentoring Activities","Administrative Responsibilities","Professional Societies","Editorial Boards","Grant Or Fund details","Invited Lectures & Presentations","Congressional Testimony","Media Appearances","Custom Fields","Bibliography","CME Tracking"]
 	var expandedArray: [Int] = []
@@ -152,6 +153,10 @@ class UserPortFolioViewController: UIViewController {
 					vc.titleArray = ["Male", "Female"]
 					vc.selectedRowTitles = [contactPersonalInfoCell.genderTF.text!]
 				}
+				if dropDowntype == "Credit type" {
+					vc.titleArray = ["Cat1 CME","SA-CME","SAM"]
+					vc.selectedRowTitles = [addCMETrackingTableViewCell.textField3.text!]
+				}
 				else if dropDowntype == "selectCountry" {
 					vc.titleArray = countryListArray
 				}
@@ -179,6 +184,17 @@ class UserPortFolioViewController: UIViewController {
 					if dropDowntype == "selectGender" {
 						self.contactPersonalInfoCell.genderTF.text = titles[0]
 						self.contactPersonalInfoCell.enableOrDisableSaveButton()
+					}
+					else if dropDowntype == "Credit type" {
+						if self.editRowForSecction == -1 {
+							self.addCMETrackingTableViewCell.textField3.text = titles[0]
+							self.addCMETrackingTableViewCell.enableOrDisableSaveButton()
+						}
+						else {
+							let cell: EditCMETrackingTableViewCell = self.userPortFolioTableview.cellForRow(at: IndexPath(row: self.editRowForSecction, section: 23)) as! EditCMETrackingTableViewCell
+							cell.textField3.text = titles[0]
+							cell.enableOrDisableSaveButton()
+						}
 					}
 					else if dropDowntype == "selectCountry" {
 						if self.editRowForSecction == -1 {
@@ -464,6 +480,24 @@ extension UserPortFolioViewController: UITableViewDataSource,UITableViewDelegate
 				return cell
 			}
 		}
+		else if indexPath.section == 23 {
+			if indexPath.row == commonArray.count {
+				let cell : AddCMETrackingTableViewCell = tableView.dequeueReusableCell(withIdentifier: "AddCMETrackingTableViewCellID", for: indexPath) as! AddCMETrackingTableViewCell
+				cell.delegate = self
+				cell.trackingTvCellDelegate = self
+				cell.setUI()
+				addCMETrackingTableViewCell = cell
+				return cell
+			}
+			else {
+				let cell : EditCMETrackingTableViewCell = tableView.dequeueReusableCell(withIdentifier: "EditCMETrackingTableViewCellID", for: indexPath) as! EditCMETrackingTableViewCell
+				cell.delegate = self
+				cell.trackingTvCellDelegate = self
+				cell.isEditMode = (indexPath.row == editRowForSecction ? true: false)
+				cell.setUI(dict: commonArray[indexPath.row] ,btnTag: indexPath.row)
+				return cell
+			}
+		}
 		else {
 			contactPersonalInfoCell = tableView.dequeueReusableCell(withIdentifier: "ContactPersonalInfoTableViewCellID", for: indexPath) as? ContactPersonalInfoTableViewCell
 			contactPersonalInfoCell.delegate = self
@@ -602,6 +636,12 @@ extension UserPortFolioViewController: UITableViewDataSource,UITableViewDelegate
 		}
 		else if sender.tag == 21 {
 			getSectionTypeData("custom_fields")
+		}
+		else if sender.tag == 22 {
+			getSectionTypeData("custom_fields")
+		}
+		else if sender.tag == 23 {
+			getSectionTypeData("cme_tracking")
 		}
 	}
 	
@@ -754,5 +794,11 @@ extension UserPortFolioViewController: EditSectionTvCellDelegate {
 	func cancelSection() {
 		editRowForSecction = -1
 		userPortFolioTableview.reloadData()
+	}
+}
+
+extension UserPortFolioViewController: AddCMETrackingTvCellDelegate {
+	func chooseCreditType() {
+		self.performSegue(withIdentifier: "PopUpVCID", sender: ["type": "Credit type"])
 	}
 }

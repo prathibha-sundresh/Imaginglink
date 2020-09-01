@@ -70,6 +70,8 @@
 		485186C824E7919100335A35 /* AddHospitalAppointmentsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485186C724E7919100335A35 /* AddHospitalAppointmentsTableViewCell.swift */; };
 		485186CA24E7C6B000335A35 /* AddHonorAwardsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485186C924E7C6B000335A35 /* AddHonorAwardsTableViewCell.swift */; };
 		485186CC24E7C9BC00335A35 /* EditHonorAwardsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485186CB24E7C9BC00335A35 /* EditHonorAwardsTableViewCell.swift */; };
+		485491BD24FE882E005DC52C /* AddCMETrackingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485491BC24FE882E005DC52C /* AddCMETrackingTableViewCell.swift */; };
+		485491BF24FE8E32005DC52C /* EditCMETrackingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485491BE24FE8E32005DC52C /* EditCMETrackingTableViewCell.swift */; };
 		485E3DCF2377F09E00B94F05 /* AddCommentReplyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485E3DCE2377F09E00B94F05 /* AddCommentReplyViewController.swift */; };
 		4869A96124EEE5F1009A5AD3 /* AddCommitteesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4869A96024EEE5F1009A5AD3 /* AddCommitteesTableViewCell.swift */; };
 		4869A96324EEEBD2009A5AD3 /* EditCommitteesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4869A96224EEEBD2009A5AD3 /* EditCommitteesTableViewCell.swift */; };
@@ -242,6 +244,8 @@
 		485186C724E7919100335A35 /* AddHospitalAppointmentsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddHospitalAppointmentsTableViewCell.swift; sourceTree = "<group>"; };
 		485186C924E7C6B000335A35 /* AddHonorAwardsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddHonorAwardsTableViewCell.swift; sourceTree = "<group>"; };
 		485186CB24E7C9BC00335A35 /* EditHonorAwardsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditHonorAwardsTableViewCell.swift; sourceTree = "<group>"; };
+		485491BC24FE882E005DC52C /* AddCMETrackingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCMETrackingTableViewCell.swift; sourceTree = "<group>"; };
+		485491BE24FE8E32005DC52C /* EditCMETrackingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCMETrackingTableViewCell.swift; sourceTree = "<group>"; };
 		485E3DCE2377F09E00B94F05 /* AddCommentReplyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCommentReplyViewController.swift; sourceTree = "<group>"; };
 		4869A96024EEE5F1009A5AD3 /* AddCommitteesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCommitteesTableViewCell.swift; sourceTree = "<group>"; };
 		4869A96224EEEBD2009A5AD3 /* EditCommitteesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCommitteesTableViewCell.swift; sourceTree = "<group>"; };
@@ -517,6 +521,8 @@
 				4878412524F773B90058CE3B /* EditCongressionalAndMediaTVCell.swift */,
 				4878412724F7BFEF0058CE3B /* AddInvitedLecturesPresentationsTvCell.swift */,
 				4878412924F7C42D0058CE3B /* EditInvitedLecturesPresentationsTvCell.swift */,
+				485491BC24FE882E005DC52C /* AddCMETrackingTableViewCell.swift */,
+				485491BE24FE8E32005DC52C /* EditCMETrackingTableViewCell.swift */,
 			);
 			path = PortFolioCells;
 			sourceTree = "<group>";
@@ -1031,6 +1037,7 @@
 				4848B5D124E26F8700A7ECE9 /* EditSubSpecialitiesTableViewCell.swift in Sources */,
 				BCFFFBB720BAEEB0003A0652 /* OTPViewcontroller.swift in Sources */,
 				AC3AD4E42188A72D00B1B81A /* LogOutTableViewCell.swift in Sources */,
+				485491BD24FE882E005DC52C /* AddCMETrackingTableViewCell.swift in Sources */,
 				484BEA562484C3E70029B89A /* CreatePostViewController.swift in Sources */,
 				485186C824E7919100335A35 /* AddHospitalAppointmentsTableViewCell.swift in Sources */,
 				480D9B092177A32C000DEBFC /* ChangeEmailViewController.swift in Sources */,
@@ -1064,6 +1071,7 @@
 				48222DF223131FB700751CB7 /* FullSizeImageViewController.swift in Sources */,
 				4878412624F773B90058CE3B /* EditCongressionalAndMediaTVCell.swift in Sources */,
 				484279331FF39B9E0056A089 /* ViewController.swift in Sources */,
+				485491BF24FE8E32005DC52C /* EditCMETrackingTableViewCell.swift in Sources */,
 				48F7F1871FFE0412008D827A /* Constants.swift in Sources */,
 				488BD073218B4F2D003998AC /* ImageTableViewCell.swift in Sources */,
 				484E1F0524ED58E500EDF6C1 /* EditLicensesTableViewCell.swift in Sources */,
