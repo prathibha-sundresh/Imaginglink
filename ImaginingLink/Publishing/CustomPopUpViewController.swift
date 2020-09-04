@@ -31,6 +31,7 @@ class CustomPopUpViewController: UIViewController {
 	@IBOutlet weak var searchTFConstraintH: NSLayoutConstraint!
 	@IBOutlet weak var applyButton: UIButton!
 	var isCoAuthor = false
+	var isCapitalizedRequired = true
     override func viewDidLoad() {
         super.viewDidLoad()
 		titleTableView.tableFooterView = UIView(frame: .zero)
@@ -75,7 +76,7 @@ class CustomPopUpViewController: UIViewController {
 extension CustomPopUpViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-		if filteredArray[indexPath.row] != "New to Old" && filteredArray[indexPath.row] != "Old to New" {
+		if filteredArray[indexPath.row] != "New to Old" && filteredArray[indexPath.row] != "Old to New" && isCapitalizedRequired {
 			cell.textLabel?.text = "\(filteredArray[indexPath.row])".capitalized
 		}
 		else{

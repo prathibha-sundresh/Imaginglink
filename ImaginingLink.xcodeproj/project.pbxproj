@@ -72,6 +72,8 @@
 		485186CC24E7C9BC00335A35 /* EditHonorAwardsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485186CB24E7C9BC00335A35 /* EditHonorAwardsTableViewCell.swift */; };
 		485491BD24FE882E005DC52C /* AddCMETrackingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485491BC24FE882E005DC52C /* AddCMETrackingTableViewCell.swift */; };
 		485491BF24FE8E32005DC52C /* EditCMETrackingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485491BE24FE8E32005DC52C /* EditCMETrackingTableViewCell.swift */; };
+		485491C1250128DC005DC52C /* AddBibliographyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485491C0250128DC005DC52C /* AddBibliographyTableViewCell.swift */; };
+		485491C32502A0B3005DC52C /* EditBibliographyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485491C22502A0B3005DC52C /* EditBibliographyTableViewCell.swift */; };
 		485E3DCF2377F09E00B94F05 /* AddCommentReplyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485E3DCE2377F09E00B94F05 /* AddCommentReplyViewController.swift */; };
 		4869A96124EEE5F1009A5AD3 /* AddCommitteesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4869A96024EEE5F1009A5AD3 /* AddCommitteesTableViewCell.swift */; };
 		4869A96324EEEBD2009A5AD3 /* EditCommitteesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4869A96224EEEBD2009A5AD3 /* EditCommitteesTableViewCell.swift */; };
@@ -246,6 +248,8 @@
 		485186CB24E7C9BC00335A35 /* EditHonorAwardsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditHonorAwardsTableViewCell.swift; sourceTree = "<group>"; };
 		485491BC24FE882E005DC52C /* AddCMETrackingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCMETrackingTableViewCell.swift; sourceTree = "<group>"; };
 		485491BE24FE8E32005DC52C /* EditCMETrackingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCMETrackingTableViewCell.swift; sourceTree = "<group>"; };
+		485491C0250128DC005DC52C /* AddBibliographyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBibliographyTableViewCell.swift; sourceTree = "<group>"; };
+		485491C22502A0B3005DC52C /* EditBibliographyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBibliographyTableViewCell.swift; sourceTree = "<group>"; };
 		485E3DCE2377F09E00B94F05 /* AddCommentReplyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCommentReplyViewController.swift; sourceTree = "<group>"; };
 		4869A96024EEE5F1009A5AD3 /* AddCommitteesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCommitteesTableViewCell.swift; sourceTree = "<group>"; };
 		4869A96224EEEBD2009A5AD3 /* EditCommitteesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCommitteesTableViewCell.swift; sourceTree = "<group>"; };
@@ -523,6 +527,8 @@
 				4878412924F7C42D0058CE3B /* EditInvitedLecturesPresentationsTvCell.swift */,
 				485491BC24FE882E005DC52C /* AddCMETrackingTableViewCell.swift */,
 				485491BE24FE8E32005DC52C /* EditCMETrackingTableViewCell.swift */,
+				485491C0250128DC005DC52C /* AddBibliographyTableViewCell.swift */,
+				485491C22502A0B3005DC52C /* EditBibliographyTableViewCell.swift */,
 			);
 			path = PortFolioCells;
 			sourceTree = "<group>";
@@ -1014,6 +1020,7 @@
 				4848B5C724D943BD00A7ECE9 /* SummaryTableViewCell.swift in Sources */,
 				484BEAA82490A6010029B89A /* UploadedFilesViewController.swift in Sources */,
 				485E3DCF2377F09E00B94F05 /* AddCommentReplyViewController.swift in Sources */,
+				485491C32502A0B3005DC52C /* EditBibliographyTableViewCell.swift in Sources */,
 				AC130702218A035900790E9A /* EmailchangeOTPViewcontroller.swift in Sources */,
 				AC153A49217E265C0017692B /* BaseHamburgerViewController.swift in Sources */,
 				4810C817230C04F100B6ACA4 /* ComingSoonViewController.swift in Sources */,
@@ -1102,6 +1109,7 @@
 				AC9159FA210613D30018CB94 /* MobileOTPVirecontroller.swift in Sources */,
 				484E1EFD24E9857800EDF6C1 /* EditPGEducationTableViewCell.swift in Sources */,
 				48FB28AE247121B900277FD0 /* FaqViewController.swift in Sources */,
+				485491C1250128DC005DC52C /* AddBibliographyTableViewCell.swift in Sources */,
 				BC9DD97B20B82541003CA4A6 /* WebServiceHandler.swift in Sources */,
 				ACCA1D152107697600383104 /* DashBoardViewController.swift in Sources */,
 				ACC98D11211B37F00098B53A /* MenuViewController.swift in Sources */,

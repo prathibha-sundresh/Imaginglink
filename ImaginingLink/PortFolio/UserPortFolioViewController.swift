@@ -16,6 +16,7 @@ class UserPortFolioViewController: UIViewController {
 	var contactPersonalInfoCell: ContactPersonalInfoTableViewCell!
 	var addCMETrackingTableViewCell: AddCMETrackingTableViewCell!
 	var addPGEducationTableViewCell: AddPGEducationTableViewCell!
+	var addBibliographyTableViewCell: AddBibliographyTableViewCell!
 	var userPortFolioArray: [String] = ["Summary", "Contact & Personal Info", "Under Graduate","Post Graduate","Subspecialties", "Recreational Interests", "Academic Appointments", "Hospital Appointments","Honor/Awards", "Certifications","Licenses","Committees","Teaching Responsibilities","Major Mentoring Activities","Administrative Responsibilities","Professional Societies","Editorial Boards","Grant Or Fund details","Invited Lectures & Presentations","Congressional Testimony","Media Appearances","Custom Fields","Bibliography","CME Tracking"]
 	var expandedArray: [Int] = []
 	var dataDict = [String: Any]()
@@ -153,9 +154,20 @@ class UserPortFolioViewController: UIViewController {
 					vc.titleArray = ["Male", "Female"]
 					vc.selectedRowTitles = [contactPersonalInfoCell.genderTF.text!]
 				}
-				if dropDowntype == "Credit type" {
+				else if dropDowntype == "Credit type" {
 					vc.titleArray = ["Cat1 CME","SA-CME","SAM"]
+					vc.isCapitalizedRequired = false
 					vc.selectedRowTitles = [addCMETrackingTableViewCell.textField3.text!]
+				}
+				else if dropDowntype == "Bibliography Type" {
+					vc.titleArray = ["Pubmed articles","Journal article(s)","Editorials", "Scientific abstract(s)","Educational exhibit(s)","Case report(s)","Book(s)","Book chapter(s)","Patent","Thesis","Others"]
+					vc.selectedRowTitles = [addBibliographyTableViewCell.textField1.text!]
+					vc.isCapitalizedRequired = false
+				}
+				else if dropDowntype == "Bibliography Status" {
+					vc.titleArray = ["Published","In review","In press"]
+					vc.selectedRowTitles = [addBibliographyTableViewCell.textField13.text!]
+					vc.isCapitalizedRequired = false
 				}
 				else if dropDowntype == "selectCountry" {
 					vc.titleArray = countryListArray
@@ -184,6 +196,28 @@ class UserPortFolioViewController: UIViewController {
 					if dropDowntype == "selectGender" {
 						self.contactPersonalInfoCell.genderTF.text = titles[0]
 						self.contactPersonalInfoCell.enableOrDisableSaveButton()
+					}
+					else if dropDowntype == "Bibliography Type" {
+						if self.editRowForSecction == -1 {
+							self.addBibliographyTableViewCell.textField1.text = titles[0]
+							self.addBibliographyTableViewCell.enableOrDisableSaveButton()
+						}
+						else {
+							let cell: EditBibliographyTableViewCell = self.userPortFolioTableview.cellForRow(at: IndexPath(row: self.editRowForSecction, section: 22)) as! EditBibliographyTableViewCell
+							cell.textField1.text = titles[0]
+							cell.enableOrDisableSaveButton()
+						}
+					}
+					else if dropDowntype == "Bibliography Status" {
+						if self.editRowForSecction == -1 {
+							self.addBibliographyTableViewCell.textField13.text = titles[0]
+							self.addBibliographyTableViewCell.enableOrDisableSaveButton()
+						}
+						else {
+							let cell: EditBibliographyTableViewCell = self.userPortFolioTableview.cellForRow(at: IndexPath(row: self.editRowForSecction, section: 22)) as! EditBibliographyTableViewCell
+							cell.textField13.text = titles[0]
+							cell.enableOrDisableSaveButton()
+						}
 					}
 					else if dropDowntype == "Credit type" {
 						if self.editRowForSecction == -1 {
@@ -480,10 +514,31 @@ extension UserPortFolioViewController: UITableViewDataSource,UITableViewDelegate
 				return cell
 			}
 		}
+		else if indexPath.section == 22 {
+			if indexPath.row == commonArray.count {
+				let cell : AddBibliographyTableViewCell = tableView.dequeueReusableCell(withIdentifier: "AddBibliographyTableViewCellID", for: indexPath) as! AddBibliographyTableViewCell
+				cell.delegate = self
+				cell.vc = self
+				cell.cellDelegate = self
+				cell.setUI()
+				addBibliographyTableViewCell = cell
+				return cell
+			}
+			else {
+				let cell : EditBibliographyTableViewCell = tableView.dequeueReusableCell(withIdentifier: "EditBibliographyTableViewCellID", for: indexPath) as! EditBibliographyTableViewCell
+				cell.delegate = self
+				cell.vc = self
+				cell.cellDelegate = self
+				cell.isEditMode = (indexPath.row == editRowForSecction ? true: false)
+				cell.setUI(dict: commonArray[indexPath.row] ,btnTag: indexPath.row)
+				return cell
+			}
+		}
 		else if indexPath.section == 23 {
 			if indexPath.row == commonArray.count {
 				let cell : AddCMETrackingTableViewCell = tableView.dequeueReusableCell(withIdentifier: "AddCMETrackingTableViewCellID", for: indexPath) as! AddCMETrackingTableViewCell
 				cell.delegate = self
+				cell.vc = self
 				cell.trackingTvCellDelegate = self
 				cell.setUI()
 				addCMETrackingTableViewCell = cell
@@ -492,6 +547,7 @@ extension UserPortFolioViewController: UITableViewDataSource,UITableViewDelegate
 			else {
 				let cell : EditCMETrackingTableViewCell = tableView.dequeueReusableCell(withIdentifier: "EditCMETrackingTableViewCellID", for: indexPath) as! EditCMETrackingTableViewCell
 				cell.delegate = self
+				cell.vc = self
 				cell.trackingTvCellDelegate = self
 				cell.isEditMode = (indexPath.row == editRowForSecction ? true: false)
 				cell.setUI(dict: commonArray[indexPath.row] ,btnTag: indexPath.row)
@@ -638,7 +694,7 @@ extension UserPortFolioViewController: UITableViewDataSource,UITableViewDelegate
 			getSectionTypeData("custom_fields")
 		}
 		else if sender.tag == 22 {
-			getSectionTypeData("custom_fields")
+			getSectionTypeData("bibliography")
 		}
 		else if sender.tag == 23 {
 			getSectionTypeData("cme_tracking")
@@ -802,3 +858,14 @@ extension UserPortFolioViewController: AddCMETrackingTvCellDelegate {
 		self.performSegue(withIdentifier: "PopUpVCID", sender: ["type": "Credit type"])
 	}
 }
+
+extension UserPortFolioViewController: AddBibliographyTvCellDelegate {
+	func chooseBibliographyType() {
+		self.performSegue(withIdentifier: "PopUpVCID", sender: ["type": "Bibliography Type"])
+	}
+	
+	func chooseStatusType() {
+		self.performSegue(withIdentifier: "PopUpVCID", sender: ["type": "Bibliography Status"])
+	}
+}
+
