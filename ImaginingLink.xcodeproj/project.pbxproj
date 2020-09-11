@@ -74,6 +74,10 @@
 		485491BF24FE8E32005DC52C /* EditCMETrackingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485491BE24FE8E32005DC52C /* EditCMETrackingTableViewCell.swift */; };
 		485491C1250128DC005DC52C /* AddBibliographyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485491C0250128DC005DC52C /* AddBibliographyTableViewCell.swift */; };
 		485491C32502A0B3005DC52C /* EditBibliographyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485491C22502A0B3005DC52C /* EditBibliographyTableViewCell.swift */; };
+		485B23D525049D88002BD5F0 /* AddUGEducationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485B23D425049D88002BD5F0 /* AddUGEducationTableViewCell.swift */; };
+		485B23D725049D9A002BD5F0 /* EditUGEducationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485B23D625049D9A002BD5F0 /* EditUGEducationTableViewCell.swift */; };
+		485B23D92504A02A002BD5F0 /* EducationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485B23D82504A02A002BD5F0 /* EducationTableViewCell.swift */; };
+		485B23DB2504F519002BD5F0 /* portfolio_ug_countries.json in Resources */ = {isa = PBXBuildFile; fileRef = 485B23DA2504F519002BD5F0 /* portfolio_ug_countries.json */; };
 		485E3DCF2377F09E00B94F05 /* AddCommentReplyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485E3DCE2377F09E00B94F05 /* AddCommentReplyViewController.swift */; };
 		4869A96124EEE5F1009A5AD3 /* AddCommitteesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4869A96024EEE5F1009A5AD3 /* AddCommitteesTableViewCell.swift */; };
 		4869A96324EEEBD2009A5AD3 /* EditCommitteesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4869A96224EEEBD2009A5AD3 /* EditCommitteesTableViewCell.swift */; };
@@ -250,6 +254,10 @@
 		485491BE24FE8E32005DC52C /* EditCMETrackingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCMETrackingTableViewCell.swift; sourceTree = "<group>"; };
 		485491C0250128DC005DC52C /* AddBibliographyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBibliographyTableViewCell.swift; sourceTree = "<group>"; };
 		485491C22502A0B3005DC52C /* EditBibliographyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBibliographyTableViewCell.swift; sourceTree = "<group>"; };
+		485B23D425049D88002BD5F0 /* AddUGEducationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUGEducationTableViewCell.swift; sourceTree = "<group>"; };
+		485B23D625049D9A002BD5F0 /* EditUGEducationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditUGEducationTableViewCell.swift; sourceTree = "<group>"; };
+		485B23D82504A02A002BD5F0 /* EducationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EducationTableViewCell.swift; sourceTree = "<group>"; };
+		485B23DA2504F519002BD5F0 /* portfolio_ug_countries.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = portfolio_ug_countries.json; sourceTree = "<group>"; };
 		485E3DCE2377F09E00B94F05 /* AddCommentReplyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCommentReplyViewController.swift; sourceTree = "<group>"; };
 		4869A96024EEE5F1009A5AD3 /* AddCommitteesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCommitteesTableViewCell.swift; sourceTree = "<group>"; };
 		4869A96224EEEBD2009A5AD3 /* EditCommitteesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCommitteesTableViewCell.swift; sourceTree = "<group>"; };
@@ -487,6 +495,7 @@
 				48FB2895246FD96200277FD0 /* Terms and Conditions.pdf */,
 				48FB28AF2471420500277FD0 /* faqs.json */,
 				484E1EF824E9088F00EDF6C1 /* portfolio_pg_countries.json */,
+				485B23DA2504F519002BD5F0 /* portfolio_ug_countries.json */,
 			);
 			path = ImaginingLink;
 			sourceTree = "<group>";
@@ -529,6 +538,9 @@
 				485491BE24FE8E32005DC52C /* EditCMETrackingTableViewCell.swift */,
 				485491C0250128DC005DC52C /* AddBibliographyTableViewCell.swift */,
 				485491C22502A0B3005DC52C /* EditBibliographyTableViewCell.swift */,
+				485B23D425049D88002BD5F0 /* AddUGEducationTableViewCell.swift */,
+				485B23D625049D9A002BD5F0 /* EditUGEducationTableViewCell.swift */,
+				485B23D82504A02A002BD5F0 /* EducationTableViewCell.swift */,
 			);
 			path = PortFolioCells;
 			sourceTree = "<group>";
@@ -864,6 +876,7 @@
 				AC0AD39020D13C5800FCB371 /* ListView.storyboard in Resources */,
 				4810C81F231189BD00B6ACA4 /* GoogleSans-Medium.ttf in Resources */,
 				AC6046AD211018E0006A42F3 /* SF-Pro-Display-Light.ttf in Resources */,
+				485B23DB2504F519002BD5F0 /* portfolio_ug_countries.json in Resources */,
 				480A3BE923580B3100EA4EF4 /* Publishing.storyboard in Resources */,
 				AC323B3320FF750F0015ECB4 /* SF-Pro-Display-Regular.ttf in Resources */,
 				48FB28BA247CE6F800277FD0 /* SocialConnect.storyboard in Resources */,
@@ -1055,11 +1068,13 @@
 				48A0799E23DC99F900495BC2 /* FilterPublishViewController.swift in Sources */,
 				484BEA54248412BB0029B89A /* SharedVideoTableViewCell.swift in Sources */,
 				4897CCE720038E7200360EB7 /* SSHttpResponse.swift in Sources */,
+				485B23D725049D9A002BD5F0 /* EditUGEducationTableViewCell.swift in Sources */,
 				ACCA1D1721076D1B00383104 /* DashBoardCollectionViewCell.swift in Sources */,
 				484BEA46247F88B40029B89A /* SharedStatusTableViewCell.swift in Sources */,
 				AC12A32F217A27B900858A47 /* AlreadyHaveOTPViewController.swift in Sources */,
 				484E1F0124EBFB5900EDF6C1 /* EditCertificationsTableViewCell.swift in Sources */,
 				485186C624E55F9000335A35 /* EditHospitalORAcademicAppointmentsTVCell.swift in Sources */,
+				485B23D92504A02A002BD5F0 /* EducationTableViewCell.swift in Sources */,
 				48F4F41C2004CE55005CD239 /* CoreAPI.swift in Sources */,
 				485186CC24E7C9BC00335A35 /* EditHonorAwardsTableViewCell.swift in Sources */,
 				484BEAAB24B0C7440029B89A /* MyFriendsViewController.swift in Sources */,
@@ -1079,6 +1094,7 @@
 				4878412624F773B90058CE3B /* EditCongressionalAndMediaTVCell.swift in Sources */,
 				484279331FF39B9E0056A089 /* ViewController.swift in Sources */,
 				485491BF24FE8E32005DC52C /* EditCMETrackingTableViewCell.swift in Sources */,
+				485B23D525049D88002BD5F0 /* AddUGEducationTableViewCell.swift in Sources */,
 				48F7F1871FFE0412008D827A /* Constants.swift in Sources */,
 				488BD073218B4F2D003998AC /* ImageTableViewCell.swift in Sources */,
 				484E1F0524ED58E500EDF6C1 /* EditLicensesTableViewCell.swift in Sources */,

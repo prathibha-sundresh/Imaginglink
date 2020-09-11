@@ -107,9 +107,10 @@ class EditBibliographyTableViewCell: UITableViewCell {
 			"post_data[page_from]" : textField10.text!,
 			"post_data[page_to]" : textField11.text!,
 			"post_data[url]" : textField12.text!,
+			"source_file_name[]" : fileUrl ?? fileNameLabel.text!,
 			"post_data[status]" : textField13.text!] as [String : Any]
-		if fileNameLabel.text! != "No file selected" {
-			requestDict["source_file_name[]"] = fileUrl
+		if fileNameLabel.text! == "No file selected" {
+			requestDict["source_file_name[]"] = nil
 		}
 		delegate?.saveSection(dict: requestDict, at: sender.tag)
 	}

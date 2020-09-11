@@ -17,18 +17,24 @@ class UserPortFolioViewController: UIViewController {
 	var addCMETrackingTableViewCell: AddCMETrackingTableViewCell!
 	var addPGEducationTableViewCell: AddPGEducationTableViewCell!
 	var addBibliographyTableViewCell: AddBibliographyTableViewCell!
+	var educationTableViewCell: EducationTableViewCell!
+	
 	var userPortFolioArray: [String] = ["Summary", "Contact & Personal Info", "Under Graduate","Post Graduate","Subspecialties", "Recreational Interests", "Academic Appointments", "Hospital Appointments","Honor/Awards", "Certifications","Licenses","Committees","Teaching Responsibilities","Major Mentoring Activities","Administrative Responsibilities","Professional Societies","Editorial Boards","Grant Or Fund details","Invited Lectures & Presentations","Congressional Testimony","Media Appearances","Custom Fields","Bibliography","CME Tracking"]
 	var expandedArray: [Int] = []
 	var dataDict = [String: Any]()
 	var commonArray: [[String: Any]] = []
 	var pgDataArray: [[String: Any]] = []
-	var countryListArray: [String] = []
+	var ugDataArray: [[String: Any]] = []
+	var ugCountryListArray: [String] = []
+	var pgCountryListArray: [String] = []
 	var editRowForSecction : Int = -1
-	
+	var ugSectionIndex : Int = 0
+	var educationTableViewH : CGFloat = 0
     override func viewDidLoad() {
         super.viewDidLoad()
 		getFolioDetails()
 		getPGList()
+		getUGList()
         // Do any additional setup after loading the view.
     }
 	
@@ -40,7 +46,22 @@ class UserPortFolioViewController: UIViewController {
 				if let dictionary = object as? [String: Any] {
 					pgDataArray = dictionary["data"] as? [[String: Any]] ?? []
 					let countries = Array(Set(pgDataArray.map({$0["country"] as! String})))
-					countryListArray = countries.sorted(by: <)
+					pgCountryListArray = countries.sorted(by: <)
+				}
+			} catch {
+			}
+		}
+	}
+	
+	func getUGList() {
+		if let url = Bundle.main.url(forResource: "portfolio_ug_countries", withExtension: "json") {
+			do {
+				let data = try Data(contentsOf: url)
+				let object = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
+				if let dictionary = object as? [String: Any] {
+					ugDataArray = dictionary["data"] as? [[String: Any]] ?? []
+					let countries = Array(Set(pgDataArray.map({$0["country"] as! String})))
+					ugCountryListArray = countries.sorted(by: <)
 				}
 			} catch {
 			}
@@ -148,8 +169,12 @@ class UserPortFolioViewController: UIViewController {
 //					vc.selectedRowTitles = [contactPersonalInfoCell.genderTF.text!]
 //				}
 //			}
-			if let dict = sender as? [String: Any] {
-				let dropDowntype = dict["type"] as? String ?? ""
+			if let senderDict = sender as? [String: Any] {
+				let dropDowntype = senderDict["type"] as? String ?? ""
+				var section = 0
+				if expandedArray.count > 0 {
+					section = expandedArray[0]
+				}
 				if dropDowntype == "selectGender" {
 					vc.titleArray = ["Male", "Female"]
 					vc.selectedRowTitles = [contactPersonalInfoCell.genderTF.text!]
@@ -170,19 +195,21 @@ class UserPortFolioViewController: UIViewController {
 					vc.isCapitalizedRequired = false
 				}
 				else if dropDowntype == "selectCountry" {
-					vc.titleArray = countryListArray
+					vc.titleArray = section == 2 ? ugCountryListArray : pgCountryListArray
 				}
 				else if dropDowntype == "selectCity" {
-					let countryName = dict["country"] as? String ?? ""
-					let cityArray = Array(Set(pgDataArray.filter({$0["country"] as! String == countryName}).map({$0["city"] as! String}))).sorted(by: <)
+					let countryName = senderDict["country"] as? String ?? ""
+					let array = (section == 2) ? ugDataArray : pgDataArray
+					let cityArray = Array(Set(array.filter({$0["country"] as! String == countryName}).map({$0["city"] as! String}))).sorted(by: <)
 					if cityArray.count > 0 {
 						vc.titleArray = cityArray
 					}
 				}
 				else if dropDowntype == "selectSchool" {
-					let country = dict["country"] as? String ?? ""
-					let city = dict["city"] as? String ?? ""
-					let colleges = pgDataArray.filter({$0["country"] as! String == country && $0["city"] as! String == city}).map({$0["college"] as! String})
+					let country = senderDict["country"] as? String ?? ""
+					let city = senderDict["city"] as? String ?? ""
+					let array = (section == 2) ? ugDataArray : pgDataArray
+					let colleges = array.filter({$0["country"] as! String == country && $0["city"] as! String == city}).map({$0["college"] as! String})
 					if colleges.count > 0 {
 						vc.titleArray = colleges
 					}
@@ -192,7 +219,7 @@ class UserPortFolioViewController: UIViewController {
 					if titles.count == 0 {
 						return
 					}
-					
+					self.editRowForSecction = senderDict["index"] as? Int ?? self.editRowForSecction
 					if dropDowntype == "selectGender" {
 						self.contactPersonalInfoCell.genderTF.text = titles[0]
 						self.contactPersonalInfoCell.enableOrDisableSaveButton()
@@ -232,38 +259,81 @@ class UserPortFolioViewController: UIViewController {
 					}
 					else if dropDowntype == "selectCountry" {
 						if self.editRowForSecction == -1 {
-							self.addPGEducationTableViewCell.countryTF.text = titles[0]
-							self.addPGEducationTableViewCell.enableOrDisableSaveButton()
+							if section == 2 {
+								self.educationTableViewCell.addUGEducationTableViewCell.countryTF.text = titles[0]
+								self.educationTableViewCell.addUGEducationTableViewCell.enableOrDisableSaveButton()
+							}
+							else {
+								self.addPGEducationTableViewCell.countryTF.text = titles[0]
+								self.addPGEducationTableViewCell.enableOrDisableSaveButton()
+							}
 						}
 						else {
-							let cell: EditPGEducationTableViewCell = self.userPortFolioTableview.cellForRow(at: IndexPath(row: self.editRowForSecction, section: 3)) as! EditPGEducationTableViewCell
-							cell.countryTF.text = titles[0]
-							cell.cityTF.text = ""
-							cell.schoolTF.text = ""
-							cell.enableOrDisableSaveButton()
+							if section == 2 {
+								let cell: EditUGEducationTableViewCell = senderDict["cell"] as! EditUGEducationTableViewCell
+								cell.countryTF.text = titles[0]
+								cell.cityTF.text = ""
+								cell.schoolTF.text = ""
+								cell.enableOrDisableSaveButton()
+							}
+							else {
+								let cell: EditPGEducationTableViewCell = self.userPortFolioTableview.cellForRow(at: IndexPath(row: self.editRowForSecction, section: 3)) as! EditPGEducationTableViewCell
+								cell.countryTF.text = titles[0]
+								cell.cityTF.text = ""
+								cell.schoolTF.text = ""
+								cell.enableOrDisableSaveButton()
+							}
+							
 						}
 					}
 					else if dropDowntype == "selectCity" {
 						if self.editRowForSecction == -1 {
-							self.addPGEducationTableViewCell.cityTF.text = titles[0]
-							self.addPGEducationTableViewCell.enableOrDisableSaveButton()
+							if section == 2 {
+								self.educationTableViewCell.addUGEducationTableViewCell.cityTF.text = titles[0]
+								self.educationTableViewCell.addUGEducationTableViewCell.enableOrDisableSaveButton()
+							}
+							else {
+								self.addPGEducationTableViewCell.cityTF.text = titles[0]
+								self.addPGEducationTableViewCell.enableOrDisableSaveButton()
+							}
 						}
 						else {
-							let cell: EditPGEducationTableViewCell = self.userPortFolioTableview.cellForRow(at: IndexPath(row: self.editRowForSecction, section: 3)) as! EditPGEducationTableViewCell
-							cell.cityTF.text = titles[0]
-							cell.schoolTF.text = ""
-							cell.enableOrDisableSaveButton()
+							if section == 2 {
+								let cell: EditUGEducationTableViewCell = senderDict["cell"] as! EditUGEducationTableViewCell
+								cell.cityTF.text = titles[0]
+								cell.schoolTF.text = ""
+								cell.enableOrDisableSaveButton()
+							}
+							else {
+								let cell: EditPGEducationTableViewCell = self.userPortFolioTableview.cellForRow(at: IndexPath(row: self.editRowForSecction, section: 3)) as! EditPGEducationTableViewCell
+								cell.cityTF.text = titles[0]
+								cell.schoolTF.text = ""
+								cell.enableOrDisableSaveButton()
+							}
 						}
 					}
 					else if dropDowntype == "selectSchool" {
 						if self.editRowForSecction == -1 {
-							self.addPGEducationTableViewCell.schoolTF.text = titles[0]
-							self.addPGEducationTableViewCell.enableOrDisableSaveButton()
+							if section == 2 {
+								self.educationTableViewCell.addUGEducationTableViewCell.schoolTF.text = titles[0]
+								self.educationTableViewCell.addUGEducationTableViewCell.enableOrDisableSaveButton()
+							}
+							else {
+								self.addPGEducationTableViewCell.schoolTF.text = titles[0]
+								self.addPGEducationTableViewCell.enableOrDisableSaveButton()
+							}
 						}
 						else {
-							let cell: EditPGEducationTableViewCell = self.userPortFolioTableview.cellForRow(at: IndexPath(row: self.editRowForSecction, section: 3)) as! EditPGEducationTableViewCell
-							cell.schoolTF.text = titles[0]
-							cell.enableOrDisableSaveButton()
+							if section == 2 {
+								let cell: EditUGEducationTableViewCell = senderDict["cell"] as! EditUGEducationTableViewCell
+								cell.schoolTF.text = titles[0]
+								cell.enableOrDisableSaveButton()
+							}
+							else {
+								let cell: EditPGEducationTableViewCell = self.userPortFolioTableview.cellForRow(at: IndexPath(row: self.editRowForSecction, section: 3)) as! EditPGEducationTableViewCell
+								cell.schoolTF.text = titles[0]
+								cell.enableOrDisableSaveButton()
+							}
 						}
 					}
 				}
@@ -280,6 +350,16 @@ extension UserPortFolioViewController: UITableViewDataSource,UITableViewDelegate
 			let cell : SummaryTableViewCell = tableView.dequeueReusableCell(withIdentifier: "SummaryTableViewCellID", for: indexPath) as! SummaryTableViewCell
 			cell.delegate = self
 			cell.setUI(dict: dataDict)
+			return cell
+		}
+		else if indexPath.section == 2 {
+			let cell : EducationTableViewCell = tableView.dequeueReusableCell(withIdentifier: "EducationTableViewCellID", for: indexPath) as! EducationTableViewCell
+			cell.dataArray = commonArray
+			cell.delegate = self
+			cell.cellDelegate = self
+			cell.vc = self
+			cell.setUI(height: educationTableViewH, section: ugSectionIndex)
+			educationTableViewCell =  cell
 			return cell
 		}
 		else if indexPath.section == 3 {
@@ -567,11 +647,10 @@ extension UserPortFolioViewController: UITableViewDataSource,UITableViewDelegate
 	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		if expandedArray.contains(section) {
-			if section == 0 || section == 1 {
+			if section == 0 || section == 1 || section == 2 {
 				return 1
 			}
 			return commonArray.count + 1
-			
 		}
 		else {
 			return 0
@@ -866,6 +945,22 @@ extension UserPortFolioViewController: AddBibliographyTvCellDelegate {
 	
 	func chooseStatusType() {
 		self.performSegue(withIdentifier: "PopUpVCID", sender: ["type": "Bibliography Status"])
+	}
+}
+
+extension UserPortFolioViewController: EducationTableViewCellDelegate {
+	func saveSchool(requestdict: [String : Any]) {
+		addPortFolioDetails(requestDict: requestdict, of: "UG")
+	}
+	
+	func deleteSchool(requestdict: [String : Any]) {
+		deletePortFolioDetailsAPI(inputDict: requestdict, section: "UG")
+	}
+	
+	func updateCellHeight(height: CGFloat, section: Int) {
+		educationTableViewH = height
+		ugSectionIndex = section
+		self.userPortFolioTableview.reloadSections([2], with: .fade)
 	}
 }
 
