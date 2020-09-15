@@ -12780,6 +12780,501 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3FK-qe-MJv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="AddBibliographyTableViewCellID" rowHeight="1000" id="x6q-zZ-wcX" customClass="AddBibliographyTableViewCell" customModule="ImagingLink" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="355" height="1000"/>
+                    <autoresizingMask key="autoresizingMask"/>
+                    <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="x6q-zZ-wcX" id="vk9-xu-ssi">
+                        <rect key="frame" x="0.0" y="0.0" width="355" height="1000"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CNZ-47-W5n">
+                                <rect key="frame" x="15" y="10" width="325" height="55"/>
+                                <subviews>
+                                    <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Zq5-F0-rQ2" userLabel="SectionTextField" customClass="FloatingLabel" customModule="ImagingLink" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="325" height="55"/>
+                                        <fontDescription key="fontDescription" name="GoogleSans-Regular" family="Google Sans" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits" smartInsertDeleteType="yes"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Funding Type*"/>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
+                                                <color key="value" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="selectedTitleColor">
+                                                <color key="value" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="selectedLineColor">
+                                                <color key="value" red="0.12941176469999999" green="0.58823529409999997" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="lineColor">
+                                                <color key="value" red="0.73333333329999995" green="0.80392156859999997" blue="0.83137254900000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </textField>
+                                    <button opaque="NO" tag="100" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ye1-xn-eJj">
+                                        <rect key="frame" x="0.0" y="0.0" width="325" height="55"/>
+                                        <inset key="imageEdgeInsets" minX="15" minY="15" maxX="5" maxY="15"/>
+                                        <state key="normal" image="BlackColorDropDownImage"/>
+                                        <connections>
+                                            <action selector="selectBibliographyTypeAction:" destination="x6q-zZ-wcX" eventType="touchUpInside" id="B9G-R6-2Qt"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="Zq5-F0-rQ2" secondAttribute="trailing" id="05a-l2-z87"/>
+                                    <constraint firstAttribute="bottom" secondItem="Zq5-F0-rQ2" secondAttribute="bottom" id="ACC-Ed-AVX"/>
+                                    <constraint firstAttribute="height" constant="55" id="E46-eE-yas"/>
+                                    <constraint firstItem="Zq5-F0-rQ2" firstAttribute="leading" secondItem="CNZ-47-W5n" secondAttribute="leading" id="LfJ-D7-uMv"/>
+                                    <constraint firstAttribute="bottom" secondItem="ye1-xn-eJj" secondAttribute="bottom" id="WkV-m8-ZsV"/>
+                                    <constraint firstItem="Zq5-F0-rQ2" firstAttribute="top" secondItem="CNZ-47-W5n" secondAttribute="top" id="eaM-Vo-dx7"/>
+                                    <constraint firstAttribute="trailing" secondItem="ye1-xn-eJj" secondAttribute="trailing" id="hbG-Un-6T7"/>
+                                    <constraint firstItem="ye1-xn-eJj" firstAttribute="leading" secondItem="CNZ-47-W5n" secondAttribute="leading" id="qLr-tR-mmw"/>
+                                    <constraint firstItem="ye1-xn-eJj" firstAttribute="top" secondItem="CNZ-47-W5n" secondAttribute="top" id="qzP-eE-Hsb"/>
+                                </constraints>
+                            </view>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BWM-sn-CVw" userLabel="SectionTextField" customClass="FloatingLabel" customModule="ImagingLink" customModuleProvider="target">
+                                <rect key="frame" x="15" y="75" width="325" height="55"/>
+                                <fontDescription key="fontDescription" name="GoogleSans-Regular" family="Google Sans" pointSize="16"/>
+                                <textInputTraits key="textInputTraits" smartInsertDeleteType="yes"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Funding Sub Type*"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
+                                        <color key="value" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="selectedTitleColor">
+                                        <color key="value" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="selectedLineColor">
+                                        <color key="value" red="0.12941176469999999" green="0.58823529409999997" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="lineColor">
+                                        <color key="value" red="0.73333333329999995" green="0.80392156859999997" blue="0.83137254900000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="textDidChange:" destination="x6q-zZ-wcX" eventType="editingChanged" id="haH-AV-kWn"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CWm-wW-uV0" userLabel="SectionTextField" customClass="FloatingLabel" customModule="ImagingLink" customModuleProvider="target">
+                                <rect key="frame" x="15" y="140" width="325" height="55"/>
+                                <fontDescription key="fontDescription" name="GoogleSans-Regular" family="Google Sans" pointSize="16"/>
+                                <textInputTraits key="textInputTraits" smartInsertDeleteType="yes"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Title Of Funded Project*"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
+                                        <color key="value" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="selectedTitleColor">
+                                        <color key="value" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="selectedLineColor">
+                                        <color key="value" red="0.12941176469999999" green="0.58823529409999997" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="lineColor">
+                                        <color key="value" red="0.73333333329999995" green="0.80392156859999997" blue="0.83137254900000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="textDidChange:" destination="x6q-zZ-wcX" eventType="editingChanged" id="ig7-bV-Ugr"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Edp-zN-ycB" userLabel="SectionTextField" customClass="FloatingLabel" customModule="ImagingLink" customModuleProvider="target">
+                                <rect key="frame" x="15" y="205" width="325" height="55"/>
+                                <fontDescription key="fontDescription" name="GoogleSans-Regular" family="Google Sans" pointSize="16"/>
+                                <textInputTraits key="textInputTraits" smartInsertDeleteType="yes"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Description"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
+                                        <color key="value" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="selectedTitleColor">
+                                        <color key="value" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="selectedLineColor">
+                                        <color key="value" red="0.12941176469999999" green="0.58823529409999997" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="lineColor">
+                                        <color key="value" red="0.73333333329999995" green="0.80392156859999997" blue="0.83137254900000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="textDidChange:" destination="x6q-zZ-wcX" eventType="editingChanged" id="MhZ-UB-yaD"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xLJ-q3-Ohl" userLabel="SectionTextField" customClass="FloatingLabel" customModule="ImagingLink" customModuleProvider="target">
+                                <rect key="frame" x="15" y="270" width="325" height="55"/>
+                                <fontDescription key="fontDescription" name="GoogleSans-Regular" family="Google Sans" pointSize="16"/>
+                                <textInputTraits key="textInputTraits" smartInsertDeleteType="yes"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Total Funding Amount"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
+                                        <color key="value" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="selectedTitleColor">
+                                        <color key="value" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="selectedLineColor">
+                                        <color key="value" red="0.12941176469999999" green="0.58823529409999997" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="lineColor">
+                                        <color key="value" red="0.73333333329999995" green="0.80392156859999997" blue="0.83137254900000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="textDidChange:" destination="x6q-zZ-wcX" eventType="editingChanged" id="2Bw-tZ-wZP"/>
+                                </connections>
+                            </textField>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r7r-JU-I5e">
+                                <rect key="frame" x="0.0" y="335" width="355" height="73"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Start Date*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DBQ-R7-tOJ">
+                                        <rect key="frame" x="15" y="2" width="70" height="16"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="GoogleSans-Regular" family="Google Sans" pointSize="12"/>
+                                        <color key="textColor" red="0.47058823529999999" green="0.50588235290000005" blue="0.52941176469999995" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UPl-ro-Jj5">
+                                        <rect key="frame" x="15" y="23" width="70" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CbN-TQ-kIk" userLabel="TitleTextField" customClass="FloatingLabel" customModule="ImagingLink" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="70" height="50"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" name="GoogleSans-Regular" family="Google Sans" pointSize="16"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad" smartInsertDeleteType="yes"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="MM"/>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
+                                                        <color key="value" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="selectedTitleColor">
+                                                        <color key="value" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="selectedLineColor">
+                                                        <color key="value" red="0.73333333329999995" green="0.80392156859999997" blue="0.83137254900000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="lineColor">
+                                                        <color key="value" red="0.73333333329999995" green="0.80392156859999997" blue="0.83137254900000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="textDidChange:" destination="x6q-zZ-wcX" eventType="editingChanged" id="tXr-7O-EgE"/>
+                                                    <outlet property="delegate" destination="x6q-zZ-wcX" id="EW3-PQ-PTh"/>
+                                                </connections>
+                                            </textField>
+                                        </subviews>
+                                    </view>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ll7-q1-cc8">
+                                        <rect key="frame" x="100" y="23" width="80" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Q08-6T-hn1" userLabel="TitleTextField" customClass="FloatingLabel" customModule="ImagingLink" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="80" height="50"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" name="GoogleSans-Regular" family="Google Sans" pointSize="16"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad" smartInsertDeleteType="yes"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="YYYY"/>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
+                                                        <color key="value" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="selectedTitleColor">
+                                                        <color key="value" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="selectedLineColor">
+                                                        <color key="value" red="0.73333333329999995" green="0.80392156859999997" blue="0.83137254900000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="lineColor">
+                                                        <color key="value" red="0.73333333329999995" green="0.80392156859999997" blue="0.83137254900000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="textDidChange:" destination="x6q-zZ-wcX" eventType="editingChanged" id="0w8-LW-rRK"/>
+                                                    <outlet property="delegate" destination="x6q-zZ-wcX" id="AA1-Cd-fGT"/>
+                                                </connections>
+                                            </textField>
+                                        </subviews>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="73" id="b5f-CJ-PrZ"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vty-Nt-rs5">
+                                <rect key="frame" x="0.0" y="420" width="355" height="73"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="End Date*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ogR-eh-qvo">
+                                        <rect key="frame" x="15" y="2" width="70" height="16"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="GoogleSans-Regular" family="Google Sans" pointSize="12"/>
+                                        <color key="textColor" red="0.47058823529999999" green="0.50588235290000005" blue="0.52941176469999995" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TuC-J0-GYU">
+                                        <rect key="frame" x="15" y="23" width="70" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Pw0-Pw-Yo6" userLabel="TitleTextField" customClass="FloatingLabel" customModule="ImagingLink" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="70" height="50"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" name="GoogleSans-Regular" family="Google Sans" pointSize="16"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad" smartInsertDeleteType="yes"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="MM"/>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
+                                                        <color key="value" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="selectedTitleColor">
+                                                        <color key="value" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="selectedLineColor">
+                                                        <color key="value" red="0.73333333329999995" green="0.80392156859999997" blue="0.83137254900000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="lineColor">
+                                                        <color key="value" red="0.73333333329999995" green="0.80392156859999997" blue="0.83137254900000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="textDidChange:" destination="x6q-zZ-wcX" eventType="editingChanged" id="V1c-xQ-Avi"/>
+                                                    <outlet property="delegate" destination="x6q-zZ-wcX" id="WFY-fJ-jHh"/>
+                                                </connections>
+                                            </textField>
+                                        </subviews>
+                                    </view>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3Op-we-X01">
+                                        <rect key="frame" x="100" y="23" width="80" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="udD-pJ-eYN" userLabel="TitleTextField" customClass="FloatingLabel" customModule="ImagingLink" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="80" height="50"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" name="GoogleSans-Regular" family="Google Sans" pointSize="16"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad" smartInsertDeleteType="yes"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="YYYY"/>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
+                                                        <color key="value" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="selectedTitleColor">
+                                                        <color key="value" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="selectedLineColor">
+                                                        <color key="value" red="0.73333333329999995" green="0.80392156859999997" blue="0.83137254900000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="lineColor">
+                                                        <color key="value" red="0.73333333329999995" green="0.80392156859999997" blue="0.83137254900000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="textDidChange:" destination="x6q-zZ-wcX" eventType="editingChanged" id="AFC-io-RHH"/>
+                                                    <outlet property="delegate" destination="x6q-zZ-wcX" id="1M8-BK-Uv1"/>
+                                                </connections>
+                                            </textField>
+                                        </subviews>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jTB-z1-ERF" userLabel="SectionTextField" customClass="FloatingLabel" customModule="ImagingLink" customModuleProvider="target">
+                                <rect key="frame" x="15" y="503" width="325" height="55"/>
+                                <fontDescription key="fontDescription" name="GoogleSans-Regular" family="Google Sans" pointSize="16"/>
+                                <textInputTraits key="textInputTraits" smartInsertDeleteType="yes"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Role"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
+                                        <color key="value" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="selectedTitleColor">
+                                        <color key="value" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="selectedLineColor">
+                                        <color key="value" red="0.12941176469999999" green="0.58823529409999997" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="lineColor">
+                                        <color key="value" red="0.73333333329999995" green="0.80392156859999997" blue="0.83137254900000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="textDidChange:" destination="x6q-zZ-wcX" eventType="editingChanged" id="Jpi-PY-Abx"/>
+                                </connections>
+                            </textField>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0nj-bY-KbZ">
+                                <rect key="frame" x="0.0" y="568" width="355" height="80"/>
+                                <subviews>
+                                    <button opaque="NO" tag="1000" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jT6-mL-gC8">
+                                        <rect key="frame" x="15" y="20" width="131" height="36"/>
+                                        <color key="backgroundColor" red="0.97647058819999999" green="0.58039215690000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="131" id="prb-RC-090"/>
+                                            <constraint firstAttribute="height" constant="36" id="xSd-F0-A5q"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="GoogleSans-Medium" family="Google Sans" pointSize="14"/>
+                                        <state key="normal" title="Upload a Copy"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="addFileButtonAction:" destination="x6q-zZ-wcX" eventType="touchUpInside" id="2rT-GP-G4X"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OsL-PZ-Gx1">
+                                        <rect key="frame" x="15" y="71" width="325" height="1"/>
+                                        <color key="backgroundColor" red="0.73333333329999995" green="0.80392156859999997" blue="0.83137254900000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="zSc-xF-WKg"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="GoogleSans-Regular" family="Google Sans" pointSize="16"/>
+                                        <color key="textColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No file selected" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qbf-dW-7Gc">
+                                        <rect key="frame" x="160" y="20" width="147" height="36"/>
+                                        <fontDescription key="fontDescription" name="GoogleSans-Regular" family="Google Sans" pointSize="12"/>
+                                        <color key="textColor" red="0.60784313729999995" green="0.60784313729999995" blue="0.60784313729999995" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vEP-pf-o8w">
+                                        <rect key="frame" x="307" y="20" width="36" height="36"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="36" id="S1c-a7-VSC"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="GoogleSans-Medium" family="Google Sans" pointSize="14"/>
+                                        <state key="normal" title="✕">
+                                            <color key="titleColor" red="0.97647058819999999" green="0.58039215690000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="removeFileButtonAction:" destination="x6q-zZ-wcX" eventType="touchUpInside" id="4Mr-JE-lZh"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstItem="Qbf-dW-7Gc" firstAttribute="bottom" secondItem="jT6-mL-gC8" secondAttribute="bottom" id="44o-FZ-pIr"/>
+                                    <constraint firstItem="vEP-pf-o8w" firstAttribute="leading" secondItem="Qbf-dW-7Gc" secondAttribute="trailing" id="4en-F0-26o"/>
+                                    <constraint firstItem="vEP-pf-o8w" firstAttribute="bottom" secondItem="Qbf-dW-7Gc" secondAttribute="bottom" id="DSQ-Mo-blR"/>
+                                    <constraint firstItem="jT6-mL-gC8" firstAttribute="top" secondItem="0nj-bY-KbZ" secondAttribute="top" constant="20" id="FgK-xF-Csq"/>
+                                    <constraint firstItem="jT6-mL-gC8" firstAttribute="leading" secondItem="0nj-bY-KbZ" secondAttribute="leading" constant="15" id="KLf-dn-yiB"/>
+                                    <constraint firstAttribute="trailing" secondItem="OsL-PZ-Gx1" secondAttribute="trailing" constant="15" id="OHE-Ch-y2H"/>
+                                    <constraint firstItem="Qbf-dW-7Gc" firstAttribute="leading" secondItem="jT6-mL-gC8" secondAttribute="trailing" constant="14" id="PEF-Xh-wYA"/>
+                                    <constraint firstItem="Qbf-dW-7Gc" firstAttribute="top" secondItem="jT6-mL-gC8" secondAttribute="top" id="VCA-6M-TnC"/>
+                                    <constraint firstAttribute="height" constant="80" id="Zcs-2L-PGM"/>
+                                    <constraint firstAttribute="bottom" secondItem="OsL-PZ-Gx1" secondAttribute="bottom" constant="8" id="fpI-Rj-Pb5"/>
+                                    <constraint firstAttribute="trailing" secondItem="vEP-pf-o8w" secondAttribute="trailing" constant="12" id="pMo-uH-Xm1"/>
+                                    <constraint firstItem="OsL-PZ-Gx1" firstAttribute="leading" secondItem="0nj-bY-KbZ" secondAttribute="leading" constant="15" id="vap-el-afQ"/>
+                                    <constraint firstItem="vEP-pf-o8w" firstAttribute="top" secondItem="Qbf-dW-7Gc" secondAttribute="top" id="vc8-m1-T70"/>
+                                </constraints>
+                            </view>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3UP-as-5vz" userLabel="SectionTextField" customClass="FloatingLabel" customModule="ImagingLink" customModuleProvider="target">
+                                <rect key="frame" x="15" y="658" width="325" height="55"/>
+                                <fontDescription key="fontDescription" name="GoogleSans-Regular" family="Google Sans" pointSize="16"/>
+                                <textInputTraits key="textInputTraits" smartInsertDeleteType="yes"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Details*"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
+                                        <color key="value" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="selectedTitleColor">
+                                        <color key="value" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="selectedLineColor">
+                                        <color key="value" red="0.12941176469999999" green="0.58823529409999997" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="lineColor">
+                                        <color key="value" red="0.73333333329999995" green="0.80392156859999997" blue="0.83137254900000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="textDidChange:" destination="x6q-zZ-wcX" eventType="editingChanged" id="og7-Or-WY2"/>
+                                </connections>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U9T-q2-A5C">
+                                <rect key="frame" x="15" y="950" width="108" height="34"/>
+                                <color key="backgroundColor" red="0.12941176469999999" green="0.58823529409999997" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="108" id="fR4-qs-caB"/>
+                                    <constraint firstAttribute="height" constant="34" id="o64-mY-f3o"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="GoogleSans-Medium" family="Google Sans" pointSize="14"/>
+                                <state key="normal" title="SAVE"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="saveButtonAction:" destination="x6q-zZ-wcX" eventType="touchUpInside" id="DJJ-di-bRm"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="CWm-wW-uV0" firstAttribute="leading" secondItem="BWM-sn-CVw" secondAttribute="leading" id="0L4-Ip-6y9"/>
+                            <constraint firstItem="3UP-as-5vz" firstAttribute="top" secondItem="0nj-bY-KbZ" secondAttribute="bottom" constant="10" id="2bl-pY-MkM"/>
+                            <constraint firstItem="xLJ-q3-Ohl" firstAttribute="leading" secondItem="Edp-zN-ycB" secondAttribute="leading" id="2j2-uO-X9E"/>
+                            <constraint firstAttribute="trailing" secondItem="r7r-JU-I5e" secondAttribute="trailing" id="3EI-jx-2eR"/>
+                            <constraint firstItem="Edp-zN-ycB" firstAttribute="leading" secondItem="CWm-wW-uV0" secondAttribute="leading" id="3UP-ky-tP7"/>
+                            <constraint firstItem="xLJ-q3-Ohl" firstAttribute="top" secondItem="Edp-zN-ycB" secondAttribute="bottom" constant="10" id="BfZ-pd-MpK"/>
+                            <constraint firstItem="CWm-wW-uV0" firstAttribute="trailing" secondItem="BWM-sn-CVw" secondAttribute="trailing" id="CDj-ez-uyc"/>
+                            <constraint firstItem="BWM-sn-CVw" firstAttribute="trailing" secondItem="CNZ-47-W5n" secondAttribute="trailing" id="Hxc-2o-0Ff"/>
+                            <constraint firstItem="r7r-JU-I5e" firstAttribute="leading" secondItem="vk9-xu-ssi" secondAttribute="leading" id="InO-af-Q87"/>
+                            <constraint firstItem="3UP-as-5vz" firstAttribute="trailing" secondItem="jTB-z1-ERF" secondAttribute="trailing" id="JNb-1v-MXC"/>
+                            <constraint firstItem="BWM-sn-CVw" firstAttribute="height" secondItem="CNZ-47-W5n" secondAttribute="height" id="PjN-E7-Gyf"/>
+                            <constraint firstItem="Edp-zN-ycB" firstAttribute="height" secondItem="CWm-wW-uV0" secondAttribute="height" id="QVT-UA-rCD"/>
+                            <constraint firstItem="CWm-wW-uV0" firstAttribute="height" secondItem="BWM-sn-CVw" secondAttribute="height" id="Qh0-SO-kfk"/>
+                            <constraint firstItem="jTB-z1-ERF" firstAttribute="top" secondItem="Vty-Nt-rs5" secondAttribute="bottom" constant="10" id="YG9-IM-wbV"/>
+                            <constraint firstItem="U9T-q2-A5C" firstAttribute="leading" secondItem="vk9-xu-ssi" secondAttribute="leading" constant="15" id="Zxt-1d-b5f"/>
+                            <constraint firstItem="3UP-as-5vz" firstAttribute="height" secondItem="jTB-z1-ERF" secondAttribute="height" id="aXw-fx-8X5"/>
+                            <constraint firstAttribute="bottom" secondItem="U9T-q2-A5C" secondAttribute="bottom" constant="16" id="bcs-Tc-qsN"/>
+                            <constraint firstItem="CNZ-47-W5n" firstAttribute="top" secondItem="vk9-xu-ssi" secondAttribute="top" constant="10" id="bgR-ae-cSC"/>
+                            <constraint firstItem="jTB-z1-ERF" firstAttribute="trailing" secondItem="xLJ-q3-Ohl" secondAttribute="trailing" id="coF-Qr-Yxb"/>
+                            <constraint firstItem="Vty-Nt-rs5" firstAttribute="trailing" secondItem="r7r-JU-I5e" secondAttribute="trailing" id="cut-mI-uo3"/>
+                            <constraint firstAttribute="trailing" secondItem="0nj-bY-KbZ" secondAttribute="trailing" id="dNg-i7-y5r"/>
+                            <constraint firstItem="Edp-zN-ycB" firstAttribute="trailing" secondItem="CWm-wW-uV0" secondAttribute="trailing" id="e4f-vh-xYN"/>
+                            <constraint firstItem="xLJ-q3-Ohl" firstAttribute="trailing" secondItem="Edp-zN-ycB" secondAttribute="trailing" id="eBx-SX-ibv"/>
+                            <constraint firstItem="0nj-bY-KbZ" firstAttribute="leading" secondItem="vk9-xu-ssi" secondAttribute="leading" id="hGr-CZ-6nm"/>
+                            <constraint firstItem="Vty-Nt-rs5" firstAttribute="top" secondItem="r7r-JU-I5e" secondAttribute="bottom" constant="12" id="ikz-Dm-w68"/>
+                            <constraint firstAttribute="trailing" secondItem="CNZ-47-W5n" secondAttribute="trailing" constant="15" id="kX5-MM-XBs"/>
+                            <constraint firstItem="Edp-zN-ycB" firstAttribute="top" secondItem="CWm-wW-uV0" secondAttribute="bottom" constant="10" id="ko8-wb-EZy"/>
+                            <constraint firstItem="3UP-as-5vz" firstAttribute="leading" secondItem="jTB-z1-ERF" secondAttribute="leading" id="m14-AW-pgj"/>
+                            <constraint firstItem="jTB-z1-ERF" firstAttribute="height" secondItem="xLJ-q3-Ohl" secondAttribute="height" id="nMY-fw-ENu"/>
+                            <constraint firstItem="BWM-sn-CVw" firstAttribute="top" secondItem="CNZ-47-W5n" secondAttribute="bottom" constant="10" id="q0I-FD-Ry2"/>
+                            <constraint firstItem="jTB-z1-ERF" firstAttribute="leading" secondItem="xLJ-q3-Ohl" secondAttribute="leading" id="qOq-Ml-CTg"/>
+                            <constraint firstItem="CWm-wW-uV0" firstAttribute="top" secondItem="BWM-sn-CVw" secondAttribute="bottom" constant="10" id="qje-Gl-Kjx"/>
+                            <constraint firstItem="Vty-Nt-rs5" firstAttribute="leading" secondItem="r7r-JU-I5e" secondAttribute="leading" id="sY9-4F-DAK"/>
+                            <constraint firstItem="r7r-JU-I5e" firstAttribute="top" secondItem="xLJ-q3-Ohl" secondAttribute="bottom" constant="10" id="sgO-Gt-phb"/>
+                            <constraint firstItem="xLJ-q3-Ohl" firstAttribute="height" secondItem="Edp-zN-ycB" secondAttribute="height" id="tSr-09-HUF"/>
+                            <constraint firstItem="0nj-bY-KbZ" firstAttribute="top" secondItem="jTB-z1-ERF" secondAttribute="bottom" constant="10" id="tTB-wG-8j5"/>
+                            <constraint firstItem="CNZ-47-W5n" firstAttribute="leading" secondItem="vk9-xu-ssi" secondAttribute="leading" constant="15" id="ubU-79-pje"/>
+                            <constraint firstItem="Vty-Nt-rs5" firstAttribute="height" secondItem="r7r-JU-I5e" secondAttribute="height" id="v3c-Vx-z7D"/>
+                            <constraint firstItem="BWM-sn-CVw" firstAttribute="leading" secondItem="CNZ-47-W5n" secondAttribute="leading" id="woZ-ty-aDE"/>
+                        </constraints>
+                    </tableViewCellContentView>
+                    <connections>
+                        <outlet property="fileNameLabel" destination="Qbf-dW-7Gc" id="JPK-4R-1lg"/>
+                        <outlet property="removeFileButton" destination="vEP-pf-o8w" id="cbp-TH-nsT"/>
+                        <outlet property="saveButton" destination="U9T-q2-A5C" id="M1d-YU-xQy"/>
+                        <outlet property="startMonthTF" destination="CbN-TQ-kIk" id="qhC-xx-bwE"/>
+                        <outlet property="startYearTF" destination="Q08-6T-hn1" id="Bhs-ir-7XF"/>
+                        <outlet property="textField1" destination="Zq5-F0-rQ2" id="8uc-w0-dNs"/>
+                        <outlet property="textField12" destination="jTB-z1-ERF" id="4ak-8x-o63"/>
+                        <outlet property="textField2" destination="BWM-sn-CVw" id="SJD-Y5-ffE"/>
+                        <outlet property="textField3" destination="CWm-wW-uV0" id="A5z-OS-cjF"/>
+                        <outlet property="textField4" destination="Edp-zN-ycB" id="OCv-LM-C9q"/>
+                        <outlet property="textField5" destination="xLJ-q3-Ohl" id="sgK-sL-4dl"/>
+                        <outlet property="uploadFileButton" destination="jT6-mL-gC8" id="zxP-VP-wwx"/>
+                    </connections>
+                </tableViewCell>
             </objects>
             <point key="canvasLocation" x="1213.5999999999999" y="824.43778110944538"/>
         </scene>

@@ -55,7 +55,7 @@ class EditUGEducationTableViewCell: UITableViewCell {
 		
 		removeFileButton.isHidden = true
 		fileNameLabel.text = "No file selected"
-		if let files = dict["file"] as? [String], files.count > 0 {
+		if let files = dict["certificate"] as? [String], files.count > 0 {
 			fileNameLabel.text = files[0]
 			removeFileButton.isHidden = false
 		}
