@@ -18,6 +18,7 @@ class UserPortFolioViewController: UIViewController {
 	var addPGEducationTableViewCell: AddPGEducationTableViewCell!
 	var addBibliographyTableViewCell: AddBibliographyTableViewCell!
 	var educationTableViewCell: EducationTableViewCell!
+	var addFundingTableViewCell: AddFundingTableViewCell!
 	
 	var userPortFolioArray: [String] = ["Summary", "Contact & Personal Info", "Under Graduate","Post Graduate","Subspecialties", "Recreational Interests", "Academic Appointments", "Hospital Appointments","Honor/Awards", "Certifications","Licenses","Committees","Teaching Responsibilities","Major Mentoring Activities","Administrative Responsibilities","Professional Societies","Editorial Boards","Grant Or Fund details","Invited Lectures & Presentations","Congressional Testimony","Media Appearances","Custom Fields","Bibliography","CME Tracking"]
 	var expandedArray: [Int] = []
@@ -184,6 +185,10 @@ class UserPortFolioViewController: UIViewController {
 					vc.isCapitalizedRequired = false
 					vc.selectedRowTitles = [addCMETrackingTableViewCell.textField3.text!]
 				}
+				else if dropDowntype == "Funding Type" {
+					vc.titleArray = ["Award","Contract","Grant","Salary award"]
+					//vc.selectedRowTitles = [addCMETrackingTableViewCell.textField3.text!]
+				}
 				else if dropDowntype == "Bibliography Type" {
 					vc.titleArray = ["Pubmed articles","Journal article(s)","Editorials", "Scientific abstract(s)","Educational exhibit(s)","Case report(s)","Book(s)","Book chapter(s)","Patent","Thesis","Others"]
 					vc.selectedRowTitles = [addBibliographyTableViewCell.textField1.text!]
@@ -223,6 +228,17 @@ class UserPortFolioViewController: UIViewController {
 					if dropDowntype == "selectGender" {
 						self.contactPersonalInfoCell.genderTF.text = titles[0]
 						self.contactPersonalInfoCell.enableOrDisableSaveButton()
+					}
+					else if dropDowntype == "Funding Type" {
+						if self.editRowForSecction == -1 {
+							self.addFundingTableViewCell.textField1.text = titles[0]
+							self.addFundingTableViewCell.enableOrDisableSaveButton()
+						}
+						else {
+							let cell: EditFundingTableViewCell = self.userPortFolioTableview.cellForRow(at: IndexPath(row: self.editRowForSecction, section: 17)) as! EditFundingTableViewCell
+							cell.textField1.text = titles[0]
+							cell.enableOrDisableSaveButton()
+						}
 					}
 					else if dropDowntype == "Bibliography Type" {
 						if self.editRowForSecction == -1 {
@@ -550,6 +566,24 @@ extension UserPortFolioViewController: UITableViewDataSource,UITableViewDelegate
 				return cell
 			}
 		}
+		else if indexPath.section == 17 {
+			if indexPath.row == commonArray.count {
+				let cell : AddFundingTableViewCell = tableView.dequeueReusableCell(withIdentifier: "AddFundingTableViewCellID", for: indexPath) as! AddFundingTableViewCell
+				cell.delegate = self
+				cell.vc = self
+				cell.setUI()
+				addFundingTableViewCell = cell
+				return cell
+			}
+			else {
+				let cell : EditFundingTableViewCell = tableView.dequeueReusableCell(withIdentifier: "EditFundingTableViewCellID", for: indexPath) as! EditFundingTableViewCell
+				cell.delegate = self
+				cell.vc = self
+				cell.isEditMode = (indexPath.row == editRowForSecction ? true: false)
+				cell.setUI(dict: commonArray[indexPath.row] ,btnTag: indexPath.row)
+				return cell
+			}
+		}
 		else if indexPath.section == 18 {
 			if indexPath.row == commonArray.count {
 				let cell : AddInvitedLecturesPresentationsTvCell = tableView.dequeueReusableCell(withIdentifier: "AddInvitedLecturesPresentationsTvCellID", for: indexPath) as! AddInvitedLecturesPresentationsTvCell
@@ -758,7 +792,7 @@ extension UserPortFolioViewController: UITableViewDataSource,UITableViewDelegate
 			getSectionTypeData("educational_boards")
 		}
 		else if sender.tag == 17 {
-			
+			getSectionTypeData("grant_or_fund_details")
 		}
 		else if sender.tag == 18 {
 			getSectionTypeData("invited_lectures_and_presentations")
@@ -963,4 +997,3 @@ extension UserPortFolioViewController: EducationTableViewCellDelegate {
 		self.userPortFolioTableview.reloadSections([2], with: .fade)
 	}
 }
-
