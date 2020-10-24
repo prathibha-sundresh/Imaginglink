@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="GoogleSans-Regular.ttf">
+            <string>GoogleSans-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DropDownWithLabelView" customModule="ImagingLink" customModuleProvider="target">
+            <connections>
+                <outlet property="dropDownLabel" destination="Mt3-LC-XKg" id="f1L-Ie-PO9"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+9343" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mt3-LC-XKg">
+                    <rect key="frame" x="14" y="44" width="356" height="818"/>
+                    <fontDescription key="fontDescription" name="GoogleSans-Regular" family="Google Sans" pointSize="16"/>
+                    <color key="textColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7vE-tg-xSf">
+                    <rect key="frame" x="385" y="48" width="15" height="814"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="15" id="H62-M8-Jk7"/>
+                    </constraints>
+                    <state key="normal" image="Dropdown"/>
+                    <connections>
+                        <action selector="dropDownPressed:" destination="-1" eventType="touchUpInside" id="zXr-FF-jeb"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="Mt3-LC-XKg" secondAttribute="bottom" id="7oX-aB-iTC"/>
+                <constraint firstItem="7vE-tg-xSf" firstAttribute="top" secondItem="Mt3-LC-XKg" secondAttribute="top" constant="4" id="HmO-Ua-NVk"/>
+                <constraint firstItem="7vE-tg-xSf" firstAttribute="leading" secondItem="Mt3-LC-XKg" secondAttribute="trailing" constant="15" id="N8x-PI-Mr0"/>
+                <constraint firstItem="Mt3-LC-XKg" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="aYy-Ke-egg"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="7vE-tg-xSf" secondAttribute="trailing" constant="14" id="itQ-Hm-hi4"/>
+                <constraint firstItem="7vE-tg-xSf" firstAttribute="bottom" secondItem="Mt3-LC-XKg" secondAttribute="bottom" id="kvl-4c-Ayf"/>
+                <constraint firstItem="Mt3-LC-XKg" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="14" id="yI7-gc-jHY"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="131.8840579710145" y="139.95535714285714"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="Dropdown" width="14" height="8"/>
+    </resources>
+</document>

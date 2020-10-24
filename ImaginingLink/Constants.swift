@@ -100,5 +100,16 @@ let KFilterPublishPresentation = "api/presentations/filter"
 let KFilterUserPresentation = "api/presentations/user"
 let KUserPresentationAcceptOrReject = "api/user/action-on-editor-modified"
 
+//Folio
+let kFolioPresentation = "api/social-connect/get-user-folio-groups"
+let kCreateFolioGroup = "api/social-connect/create-folio-social-group"
+
 //Settings
 let KContactUs = "api/contact-us"
+
+//Folio Types
+let kFolioType:[String] = ["Institution/Hospital", "Practice Group", "Organization", "Society", "Business", "Product", "Focussed Group", "Educational Cource", "Conference", "Publisher", "Grant", "Clinical Trail", "Custom"]
+let kHighlighedURLHEader = "Share youtube URL for sharing videos that can be promoted in this section where you can show current corporate & product videos or a message from the president."
+let kURlHeader = "Social Media Links"
+
+let kTokenExpire = "token is expired"

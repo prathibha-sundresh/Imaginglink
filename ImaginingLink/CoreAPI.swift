@@ -585,4 +585,45 @@ class CoreAPI {
         })
         
     }
+    
+    func callFolioPresentation(successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void ) {
+        let request =  SSHttpRequest(withuUrl: kFolioPresentation)
+        request.getMethod(dictParameter: [:], url: kFolioPresentation, successResponse: {(response) in
+            successResponse(response)
+        }, faliure: {(error) in
+            faliure(error)
+        })
+    }
+    
+    
+    func callCreateFolio(withData: [String: Any], successResponse:@escaping (_ response:AnyObject, _ status: Int)-> Void, faliure:@escaping (_ errorMessage:String) -> Void ) {
+        
+        let requestUrl = "\(kBaseUrl + kCreateFolioGroup)"
+        Alamofire.upload(multipartFormData: { multipartFormData in
+            var isFileAdded = false
+            if let data = withData["folio_data[logo][]"] as? [Data] {
+                let mimeType = "image/jpeg"
+                multipartFormData.append(data[0], withName: "folio_data[logo][]", fileName: "logo1.jpeg", mimeType: mimeType)
+                isFileAdded = true
+            }
+            
+            
+            for (key, value) in withData {
+                if key == "folio_data[logo][]" && isFileAdded{
+                    continue
+                }
+                multipartFormData.append("\(value)".data(using: String.Encoding.utf8)!, withName: key as String)
+            }},to: requestUrl, headers: getHeader())
+        { (result) in
+            switch result {
+            case .success(let upload, _, _):
+                upload.responseJSON { response in
+                    successResponse(response.result.value as AnyObject, response.response!.statusCode)
+                }
+            case .failure(let error):
+                faliure("\(error)")
+            }
+        }
+    }
+    
 }

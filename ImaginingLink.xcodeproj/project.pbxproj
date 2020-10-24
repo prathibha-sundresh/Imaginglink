@@ -72,19 +72,38 @@
 		AC153A49217E265C0017692B /* BaseHamburgerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC153A48217E265C0017692B /* BaseHamburgerViewController.swift */; };
 		AC1F1D272126DFDA00A57DD4 /* MenuViewcontrollerTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1F1D262126DFDA00A57DD4 /* MenuViewcontrollerTableCell.swift */; };
 		AC20EE8121908E900083AAFE /* PresentationDetailViewcontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC20EE8021908E900083AAFE /* PresentationDetailViewcontroller.swift */; };
+		AC20FEA424AC5E4A0009A77D /* CreateFolioSecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC20FEA324AC5E4A0009A77D /* CreateFolioSecondViewController.swift */; };
+		AC20FEA624AC924F0009A77D /* DropDownWithLabelView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC20FEA524AC924F0009A77D /* DropDownWithLabelView.xib */; };
+		AC20FEA924AC94B20009A77D /* DropDownWithLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC20FEA824AC94B20009A77D /* DropDownWithLabelView.swift */; };
+		AC20FEAB24ACCCF90009A77D /* CreateFolioThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC20FEAA24ACCCF90009A77D /* CreateFolioThirdViewController.swift */; };
 		AC269DE521A5CB59004696DE /* WSDownloadFilesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC269DE421A5CB59004696DE /* WSDownloadFilesManager.swift */; };
+		AC2B13C224B5B92D005283B5 /* SocialMediaURLDisplayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC2B13C124B5B92D005283B5 /* SocialMediaURLDisplayView.xib */; };
+		AC2B13C424B5D560005283B5 /* URLModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2B13C324B5D560005283B5 /* URLModel.swift */; };
+		AC2B13C624B5E700005283B5 /* SocialMediaURLDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2B13C524B5E700005283B5 /* SocialMediaURLDisplayView.swift */; };
 		AC323B3320FF750F0015ECB4 /* SF-Pro-Display-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC323B3220FF750E0015ECB4 /* SF-Pro-Display-Regular.ttf */; };
 		AC323B3520FF76BD0015ECB4 /* SF-Pro-Display-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC323B3420FF76BC0015ECB4 /* SF-Pro-Display-Semibold.ttf */; };
 		AC323B3820FF822A0015ECB4 /* Verification.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC323B3720FF822A0015ECB4 /* Verification.storyboard */; };
 		AC323B3B20FF826C0015ECB4 /* MobileVerificationsViewcontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC323B3A20FF826C0015ECB4 /* MobileVerificationsViewcontroller.swift */; };
 		AC3AD4E42188A72D00B1B81A /* LogOutTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3AD4E32188A72D00B1B81A /* LogOutTableViewCell.swift */; };
+		AC41E8D224BB7A7E00211699 /* CreateFolioButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC41E8D124BB7A7E00211699 /* CreateFolioButtonTableViewCell.swift */; };
+		AC42EF2A248D531B0051A22F /* FolioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC42EF29248D531B0051A22F /* FolioViewController.swift */; };
+		AC462581249A30900002D25F /* FolioTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC462580249A30900002D25F /* FolioTableViewCell.swift */; };
+		AC473C9324A9F5BD0086F64B /* StepProgressView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC473C9224A9F5BD0086F64B /* StepProgressView.xib */; };
+		AC473C9624AA049F0086F64B /* CreateFolioModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC473C9524AA049F0086F64B /* CreateFolioModelView.swift */; };
+		AC473C9824AA12950086F64B /* CreateFolioView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC473C9724AA12950086F64B /* CreateFolioView.xib */; };
 		AC4843F92126A3B3003492DB /* ILTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4843F82126A3B3003492DB /* ILTabViewController.swift */; };
 		AC4B6F59224BDB5700576C7D /* FloatingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4B6F58224BDB5700576C7D /* FloatingLabel.swift */; };
+		AC5016BC24B3514A003F98AD /* URLDisplayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5016BB24B3514A003F98AD /* URLDisplayTableViewCell.swift */; };
+		AC5016BE24B3592A003F98AD /* HighLightedURLTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5016BD24B3592A003F98AD /* HighLightedURLTableViewCell.swift */; };
 		AC6046AB2110144F006A42F3 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6046AA2110144F006A42F3 /* ForgotPasswordViewController.swift */; };
 		AC6046AD211018E0006A42F3 /* SF-Pro-Display-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC6046AC211018DE006A42F3 /* SF-Pro-Display-Light.ttf */; };
+		AC638ADD24A5D00100A03080 /* CreateFolioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC638ADC24A5D00100A03080 /* CreateFolioViewController.swift */; };
+		AC638ADF24A61F6000A03080 /* StepProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC638ADE24A61F6000A03080 /* StepProgressView.swift */; };
+		AC649FDF248FB3D30065E8D4 /* CreateFolioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC649FDE248FB3D30065E8D4 /* CreateFolioView.swift */; };
 		AC7E37652111EDA300A0263D /* ResetPasswordViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7E37642111EDA300A0263D /* ResetPasswordViewContoller.swift */; };
 		AC9159FA210613D30018CB94 /* MobileOTPVirecontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9159F9210613D30018CB94 /* MobileOTPVirecontroller.swift */; };
 		AC9159FC21061D1C0018CB94 /* DashBoard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC9159FB21061D1C0018CB94 /* DashBoard.storyboard */; };
+		AC971B4124B4A2B300256597 /* HIghtlightesHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC971B4024B4A2B300256597 /* HIghtlightesHeaderView.swift */; };
 		ACB08028212ACAEB0061B5D2 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB08027212ACAEB0061B5D2 /* BaseViewController.swift */; };
 		ACC94BDA210B4AE9009D6B2F /* PresentationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC94BD9210B4AE9009D6B2F /* PresentationViewController.swift */; };
 		ACC94BDC210B4DAD009D6B2F /* PresentationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC94BDB210B4DAD009D6B2F /* PresentationTableViewCell.swift */; };
@@ -101,6 +120,9 @@
 		BCFFFBB520BAEE79003A0652 /* SignUpViewcontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCFFFBB420BAEE79003A0652 /* SignUpViewcontroller.swift */; };
 		BCFFFBB720BAEEB0003A0652 /* OTPViewcontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCFFFBB620BAEEB0003A0652 /* OTPViewcontroller.swift */; };
 		EBCA96EBD129E41C426157E7 /* Pods_ImaginingLinkTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAA5B3B3E6564EF9FE08AB07 /* Pods_ImaginingLinkTests.framework */; };
+		F53AB8D1251680A4009C254F /* FolioListModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53AB8D0251680A4009C254F /* FolioListModelView.swift */; };
+		F53AB8D2251680A4009C254F /* FolioListModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53AB8D0251680A4009C254F /* FolioListModelView.swift */; };
+		F53AB8D3251680A4009C254F /* FolioListModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53AB8D0251680A4009C254F /* FolioListModelView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -200,19 +222,38 @@
 		AC153A48217E265C0017692B /* BaseHamburgerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseHamburgerViewController.swift; sourceTree = "<group>"; };
 		AC1F1D262126DFDA00A57DD4 /* MenuViewcontrollerTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewcontrollerTableCell.swift; sourceTree = "<group>"; };
 		AC20EE8021908E900083AAFE /* PresentationDetailViewcontroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationDetailViewcontroller.swift; sourceTree = "<group>"; };
+		AC20FEA324AC5E4A0009A77D /* CreateFolioSecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateFolioSecondViewController.swift; sourceTree = "<group>"; };
+		AC20FEA524AC924F0009A77D /* DropDownWithLabelView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DropDownWithLabelView.xib; sourceTree = "<group>"; };
+		AC20FEA824AC94B20009A77D /* DropDownWithLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownWithLabelView.swift; sourceTree = "<group>"; };
+		AC20FEAA24ACCCF90009A77D /* CreateFolioThirdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateFolioThirdViewController.swift; sourceTree = "<group>"; };
 		AC269DE421A5CB59004696DE /* WSDownloadFilesManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WSDownloadFilesManager.swift; sourceTree = "<group>"; };
+		AC2B13C124B5B92D005283B5 /* SocialMediaURLDisplayView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SocialMediaURLDisplayView.xib; sourceTree = "<group>"; };
+		AC2B13C324B5D560005283B5 /* URLModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLModel.swift; sourceTree = "<group>"; };
+		AC2B13C524B5E700005283B5 /* SocialMediaURLDisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialMediaURLDisplayView.swift; sourceTree = "<group>"; };
 		AC323B3220FF750E0015ECB4 /* SF-Pro-Display-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Regular.ttf"; sourceTree = "<group>"; };
 		AC323B3420FF76BC0015ECB4 /* SF-Pro-Display-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Semibold.ttf"; sourceTree = "<group>"; };
 		AC323B3720FF822A0015ECB4 /* Verification.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Verification.storyboard; sourceTree = "<group>"; };
 		AC323B3A20FF826C0015ECB4 /* MobileVerificationsViewcontroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileVerificationsViewcontroller.swift; sourceTree = "<group>"; };
 		AC3AD4E32188A72D00B1B81A /* LogOutTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogOutTableViewCell.swift; sourceTree = "<group>"; };
+		AC41E8D124BB7A7E00211699 /* CreateFolioButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateFolioButtonTableViewCell.swift; sourceTree = "<group>"; };
+		AC42EF29248D531B0051A22F /* FolioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolioViewController.swift; sourceTree = "<group>"; };
+		AC462580249A30900002D25F /* FolioTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolioTableViewCell.swift; sourceTree = "<group>"; };
+		AC473C9224A9F5BD0086F64B /* StepProgressView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StepProgressView.xib; sourceTree = "<group>"; };
+		AC473C9524AA049F0086F64B /* CreateFolioModelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateFolioModelView.swift; sourceTree = "<group>"; };
+		AC473C9724AA12950086F64B /* CreateFolioView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateFolioView.xib; sourceTree = "<group>"; };
 		AC4843F82126A3B3003492DB /* ILTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ILTabViewController.swift; sourceTree = "<group>"; };
 		AC4B6F58224BDB5700576C7D /* FloatingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingLabel.swift; sourceTree = "<group>"; };
+		AC5016BB24B3514A003F98AD /* URLDisplayTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLDisplayTableViewCell.swift; sourceTree = "<group>"; };
+		AC5016BD24B3592A003F98AD /* HighLightedURLTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighLightedURLTableViewCell.swift; sourceTree = "<group>"; };
 		AC6046AA2110144F006A42F3 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
 		AC6046AC211018DE006A42F3 /* SF-Pro-Display-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Light.ttf"; sourceTree = "<group>"; };
+		AC638ADC24A5D00100A03080 /* CreateFolioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateFolioViewController.swift; sourceTree = "<group>"; };
+		AC638ADE24A61F6000A03080 /* StepProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepProgressView.swift; sourceTree = "<group>"; };
+		AC649FDE248FB3D30065E8D4 /* CreateFolioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateFolioView.swift; sourceTree = "<group>"; };
 		AC7E37642111EDA300A0263D /* ResetPasswordViewContoller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewContoller.swift; sourceTree = "<group>"; };
 		AC9159F9210613D30018CB94 /* MobileOTPVirecontroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileOTPVirecontroller.swift; sourceTree = "<group>"; };
 		AC9159FB21061D1C0018CB94 /* DashBoard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DashBoard.storyboard; sourceTree = "<group>"; };
+		AC971B4024B4A2B300256597 /* HIghtlightesHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HIghtlightesHeaderView.swift; sourceTree = "<group>"; };
 		ACB08027212ACAEB0061B5D2 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		ACC94BD9210B4AE9009D6B2F /* PresentationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationViewController.swift; sourceTree = "<group>"; };
 		ACC94BDB210B4DAD009D6B2F /* PresentationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationTableViewCell.swift; sourceTree = "<group>"; };
@@ -231,6 +272,7 @@
 		BCFFFBB620BAEEB0003A0652 /* OTPViewcontroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPViewcontroller.swift; sourceTree = "<group>"; };
 		C609C28BD30E40E7F9CF5CEE /* Pods-ImaginingLinkTests.dev-debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ImaginingLinkTests.dev-debug.xcconfig"; path = "Target Support Files/Pods-ImaginingLinkTests/Pods-ImaginingLinkTests.dev-debug.xcconfig"; sourceTree = "<group>"; };
 		ED31FE4398902952AC91D5E6 /* Pods-ImaginingLinkUITests.pro-release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ImaginingLinkUITests.pro-release.xcconfig"; path = "Target Support Files/Pods-ImaginingLinkUITests/Pods-ImaginingLinkUITests.pro-release.xcconfig"; sourceTree = "<group>"; };
+		F53AB8D0251680A4009C254F /* FolioListModelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolioListModelView.swift; sourceTree = "<group>"; };
 		F6B606B366E0C8E834FE1F10 /* Pods_ImaginingLinkUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ImaginingLinkUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAA5B3B3E6564EF9FE08AB07 /* Pods_ImaginingLinkTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ImaginingLinkTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -322,7 +364,11 @@
 		484279241FF39B9E0056A089 = {
 			isa = PBXGroup;
 			children = (
+				AC20FEA724AC94900009A77D /* xibViews */,
+				AC473C9424AA04830086F64B /* ViewModel */,
+				AC473C9124A9F5970086F64B /* xibs */,
 				48FC9DA020B1B99D00838CA7 /* Assets.xcassets */,
+				AC20FEA324AC5E4A0009A77D /* CreateFolioSecondViewController.swift */,
 				48415FA32163A6B800D96DA6 /* ImaginingLinkTests */,
 				48415FA62163A6B900D96DA6 /* ImaginingLinkUITests */,
 				4842792F1FF39B9E0056A089 /* ImaginingLink */,
@@ -426,8 +472,19 @@
 				AC0E194E215AA49A00ADAFB1 /* SignInLabel.swift */,
 				AC153A48217E265C0017692B /* BaseHamburgerViewController.swift */,
 				AC4B6F58224BDB5700576C7D /* FloatingLabel.swift */,
+				AC649FDE248FB3D30065E8D4 /* CreateFolioView.swift */,
+				AC971B4024B4A2B300256597 /* HIghtlightesHeaderView.swift */,
 			);
 			path = CustomViews;
+			sourceTree = "<group>";
+		};
+		AC20FEA724AC94900009A77D /* xibViews */ = {
+			isa = PBXGroup;
+			children = (
+				AC20FEA824AC94B20009A77D /* DropDownWithLabelView.swift */,
+				AC2B13C524B5E700005283B5 /* SocialMediaURLDisplayView.swift */,
+			);
+			path = xibViews;
 			sourceTree = "<group>";
 		};
 		AC323B3620FF81FC0015ECB4 /* StoryBoards */ = {
@@ -464,8 +521,31 @@
 				4810C81823116D1C00B6ACA4 /* ReportPostViewController.swift */,
 				48222DF123131FB700751CB7 /* FullSizeImageViewController.swift */,
 				48216E3C2326C4EB00ADE8D5 /* TermsAndCondtionsAndPrivacyViewController.swift */,
+				AC462580249A30900002D25F /* FolioTableViewCell.swift */,
+				AC638ADE24A61F6000A03080 /* StepProgressView.swift */,
 			);
 			path = VerificationView;
+			sourceTree = "<group>";
+		};
+		AC473C9124A9F5970086F64B /* xibs */ = {
+			isa = PBXGroup;
+			children = (
+				AC473C9224A9F5BD0086F64B /* StepProgressView.xib */,
+				AC2B13C124B5B92D005283B5 /* SocialMediaURLDisplayView.xib */,
+				AC473C9724AA12950086F64B /* CreateFolioView.xib */,
+				AC20FEA524AC924F0009A77D /* DropDownWithLabelView.xib */,
+			);
+			path = xibs;
+			sourceTree = "<group>";
+		};
+		AC473C9424AA04830086F64B /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				AC473C9524AA049F0086F64B /* CreateFolioModelView.swift */,
+				AC2B13C324B5D560005283B5 /* URLModel.swift */,
+				F53AB8D0251680A4009C254F /* FolioListModelView.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		AC4843F72126A396003492DB /* TabViewcontroller */ = {
@@ -522,6 +602,12 @@
 				AC130701218A035900790E9A /* EmailchangeOTPViewcontroller.swift */,
 				488BD076218B4F98003998AC /* CommentTableViewCell.swift */,
 				488BD078218B4FB7003998AC /* CommentListTableViewCell.swift */,
+				AC42EF29248D531B0051A22F /* FolioViewController.swift */,
+				AC638ADC24A5D00100A03080 /* CreateFolioViewController.swift */,
+				AC20FEAA24ACCCF90009A77D /* CreateFolioThirdViewController.swift */,
+				AC41E8D124BB7A7E00211699 /* CreateFolioButtonTableViewCell.swift */,
+				AC5016BB24B3514A003F98AD /* URLDisplayTableViewCell.swift */,
+				AC5016BD24B3592A003F98AD /* HighLightedURLTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -644,18 +730,22 @@
 				4810C81F231189BD00B6ACA4 /* GoogleSans-Medium.ttf in Resources */,
 				AC6046AD211018E0006A42F3 /* SF-Pro-Display-Light.ttf in Resources */,
 				480A3BE923580B3100EA4EF4 /* Publishing.storyboard in Resources */,
+				AC473C9324A9F5BD0086F64B /* StepProgressView.xib in Resources */,
 				AC323B3320FF750F0015ECB4 /* SF-Pro-Display-Regular.ttf in Resources */,
 				484279361FF39B9E0056A089 /* Main.storyboard in Resources */,
+				AC2B13C224B5B92D005283B5 /* SocialMediaURLDisplayView.xib in Resources */,
 				ACD18C7220C550210059DE7B /* Roboto-Bold.ttf in Resources */,
 				48A7A5F92330B196008A2EB3 /* SF-Pro-Display-Medium.otf in Resources */,
 				AC01CA5520C05E4D00034C90 /* Roboto-Light.ttf in Resources */,
 				48FB28B02471420500277FD0 /* faqs.json in Resources */,
 				48FB28B22475051A00277FD0 /* Settings.storyboard in Resources */,
 				AC01CA5320C05DF200034C90 /* Roboto-Regular.ttf in Resources */,
+				AC20FEA624AC924F0009A77D /* DropDownWithLabelView.xib in Resources */,
 				AC323B3520FF76BD0015ECB4 /* SF-Pro-Display-Semibold.ttf in Resources */,
 				AC099D8120F79D6D0090B0CA /* LoaderView.storyboard in Resources */,
 				48FC9DA120B1B99D00838CA7 /* Assets.xcassets in Resources */,
 				48FB2896246FD96200277FD0 /* Privacy Policy.pdf in Resources */,
+				AC473C9824AA12950086F64B /* CreateFolioView.xib in Resources */,
 				4810C81B2311759C00B6ACA4 /* GoogleSans-Regular.ttf in Resources */,
 				AC9159FC21061D1C0018CB94 /* DashBoard.storyboard in Resources */,
 				4810C815230C018B00B6ACA4 /* GoogleSans-Bold.ttf in Resources */,
@@ -788,10 +878,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC5016BC24B3514A003F98AD /* URLDisplayTableViewCell.swift in Sources */,
 				AC4B6F59224BDB5700576C7D /* FloatingLabel.swift in Sources */,
 				48CCC16D239CDD7100CBD5F5 /* SendCommentTableViewCell.swift in Sources */,
+				AC649FDF248FB3D30065E8D4 /* CreateFolioView.swift in Sources */,
 				480D5DBE23E9293A0019848C /* MyPresentationsViewController.swift in Sources */,
 				48216E3D2326C4EB00ADE8D5 /* TermsAndCondtionsAndPrivacyViewController.swift in Sources */,
+				AC2B13C424B5D560005283B5 /* URLModel.swift in Sources */,
 				ACD18C7420C551D50059DE7B /* TwoFactorAuthenticationViewcontroller.swift in Sources */,
 				485E3DCF2377F09E00B94F05 /* AddCommentReplyViewController.swift in Sources */,
 				AC130702218A035900790E9A /* EmailchangeOTPViewcontroller.swift in Sources */,
@@ -803,10 +896,15 @@
 				BCFFFBB320BAEE5A003A0652 /* SignInViewController.swift in Sources */,
 				4897CCE520038E6500360EB7 /* SSHttpRequest.swift in Sources */,
 				488BD075218B4F4E003998AC /* PresentationDetailTextCell.swift in Sources */,
+				AC42EF2A248D531B0051A22F /* FolioViewController.swift in Sources */,
+				AC20FEA424AC5E4A0009A77D /* CreateFolioSecondViewController.swift in Sources */,
 				482D2C2123A215C90024CF00 /* RemovePresentationsFileCell.swift in Sources */,
+				AC638ADD24A5D00100A03080 /* CreateFolioViewController.swift in Sources */,
 				AC0AD38E20D13C4100FCB371 /* ListViewController.swift in Sources */,
 				ACB08028212ACAEB0061B5D2 /* BaseViewController.swift in Sources */,
 				BCFFFBB720BAEEB0003A0652 /* OTPViewcontroller.swift in Sources */,
+				AC2B13C624B5E700005283B5 /* SocialMediaURLDisplayView.swift in Sources */,
+				AC473C9624AA049F0086F64B /* CreateFolioModelView.swift in Sources */,
 				AC3AD4E42188A72D00B1B81A /* LogOutTableViewCell.swift in Sources */,
 				480D9B092177A32C000DEBFC /* ChangeEmailViewController.swift in Sources */,
 				48A0799E23DC99F900495BC2 /* FilterPublishViewController.swift in Sources */,
@@ -814,16 +912,20 @@
 				ACCA1D1721076D1B00383104 /* DashBoardCollectionViewCell.swift in Sources */,
 				AC12A32F217A27B900858A47 /* AlreadyHaveOTPViewController.swift in Sources */,
 				48F4F41C2004CE55005CD239 /* CoreAPI.swift in Sources */,
+				AC41E8D224BB7A7E00211699 /* CreateFolioButtonTableViewCell.swift in Sources */,
 				AC269DE521A5CB59004696DE /* WSDownloadFilesManager.swift in Sources */,
 				ACC94BDA210B4AE9009D6B2F /* PresentationViewController.swift in Sources */,
 				48B6EDBE235CD25A00C1152D /* UpdatePresentationViewController.swift in Sources */,
 				AC323B3B20FF826C0015ECB4 /* MobileVerificationsViewcontroller.swift in Sources */,
 				AC099D8320F79DEE0090B0CA /* LoaderView.swift in Sources */,
+				AC462581249A30900002D25F /* FolioTableViewCell.swift in Sources */,
 				ACD18C7620C586E20059DE7B /* EmailSuccessViewController.swift in Sources */,
+				AC20FEAB24ACCCF90009A77D /* CreateFolioThirdViewController.swift in Sources */,
 				48216E19231BC1E300ADE8D5 /* ProfileViewController.swift in Sources */,
 				480A3BEC2359847100EA4EF4 /* PublishStepOneViewController.swift in Sources */,
 				48222DF223131FB700751CB7 /* FullSizeImageViewController.swift in Sources */,
 				484279331FF39B9E0056A089 /* ViewController.swift in Sources */,
+				AC20FEA924AC94B20009A77D /* DropDownWithLabelView.swift in Sources */,
 				48F7F1871FFE0412008D827A /* Constants.swift in Sources */,
 				488BD073218B4F2D003998AC /* ImageTableViewCell.swift in Sources */,
 				AC4843F92126A3B3003492DB /* ILTabViewController.swift in Sources */,
@@ -841,9 +943,13 @@
 				4810C81923116D1C00B6ACA4 /* ReportPostViewController.swift in Sources */,
 				483DF7D1236807460081A157 /* CustomPopUpViewController.swift in Sources */,
 				AC20EE8121908E900083AAFE /* PresentationDetailViewcontroller.swift in Sources */,
+				AC638ADF24A61F6000A03080 /* StepProgressView.swift in Sources */,
 				AC9159FA210613D30018CB94 /* MobileOTPVirecontroller.swift in Sources */,
+				AC5016BE24B3592A003F98AD /* HighLightedURLTableViewCell.swift in Sources */,
+				F53AB8D1251680A4009C254F /* FolioListModelView.swift in Sources */,
 				48FB28AE247121B900277FD0 /* FaqViewController.swift in Sources */,
 				BC9DD97B20B82541003CA4A6 /* WebServiceHandler.swift in Sources */,
+				AC971B4124B4A2B300256597 /* HIghtlightesHeaderView.swift in Sources */,
 				ACCA1D152107697600383104 /* DashBoardViewController.swift in Sources */,
 				ACC98D11211B37F00098B53A /* MenuViewController.swift in Sources */,
 				AC6046AB2110144F006A42F3 /* ForgotPasswordViewController.swift in Sources */,
@@ -861,6 +967,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F53AB8D2251680A4009C254F /* FolioListModelView.swift in Sources */,
 				48415FAF2163A7FB00D96DA6 /* ImaginingLinkTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -869,6 +976,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F53AB8D3251680A4009C254F /* FolioListModelView.swift in Sources */,
 				48415FB02163A80000D96DA6 /* ImaginingLinkUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
