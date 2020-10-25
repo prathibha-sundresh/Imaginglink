@@ -89,4 +89,32 @@ class PortFolioAPI {
             faliure(error)
         })
     }
+	
+//	func showHidePortFolioType(requestDict: [String: Any], successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void ) {
+//		let request =  SSHttpRequest(withuUrl: kShowHidePortfolioType)
+//		request.postMethodWithHeaderasToken(dictParameter: requestDict, url: kShowHidePortfolioType, header: getHeader(), successResponse: {(response) in
+//			successResponse(response)
+//		}, faliure: {(error) in
+//			faliure(error)
+//		})
+//	}
+	
+	func showHidePortFolioType(requestDict: [String: Any], successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void ) {
+		
+		let requestUrl = "\(kBaseUrl + kShowHidePortfolioType)"
+		Alamofire.upload(multipartFormData: { multipartFormData in
+			for (key, value) in requestDict {
+				multipartFormData.append("\(value)".data(using: String.Encoding.utf8)!, withName: key as String)
+			}},to: requestUrl, headers: getHeader())
+		{ (result) in
+			switch result {
+			case .success(let upload, _, _):
+				upload.responseJSON { response in
+					successResponse(response.result.value as AnyObject)
+				}
+			case .failure(let error):
+				faliure("\(error)")
+			}
+		}
+	}
 }

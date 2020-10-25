@@ -14,7 +14,7 @@ let OTP_Value = "OTP_VALUE"
 #if DEV
     let kBaseUrl:String = "https://www.imaginglink.com/dev/"
 #else
-	let kBaseUrl:String = "https://www.imaginglink.com/"
+	let kBaseUrl:String = "https://www.imaginglink.com/dev/"
 #endif
 
 let kTwoFactorAuthentication = "two_factor_authentication"
@@ -138,4 +138,4 @@ let kBasicEducationType = "basic_education"
 let kAddPortFolioDetails = "api/add-portfolio-details"
 let kPortFolioDetails = "api/get-portfolio-details"
 let kDeletePortfolioDetails = "api/delete-portfolio-details"
-
+let kShowHidePortfolioType = "api/portfolio-status-hide-and-show"

@@ -21,6 +21,7 @@ class UserPortFolioViewController: UIViewController {
 	var addFundingTableViewCell: AddFundingTableViewCell!
 	
 	var userPortFolioArray: [String] = ["Summary", "Contact & Personal Info", "Under Graduate","Post Graduate","Subspecialties", "Recreational Interests", "Academic Appointments", "Hospital Appointments","Honor/Awards", "Certifications","Licenses","Committees","Teaching Responsibilities","Major Mentoring Activities","Administrative Responsibilities","Professional Societies","Editorial Boards","Grant Or Fund details","Invited Lectures & Presentations","Congressional Testimony","Media Appearances","Custom Fields","Bibliography","CME Tracking"]
+	var sectionTypes = ["Overview","contact_and_personal_info","UG","PG","sub_speciality","recreational_interests","academic_appointments","hospital_appointments","honor_awards","certifications","licences","committees","teaching","major_mentoring_activities","administrative_responsibility","professional_societies","educational_boards","grant_or_fund_details","invited_lectures_and_presentations","congressional_testimony","media_appearances","custom_fields","bibliography","cme_tracking"]
 	var expandedArray: [Int] = []
 	var dataDict = [String: Any]()
 	var commonArray: [[String: Any]] = []
@@ -709,7 +710,7 @@ extension UserPortFolioViewController: UITableViewDataSource,UITableViewDelegate
 		label.text          = headerTitle
 		view.addSubview(label)
 		let btn = UIButton(type: .custom)
-		btn.frame = CGRect(x: 0, y: 0, width: userPortFolioTableview.frame.width, height: 50)
+		btn.frame = CGRect(x: view.frame.width, y: 0, width: 50, height: 50)
 		btn.addTarget(self, action: #selector(expandButtonAction), for: .touchUpInside)
 		btn.tag = section
 		view.addSubview(btn)
@@ -723,11 +724,88 @@ extension UserPortFolioViewController: UITableViewDataSource,UITableViewDelegate
 		}
 		view.backgroundColor = .white
 		view.addSubview(plusImage)
+	
+		if section != 0 {
+			let showHideBtn = UIButton(type: .custom)
+			showHideBtn.frame = CGRect(x: view.frame.width - 50, y: 0, width: 50, height: 50)
+			showHideBtn.addTarget(self, action: #selector(showHideBtnAction), for: .touchUpInside)
+			showHideBtn.tag = section
+			view.addSubview(showHideBtn)
+			let eyeImage = UIImageView(frame: CGRect(x: showHideBtn.frame.width - 25, y: 12, width: 25, height: 25))
+			eyeImage.contentMode = .scaleAspectFit
+			let sectionType = sectionTypes[section]
+			var status = false
+			if let dict = self.dataDict[sectionType] as? [String: Any] {
+				if let stringS1 = dict["status"] as? String {
+					status = stringS1 == "true" ? true : false
+				}
+				if let boolenS1 = dict["status"] as? Bool {
+					status = boolenS1
+				}
+			}
+			if sectionType == "UG" || sectionType == "PG" {
+				let educationDict = self.dataDict["education"] as? [String: Any] ?? [:]
+				if let stringS1 = educationDict["status"] as? String {
+					status = stringS1 == "true" ? true : false
+				}
+				if let boolenS1 = educationDict["status"] as? Bool {
+					status = boolenS1
+				}
+			}
+			if status {
+				if #available(iOS 13.0, *) {
+					eyeImage.image = UIImage(systemName: "eye.slash")
+				}
+			}
+			else {
+				if #available(iOS 13.0, *) {
+					eyeImage.image = UIImage(systemName: "eye")
+				}
+			}
+			eyeImage.tintColor = UIColor(red: 0.29, green: 0.29, blue: 0.29, alpha: 1.00)
+			showHideBtn.addSubview(eyeImage)
+		}
 		return view
 	}
 	
 	func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
 		return 50
+	}
+	
+	@objc func showHideBtnAction(_ sender: UIButton) {
+		var status = false
+		var sectionType = sectionTypes[sender.tag]
+		if let dict = self.dataDict[sectionType] as? [String: Any] {
+			if let stringS1 = dict["status"] as? String {
+				status = stringS1 == "true" ? true : false
+			}
+			if let boolenS1 = dict["status"] as? Bool {
+				status = boolenS1
+			}
+		}
+		if sectionType == "UG" || sectionType == "PG" {
+			sectionType = "education"
+			let educationDict = self.dataDict["education"] as? [String: Any] ?? [:]
+			if let stringS1 = educationDict["status"] as? String {
+				status = stringS1 == "true" ? true : false
+			}
+			if let boolenS1 = educationDict["status"] as? Bool {
+				status = boolenS1
+			}
+		}
+		ILUtility.showProgressIndicator(controller: self)
+		let inputDict = ["type": sectionType, "hide_and_show_status": !status] as [String : Any]
+		PortFolioAPI.sharedManaged.showHidePortFolioType(requestDict: inputDict, successResponse: { (response) in
+			if let dict = response["data"] as? [String: Any] {
+				var typeDict = self.dataDict[sectionType] as? [String: Any] ?? [:]
+				typeDict["status"] = dict["status"] as? String ?? "false"
+				self.dataDict[sectionType] = typeDict
+				self.userPortFolioTableview.reloadData()
+			}
+			ILUtility.hideProgressIndicator(controller: self)
+		}, faliure: { (error) in
+			ILUtility.hideProgressIndicator(controller: self)
+		})
 	}
 	
 	@objc func expandButtonAction(_ sender: UIButton) {
@@ -747,74 +825,74 @@ extension UserPortFolioViewController: UITableViewDataSource,UITableViewDelegate
 			userPortFolioTableview.reloadData()
 		}
 		else if sender.tag == 2 {
-			getSectionTypeData("UG")
+			getSectionTypeData("UG", section: sender.tag)
 		}
 		else if sender.tag == 3 {
-			getSectionTypeData("PG")
+			getSectionTypeData("PG", section: sender.tag)
 		}
 		else if sender.tag == 4 {
-			getSectionTypeData("sub_speciality")
+			getSectionTypeData("sub_speciality", section: sender.tag)
 		}
 		else if sender.tag == 5 {
-			getSectionTypeData("recreational_interests")
+			getSectionTypeData("recreational_interests", section: sender.tag)
 		}
 		else if sender.tag == 6 {
-			getSectionTypeData("academic_appointments")
+			getSectionTypeData("academic_appointments", section: sender.tag)
 		}
 		else if sender.tag == 7 {
-			getSectionTypeData("hospital_appointments")
+			getSectionTypeData("hospital_appointments", section: sender.tag)
 		}
 		else if sender.tag == 8 {
-			getSectionTypeData("honor_awards")
+			getSectionTypeData("honor_awards", section: sender.tag)
 		}
 		else if sender.tag == 9 {
-			getSectionTypeData("certifications")
+			getSectionTypeData("certifications", section: sender.tag)
 		}
 		else if sender.tag == 10 {
-			getSectionTypeData("licences")
+			getSectionTypeData("licences", section: sender.tag)
 		}
 		else if sender.tag == 11 {
-			getSectionTypeData("committees")
+			getSectionTypeData("committees", section: sender.tag)
 		}
 		else if sender.tag == 12 {
-			getSectionTypeData("teaching")
+			getSectionTypeData("teaching", section: sender.tag)
 		}
 		else if sender.tag == 13 {
-			getSectionTypeData("major_mentoring_activities")
+			getSectionTypeData("major_mentoring_activities", section: sender.tag)
 		}
 		else if sender.tag == 14 {
-			getSectionTypeData("administrative_responsibility")
+			getSectionTypeData("administrative_responsibility", section: sender.tag)
 		}
 		else if sender.tag == 15 {
-			getSectionTypeData("professional_societies")
+			getSectionTypeData("professional_societies", section: sender.tag)
 		}
 		else if sender.tag == 16 {
-			getSectionTypeData("educational_boards")
+			getSectionTypeData("educational_boards", section: sender.tag)
 		}
 		else if sender.tag == 17 {
-			getSectionTypeData("grant_or_fund_details")
+			getSectionTypeData("grant_or_fund_details", section: sender.tag)
 		}
 		else if sender.tag == 18 {
-			getSectionTypeData("invited_lectures_and_presentations")
+			getSectionTypeData("invited_lectures_and_presentations", section: sender.tag)
 		}
 		else if sender.tag == 19 {
-			getSectionTypeData("congressional_testimony")
+			getSectionTypeData("congressional_testimony", section: sender.tag)
 		}
 		else if sender.tag == 20 {
-			getSectionTypeData("media_appearances")
+			getSectionTypeData("media_appearances", section: sender.tag)
 		}
 		else if sender.tag == 21 {
-			getSectionTypeData("custom_fields")
+			getSectionTypeData("custom_fields", section: sender.tag)
 		}
 		else if sender.tag == 22 {
-			getSectionTypeData("bibliography")
+			getSectionTypeData("bibliography", section: sender.tag)
 		}
 		else if sender.tag == 23 {
-			getSectionTypeData("cme_tracking")
+			getSectionTypeData("cme_tracking", section: sender.tag)
 		}
 	}
 	
-	func getSectionTypeData(_ sectionType: String) {
+	func getSectionTypeData(_ sectionType: String, section: Int = 0) {
 		commonArray = []
 		if let dict = self.dataDict[sectionType] as? [String: Any]{
 			commonArray = dict["data"] as? [[String: Any]] ?? []
@@ -825,8 +903,10 @@ extension UserPortFolioViewController: UITableViewDataSource,UITableViewDelegate
 			commonArray = tmpDict[sectionType] as? [[String: Any]] ?? []
 		}
 		editRowForSecction = -1
-////		let contentOffset = self.userPortFolioTableview.contentOffset
 		self.userPortFolioTableview.reloadData()
+		userPortFolioTableview.scrollToRow(at: IndexPath(row: NSNotFound, section: section), at: UITableView.ScrollPosition.none, animated: false)
+////		let contentOffset = self.userPortFolioTableview.contentOffset
+		
 //		self.userPortFolioTableview.layoutIfNeeded()
 ////		self.userPortFolioTableview.setContentOffset(contentOffset, animated: false)
 		
@@ -995,5 +1075,6 @@ extension UserPortFolioViewController: EducationTableViewCellDelegate {
 		educationTableViewH = height
 		ugSectionIndex = section
 		self.userPortFolioTableview.reloadSections([2], with: .fade)
+		userPortFolioTableview.scrollToRow(at: IndexPath(row: NSNotFound, section: section), at: UITableView.ScrollPosition.none, animated: false)
 	}
 }

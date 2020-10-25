@@ -142,6 +142,7 @@ extension EducationTableViewCell: UITableViewDelegate, UITableViewDataSource {
 		}
 		commonArray = results
 		tableview.reloadData()
+		tableview.scrollToRow(at: IndexPath(row: NSNotFound, section: section), at: UITableView.ScrollPosition.top, animated: false)
 	}
 	
 	@objc func expandButtonAction(_ sender: UIButton) {

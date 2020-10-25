@@ -44,6 +44,8 @@ class PortFolioViewController: BaseHamburgerViewController {
 		case 1:
 			let vc = storyboard.instantiateViewController(withIdentifier: "UserPortFolioViewControllerVCID") as! UserPortFolioViewController
 			controller = vc
+		case 2:
+			return
 		default:
 			break
 		}
