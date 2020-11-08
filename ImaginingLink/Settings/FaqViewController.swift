@@ -136,6 +136,7 @@ extension FaqViewController: UITableViewDataSource,UITableViewDelegate {
 			expandedArray.append(sender.tag)
 		}
 		faqTableview.reloadData()
+		faqTableview.scrollToRow(at: IndexPath(row: NSNotFound, section: sender.tag), at: UITableView.ScrollPosition.none, animated: false)
 	}
 }
 

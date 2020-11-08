@@ -26,7 +26,7 @@ class DashBoardViewController:  BaseHamburgerViewController {
     }
     @IBAction func PortpolioIconPresses(_ sender: AnyObject) {
         changeButtonsBackgroundImage(sender: sender.tag)
-        self.performSegue(withIdentifier: "ComingSoon", sender: Portfolio)
+        self.performSegue(withIdentifier: "PortFolioViewControllerID", sender: Portfolio)
     }
     @IBAction func PresentationIconPressed(_ sender: AnyObject) {
         changeButtonsBackgroundImage(sender: sender.tag)

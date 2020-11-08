@@ -14,7 +14,7 @@ let OTP_Value = "OTP_VALUE"
 #if DEV
     let kBaseUrl:String = "https://www.imaginglink.com/dev/"
 #else
-	let kBaseUrl:String = "https://www.imaginglink.com/"
+	let kBaseUrl:String = "https://www.imaginglink.com/dev/"
 #endif
 
 let kTwoFactorAuthentication = "two_factor_authentication"
@@ -129,3 +129,13 @@ let kIgnoreFriendRequest = "api/social-connect/ignore-friend-request"
 let kSearchFriend = "api/social-connect/search-friend"
 let kAddFriend = "api/social-connect/add-friend"
 let kUserAddMembersInGroup = "api/social-connect/user-add-members-in-group"
+
+//PortFolioAPI
+let kPortFolioBasicDetails = "api/get-portfolio-section-details?type=%@"
+let kCurrentPositionType = "current_position"
+let kTitleType = "current"
+let kBasicEducationType = "basic_education"
+let kAddPortFolioDetails = "api/add-portfolio-details"
+let kPortFolioDetails = "api/get-portfolio-details"
+let kDeletePortfolioDetails = "api/delete-portfolio-details"
+let kShowHidePortfolioType = "api/portfolio-status-hide-and-show"
