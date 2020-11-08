@@ -11,7 +11,7 @@ import UIKit
 class PortFolioViewController: BaseHamburgerViewController {
 	@IBOutlet weak var topCollectionView: UICollectionView!
 	@IBOutlet weak var containerView: UIView!
-	var portFolioLinesOptions : [[String: Any]] = [["name":"My Friends", "icon": "portfolio_profile_icon"],["name":"Requests", "icon": "portfolio_list_icon"],["name":"Add Friends", "icon": "addFriends_icon"]]
+	var portFolioLinesOptions : [[String: Any]] = [["name":"My Friends", "icon": "portfolio_profile_icon"],["name":"Requests", "icon": "portfolio_list_icon"],["name":"Add Friends", "icon": "portFolio_private_public"],["name":"Add Friends", "icon": "printOption"]]
 	var selectedOption : Int = 0
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,7 +45,11 @@ class PortFolioViewController: BaseHamburgerViewController {
 			let vc = storyboard.instantiateViewController(withIdentifier: "UserPortFolioViewControllerVCID") as! UserPortFolioViewController
 			controller = vc
 		case 2:
-			return
+			let vc = storyboard.instantiateViewController(withIdentifier: "PublicOrPrivateProfolioVCID") as! PublicOrPrivateProfolioVC
+			controller = vc
+		case 3:
+			let vc = storyboard.instantiateViewController(withIdentifier: "PrintPortFolioViewControllerVCID") as! PrintPortFolioViewController
+			controller = vc
 		default:
 			break
 		}

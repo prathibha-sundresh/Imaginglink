@@ -25,6 +25,9 @@ class PortFolioProfileViewController: UIViewController {
 	@IBOutlet weak var saveButtonH: NSLayoutConstraint!
     override func viewDidLoad() {
         super.viewDidLoad()
+		titleTF.setRightPaddingPoints(30)
+		currentRankTF.setRightPaddingPoints(30)
+		degreeTF.setRightPaddingPoints(30)
 		borderView.layer.borderColor = UIColor(red:0.89, green:0.92, blue:0.93, alpha:1.0).cgColor
 		titleTF.isUserInteractionEnabled = false
 		currentRankTF.isUserInteractionEnabled = false

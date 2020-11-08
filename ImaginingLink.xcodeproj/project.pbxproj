@@ -27,6 +27,8 @@
 		48222DF223131FB700751CB7 /* FullSizeImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48222DF123131FB700751CB7 /* FullSizeImageViewController.swift */; };
 		482D2C2123A215C90024CF00 /* RemovePresentationsFileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482D2C2023A215C90024CF00 /* RemovePresentationsFileCell.swift */; };
 		482D2C2323A5312F0024CF00 /* EditPresentationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482D2C2223A5312F0024CF00 /* EditPresentationTableViewCell.swift */; };
+		4832F894254E6C8300C91D8A /* PublicOrPrivateProfolioVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4832F893254E6C8300C91D8A /* PublicOrPrivateProfolioVC.swift */; };
+		4832F899254EC48600C91D8A /* PrintPortFolioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4832F898254EC48600C91D8A /* PrintPortFolioViewController.swift */; };
 		483DF7D1236807460081A157 /* CustomPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 483DF7D0236807460081A157 /* CustomPopUpViewController.swift */; };
 		4840D0E124CD565F0053D02E /* PortFolio.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4840D0E024CD565F0053D02E /* PortFolio.storyboard */; };
 		4840D0E324CE9C490053D02E /* PortFolioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4840D0E224CE9C490053D02E /* PortFolioViewController.swift */; };
@@ -204,6 +206,8 @@
 		48222DF123131FB700751CB7 /* FullSizeImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullSizeImageViewController.swift; sourceTree = "<group>"; };
 		482D2C2023A215C90024CF00 /* RemovePresentationsFileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemovePresentationsFileCell.swift; sourceTree = "<group>"; };
 		482D2C2223A5312F0024CF00 /* EditPresentationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPresentationTableViewCell.swift; sourceTree = "<group>"; };
+		4832F893254E6C8300C91D8A /* PublicOrPrivateProfolioVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicOrPrivateProfolioVC.swift; sourceTree = "<group>"; };
+		4832F898254EC48600C91D8A /* PrintPortFolioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrintPortFolioViewController.swift; sourceTree = "<group>"; };
 		483DF7D0236807460081A157 /* CustomPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPopUpViewController.swift; sourceTree = "<group>"; };
 		4840D0E024CD565F0053D02E /* PortFolio.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PortFolio.storyboard; sourceTree = "<group>"; };
 		4840D0E224CE9C490053D02E /* PortFolioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortFolioViewController.swift; sourceTree = "<group>"; };
@@ -428,6 +432,8 @@
 				4840D0E424CFF2A80053D02E /* PortFolioProfileViewController.swift */,
 				4848B5C024D4FFC800A7ECE9 /* UserPortFolioViewController.swift */,
 				4848B5CA24DFA4C200A7ECE9 /* SelectDateViewController.swift */,
+				4832F893254E6C8300C91D8A /* PublicOrPrivateProfolioVC.swift */,
+				4832F898254EC48600C91D8A /* PrintPortFolioViewController.swift */,
 			);
 			path = PortFolio;
 			sourceTree = "<group>";
@@ -1055,6 +1061,7 @@
 				BCFFFBB320BAEE5A003A0652 /* SignInViewController.swift in Sources */,
 				4848B5CF24E26C2F00A7ECE9 /* AddSubSpecialitiesTableViewCell.swift in Sources */,
 				4897CCE520038E6500360EB7 /* SSHttpRequest.swift in Sources */,
+				4832F894254E6C8300C91D8A /* PublicOrPrivateProfolioVC.swift in Sources */,
 				488BD075218B4F4E003998AC /* PresentationDetailTextCell.swift in Sources */,
 				482D2C2123A215C90024CF00 /* RemovePresentationsFileCell.swift in Sources */,
 				AC0AD38E20D13C4100FCB371 /* ListViewController.swift in Sources */,
@@ -1099,6 +1106,7 @@
 				484E1EFB24E953E000EDF6C1 /* AddPGEducationTableViewCell.swift in Sources */,
 				4848B5C924DD2F5E00A7ECE9 /* ContactPersonalInfoTableViewCell.swift in Sources */,
 				480A3BEC2359847100EA4EF4 /* PublishStepOneViewController.swift in Sources */,
+				4832F899254EC48600C91D8A /* PrintPortFolioViewController.swift in Sources */,
 				48222DF223131FB700751CB7 /* FullSizeImageViewController.swift in Sources */,
 				4878412624F773B90058CE3B /* EditCongressionalAndMediaTVCell.swift in Sources */,
 				484279331FF39B9E0056A089 /* ViewController.swift in Sources */,
@@ -1258,7 +1266,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -1311,7 +1319,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -1325,7 +1333,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = W8U434C9C6;
 				INFOPLIST_FILE = ImaginingLink/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -1345,7 +1353,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = W8U434C9C6;
 				INFOPLIST_FILE = ImaginingLink/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
