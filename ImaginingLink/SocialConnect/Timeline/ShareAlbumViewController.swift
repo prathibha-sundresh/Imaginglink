@@ -79,7 +79,8 @@ class ShareAlbumViewController: BaseHamburgerViewController {
 	@IBOutlet weak var addImageView: UIView!
 	@IBOutlet weak var addImageTableView: UITableView!
 	@IBOutlet weak var addImageButton: UIButton!
-	
+	var isFrom = ""
+	var groupID = ""
 	var msg_id = ""
 	@IBOutlet weak var albumTypeTF: UITextField!
 	@IBOutlet weak var albumNameTF: UITextField!
@@ -229,7 +230,10 @@ class ShareAlbumViewController: BaseHamburgerViewController {
 		let visibility = (publicButton.titleLabel!.text == "Public") ? "public" : "only_me"
 		if isUpdateStatus {
 			let timeline_id = dataDict["_id"] as? String ?? ""
-			let requestDict = ["post_type": "album","timeline_id": timeline_id,"post_id": msg_id,"album_type":"video","album_name": albumNameTF.text!,"album_description": statusTextView.text!,"visibility":visibility,"video_url": videoUrlTF.text!]
+			var requestDict = ["post_type": "album","timeline_id": timeline_id,"post_id": msg_id,"album_type":"video","album_name": albumNameTF.text!,"album_description": statusTextView.text!,"visibility":visibility,"video_url": videoUrlTF.text!]
+			if isFrom == "Group" {
+				requestDict["group_id"] = groupID
+			}
 			SocialConnectAPI.sharedManaged.updatePost(requestDict: requestDict, successResponse: { (response) in
 				self.navigationController?.popViewController(animated: false)
 				ILUtility.hideProgressIndicator(controller: self)
@@ -238,7 +242,10 @@ class ShareAlbumViewController: BaseHamburgerViewController {
 			}
 		}
 		else {
-			let requestDict = ["album_type":"video","album_name": albumNameTF.text!,"album_description": statusTextView.text!,"visibility":visibility,"video_url": videoUrlTF.text!]
+			var requestDict = ["album_type":"video","album_name": albumNameTF.text!,"album_description": statusTextView.text!,"visibility":visibility,"video_url": videoUrlTF.text!]
+			if isFrom == "Group" {
+				requestDict["group_id"] = groupID
+			}
 			SocialConnectAPI.sharedManaged.createVideoAlbumtypeForTimelinePost(requestDict: requestDict, successResponse: { (response) in
 				self.navigationController?.popViewController(animated: false)
 				ILUtility.hideProgressIndicator(controller: self)
@@ -246,7 +253,6 @@ class ShareAlbumViewController: BaseHamburgerViewController {
 				ILUtility.hideProgressIndicator(controller: self)
 			}
 		}
-		
 	}
 	
 	func postAlbumImages() {
@@ -285,6 +291,9 @@ class ShareAlbumViewController: BaseHamburgerViewController {
 		ILUtility.showProgressIndicator(controller: self)
 		let visibility = (publicButton.titleLabel!.text == "Public") ? "public" : "only_me"
 		var requestDict = ["album_type":"image","album_name": albumNameTF.text!,"album_description": videoUrlTF.text!,"visibility": visibility] as [String : Any]
+		if isFrom == "Group" {
+			requestDict["group_id"] = groupID
+		}
 		if isUpdateStatus {
 			let timeline_id = dataDict["_id"] as? String ?? ""
 			requestDict["existing_files[]"] = existingFiles

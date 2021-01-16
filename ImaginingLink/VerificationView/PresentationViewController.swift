@@ -83,6 +83,7 @@ class PresentationViewController: BaseHamburgerViewController, UITableViewDelega
 	
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+		self.navigationController?.isNavigationBarHidden = true
 		switch PresentationViewController.isFromVC {
 		case .Presentations:
 			getPublicPresentations()

@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -36,7 +37,7 @@
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="w29-a0-gwA">
                                 <rect key="frame" x="10" y="0.0" width="300" height="70"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="70" id="jgI-p2-ek0"/>
                                 </constraints>
@@ -137,7 +138,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="9xu-HL-23p" firstAttribute="top" secondItem="aed-Bg-Uca" secondAttribute="top" constant="17" id="G0S-JE-b7r"/>
                                     <constraint firstItem="1VJ-fd-16A" firstAttribute="top" secondItem="aed-Bg-Uca" secondAttribute="top" constant="14" id="SlL-FI-K68"/>
@@ -149,7 +150,7 @@
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="UQS-FF-69e">
                                 <rect key="frame" x="10" y="139" width="300" height="1841"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="SharedStatusTableViewCellID" rowHeight="180" id="wSp-Mj-4HJ" customClass="SharedStatusTableViewCell" customModule="ImagingLink" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="300" height="180"/>
@@ -708,7 +709,7 @@
                                                         </label>
                                                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fMK-2P-NDA">
                                                             <rect key="frame" x="10" y="70" width="280" height="160"/>
-                                                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="160" id="5WR-xp-Gpw"/>
                                                             </constraints>
@@ -996,7 +997,7 @@
                                                         </label>
                                                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="5tP-K6-cyt">
                                                             <rect key="frame" x="10" y="70" width="280" height="290"/>
-                                                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="290" id="JjZ-mL-vyQ"/>
                                                             </constraints>
@@ -1264,7 +1265,8 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="zxw-nK-BWu"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="UQS-FF-69e" firstAttribute="trailing" secondItem="aed-Bg-Uca" secondAttribute="trailing" id="4Fz-Dm-2AU"/>
                             <constraint firstItem="zxw-nK-BWu" firstAttribute="trailing" secondItem="w29-a0-gwA" secondAttribute="trailing" constant="10" id="4jd-12-NVv"/>
@@ -1280,7 +1282,6 @@
                             <constraint firstItem="zxw-nK-BWu" firstAttribute="bottom" secondItem="UQS-FF-69e" secondAttribute="bottom" constant="20" id="rst-zh-Pwn"/>
                             <constraint firstItem="w29-a0-gwA" firstAttribute="top" secondItem="zxw-nK-BWu" secondAttribute="top" id="trd-TE-ygQ"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="zxw-nK-BWu"/>
                     </view>
                     <size key="freeformSize" width="320" height="2000"/>
                     <connections>
@@ -1293,6 +1294,7 @@
                         <segue destination="e5b-KK-ogR" kind="presentation" identifier="fullImageVCID" modalPresentationStyle="overFullScreen" id="nA2-Fz-0G0"/>
                         <segue destination="Okt-Uw-cdu" kind="show" identifier="UploadedFilesViewControllerID" id="wmR-qD-aJA"/>
                         <segue destination="BP7-AY-IfO" kind="show" identifier="ManageFriendsViewControllerSegue" id="28i-N4-L72"/>
+                        <segue destination="kRR-kp-sBI" kind="show" identifier="GroupsListVCID" id="LsG-bs-LJS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S2L-4e-oZW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1302,7 +1304,7 @@
         <!--Create Post View Controller-->
         <scene sceneID="Yqc-4O-jcg">
             <objects>
-                <viewController id="0MN-tS-Hji" customClass="CreatePostViewController" customModule="ImagingLink" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CreatePostViewControllerVCIC" id="0MN-tS-Hji" customClass="CreatePostViewController" customModule="ImagingLink" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="PcX-MK-2BD">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1335,7 +1337,7 @@
                                                 </connections>
                                             </button>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="100" id="0yt-OF-av7"/>
                                             <constraint firstAttribute="height" constant="57" id="Az1-88-a5C"/>
@@ -1363,7 +1365,7 @@
                                                 </connections>
                                             </button>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="57" id="Arv-Pp-zB9"/>
                                             <constraint firstAttribute="width" constant="100" id="Ver-FF-1KN"/>
@@ -1391,14 +1393,14 @@
                                                 </connections>
                                             </button>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="100" id="7yc-rm-BJT"/>
                                             <constraint firstAttribute="height" constant="57" id="EjD-J1-98H"/>
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="57" id="82q-dG-FqT"/>
                                     <constraint firstItem="Zwm-HJ-1el" firstAttribute="leading" secondItem="Peg-cB-Tht" secondAttribute="leading" id="EQM-3t-NgZ"/>
@@ -1410,7 +1412,8 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="KCf-jB-xyr"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="oli-fx-KKR" firstAttribute="leading" secondItem="KCf-jB-xyr" secondAttribute="leading" id="SsJ-Nf-3hj"/>
                             <constraint firstItem="Peg-cB-Tht" firstAttribute="leading" secondItem="KCf-jB-xyr" secondAttribute="leading" id="XKM-Jw-mNg"/>
@@ -1420,7 +1423,6 @@
                             <constraint firstItem="Peg-cB-Tht" firstAttribute="bottom" secondItem="KCf-jB-xyr" secondAttribute="bottom" id="uBh-kb-8ZL"/>
                             <constraint firstItem="oli-fx-KKR" firstAttribute="top" secondItem="KCf-jB-xyr" secondAttribute="top" id="z0G-aQ-YdY"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="KCf-jB-xyr"/>
                     </view>
                     <connections>
                         <outlet property="albumImage" destination="wz9-LS-sv2" id="Sfz-Mv-ATf"/>
@@ -1446,7 +1448,7 @@
         <!--Comments View Controller-->
         <scene sceneID="DOV-aU-pih">
             <objects>
-                <viewController id="AXX-ET-zP7" customClass="CommentsViewController" customModule="ImagingLink" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CommentsViewControllerVCID" id="AXX-ET-zP7" customClass="CommentsViewController" customModule="ImagingLink" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rQw-lN-4V3">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1509,7 +1511,7 @@
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="EdJ-n8-Fzk">
                                 <rect key="frame" x="10" y="140" width="300" height="428"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="CommentListCellId" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CommentListTableViewCellId" id="a4c-Sm-zZt" userLabel="CommentListTableViewCell" customClass="CommentListTableViewCell" customModule="ImagingLink" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="300" height="164.5"/>
@@ -1570,7 +1572,7 @@ nstrate the visual form</string>
                                                             <color key="textColor" red="0.31372549020000001" green="0.34509803919999998" blue="0.36470588240000001" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eTS-9U-HeI">
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eTS-9U-HeI">
                                                             <rect key="frame" x="107.5" y="139.5" width="172.5" height="25"/>
                                                             <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="13"/>
                                                             <state key="normal" title="Reply">
@@ -1622,7 +1624,8 @@ nstrate the visual form</string>
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="mLW-5X-quj"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="T0v-13-kcW" firstAttribute="top" secondItem="mLW-5X-quj" secondAttribute="top" constant="30" id="6tK-WR-TAQ"/>
                             <constraint firstItem="Ugg-n5-H6C" firstAttribute="top" secondItem="T0v-13-kcW" secondAttribute="bottom" constant="15" id="92V-Cb-8Me"/>
@@ -1636,7 +1639,6 @@ nstrate the visual form</string>
                             <constraint firstItem="mLW-5X-quj" firstAttribute="trailing" secondItem="EdJ-n8-Fzk" secondAttribute="trailing" constant="10" id="qFZ-aZ-8j9"/>
                             <constraint firstItem="Ugg-n5-H6C" firstAttribute="trailing" secondItem="mLW-5X-quj" secondAttribute="trailing" id="sbY-IU-Hwa"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="mLW-5X-quj"/>
                     </view>
                     <connections>
                         <outlet property="commentTableview" destination="EdJ-n8-Fzk" id="5kO-YA-7yI"/>
@@ -1663,6 +1665,16 @@ nstrate the visual form</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mZ1-f6-6lt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2941" y="-790"/>
+        </scene>
+        <!--GroupsListViewControllerSegue-->
+        <scene sceneID="ZnG-tF-dNa">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="GroupsListViewControllerSegue" storyboardName="Groups" referencedIdentifier="GroupsListViewControllerSegue" id="kRR-kp-sBI" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="q0X-P2-CEr"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="49Q-uR-aXg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1468" y="1385"/>
         </scene>
         <!--Update Timeline StatusVC-->
         <scene sceneID="A8u-ze-ram">
@@ -1716,7 +1728,7 @@ nstrate the visual form</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="DqZ-gV-w7Q" firstAttribute="leading" secondItem="hkf-pX-wSC" secondAttribute="leading" constant="11" id="0fA-w3-lQQ"/>
                                     <constraint firstItem="cOc-nx-ddF" firstAttribute="top" secondItem="hkf-pX-wSC" secondAttribute="top" constant="8" id="2Gg-ai-Vja"/>
@@ -1739,7 +1751,8 @@ nstrate the visual form</string>
                                 </connections>
                             </textView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="2m7-5K-wQJ"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="hkf-pX-wSC" firstAttribute="leading" secondItem="2m7-5K-wQJ" secondAttribute="leading" id="K24-nL-u7a"/>
                             <constraint firstItem="2m7-5K-wQJ" firstAttribute="trailing" secondItem="Ne7-Pv-iFK" secondAttribute="trailing" id="LFc-P6-vde"/>
@@ -1749,7 +1762,6 @@ nstrate the visual form</string>
                             <constraint firstItem="hkf-pX-wSC" firstAttribute="top" secondItem="2m7-5K-wQJ" secondAttribute="top" constant="10" id="l8i-TV-pk7"/>
                             <constraint firstItem="hkf-pX-wSC" firstAttribute="trailing" secondItem="2m7-5K-wQJ" secondAttribute="trailing" id="paj-01-QWk"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="2m7-5K-wQJ"/>
                     </view>
                     <connections>
                         <outlet property="postButton" destination="cOc-nx-ddF" id="vAm-PF-Tns"/>
@@ -1814,7 +1826,7 @@ nstrate the visual form</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="o74-ji-1RI" secondAttribute="trailing" id="7z4-2J-RkH"/>
                                     <constraint firstItem="JeO-D8-dXr" firstAttribute="top" secondItem="IQO-kV-n6n" secondAttribute="top" constant="8" id="8dz-q3-XIf"/>
@@ -2014,7 +2026,8 @@ nstrate the visual form</string>
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="hSD-jG-QYl"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="hEc-Qb-lEc" firstAttribute="top" secondItem="gQp-VH-iga" secondAttribute="bottom" id="2oU-se-JmX"/>
                             <constraint firstItem="CS2-hk-V6j" firstAttribute="top" secondItem="gQp-VH-iga" secondAttribute="bottom" id="3RI-Ll-aVb"/>
@@ -2031,7 +2044,6 @@ nstrate the visual form</string>
                             <constraint firstItem="IQO-kV-n6n" firstAttribute="trailing" secondItem="hSD-jG-QYl" secondAttribute="trailing" id="sXg-zb-jPv"/>
                             <constraint firstItem="CS2-hk-V6j" firstAttribute="trailing" secondItem="hSD-jG-QYl" secondAttribute="trailing" id="sy8-Iq-rWZ"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="hSD-jG-QYl"/>
                     </view>
                     <connections>
                         <outlet property="addImageButton" destination="ZKP-tY-P9O" id="DVx-jI-Nqk"/>
@@ -2110,7 +2122,7 @@ nstrate the visual form</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="F5z-xS-oMa" firstAttribute="leading" secondItem="wGb-iT-3Xy" secondAttribute="leading" id="G8v-iJ-vD1"/>
                                     <constraint firstItem="axD-mp-nGF" firstAttribute="top" secondItem="wGb-iT-3Xy" secondAttribute="top" constant="8" id="NKg-wr-fT8"/>
@@ -2222,7 +2234,8 @@ nstrate the visual form</string>
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="4tS-8a-BKy"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="lQR-8X-xCz" firstAttribute="bottom" secondItem="4tS-8a-BKy" secondAttribute="bottom" id="LEr-hD-Tzx"/>
                             <constraint firstItem="wGb-iT-3Xy" firstAttribute="trailing" secondItem="4tS-8a-BKy" secondAttribute="trailing" id="P8b-5q-0xp"/>
@@ -2232,7 +2245,6 @@ nstrate the visual form</string>
                             <constraint firstItem="lQR-8X-xCz" firstAttribute="trailing" secondItem="4tS-8a-BKy" secondAttribute="trailing" id="ubN-DR-nYZ"/>
                             <constraint firstItem="wGb-iT-3Xy" firstAttribute="top" secondItem="4tS-8a-BKy" secondAttribute="top" constant="10" id="xKm-jH-bnw"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="4tS-8a-BKy"/>
                     </view>
                     <connections>
                         <outlet property="addFileButton" destination="03I-QG-YQS" id="sJh-hK-Q5u"/>
@@ -2284,7 +2296,7 @@ nstrate the visual form</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="NEt-LW-H8Z" secondAttribute="trailing" id="6jv-6V-a3p"/>
                                     <constraint firstAttribute="bottom" secondItem="NEt-LW-H8Z" secondAttribute="bottom" id="ETY-4A-Fe1"/>
@@ -2323,7 +2335,7 @@ nstrate the visual form</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstItem="RnC-Js-BYG" firstAttribute="trailing" secondItem="nTH-lr-Pou" secondAttribute="trailing" id="28k-MZ-EMO"/>
                                             <constraint firstAttribute="height" constant="80" id="74F-Po-5nH"/>
@@ -2419,7 +2431,8 @@ nstrate the visual form</string>
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="wLn-Ry-Yo4"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="wLn-Ry-Yo4" firstAttribute="bottom" secondItem="ONZ-KT-3i0" secondAttribute="bottom" id="3iL-Wd-ZMv"/>
                             <constraint firstItem="2os-f6-jsv" firstAttribute="leading" secondItem="wLn-Ry-Yo4" secondAttribute="leading" id="3xM-d5-s53"/>
@@ -2429,7 +2442,6 @@ nstrate the visual form</string>
                             <constraint firstItem="2os-f6-jsv" firstAttribute="trailing" secondItem="wLn-Ry-Yo4" secondAttribute="trailing" id="qEZ-zD-XAY"/>
                             <constraint firstItem="2os-f6-jsv" firstAttribute="top" secondItem="wLn-Ry-Yo4" secondAttribute="top" id="tYy-Dt-nft"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="wLn-Ry-Yo4"/>
                     </view>
                     <navigationItem key="navigationItem" id="gWs-rI-ju9"/>
                     <connections>
@@ -2621,6 +2633,7 @@ nstrate the visual form</string>
                                 </connections>
                             </collectionView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="t8w-3i-0fo"/>
                         <color key="backgroundColor" red="0.96470588235294119" green="0.96862745098039216" blue="0.97647058823529409" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="4eW-6r-1uC" firstAttribute="trailing" secondItem="t8w-3i-0fo" secondAttribute="trailing" id="4iz-9W-ZRL"/>
@@ -2630,7 +2643,6 @@ nstrate the visual form</string>
                             <constraint firstItem="4eW-6r-1uC" firstAttribute="leading" secondItem="t8w-3i-0fo" secondAttribute="leading" id="nIZ-yu-WcT"/>
                             <constraint firstItem="nwP-nU-7Mr" firstAttribute="leading" secondItem="t8w-3i-0fo" secondAttribute="leading" id="o8T-Qj-jPJ"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="t8w-3i-0fo"/>
                     </view>
                     <connections>
                         <outlet property="friendRequestCollectionH" destination="kBs-wG-X4y" id="eJ9-cM-Sbx"/>
@@ -2671,7 +2683,7 @@ nstrate the visual form</string>
                                         <state key="normal" image="blue_search_icon"/>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="a28-89-NKZ" secondAttribute="trailing" constant="5" id="KQq-4y-ZpU"/>
                                     <constraint firstItem="a28-89-NKZ" firstAttribute="top" secondItem="Ztp-eC-FPU" secondAttribute="top" id="On1-A9-NAy"/>
@@ -2800,6 +2812,7 @@ nstrate the visual form</string>
                                 </connections>
                             </collectionView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="JJE-Db-w3O"/>
                         <color key="backgroundColor" red="0.96470588235294119" green="0.96862745098039216" blue="0.97647058823529409" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="Ztp-eC-FPU" firstAttribute="leading" secondItem="JJE-Db-w3O" secondAttribute="leading" id="1i1-Ph-363"/>
@@ -2809,7 +2822,6 @@ nstrate the visual form</string>
                             <constraint firstItem="fGe-v4-sfE" firstAttribute="trailing" secondItem="Ztp-eC-FPU" secondAttribute="trailing" id="Wxr-wh-kkj"/>
                             <constraint firstItem="JJE-Db-w3O" firstAttribute="trailing" secondItem="Ztp-eC-FPU" secondAttribute="trailing" id="sew-GU-lYl"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="JJE-Db-w3O"/>
                     </view>
                     <navigationItem key="navigationItem" id="oNN-oA-cy7"/>
                     <connections>
@@ -2878,7 +2890,7 @@ nstrate the visual form</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="q66-Gg-isX" firstAttribute="top" secondItem="zww-PY-ygw" secondAttribute="top" constant="8" id="51h-U9-kB4"/>
                                     <constraint firstAttribute="trailing" secondItem="q66-Gg-isX" secondAttribute="trailing" id="6r3-7t-jPX"/>
@@ -2896,7 +2908,7 @@ nstrate the visual form</string>
                                 <subviews>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="mpW-b2-M4i">
                                         <rect key="frame" x="10" y="0.0" width="300" height="70"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="70" id="EHX-kW-8ei"/>
                                         </constraints>
@@ -2964,7 +2976,7 @@ nstrate the visual form</string>
                                         </connections>
                                     </collectionView>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="mpW-b2-M4i" firstAttribute="leading" secondItem="oDC-qb-tZk" secondAttribute="leading" constant="10" id="Dcu-PK-cjs"/>
                                     <constraint firstAttribute="height" constant="70" id="FY6-NG-U1z"/>
@@ -2987,6 +2999,7 @@ nstrate the visual form</string>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="FDN-52-49X"/>
                         <color key="backgroundColor" red="0.96470588239999999" green="0.96862745100000003" blue="0.97647058819999999" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="FDN-52-49X" firstAttribute="trailing" secondItem="OOI-mI-19S" secondAttribute="trailing" constant="10" id="2Ao-Vn-zdN"/>
@@ -3003,7 +3016,6 @@ nstrate the visual form</string>
                             <constraint firstItem="zww-PY-ygw" firstAttribute="top" secondItem="FDN-52-49X" secondAttribute="top" id="rCd-Rb-C2N"/>
                             <constraint firstItem="ykg-2V-NfL" firstAttribute="top" secondItem="oDC-qb-tZk" secondAttribute="bottom" constant="1" id="rHp-1g-FbW"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="FDN-52-49X"/>
                     </view>
                     <navigationItem key="navigationItem" id="p5e-lg-piL"/>
                     <connections>
@@ -3045,7 +3057,7 @@ nstrate the visual form</string>
                                         <state key="normal" image="blue_search_icon"/>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="pGE-uf-qke" firstAttribute="top" secondItem="71Q-yC-7sx" secondAttribute="top" id="3mz-2I-yq1"/>
                                     <constraint firstAttribute="bottom" secondItem="Ugi-ZY-cKE" secondAttribute="bottom" constant="3" id="FIm-L6-fLR"/>
@@ -3162,6 +3174,7 @@ nstrate the visual form</string>
                                 </connections>
                             </collectionView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="qzo-JX-j92"/>
                         <color key="backgroundColor" red="0.96470588239999999" green="0.96862745100000003" blue="0.97647058819999999" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="bc8-mt-9EO" firstAttribute="top" secondItem="71Q-yC-7sx" secondAttribute="bottom" constant="15" id="Bzn-aC-Ish"/>
@@ -3171,7 +3184,6 @@ nstrate the visual form</string>
                             <constraint firstItem="71Q-yC-7sx" firstAttribute="top" secondItem="qzo-JX-j92" secondAttribute="top" constant="10" id="mzi-LD-gIi"/>
                             <constraint firstItem="qzo-JX-j92" firstAttribute="trailing" secondItem="71Q-yC-7sx" secondAttribute="trailing" id="yTd-G2-GDm"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="qzo-JX-j92"/>
                     </view>
                     <navigationItem key="navigationItem" id="XHO-4Y-UrG"/>
                     <connections>
@@ -3213,7 +3225,7 @@ nstrate the visual form</string>
                                         <state key="normal" image="blue_search_icon"/>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="ndK-R2-nQd" secondAttribute="bottom" constant="3" id="B3a-V4-E14"/>
                                     <constraint firstItem="ndK-R2-nQd" firstAttribute="top" secondItem="wwd-35-m9z" secondAttribute="top" constant="3" id="G4c-qK-eSv"/>
@@ -3352,6 +3364,7 @@ nstrate the visual form</string>
                                 </connections>
                             </collectionView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="wTB-QQ-VUF"/>
                         <color key="backgroundColor" red="0.96470588239999999" green="0.96862745100000003" blue="0.97647058819999999" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="pfN-ac-uTm" firstAttribute="leading" secondItem="wwd-35-m9z" secondAttribute="leading" id="2g3-6b-Tcx"/>
@@ -3361,7 +3374,6 @@ nstrate the visual form</string>
                             <constraint firstItem="wwd-35-m9z" firstAttribute="leading" secondItem="wTB-QQ-VUF" secondAttribute="leading" id="a0t-qG-tcu"/>
                             <constraint firstItem="wwd-35-m9z" firstAttribute="top" secondItem="wTB-QQ-VUF" secondAttribute="top" constant="10" id="sZD-Aq-xcD"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="wTB-QQ-VUF"/>
                     </view>
                     <navigationItem key="navigationItem" id="tQj-gm-BdQ"/>
                     <connections>
@@ -3378,7 +3390,7 @@ nstrate the visual form</string>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="1wS-ps-zKO"/>
+        <segue reference="6DW-Zs-JBZ"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="BackButtonIcon" width="13" height="21"/>
@@ -3407,5 +3419,8 @@ nstrate the visual form</string>
         <image name="status_icon" width="25" height="24"/>
         <image name="timeline_icon" width="20" height="20"/>
         <image name="updateStausORShareAlbum" width="24" height="24"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

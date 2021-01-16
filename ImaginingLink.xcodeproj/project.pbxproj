@@ -29,6 +29,12 @@
 		482D2C2323A5312F0024CF00 /* EditPresentationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482D2C2223A5312F0024CF00 /* EditPresentationTableViewCell.swift */; };
 		4832F894254E6C8300C91D8A /* PublicOrPrivateProfolioVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4832F893254E6C8300C91D8A /* PublicOrPrivateProfolioVC.swift */; };
 		4832F899254EC48600C91D8A /* PrintPortFolioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4832F898254EC48600C91D8A /* PrintPortFolioViewController.swift */; };
+		4832F8A42557F40300C91D8A /* Groups.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4832F8A32557F40300C91D8A /* Groups.storyboard */; };
+		4832F8AB2557FE6C00C91D8A /* GroupsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4832F8AA2557FE6C00C91D8A /* GroupsListViewController.swift */; };
+		4832F8B12558027500C91D8A /* GroupsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4832F8B02558027500C91D8A /* GroupsAPI.swift */; };
+		4832F8B925582B8000C91D8A /* CreateGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4832F8B825582B8000C91D8A /* CreateGroupViewController.swift */; };
+		4832F8BE255AAA5D00C91D8A /* GroupListDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4832F8BD255AAA5D00C91D8A /* GroupListDetailViewController.swift */; };
+		4832F8C3255D4B1600C91D8A /* GroupDiscussionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4832F8C2255D4B1600C91D8A /* GroupDiscussionViewController.swift */; };
 		483DF7D1236807460081A157 /* CustomPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 483DF7D0236807460081A157 /* CustomPopUpViewController.swift */; };
 		4840D0E124CD565F0053D02E /* PortFolio.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4840D0E024CD565F0053D02E /* PortFolio.storyboard */; };
 		4840D0E324CE9C490053D02E /* PortFolioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4840D0E224CE9C490053D02E /* PortFolioViewController.swift */; };
@@ -77,6 +83,13 @@
 		485491BF24FE8E32005DC52C /* EditCMETrackingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485491BE24FE8E32005DC52C /* EditCMETrackingTableViewCell.swift */; };
 		485491C1250128DC005DC52C /* AddBibliographyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485491C0250128DC005DC52C /* AddBibliographyTableViewCell.swift */; };
 		485491C32502A0B3005DC52C /* EditBibliographyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485491C22502A0B3005DC52C /* EditBibliographyTableViewCell.swift */; };
+		485AA1FF256A4245008130CC /* AllMembersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485AA1FE256A4245008130CC /* AllMembersViewController.swift */; };
+		485AA204256A4263008130CC /* RequestMemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485AA203256A4263008130CC /* RequestMemberViewController.swift */; };
+		485AA209256A4830008130CC /* ManageMembersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485AA208256A4830008130CC /* ManageMembersViewController.swift */; };
+		485AA20E256AD218008130CC /* GroupAdminsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485AA20D256AD218008130CC /* GroupAdminsViewController.swift */; };
+		485AA213256B82B9008130CC /* InviteGroupMemberVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485AA212256B82B9008130CC /* InviteGroupMemberVC.swift */; };
+		485AA21A256F7D35008130CC /* GroupEventListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485AA219256F7D35008130CC /* GroupEventListViewController.swift */; };
+		485AA222256F7D52008130CC /* CreateGroupEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485AA221256F7D52008130CC /* CreateGroupEventViewController.swift */; };
 		485B23D525049D88002BD5F0 /* AddUGEducationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485B23D425049D88002BD5F0 /* AddUGEducationTableViewCell.swift */; };
 		485B23D725049D9A002BD5F0 /* EditUGEducationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485B23D625049D9A002BD5F0 /* EditUGEducationTableViewCell.swift */; };
 		485B23D92504A02A002BD5F0 /* EducationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485B23D82504A02A002BD5F0 /* EducationTableViewCell.swift */; };
@@ -96,6 +109,7 @@
 		488BD075218B4F4E003998AC /* PresentationDetailTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488BD074218B4F4E003998AC /* PresentationDetailTextCell.swift */; };
 		488BD077218B4F98003998AC /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488BD076218B4F98003998AC /* CommentTableViewCell.swift */; };
 		488BD079218B4FB7003998AC /* CommentListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488BD078218B4FB7003998AC /* CommentListTableViewCell.swift */; };
+		4893676C2560F474001D7039 /* ReadMoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4893676B2560F474001D7039 /* ReadMoreViewController.swift */; };
 		4897CCE520038E6500360EB7 /* SSHttpRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4897CCE420038E6500360EB7 /* SSHttpRequest.swift */; };
 		4897CCE720038E7200360EB7 /* SSHttpResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4897CCE620038E7200360EB7 /* SSHttpResponse.swift */; };
 		4897CCEA20039B9D00360EB7 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4897CCE920039B9D00360EB7 /* StringExtension.swift */; };
@@ -208,6 +222,12 @@
 		482D2C2223A5312F0024CF00 /* EditPresentationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPresentationTableViewCell.swift; sourceTree = "<group>"; };
 		4832F893254E6C8300C91D8A /* PublicOrPrivateProfolioVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicOrPrivateProfolioVC.swift; sourceTree = "<group>"; };
 		4832F898254EC48600C91D8A /* PrintPortFolioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrintPortFolioViewController.swift; sourceTree = "<group>"; };
+		4832F8A32557F40300C91D8A /* Groups.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Groups.storyboard; sourceTree = "<group>"; };
+		4832F8AA2557FE6C00C91D8A /* GroupsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsListViewController.swift; sourceTree = "<group>"; };
+		4832F8B02558027500C91D8A /* GroupsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsAPI.swift; sourceTree = "<group>"; };
+		4832F8B825582B8000C91D8A /* CreateGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGroupViewController.swift; sourceTree = "<group>"; };
+		4832F8BD255AAA5D00C91D8A /* GroupListDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupListDetailViewController.swift; sourceTree = "<group>"; };
+		4832F8C2255D4B1600C91D8A /* GroupDiscussionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupDiscussionViewController.swift; sourceTree = "<group>"; };
 		483DF7D0236807460081A157 /* CustomPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPopUpViewController.swift; sourceTree = "<group>"; };
 		4840D0E024CD565F0053D02E /* PortFolio.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PortFolio.storyboard; sourceTree = "<group>"; };
 		4840D0E224CE9C490053D02E /* PortFolioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortFolioViewController.swift; sourceTree = "<group>"; };
@@ -262,6 +282,13 @@
 		485491BE24FE8E32005DC52C /* EditCMETrackingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCMETrackingTableViewCell.swift; sourceTree = "<group>"; };
 		485491C0250128DC005DC52C /* AddBibliographyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBibliographyTableViewCell.swift; sourceTree = "<group>"; };
 		485491C22502A0B3005DC52C /* EditBibliographyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBibliographyTableViewCell.swift; sourceTree = "<group>"; };
+		485AA1FE256A4245008130CC /* AllMembersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllMembersViewController.swift; sourceTree = "<group>"; };
+		485AA203256A4263008130CC /* RequestMemberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestMemberViewController.swift; sourceTree = "<group>"; };
+		485AA208256A4830008130CC /* ManageMembersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageMembersViewController.swift; sourceTree = "<group>"; };
+		485AA20D256AD218008130CC /* GroupAdminsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupAdminsViewController.swift; sourceTree = "<group>"; };
+		485AA212256B82B9008130CC /* InviteGroupMemberVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteGroupMemberVC.swift; sourceTree = "<group>"; };
+		485AA219256F7D35008130CC /* GroupEventListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupEventListViewController.swift; sourceTree = "<group>"; };
+		485AA221256F7D52008130CC /* CreateGroupEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGroupEventViewController.swift; sourceTree = "<group>"; };
 		485B23D425049D88002BD5F0 /* AddUGEducationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUGEducationTableViewCell.swift; sourceTree = "<group>"; };
 		485B23D625049D9A002BD5F0 /* EditUGEducationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditUGEducationTableViewCell.swift; sourceTree = "<group>"; };
 		485B23D82504A02A002BD5F0 /* EducationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EducationTableViewCell.swift; sourceTree = "<group>"; };
@@ -281,6 +308,7 @@
 		488BD074218B4F4E003998AC /* PresentationDetailTextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationDetailTextCell.swift; sourceTree = "<group>"; };
 		488BD076218B4F98003998AC /* CommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
 		488BD078218B4FB7003998AC /* CommentListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentListTableViewCell.swift; sourceTree = "<group>"; };
+		4893676B2560F474001D7039 /* ReadMoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadMoreViewController.swift; sourceTree = "<group>"; };
 		4897CCE420038E6500360EB7 /* SSHttpRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSHttpRequest.swift; sourceTree = "<group>"; };
 		4897CCE620038E7200360EB7 /* SSHttpResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSHttpResponse.swift; sourceTree = "<group>"; };
 		4897CCE920039B9D00360EB7 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
@@ -411,6 +439,28 @@
 				480D5DBD23E9293A0019848C /* MyPresentationsViewController.swift */,
 			);
 			path = Publishing;
+			sourceTree = "<group>";
+		};
+		4832F8A92557FE4B00C91D8A /* Groups */ = {
+			isa = PBXGroup;
+			children = (
+				4832F8AF2558025000C91D8A /* GroupsAPI */,
+				4832F8AA2557FE6C00C91D8A /* GroupsListViewController.swift */,
+				4832F8B825582B8000C91D8A /* CreateGroupViewController.swift */,
+				4832F8BD255AAA5D00C91D8A /* GroupListDetailViewController.swift */,
+				485AA218256F7D08008130CC /* GroupEvents */,
+				485AA1FD256A41ED008130CC /* Discussions */,
+				485AA1FB256A41BE008130CC /* Members */,
+			);
+			path = Groups;
+			sourceTree = "<group>";
+		};
+		4832F8AF2558025000C91D8A /* GroupsAPI */ = {
+			isa = PBXGroup;
+			children = (
+				4832F8B02558027500C91D8A /* GroupsAPI.swift */,
+			);
+			path = GroupsAPI;
 			sourceTree = "<group>";
 		};
 		483D01481FFB9F4500C04430 /* API */ = {
@@ -591,6 +641,36 @@
 			path = ManageFriends;
 			sourceTree = "<group>";
 		};
+		485AA1FB256A41BE008130CC /* Members */ = {
+			isa = PBXGroup;
+			children = (
+				485AA1FE256A4245008130CC /* AllMembersViewController.swift */,
+				485AA208256A4830008130CC /* ManageMembersViewController.swift */,
+				485AA203256A4263008130CC /* RequestMemberViewController.swift */,
+				485AA20D256AD218008130CC /* GroupAdminsViewController.swift */,
+				485AA212256B82B9008130CC /* InviteGroupMemberVC.swift */,
+			);
+			path = Members;
+			sourceTree = "<group>";
+		};
+		485AA1FD256A41ED008130CC /* Discussions */ = {
+			isa = PBXGroup;
+			children = (
+				4832F8C2255D4B1600C91D8A /* GroupDiscussionViewController.swift */,
+				4893676B2560F474001D7039 /* ReadMoreViewController.swift */,
+			);
+			path = Discussions;
+			sourceTree = "<group>";
+		};
+		485AA218256F7D08008130CC /* GroupEvents */ = {
+			isa = PBXGroup;
+			children = (
+				485AA219256F7D35008130CC /* GroupEventListViewController.swift */,
+				485AA221256F7D52008130CC /* CreateGroupEventViewController.swift */,
+			);
+			path = GroupEvents;
+			sourceTree = "<group>";
+		};
 		4897CCE820039B6100360EB7 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -621,6 +701,7 @@
 		48FB28B5247CE60400277FD0 /* SocialConnect */ = {
 			isa = PBXGroup;
 			children = (
+				4832F8A92557FE4B00C91D8A /* Groups */,
 				484BEAA924B0C6EA0029B89A /* ManageFriends */,
 				48FB28B6247CE62C00277FD0 /* Timeline */,
 			);
@@ -684,6 +765,7 @@
 				48FB28B12475051A00277FD0 /* Settings.storyboard */,
 				48FB28B9247CE6F800277FD0 /* SocialConnect.storyboard */,
 				4840D0E024CD565F0053D02E /* PortFolio.storyboard */,
+				4832F8A32557F40300C91D8A /* Groups.storyboard */,
 			);
 			path = StoryBoards;
 			sourceTree = "<group>";
@@ -889,6 +971,7 @@
 				AC323B3820FF822A0015ECB4 /* Verification.storyboard in Resources */,
 				4842793B1FF39B9E0056A089 /* LaunchScreen.storyboard in Resources */,
 				AC0AD39020D13C5800FCB371 /* ListView.storyboard in Resources */,
+				4832F8A42557F40300C91D8A /* Groups.storyboard in Resources */,
 				4810C81F231189BD00B6ACA4 /* GoogleSans-Medium.ttf in Resources */,
 				AC6046AD211018E0006A42F3 /* SF-Pro-Display-Light.ttf in Resources */,
 				485B23DB2504F519002BD5F0 /* portfolio_ug_countries.json in Resources */,
@@ -1052,13 +1135,17 @@
 				AC130702218A035900790E9A /* EmailchangeOTPViewcontroller.swift in Sources */,
 				AC153A49217E265C0017692B /* BaseHamburgerViewController.swift in Sources */,
 				4810C817230C04F100B6ACA4 /* ComingSoonViewController.swift in Sources */,
+				4832F8B12558027500C91D8A /* GroupsAPI.swift in Sources */,
 				ACC94BDC210B4DAD009D6B2F /* PresentationTableViewCell.swift in Sources */,
 				48FFC674217F82A300AB09D5 /* TwofactorAuthenticationViewController.swift in Sources */,
 				484EEC9624F38F7D00A78D1C /* AddTeachingResponsibilitiesTvCell.swift in Sources */,
 				484EEC9824F4CF4800A78D1C /* EditTeachingResponsibilitiesTvCell.swift in Sources */,
+				4832F8BE255AAA5D00C91D8A /* GroupListDetailViewController.swift in Sources */,
 				480A3BF0235B762B00EA4EF4 /* CreatePresentationViewController.swift in Sources */,
+				485AA1FF256A4245008130CC /* AllMembersViewController.swift in Sources */,
 				4848B5C124D4FFC800A7ECE9 /* UserPortFolioViewController.swift in Sources */,
 				BCFFFBB320BAEE5A003A0652 /* SignInViewController.swift in Sources */,
+				485AA21A256F7D35008130CC /* GroupEventListViewController.swift in Sources */,
 				4848B5CF24E26C2F00A7ECE9 /* AddSubSpecialitiesTableViewCell.swift in Sources */,
 				4897CCE520038E6500360EB7 /* SSHttpRequest.swift in Sources */,
 				4832F894254E6C8300C91D8A /* PublicOrPrivateProfolioVC.swift in Sources */,
@@ -1069,25 +1156,32 @@
 				484BEA50248020400029B89A /* SocialConnectAPI.swift in Sources */,
 				4840D0E324CE9C490053D02E /* PortFolioViewController.swift in Sources */,
 				ACB08028212ACAEB0061B5D2 /* BaseViewController.swift in Sources */,
+				485AA213256B82B9008130CC /* InviteGroupMemberVC.swift in Sources */,
 				484B3B4824B45D850054E42E /* FriendsSearchViewController.swift in Sources */,
+				485AA20E256AD218008130CC /* GroupAdminsViewController.swift in Sources */,
 				4848B5D124E26F8700A7ECE9 /* EditSubSpecialitiesTableViewCell.swift in Sources */,
 				BCFFFBB720BAEEB0003A0652 /* OTPViewcontroller.swift in Sources */,
 				AC3AD4E42188A72D00B1B81A /* LogOutTableViewCell.swift in Sources */,
+				485AA209256A4830008130CC /* ManageMembersViewController.swift in Sources */,
 				485491BD24FE882E005DC52C /* AddCMETrackingTableViewCell.swift in Sources */,
 				484BEA562484C3E70029B89A /* CreatePostViewController.swift in Sources */,
 				485186C824E7919100335A35 /* AddHospitalAppointmentsTableViewCell.swift in Sources */,
 				480D9B092177A32C000DEBFC /* ChangeEmailViewController.swift in Sources */,
 				4869A96324EEEBD2009A5AD3 /* EditCommitteesTableViewCell.swift in Sources */,
+				4893676C2560F474001D7039 /* ReadMoreViewController.swift in Sources */,
 				4878412424F76CD00058CE3B /* AddCongressionalAndMediaTVCell.swift in Sources */,
 				484E1F0324ED582A00EDF6C1 /* AddLicensesTableViewCell.swift in Sources */,
+				485AA222256F7D52008130CC /* CreateGroupEventViewController.swift in Sources */,
 				4848B5CB24DFA4C200A7ECE9 /* SelectDateViewController.swift in Sources */,
 				48A0799E23DC99F900495BC2 /* FilterPublishViewController.swift in Sources */,
 				484BEA54248412BB0029B89A /* SharedVideoTableViewCell.swift in Sources */,
 				4897CCE720038E7200360EB7 /* SSHttpResponse.swift in Sources */,
 				485B23D725049D9A002BD5F0 /* EditUGEducationTableViewCell.swift in Sources */,
 				ACCA1D1721076D1B00383104 /* DashBoardCollectionViewCell.swift in Sources */,
+				485AA204256A4263008130CC /* RequestMemberViewController.swift in Sources */,
 				484BEA46247F88B40029B89A /* SharedStatusTableViewCell.swift in Sources */,
 				AC12A32F217A27B900858A47 /* AlreadyHaveOTPViewController.swift in Sources */,
+				4832F8B925582B8000C91D8A /* CreateGroupViewController.swift in Sources */,
 				484E1F0124EBFB5900EDF6C1 /* EditCertificationsTableViewCell.swift in Sources */,
 				485186C624E55F9000335A35 /* EditHospitalORAcademicAppointmentsTVCell.swift in Sources */,
 				485B23D92504A02A002BD5F0 /* EducationTableViewCell.swift in Sources */,
@@ -1107,6 +1201,7 @@
 				4848B5C924DD2F5E00A7ECE9 /* ContactPersonalInfoTableViewCell.swift in Sources */,
 				480A3BEC2359847100EA4EF4 /* PublishStepOneViewController.swift in Sources */,
 				4832F899254EC48600C91D8A /* PrintPortFolioViewController.swift in Sources */,
+				4832F8AB2557FE6C00C91D8A /* GroupsListViewController.swift in Sources */,
 				48222DF223131FB700751CB7 /* FullSizeImageViewController.swift in Sources */,
 				4878412624F773B90058CE3B /* EditCongressionalAndMediaTVCell.swift in Sources */,
 				484279331FF39B9E0056A089 /* ViewController.swift in Sources */,
@@ -1129,6 +1224,7 @@
 				488BD077218B4F98003998AC /* CommentTableViewCell.swift in Sources */,
 				4878412A24F7C42D0058CE3B /* EditInvitedLecturesPresentationsTvCell.swift in Sources */,
 				48B6EDC0235D4AE700C1152D /* FinalSubmissionViewController.swift in Sources */,
+				4832F8C3255D4B1600C91D8A /* GroupDiscussionViewController.swift in Sources */,
 				AC0E194F215AA49A00ADAFB1 /* SignInLabel.swift in Sources */,
 				BCFFFBB520BAEE79003A0652 /* SignUpViewcontroller.swift in Sources */,
 				AC0AD39220D13CDE00FCB371 /* ListViewTableViewCell.swift in Sources */,
@@ -1333,7 +1429,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_TEAM = W8U434C9C6;
 				INFOPLIST_FILE = ImaginingLink/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -1353,7 +1449,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_TEAM = W8U434C9C6;
 				INFOPLIST_FILE = ImaginingLink/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;

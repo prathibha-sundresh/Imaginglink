@@ -69,6 +69,15 @@ class SocialConnectAPI {
         })
     }
 	
+	func requestPinUnpinPost(pinType: String, requestDict: [String: Any], successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void ) {
+		let request = SSHttpRequest(withuUrl: pinType)
+		request.postMethodWithHeaderasToken(dictParameter: requestDict, url: pinType, header: getHeader(), successResponse: {(response) in
+			successResponse(response)
+		}, faliure: {(error) in
+			faliure(error)
+		})
+	}
+	
 	func hideTimeLimelinePost(requestDict: [String: Any], successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void ) {
         let request =  SSHttpRequest(withuUrl: kTimelineHidePost)
         request.postMethodWithHeaderasToken(dictParameter: requestDict, url: kTimelineHidePost, header: getHeader(), successResponse: {(response) in
@@ -88,10 +97,9 @@ class SocialConnectAPI {
         })
     }
 	
-	func requestReportPost(timeLineID: String,selectedIssue: String,reportedIssue: String, successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void ) {
-        let request =  SSHttpRequest(withuUrl: kReportTimeLinePost)
-        let OTPRequestValues = ["post_id" : timeLineID, "selected_issue": selectedIssue, "reported_issue":reportedIssue]  as [String:Any]
-        request.postMethodWithHeaderasToken(dictParameter: OTPRequestValues, url: kReportTimeLinePost, header: getHeader(), successResponse: {(response) in
+	func requestReportPost(parameterDict: [String: Any], type: String, successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void ) {
+        let request =  SSHttpRequest(withuUrl: type)
+        request.postMethodWithHeaderasToken(dictParameter: parameterDict, url: type, header: getHeader(), successResponse: {(response) in
             successResponse(response)
         }, faliure: {(error) in
             faliure(error)

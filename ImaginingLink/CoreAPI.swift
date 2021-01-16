@@ -166,16 +166,6 @@ class CoreAPI {
         
     }
 	
-    func requestReportPost(presentationID: String,selectedIssue: String,reportedIssue: String, successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void ) {
-        let request =  SSHttpRequest(withuUrl: kReportPost)
-        let OTPRequestValues = ["presentation_id" : presentationID, "selected_issue": selectedIssue, "reported_issue":reportedIssue]  as [String:Any]
-        request.postMethodWithHeaderasToken(dictParameter: OTPRequestValues, url: kReportPost, header: getHeader(), successResponse: {(response) in
-            successResponse(response)
-        }, faliure: {(error) in
-            faliure(error)
-        })
-    }
-	
     func requestAddRatingPost(presentationID: String,rating: Int, successResponse:@escaping (_ response:AnyObject)-> Void, faliure:@escaping (_ errorMessage:String) -> Void ) {
         let request =  SSHttpRequest(withuUrl: kAddRatings)
         let OTPRequestValues = ["presentation_id" : presentationID, "rating": rating]  as [String:Any]

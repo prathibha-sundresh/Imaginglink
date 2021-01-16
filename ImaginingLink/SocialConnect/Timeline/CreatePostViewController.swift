@@ -18,6 +18,8 @@ class CreatePostViewController: BaseHamburgerViewController {
 	var albumUpdateDict = [String: Any]()
 	var filesUpdateDict = [String: Any]()
 	var selectedIndex = 100
+	var isFrom = ""
+	var groupID = ""
     override func viewDidLoad() {
         super.viewDidLoad()
 		self.tabBarController?.tabBar.isHidden = true
@@ -55,6 +57,8 @@ class CreatePostViewController: BaseHamburgerViewController {
 			statusImage.image = UIImage(named: "sel_status_icon")
 			addSlideMenuButton(showBackButton: true, backbuttonTitle: "Update status")
 			let timelineStatusVC = storyboard.instantiateViewController(withIdentifier: "UpdateTimelineStatusVCID") as! UpdateTimelineStatusVC
+			timelineStatusVC.isFrom = isFrom
+			timelineStatusVC.groupID = groupID
 			timelineStatusVC.dataDict = statusUpdateDict
 			controller = timelineStatusVC
 		}
@@ -62,6 +66,8 @@ class CreatePostViewController: BaseHamburgerViewController {
 			albumImage.image = UIImage(named: "sel_album_icon")
 			addSlideMenuButton(showBackButton: true, backbuttonTitle: "Share Album")
 			let shareAlbumViewController = storyboard.instantiateViewController(withIdentifier: "ShareAlbumViewControllerID") as! ShareAlbumViewController
+			shareAlbumViewController.isFrom = isFrom
+			shareAlbumViewController.groupID = groupID
 			shareAlbumViewController.dataDict = albumUpdateDict
 			controller = shareAlbumViewController
 		}
@@ -69,6 +75,8 @@ class CreatePostViewController: BaseHamburgerViewController {
 			shareFileImage.image = UIImage(named: "sel_shareFile_icon")
 			addSlideMenuButton(showBackButton: true, backbuttonTitle: "Share File")
 			let shareFileViewController = storyboard.instantiateViewController(withIdentifier: "ShareFileViewControllerID") as! ShareFileViewController
+			shareFileViewController.isFrom = isFrom
+			shareFileViewController.groupID = groupID
 			shareFileViewController.dataDict = filesUpdateDict
 			controller = shareFileViewController
 		}

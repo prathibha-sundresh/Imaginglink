@@ -16,6 +16,8 @@ class UpdateTimelineStatusVC: UIViewController {
 	@IBOutlet weak var postButton: UIButton!
 	var dataDict: [String: Any] = [:]
 	var isUpdateStatus = false
+	var isFrom = ""
+	var groupID = ""
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -66,7 +68,10 @@ class UpdateTimelineStatusVC: UIViewController {
 			let post_id = detailsDict["message_id"] as? String ?? ""
 			ILUtility.showProgressIndicator(controller: self)
 			let visibility = (publicButton.titleLabel!.text == "Public") ? "public" : "only_me"
-			let requestDict = ["timeline_id": timeline_id,"post_id": post_id,"status_message" : statusTextView.text!, "post_type": "status", "visibility": visibility] as [String : Any]
+			var requestDict = ["timeline_id": timeline_id,"post_id": post_id,"status_message" : statusTextView.text!, "post_type": "status", "visibility": visibility] as [String : Any]
+			if isFrom == "Group" {
+				requestDict["group_id"] = groupID
+			}
 			SocialConnectAPI.sharedManaged.updatePost(requestDict: requestDict, successResponse: { (response) in
 				self.navigationController?.popViewController(animated: false)
 				ILUtility.hideProgressIndicator(controller: self)
@@ -77,7 +82,10 @@ class UpdateTimelineStatusVC: UIViewController {
 		else {
 			ILUtility.showProgressIndicator(controller: self)
 			let visibility = (publicButton.titleLabel!.text == "Public") ? "public" : "only_me"
-			let requestDict = ["message" : statusTextView.text!, "message_type": "status", "visibility": visibility] as [String : Any]
+			var requestDict = ["message" : statusTextView.text!, "message_type": "status", "visibility": visibility] as [String : Any]
+			if isFrom == "Group" {
+				requestDict["group_id"] = groupID
+			}
 			SocialConnectAPI.sharedManaged.createStatusPost(requestDict: requestDict, successResponse: { (response) in
 				self.navigationController?.popViewController(animated: false)
 				ILUtility.hideProgressIndicator(controller: self)

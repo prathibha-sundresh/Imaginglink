@@ -9,13 +9,22 @@
 import UIKit
 
 class AddCommentReplyViewController: UIViewController {
+	@IBOutlet weak var headerTitleLabel: UILabel!
 	var parentCommentID: String = ""
+	var isFrom: String = ""
+	var messageStr: String = ""
 	@IBOutlet weak var commentReplyTextView: UITextView!
 	@IBOutlet weak var commentReplySubmitButton: UIButton!
 	var callBack: ((_ replyMessage: String) -> Void)?
     override func viewDidLoad() {
         super.viewDidLoad()
-		commentReplyTextView.text = ""
+		if isFrom == "GroupDiscussion" {
+			headerTitleLabel.text = "Edit Discription"
+		}
+		else {
+			headerTitleLabel.text = "Add New Comment"
+		}
+		commentReplyTextView.text = messageStr
 		commentReplySubmitButton.isEnabled = false
 		commentReplySubmitButton.alpha = 0.6
 		commentReplyTextView.layer.borderWidth = 1.0
@@ -25,9 +34,11 @@ class AddCommentReplyViewController: UIViewController {
     }
     
 	@IBAction func commentViewCancelOrSubmitAction(_ sender: UIButton){
-		if commentReplyTextView.text != ""{
-			if let callback = callBack{
-				callback(commentReplyTextView.text!)
+		if sender.tag == 2000 {
+			if commentReplyTextView.text != ""{
+				if let callback = callBack{
+					callback(commentReplyTextView.text!)
+				}
 			}
 		}
 		self.dismiss(animated: false, completion: nil)
