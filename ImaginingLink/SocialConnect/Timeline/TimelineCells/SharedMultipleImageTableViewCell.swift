@@ -33,6 +33,7 @@ class SharedMultipleImageTableViewCell: UITableViewCell {
 	
 	func setUI(dict: [String: Any]) {
 		setUpProfileImage()
+		profileImageView.layer.borderColor = UIColor(red: 0.89, green: 0.92, blue: 0.93, alpha: 1.00).cgColor
 		borderView.layer.borderWidth = 1.0
 		borderView.layer.borderColor = UIColor(red: 0.89, green: 0.92, blue: 0.93, alpha: 1.00).cgColor
 		borderView.layer.cornerRadius = 4.0

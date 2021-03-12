@@ -81,6 +81,7 @@ class ShareAlbumViewController: BaseHamburgerViewController {
 	@IBOutlet weak var addImageButton: UIButton!
 	var isFrom = ""
 	var groupID = ""
+	var eventId = ""
 	var msg_id = ""
 	@IBOutlet weak var albumTypeTF: UITextField!
 	@IBOutlet weak var albumNameTF: UITextField!
@@ -231,8 +232,12 @@ class ShareAlbumViewController: BaseHamburgerViewController {
 		if isUpdateStatus {
 			let timeline_id = dataDict["_id"] as? String ?? ""
 			var requestDict = ["post_type": "album","timeline_id": timeline_id,"post_id": msg_id,"album_type":"video","album_name": albumNameTF.text!,"album_description": statusTextView.text!,"visibility":visibility,"video_url": videoUrlTF.text!]
-			if isFrom == "Group" {
+			if isFrom == "GroupDiscussions" {
 				requestDict["group_id"] = groupID
+			}
+			else if isFrom == "GroupEvents" {
+				requestDict["group_id"] = groupID
+				requestDict["event_id"] = eventId
 			}
 			SocialConnectAPI.sharedManaged.updatePost(requestDict: requestDict, successResponse: { (response) in
 				self.navigationController?.popViewController(animated: false)
@@ -243,8 +248,12 @@ class ShareAlbumViewController: BaseHamburgerViewController {
 		}
 		else {
 			var requestDict = ["album_type":"video","album_name": albumNameTF.text!,"album_description": statusTextView.text!,"visibility":visibility,"video_url": videoUrlTF.text!]
-			if isFrom == "Group" {
+			if isFrom == "GroupDiscussions" {
 				requestDict["group_id"] = groupID
+			}
+			else if isFrom == "GroupEvents" {
+				requestDict["group_id"] = groupID
+				requestDict["event_id"] = eventId
 			}
 			SocialConnectAPI.sharedManaged.createVideoAlbumtypeForTimelinePost(requestDict: requestDict, successResponse: { (response) in
 				self.navigationController?.popViewController(animated: false)
@@ -291,8 +300,12 @@ class ShareAlbumViewController: BaseHamburgerViewController {
 		ILUtility.showProgressIndicator(controller: self)
 		let visibility = (publicButton.titleLabel!.text == "Public") ? "public" : "only_me"
 		var requestDict = ["album_type":"image","album_name": albumNameTF.text!,"album_description": videoUrlTF.text!,"visibility": visibility] as [String : Any]
-		if isFrom == "Group" {
+		if isFrom == "GroupDiscussions" {
 			requestDict["group_id"] = groupID
+		}
+		else if isFrom == "GroupEvents" {
+			requestDict["group_id"] = groupID
+			requestDict["event_id"] = eventId
 		}
 		if isUpdateStatus {
 			let timeline_id = dataDict["_id"] as? String ?? ""

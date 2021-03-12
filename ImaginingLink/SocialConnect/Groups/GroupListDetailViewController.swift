@@ -16,12 +16,38 @@ class GroupListDetailViewController: BaseHamburgerViewController {
 	@IBOutlet weak var groupImage: UIImageView!
 	var groupDiscussionViewController : GroupDiscussionViewController?
 	var groupEventListViewController : GroupEventListViewController?
+	var resourceFolderViewController : CreateGroupFolderViewController?
+	var managePostsViewController : ManagePostsViewController?
+	var managePollViewController : CreateGroupPollViewController?
 	var selectedGroupDict = [String: Any]()
-	var tabsArray : [[String: Any]] = [["name":"Discussion", "icon": "timeline_icon"],["name":"Members", "icon": "group_members_icon"],["name":"Events", "icon": "group_events_icon"], ["name":"Manage post", "icon": "group_manage_post_icon"]]
+	var groupListDetailsDict = [String: Any]()
+	var tabsArray : [[String: Any]] = [["name":"Discussion", "icon": "timeline_icon"],["name":"Members", "icon": "group_members_icon"],["name":"Events", "icon": "group_events_icon"],["name":"Resources", "icon": "resources_icon"],["name":"Manage post", "icon": "managepost"],["name":"Manage poll", "icon": "managepoll"]]
 	var selectedOption : Int = 0
 	var groupId = ""
     override func viewDidLoad() {
         super.viewDidLoad()
+		let membersArray = groupListDetailsDict["group_members"] as? [[String: Any]] ?? []
+		let filteredObjs = membersArray.filter { (tmpDict) -> Bool in
+			var isAdminStr = ""
+			if let isAdmin = tmpDict["is_admin"] as? String {
+				isAdminStr = isAdmin
+			}
+			if let isAdmin = tmpDict["is_admin"] as? Int {
+				isAdminStr = "\(isAdmin)"
+			}
+			if let isAdmin = tmpDict["is_admin"] as? Bool {
+				isAdminStr = isAdmin ? "1":"0"
+			}
+			return isAdminStr == "1"
+		}
+		if filteredObjs.count > 0 {
+			let member_id = filteredObjs[0]["member_id"] as? String ?? ""
+			let loginUserID = UserDefaults.standard.value(forKey: kLoggedInUserId) as? String ?? ""
+			if loginUserID != member_id {
+				tabsArray.remove(at: 4)
+				topCollectionView.reloadData()
+			}
+		}
 		groupNameLabel.text = (selectedGroupDict["group_name"] as? String ?? "").capitalized
 		groupImage.sd_setImage(with: URL(string: selectedGroupDict["group_logo"] as? String ?? ""), placeholderImage: UIImage(named: "profileIcon"))
 		groupImage.layer.borderColor = UIColor(red: 0.29, green: 0.29, blue: 0.29, alpha: 1.00).cgColor
@@ -57,6 +83,8 @@ class GroupListDetailViewController: BaseHamburgerViewController {
 		case 0:
 			groupDiscussionViewController = storyboard.instantiateViewController(withIdentifier: "GroupDiscussionViewControllerID") as? GroupDiscussionViewController
 			groupDiscussionViewController?.selectedGroupDict = selectedGroupDict
+			groupDiscussionViewController?.groupListDetailsDict = groupListDetailsDict
+			groupDiscussionViewController?.isFromTab = "GroupDiscussions"
 			controller = groupDiscussionViewController
 		case 1:
 			selectedOption = 0
@@ -67,9 +95,25 @@ class GroupListDetailViewController: BaseHamburgerViewController {
 			groupEventListViewController = storyboard.instantiateViewController(withIdentifier: "GroupEventListViewControllerVCID") as? GroupEventListViewController
 			groupEventListViewController?.groupId = groupId
 			controller = groupEventListViewController
-//		case 3:
-//			friendsInviteToGroupViewController = storyboard.instantiateViewController(withIdentifier: "FriendsInviteToGroupViewControllerVCID") as? FriendsInviteToGroupViewController
-//			controller = friendsInviteToGroupViewController
+		case 3:
+			resourceFolderViewController = storyboard.instantiateViewController(withIdentifier: "ResourceFolderViewControllerVCID") as? CreateGroupFolderViewController
+			resourceFolderViewController?.groupId = groupId
+			controller = resourceFolderViewController
+		case 4:
+			if tabsArray.count == 5 {
+				managePollViewController = storyboard.instantiateViewController(withIdentifier: "CreateGroupPollViewControllerVCID") as? CreateGroupPollViewController
+				managePollViewController?.groupId = groupId
+				controller = managePollViewController
+			}
+			else {
+				managePostsViewController = storyboard.instantiateViewController(withIdentifier: "ManagePostsViewControllerVCID") as? ManagePostsViewController
+				managePostsViewController?.groupId = groupId
+				controller = managePostsViewController
+			}
+		case 5:
+			managePollViewController = storyboard.instantiateViewController(withIdentifier: "CreateGroupPollViewControllerVCID") as? CreateGroupPollViewController
+			managePollViewController?.groupId = groupId
+			controller = managePollViewController
 		default:
 			break
 		}
@@ -111,7 +155,10 @@ extension GroupListDetailViewController: UICollectionViewDelegate,UICollectionVi
 	
 	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 		selectedOption = indexPath.item
+		let contentOffset = topCollectionView.contentOffset
 		topCollectionView.reloadData()
+		topCollectionView.layoutIfNeeded()
+		topCollectionView.setContentOffset(contentOffset, animated: false)
 		loadVC()
 	}
 }

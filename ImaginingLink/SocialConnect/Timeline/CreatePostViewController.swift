@@ -20,12 +20,13 @@ class CreatePostViewController: BaseHamburgerViewController {
 	var selectedIndex = 100
 	var isFrom = ""
 	var groupID = ""
+	var eventId = ""
     override func viewDidLoad() {
         super.viewDidLoad()
 		self.tabBarController?.tabBar.isHidden = true
         // Do any additional setup after loading the view.
     }
-    
+	
 	override func viewDidAppear(_ animated: Bool) {
 		updateStatusAlbumFileButtonAction(self.view.viewWithTag(selectedIndex) as! UIButton)
 	}
@@ -59,6 +60,7 @@ class CreatePostViewController: BaseHamburgerViewController {
 			let timelineStatusVC = storyboard.instantiateViewController(withIdentifier: "UpdateTimelineStatusVCID") as! UpdateTimelineStatusVC
 			timelineStatusVC.isFrom = isFrom
 			timelineStatusVC.groupID = groupID
+			timelineStatusVC.eventId = eventId
 			timelineStatusVC.dataDict = statusUpdateDict
 			controller = timelineStatusVC
 		}
@@ -68,6 +70,7 @@ class CreatePostViewController: BaseHamburgerViewController {
 			let shareAlbumViewController = storyboard.instantiateViewController(withIdentifier: "ShareAlbumViewControllerID") as! ShareAlbumViewController
 			shareAlbumViewController.isFrom = isFrom
 			shareAlbumViewController.groupID = groupID
+			shareAlbumViewController.eventId = eventId
 			shareAlbumViewController.dataDict = albumUpdateDict
 			controller = shareAlbumViewController
 		}
@@ -77,6 +80,7 @@ class CreatePostViewController: BaseHamburgerViewController {
 			let shareFileViewController = storyboard.instantiateViewController(withIdentifier: "ShareFileViewControllerID") as! ShareFileViewController
 			shareFileViewController.isFrom = isFrom
 			shareFileViewController.groupID = groupID
+			shareFileViewController.eventId = eventId
 			shareFileViewController.dataDict = filesUpdateDict
 			controller = shareFileViewController
 		}

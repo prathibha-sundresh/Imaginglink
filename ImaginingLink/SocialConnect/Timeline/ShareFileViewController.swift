@@ -20,6 +20,7 @@ class ShareFileViewController: BaseHamburgerViewController {
 	var msg_id = ""
 	var isFrom = ""
 	var groupID = ""
+	var eventId = ""
 	var isUpdateFile = false
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,8 +72,12 @@ class ShareFileViewController: BaseHamburgerViewController {
 		ILUtility.showProgressIndicator(controller: self)
 		let visibility = (publicButton.titleLabel!.text == "Public") ? "public" : "only_me"
 		var requestDict = ["visibility": visibility] as [String : Any]
-		if isFrom == "Group" {
+		if isFrom == "GroupDiscussions" {
 			requestDict["group_id"] = groupID
+		}
+		else if isFrom == "GroupEvents" {
+			requestDict["group_id"] = groupID
+			requestDict["event_id"] = eventId
 		}
 		if isUpdateFile {
 			let timeline_id = dataDict["_id"] as? String ?? ""

@@ -25,6 +25,10 @@
 		48216E3D2326C4EB00ADE8D5 /* TermsAndCondtionsAndPrivacyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48216E3C2326C4EB00ADE8D5 /* TermsAndCondtionsAndPrivacyViewController.swift */; };
 		48216E3F2326CAB200ADE8D5 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48216E3E2326CAB200ADE8D5 /* WebKit.framework */; };
 		48222DF223131FB700751CB7 /* FullSizeImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48222DF123131FB700751CB7 /* FullSizeImageViewController.swift */; };
+		482833AD25D7AA8000C1869E /* ManagePostsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482833AC25D7AA8000C1869E /* ManagePostsViewController.swift */; };
+		482833B725DA67CD00C1869E /* CreateGroupPollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482833B625DA67CD00C1869E /* CreateGroupPollViewController.swift */; };
+		482833CC25E4C14A00C1869E /* AddPollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482833CB25E4C14A00C1869E /* AddPollViewController.swift */; };
+		482833D125E6009C00C1869E /* OptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482833D025E6009C00C1869E /* OptionTableViewCell.swift */; };
 		482D2C2123A215C90024CF00 /* RemovePresentationsFileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482D2C2023A215C90024CF00 /* RemovePresentationsFileCell.swift */; };
 		482D2C2323A5312F0024CF00 /* EditPresentationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482D2C2223A5312F0024CF00 /* EditPresentationTableViewCell.swift */; };
 		4832F894254E6C8300C91D8A /* PublicOrPrivateProfolioVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4832F893254E6C8300C91D8A /* PublicOrPrivateProfolioVC.swift */; };
@@ -45,6 +49,12 @@
 		484279331FF39B9E0056A089 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484279321FF39B9E0056A089 /* ViewController.swift */; };
 		484279361FF39B9E0056A089 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 484279341FF39B9E0056A089 /* Main.storyboard */; };
 		4842793B1FF39B9E0056A089 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 484279391FF39B9E0056A089 /* LaunchScreen.storyboard */; };
+		4846DB0825CE4A440007A6FB /* CreateGroupFolderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4846DB0725CE4A440007A6FB /* CreateGroupFolderViewController.swift */; };
+		4846DB0E25CE4A5C0007A6FB /* EventInviteFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4846DB0C25CE4A5B0007A6FB /* EventInviteFriendsViewController.swift */; };
+		4846DB0F25CE4A5C0007A6FB /* GroupEventListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4846DB0D25CE4A5B0007A6FB /* GroupEventListViewController.swift */; };
+		4846DB1A25CE4A830007A6FB /* CreateGroupEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4846DB1925CE4A830007A6FB /* CreateGroupEventViewController.swift */; };
+		4846DB1F25D042420007A6FB /* GroupFolderDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4846DB1E25D042420007A6FB /* GroupFolderDetailViewController.swift */; };
+		4846DB2925D133020007A6FB /* UploadFilesToFolderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4846DB2825D133020007A6FB /* UploadFilesToFolderViewController.swift */; };
 		4848B5C124D4FFC800A7ECE9 /* UserPortFolioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4848B5C024D4FFC800A7ECE9 /* UserPortFolioViewController.swift */; };
 		4848B5C424D56E5900A7ECE9 /* PortFolioAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4848B5C324D56E5900A7ECE9 /* PortFolioAPI.swift */; };
 		4848B5C724D943BD00A7ECE9 /* SummaryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4848B5C624D943BD00A7ECE9 /* SummaryTableViewCell.swift */; };
@@ -88,8 +98,6 @@
 		485AA209256A4830008130CC /* ManageMembersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485AA208256A4830008130CC /* ManageMembersViewController.swift */; };
 		485AA20E256AD218008130CC /* GroupAdminsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485AA20D256AD218008130CC /* GroupAdminsViewController.swift */; };
 		485AA213256B82B9008130CC /* InviteGroupMemberVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485AA212256B82B9008130CC /* InviteGroupMemberVC.swift */; };
-		485AA21A256F7D35008130CC /* GroupEventListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485AA219256F7D35008130CC /* GroupEventListViewController.swift */; };
-		485AA222256F7D52008130CC /* CreateGroupEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485AA221256F7D52008130CC /* CreateGroupEventViewController.swift */; };
 		485B23D525049D88002BD5F0 /* AddUGEducationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485B23D425049D88002BD5F0 /* AddUGEducationTableViewCell.swift */; };
 		485B23D725049D9A002BD5F0 /* EditUGEducationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485B23D625049D9A002BD5F0 /* EditUGEducationTableViewCell.swift */; };
 		485B23D92504A02A002BD5F0 /* EducationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485B23D82504A02A002BD5F0 /* EducationTableViewCell.swift */; };
@@ -97,6 +105,7 @@
 		485B23DD25135F62002BD5F0 /* AddFundingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485B23DC25135F62002BD5F0 /* AddFundingTableViewCell.swift */; };
 		485B23DF251656D7002BD5F0 /* EditFundingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485B23DE251656D7002BD5F0 /* EditFundingTableViewCell.swift */; };
 		485E3DCF2377F09E00B94F05 /* AddCommentReplyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485E3DCE2377F09E00B94F05 /* AddCommentReplyViewController.swift */; };
+		4866B8CC25F14A0300E460F5 /* PollDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4866B8CB25F14A0300E460F5 /* PollDetailViewController.swift */; };
 		4869A96124EEE5F1009A5AD3 /* AddCommitteesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4869A96024EEE5F1009A5AD3 /* AddCommitteesTableViewCell.swift */; };
 		4869A96324EEEBD2009A5AD3 /* EditCommitteesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4869A96224EEEBD2009A5AD3 /* EditCommitteesTableViewCell.swift */; };
 		486CC7B524B6F21E006242E7 /* FriendsInviteToGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486CC7B424B6F21E006242E7 /* FriendsInviteToGroupViewController.swift */; };
@@ -218,6 +227,10 @@
 		48216E3C2326C4EB00ADE8D5 /* TermsAndCondtionsAndPrivacyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsAndCondtionsAndPrivacyViewController.swift; sourceTree = "<group>"; };
 		48216E3E2326CAB200ADE8D5 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		48222DF123131FB700751CB7 /* FullSizeImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullSizeImageViewController.swift; sourceTree = "<group>"; };
+		482833AC25D7AA8000C1869E /* ManagePostsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagePostsViewController.swift; sourceTree = "<group>"; };
+		482833B625DA67CD00C1869E /* CreateGroupPollViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGroupPollViewController.swift; sourceTree = "<group>"; };
+		482833CB25E4C14A00C1869E /* AddPollViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPollViewController.swift; sourceTree = "<group>"; };
+		482833D025E6009C00C1869E /* OptionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionTableViewCell.swift; sourceTree = "<group>"; };
 		482D2C2023A215C90024CF00 /* RemovePresentationsFileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemovePresentationsFileCell.swift; sourceTree = "<group>"; };
 		482D2C2223A5312F0024CF00 /* EditPresentationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPresentationTableViewCell.swift; sourceTree = "<group>"; };
 		4832F893254E6C8300C91D8A /* PublicOrPrivateProfolioVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicOrPrivateProfolioVC.swift; sourceTree = "<group>"; };
@@ -244,6 +257,12 @@
 		4842793C1FF39B9E0056A089 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		484279411FF39B9E0056A089 /* ImaginingLinkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ImaginingLinkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4842794C1FF39B9E0056A089 /* ImaginingLinkUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ImaginingLinkUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4846DB0725CE4A440007A6FB /* CreateGroupFolderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateGroupFolderViewController.swift; sourceTree = "<group>"; };
+		4846DB0C25CE4A5B0007A6FB /* EventInviteFriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventInviteFriendsViewController.swift; sourceTree = "<group>"; };
+		4846DB0D25CE4A5B0007A6FB /* GroupEventListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupEventListViewController.swift; sourceTree = "<group>"; };
+		4846DB1925CE4A830007A6FB /* CreateGroupEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateGroupEventViewController.swift; sourceTree = "<group>"; };
+		4846DB1E25D042420007A6FB /* GroupFolderDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupFolderDetailViewController.swift; sourceTree = "<group>"; };
+		4846DB2825D133020007A6FB /* UploadFilesToFolderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadFilesToFolderViewController.swift; sourceTree = "<group>"; };
 		4848B5C024D4FFC800A7ECE9 /* UserPortFolioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPortFolioViewController.swift; sourceTree = "<group>"; };
 		4848B5C324D56E5900A7ECE9 /* PortFolioAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortFolioAPI.swift; sourceTree = "<group>"; };
 		4848B5C624D943BD00A7ECE9 /* SummaryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryTableViewCell.swift; sourceTree = "<group>"; };
@@ -287,8 +306,6 @@
 		485AA208256A4830008130CC /* ManageMembersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageMembersViewController.swift; sourceTree = "<group>"; };
 		485AA20D256AD218008130CC /* GroupAdminsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupAdminsViewController.swift; sourceTree = "<group>"; };
 		485AA212256B82B9008130CC /* InviteGroupMemberVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteGroupMemberVC.swift; sourceTree = "<group>"; };
-		485AA219256F7D35008130CC /* GroupEventListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupEventListViewController.swift; sourceTree = "<group>"; };
-		485AA221256F7D52008130CC /* CreateGroupEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGroupEventViewController.swift; sourceTree = "<group>"; };
 		485B23D425049D88002BD5F0 /* AddUGEducationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUGEducationTableViewCell.swift; sourceTree = "<group>"; };
 		485B23D625049D9A002BD5F0 /* EditUGEducationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditUGEducationTableViewCell.swift; sourceTree = "<group>"; };
 		485B23D82504A02A002BD5F0 /* EducationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EducationTableViewCell.swift; sourceTree = "<group>"; };
@@ -296,6 +313,7 @@
 		485B23DC25135F62002BD5F0 /* AddFundingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFundingTableViewCell.swift; sourceTree = "<group>"; };
 		485B23DE251656D7002BD5F0 /* EditFundingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditFundingTableViewCell.swift; sourceTree = "<group>"; };
 		485E3DCE2377F09E00B94F05 /* AddCommentReplyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCommentReplyViewController.swift; sourceTree = "<group>"; };
+		4866B8CB25F14A0300E460F5 /* PollDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollDetailViewController.swift; sourceTree = "<group>"; };
 		4869A96024EEE5F1009A5AD3 /* AddCommitteesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCommitteesTableViewCell.swift; sourceTree = "<group>"; };
 		4869A96224EEEBD2009A5AD3 /* EditCommitteesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCommitteesTableViewCell.swift; sourceTree = "<group>"; };
 		486CC7B424B6F21E006242E7 /* FriendsInviteToGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsInviteToGroupViewController.swift; sourceTree = "<group>"; };
@@ -441,6 +459,25 @@
 			path = Publishing;
 			sourceTree = "<group>";
 		};
+		482833AB25D7A97A00C1869E /* ManagePost */ = {
+			isa = PBXGroup;
+			children = (
+				482833AC25D7AA8000C1869E /* ManagePostsViewController.swift */,
+			);
+			path = ManagePost;
+			sourceTree = "<group>";
+		};
+		482833B525DA671A00C1869E /* ManagePolls */ = {
+			isa = PBXGroup;
+			children = (
+				482833B625DA67CD00C1869E /* CreateGroupPollViewController.swift */,
+				4866B8CB25F14A0300E460F5 /* PollDetailViewController.swift */,
+				482833CB25E4C14A00C1869E /* AddPollViewController.swift */,
+				482833D025E6009C00C1869E /* OptionTableViewCell.swift */,
+			);
+			path = ManagePolls;
+			sourceTree = "<group>";
+		};
 		4832F8A92557FE4B00C91D8A /* Groups */ = {
 			isa = PBXGroup;
 			children = (
@@ -448,9 +485,12 @@
 				4832F8AA2557FE6C00C91D8A /* GroupsListViewController.swift */,
 				4832F8B825582B8000C91D8A /* CreateGroupViewController.swift */,
 				4832F8BD255AAA5D00C91D8A /* GroupListDetailViewController.swift */,
-				485AA218256F7D08008130CC /* GroupEvents */,
 				485AA1FD256A41ED008130CC /* Discussions */,
 				485AA1FB256A41BE008130CC /* Members */,
+				4846DAF125CE483D0007A6FB /* GroupEvents */,
+				4846DAEF25CE47A90007A6FB /* Resources */,
+				482833AB25D7A97A00C1869E /* ManagePost */,
+				482833B525DA671A00C1869E /* ManagePolls */,
 			);
 			path = Groups;
 			sourceTree = "<group>";
@@ -562,6 +602,26 @@
 			path = ImaginingLink;
 			sourceTree = "<group>";
 		};
+		4846DAEF25CE47A90007A6FB /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				4846DB0725CE4A440007A6FB /* CreateGroupFolderViewController.swift */,
+				4846DB1E25D042420007A6FB /* GroupFolderDetailViewController.swift */,
+				4846DB2825D133020007A6FB /* UploadFilesToFolderViewController.swift */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		4846DAF125CE483D0007A6FB /* GroupEvents */ = {
+			isa = PBXGroup;
+			children = (
+				4846DB1925CE4A830007A6FB /* CreateGroupEventViewController.swift */,
+				4846DB0C25CE4A5B0007A6FB /* EventInviteFriendsViewController.swift */,
+				4846DB0D25CE4A5B0007A6FB /* GroupEventListViewController.swift */,
+			);
+			path = GroupEvents;
+			sourceTree = "<group>";
+		};
 		4848B5C224D56D9400A7ECE9 /* PortFolioAPI */ = {
 			isa = PBXGroup;
 			children = (
@@ -660,15 +720,6 @@
 				4893676B2560F474001D7039 /* ReadMoreViewController.swift */,
 			);
 			path = Discussions;
-			sourceTree = "<group>";
-		};
-		485AA218256F7D08008130CC /* GroupEvents */ = {
-			isa = PBXGroup;
-			children = (
-				485AA219256F7D35008130CC /* GroupEventListViewController.swift */,
-				485AA221256F7D52008130CC /* CreateGroupEventViewController.swift */,
-			);
-			path = GroupEvents;
 			sourceTree = "<group>";
 		};
 		4897CCE820039B6100360EB7 /* Extensions */ = {
@@ -1130,6 +1181,7 @@
 				ACD18C7420C551D50059DE7B /* TwoFactorAuthenticationViewcontroller.swift in Sources */,
 				4848B5C724D943BD00A7ECE9 /* SummaryTableViewCell.swift in Sources */,
 				484BEAA82490A6010029B89A /* UploadedFilesViewController.swift in Sources */,
+				4846DB0825CE4A440007A6FB /* CreateGroupFolderViewController.swift in Sources */,
 				485E3DCF2377F09E00B94F05 /* AddCommentReplyViewController.swift in Sources */,
 				485491C32502A0B3005DC52C /* EditBibliographyTableViewCell.swift in Sources */,
 				AC130702218A035900790E9A /* EmailchangeOTPViewcontroller.swift in Sources */,
@@ -1144,8 +1196,8 @@
 				480A3BF0235B762B00EA4EF4 /* CreatePresentationViewController.swift in Sources */,
 				485AA1FF256A4245008130CC /* AllMembersViewController.swift in Sources */,
 				4848B5C124D4FFC800A7ECE9 /* UserPortFolioViewController.swift in Sources */,
+				482833B725DA67CD00C1869E /* CreateGroupPollViewController.swift in Sources */,
 				BCFFFBB320BAEE5A003A0652 /* SignInViewController.swift in Sources */,
-				485AA21A256F7D35008130CC /* GroupEventListViewController.swift in Sources */,
 				4848B5CF24E26C2F00A7ECE9 /* AddSubSpecialitiesTableViewCell.swift in Sources */,
 				4897CCE520038E6500360EB7 /* SSHttpRequest.swift in Sources */,
 				4832F894254E6C8300C91D8A /* PublicOrPrivateProfolioVC.swift in Sources */,
@@ -1153,25 +1205,28 @@
 				482D2C2123A215C90024CF00 /* RemovePresentationsFileCell.swift in Sources */,
 				AC0AD38E20D13C4100FCB371 /* ListViewController.swift in Sources */,
 				484BEAA6248E9B2D0029B89A /* ShareFileViewController.swift in Sources */,
+				482833D125E6009C00C1869E /* OptionTableViewCell.swift in Sources */,
 				484BEA50248020400029B89A /* SocialConnectAPI.swift in Sources */,
 				4840D0E324CE9C490053D02E /* PortFolioViewController.swift in Sources */,
 				ACB08028212ACAEB0061B5D2 /* BaseViewController.swift in Sources */,
 				485AA213256B82B9008130CC /* InviteGroupMemberVC.swift in Sources */,
 				484B3B4824B45D850054E42E /* FriendsSearchViewController.swift in Sources */,
+				4846DB0E25CE4A5C0007A6FB /* EventInviteFriendsViewController.swift in Sources */,
 				485AA20E256AD218008130CC /* GroupAdminsViewController.swift in Sources */,
 				4848B5D124E26F8700A7ECE9 /* EditSubSpecialitiesTableViewCell.swift in Sources */,
 				BCFFFBB720BAEEB0003A0652 /* OTPViewcontroller.swift in Sources */,
 				AC3AD4E42188A72D00B1B81A /* LogOutTableViewCell.swift in Sources */,
 				485AA209256A4830008130CC /* ManageMembersViewController.swift in Sources */,
+				4866B8CC25F14A0300E460F5 /* PollDetailViewController.swift in Sources */,
 				485491BD24FE882E005DC52C /* AddCMETrackingTableViewCell.swift in Sources */,
 				484BEA562484C3E70029B89A /* CreatePostViewController.swift in Sources */,
 				485186C824E7919100335A35 /* AddHospitalAppointmentsTableViewCell.swift in Sources */,
 				480D9B092177A32C000DEBFC /* ChangeEmailViewController.swift in Sources */,
 				4869A96324EEEBD2009A5AD3 /* EditCommitteesTableViewCell.swift in Sources */,
+				4846DB0F25CE4A5C0007A6FB /* GroupEventListViewController.swift in Sources */,
 				4893676C2560F474001D7039 /* ReadMoreViewController.swift in Sources */,
 				4878412424F76CD00058CE3B /* AddCongressionalAndMediaTVCell.swift in Sources */,
 				484E1F0324ED582A00EDF6C1 /* AddLicensesTableViewCell.swift in Sources */,
-				485AA222256F7D52008130CC /* CreateGroupEventViewController.swift in Sources */,
 				4848B5CB24DFA4C200A7ECE9 /* SelectDateViewController.swift in Sources */,
 				48A0799E23DC99F900495BC2 /* FilterPublishViewController.swift in Sources */,
 				484BEA54248412BB0029B89A /* SharedVideoTableViewCell.swift in Sources */,
@@ -1181,6 +1236,7 @@
 				485AA204256A4263008130CC /* RequestMemberViewController.swift in Sources */,
 				484BEA46247F88B40029B89A /* SharedStatusTableViewCell.swift in Sources */,
 				AC12A32F217A27B900858A47 /* AlreadyHaveOTPViewController.swift in Sources */,
+				482833AD25D7AA8000C1869E /* ManagePostsViewController.swift in Sources */,
 				4832F8B925582B8000C91D8A /* CreateGroupViewController.swift in Sources */,
 				484E1F0124EBFB5900EDF6C1 /* EditCertificationsTableViewCell.swift in Sources */,
 				485186C624E55F9000335A35 /* EditHospitalORAcademicAppointmentsTVCell.swift in Sources */,
@@ -1193,12 +1249,15 @@
 				ACC94BDA210B4AE9009D6B2F /* PresentationViewController.swift in Sources */,
 				48B6EDBE235CD25A00C1152D /* UpdatePresentationViewController.swift in Sources */,
 				AC323B3B20FF826C0015ECB4 /* MobileVerificationsViewcontroller.swift in Sources */,
+				482833CC25E4C14A00C1869E /* AddPollViewController.swift in Sources */,
 				4848B5C424D56E5900A7ECE9 /* PortFolioAPI.swift in Sources */,
+				4846DB1F25D042420007A6FB /* GroupFolderDetailViewController.swift in Sources */,
 				AC099D8320F79DEE0090B0CA /* LoaderView.swift in Sources */,
 				ACD18C7620C586E20059DE7B /* EmailSuccessViewController.swift in Sources */,
 				48216E19231BC1E300ADE8D5 /* ProfileViewController.swift in Sources */,
 				484E1EFB24E953E000EDF6C1 /* AddPGEducationTableViewCell.swift in Sources */,
 				4848B5C924DD2F5E00A7ECE9 /* ContactPersonalInfoTableViewCell.swift in Sources */,
+				4846DB2925D133020007A6FB /* UploadFilesToFolderViewController.swift in Sources */,
 				480A3BEC2359847100EA4EF4 /* PublishStepOneViewController.swift in Sources */,
 				4832F899254EC48600C91D8A /* PrintPortFolioViewController.swift in Sources */,
 				4832F8AB2557FE6C00C91D8A /* GroupsListViewController.swift in Sources */,
@@ -1210,6 +1269,7 @@
 				485B23D525049D88002BD5F0 /* AddUGEducationTableViewCell.swift in Sources */,
 				48F7F1871FFE0412008D827A /* Constants.swift in Sources */,
 				488BD073218B4F2D003998AC /* ImageTableViewCell.swift in Sources */,
+				4846DB1A25CE4A830007A6FB /* CreateGroupEventViewController.swift in Sources */,
 				484E1F0524ED58E500EDF6C1 /* EditLicensesTableViewCell.swift in Sources */,
 				484BEA43247E38360029B89A /* SharedFileTableViewCell.swift in Sources */,
 				AC4843F92126A3B3003492DB /* ILTabViewController.swift in Sources */,
@@ -1429,7 +1489,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 13;
 				DEVELOPMENT_TEAM = W8U434C9C6;
 				INFOPLIST_FILE = ImaginingLink/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -1449,7 +1509,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 13;
 				DEVELOPMENT_TEAM = W8U434C9C6;
 				INFOPLIST_FILE = ImaginingLink/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;

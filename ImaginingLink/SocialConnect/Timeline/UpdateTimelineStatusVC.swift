@@ -18,6 +18,7 @@ class UpdateTimelineStatusVC: UIViewController {
 	var isUpdateStatus = false
 	var isFrom = ""
 	var groupID = ""
+	var eventId = ""
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -66,12 +67,16 @@ class UpdateTimelineStatusVC: UIViewController {
 			let timeline_id = dataDict["_id"] as? String ?? ""
 			let detailsDict = dataDict["details"] as? [String : Any] ?? [:]
 			let post_id = detailsDict["message_id"] as? String ?? ""
-			ILUtility.showProgressIndicator(controller: self)
 			let visibility = (publicButton.titleLabel!.text == "Public") ? "public" : "only_me"
 			var requestDict = ["timeline_id": timeline_id,"post_id": post_id,"status_message" : statusTextView.text!, "post_type": "status", "visibility": visibility] as [String : Any]
-			if isFrom == "Group" {
+			if isFrom == "GroupDiscussions" {
 				requestDict["group_id"] = groupID
 			}
+			else if isFrom == "GroupEvents" {
+				requestDict["group_id"] = groupID
+				requestDict["event_id"] = eventId
+			}
+			ILUtility.showProgressIndicator(controller: self)
 			SocialConnectAPI.sharedManaged.updatePost(requestDict: requestDict, successResponse: { (response) in
 				self.navigationController?.popViewController(animated: false)
 				ILUtility.hideProgressIndicator(controller: self)
@@ -83,8 +88,12 @@ class UpdateTimelineStatusVC: UIViewController {
 			ILUtility.showProgressIndicator(controller: self)
 			let visibility = (publicButton.titleLabel!.text == "Public") ? "public" : "only_me"
 			var requestDict = ["message" : statusTextView.text!, "message_type": "status", "visibility": visibility] as [String : Any]
-			if isFrom == "Group" {
+			if isFrom == "GroupDiscussions" {
 				requestDict["group_id"] = groupID
+			}
+			else if isFrom == "GroupEvents" {
+				requestDict["group_id"] = groupID
+				requestDict["event_id"] = eventId
 			}
 			SocialConnectAPI.sharedManaged.createStatusPost(requestDict: requestDict, successResponse: { (response) in
 				self.navigationController?.popViewController(animated: false)

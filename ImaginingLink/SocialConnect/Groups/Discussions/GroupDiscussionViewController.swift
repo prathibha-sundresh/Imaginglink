@@ -13,7 +13,7 @@ class EmptyPostTableviewCell: UITableViewCell {
 	@IBOutlet weak var discLabel: UILabel!
 }
 
-class GroupDiscussionViewController: UIViewController {
+class GroupDiscussionViewController: BaseHamburgerViewController {
 	@IBOutlet weak var groupImage: UIImageView!
 	@IBOutlet weak var groupNameLabel: UILabel!
 	@IBOutlet weak var addedMembersLabel: UILabel!
@@ -32,24 +32,59 @@ class GroupDiscussionViewController: UIViewController {
 	var groupListDetailsDict = [String: Any]()
 	var groupId = ""
 	var followOrUnfollow = ""
+	var eventId = ""
+	var isFromTab = ""
+	//eventDetails Tab
+	@IBOutlet weak var eventHeaderView: UIView!
+	@IBOutlet weak var eventImage: UIImageView!
+	@IBOutlet weak var eventGoingButton: UIButton!
+	@IBOutlet weak var eventNameLabel: UILabel!
+	@IBOutlet weak var postedOnLabel: UILabel!
+	@IBOutlet weak var dateLabel: UILabel!
+	@IBOutlet weak var locationLabel: UILabel!
+	@IBOutlet weak var groupLabel: UILabel!
+	@IBOutlet weak var goingCountLabel: UILabel!
+	@IBOutlet weak var invitedCountLabel: UILabel!
+	@IBOutlet weak var maybeCountLabel: UILabel!
+	@IBOutlet weak var notGoingCountLabel: UILabel!
+	@IBOutlet weak var updateStausButton: UIButton!
+	@IBOutlet weak var guestView: UIView!
+	@IBOutlet weak var updateStausButtonView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
-		setUIForHeader()
-		addBordersForButton(readMoreButton)
-		addBordersForButton(editButton)
-		addBordersForButton(joinButton)
-		addBordersForButton(shareToTimelineButton)
-		getGroupDetails()
-		getGroupDiscussions()
-		groupDetailsTableview.tableHeaderView = groupHeaderView
+		
+		if isFromTab == "GroupDiscussions" {
+			setUIForGroupDiscussionsHeader()
+			addBordersForButton(readMoreButton)
+			addBordersForButton(editButton)
+			addBordersForButton(joinButton)
+			addBordersForButton(shareToTimelineButton)
+			//getGroupDetails()
+			self.addGroupDescription()
+			if let members = self.groupListDetailsDict["group_members"] as? [[String: Any]], members.count > 0 {
+				self.addedMembersLabel.text = "\(members.count)+ Members"
+			}
+			getGroupDiscussions()
+			groupDetailsTableview.tableHeaderView = groupHeaderView
+		}
+		else {
+			getUserGroupEventDetails()
+			groupDetailsTableview.tableHeaderView = eventHeaderView
+			setUIForGroupEventHeaderView()
+		}
         // Do any additional setup after loading the view.
     }
     
 	override func viewWillAppear(_ animated: Bool) {
-		self.navigationController?.isNavigationBarHidden = true
+		if isFromTab == "GroupDiscussions" {
+			self.navigationController?.isNavigationBarHidden = true
+		}
+		else {
+			self.navigationController?.isNavigationBarHidden = false
+		}
 	}
 	
-	func setUIForHeader() {
+	func setUIForGroupDiscussionsHeader() {
 		groupId = selectedGroupDict["social_connect_group_id"] as? String ?? ""
 		groupNameLabel.text = (selectedGroupDict["group_name"] as? String ?? "").capitalized
 		groupImage.sd_setImage(with: URL(string: selectedGroupDict["group_logo"] as? String ?? ""), placeholderImage: UIImage(named: "profileIcon"))
@@ -58,10 +93,69 @@ class GroupDiscussionViewController: UIViewController {
 		groupDetailsView.layer.borderColor = UIColor(red: 0.89, green: 0.92, blue: 0.93, alpha: 1.00).cgColor
 	}
 	
+	@IBAction func updateRvspStatus(_ sender: UIButton) {
+		self.performSegue(withIdentifier: "PopUpVCID", sender: ["isFrom": "updateRvsp"])
+	}
+	
+	@IBAction func eventInviteFriendsButton(_ sender: UIButton) {
+		self.performSegue(withIdentifier: "EventInviteFriendsSegue", sender: nil)
+	}
+	
+	func setUIForGroupEventHeaderView() {
+		eventImage.sd_setImage(with: URL(string: selectedGroupDict["photo"] as? String ?? ""), placeholderImage: UIImage(named: "profileIcon"))
+		eventNameLabel.text = (selectedGroupDict["event_name"] as? String ?? "").capitalized
+		postedOnLabel.text = "Posted on \(selectedGroupDict["created_at"] as? String ?? "")"
+		eventGoingButton.setTitle(selectedGroupDict["user_rsvp_status"] as? String ?? "", for: .normal)
+		
+		var startDate = ""
+		var endDate = ""
+		if let dateStr = selectedGroupDict["start_date"] as? String {
+			let df = DateFormatter()
+			df.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+			let date = df.date(from: dateStr)
+			df.dateFormat = "dd/MM/yyyy, h:mm a"
+			startDate = df.string(from: date!)
+		}
+		
+		if let dateStr = selectedGroupDict["end_date"] as? String {
+			let df = DateFormatter()
+			df.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+			let date = df.date(from: dateStr)
+			df.dateFormat = "dd/MM/yyyy, h:mm a"
+			endDate = df.string(from: date!)
+		}
+		dateLabel.text = "\(startDate) - \(endDate)"
+		locationLabel.text = selectedGroupDict["location"] as? String ?? ""
+		groupLabel.text = selectedGroupDict["group_name"] as? String ?? ""
+		addSlideMenuButton(showBackButton: true, backbuttonTitle: selectedGroupDict["group_name"] as? String ?? "")
+		if let dict = selectedGroupDict["event_rsvp_count"] as? [String: Any] {
+			let goingDict = dict["GOING"] as? [String: Any] ?? [:]
+			goingCountLabel.text = "\(goingDict["count"] as? Int ?? 0)"
+			let invitedDict = dict["INVITED"] as? [String: Any] ?? [:]
+			invitedCountLabel.text = "\(invitedDict["count"] as? Int ?? 0)"
+			let mayBeDict = dict["may_be"] as? [String: Any] ?? [:]
+			maybeCountLabel.text = "\(mayBeDict["count"] as? Int ?? 0)"
+			let notGoingDict = dict["not_going"] as? [String: Any] ?? [:]
+			notGoingCountLabel.text = "\(notGoingDict["count"] as? Int ?? 0)"
+		}
+		eventHeaderView.layer.borderColor = UIColor(red: 0.89, green: 0.92, blue: 0.93, alpha: 1.00).cgColor
+		goingCountLabel.layer.borderColor = UIColor(red: 0.89, green: 0.92, blue: 0.93, alpha: 1.00).cgColor
+		invitedCountLabel.layer.borderColor = UIColor(red: 0.89, green: 0.92, blue: 0.93, alpha: 1.00).cgColor
+		maybeCountLabel.layer.borderColor = UIColor(red: 0.89, green: 0.92, blue: 0.93, alpha: 1.00).cgColor
+		notGoingCountLabel.layer.borderColor = UIColor(red: 0.89, green: 0.92, blue: 0.93, alpha: 1.00).cgColor
+		updateStausButtonView.layer.borderColor = UIColor(red: 0.89, green: 0.92, blue: 0.93, alpha: 1.00).cgColor
+		guestView.layer.borderColor = UIColor(red: 0.89, green: 0.92, blue: 0.93, alpha: 1.00).cgColor
+	}
+	
 	func addBordersForButton(_ sender: UIButton) {
 		sender.layer.borderWidth = 1.0
 		sender.layer.borderColor = UIColor(red: 0.00, green: 0.00, blue: 0.00, alpha: 0.25).cgColor
 		sender.clipsToBounds = true
+	}
+	
+	override func backAction() {
+		self.navigationController?.isNavigationBarHidden = true
+		self.navigationController?.popViewController(animated: false)
 	}
 	
 	func getGroupMembers() {
@@ -100,6 +194,34 @@ class GroupDiscussionViewController: UIViewController {
 		}
 	}
 	
+	func getUserGroupEventDetails() {
+		
+		ILUtility.showProgressIndicator(controller: self)
+		GroupsAPI.sharedManaged.getGroupEventDetail(groupId: groupId, eventId: eventId, successResponse: { (response) in
+			ILUtility.hideProgressIndicator(controller: self)
+			let value = response as! String
+			let dic : [String : Any] = value.convertToDictionary()!
+			if let array = dic["data"] as? [[String : Any]] {
+				let tmparry = array.filter { (dict) -> Bool in
+					return dict["timeline_status"] as! String != "DELETED"
+				}
+				let filer = tmparry.filter { (dict) -> Bool in
+					let detailDict = dict["details"] as? [String: Any] ?? [:]
+					let type = detailDict["message_type"] as? String ?? ""
+					if type == "status_portfolio" || type == "case" || type == "share_group" {
+						return false
+					}
+					return true
+				}
+				self.allPostArray = filer
+				//self.allPostArray = tmparry
+				self.groupDetailsTableview.reloadData()
+			}
+		}) { (error) in
+			ILUtility.hideProgressIndicator(controller: self)
+		}
+	}
+	
 	func addGroupDescription() {
 		if let disc = self.groupListDetailsDict["group_description"] as? String, disc != "" {
 			self.discLabel.text = disc
@@ -125,7 +247,16 @@ class GroupDiscussionViewController: UIViewController {
 				let tmparry = array.filter { (dict) -> Bool in
 					return dict["timeline_status"] as! String != "DELETED"
 				}
-				self.allPostArray = tmparry
+				let filer = tmparry.filter { (dict) -> Bool in
+					let detailDict = dict["details"] as? [String: Any] ?? [:]
+					let type = detailDict["message_type"] as? String ?? ""
+					if type == "status_portfolio" || type == "case" || type == "share_group" {
+						return false
+					}
+					return true
+				}
+				self.allPostArray = filer
+				//self.allPostArray = tmparry
 				self.groupDetailsTableview.reloadData()
 			}
 		}) { (error) in
@@ -467,14 +598,32 @@ class GroupDiscussionViewController: UIViewController {
 				vc.groupId = groupId
 			}
 		}
+		else if (segue.identifier == "EventInviteFriendsSegue") {
+			let vc : EventInviteFriendsViewController = segue.destination as! EventInviteFriendsViewController
+			vc.groupId = groupId
+			vc.eventId = eventId
+		}
 		else if segue.identifier == "PopUpVCID" {
+			let senderDict = sender as? [String: Any] ?? [:]
 			let vc = segue.destination as! CustomPopUpViewController
 			vc.selectionType = .Single
-			vc.titleArray = ["follow", "unfollow"]
-			vc.selectedRowTitles = [followOrUnfollow]
+			if senderDict["isFrom"] as? String ?? "" == "updateRvsp" {
+				vc.titleArray = ["MAY_BE", "GOING", "NOT_GOING"]
+				vc.selectedRowTitles = [eventGoingButton.titleLabel?.text ?? ""]
+			}
+			else {
+				vc.titleArray = ["follow", "unfollow"]
+				vc.selectedRowTitles = [followOrUnfollow]
+			}
 			vc.callBack = { (titles) in
 				if titles.count > 0 {
-					self.makeFollowUnFollowGroup(status: titles[0])
+					if senderDict["isFrom"] as? String ?? "" == "updateRvsp" {
+						self.eventGoingButton.setTitle(titles[0], for: .normal)
+						self.storeEventRVspAPI(status: titles[0])
+					}
+					else {
+						self.makeFollowUnFollowGroup(status: titles[0])
+					}
 				}
 			}
 		}
@@ -482,8 +631,9 @@ class GroupDiscussionViewController: UIViewController {
 			self.navigationController?.isNavigationBarHidden = false
 			let vc : CreatePostViewController = segue.destination as! CreatePostViewController
 			let dict = sender as? [String: Any] ?? [:]
-			vc.isFrom = "Group"
+			vc.isFrom = isFromTab
 			vc.groupID = groupId
+			vc.eventId = eventId
 			let tmpDict = dict["details"] as? [String : Any] ?? [:]
 			let typeOfPost = tmpDict["message_type"] as? String ?? ""
 			switch typeOfPost {
@@ -499,6 +649,16 @@ class GroupDiscussionViewController: UIViewController {
 			}
 		}
     }
+	
+	func storeEventRVspAPI(status: String) {
+		ILUtility.showProgressIndicator(controller: self)
+		let reqestDict = ["event_id": selectedGroupDict["_id"] as? String ?? "", "status": status]
+		GroupsAPI.sharedManaged.storeEventRSVP(parameterDict: reqestDict) { (response) in
+			ILUtility.hideProgressIndicator(controller: self)
+		} faliure: { (error) in
+			ILUtility.hideProgressIndicator(controller: self)
+		}
+	}
 }
 
 extension GroupDiscussionViewController: UITableViewDelegate, UITableViewDataSource {

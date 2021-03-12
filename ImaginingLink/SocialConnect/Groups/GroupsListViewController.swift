@@ -27,6 +27,7 @@ class GroupsListTvCell: UITableViewCell {
 class GroupsListViewController: BaseHamburgerViewController {
 	@IBOutlet weak var groupsListTableView: UITableView!
 	var userGroupsArray: [[String: Any]] = []
+	var selectedGroupDict = [String: Any]()
     override func viewDidLoad() {
         super.viewDidLoad()
 		addSlideMenuButton(showBackButton: true, backbuttonTitle: "Groups")
@@ -71,7 +72,8 @@ class GroupsListViewController: BaseHamburgerViewController {
 		
 		if segue.identifier == "GroupListDetailViewControllerVCID" {
 			let vc = segue.destination as! GroupListDetailViewController
-			vc.selectedGroupDict = sender as! [String: Any]
+			vc.selectedGroupDict = selectedGroupDict
+			vc.groupListDetailsDict = sender as! [String: Any]
 		}
     }
 
@@ -89,8 +91,18 @@ extension GroupsListViewController: UITableViewDataSource, UITableViewDelegate {
 	}
 	
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		let dict = userGroupsArray[indexPath.row]
-		self.navigationController?.isNavigationBarHidden = true
-		self.performSegue(withIdentifier: "GroupListDetailViewControllerVCID", sender: dict)
+		selectedGroupDict = userGroupsArray[indexPath.row]
+		let groupID = selectedGroupDict["social_connect_group_id"] as? String ?? ""
+		ILUtility.showProgressIndicator(controller: self)
+		GroupsAPI.sharedManaged.getGroupsIdDetails(groupId: groupID) { (response) in
+			ILUtility.hideProgressIndicator(controller: self)
+			let value = response as! String
+			let dic : [String : Any] = value.convertToDictionary()!
+			let tmpDict = dic["data"] as? [String : Any] ?? [:]
+			self.navigationController?.isNavigationBarHidden = true
+			self.performSegue(withIdentifier: "GroupListDetailViewControllerVCID", sender: tmpDict)
+		} faliure: { (error) in
+			ILUtility.hideProgressIndicator(controller: self)
+		}
 	}
 }

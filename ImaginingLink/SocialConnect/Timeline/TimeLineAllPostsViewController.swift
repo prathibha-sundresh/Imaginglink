@@ -60,7 +60,15 @@ class TimeLineAllPostsViewController: BaseHamburgerViewController {
 			let value = response as! String
 			let dic : [String : Any] = value.convertToDictionary()!
 			if let array = dic["data"] as? [[String : Any]] {
-				self.allPostArray = array
+				let filer = array.filter { (dict) -> Bool in
+					let detailDict = dict["details"] as? [String: Any] ?? [:]
+					let type = detailDict["message_type"] as? String ?? ""
+					if type == "status_portfolio" || type == "case" || type == "share_group" {
+						return false
+					}
+					return true
+				}
+				self.allPostArray = filer
 				self.timelinePostTableview.reloadData()
 			}
 		}) { (error) in
@@ -76,7 +84,15 @@ class TimeLineAllPostsViewController: BaseHamburgerViewController {
 			let value = response as! String
 			let dic : [String : Any] = value.convertToDictionary()!
 			if let array = dic["data"] as? [[String : Any]] {
-				self.allPostArray = array
+				let filer = array.filter { (dict) -> Bool in
+					let detailDict = dict["details"] as? [String: Any] ?? [:]
+					let type = detailDict["message_type"] as? String ?? ""
+					if type == "status_portfolio" || type == "case" || type == "share_group" {
+						return false
+					}
+					return true
+				}
+				self.allPostArray = filer
 				self.timelinePostTableview.reloadData()
 			}
 		}) { (error) in
