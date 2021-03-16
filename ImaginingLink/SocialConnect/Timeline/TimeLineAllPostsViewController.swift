@@ -20,7 +20,7 @@ class TimeLineAllPostsViewController: BaseHamburgerViewController {
 	@IBOutlet weak var topCollectionView: UICollectionView!
 	var allPostArray: [[String: Any]] = []
 	var likesArray : [Int] = []
-	var timeLinesOptions : [[String: Any]] = [["name":"Public posts", "icon": "timeline_icon"],["name":"Personal posts", "icon": "mywall_icon"],["name":"Friends", "icon": "friends_icon"],["name":"Groups", "icon": "Groups_icon"]]
+	var timeLinesOptions : [[String: Any]] = [["name":"Public posts", "icon": "timeline_icon"],["name":"Personal posts", "icon": "mywall_icon"],["name":"Friends", "icon": "friends_icon"],["name":"Groups", "icon": "Groups_icon"],["name":"Folios", "icon": "Groups_icon"]]
 	var selectedOption : Int = 0
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -500,8 +500,10 @@ extension TimeLineAllPostsViewController: UICollectionViewDelegate,UICollectionV
 			self.performSegue(withIdentifier: "ManageFriendsViewControllerSegue", sender: nil)
 		case 3:
 			selectedOption = 0
-			//self.navigationController?.isNavigationBarHidden = true
 			self.performSegue(withIdentifier: "GroupsListVCID", sender: nil)
+		case 4:
+			selectedOption = 0
+			self.performSegue(withIdentifier: "FolioViewControllerID", sender: nil)
 		default:
 			break
 		}

@@ -190,7 +190,15 @@ class ILUtility : NSObject {
 //        }, atPosition: MBLMessageBannerPosition.bottom, canBeDismissedByUser: true, delegate: nil)
         
     }
-    class func showAlert(title:String = "Imaginglink", message: String, controller: UIViewController){
+    class func showAlertWithCallBack(title:String = "Imaginglink", message: String, controller: UIViewController, success:@escaping () -> Void) {
+        let alertContoller = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+        alertContoller.addAction(UIAlertAction(title: "Ok", style: .default, handler: { action in
+            success()
+        }))
+        controller.present(alertContoller, animated: true, completion: nil)
+    }
+    
+    class func showAlert(title:String = "Imaginglink", message: String, controller: UIViewController) {
         let alertContoller = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
         let alertAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
         alertContoller.addAction(alertAction)

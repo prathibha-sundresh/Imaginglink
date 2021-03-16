@@ -15,6 +15,8 @@ class DashBoardViewController:  BaseHamburgerViewController {
     let SocialConnect = 3
     let Presentation = 4
     let Publish = 5
+    let Folio = 6
+   @IBOutlet var contentView : UIView!
     
     @IBAction func CasesIconPressed(_ sender: AnyObject) {
         changeButtonsBackgroundImage(sender: sender.tag)
@@ -62,7 +64,13 @@ class DashBoardViewController:  BaseHamburgerViewController {
             }
 			else if type == 5{
                 vc.typeOfVC = ComingSoonViewController.ComingSoon.Publish
+            } else if type == 6 {
+                vc.typeOfVC = ComingSoonViewController.ComingSoon.Folio
             }
+        }
+        else if segue.identifier == "FolioViewControllerID"{
+           segue.destination
+            
         }
     }
     
@@ -78,6 +86,10 @@ class DashBoardViewController:  BaseHamburgerViewController {
         self.performSegue(withIdentifier: "PublishVCID", sender: Publish)
     }
     
+    @IBAction func folioIconPressed(_ sender: Any) {
+        self.performSegue(withIdentifier: "FolioViewControllerID", sender: Folio)
+    }
+    
     func changeButtonsBackgroundImage(sender: Int){
         for tag in 1001...1006{
             let btn = self.view.viewWithTag(tag) as! UIButton
@@ -89,7 +101,7 @@ class DashBoardViewController:  BaseHamburgerViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        for tagValue in 1001..<1007{
+        for tagValue in 1001..<1007 {
             addShadowToButton(button: self.view.viewWithTag(tagValue) as! UIButton)
         }
     }

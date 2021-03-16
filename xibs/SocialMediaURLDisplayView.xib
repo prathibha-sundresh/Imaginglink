@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="GoogleSans-Medium.ttf">
+            <string>GoogleSans-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SocialMediaURLDisplayView" customModule="ImagingLink" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add more links" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6JD-BO-YW1">
+                    <rect key="frame" x="21" y="75" width="373" height="20.5"/>
+                    <fontDescription key="fontDescription" name="GoogleSans-Medium" family="Google Sans" pointSize="16"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="inE-Na-twh" userLabel="GooglePlus">
+                    <rect key="frame" x="21" y="199.5" width="61" height="48"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="48" id="Ah7-jM-OK4"/>
+                    </constraints>
+                    <state key="normal" image="Icon_googlePlus"/>
+                    <connections>
+                        <action selector="googlePlusTapped:" destination="-1" eventType="touchUpInside" id="UaN-td-0LT"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uUx-rO-CJ9" userLabel="Tumblr">
+                    <rect key="frame" x="125" y="199.5" width="60.5" height="48"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="48" id="gai-Zb-PWD"/>
+                    </constraints>
+                    <state key="normal" image="Icon_tumblr"/>
+                    <connections>
+                        <action selector="tumblrTapped:" destination="-1" eventType="touchUpInside" id="j8O-2u-qqG"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tmd-XS-yzs" userLabel="Blogger">
+                    <rect key="frame" x="228.5" y="199.5" width="61" height="48"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="48" id="ap7-v9-31h"/>
+                    </constraints>
+                    <state key="normal" image="icon_blogger"/>
+                    <connections>
+                        <action selector="bloggerTapped:" destination="-1" eventType="touchUpInside" id="dhb-GW-Jy6"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ucn-Zc-skv">
+                    <rect key="frame" x="96" y="788" width="222" height="48"/>
+                    <color key="backgroundColor" red="0.97647058823529409" green="0.58039215686274503" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="222" id="Me5-cJ-zzt"/>
+                        <constraint firstAttribute="height" constant="48" id="x1N-8n-dM0"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="GoogleSans-Medium" family="Google Sans" pointSize="13"/>
+                    <state key="normal" title="Add Link">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4pr-dz-rkk" userLabel="pinterest">
+                    <rect key="frame" x="332.5" y="122.5" width="60.5" height="48"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="48" id="J3q-VC-HkK"/>
+                    </constraints>
+                    <state key="normal" image="Icon_Pinterset"/>
+                    <connections>
+                        <action selector="pinterestTapped:" destination="-1" eventType="touchUpInside" id="hQo-Qk-0DV"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n4Q-Ok-A4W" userLabel="flickr">
+                    <rect key="frame" x="332.5" y="199.5" width="60.5" height="48"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="48" id="khB-GT-Pj4"/>
+                    </constraints>
+                    <state key="normal" title="" image="icon_flickr"/>
+                    <connections>
+                        <action selector="flickrTapped:" destination="-1" eventType="touchUpInside" id="fGg-4O-C2T"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M4L-vj-7z7" userLabel="youtube">
+                    <rect key="frame" x="21" y="122.5" width="61" height="48"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="48" id="s3v-vL-R8a"/>
+                    </constraints>
+                    <state key="normal" image="icon_youtube"/>
+                    <connections>
+                        <action selector="youTubeTapped:" destination="-1" eventType="touchUpInside" id="pFH-9C-I5x"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sc7-Mi-8LT" userLabel="vimeo">
+                    <rect key="frame" x="125" y="122.5" width="60.5" height="48"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="48" id="UUM-f3-Np1"/>
+                    </constraints>
+                    <state key="normal" image="Icon_Vimeo"/>
+                    <connections>
+                        <action selector="vimeoTapped:" destination="-1" eventType="touchUpInside" id="Nz6-ll-RP8"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="85K-rd-h9t" userLabel="reddit">
+                    <rect key="frame" x="228.5" y="122.5" width="61" height="48"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="48" id="m7p-Lf-GtH"/>
+                    </constraints>
+                    <state key="normal" image="Icon_reddit"/>
+                    <connections>
+                        <action selector="redditTapped:" destination="-1" eventType="touchUpInside" id="kN6-Xu-3Xf"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="inE-Na-twh" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="21" id="0yB-yV-Y0O"/>
+                <constraint firstItem="4pr-dz-rkk" firstAttribute="leading" secondItem="85K-rd-h9t" secondAttribute="trailing" constant="43" id="3ln-HD-Dxj"/>
+                <constraint firstItem="6JD-BO-YW1" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="31" id="4y7-fQ-2Nu"/>
+                <constraint firstItem="uUx-rO-CJ9" firstAttribute="width" secondItem="inE-Na-twh" secondAttribute="width" id="5Zm-5X-pcu"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="4pr-dz-rkk" secondAttribute="trailing" constant="21" id="5am-ZT-YMR"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="ucn-Zc-skv" secondAttribute="bottom" constant="26" id="6bE-IN-V7c"/>
+                <constraint firstItem="M4L-vj-7z7" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="21" id="6m0-xX-CxO"/>
+                <constraint firstItem="85K-rd-h9t" firstAttribute="top" secondItem="sc7-Mi-8LT" secondAttribute="top" id="9js-Cj-X4k"/>
+                <constraint firstItem="M4L-vj-7z7" firstAttribute="top" secondItem="6JD-BO-YW1" secondAttribute="bottom" constant="27" id="D5d-Jz-A2p"/>
+                <constraint firstItem="85K-rd-h9t" firstAttribute="leading" secondItem="sc7-Mi-8LT" secondAttribute="trailing" constant="43" id="F3E-pb-4Xc"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="6JD-BO-YW1" secondAttribute="trailing" constant="20" id="Fui-kD-Jpj"/>
+                <constraint firstItem="uUx-rO-CJ9" firstAttribute="leading" secondItem="inE-Na-twh" secondAttribute="trailing" constant="43" id="Neq-Hq-Y9K"/>
+                <constraint firstItem="n4Q-Ok-A4W" firstAttribute="width" secondItem="Tmd-XS-yzs" secondAttribute="width" id="NgL-7f-Cxw"/>
+                <constraint firstItem="ucn-Zc-skv" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="OG2-5m-HUW"/>
+                <constraint firstItem="sc7-Mi-8LT" firstAttribute="top" secondItem="M4L-vj-7z7" secondAttribute="top" id="P0q-vG-9BV"/>
+                <constraint firstItem="Tmd-XS-yzs" firstAttribute="top" secondItem="uUx-rO-CJ9" secondAttribute="top" id="PH3-Kn-2g7"/>
+                <constraint firstItem="4pr-dz-rkk" firstAttribute="bottom" secondItem="85K-rd-h9t" secondAttribute="bottom" id="S7g-hV-yEr"/>
+                <constraint firstItem="Tmd-XS-yzs" firstAttribute="bottom" secondItem="uUx-rO-CJ9" secondAttribute="bottom" id="VAt-hc-lvp"/>
+                <constraint firstItem="sc7-Mi-8LT" firstAttribute="leading" secondItem="M4L-vj-7z7" secondAttribute="trailing" constant="43" id="cV2-cA-apj"/>
+                <constraint firstItem="sc7-Mi-8LT" firstAttribute="bottom" secondItem="M4L-vj-7z7" secondAttribute="bottom" id="d70-U3-5SI"/>
+                <constraint firstItem="85K-rd-h9t" firstAttribute="bottom" secondItem="sc7-Mi-8LT" secondAttribute="bottom" id="dKL-o5-zcN"/>
+                <constraint firstItem="n4Q-Ok-A4W" firstAttribute="bottom" secondItem="Tmd-XS-yzs" secondAttribute="bottom" id="ej4-cQ-YhN"/>
+                <constraint firstItem="n4Q-Ok-A4W" firstAttribute="top" secondItem="Tmd-XS-yzs" secondAttribute="top" id="glP-Uj-KCA"/>
+                <constraint firstItem="inE-Na-twh" firstAttribute="top" secondItem="M4L-vj-7z7" secondAttribute="bottom" constant="29" id="haB-io-ozL"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="n4Q-Ok-A4W" secondAttribute="trailing" constant="21" id="heY-Vs-LuB"/>
+                <constraint firstItem="4pr-dz-rkk" firstAttribute="top" secondItem="85K-rd-h9t" secondAttribute="top" id="iEq-rT-CAX"/>
+                <constraint firstItem="n4Q-Ok-A4W" firstAttribute="leading" secondItem="Tmd-XS-yzs" secondAttribute="trailing" constant="43" id="kAs-T8-Re3"/>
+                <constraint firstItem="6JD-BO-YW1" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="21" id="nzd-JP-2Ld"/>
+                <constraint firstItem="Tmd-XS-yzs" firstAttribute="leading" secondItem="uUx-rO-CJ9" secondAttribute="trailing" constant="43" id="od5-nM-hM8"/>
+                <constraint firstItem="sc7-Mi-8LT" firstAttribute="width" secondItem="M4L-vj-7z7" secondAttribute="width" id="qeM-LA-Eiw"/>
+                <constraint firstItem="85K-rd-h9t" firstAttribute="width" secondItem="sc7-Mi-8LT" secondAttribute="width" id="rd8-Ve-4NN"/>
+                <constraint firstItem="Tmd-XS-yzs" firstAttribute="width" secondItem="uUx-rO-CJ9" secondAttribute="width" id="uOJ-Xp-Eer"/>
+                <constraint firstItem="4pr-dz-rkk" firstAttribute="width" secondItem="85K-rd-h9t" secondAttribute="width" id="wPQ-fr-vzI"/>
+                <constraint firstItem="uUx-rO-CJ9" firstAttribute="bottom" secondItem="inE-Na-twh" secondAttribute="bottom" id="wz6-yO-FAg"/>
+                <constraint firstItem="uUx-rO-CJ9" firstAttribute="top" secondItem="inE-Na-twh" secondAttribute="top" id="zyP-lm-L8Z"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="91" y="46"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="Icon_Pinterset" width="32" height="32"/>
+        <image name="Icon_Vimeo" width="32" height="32"/>
+        <image name="Icon_googlePlus" width="32" height="32"/>
+        <image name="Icon_reddit" width="32" height="32"/>
+        <image name="Icon_tumblr" width="32" height="32"/>
+        <image name="icon_blogger" width="32" height="32"/>
+        <image name="icon_flickr" width="32" height="32"/>
+        <image name="icon_youtube" width="32" height="32"/>
+    </resources>
+</document>

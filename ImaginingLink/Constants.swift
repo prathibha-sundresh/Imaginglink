@@ -102,6 +102,13 @@ let KFilterPublishPresentation = "presentations/filter"
 let KFilterUserPresentation = "presentations/user"
 let KUserPresentationAcceptOrReject = "user/action-on-editor-modified"
 
+//Folio
+let kFolioPresentation = "social-connect/get-user-folio-groups"
+let kCreateFolioGroup = "social-connect/create-folio-social-group"
+let kFolioFavouritePost = "social-connect/save-favourite-folio-groups"
+let kSaveFolioPostLikesEmoji = "social-connect/save-folio-group-likes"
+let kUpdateUserFolioGroupStatus = "social-connect/update-user-folio-group-status?group_id=%@&status=%@"
+
 //Settings
 let KContactUs = "contact-us"
 
@@ -180,4 +187,11 @@ let kLoadActiveGroupPolls = "social-connect/load-active-polls?group_id=%@"
 let kUpdateGroupPoll = "social-connect/update-poll"
 let kDeleteGroupPoll = "social-connect/delete-poll"
 let kStoreUserOpinionGroupPoll = "social-connect/store-user-opinion"
+
+//Folio Types
+let kFolioType:[String] = ["Institution/Hospital", "Practice Group", "Organization", "Society", "Business", "Product", "Focussed Group", "Educational Cource", "Conference", "Publisher", "Grant", "Clinical Trail", "Custom"]
+let kHighlighedURLHEader = "Share youtube URL for sharing videos that can be promoted in this section where you can show current corporate & product videos or a message from the president."
+let kURlHeader = "Social Media Links"
+
+let kTokenExpire = "token is expired"
 

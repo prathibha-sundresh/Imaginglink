@@ -1295,6 +1295,7 @@
                         <segue destination="Okt-Uw-cdu" kind="show" identifier="UploadedFilesViewControllerID" id="wmR-qD-aJA"/>
                         <segue destination="BP7-AY-IfO" kind="show" identifier="ManageFriendsViewControllerSegue" id="28i-N4-L72"/>
                         <segue destination="kRR-kp-sBI" kind="show" identifier="GroupsListVCID" id="LsG-bs-LJS"/>
+                        <segue destination="bQi-xs-SHs" kind="show" identifier="FolioViewControllerID" id="1hU-O1-MhD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S2L-4e-oZW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -3197,6 +3198,16 @@ nstrate the visual form</string>
             </objects>
             <point key="canvasLocation" x="-107" y="2594"/>
         </scene>
+        <!--FolioViewControllerID-->
+        <scene sceneID="d0A-0h-y3h">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="FolioViewControllerID" storyboardName="Folios" referencedIdentifier="FolioViewControllerID" id="bQi-xs-SHs" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="UrI-Cu-nqK"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QBk-dH-wcU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-150" y="3231"/>
+        </scene>
         <!--Friends Invite To Group View Controller-->
         <scene sceneID="Mf6-Cg-FLk">
             <objects>
@@ -3390,7 +3401,7 @@ nstrate the visual form</string>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="6DW-Zs-JBZ"/>
+        <segue reference="1wS-ps-zKO"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="BackButtonIcon" width="13" height="21"/>
@@ -3406,7 +3417,7 @@ nstrate the visual form</string>
         <image name="Icon_arrow" width="36" height="36"/>
         <image name="Icon_presentation_share" width="24" height="24"/>
         <image name="MenuIcon" width="28" height="20"/>
-        <image name="PresentationMenuIcon" width="5" height="22"/>
+        <image name="PresentationMenuIcon" width="18" height="18"/>
         <image name="addImage_icon" width="26" height="26"/>
         <image name="album_icon" width="25" height="24"/>
         <image name="blue_search_icon" width="29" height="31"/>
